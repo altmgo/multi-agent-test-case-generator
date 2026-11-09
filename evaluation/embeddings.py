@@ -78,11 +78,15 @@ def vector_matrix(batch: EmbeddingBatch, count: int) -> NDArray[np.float64]:
 _CAPTURED_USAGE: ContextVar[list[UsageRecord] | None] = ContextVar("embedding_usage", default=None)
 
 
+class _InvalidWireEmbedding(ValueError):
+    """A successful Gemini response contained an invalid raw vector."""
+
+
 def _reported_count(value: object) -> int | None:
     return value if type(value) is int and value >= 0 else None
 
 
-def _capture_usage(response: Any) -> None:
+def _capture_response(response: Any) -> None:
     # google-genai 3.0.0 filters out Developer API usageMetadata while decoding
     # embedding responses. Read it from the transport before SDK conversion.
     capture = _CAPTURED_USAGE.get()
@@ -118,6 +122,18 @@ def _capture_usage(response: Any) -> None:
         input_tokens=_reported_count(usage.get("promptTokenCount")),
         details=details or None,
     ))
+    if not response.is_success:
+        return
+
+    # The SDK coerces booleans and numeric strings to floats. Check the JSON
+    # coordinates before decoding so invalid values never enter the cache.
+    embeddings = payload.get("embeddings")
+    if not isinstance(embeddings, list):
+        raise _InvalidWireEmbedding
+    for embedding in embeddings:
+        values = embedding.get("values") if isinstance(embedding, dict) else None
+        if not isinstance(values, list) or any(type(value) not in (int, float) for value in values):
+            raise _InvalidWireEmbedding
 
 
 class GeminiEmbedder:
@@ -152,7 +168,7 @@ class GeminiEmbedder:
                 )
             client_args = dict(self._client_args)
             hooks = dict(client_args.get("event_hooks", {}))
-            hooks["response"] = [*hooks.get("response", ()), _capture_usage]
+            hooks["response"] = [*hooks.get("response", ()), _capture_response]
             client_args["event_hooks"] = hooks
             self._client = genai.Client(
                 vertexai=False,
@@ -197,6 +213,8 @@ class GeminiEmbedder:
             failure = None
             try:
                 response = client.models.embed_content(model=EMBEDDING_MODEL, contents=contents)
+            except _InvalidWireEmbedding:
+                failure = "Gemini returned invalid embedding values"
             except Exception as error:
                 failure = f"Gemini embedding request failed ({type(error).__name__})"
             finally:

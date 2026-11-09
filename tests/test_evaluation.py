@@ -253,6 +253,30 @@ def test_gemini_rejects_aggregated_response_and_retries_without_poisoned_cache(m
     embedder.close()
 
 
+@pytest.mark.parametrize("invalid_values", [[True, False], ["1", "0"]], ids=["booleans", "strings"])
+def test_gemini_rejects_wire_values_that_sdk_would_coerce(monkeypatch, invalid_values):
+    embedder, requests = _gemini(
+        monkeypatch,
+        {
+            "embeddings": [{"values": invalid_values}, {"values": [1, 0]}],
+            "usageMetadata": {"promptTokenCount": 9},
+        },
+        {"embeddings": [{"values": [0, 1]}, {"values": [1, 1]}]},
+    )
+
+    with pytest.raises(EmbeddingError, match="invalid embedding values") as error:
+        embedder.embed(["Open bookmarks", "Print page"])
+
+    assert error.value.request_count == 1
+    assert error.value.usage == UsageRecord(input_tokens=9)
+    recovered = embedder.embed(["Open bookmarks", "Print page"])
+    np.testing.assert_array_equal(recovered.vectors, [[0, 1], [1, 1]])
+    assert recovered.request_count == 1
+    assert len(requests) == 2
+    assert requests[0] == requests[1]
+    embedder.close()
+
+
 def test_gemini_sums_reported_counts_across_separate_http_batches(monkeypatch):
     embedder, requests = _gemini(
         monkeypatch,
