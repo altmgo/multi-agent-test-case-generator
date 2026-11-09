@@ -206,11 +206,11 @@ def save_unit(
     embedding_usage: UsageRecord | None = None,
     embedding_requests: int | None = None,
 ) -> None:
-    """Publish a completed unit or a failed unit with any available partial result."""
+    """Publish a generated, evaluated, or failed unit with its available result."""
     if solution not in SOLUTIONS:
         raise ValueError("Unknown solution directory")
-    if (evaluation is None) != (failure is not None):
-        raise ValueError("A unit requires either an evaluation or a failure")
+    if evaluation is not None and failure is not None:
+        raise ValueError("A unit cannot have both an evaluation and a failure")
     for items in (unit.requirements, unit.reference_cases, result.cases):
         if len({item.id for item in items}) != len(items):
             raise ValueError("Duplicate IDs in a unit artifact collection")
@@ -221,10 +221,12 @@ def save_unit(
     intermediate = _save_intermediate(unit_dir, result)
     links = _case_files(unit_dir, unit, result)
 
-    status = evaluation.status if evaluation is not None else "failed"
+    status = evaluation.status if evaluation is not None else "failed" if failure is not None else "generated"
     automatic = evaluation.model_dump(mode="json") if evaluation is not None else None
     if evaluation is not None:
         embedding_usage, embedding_requests = evaluation.embedding_usage, evaluation.embedding_requests
+    elif failure is None:
+        embedding_usage, embedding_requests = UsageRecord(input_tokens=0, output_tokens=0), 0
     embedding_usage = embedding_usage if embedding_usage is not None else UsageRecord()
     matches = {
         "status": status,
