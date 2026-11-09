@@ -86,17 +86,61 @@ def test_ghl_selects_techniques_then_calls_once_per_technique_with_full_input():
     assert [call[4]["output_mode"] for call in fake.calls[1:]] == ["batch", "batch"]
 
 
-def test_ghl_supports_scoped_mode_and_rejects_invalid_selected_technique():
+@pytest.mark.parametrize("output_mode", ["per_requirement", "per_case"])
+def test_ghl_scoped_mode_calls_per_requirement_with_full_input(output_mode):
+    requirement_ids = [requirement.id for requirement in make_input().requirements]
+    fake = FakeRuntime([
+        ({"selections": [{"technique_id": TECHNIQUES[0].id, "rationale": "Partition behavior"}]}, UsageRecord()),
+        (CaseList(cases=[case("x-R1", "Target 1", "For R1", ["R1", "R2"])]), UsageRecord()),
+        (CaseList(cases=[case("x-R2", "Target 2", "For R2", ["R2"])]), UsageRecord()),
+    ])
+
+    result = asyncio.run(generate_ghl(make_input(), fake, output_mode=output_mode))
+
+    calls = fake.calls[1:]
+    assert len(calls) == len(requirement_ids)
+    assert all(call[2].requirements == make_input().requirements for call in calls)
+    assert [call[4]["target"] for call in calls] == requirement_ids
+    assert [call[4]["output_mode"] for call in calls] == [output_mode] * len(requirement_ids)
+    assert len(result.cases) == len(requirement_ids)
+    assert result.cases[0].requirement_ids == ["R1", "R2"]
+
+
+def test_ghl_per_case_rejects_more_than_one_case_from_a_call():
+    fake = FakeRuntime([
+        ({"selections": [{"technique_id": TECHNIQUES[0].id, "rationale": "Partition behavior"}]}, UsageRecord()),
+        (CaseList(cases=[case("a", "A", "a", ["R1"]), case("b", "B", "b", ["R1"])]), UsageRecord()),
+    ])
+    with pytest.raises(ValueError, match="more than one"):
+        asyncio.run(generate_ghl(make_input(), fake, output_mode="per_case"))
+
+
+def test_ghl_rejects_cases_without_the_scoped_requirement_link():
+    fake = FakeRuntime([
+        ({"selections": [{"technique_id": TECHNIQUES[0].id, "rationale": "Partition behavior"}]}, UsageRecord()),
+        (CaseList(cases=[case("x", "Target", "For R2", ["R2"])]), UsageRecord()),
+    ])
+    with pytest.raises(ValueError, match="R1"):
+        asyncio.run(generate_ghl(make_input(), fake, output_mode="per_requirement"))
+
+
+def test_ghl_rejects_unknown_requirement_links():
+    fake = FakeRuntime([
+        ({"selections": [{"technique_id": TECHNIQUES[0].id, "rationale": "Partition behavior"}]}, UsageRecord()),
+        (CaseList(cases=[case("x", "Target", "Invalid link", ["R1", "R999"])]), UsageRecord()),
+    ])
+    with pytest.raises(ValueError, match="R999"):
+        asyncio.run(generate_ghl(make_input(), fake))
+
+
+def test_ghl_rejects_invalid_selected_technique_and_duplicate_selection():
     fake = FakeRuntime([
         ({"selections": [{"technique_id": "unknown", "rationale": "fixture"}]}, UsageRecord()),
     ])
     with pytest.raises(ValueError, match="unknown"):
         asyncio.run(generate_ghl(make_input(), fake))
-
     fake = FakeRuntime([
-        ({"selections": [{"technique_id": TECHNIQUES[0].id, "rationale": "Partition behavior"}]}, UsageRecord()),
-        (CaseList(cases=[]), UsageRecord()),
+        ({"selections": [{"technique_id": TECHNIQUES[0].id, "rationale": "a"}, {"technique_id": TECHNIQUES[0].id, "rationale": "b"}]}, UsageRecord()),
     ])
-    asyncio.run(generate_ghl(make_input(), fake, output_mode="per_technique"))
-    assert fake.calls[1][4]["output_mode"] == "per_technique"
-    assert fake.calls[1][2].requirements == make_input().requirements
+    with pytest.raises(ValueError, match="duplicate"):
+        asyncio.run(generate_ghl(make_input(), fake))

@@ -49,7 +49,6 @@ _MODE_INSTRUCTIONS = {
     "batch": "Return the requested cases together in a single output.",
     "per_requirement": "Return cases only for the requirement targeted by this stage.",
     "per_case": "Return only the single case targeted by this stage.",
-    "per_technique": "Return cases only for the test design technique named by this stage.",
 }
 
 
@@ -59,7 +58,7 @@ class Runtime(Protocol):
     Each run may append multiple provider attempts to usage_records. Extras must
     be JSON-compatible stage data. Only extra["history"] may be dropped to fit.
     Case generation stages can set extra["output_mode"] to batch,
-    per_requirement, per_case, or per_technique. The stage supplies the target if applicable.
+    per_requirement, or per_case. The stage supplies the target if applicable.
     """
 
     usage_records: list[UsageRecord]

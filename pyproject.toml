@@ -21,7 +21,7 @@ test = ["pytest>=8"]
 py-modules = ["model_runtime", "schemas"]
 
 [tool.setuptools.packages.find]
-include = ["datasets"]
+include = ["datasets", "datasets.*", "solutions", "solutions.*"]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]

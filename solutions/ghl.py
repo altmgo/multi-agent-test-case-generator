@@ -46,10 +46,10 @@ async def generate_ghl(
     input: GenerationInput,
     runtime: Runtime,
     *,
-    output_mode: Literal["batch", "per_technique"] = "batch",
+    output_mode: Literal["batch", "per_requirement", "per_case"] = "batch",
 ) -> GenerationResult:
-    """Select techniques once, then generate once per choice using full input."""
-    if output_mode not in {"batch", "per_technique"}:
+    """Select techniques once; generate per technique, optionally per requirement."""
+    if output_mode not in {"batch", "per_requirement", "per_case"}:
         raise ValueError(f"Unsupported GHL output mode: {output_mode}")
     usage_start = len(runtime.usage_records)
     catalogue = [technique.model_dump() for technique in TECHNIQUES]
@@ -74,16 +74,33 @@ async def generate_ghl(
     collected: list[GeneratedCase] = []
     for choice in selection.selections:
         technique = next(item for item in TECHNIQUES if item.id == choice.technique_id)
-        answer = await runtime.run(
-            f"ghl_generate_{technique.id}",
-            f"Generate high-level test cases using {technique.name}. {technique.rationale} "
-            "Use all requirements supplied in context, include normal and abnormal cases, and cite only supplied IDs.",
-            input,
-            _CaseBatch,
-            extra={"output_mode": output_mode, "target": technique.id, "prompt_version": PROMPT_VERSION},
-        )
-        validate_cases(input, answer.cases)
-        collected.extend(answer.cases)
+        scopes = input.requirements if output_mode in {"per_requirement", "per_case"} else [None]
+        for requirement in scopes:
+            target = requirement.id if requirement is not None else technique.id
+            answer = await runtime.run(
+                f"ghl_generate_{technique.id}",
+                f"Generate high-level test cases using {technique.name}. {technique.rationale} "
+                "Use all requirements supplied in context, include normal and abnormal cases, and cite only supplied IDs.",
+                input,
+                _CaseBatch,
+                extra={
+                    "output_mode": output_mode,
+                    "target": target,
+                    "technique_id": technique.id,
+                    "prompt_version": PROMPT_VERSION,
+                },
+            )
+            validate_cases(input, answer.cases)
+            if requirement is not None:
+                for case in answer.cases:
+                    if requirement.id not in case.requirement_ids:
+                        raise ValueError(
+                            f"GHL case {case.id!r} generated for {requirement.id!r} "
+                            "does not link to its scoped requirement"
+                        )
+            if output_mode == "per_case" and len(answer.cases) > 1:
+                raise ValueError("GHL per_case output returned more than one case for a call")
+            collected.extend(answer.cases)
 
     # Dedup only exact title+description matches; no normalization or fuzzy merging.
     consolidated: list[GeneratedCase] = []
