@@ -174,8 +174,9 @@ def _write_csv(unit_dir: Path, payload: dict, matches: dict, usage: UsageRecord,
     write_text(unit_dir / "results.csv", stream.getvalue())
 
 
-def _write_solution_index(solution_dir: Path) -> None:
+def write_solution_index(solution_dir: Path) -> None:
     """Index the unique cases from each published unit snapshot."""
+    _directory(solution_dir.parent, solution_dir.name)
     lines = [f"# {_markdown_inline(solution_dir.name)} · Requirements to tests"]
     for path in sorted(solution_dir.glob("*/results.json")):
         if path.is_symlink() or path.parent.is_symlink():
@@ -257,4 +258,3 @@ def save_unit(
     _write_csv(unit_dir, payload, matches, result.usage, embedding_usage)
     write_json(unit_dir / "semantic_matches.json", matches)
     write_json(unit_dir / "results.json", payload)
-    _write_solution_index(solution_dir)

@@ -18,7 +18,16 @@ from evaluation.embeddings import EMBEDDING_INSTRUCTION, EMBEDDING_MODEL, Embedd
 from evaluation.matching import SIMILARITY_THRESHOLD
 from evaluation.metrics import aggregate, evaluate
 from model_runtime import DEFAULT_CONTEXT_LIMIT, DEFAULT_OUTPUT_TOKENS, GENERATION_MODELS, ModelRuntime, Runtime, sum_usage
-from persistence import RUN_TIMEZONE, SOLUTIONS, TIMESTAMP_FORMAT, reserve_run, save_unit, write_json, write_text
+from persistence import (
+    RUN_TIMEZONE,
+    SOLUTIONS,
+    TIMESTAMP_FORMAT,
+    reserve_run,
+    save_unit,
+    write_json,
+    write_solution_index,
+    write_text,
+)
 from schemas import EvaluationResult, GenerationResult, Unit, UsageRecord, generation_input
 from solutions import ghl, one_shot
 from solutions.multiagent import MultiagentFailure, run_multiagent
@@ -310,8 +319,10 @@ async def _execute(
 ) -> int:
     outcomes: dict[str, dict] = {solution: {} for solution in options.solutions}
     evaluations: dict[str, dict[str, EvaluationResult]] = {solution: {} for solution in options.solutions}
+    index_failures: dict[str, dict[str, str]] = {}
     runtime = embedder = None
     config["outcomes"] = outcomes
+    config["index_failures"] = index_failures
     config["status"] = "interrupted"
     try:
         for solution in options.solutions:
@@ -331,6 +342,9 @@ async def _execute(
                     result = error.partial_result
                     detail = result.trace["failure"]
                     failure = {"stage": detail["stage"], "error_type": detail["error_type"]}
+                except ghl.GHLFailure as error:
+                    result = error.partial_result
+                    failure = {"stage": error.stage, "error_type": error.error_type}
                 except Exception as error:
                     failure = {"stage": "generation", "error_type": type(error).__name__}
 
@@ -371,12 +385,22 @@ async def _execute(
                     outcomes[solution][unit.id] = {"status": "failed", "failure": failure}
                     print(f"{solution}/{unit.id}: {failure['stage']} failed ({failure['error_type']})", file=sys.stderr)
 
+            try:
+                write_solution_index(run / solution)
+            except Exception as error:
+                error_type = type(error).__name__
+                index_failures[solution] = {"error_type": error_type}
+                print(f"{solution}/requirements_to_tests.md: write failed ({error_type})", file=sys.stderr)
+
         comparison = aggregate(evaluations, selected_unit_ids=(item.unit.id for item in selected))
         write_json(run / "comparison.json", comparison.model_dump(mode="json"))
         config["comparison"] = "comparison.json"
         completed = sum(len(units) for units in evaluations.values())
         total = len(selected) * len(options.solutions)
-        config["status"] = "completed" if completed == total else "partial" if completed else "failed"
+        if completed == total and not index_failures:
+            config["status"] = "completed"
+        else:
+            config["status"] = "partial" if completed else "failed"
     finally:
         try:
             close = getattr(embedder, "close", None)

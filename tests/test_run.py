@@ -399,3 +399,69 @@ def test_malformed_manifest_is_rejected_before_model_calls(cli, capsys):
     assert "e2edev.json" in capsys.readouterr().err
     assert not runs.exists()
     assert not runtime.calls
+
+
+@pytest.mark.parametrize("invalid_output", [False, True], ids=["provider-error", "invalid-links"])
+def test_late_ghl_failure_preserves_validated_cases_and_techniques(cli, monkeypatch, invalid_output):
+    module, data, runs, runtime, _, run = cli
+    put(data, make_unit(FIREFOX))
+    monkeypatch.setattr(module, "make_embedder", lambda: pytest.fail("A partial GHL result cannot be evaluated"))
+
+    def scripted(stage, unit_id, extra):
+        if stage == "ghl_generate_use_case" and extra["target"] == "R3":
+            if invalid_output:
+                return response(stage, unit_id, {**extra, "target": "R999"})
+            raise RuntimeError(SECRET)
+        return response(stage, unit_id, extra)
+
+    runtime.respond = scripted
+    assert run("--solutions", "GHL", "--units", FIREFOX, "--output-mode", "per_requirement") == 1
+    execution, = runs.iterdir()
+    unit_dir = execution / "GHL" / FIREFOX
+    saved = read_json(unit_dir / "results.json")
+    assert saved["status"] == "failed"
+    assert saved["failure"] == {
+        "stage": "ghl_generate_use_case", "error_type": "ValueError" if invalid_output else "RuntimeError"
+    }
+    assert saved["evaluation"] is None
+    assert saved["generation"]["selected_techniques"] == ["use_case"]
+    assert saved["generation"]["technique_rationales"] == {"use_case": "A workflow"}
+    generated, = saved["generated_cases"]
+    assert generated["id"] == "G-001"
+    assert generated["requirement_ids"] == ["R1", "R2"]
+    assert set(saved["links"]["cases"]["G-001"]) == {"R1", "R2"}
+    assert csv_row(unit_dir)["tokens_used"] == "20"
+    assert read_json(execution / "comparison.json")["unit_ids"] == []
+    assert all(SECRET not in path.read_text() for path in execution.rglob("*") if path.is_file())
+
+
+def test_index_write_failure_preserves_published_evaluations_in_comparison(cli, monkeypatch, capsys):
+    import persistence
+
+    _, data, runs, _, _, run = cli
+    put(data, make_unit(FIREFOX))
+    write_text = persistence.write_text
+
+    def fail_one_index(path, content):
+        if path.name == "requirements_to_tests.md" and path.parent.name == "one-shot":
+            raise OSError(SECRET)
+        write_text(path, content)
+
+    monkeypatch.setattr(persistence, "write_text", fail_one_index)
+    assert run("--solutions", "one-shot", "GHL", "--units", FIREFOX) == 1
+    execution, = runs.iterdir()
+    unit_dir = execution / "one-shot" / FIREFOX
+    assert not (execution / "one-shot" / "requirements_to_tests.md").exists()
+    assert (execution / "GHL" / "requirements_to_tests.md").is_file()
+    assert read_json(unit_dir / "results.json")["status"] == "evaluated"
+    assert csv_row(unit_dir)["status"] == "evaluated"
+    comparison = read_json(execution / "comparison.json")
+    assert comparison["unit_ids"] == [FIREFOX]
+    assert comparison["metrics"]["one-shot"]["match_count"] == 1
+    recorded = config(execution)
+    assert recorded["status"] == "partial"
+    assert recorded["outcomes"]["one-shot"][FIREFOX] == {"status": "evaluated"}
+    assert recorded["index_failures"] == {"one-shot": {"error_type": "OSError"}}
+    error = capsys.readouterr().err
+    assert "one-shot/requirements_to_tests.md" in error
+    assert SECRET not in error
