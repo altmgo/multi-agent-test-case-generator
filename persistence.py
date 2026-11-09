@@ -1,6 +1,7 @@
 """Reserve experiments and publish their unit artifacts."""
 
 import csv
+import fcntl
 import hashlib
 import json
 import os
@@ -174,6 +175,60 @@ def _write_csv(unit_dir: Path, payload: dict, matches: dict, usage: UsageRecord,
     write_text(unit_dir / "results.csv", stream.getvalue())
 
 
+def _semantic_matches(payload: dict) -> dict:
+    automatic = payload["evaluation"] or {}
+    return {
+        "status": payload["status"],
+        "similarity_threshold": SIMILARITY_THRESHOLD,
+        "matches": automatic.get("matches", []),
+        "unmatched_generated_ids": automatic.get("unmatched_generated_ids"),
+        "unmatched_reference_ids": automatic.get("unmatched_reference_ids"),
+    }
+
+
+def update_evaluation(
+    path: Path,
+    expected: bytes,
+    evaluation: EvaluationResult | None,
+    *,
+    failure: dict[str, str] | None = None,
+    embedding_usage: UsageRecord | None = None,
+    embedding_requests: int | None = None,
+) -> None:
+    """Replace automatic artifacts without overwriting another unit writer."""
+    if evaluation is not None and failure is not None:
+        raise ValueError("A unit cannot have both an evaluation and a failure")
+    if evaluation is None and (failure is None or failure.get("stage") != "evaluation"):
+        raise ValueError("An evaluation result or evaluation-stage failure is required")
+    if any(part.is_symlink() for part in (path, *path.parents)):
+        raise ValueError("Artifact paths cannot be symbolic links")
+    directory_fd = os.open(path.parent, os.O_RDONLY)
+    try:
+        try:
+            fcntl.flock(directory_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError as error:
+            raise ValueError("Another result is being saved for this unit") from error
+        if path.read_bytes() != expected:
+            raise ValueError("The result changed during evaluation. Retry with the latest snapshot.")
+        payload = json.loads(expected)
+        payload["status"] = evaluation.status if evaluation is not None else "failed"
+        payload["failure"] = failure
+        payload["evaluation"] = evaluation.model_dump(mode="json") if evaluation is not None else None
+        if evaluation is not None:
+            embedding_usage, embedding_requests = evaluation.embedding_usage, evaluation.embedding_requests
+        embedding_usage = embedding_usage if embedding_usage is not None else UsageRecord()
+        payload["usage"]["embedding"] = embedding_usage.model_dump(mode="json")
+        payload["usage"]["embedding_requests"] = embedding_requests
+        usage = UsageRecord.model_validate(payload["usage"]["generation"])
+        matches = _semantic_matches(payload)
+        _write_csv(path.parent, payload, matches, usage, embedding_usage)
+        write_json(path.parent / "semantic_matches.json", matches)
+        # The snapshot is the commit marker for the individually atomic artifacts.
+        write_json(path, payload)
+    finally:
+        os.close(directory_fd)
+
+
 def write_solution_index(solution_dir: Path) -> None:
     """Index the unique cases from each published unit snapshot."""
     _directory(solution_dir.parent, solution_dir.name)
@@ -228,13 +283,6 @@ def save_unit(
     elif failure is None:
         embedding_usage, embedding_requests = UsageRecord(input_tokens=0, output_tokens=0), 0
     embedding_usage = embedding_usage if embedding_usage is not None else UsageRecord()
-    matches = {
-        "status": status,
-        "similarity_threshold": SIMILARITY_THRESHOLD,
-        "matches": automatic["matches"] if automatic is not None else [],
-        "unmatched_generated_ids": automatic["unmatched_generated_ids"] if automatic is not None else None,
-        "unmatched_reference_ids": automatic["unmatched_reference_ids"] if automatic is not None else None,
-    }
     payload = {
         "schema_version": RESULT_SCHEMA_VERSION,
         "solution": solution,
@@ -257,6 +305,7 @@ def save_unit(
         "links": links,
         "artifacts": {"semantic_matches": "semantic_matches.json", "csv": "results.csv", **intermediate},
     }
+    matches = _semantic_matches(payload)
     _write_csv(unit_dir, payload, matches, result.usage, embedding_usage)
     write_json(unit_dir / "semantic_matches.json", matches)
     write_json(unit_dir / "results.json", payload)
