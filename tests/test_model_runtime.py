@@ -385,3 +385,61 @@ def test_failed_output_validation_hides_provider_data_in_traceback(monkeypatch, 
     assert error.__context__ is None
     assert credential not in "".join(traceback.format_exception(error))
     assert runtime.usage_records == [UsageRecord(input_tokens=17, output_tokens=3)]
+
+
+@pytest.mark.parametrize("unexpected_metadata", [
+    {"futureUsageField": {"version": 2}},
+    {"thoughtsTokenCount": "invalid"},
+    {"thoughtsTokenCount": True, "cachedContentTokenCount": 2.0, "totalTokenCount": -1},
+])
+def test_http_usage_keeps_valid_counts_when_optional_metadata_is_unusable(
+    monkeypatch, requirements, unexpected_metadata,
+):
+    _fake_google(monkeypatch, (400, {
+        "error": {"code": 400, "status": "INVALID_ARGUMENT"},
+        "usageMetadata": {
+            "promptTokenCount": 13,
+            "candidatesTokenCount": 0,
+            "toolUsePromptTokenCount": 1,
+            **unexpected_metadata,
+        },
+    }))
+    runtime = ModelRuntime("gemini-3.5-flash-lite")
+
+    with pytest.raises(ModelHTTPError) as failure:
+        asyncio.run(runtime.run("generate", "Write cases.", requirements, Answer))
+
+    assert failure.value.status_code == 400
+    assert runtime.usage_records == [
+        UsageRecord(input_tokens=13, output_tokens=0, details={"tool_use_prompt_tokens": 1}),
+    ]
+
+
+@pytest.mark.parametrize("unrecognized_modality", ["fixture-canary-key", 17])
+def test_http_usage_audits_only_known_modalities(monkeypatch, requirements, recwarn, unrecognized_modality):
+    _fake_google(monkeypatch, (400, {
+        "error": {"code": 400, "status": "INVALID_ARGUMENT"},
+        "usageMetadata": {
+            "promptTokenCount": 13,
+            "promptTokensDetails": [
+                {"modality": unrecognized_modality, "tokenCount": 3},
+                {"modality": "text", "tokenCount": 0},
+                {"modality": "AUDIO", "tokenCount": True},
+            ],
+        },
+    }))
+    monkeypatch.setenv("GOOGLE_API_KEY", "fixture-canary-key")
+    runtime = ModelRuntime("gemini-3.5-flash-lite")
+
+    with pytest.raises(ModelHTTPError) as failure:
+        asyncio.run(runtime.run("generate", "Write cases.", requirements, Answer))
+
+    assert failure.value.status_code == 400
+    assert failure.value.__cause__ is None
+    assert failure.value.__context__ is None
+    assert "fixture-canary-key" not in "".join(traceback.format_exception(failure.value))
+    assert "fixture-canary-key" not in runtime.call_records[0].model_dump_json()
+    assert list(recwarn) == []
+    assert runtime.usage_records == [
+        UsageRecord(input_tokens=13, details={"text_prompt_tokens": 0}),
+    ]

@@ -11,10 +11,10 @@ from google.genai.types import (
     FinishReason,
     GenerateContentConfigDict,
     GenerateContentResponse,
-    GenerateContentResponseUsageMetadata,
     HttpRetryOptions,
+    Modality,
 )
-from pydantic import BaseModel, TypeAdapter, ValidationError, computed_field
+from pydantic import BaseModel, TypeAdapter, computed_field
 from pydantic_ai import Agent, NativeOutput
 from pydantic_ai.exceptions import (
     ModelAPIError,
@@ -110,52 +110,64 @@ def sum_usage(records: list[UsageRecord]) -> UsageRecord:
 _RAW_USAGE: ContextVar[list[UsageRecord] | None] = ContextVar("gemini_usage", default=None)
 
 
-def _capture_usage(metadata: GenerateContentResponseUsageMetadata | None) -> None:
+_USAGE_DETAIL_COUNTERS = (
+    ("cached_content_tokens", "cachedContentTokenCount"),
+    ("thoughts_tokens", "thoughtsTokenCount"),
+    ("tool_use_prompt_tokens", "toolUsePromptTokenCount"),
+    ("total_tokens", "totalTokenCount"),
+)
+_USAGE_MODALITY_BREAKDOWNS = (
+    ("prompt", "promptTokensDetails"),
+    ("cache", "cacheTokensDetails"),
+    ("candidates", "candidatesTokensDetails"),
+    ("tool_use_prompt", "toolUsePromptTokensDetails"),
+)
+_MODALITY_NAMES = {modality.value: modality.value.lower() for modality in Modality}
+
+
+def _reported_count(value: object) -> int | None:
+    return value if type(value) is int and value >= 0 else None
+
+
+def _capture_usage(metadata: object) -> None:
     capture = _RAW_USAGE.get()
-    if capture is None or metadata is None:
+    if capture is None or not isinstance(metadata, dict):
         return
 
     details = {}
-    for key, count in (
-        ("cached_content_tokens", metadata.cached_content_token_count),
-        ("thoughts_tokens", metadata.thoughts_token_count),
-        ("tool_use_prompt_tokens", metadata.tool_use_prompt_token_count),
-        ("total_tokens", metadata.total_token_count),
-    ):
-        if count is not None and count >= 0:
+    for key, field in _USAGE_DETAIL_COUNTERS:
+        count = _reported_count(metadata.get(field))
+        if count is not None:
             details[key] = count
-    for prefix, counts in (
-        ("prompt", metadata.prompt_tokens_details),
-        ("cache", metadata.cache_tokens_details),
-        ("candidates", metadata.candidates_tokens_details),
-        ("tool_use_prompt", metadata.tool_use_prompt_tokens_details),
-    ):
-        for count in counts or ():
-            if count.modality is not None and count.token_count is not None and count.token_count >= 0:
-                details[f"{count.modality.value.lower()}_{prefix}_tokens"] = count.token_count
+    for prefix, field in _USAGE_MODALITY_BREAKDOWNS:
+        entries = metadata.get(field)
+        if not isinstance(entries, list):
+            continue
+        for entry in entries:
+            if not isinstance(entry, dict):
+                continue
+            raw_modality = entry.get("modality")
+            modality = _MODALITY_NAMES.get(raw_modality.upper()) if isinstance(raw_modality, str) else None
+            count = _reported_count(entry.get("tokenCount"))
+            if modality is not None and count is not None:
+                details[f"{modality}_{prefix}_tokens"] = count
 
-    prompt = metadata.prompt_token_count
-    candidates = metadata.candidates_token_count
     capture.append(UsageRecord(
-        input_tokens=prompt if prompt is not None and prompt >= 0 else None,
-        output_tokens=candidates if candidates is not None and candidates >= 0 else None,
+        input_tokens=_reported_count(metadata.get("promptTokenCount")),
+        output_tokens=_reported_count(metadata.get("candidatesTokenCount")),
         details=details or None,
     ))
 
 
 def _capture_http_error_usage(body: object) -> None:
-    if _RAW_USAGE.get() is None or not isinstance(body, dict):
+    if not isinstance(body, dict):
         return
     metadata = body.get("usageMetadata")
-    if metadata is None and isinstance(body.get("error"), dict):
+    if not isinstance(metadata, dict) and isinstance(body.get("error"), dict):
         metadata = body["error"].get("usageMetadata")
-    if not isinstance(metadata, dict):
-        return
-    try:
-        usage = GenerateContentResponseUsageMetadata.model_validate(metadata)
-    except ValidationError:
-        return
-    _capture_usage(usage)
+    # Parse only known counters and modalities without decoding the untrusted
+    # body as an SDK model, whose enum parser may warn with raw field values.
+    _capture_usage(metadata)
 
 
 class _GeminiModel(GoogleModel):
@@ -175,7 +187,9 @@ class _GeminiModel(GoogleModel):
     def _process_response(
         self, response: GenerateContentResponse, model_request_parameters: ModelRequestParameters
     ) -> ModelResponse:
-        _capture_usage(response.usage_metadata)
+        metadata = response.usage_metadata
+        if _RAW_USAGE.get() is not None and metadata is not None:
+            _capture_usage(metadata.model_dump(mode="json", by_alias=True, exclude_none=True))
         return super()._process_response(response, model_request_parameters)
 
     async def request(
