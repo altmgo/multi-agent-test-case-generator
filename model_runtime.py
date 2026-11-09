@@ -6,9 +6,22 @@ from contextvars import ContextVar
 from dataclasses import replace
 from typing import Any, Literal, Protocol, TypeVar
 
-from google.genai.types import GenerateContentResponse, HttpRetryOptions
-from pydantic import BaseModel, TypeAdapter, computed_field
+from google.genai.types import (
+    ContentUnionDict,
+    FinishReason,
+    GenerateContentConfigDict,
+    GenerateContentResponse,
+    GenerateContentResponseUsageMetadata,
+    HttpRetryOptions,
+)
+from pydantic import BaseModel, TypeAdapter, ValidationError, computed_field
 from pydantic_ai import Agent, NativeOutput
+from pydantic_ai.exceptions import (
+    ModelAPIError,
+    ModelConnectionError,
+    ModelHTTPError,
+    UnexpectedModelBehavior,
+)
 from pydantic_ai.messages import (
     ModelMessage,
     ModelMessagesTypeAdapter,
@@ -18,7 +31,7 @@ from pydantic_ai.messages import (
     UserPromptPart,
 )
 from pydantic_ai.models import Model, ModelRequestParameters
-from pydantic_ai.models.google import GoogleModel
+from pydantic_ai.models.google import GoogleModel, GoogleModelSettings
 from pydantic_ai.models.wrapper import WrapperModel
 from pydantic_ai.providers.google import GoogleProvider
 from pydantic_ai.settings import ModelSettings
@@ -97,37 +110,100 @@ def sum_usage(records: list[UsageRecord]) -> UsageRecord:
 _RAW_USAGE: ContextVar[list[UsageRecord] | None] = ContextVar("gemini_usage", default=None)
 
 
+def _capture_usage(metadata: GenerateContentResponseUsageMetadata | None) -> None:
+    capture = _RAW_USAGE.get()
+    if capture is None or metadata is None:
+        return
+
+    details = {}
+    for key, count in (
+        ("cached_content_tokens", metadata.cached_content_token_count),
+        ("thoughts_tokens", metadata.thoughts_token_count),
+        ("tool_use_prompt_tokens", metadata.tool_use_prompt_token_count),
+        ("total_tokens", metadata.total_token_count),
+    ):
+        if count is not None and count >= 0:
+            details[key] = count
+    for prefix, counts in (
+        ("prompt", metadata.prompt_tokens_details),
+        ("cache", metadata.cache_tokens_details),
+        ("candidates", metadata.candidates_tokens_details),
+        ("tool_use_prompt", metadata.tool_use_prompt_tokens_details),
+    ):
+        for count in counts or ():
+            if count.modality is not None and count.token_count is not None and count.token_count >= 0:
+                details[f"{count.modality.value.lower()}_{prefix}_tokens"] = count.token_count
+
+    prompt = metadata.prompt_token_count
+    candidates = metadata.candidates_token_count
+    capture.append(UsageRecord(
+        input_tokens=prompt if prompt is not None and prompt >= 0 else None,
+        output_tokens=candidates if candidates is not None and candidates >= 0 else None,
+        details=details or None,
+    ))
+
+
+def _capture_http_error_usage(body: object) -> None:
+    if _RAW_USAGE.get() is None or not isinstance(body, dict):
+        return
+    metadata = body.get("usageMetadata")
+    if metadata is None and isinstance(body.get("error"), dict):
+        metadata = body["error"].get("usageMetadata")
+    if not isinstance(metadata, dict):
+        return
+    try:
+        usage = GenerateContentResponseUsageMetadata.model_validate(metadata)
+    except ValidationError:
+        return
+    _capture_usage(usage)
+
+
 class _GeminiModel(GoogleModel):
+    async def _build_content_and_config(
+        self,
+        messages: list[ModelMessage],
+        model_settings: GoogleModelSettings,
+        model_request_parameters: ModelRequestParameters,
+    ) -> tuple[list[ContentUnionDict], GenerateContentConfigDict]:
+        contents, config = await super()._build_content_and_config(
+            messages, model_settings, model_request_parameters
+        )
+        # The SDK otherwise sends continuation requests inside this one model call.
+        config["automatic_continuation"] = False
+        return contents, config
+
     def _process_response(
         self, response: GenerateContentResponse, model_request_parameters: ModelRequestParameters
     ) -> ModelResponse:
-        capture = _RAW_USAGE.get()
-        metadata = response.usage_metadata
-        if capture is not None and metadata is not None:
-            details = {}
-            for key, count in (
-                ("cached_content_tokens", metadata.cached_content_token_count),
-                ("thoughts_tokens", metadata.thoughts_token_count),
-                ("tool_use_prompt_tokens", metadata.tool_use_prompt_token_count),
-                ("total_tokens", metadata.total_token_count),
-            ):
-                if count is not None:
-                    details[key] = count
-            for prefix, counts in (
-                ("prompt", metadata.prompt_tokens_details),
-                ("cache", metadata.cache_tokens_details),
-                ("candidates", metadata.candidates_tokens_details),
-                ("tool_use_prompt", metadata.tool_use_prompt_tokens_details),
-            ):
-                for count in counts or ():
-                    if count.modality is not None and count.token_count is not None:
-                        details[f"{count.modality.value.lower()}_{prefix}_tokens"] = count.token_count
-            capture.append(UsageRecord(
-                input_tokens=metadata.prompt_token_count,
-                output_tokens=metadata.candidates_token_count,
-                details=details or None,
-            ))
+        _capture_usage(response.usage_metadata)
         return super()._process_response(response, model_request_parameters)
+
+    async def request(
+        self,
+        messages: list[ModelMessage],
+        model_settings: ModelSettings | None,
+        model_request_parameters: ModelRequestParameters,
+    ) -> ModelResponse:
+        safe_error: Exception
+        try:
+            response = await super().request(messages, model_settings, model_request_parameters)
+        except ModelHTTPError as error:
+            _capture_http_error_usage(error.body)
+            safe_error = type(error)(status_code=error.status_code, model_name=self.model_name)
+        except ModelConnectionError as error:
+            safe_error = type(error)(self.model_name, "Gemini connection failed", phase=error.phase)
+        except ModelAPIError:
+            safe_error = ModelAPIError(self.model_name, "Gemini API request failed")
+        except Exception as error:
+            safe_error = UnexpectedModelBehavior(f"Gemini request failed ({type(error).__name__})")
+        else:
+            if (response.provider_details or {}).get("finish_reason") == FinishReason.CONTINUATION.value:
+                raise UnexpectedModelBehavior("Gemini returned an unsupported continuation response")
+            return response
+
+        # Raising outside the handlers keeps the provider error and its request
+        # or response objects out of both the explicit and implicit chains.
+        raise safe_error from None
 
 
 def make_model(model_id: str) -> Model:
@@ -367,9 +443,15 @@ class ModelRuntime:
         try:
             result = await agent.run(_json({**payload, "extra": extra} if extra else payload))
         except BaseException as error:
-            if model.records and model.records[-1].status == "responded":
-                model.records[-1].status = "failed"
-                model.records[-1].error_type = type(error).__name__
-            raise
-        model.records[-1].status = "succeeded"
-        return result.output
+            if not model.records or model.records[-1].status != "responded":
+                raise
+            model.records[-1].status = "failed"
+            model.records[-1].error_type = type(error).__name__
+            if not isinstance(error, UnexpectedModelBehavior):
+                raise
+            safe_error = type(error)("Gemini output was rejected")
+        else:
+            model.records[-1].status = "succeeded"
+            return result.output
+
+        raise safe_error from None

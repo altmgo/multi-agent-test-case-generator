@@ -1,10 +1,11 @@
 import asyncio
 import json
+import traceback
 
 import httpx2
 import pytest
 from pydantic import BaseModel
-from pydantic_ai.exceptions import ModelHTTPError, UnexpectedModelBehavior
+from pydantic_ai.exceptions import ModelAuthenticationError, ModelHTTPError, UnexpectedModelBehavior
 from pydantic_ai.models.google import GoogleModel
 from pydantic_ai.providers.google import GoogleProvider
 
@@ -306,3 +307,81 @@ def test_exhausted_validation_keeps_usage_for_failed_call(monkeypatch, requireme
     record, = runtime.call_records
     assert record.status == "failed"
     assert runtime.usage_records == [UsageRecord(input_tokens=7, output_tokens=2)]
+
+
+def test_continuation_is_refused_after_one_audited_provider_request(monkeypatch, requirements):
+    status, partial = _response(promptTokenCount=12, candidatesTokenCount=2)
+    partial["candidates"][0].update(
+        finishReason="CONTINUATION",
+        continuationToken="Y2hlY2twb2ludA==",
+    )
+    requests = _fake_google(monkeypatch, (status, partial), _response(answer=" "))
+    runtime = ModelRuntime("gemini-3.5-flash-lite")
+
+    with pytest.raises(UnexpectedModelBehavior, match="continuation"):
+        asyncio.run(runtime.run("generate", "Write cases.", requirements, Answer))
+
+    assert len(requests) == 1
+    assert _prompt(requests[0])["requirements"] == requirements.model_dump()["requirements"]
+    assert runtime.usage_records == [UsageRecord(input_tokens=12, output_tokens=2)]
+    record, = runtime.call_records
+    assert record.status == "failed"
+    assert record.usage == runtime.usage_records[0]
+
+
+@pytest.mark.parametrize("nested", [False, True])
+def test_http_error_retains_structured_usage_metadata(monkeypatch, requirements, nested):
+    payload = {"error": {"code": 400, "status": "INVALID_ARGUMENT"}}
+    container = payload["error"] if nested else payload
+    container["usageMetadata"] = {"promptTokenCount": 13, "candidatesTokenCount": 0}
+    requests = _fake_google(monkeypatch, (400, payload))
+    runtime = ModelRuntime("gemini-3.5-flash-lite")
+
+    with pytest.raises(ModelHTTPError):
+        asyncio.run(runtime.run("generate", "Write cases.", requirements, Answer))
+
+    assert len(requests) == 1
+    assert runtime.usage_records == [UsageRecord(input_tokens=13, output_tokens=0)]
+    assert runtime.call_records[0].status == "failed"
+
+
+def test_http_error_hides_credentials_and_provider_exception_chain(monkeypatch, requirements):
+    credential = "test-key"
+    _fake_google(monkeypatch, (403, {"error": {
+        "code": 403,
+        "status": "PERMISSION_DENIED",
+        "message": f"Authorization echoed {credential}",
+    }}))
+    runtime = ModelRuntime("gemini-3.5-flash-lite")
+
+    with pytest.raises(ModelAuthenticationError) as failure:
+        asyncio.run(runtime.run("generate", "Write cases.", requirements, Answer))
+
+    error = failure.value
+    assert isinstance(error, ModelHTTPError)
+    assert error.status_code == 403
+    assert error.model_name == "gemini-3.5-flash-lite"
+    assert error.body is None
+    assert error.headers is None
+    assert error.__cause__ is None
+    assert error.__context__ is None
+    assert credential not in str(error)
+    assert credential not in repr(error)
+    assert credential not in "".join(traceback.format_exception(error))
+
+
+def test_failed_output_validation_hides_provider_data_in_traceback(monkeypatch, requirements):
+    credential = "test-key"
+    _fake_google(monkeypatch, _response(
+        answer=json.dumps({"unexpected": credential}), promptTokenCount=17, candidatesTokenCount=3,
+    ))
+    runtime = ModelRuntime("gemini-3.5-flash-lite", retries=0)
+
+    with pytest.raises(UnexpectedModelBehavior) as failure:
+        asyncio.run(runtime.run("generate", "Write cases.", requirements, Answer))
+
+    error = failure.value
+    assert error.__cause__ is None
+    assert error.__context__ is None
+    assert credential not in "".join(traceback.format_exception(error))
+    assert runtime.usage_records == [UsageRecord(input_tokens=17, output_tokens=3)]
