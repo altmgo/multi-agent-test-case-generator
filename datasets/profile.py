@@ -27,7 +27,13 @@ def _requirement_counts(unit: Unit) -> dict[str, int]:
     linked_counts: Counter[str] = Counter()
     for case in unit.reference_cases:
         linked_counts.update(set(case.requirement_ids))
-    return {requirement.id: linked_counts[requirement.id] for requirement in unit.requirements}
+
+    counts = {}
+    for requirement in unit.requirements:
+        if requirement.id in counts:
+            raise ValueError(f"Duplicate requirement ID {requirement.id!r} in unit {unit.id!r}")
+        counts[requirement.id] = linked_counts[requirement.id]
+    return counts
 
 
 def _aggregate(counts: list[int]) -> dict:
@@ -65,7 +71,7 @@ def coverage_profile(units: list[Unit]) -> dict:
 def calibration_profile(
     units: list[Unit], calibration_ids: set[str], evaluated_ids: set[str]
 ) -> dict:
-    """Return aggregate statistics for an explicit sample disjoint from evaluation."""
+    """Return aggregate statistics for eligible units disjoint from evaluation."""
     if not calibration_ids:
         raise ValueError("Select at least one calibration unit")
     overlap = calibration_ids & evaluated_ids
@@ -77,6 +83,9 @@ def calibration_profile(
         unknown = selected - indexed.keys()
         if unknown:
             raise ValueError(f"Unknown {label} unit IDs: " + ", ".join(sorted(unknown)))
+        ineligible = sorted(unit_id for unit_id in selected if not indexed[unit_id].generatable)
+        if ineligible:
+            raise ValueError(f"Non-generatable {label} unit IDs: " + ", ".join(ineligible))
 
     counts = [
         count

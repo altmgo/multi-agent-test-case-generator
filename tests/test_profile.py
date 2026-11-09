@@ -61,6 +61,13 @@ def test_coverage_of_empty_corpus_has_undefined_quartiles():
     }
 
 
+def test_coverage_rejects_duplicate_requirement_ids_within_unit():
+    unit = make_unit("sample", ["R1", "R1"])
+
+    with pytest.raises(ValueError, match=r"Duplicate requirement ID.*R1.*sample"):
+        coverage_profile([unit])
+
+
 def test_calibration_contains_only_aggregate_from_explicit_sample():
     sample = make_unit("sample", ["R1", "R2"], [("R2",)])
     target = make_unit("target", ["R1"], [("R1",), ("R1",)])
@@ -87,6 +94,25 @@ def test_calibration_rejects_invalid_selection(calibration_ids, evaluated_ids, e
     units = [make_unit("sample", ["R1"]), make_unit("empty", [])]
     with pytest.raises(ValueError, match=error):
         calibration_profile(units, calibration_ids, evaluated_ids)
+
+
+@pytest.mark.parametrize(
+    ("calibration_id", "evaluated_id", "label"),
+    [
+        ("firefox_legacy", "firefox_bookmarks", "calibration"),
+        ("firefox_bookmarks", "firefox_legacy", "evaluated"),
+    ],
+)
+def test_calibration_rejects_archive_in_either_selection(calibration_id, evaluated_id, label):
+    archive = make_unit("firefox_legacy", ["R1", "R2"], [("R1",), ("R2",)]).model_copy(
+        update={"generatable": False}
+    )
+    bookmarks = make_unit("firefox_bookmarks", ["R1"], [("R1",)]).model_copy(
+        update={"parent_id": archive.id}
+    )
+
+    with pytest.raises(ValueError, match=rf"Non-generatable {label} unit IDs.*firefox_legacy"):
+        calibration_profile([archive, bookmarks], {calibration_id}, {evaluated_id})
 
 
 def test_calibration_rejects_ambiguous_unit_ids():
