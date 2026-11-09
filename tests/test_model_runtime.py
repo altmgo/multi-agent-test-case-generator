@@ -131,6 +131,7 @@ def _prompt(request):
     ("batch", "together"),
     ("per_requirement", "requirement targeted"),
     ("per_case", "single case"),
+    ("per_technique", "test design technique named by this stage"),
 ])
 def test_output_mode_keeps_every_requirement_in_the_google_payload(monkeypatch, requirements, mode, scope):
     requests = _fake_google(monkeypatch, _response(promptTokenCount=11, candidatesTokenCount=4))

@@ -93,6 +93,9 @@ class UsageRecord(BaseModel):
 class GenerationResult(BaseModel):
     cases: list[GeneratedCase]
     usage: UsageRecord = Field(default_factory=UsageRecord)
+    selected_techniques: list[str] = Field(default_factory=list)
+    technique_rationales: dict[str, str] = Field(default_factory=dict)
+    prompt_version: str | None = None
 
 
 class AgentOpinion(BaseModel):
