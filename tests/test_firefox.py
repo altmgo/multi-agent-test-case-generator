@@ -1,7 +1,10 @@
 import csv
 import hashlib
 import json
+import os
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
+from threading import Barrier
 
 import pytest
 
@@ -148,9 +151,111 @@ def test_writes_deterministic_metadata_without_csv_text(source_csvs, tmp_path):
     assert "Preserve" not in manifest_path.read_text()
     assert "Expected result" not in manifest_path.read_text()
 
-    initial = {path: path.read_bytes() for path in output.rglob("*.json")}
+    initial = artifact_snapshot(output)
     prepare_firefox(*source_csvs, output)
-    assert {path: path.read_bytes() for path in output.rglob("*.json")} == initial
+    assert artifact_snapshot(output) == initial
+
+
+def artifact_snapshot(output):
+    return {
+        path.relative_to(output): (path.read_bytes(), path.stat().st_ino, path.stat().st_mtime_ns)
+        for path in output.rglob("*.json")
+    }
+
+
+def change_csv_text(path):
+    with path.open(encoding="utf-8-sig", newline="") as stream:
+        header, *rows = csv.reader(stream, delimiter=";")
+    rows[0][1] += " Changed source text with the same ID."
+    write_csv(path, header, rows)
+
+
+@pytest.mark.parametrize("manifest_only", [False, True], ids=["published", "manifest_only"])
+def test_rejects_changed_source_without_touching_existing_artifacts(source_csvs, tmp_path, manifest_only):
+    output = tmp_path / "normalized"
+    prepare_firefox(*source_csvs, output)
+    if manifest_only:
+        for path in output.glob("*.json"):
+            path.unlink()
+    initial = artifact_snapshot(output)
+    change_csv_text(source_csvs[0])
+
+    with pytest.raises(ValueError, match=r"Firefox publication conflict.*manifests/firefox_bookmarks.json"):
+        prepare_firefox(*source_csvs, output)
+
+    assert artifact_snapshot(output) == initial
+
+
+def test_preflights_unit_conflicts_before_publishing_missing_files(source_csvs, tmp_path):
+    output = tmp_path / "normalized"
+    output.mkdir()
+    (output / "firefox_toolbar.json").write_text('{"id": "different"}', encoding="utf-8")
+    initial = artifact_snapshot(output)
+
+    with pytest.raises(ValueError, match=r"Firefox publication conflict.*firefox_toolbar.json"):
+        prepare_firefox(*source_csvs, output)
+
+    assert artifact_snapshot(output) == initial
+
+
+def test_concurrent_sources_cannot_mix_outputs(source_csvs, tmp_path):
+    requirements, tests = source_csvs
+    other_folder = tmp_path / "other"
+    other_folder.mkdir()
+    other_requirements = other_folder / requirements.name
+    other_requirements.write_bytes(requirements.read_bytes())
+    change_csv_text(other_requirements)
+    output = tmp_path / "normalized"
+    ready = Barrier(2)
+
+    def publish(requirements_path):
+        ready.wait(timeout=5)
+        try:
+            return prepare_firefox(requirements_path, tests, output)
+        except ValueError as error:
+            assert "Firefox publication conflict" in str(error)
+            return None
+
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        first = executor.submit(publish, requirements)
+        second = executor.submit(publish, other_requirements)
+        results = (first.result(), second.result())
+
+    winners = [units for units in results if units is not None]
+    assert len(winners) == 1, f"{len(winners)} writers reported success"
+    winning_source = requirements if results[0] is not None else other_requirements
+    for unit in winners[0]:
+        assert Unit.model_validate_json((output / f"{unit.id}.json").read_bytes()) == unit
+    manifest = json.loads((output / "manifests" / "firefox_bookmarks.json").read_bytes())
+    assert manifest["raw_files"]["requirements"]["sha256"] == hashlib.sha256(
+        winning_source.read_bytes()
+    ).hexdigest()
+
+
+def test_rolls_back_new_files_when_publication_fails(source_csvs, tmp_path, monkeypatch):
+    output = tmp_path / "normalized"
+    prepare_firefox(*source_csvs, output)
+    archive = output / "firefox_legacy.json"
+    for path in output.glob("*.json"):
+        if path != archive:
+            path.unlink()
+    initial = artifact_snapshot(output)
+    link = os.link
+
+    def fail_on_toolbar(source, target, *args, **kwargs):
+        if Path(target).name == "firefox_toolbar.json":
+            raise OSError("injected publication failure")
+        return link(source, target, *args, **kwargs)
+
+    with monkeypatch.context() as patch:
+        patch.setattr(os, "link", fail_on_toolbar)
+        with pytest.raises(OSError, match="injected publication failure"):
+            prepare_firefox(*source_csvs, output)
+    assert artifact_snapshot(output) == initial
+
+    units = prepare_firefox(*source_csvs, output)
+    assert len(artifact_snapshot(output)) == 17
+    assert Unit.model_validate_json(archive.read_bytes()) == units[0]
 
 
 def test_manifest_preserves_both_sources_with_the_same_filename(source_csvs, tmp_path):
