@@ -7,9 +7,10 @@ name = "ghl-mas"
 version = "0.1.0"
 requires-python = ">=3.11"
 dependencies = [
+    "google-genai==3.0.0",
     "numpy",
-    "pydantic>=2,<3",
-    "pydantic-ai-slim[google]",
+    "pydantic==2.14.3",
+    "pydantic-ai-slim[google]==2.66.0",
     "scipy",
 ]
 
@@ -17,7 +18,7 @@ dependencies = [
 test = ["pytest>=8"]
 
 [tool.setuptools]
-py-modules = ["schemas"]
+py-modules = ["model_runtime", "schemas"]
 
 [tool.setuptools.packages.find]
 include = ["datasets"]
