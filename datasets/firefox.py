@@ -1,15 +1,14 @@
 """Normalize the local Mendeley Data v1 Firefox requirement and test exports."""
 
 import csv
-import fcntl
 import hashlib
 import io
 import json
-import os
 from pathlib import Path
-from tempfile import TemporaryDirectory
 
 from schemas import ReferenceCase, Requirement, Unit
+
+from ._publication import publish
 
 PAIR_COUNT = 184
 ARCHIVE_ID = "firefox_legacy"
@@ -169,52 +168,6 @@ def _manifest(requirements: Path, tests: Path, requirement_hash: str, test_hash:
     }
 
 
-def _publish(output: Path, artifacts: dict[Path, bytes]) -> None:
-    output.mkdir(parents=True, exist_ok=True)
-    # Lock the directory so cooperating writers preflight and publish together.
-    directory_fd = os.open(output, os.O_RDONLY)
-    try:
-        fcntl.flock(directory_fd, fcntl.LOCK_EX)
-        missing = []
-        # Check the provenance manifest first. Publication below restores the
-        # original order so a missing manifest is published last.
-        for path, content in reversed(artifacts.items()):
-            target = output / path
-            try:
-                existing = target.read_bytes()
-            except FileNotFoundError:
-                missing.append(path)
-                continue
-            if existing != content:
-                raise ValueError(
-                    f"Firefox publication conflict at {target}: existing artifact differs. "
-                    "Use a separate output directory for a different source or taxonomy version."
-                )
-        if not missing:
-            return
-
-        with TemporaryDirectory(dir=output) as staging:
-            paths = list(reversed(missing))
-            for path in paths:
-                staged = Path(staging) / path
-                staged.parent.mkdir(parents=True, exist_ok=True)
-                staged.write_bytes(artifacts[path])
-
-            published = []
-            try:
-                for path in paths:
-                    target = output / path
-                    target.parent.mkdir(parents=True, exist_ok=True)
-                    target.hardlink_to(Path(staging) / path)
-                    published.append(target)
-            except BaseException:
-                for target in reversed(published):
-                    target.unlink()
-                raise
-    finally:
-        os.close(directory_fd)
-
-
 def prepare_firefox(requirements: Path, tests: Path, output: Path) -> list[Unit]:
     """Publish the Firefox units and manifest, refusing changes to existing artifacts."""
     requirement_rows, requirement_hash = _read_csv(
@@ -238,11 +191,12 @@ def prepare_firefox(requirements: Path, tests: Path, output: Path) -> list[Unit]
         MANIFEST_PATH: manifest,
     }
 
-    _publish(
+    publish(
         output,
         {
             path: (json.dumps(data, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
             for path, data in artifacts.items()
         },
+        dataset="Firefox",
     )
     return units
