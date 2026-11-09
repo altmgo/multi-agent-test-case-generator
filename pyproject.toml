@@ -14,11 +14,14 @@ dependencies = [
     "scipy",
 ]
 
+[project.scripts]
+ghl-mas = "main:main"
+
 [project.optional-dependencies]
 test = ["pytest>=8"]
 
 [tool.setuptools]
-py-modules = ["model_runtime", "schemas"]
+py-modules = ["main", "model_runtime", "persistence", "schemas"]
 
 [tool.setuptools.packages.find]
 include = ["datasets", "datasets.*", "solutions", "solutions.*", "evaluation", "evaluation.*"]
