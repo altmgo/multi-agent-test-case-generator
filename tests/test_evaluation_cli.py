@@ -274,6 +274,29 @@ def test_malformed_snapshots_are_rejected_before_any_work(tmp_path, embedder, mu
     assert embedder.calls == 0
 
 
+@pytest.mark.parametrize("artifact", ["snapshot", "config"])
+@pytest.mark.parametrize("number", ["NaN", "Infinity", "-Infinity", "1e9999"])
+def test_non_finite_unknown_fields_are_rejected_before_any_work(tmp_path, embedder, artifact, number):
+    run = saved_run(tmp_path, solutions=("GHL",))
+    persistence.write_json(run / "comparison.json", {"previous": True})
+    if artifact == "config":
+        path, payload = run / "configs.md", config(run)
+    else:
+        path = run / "GHL" / UNITS[0] / "results.json"
+        payload = read(path)
+    payload["custom_unknown"] = {"nested": ["NON_FINITE_JSON"]}
+    data = json.dumps(payload).replace('"NON_FINITE_JSON"', number)
+    if artifact == "config":
+        data = f"# Experiment configuration\n\n```json\n{data}\n```\n"
+    path.write_text(data, encoding="utf-8")
+    before = snapshot_bytes(run)
+
+    assert evaluation_cli.main(args(tmp_path, "--unit", UNITS[1])) == 1
+
+    assert snapshot_bytes(run) == before
+    assert embedder.calls == 0
+
+
 def test_duplicate_unit_ids_are_rejected_before_work(tmp_path, embedder):
     import shutil
 

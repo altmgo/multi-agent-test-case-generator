@@ -137,6 +137,7 @@ def _load_run(run: Path) -> tuple[dict, dict[str, dict[str, _SavedUnit]]]:
     text = (run / "configs.md").read_text(encoding="utf-8")
     try:
         config = json.loads(text.split("```json\n", 1)[1].split("\n```", 1)[0])
+        json.dumps(config, ensure_ascii=False, allow_nan=False)
     except (IndexError, ValueError) as error:
         raise ValueError("Invalid experiment configuration") from error
     if (not isinstance(config, dict) or not isinstance(config.get("solutions"), list)
@@ -161,6 +162,7 @@ def _load_run(run: Path) -> tuple[dict, dict[str, dict[str, _SavedUnit]]]:
             path = directory / "results.json"
             _no_symlinks(path)
             original = path.read_bytes()
+            json.dumps(json.loads(original), ensure_ascii=False, allow_nan=False)
             snapshot = _Snapshot.model_validate_json(original, strict=True)
             if (snapshot.solution != solution_dir.name or snapshot.unit_id not in config["units"]
                     or directory.name != _id_component(snapshot.unit_id)):
