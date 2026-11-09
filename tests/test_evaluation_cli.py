@@ -2,6 +2,8 @@ import csv
 import fcntl
 import json
 import os
+from concurrent.futures import ThreadPoolExecutor
+from threading import Event
 
 import pytest
 
@@ -283,6 +285,84 @@ def test_duplicate_unit_ids_are_rejected_before_work(tmp_path, embedder):
 
     assert snapshot_bytes(run) == before
     assert embedder.calls == 0
+
+
+@pytest.mark.parametrize("change", ["rename", "swap"])
+def test_renamed_or_swapped_unit_directories_are_rejected_before_work(tmp_path, embedder, change):
+    run = saved_run(tmp_path, solutions=("GHL",))
+    first, second = [run / "GHL" / unit for unit in UNITS]
+    renamed = first.with_name("unknown")
+    first.rename(renamed)
+    if change == "swap":
+        second.rename(first)
+        renamed.rename(second)
+    before = snapshot_bytes(run)
+
+    assert evaluation_cli.main(args(tmp_path)) == 1
+
+    assert snapshot_bytes(run) == before
+    assert embedder.calls == 0
+
+
+@pytest.mark.parametrize("unit_id", ["con", "unit with spaces"])
+def test_hashed_unit_directories_can_be_evaluated_in_place(tmp_path, embedder, unit_id):
+    run = saved_run(tmp_path, solutions=("GHL",), units=(unit_id,))
+    directory = next((run / "GHL").iterdir())
+    assert directory.name.startswith("~")
+
+    assert evaluation_cli.main(args(tmp_path, "--unit", unit_id)) == 0
+
+    assert read(directory / "results.json")["status"] == "evaluated"
+    assert read(run / "comparison.json")["unit_ids"] == [unit_id]
+    assert config(run)["status"] == "completed"
+
+
+def test_concurrent_filtered_refreshes_keep_the_latest_complete_summary(tmp_path, monkeypatch):
+    run = saved_run(tmp_path, solutions=("GHL",))
+    monkeypatch.setattr(evaluation_cli, "make_embedder", FakeEmbedder)
+    first_summary_ready, second_summary_attempted = Event(), Event()
+    aggregate = evaluation_cli.aggregate
+    write_text = evaluation_cli.write_text
+    flock = fcntl.flock
+    run_stat = run.stat()
+
+    def pause_first_summary(results, **kwargs):
+        comparison = aggregate(results, **kwargs)
+        if not first_summary_ready.is_set():
+            first_summary_ready.set()
+            assert second_summary_attempted.wait(5), "Second filtered invocation never reached its summary"
+        return comparison
+
+    def observe_run_lock(fd, operation):
+        stat = os.fstat(fd)
+        if ((stat.st_dev, stat.st_ino) == (run_stat.st_dev, run_stat.st_ino)
+                and operation & fcntl.LOCK_EX and first_summary_ready.is_set()):
+            second_summary_attempted.set()
+        return flock(fd, operation)
+
+    def observe_summary_write(path, content):
+        write_text(path, content)
+        # Without a run lock, let the newer summary finish before the older one.
+        if path == run / "configs.md" and first_summary_ready.is_set():
+            second_summary_attempted.set()
+
+    monkeypatch.setattr(evaluation_cli, "aggregate", pause_first_summary)
+    monkeypatch.setattr(fcntl, "flock", observe_run_lock)
+    monkeypatch.setattr(evaluation_cli, "write_text", observe_summary_write)
+    with ThreadPoolExecutor(max_workers=2) as workers:
+        first = workers.submit(evaluation_cli.evaluate_run, run, "GHL", UNITS[0])
+        assert first_summary_ready.wait(5), "First filtered invocation never reached its summary"
+        second = workers.submit(evaluation_cli.evaluate_run, run, "GHL", UNITS[1])
+        assert first.result(timeout=10) == 0
+        assert second.result(timeout=10) == 0
+
+    comparison = read(run / "comparison.json")
+    assert comparison["unit_ids"] == sorted(UNITS)
+    assert comparison["coverage"] == 1.0
+    assert comparison["metrics"]["GHL"]["match_count"] == 2
+    recorded = config(run)
+    assert recorded["status"] == "completed"
+    assert recorded["outcomes"] == {"GHL": {unit: {"status": "evaluated"} for unit in UNITS}}
 
 
 def test_generation_failures_are_skipped_and_run_stays_partial(tmp_path, embedder):

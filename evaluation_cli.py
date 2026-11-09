@@ -1,8 +1,10 @@
 """Evaluate a persisted experiment without regenerating any cases."""
 
 import argparse
+import fcntl
 import json
 import math
+import os
 import sys
 from dataclasses import dataclass
 from pathlib import Path
@@ -12,7 +14,7 @@ from pydantic import BaseModel, Field, NonNegativeInt
 
 from evaluation.embeddings import EMBEDDING_MODEL, Embedder, EmbeddingError, GeminiEmbedder
 from evaluation.metrics import aggregate, evaluate
-from persistence import RESULT_SCHEMA_VERSION, SOLUTIONS, update_evaluation, write_json, write_text
+from persistence import RESULT_SCHEMA_VERSION, SOLUTIONS, _id_component, update_evaluation, write_json, write_text
 from schemas import EvaluationResult, GeneratedCase, Identifier, ReferenceCase, Requirement, Unit, UsageRecord
 
 
@@ -160,7 +162,8 @@ def _load_run(run: Path) -> tuple[dict, dict[str, dict[str, _SavedUnit]]]:
             _no_symlinks(path)
             original = path.read_bytes()
             snapshot = _Snapshot.model_validate_json(original, strict=True)
-            if snapshot.solution != solution_dir.name or snapshot.unit_id not in config["units"]:
+            if (snapshot.solution != solution_dir.name or snapshot.unit_id not in config["units"]
+                    or directory.name != _id_component(snapshot.unit_id)):
                 raise ValueError("Snapshot does not belong to its configured solution or unit")
             if snapshot.unit_id in units[solution_dir.name]:
                 raise ValueError("Duplicate unit ID in one solution")
@@ -223,32 +226,38 @@ def evaluate_run(run: Path, solution: str | None = None, unit_id: str | None = N
                 close_failed = True
                 print(f"Embedding transport close failed ({type(error).__name__}).", file=sys.stderr)
 
-    config, units = _load_run(run)
-    evaluations = {name: {} for name in units}
-    outcomes = {name: {} for name in units}
-    for name, available in units.items():
-        for identifier in config["units"]:
-            saved = available.get(identifier)
-            if saved is None:
-                outcomes[name][identifier] = config.get("outcomes", {}).get(name, {}).get(
-                    identifier, {"status": "missing"}
-                )
-                continue
-            snapshot = saved.snapshot
-            outcomes[name][identifier] = {"status": snapshot.status}
-            if snapshot.failure is not None:
-                outcomes[name][identifier]["failure"] = snapshot.failure
-            if snapshot.evaluation is not None:
-                evaluations[name][identifier] = snapshot.evaluation
-    comparison = aggregate(evaluations, selected_unit_ids=config["units"])
-    write_json(run / "comparison.json", comparison.model_dump(mode="json"))
-    config["outcomes"] = outcomes
-    config["comparison"] = "comparison.json"
-    completed = sum(len(available) for available in evaluations.values())
-    total = len(units) * len(config["units"])
-    config["status"] = "completed" if completed == total and not config.get("index_failures") else "partial"
-    data = json.dumps(config, ensure_ascii=False, allow_nan=False, indent=2)
-    write_text(run / "configs.md", f"# Experiment configuration\n\n```json\n{data}\n```\n")
+    run_fd = os.open(run, os.O_RDONLY)
+    try:
+        # Reload under the publication lock so a later writer cannot publish older totals.
+        fcntl.flock(run_fd, fcntl.LOCK_EX)
+        config, units = _load_run(run)
+        evaluations = {name: {} for name in units}
+        outcomes = {name: {} for name in units}
+        for name, available in units.items():
+            for identifier in config["units"]:
+                saved = available.get(identifier)
+                if saved is None:
+                    outcomes[name][identifier] = config.get("outcomes", {}).get(name, {}).get(
+                        identifier, {"status": "missing"}
+                    )
+                    continue
+                snapshot = saved.snapshot
+                outcomes[name][identifier] = {"status": snapshot.status}
+                if snapshot.failure is not None:
+                    outcomes[name][identifier]["failure"] = snapshot.failure
+                if snapshot.evaluation is not None:
+                    evaluations[name][identifier] = snapshot.evaluation
+        comparison = aggregate(evaluations, selected_unit_ids=config["units"])
+        write_json(run / "comparison.json", comparison.model_dump(mode="json"))
+        config["outcomes"] = outcomes
+        config["comparison"] = "comparison.json"
+        completed = sum(len(available) for available in evaluations.values())
+        total = len(units) * len(config["units"])
+        config["status"] = "completed" if completed == total and not config.get("index_failures") else "partial"
+        data = json.dumps(config, ensure_ascii=False, allow_nan=False, indent=2)
+        write_text(run / "configs.md", f"# Experiment configuration\n\n```json\n{data}\n```\n")
+    finally:
+        os.close(run_fd)
     print(f"Evaluation: {len(selected) - failures} succeeded, {failures} failed; run {config['status']}.")
     return 1 if failures or close_failed else 0
 
