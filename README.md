@@ -58,7 +58,7 @@ brutos e normalizados ficam fora do Git. O preparo E2EDev também grava a
 tabela de cenários por requisito, o histograma e o resumo descritivo em
 `data/profiles/`, incluindo requisitos com zero cenários.
 
-## Execução com Gemini
+## Geração com Gemini
 
 Configure uma chave da Gemini Developer API no ambiente da sessão. O
 programa lê `GOOGLE_API_KEY` ou, como alternativa, `GEMINI_API_KEY`.
@@ -83,7 +83,9 @@ para executar Multiagent apenas com o orquestrador e o gerador. Os modos
 `batch`, `per_requirement` e `per_case` definem o escopo da saída de GHL
 e Multiagent. One-shot sempre usa `batch`. Todas as soluções recebem os
 requisitos completos da unidade. O gabarito da unidade avaliada entra
-apenas na avaliação.
+apenas na avaliação automática, executada separadamente depois da geração.
+`ghl-mas run` salva as unidades concluídas com status `generated`, sem
+calcular métricas ou criar `comparison.json`.
 
 ### Calibração opcional
 
@@ -104,15 +106,51 @@ ghl-mas run \
   --calibration-units e2edev_bench_02
 ```
 
-## Resultados e revisão humana
+## Resultados e avaliação automática
 
 Cada execução cria um diretório `results/AAAA-MM-DD_HH-MM-SS/` no fuso
 `America/Recife` e imprime o caminho ao terminar. Consulte `configs.md`
-para a configuração efetiva e `comparison.json` para a comparação entre
-soluções. Cada pasta de solução contém `requirements_to_tests.md` e uma
+para a configuração efetiva. Cada pasta de solução contém
+`requirements_to_tests.md` e uma
 pasta por unidade, com `results.json`, `results.csv`,
 `semantic_matches.json`, casos em Markdown e artefatos intermediários
-quando disponíveis.
+quando disponíveis. Antes da avaliação, as métricas ficam vazias e
+`semantic_matches.json` registra o status `generated`, sem pares.
+
+Para avaliar a execução mais recente no diretório padrão, mantenha a
+chave Gemini no ambiente e execute:
+
+```bash
+RUN=$(printf '%s\n' results/*/ | sort | tail -n 1)
+RUN=${RUN%/}
+ghl-mas-evaluate --run "${RUN##*/}"
+```
+
+O comando usa os requisitos, casos gerados e referências já salvos em
+`results.json`, sem gerar novos casos ou reler os dados normalizados.
+Atualiza no mesmo diretório os resultados automáticos, o CSV e os pares
+semânticos, preservando os artefatos de geração. `comparison.json` passa
+a existir nessa etapa e compara as unidades avaliáveis em comum entre
+as soluções. `configs.md` registra os estados atualizados.
+
+Use `--solution` e/ou `--unit` para restringir a avaliação. Por exemplo:
+
+```bash
+ghl-mas-evaluate --run "${RUN##*/}" --solution Multiagent --unit firefox_bookmarks
+```
+
+Uma falha de avaliação é registrada por unidade; o comando continua com
+as demais e retorna código diferente de zero se houver falhas. Repita o
+comando para tentar novamente no mesmo diretório, inclusive nas unidades
+que falharam na avaliação. Unidades que falharam na geração são ignoradas.
+A comparação é recalculada com todos os resultados automáticos disponíveis,
+mesmo quando os seletores restringem a avaliação. Uma nova avaliação
+preserva as revisões humanas existentes; revise-as novamente se os pares
+automáticos mudarem.
+
+## Revisão humana opcional
+
+Depois da avaliação automática, execute:
 
 ```bash
 ghl-mas-review
