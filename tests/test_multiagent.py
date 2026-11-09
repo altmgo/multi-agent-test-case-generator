@@ -4,7 +4,8 @@ from copy import deepcopy
 import pytest
 from pydantic import ValidationError
 
-from schemas import CandidateAssessment, GenerationInput, Requirement, UsageRecord
+from schemas import AgentOpinion, CandidateAssessment, GenerationInput, Requirement, UsageRecord
+from solutions.multiagent import MultiagentFailure
 from solutions.multiagent.coverage import E2EDevCalibrationProfile
 from solutions.multiagent.orchestrator import run_multiagent
 from solutions.multiagent.selection import select_candidate
@@ -68,6 +69,8 @@ def run(script, enabled, rounds=1, **kwargs):
     assert result.usage == UsageRecord(
         input_tokens=2 * len(runtime.calls), output_tokens=len(runtime.calls)
     )
+    assert result.trace["status"] == "completed"
+    assert result.trace["pending_controls"] == []
     assert result.model_validate_json(result.model_dump_json()) == result
     return result, runtime.calls
 
@@ -408,3 +411,138 @@ def test_revision_can_retry_from_the_new_accepted_state_until_shared_limit():
     assert [(item["agent"], item["reason"]) for item in result.trace["pending"]] == [
         ("validator", "round_limit")
     ]
+
+
+@pytest.mark.parametrize(
+    "blockers, cases",
+    [
+        (["Unclear setup"], [case("More coverage"), case("Restore", "R2")]),
+        ([], [case("Duplicate"), case("Duplicate")]),
+    ],
+)
+def test_incomplete_review_cannot_override_a_provable_regression(blockers, cases):
+    result, calls = run(
+        [
+            ("generator", {"cases": [case("Initial")]}),
+            ("validator", opinion(request=True)),
+            ("generator", {"cases": cases}),
+            ("validator", opinion(blockers=blockers, complete=False)),
+            ("generator", {"cases": [case("Better A"), case("Restore", "R2")]}),
+            ("validator", opinion()),
+            ("generator", {"cases": [case("Better B"), case("Restore", "R2")]}),
+            ("validator", opinion()),
+            ("selection", {
+                "preferred_id": "round-1-candidate-1",
+                "rationale": "Prefer the incomplete assessment.",
+                "judgments": [{"candidate_id": "round-1-candidate-1", "comparison": "improves"}],
+            }),
+        ],
+        {"validator"},
+    )
+
+    assert [item["candidate_id"] for item in calls[-1][1]["candidates"]] == [
+        "round-1-candidate-2", "round-1-candidate-3"
+    ]
+    assert result.cases[0].title == "Better A"
+    revision_round, = result.trace["rounds"]
+    assert revision_round["candidates"][0]["comparison"] == "worse"
+
+
+def test_public_selection_ignores_assessments_from_a_different_control_prefix():
+    critic = AgentOpinion(agent="critic", feedback="Reviewed")
+    validator = AgentOpinion(agent="validator", feedback="Reviewed", confirmed_blockers=["Wrong result"])
+    baseline = CandidateAssessment(
+        candidate_id="accepted", cases=[], confirmed_blockers=1, opinions=[critic, validator]
+    )
+    critic_only = baseline.model_copy(update={
+        "candidate_id": "critic-only", "confirmed_blockers": 0, "opinions": [critic]
+    })
+    reverse_order = critic_only.model_copy(update={
+        "candidate_id": "reverse-order", "opinions": [validator, critic]
+    })
+
+    assert select_candidate(baseline, [critic_only, reverse_order]) is baseline
+
+
+def test_complete_candidate_can_improve_on_lower_bound_of_incomplete_baseline():
+    baseline = CandidateAssessment(
+        candidate_id="accepted", cases=[], confirmed_blockers=1, comparable=False,
+        opinions=[AgentOpinion(
+            agent="validator", feedback="Uncertain", confirmed_blockers=["Wrong result"],
+            blocker_assessment_complete=False,
+        )],
+    )
+    candidate = CandidateAssessment(
+        candidate_id="candidate", cases=[], confirmed_blockers=0,
+        opinions=[AgentOpinion(agent="validator", feedback="Reviewed")],
+    )
+
+    assert select_candidate(baseline, [candidate]) is candidate
+
+
+def test_validator_failure_exposes_completed_rounds_and_last_accepted_snapshot():
+    runtime = ScriptedRuntime(
+        [
+            ("generator", {"cases": [case("Initial")]}),
+            ("critic", opinion(request=True, blockers=["Unsupported result", "Bad setup"])),
+            ("generator", {"cases": [case("Improvement")]}),
+            ("critic", opinion("Improve setup", request=True, blockers=["Bad setup"])),
+            ("generator", {"cases": [case("Tie 1")]}),
+            ("critic", opinion(blockers=["Unsupported result", "Bad setup"])),
+            ("generator", {"cases": [case("Tie 2")]}),
+            ("critic", opinion(blockers=["Unsupported result", "Bad setup"])),
+            ("validator", ValueError("raw provider payload")),
+        ]
+    )
+
+    with pytest.raises(MultiagentFailure) as raised:
+        asyncio.run(run_multiagent(INPUT, runtime, {"critic", "validator"}, 1))
+
+    partial = raised.value.partial_result
+    runtime.finish()
+    assert "raw provider payload" not in str(raised.value)
+    assert "raw provider payload" not in partial.model_dump_json()
+    assert raised.value.__cause__ is raised.value.__context__ is None
+    assert [item.title for item in partial.cases] == ["Improvement"]
+    assert partial.usage == UsageRecord(input_tokens=18, output_tokens=9)
+    trace = partial.trace
+    assert trace["status"] == "failed"
+    assert trace["failure"]["stage"] == "validator"
+    assert trace["failure"]["error_type"] == "ValueError"
+    assert trace["accepted_id"] == "round-1-candidate-1"
+    assert trace["rounds"][0]["selected_id"] == trace["accepted_id"]
+    assert trace["pending_controls"] == ["validator"]
+    assert [(item["agent"], item["reason"]) for item in trace["pending"]] == [
+        ("critic", "round_limit")
+    ]
+    assert trace["calls"][-1]["usage"][0]["input_tokens"] == 2
+    assert partial.model_validate_json(partial.model_dump_json()) == partial
+
+
+def test_initial_generation_failure_exposes_partial_outputs_without_accepted_cases():
+    runtime = ScriptedRuntime(
+        [
+            ("analyst", {"analysis": "Initial analysis"}),
+            ("generator", {"cases": [case("Save")]}),
+            ("generator", ValueError("raw provider payload")),
+        ]
+    )
+
+    with pytest.raises(MultiagentFailure) as raised:
+        asyncio.run(run_multiagent(
+            INPUT, runtime, {"analyst", "critic", "validator"}, 2, output_mode="per_requirement"
+        ))
+
+    partial = raised.value.partial_result
+    runtime.finish()
+    assert partial.cases == []
+    assert partial.usage == UsageRecord(input_tokens=6, output_tokens=3)
+    trace = partial.trace
+    assert trace["status"] == "failed"
+    assert trace["failure"]["stage"] == "generator"
+    assert trace["initial"]["analysis"]["analysis"] == "Initial analysis"
+    assert trace["initial"]["assessment"]["cases"][0]["title"] == "Save"
+    assert trace["initial"]["assessment"]["valid"] is False
+    assert trace["accepted_id"] is trace["accepted_assessment"] is None
+    assert trace["pending_controls"] == ["critic", "validator"]
+    assert "raw provider payload" not in partial.model_dump_json()

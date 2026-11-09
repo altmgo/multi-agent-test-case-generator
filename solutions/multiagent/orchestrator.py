@@ -2,7 +2,7 @@
 
 from pydantic import JsonValue
 
-from model_runtime import Runtime, sum_usage
+from model_runtime import Runtime
 from schemas import AgentOpinion, CandidateAssessment, GenerationInput, GenerationResult
 
 from .analyst import analyze
@@ -17,6 +17,7 @@ from .state import (
     Attempt,
     Control,
     Failure,
+    MultiagentFailure,
     OutputMode,
     PendingRevision,
     RunTrace,
@@ -43,12 +44,23 @@ async def _attempt(
     revision: dict[str, JsonValue] | None = None,
     controls: tuple[Control, ...] = (),
 ) -> None:
-    if analyst_enabled:
-        attempt.analysis = await analyze(runner, attempt.assessment.candidate_id, revision)
-    await generate(runner, attempt, output_mode, revision)
-    score_assessment(attempt.assessment)
-    for name in controls:
-        await _control(runner, attempt, name)
+    stage = "analyst"
+    try:
+        if analyst_enabled:
+            attempt.analysis = await analyze(runner, attempt.assessment.candidate_id, revision)
+        stage = "generator"
+        await generate(runner, attempt, output_mode, revision)
+        score_assessment(attempt.assessment)
+        for name in controls:
+            stage = name
+            await _control(runner, attempt, name)
+    except STAGE_ERRORS as error:
+        attempt.assessment.valid = False
+        attempt.failure = Failure(
+            stage=stage,
+            error_type=type(error).__name__,
+            detail=str(error) if isinstance(error, InvalidCaseSet) else None,
+        )
 
 
 async def run_multiagent(
@@ -60,7 +72,7 @@ async def run_multiagent(
     output_mode: OutputMode = "batch",
     calibration_profile: E2EDevCalibrationProfile | None = None,
 ) -> GenerationResult:
-    """Generate cases and return all initial and revision data for persistence."""
+    """Return generation and revision data, or raise with a persistable partial result."""
     if unknown := enabled - _OPTIONAL_AGENTS:
         raise ValueError("Unknown optional multiagent agents: " + ", ".join(sorted(unknown)))
     if max_rounds < 0:
@@ -72,19 +84,30 @@ async def run_multiagent(
             raise TypeError("Multiagent calibration_profile requires an E2EDevCalibrationProfile")
         calibration_profile = E2EDevCalibrationProfile.model_validate(calibration_profile)
 
-    usage_start = len(runtime.usage_records)
     initial = Attempt(assessment=CandidateAssessment(candidate_id="initial", cases=[]))
     trace = RunTrace(initial=initial)
     runner = StageRunner(input, runtime, trace.calls)
     analyst_enabled = "analyst" in enabled
+    controls = tuple(name for name in _CONTROLS if name in enabled)
     await _attempt(runner, initial, analyst_enabled, output_mode)
+    if initial.failure is not None:
+        trace.status = "failed"
+        trace.failure = initial.failure
+        trace.pending_controls = list(controls)
+        raise MultiagentFailure(trace.failure, trace.result())
+
     accepted = initial
     attempts = [initial]
-    controls = tuple(name for name in _CONTROLS if name in enabled)
     stopped_at: dict[Control, str] = {}
 
     for index, requester in enumerate(controls):
-        opinion = await _control(runner, accepted, requester)
+        try:
+            opinion = await _control(runner, accepted, requester)
+        except STAGE_ERRORS as error:
+            trace.status = "failed"
+            trace.failure = Failure(stage=requester, error_type=type(error).__name__)
+            trace.pending_controls = list(controls[index:])
+            break
         while opinion.request_revision and len(trace.rounds) < max_rounds:
             number = len(trace.rounds) + 1
             baseline = accepted.assessment
@@ -100,17 +123,7 @@ async def run_multiagent(
                 candidate = Attempt(
                     assessment=CandidateAssessment(candidate_id=f"round-{number}-candidate-{position}", cases=[])
                 )
-                calls_start = len(trace.calls)
-                try:
-                    await _attempt(runner, candidate, analyst_enabled, output_mode, revision, controls[: index + 1])
-                except STAGE_ERRORS as error:
-                    stage = trace.calls[-1].stage if len(trace.calls) > calls_start else "candidate"
-                    candidate.assessment.valid = False
-                    candidate.failure = Failure(
-                        stage=stage,
-                        error_type=type(error).__name__,
-                        detail=str(error) if isinstance(error, InvalidCaseSet) else None,
-                    )
+                await _attempt(runner, candidate, analyst_enabled, output_mode, revision, controls[: index + 1])
                 candidates.append(candidate)
             attempts.extend(candidates)
             decision = await decide_round(runner, number, requester, accepted, candidates)
@@ -125,7 +138,8 @@ async def run_multiagent(
 
     trace.accepted_id = accepted.assessment.candidate_id
     trace.accepted_assessment = accepted.assessment
-    for requester, opinion in zip(controls, accepted.assessment.opinions, strict=True):
+    completed_controls = controls[: len(controls) - len(trace.pending_controls)]
+    for requester, opinion in zip(completed_controls, accepted.assessment.opinions, strict=True):
         if opinion.request_revision:
             if len(trace.rounds) == max_rounds:
                 reason = "round_limit"
@@ -137,15 +151,13 @@ async def run_multiagent(
                 PendingRevision(agent=requester, candidate_id=trace.accepted_id, opinion=opinion, reason=reason)
             )
 
+    if trace.failure is not None:
+        raise MultiagentFailure(trace.failure, trace.result())
+
     if "coverage" in enabled:
         try:
             trace.coverage = await review_coverage(runner, accepted, attempts, calibration_profile)
         except STAGE_ERRORS as error:
             trace.coverage_failure = Failure(stage="coverage", error_type=type(error).__name__)
 
-    return GenerationResult(
-        cases=accepted.assessment.cases,
-        usage=sum_usage(runtime.usage_records[usage_start:]),
-        prompt_version=PROMPT_VERSION,
-        trace=trace.model_dump(mode="json"),
-    )
+    return trace.result()

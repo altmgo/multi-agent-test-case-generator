@@ -116,7 +116,7 @@ class CandidateAssessment(BaseModel):
     confirmed_blockers: NonNegativeInt = 0
     covered_requirements: NonNegativeInt = 0
     duplicates: NonNegativeInt = 0
-    comparable: bool = True
+    comparable: bool = Field(default=True, description="Whether the confirmed blocker count is complete")
 
 
 class SemanticMatch(BaseModel):

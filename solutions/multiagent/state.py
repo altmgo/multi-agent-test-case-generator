@@ -6,15 +6,15 @@ from typing import Literal, TypeVar
 from pydantic import BaseModel, Field, JsonValue
 from pydantic_ai.exceptions import ModelAPIError, UnexpectedModelBehavior
 
-from model_runtime import Runtime
-from schemas import AgentOpinion, CandidateAssessment, GenerationInput, UsageRecord
+from model_runtime import Runtime, sum_usage
+from schemas import AgentOpinion, CandidateAssessment, GenerationInput, GenerationResult, UsageRecord
 
 PROMPT_VERSION = "multiagent-v1"
 CANDIDATES_PER_ROUND = 3
 STAGE_ERRORS = (ValueError, ModelAPIError, UnexpectedModelBehavior)
 Control = Literal["critic", "validator"]
 OutputMode = Literal["batch", "per_requirement", "per_case"]
-Comparison = Literal["improves", "ties", "worse", "invalid", "unassessed"]
+Comparison = Literal["improves", "ties", "worse", "invalid", "incompatible", "unassessed"]
 Monotonicity = Literal["confirmed", "unverified"]
 T = TypeVar("T", bound=BaseModel)
 
@@ -92,13 +92,32 @@ class CoverageReport(BaseModel):
 class RunTrace(BaseModel):
     initial: Attempt
     rounds: list[RevisionRound] = Field(default_factory=list)
-    accepted_id: str = "initial"
+    status: Literal["completed", "failed"] = "completed"
+    failure: Failure | None = None
+    accepted_id: str | None = None
     accepted_assessment: CandidateAssessment | None = None
     pending: list[PendingRevision] = Field(default_factory=list)
+    pending_controls: list[Control] = Field(default_factory=list)
     coverage: CoverageReport | None = None
     coverage_failure: Failure | None = None
     calls: list[StageCall] = Field(default_factory=list)
     monotonicity: Monotonicity = "confirmed"
+
+    def result(self) -> GenerationResult:
+        return GenerationResult(
+            cases=self.accepted_assessment.cases if self.accepted_assessment is not None else [],
+            usage=sum_usage([usage for call in self.calls for usage in call.usage]),
+            prompt_version=PROMPT_VERSION,
+            trace=self.model_dump(mode="json"),
+        )
+
+
+class MultiagentFailure(RuntimeError):
+    """A fatal stage failed after the run began, with a persistable partial result."""
+
+    def __init__(self, failure: Failure, partial_result: GenerationResult):
+        super().__init__(f"Multiagent {failure.stage} failed ({failure.error_type})")
+        self.partial_result = partial_result
 
 
 class StageRunner:

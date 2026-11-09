@@ -48,24 +48,37 @@ def _score(assessment: CandidateAssessment) -> tuple[int, int, int]:
     return (-assessment.confirmed_blockers, assessment.covered_requirements, -assessment.duplicates)
 
 
+def _blocker_count_is_complete(assessment: CandidateAssessment) -> bool:
+    return assessment.comparable and all(opinion.blocker_assessment_complete for opinion in assessment.opinions)
+
+
 def _compare(accepted: CandidateAssessment, candidate: CandidateAssessment) -> Comparison:
     if not candidate.valid:
         return "invalid"
+    if [item.agent for item in candidate.opinions] != [item.agent for item in accepted.opinions]:
+        return "incompatible"
     if not accepted.valid:
         return "improves"
-    if not (accepted.comparable and candidate.comparable):
-        return "unassessed"
-    if _score(candidate) > _score(accepted):
+
+    accepted_complete = _blocker_count_is_complete(accepted)
+    candidate_complete = _blocker_count_is_complete(candidate)
+    accepted_score = _score(accepted)
+    candidate_score = _score(candidate)
+    # With an incomplete blocker review the confirmed count is a lower bound,
+    # so the observed lexicographic score is an upper bound.
+    if candidate_complete and candidate_score > accepted_score:
         return "improves"
-    if _score(candidate) < _score(accepted):
+    if accepted_complete and candidate_score < accepted_score:
         return "worse"
-    return "ties"
+    if accepted_complete and candidate_complete:
+        return "ties"
+    return "unassessed"
 
 
 def select_candidate(
     accepted: CandidateAssessment, candidates: list[CandidateAssessment]
 ) -> CandidateAssessment:
-    """Choose the highest objective improvement, keeping accepted on an exact tie."""
+    """Choose the highest proven improvement under the same ordered control prefix."""
     improvements = [candidate for candidate in candidates if _compare(accepted, candidate) == "improves"]
     return max(improvements, key=_score, default=accepted)
 
