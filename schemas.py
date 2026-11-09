@@ -1,8 +1,10 @@
 """Data contracts for datasets, generation, and evaluation."""
 
+from datetime import datetime, timezone
 from typing import Annotated, Literal, Self
 
 from pydantic import (
+    AwareDatetime,
     BaseModel,
     ConfigDict,
     Field,
@@ -143,11 +145,12 @@ class HumanDecision(BaseModel):
     generated_id: Identifier
     reference_id: Identifier
     verdict: Literal["equivalent", "different", "inconclusive"]
-    justification: str
+    justification: str = ""
 
 
 class HumanEvaluation(BaseModel):
     scope: Literal["automatic_matches_only"] = "automatic_matches_only"
+    reviewed_at: AwareDatetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     generated_count: NonNegativeInt
     reference_count: NonNegativeInt
     decisions: list[HumanDecision] = Field(default_factory=list)

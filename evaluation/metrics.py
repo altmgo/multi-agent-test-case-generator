@@ -12,7 +12,8 @@ from .embeddings import Embedder, canonical_text, vector_matrix
 from .matching import match
 
 
-def _scores(pairs: int, generated: int, references: int) -> dict[str, float | None]:
+def scores(pairs: int, generated: int, references: int) -> dict[str, float | None]:
+    """Score credited pairs using the complete generated and reference sets."""
     if not references:
         return dict(precision=None, recall=None, f1=None)
     return dict(
@@ -61,7 +62,7 @@ def evaluate(unit: Unit, generated: list[GeneratedCase], embedder: Embedder) -> 
         unmatched_reference_ids=[case.id for column, case in enumerate(references) if column not in matched_references],
         embedding_usage=embedding_usage,
         embedding_requests=embedding_requests,
-        **_scores(len(matched), len(generated), len(references)),
+        **scores(len(matched), len(generated), len(references)),
     )
 
 
@@ -103,7 +104,7 @@ def aggregate(
             generated_count=generated_count,
             reference_count=reference_count,
             match_count=match_count,
-            **_scores(match_count, generated_count, reference_count),
+            **scores(match_count, generated_count, reference_count),
         )
     return ComparisonResult(
         unit_ids=common,
