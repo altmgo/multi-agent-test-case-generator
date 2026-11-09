@@ -225,6 +225,56 @@ def test_confirmed_rereview_archives_previous_and_cancel_preserves_it(tmp_path, 
     assert read(path)["human_evaluation_history"] == [previous, saved["human_evaluation"]]
 
 
+@pytest.mark.parametrize("history", [None, "old review", {"old": "review"}])
+def test_malformed_review_history_is_rejected_without_overwriting(tmp_path, history):
+    from human_review import review_unit
+
+    path = saved_unit(tmp_path)
+    review_unit(path, decisions())
+    payload = read(path)
+    payload["human_evaluation_history"] = history
+    persistence.write_json(path, payload)
+    original = path.read_bytes()
+
+    with pytest.raises(ValueError, match="history must be a list"):
+        review_unit(path, decisions())
+    assert path.read_bytes() == original
+
+
+def test_interrupt_before_confirmation_cancels_without_writing(tmp_path, monkeypatch, capsys):
+    from human_review import main
+
+    path = saved_unit(tmp_path, has_matches=False)
+    original = path.read_bytes()
+
+    def interrupt(prompt):
+        assert "Save this review?" in prompt
+        raise KeyboardInterrupt
+
+    monkeypatch.setattr("builtins.input", interrupt)
+    assert main(review_args(tmp_path)) == 0
+    assert "Review cancelled." in capsys.readouterr().out
+    assert path.read_bytes() == original
+
+
+def test_interrupt_after_atomic_write_propagates_without_reporting_cancellation(tmp_path, monkeypatch, capsys):
+    from human_review import main
+
+    path = saved_unit(tmp_path, has_matches=False)
+    write_json = persistence.write_json
+
+    def write_then_interrupt(destination, payload):
+        write_json(destination, payload)
+        raise KeyboardInterrupt
+
+    monkeypatch.setattr(persistence, "write_json", write_then_interrupt)
+    scripted_input(monkeypatch, ["y"])
+    with pytest.raises(KeyboardInterrupt):
+        main(review_args(tmp_path))
+    assert "Review cancelled." not in capsys.readouterr().out
+    assert read(path)["human_evaluation"]["precision"] == 0.0
+
+
 def test_failed_atomic_replace_keeps_previous_review_and_cleans_temporary_files(tmp_path, monkeypatch):
     from human_review import main, review_unit
 

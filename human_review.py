@@ -122,8 +122,11 @@ def _save(review: _Review, decisions: list[HumanDecision]) -> HumanEvaluation:
     )
 
     payload = dict(review.payload)
+    history = payload.get("human_evaluation_history", [])
+    if not isinstance(history, list):
+        raise ValueError("Human evaluation history must be a list")
     if (previous := payload.get("human_evaluation")) is not None:
-        payload["human_evaluation_history"] = [*payload.get("human_evaluation_history", []), previous]
+        payload["human_evaluation_history"] = [*history, previous]
     payload["human_evaluation"] = result.model_dump(mode="json")
 
     # Serialize writers, and reject a review based on a superseded snapshot.
@@ -241,6 +244,21 @@ def _judge(pair: _Pair, number: int, total: int) -> HumanDecision:
                          verdict=verdict, justification=justification)
 
 
+def _collect_decisions(review: _Review) -> list[HumanDecision]:
+    if review.payload.get("human_evaluation") is not None and not _confirm(
+        "A review already exists. Start a new review?"
+    ):
+        raise _Cancelled
+
+    if not review.pairs:
+        message = "No automatic matches." if review.evaluation.reference_count else "No reference cases."
+        print(message)
+    decisions = [_judge(pair, number, len(review.pairs)) for number, pair in enumerate(review.pairs, 1)]
+    if not _confirm("Save this review?"):
+        raise _Cancelled
+    return decisions
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="ghl-mas-review", description=__doc__)
     parser.add_argument("--results-dir", type=Path, default=Path("results"))
@@ -249,22 +267,13 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--unit", help="Unit ID")
     args = parser.parse_args(argv)
     try:
-        review = _load(_select(args))
-        if review.payload.get("human_evaluation") is not None and not _confirm(
-            "A review already exists. Start a new review?"
-        ):
-            raise _Cancelled
-
-        if not review.pairs:
-            message = "No automatic matches." if review.evaluation.reference_count else "No reference cases."
-            print(message)
-        decisions = [_judge(pair, number, len(review.pairs)) for number, pair in enumerate(review.pairs, 1)]
-        if not _confirm("Save this review?"):
-            raise _Cancelled
+        try:
+            review = _load(_select(args))
+            decisions = _collect_decisions(review)
+        except (_Cancelled, EOFError, KeyboardInterrupt):
+            print("\nReview cancelled.")
+            return 0
         _save(review, decisions)
-    except (_Cancelled, EOFError, KeyboardInterrupt):
-        print("\nReview cancelled.")
-        return 0
     except (OSError, ValueError) as error:
         print(f"Review error: {error}", file=sys.stderr)
         return 1
