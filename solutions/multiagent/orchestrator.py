@@ -1,10 +1,13 @@
 """Run optional multiagent checkpoints under one bounded revision budget."""
 
+from asyncio import CancelledError
+
 from pydantic import JsonValue
 
 from model_runtime import Runtime
 from schemas import AgentOpinion, CandidateAssessment, GenerationInput, GenerationResult
 
+from .. import GenerationCancelled
 from .analyst import analyze
 from .coverage import E2EDevCalibrationProfile, review_coverage
 from .critic import critique
@@ -85,18 +88,41 @@ async def run_multiagent(
         calibration_profile = E2EDevCalibrationProfile.model_validate(calibration_profile)
 
     initial = Attempt(assessment=CandidateAssessment(candidate_id="initial", cases=[]))
-    trace = RunTrace(initial=initial)
-    runner = StageRunner(input, runtime, trace.calls)
-    analyst_enabled = "analyst" in enabled
     controls = tuple(name for name in _CONTROLS if name in enabled)
+    trace = RunTrace(initial=initial, pending_controls=list(controls))
+    runner = StageRunner(input, runtime, trace.calls)
+    try:
+        await _orchestrate(runner, trace, controls, enabled, max_rounds, output_mode, calibration_profile)
+    except CancelledError as error:
+        stage = trace.calls[-1].stage if trace.calls else "generation"
+        trace.status = "failed"
+        trace.failure = Failure(stage=stage, error_type=type(error).__name__)
+        if trace.accepted_assessment is None:
+            initial.assessment.valid = False
+            initial.failure = trace.failure
+        raise GenerationCancelled(error, stage, trace.result()) from None
+    return trace.result()
+
+
+async def _orchestrate(
+    runner: StageRunner,
+    trace: RunTrace,
+    controls: tuple[Control, ...],
+    enabled: set[str],
+    max_rounds: int,
+    output_mode: OutputMode,
+    calibration_profile: E2EDevCalibrationProfile | None,
+) -> None:
+    initial = trace.initial
+    analyst_enabled = "analyst" in enabled
     await _attempt(runner, initial, analyst_enabled, output_mode)
     if initial.failure is not None:
         trace.status = "failed"
         trace.failure = initial.failure
-        trace.pending_controls = list(controls)
         raise MultiagentFailure(trace.failure, trace.result())
 
     accepted = initial
+    trace.accept(accepted)
     attempts = [initial]
     stopped_at: dict[Control, str] = {}
 
@@ -106,7 +132,6 @@ async def run_multiagent(
         except STAGE_ERRORS as error:
             trace.status = "failed"
             trace.failure = Failure(stage=requester, error_type=type(error).__name__)
-            trace.pending_controls = list(controls[index:])
             break
         while opinion.request_revision and len(trace.rounds) < max_rounds:
             number = len(trace.rounds) + 1
@@ -134,10 +159,10 @@ async def run_multiagent(
                 stopped_at[requester] = baseline.candidate_id
                 break
             accepted = next(candidate for candidate in candidates if candidate.assessment.candidate_id == decision.selected_id)
+            trace.accept(accepted)
             opinion = accepted.assessment.opinions[-1]
+        trace.pending_controls.pop(0)
 
-    trace.accepted_id = accepted.assessment.candidate_id
-    trace.accepted_assessment = accepted.assessment
     completed_controls = controls[: len(controls) - len(trace.pending_controls)]
     for requester, opinion in zip(completed_controls, accepted.assessment.opinions, strict=True):
         if opinion.request_revision:
@@ -159,5 +184,3 @@ async def run_multiagent(
             trace.coverage = await review_coverage(runner, accepted, attempts, calibration_profile)
         except STAGE_ERRORS as error:
             trace.coverage_failure = Failure(stage="coverage", error_type=type(error).__name__)
-
-    return trace.result()

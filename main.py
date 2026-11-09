@@ -29,7 +29,7 @@ from persistence import (
     write_text,
 )
 from schemas import EvaluationResult, GenerationResult, Unit, UsageRecord, generation_input
-from solutions import ghl, one_shot
+from solutions import GenerationCancelled, ghl, one_shot
 from solutions.multiagent import MultiagentFailure, run_multiagent
 from solutions.multiagent.coverage import E2EDevCalibrationProfile
 from solutions.multiagent.state import CANDIDATES_PER_ROUND, PROMPT_VERSION as MULTIAGENT_PROMPT_VERSION
@@ -331,6 +331,7 @@ async def _execute(
                 attempts_start = len(runtime.usage_records) if runtime is not None else 0
                 calls_start = len(getattr(runtime, "call_records", ()))
                 result = failure = evaluation = None
+                interruption = None
                 embedding_usage = UsageRecord(input_tokens=0, output_tokens=0)
                 embedding_requests = 0
 
@@ -338,6 +339,13 @@ async def _execute(
                     if runtime is None:
                         runtime = make_runtime(options.model)
                     result = await _generate(solution, item, runtime, agents, options.output_mode, calibration)
+                except GenerationCancelled as error:
+                    interruption = error
+                    result = error.partial_result
+                    failure = {"stage": error.stage, "error_type": error.error_type}
+                except asyncio.CancelledError as error:
+                    interruption = error
+                    failure = {"stage": "generation", "error_type": type(error).__name__}
                 except MultiagentFailure as error:
                     result = error.partial_result
                     detail = result.trace["failure"]
@@ -384,6 +392,8 @@ async def _execute(
                 else:
                     outcomes[solution][unit.id] = {"status": "failed", "failure": failure}
                     print(f"{solution}/{unit.id}: {failure['stage']} failed ({failure['error_type']})", file=sys.stderr)
+                if interruption is not None:
+                    raise interruption
 
             try:
                 write_solution_index(run / solution)

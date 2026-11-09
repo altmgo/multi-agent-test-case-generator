@@ -1,11 +1,14 @@
 """Grounded High-Level (GHL) test generation by selected design technique."""
 
+from asyncio import CancelledError
 from typing import Literal
 
 from pydantic import BaseModel, Field
 
 from model_runtime import Runtime, sum_usage
 from schemas import GeneratedCase, GenerationInput, GenerationResult, UsageRecord, validate_cases
+
+from . import GenerationCancelled
 
 PROMPT_VERSION = "ghl-v1"
 
@@ -139,6 +142,10 @@ async def generate_ghl(
                             )
                 if output_mode == "per_case" and len(answer.cases) > 1:
                     raise ValueError("GHL per_case output returned more than one case for a call")
+            except CancelledError as error:
+                raise GenerationCancelled(
+                    error, stage, _result(collected, selection, runtime.usage_records[usage_start:]),
+                ) from None
             except Exception as error:
                 # Preserve local validation diagnostics for direct callers and
                 # keep raw runtime exceptions outside the partial result.

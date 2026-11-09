@@ -1,5 +1,6 @@
 """Multiagent attempts, selection decisions, and per-stage audit data."""
 
+from asyncio import CancelledError
 from copy import deepcopy
 from typing import Literal, TypeVar
 
@@ -103,6 +104,10 @@ class RunTrace(BaseModel):
     calls: list[StageCall] = Field(default_factory=list)
     monotonicity: Monotonicity = "confirmed"
 
+    def accept(self, attempt: Attempt) -> None:
+        self.accepted_id = attempt.assessment.candidate_id
+        self.accepted_assessment = attempt.assessment
+
     def result(self) -> GenerationResult:
         return GenerationResult(
             cases=self.accepted_assessment.cases if self.accepted_assessment is not None else [],
@@ -145,7 +150,7 @@ class StageRunner:
                 output_type,
                 extra={"prompt_version": PROMPT_VERSION, **deepcopy(extra)},
             )
-        except STAGE_ERRORS as error:
+        except (CancelledError, *STAGE_ERRORS) as error:
             call.error_type = type(error).__name__
             raise
         else:

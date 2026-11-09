@@ -1,3 +1,4 @@
+import asyncio
 import csv
 import hashlib
 import json
@@ -8,6 +9,7 @@ import pytest
 
 from datasets.e2edev import SOURCE_COMMIT
 from evaluation.embeddings import EmbeddingBatch, EmbeddingError
+from model_runtime import CallRecord, ContextEstimate
 from schemas import GeneratedCase, GenerationResult, ReferenceCase, Requirement, Unit, UsageRecord
 
 
@@ -59,14 +61,32 @@ class FakeRuntime:
     def __init__(self, respond):
         self.respond = respond
         self.calls = []
+        self.call_records = []
         self.usage_records = []
 
     async def run(self, stage, instructions, input, output_type, *, extra=None):
         assert len(input.requirements) == 3
         assert "reference_cases" not in input.model_dump()
         self.calls.append((stage, input.unit_id, extra))
-        self.usage_records.append(UsageRecord(input_tokens=2, output_tokens=3))
-        return output_type.model_validate(self.respond(stage, input.unit_id, extra))
+        usage = UsageRecord(input_tokens=2, output_tokens=3)
+        record = CallRecord(
+            stage=stage, unit_id=input.unit_id, model_id=MODEL, call_id=len(self.calls), attempt=1,
+            context=ContextEstimate(requirements_tokens=10, instructions_tokens=5, extra_tokens=0,
+                                    schema_tokens=5, output_tokens=100),
+            usage=usage,
+        )
+        self.call_records.append(record)
+        self.usage_records.append(usage)
+        try:
+            value = self.respond(stage, input.unit_id, extra)
+            await asyncio.sleep(0)
+            output = output_type.model_validate(value)
+        except (asyncio.CancelledError, Exception) as error:
+            record.status = "failed"
+            record.error_type = type(error).__name__
+            raise
+        record.status = "succeeded"
+        return output
 
 
 class FakeEmbedder:
@@ -433,6 +453,121 @@ def test_late_ghl_failure_preserves_validated_cases_and_techniques(cli, monkeypa
     assert csv_row(unit_dir)["tokens_used"] == "20"
     assert read_json(execution / "comparison.json")["unit_ids"] == []
     assert all(SECRET not in path.read_text() for path in execution.rglob("*") if path.is_file())
+
+
+def interrupted_result(cli, monkeypatch, solution, stage, *options):
+    module, data, runs, runtime, _, run = cli
+    for unit_id in (FIREFOX, E2EDEV):
+        put(data, make_unit(unit_id))
+    monkeypatch.setattr(module, "make_embedder", lambda: pytest.fail("Interrupted generation cannot be evaluated"))
+
+    with pytest.raises(asyncio.CancelledError, match=SECRET):
+        run("--solutions", solution, "--units", FIREFOX, E2EDEV, *options)
+
+    execution, = runs.iterdir()
+    recorded = config(execution)
+    assert recorded["status"] == "interrupted"
+    failure = {"stage": stage, "error_type": "CancelledError"}
+    assert recorded["outcomes"] == {solution: {FIREFOX: {"status": "failed", "failure": failure}}}
+    assert not (execution / "comparison.json").exists()
+    assert {unit_id for _, unit_id, _ in runtime.calls} == {FIREFOX}
+    unit_dir = execution / solution / FIREFOX
+    saved = read_json(unit_dir / "results.json")
+    assert saved["status"] == "failed"
+    assert saved["failure"] == failure
+    assert saved["evaluation"] is None
+    assert saved["usage"]["embedding_requests"] == 0
+    assert csv_row(unit_dir)["precision"] == ""
+    assert all(SECRET not in path.read_text() for path in execution.rglob("*") if path.is_file())
+    return saved, unit_dir
+
+
+def test_ghl_interruption_saves_validated_cases_selection_and_call_usage(cli, monkeypatch):
+    _, _, _, runtime, _, _ = cli
+
+    def scripted(stage, unit_id, extra):
+        if stage == "ghl_select_techniques":
+            return {"selections": [
+                {"technique_id": "use_case", "rationale": "A workflow"},
+                {"technique_id": "state_transition", "rationale": "State changes"},
+            ]}
+        if stage == "ghl_generate_state_transition":
+            asyncio.current_task().cancel(SECRET)
+        return response(stage, unit_id, extra)
+
+    runtime.respond = scripted
+    saved, unit_dir = interrupted_result(cli, monkeypatch, "GHL", "ghl_generate_state_transition")
+    assert saved["generation"]["selected_techniques"] == ["use_case", "state_transition"]
+    assert saved["generation"]["technique_rationales"] == {"use_case": "A workflow", "state_transition": "State changes"}
+    generated, = saved["generated_cases"]
+    assert generated["id"] == "G-001"
+    assert set(saved["links"]["cases"]["G-001"]) == {"R1", "R2"}
+    assert [(call["stage"], call["status"], call["error_type"]) for call in saved["usage"]["generation_calls"]] == [
+        ("ghl_select_techniques", "succeeded", None),
+        ("ghl_generate_use_case", "succeeded", None),
+        ("ghl_generate_state_transition", "failed", "CancelledError"),
+    ]
+    assert len(saved["usage"]["generation_attempts"]) == 3
+    assert csv_row(unit_dir)["tokens_used"] == "15"
+
+
+def test_multiagent_interruption_saves_the_last_accepted_decision(cli, monkeypatch):
+    _, _, _, runtime, _, _ = cli
+    revised = 0
+
+    def scripted(stage, unit_id, extra):
+        nonlocal revised
+        if stage == "multiagent_critic":
+            blockers = ["Unclear setup"]
+            if revised != 1:
+                blockers.append("Bad result")
+            return {"feedback": "Improve the case", "request_revision": True, "confirmed_blockers": blockers}
+        answer = response(stage, unit_id, extra)
+        if extra["revision"] is not None:
+            revised += 1
+            if revised == 1:
+                answer["cases"][0]["title"] = "Accepted improvement"
+            if revised == 4:
+                asyncio.current_task().cancel(SECRET)
+        return answer
+
+    runtime.respond = scripted
+    saved, unit_dir = interrupted_result(cli, monkeypatch, "Multiagent", "generator", "--agents", "critic", "validator")
+    generated, = saved["generated_cases"]
+    assert generated["title"] == "Accepted improvement"
+    trace = read_json(unit_dir / "intermediate" / "trace.json")
+    assert trace["status"] == "failed"
+    assert trace["failure"] == {"stage": "generator", "error_type": "CancelledError", "detail": None}
+    assert trace["accepted_id"] == "round-1-candidate-1"
+    decision, = trace["rounds"]
+    assert read_json(unit_dir / "intermediate" / "round_001" / "decision.json") == decision
+    assert decision["selected_id"] == "round-1-candidate-1"
+    assert trace["pending_controls"] == ["critic", "validator"]
+    assert trace["calls"][-1] == {
+        "stage": "generator", "subject_id": "round-2-candidate-1", "output": None,
+        "error_type": "CancelledError",
+        "usage": [{"input_tokens": 2, "output_tokens": 3, "details": None, "status": "available"}],
+    }
+    assert len(saved["usage"]["generation_attempts"]) == len(saved["usage"]["generation_calls"]) == 9
+    assert csv_row(unit_dir)["tokens_used"] == "45"
+
+
+def test_one_shot_interruption_saves_reported_usage(cli, monkeypatch):
+    _, _, _, runtime, _, _ = cli
+
+    def scripted(stage, unit_id, extra):
+        asyncio.current_task().cancel(SECRET)
+        return response(stage, unit_id, extra)
+
+    runtime.respond = scripted
+    saved, unit_dir = interrupted_result(cli, monkeypatch, "one-shot", "one_shot")
+    assert saved["generated_cases"] == []
+    assert saved["usage"]["generation"] == {
+        "input_tokens": 2, "output_tokens": 3, "details": None, "status": "available",
+    }
+    call, = saved["usage"]["generation_calls"]
+    assert (call["stage"], call["status"], call["error_type"]) == ("one_shot", "failed", "CancelledError")
+    assert csv_row(unit_dir)["tokens_used"] == "5"
 
 
 def test_index_write_failure_preserves_published_evaluations_in_comparison(cli, monkeypatch, capsys):
