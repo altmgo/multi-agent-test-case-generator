@@ -5,8 +5,8 @@ from pydantic import BaseModel
 
 from model_runtime import sum_usage
 from schemas import GeneratedCase, GenerationInput, Requirement, UsageRecord
-from solutions.ghl import TECHNIQUES, generate_ghl
-from solutions.one_shot import generate_one_shot
+from src.ghl import TECHNIQUES, generate_ghl
+from src.one_shot import generate_one_shot
 
 
 class FakeRuntime:

@@ -5,10 +5,10 @@ import pytest
 from pydantic import ValidationError
 
 from schemas import AgentOpinion, CandidateAssessment, GenerationInput, Requirement, UsageRecord
-from solutions.multiagent import MultiagentFailure
-from solutions.multiagent.coverage import E2EDevCalibrationProfile
-from solutions.multiagent.orchestrator import run_multiagent
-from solutions.multiagent.selection import select_candidate
+from src.multiagent import MultiagentFailure
+from src.multiagent.coverage import E2EDevCalibrationProfile
+from src.multiagent.orchestrator import run_multiagent
+from src.multiagent.selection import select_candidate
 
 
 INPUT = GenerationInput(

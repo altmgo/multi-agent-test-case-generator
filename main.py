@@ -29,10 +29,10 @@ from persistence import (
     write_text,
 )
 from schemas import EvaluationResult, GenerationResult, Unit, UsageRecord, generation_input
-from solutions import GenerationCancelled, ghl, one_shot
-from solutions.multiagent import MultiagentFailure, run_multiagent
-from solutions.multiagent.coverage import E2EDevCalibrationProfile
-from solutions.multiagent.state import CANDIDATES_PER_ROUND, PROMPT_VERSION as MULTIAGENT_PROMPT_VERSION
+from src import GenerationCancelled, ghl, one_shot
+from src.multiagent import MultiagentFailure, run_multiagent
+from src.multiagent.coverage import E2EDevCalibrationProfile
+from src.multiagent.state import CANDIDATES_PER_ROUND, PROMPT_VERSION as MULTIAGENT_PROMPT_VERSION
 
 RAW_DATA_DIR = Path("data/raw")
 NORMALIZED_DATA_DIR = Path("data/normalized")

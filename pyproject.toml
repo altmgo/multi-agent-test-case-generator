@@ -25,7 +25,7 @@ test = ["pytest>=8"]
 py-modules = ["human_review", "main", "model_runtime", "persistence", "schemas"]
 
 [tool.setuptools.packages.find]
-include = ["datasets", "datasets.*", "solutions", "solutions.*", "evaluation", "evaluation.*"]
+include = ["datasets", "datasets.*", "src", "src.*", "evaluation", "evaluation.*"]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
