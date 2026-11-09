@@ -443,3 +443,30 @@ def test_http_usage_audits_only_known_modalities(monkeypatch, requirements, recw
     assert runtime.usage_records == [
         UsageRecord(input_tokens=13, details={"text_prompt_tokens": 0}),
     ]
+
+
+@pytest.mark.parametrize("http_error", [False, True])
+def test_document_modality_counts_are_audited(monkeypatch, requirements, http_error):
+    metadata = {
+        "promptTokenCount": 13,
+        "promptTokensDetails": [{"modality": "DOCUMENT", "tokenCount": 8}],
+    }
+    if http_error:
+        response = 400, {
+            "error": {"code": 400, "status": "INVALID_ARGUMENT"},
+            "usageMetadata": metadata,
+        }
+    else:
+        response = _response(**metadata)
+    _fake_google(monkeypatch, response)
+    runtime = ModelRuntime("gemini-3.5-flash-lite")
+
+    if http_error:
+        with pytest.raises(ModelHTTPError):
+            asyncio.run(runtime.run("generate", "Write cases.", requirements, Answer))
+    else:
+        asyncio.run(runtime.run("generate", "Write cases.", requirements, Answer))
+
+    assert runtime.usage_records == [
+        UsageRecord(input_tokens=13, details={"document_prompt_tokens": 8}),
+    ]

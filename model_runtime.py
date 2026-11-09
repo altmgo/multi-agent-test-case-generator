@@ -12,7 +12,7 @@ from google.genai.types import (
     GenerateContentConfigDict,
     GenerateContentResponse,
     HttpRetryOptions,
-    Modality,
+    MediaModality,
 )
 from pydantic import BaseModel, TypeAdapter, computed_field
 from pydantic_ai import Agent, NativeOutput
@@ -122,7 +122,7 @@ _USAGE_MODALITY_BREAKDOWNS = (
     ("candidates", "candidatesTokensDetails"),
     ("tool_use_prompt", "toolUsePromptTokensDetails"),
 )
-_MODALITY_NAMES = {modality.value: modality.value.lower() for modality in Modality}
+_MODALITY_NAMES = {modality.value: modality.value.lower() for modality in MediaModality}
 
 
 def _reported_count(value: object) -> int | None:
