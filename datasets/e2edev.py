@@ -7,13 +7,12 @@ from pathlib import Path
 
 from schemas import ReferenceCase, Requirement, Unit
 
+from ._e2edev_inventory import ANNOTATION_SHA256, SOURCE_COMMIT
 from ._publication import publish
 
 SOURCE_URL = "https://github.com/SCUNLP/E2EDev"
-SOURCE_COMMIT = "d280dd144fbff30c237af26c1a76948e2f8857fa"
 ANNOTATION = "requirment_with_tests.json"
 REQUIREMENTS_KEY = "finegrained_rewith_test"
-BENCHMARK_NAME = re.compile(r"E2ESD_Bench_([0-9]+)")
 REQUIREMENT_KEY = re.compile(r"[1-9][0-9]*")
 SCENARIO_HEADER = re.compile(r"^[ \t]*Scenario(?: Outline| Template)?:[ \t]*(\S.*)$", re.MULTILINE)
 LINK_METHOD = "explicit_annotation"
@@ -25,18 +24,21 @@ def _exclude(exclusions: list[dict], source: str, reason: str) -> None:
 
 
 def _read_annotation(
-    path: Path, origin: str, raw_files: dict, exclusions: list[dict]
+    path: Path, origin: str, expected_sha256: str, exclusions: list[dict]
 ) -> dict | None:
     try:
         content = path.read_bytes()
-    except FileNotFoundError:
-        _exclude(exclusions, origin, "missing_annotation_file")
-        return None
-    except OSError:
-        _exclude(exclusions, origin, "unreadable_annotation_file")
-        return None
+    except FileNotFoundError as error:
+        raise ValueError(f"E2EDev pinned annotation missing at {path}") from error
+    except OSError as error:
+        raise ValueError(f"E2EDev pinned annotation unreadable at {path}: {error.strerror}") from error
 
-    raw_files[origin] = {"sha256": hashlib.sha256(content).hexdigest()}
+    actual_sha256 = hashlib.sha256(content).hexdigest()
+    if actual_sha256 != expected_sha256:
+        raise ValueError(
+            f"E2EDev pinned annotation SHA-256 mismatch at {path}. "
+            f"Expected {expected_sha256}, got {actual_sha256}."
+        )
     try:
         annotation = json.loads(content.decode("utf-8"))
     except (UnicodeDecodeError, json.JSONDecodeError):
@@ -116,26 +118,19 @@ def _benchmark_unit(
 
 
 def prepare_e2edev(source: Path, commit: str, output: Path) -> list[Unit]:
-    """Read the pinned annotation format from a local repository snapshot."""
+    """Verify the complete pinned annotation inventory and normalize its data."""
     if commit != SOURCE_COMMIT:
         raise ValueError(f"Unsupported E2EDev commit {commit!r}. Expected {SOURCE_COMMIT}.")
-    data = source / "E2EDev_data"
-    if not data.is_dir():
-        raise ValueError(f"E2EDev annotations directory not found: {data}")
-
     units = []
     raw_files: dict = {}
     exclusions: list[dict] = []
-    for benchmark in sorted(data.iterdir()):
-        name = BENCHMARK_NAME.fullmatch(benchmark.name)
-        if name is None or not benchmark.is_dir():
-            continue
-        path = benchmark / ANNOTATION
-        origin = path.relative_to(source).as_posix()
-        rows = _read_annotation(path, origin, raw_files, exclusions)
+    for benchmark, expected_sha256 in sorted(ANNOTATION_SHA256.items()):
+        origin = f"E2EDev_data/E2ESD_Bench_{benchmark}/{ANNOTATION}"
+        rows = _read_annotation(source / origin, origin, expected_sha256, exclusions)
+        raw_files[origin] = {"sha256": expected_sha256}
         if rows is None:
             continue
-        unit = _benchmark_unit(f"e2edev_bench_{name[1]}", rows, origin, exclusions)
+        unit = _benchmark_unit(f"e2edev_bench_{benchmark}", rows, origin, exclusions)
         if unit is not None:
             units.append(unit)
 
@@ -150,7 +145,8 @@ def prepare_e2edev(source: Path, commit: str, output: Path) -> list[Unit]:
                 "root_license_or_copying_files": [],
                 "readme_declares_license": False,
             },
-            "acquisition_method": "git_sparse_checkout",
+            "acquisition_method": "local_snapshot",
+            "pinned_inventory_acquisition_method": "git_sparse_checkout",
         },
         "adapter": "datasets.e2edev.prepare_e2edev",
         "annotation_path": f"E2EDev_data/E2ESD_Bench_*/{ANNOTATION}",

@@ -4,6 +4,7 @@ from pathlib import Path
 
 import pytest
 
+from datasets import e2edev
 from datasets.e2edev import prepare_e2edev
 from schemas import Unit
 
@@ -54,7 +55,7 @@ def _manifest(output: Path) -> dict:
 
 
 @pytest.fixture
-def dataset(tmp_path):
+def dataset(tmp_path, monkeypatch):
     source = tmp_path / "raw"
     output = tmp_path / "normalized"
     annotation = _annotation(source, "01")
@@ -72,6 +73,9 @@ def dataset(tmp_path):
     (annotation.parent / "source_code.py").write_text("SOURCE_CODE_SENTINEL", encoding="utf-8")
     alternate = source / "E2EDev_data_withTestID" / "E2ESD_Bench_01" / ANNOTATION
     _write_annotation(alternate, {})
+    monkeypatch.setattr(
+        e2edev, "ANNOTATION_SHA256", {"01": hashlib.sha256(annotation.read_bytes()).hexdigest()}
+    )
     return source, output
 
 
@@ -121,9 +125,8 @@ def test_publishes_units_and_metadata_without_executing_or_serializing_python(da
     }
 
 
-def test_keeps_valid_records_and_reports_missing_or_invalid_annotations(dataset):
+def test_keeps_valid_records_and_reports_invalid_annotations(dataset):
     source, output = dataset
-    _annotation(source, "02").parent.mkdir()
     bad_json = _annotation(source, "03")
     bad_json.parent.mkdir()
     bad_json.write_bytes(b"{ broken json")
@@ -139,6 +142,9 @@ def test_keeps_valid_records_and_reports_missing_or_invalid_annotations(dataset)
             "4": {"requirement": {"description": "Invalid case list"}, "test_cases": "invalid"},
         },
     )
+    e2edev.ANNOTATION_SHA256.update(
+        {key: hashlib.sha256(_annotation(source, key).read_bytes()).hexdigest() for key in ("03", "04")}
+    )
     units = prepare_e2edev(source, COMMIT, output)
     assert [unit.id for unit in units] == ["e2edev_bench_01", "e2edev_bench_04"]
     assert [req.id for req in units[1].requirements] == [
@@ -149,7 +155,6 @@ def test_keeps_valid_records_and_reports_missing_or_invalid_annotations(dataset)
     assert [case.id for case in units[1].reference_cases] == ["e2edev_bench_04-R-3-TC-2"]
     manifest = _manifest(output)
     assert {entry["reason"] for entry in manifest["exclusions"]} == {
-        "missing_annotation_file",
         "invalid_annotation_json",
         "invalid_requirement_description",
         "missing_test_cases",
@@ -164,7 +169,7 @@ def test_keeps_valid_records_and_reports_missing_or_invalid_annotations(dataset)
     assert "E2EDev_data/E2ESD_Bench_03/requirment_with_tests.json" in manifest["raw_files"]
 
 
-def test_repeated_preparation_is_byte_stable_and_rejects_conflicting_source(dataset):
+def test_repeated_preparation_is_byte_stable_and_rejects_conflicting_output(dataset):
     source, output = dataset
     initial = prepare_e2edev(source, COMMIT, output)
     unit_path = output / "e2edev_bench_01.json"
@@ -174,13 +179,11 @@ def test_repeated_preparation_is_byte_stable_and_rejects_conflicting_source(data
     assert unit_path.read_bytes() == original_unit
     assert manifest_path.read_bytes() == original_manifest
 
-    _write_annotation(
-        _annotation(source, "01"),
-        {"1": {"requirement": {"description": "Changed requirement"}, "test_cases": []}},
-    )
+    conflicting_unit = b'{"id": "different_unit"}'
+    unit_path.write_bytes(conflicting_unit)
     with pytest.raises(ValueError, match="E2EDev publication conflict"):
         prepare_e2edev(source, COMMIT, output)
-    assert unit_path.read_bytes() == original_unit
+    assert unit_path.read_bytes() == conflicting_unit
     assert manifest_path.read_bytes() == original_manifest
 
 
@@ -189,3 +192,37 @@ def test_rejects_an_unsupported_commit_before_publication(dataset):
     with pytest.raises(ValueError, match="Unsupported E2EDev commit"):
         prepare_e2edev(source, "f" * 40, output)
     assert not output.exists()
+
+
+def test_rejects_modified_annotation_before_first_publication(dataset):
+    source, output = dataset
+    annotation = _annotation(source, "01")
+    _write_annotation(annotation, {"1": {"requirement": {"description": "Modified"}, "test_cases": []}})
+
+    with pytest.raises(ValueError, match=r"E2EDev pinned annotation SHA-256 mismatch.*E2ESD_Bench_01"):
+        prepare_e2edev(source, COMMIT, output)
+    assert not output.exists()
+
+
+def test_rejects_missing_benchmark_directory_before_first_publication(dataset):
+    source, output = dataset
+    e2edev.ANNOTATION_SHA256["02"] = "0" * 64
+    assert not _annotation(source, "02").parent.exists()
+
+    with pytest.raises(ValueError, match=r"E2EDev pinned annotation missing.*E2ESD_Bench_02"):
+        prepare_e2edev(source, COMMIT, output)
+    assert not output.exists()
+
+
+def test_ignores_annotation_outside_pinned_inventory(dataset):
+    source, output = dataset
+    _write_annotation(
+        _annotation(source, "99"),
+        {"1": {"requirement": {"description": "Unexpected benchmark"}, "test_cases": []}},
+    )
+
+    units = prepare_e2edev(source, COMMIT, output)
+
+    assert [unit.id for unit in units] == ["e2edev_bench_01"]
+    assert len(_manifest(output)["raw_files"]) == 1
+    assert not (output / "e2edev_bench_99.json").exists()

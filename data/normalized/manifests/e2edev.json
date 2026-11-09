@@ -9,7 +9,8 @@
       "root_license_or_copying_files": [],
       "readme_declares_license": false
     },
-    "acquisition_method": "git_sparse_checkout"
+    "acquisition_method": "local_snapshot",
+    "pinned_inventory_acquisition_method": "git_sparse_checkout"
   },
   "adapter": "datasets.e2edev.prepare_e2edev",
   "annotation_path": "E2EDev_data/E2ESD_Bench_*/requirment_with_tests.json",
