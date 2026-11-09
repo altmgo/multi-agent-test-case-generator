@@ -136,6 +136,7 @@ class EvaluationResult(BaseModel):
     recall: float | None = None
     f1: float | None = None
     embedding_usage: UsageRecord = Field(default_factory=UsageRecord)
+    embedding_requests: NonNegativeInt | None = None
 
 
 class HumanDecision(BaseModel):
