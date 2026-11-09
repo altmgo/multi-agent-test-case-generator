@@ -19,6 +19,9 @@ test = ["pytest>=8"]
 [tool.setuptools]
 py-modules = ["schemas"]
 
+[tool.setuptools.packages.find]
+include = ["datasets"]
+
 [tool.pytest.ini_options]
 pythonpath = ["."]
 testpaths = ["tests"]
