@@ -6,6 +6,7 @@ from pydantic import (
     BaseModel,
     ConfigDict,
     Field,
+    JsonValue,
     NonNegativeInt,
     StringConstraints,
     model_validator,
@@ -96,6 +97,7 @@ class GenerationResult(BaseModel):
     selected_techniques: list[str] = Field(default_factory=list)
     technique_rationales: dict[str, str] = Field(default_factory=dict)
     prompt_version: str | None = None
+    trace: dict[str, JsonValue] | None = None
 
 
 class AgentOpinion(BaseModel):
@@ -103,6 +105,7 @@ class AgentOpinion(BaseModel):
     feedback: str
     request_revision: bool = False
     confirmed_blockers: list[str] = Field(default_factory=list)
+    blocker_assessment_complete: bool = True
 
 
 class CandidateAssessment(BaseModel):
@@ -113,6 +116,7 @@ class CandidateAssessment(BaseModel):
     confirmed_blockers: NonNegativeInt = 0
     covered_requirements: NonNegativeInt = 0
     duplicates: NonNegativeInt = 0
+    comparable: bool = True
 
 
 class SemanticMatch(BaseModel):
