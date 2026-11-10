@@ -1,5 +1,5 @@
 {
-  "dataset_id": "firefox_legacy",
+  "dataset_id": "firefox",
   "source": {
     "repository": "Mendeley Data",
     "url": "https://data.mendeley.com/datasets/jw5bgshtvg/1",
@@ -20,7 +20,6 @@
   },
   "adapter": "datasets.firefox.prepare_firefox",
   "pair_count": 184,
-  "archive_generatable": false,
   "links": {
     "method": "inferred_row_alignment",
     "status": "pending_provenance_review",
