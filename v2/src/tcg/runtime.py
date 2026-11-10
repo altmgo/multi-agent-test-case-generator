@@ -1,4 +1,4 @@
-"""Structured Gemini calls with complete requirements and auditable token usage."""
+"""Structured generation with complete requirements and auditable token usage."""
 
 import json
 from contextvars import ContextVar
@@ -13,6 +13,8 @@ from google.genai.types import (
     HttpRetryOptions,
     MediaModality,
 )
+from groq import AsyncGroq
+from groq.types.chat import ChatCompletion
 from pydantic import BaseModel, TypeAdapter, computed_field
 from pydantic_ai import Agent, NativeOutput
 from pydantic_ai.exceptions import (
@@ -31,16 +33,23 @@ from pydantic_ai.messages import (
 )
 from pydantic_ai.models import Model, ModelRequestParameters
 from pydantic_ai.models.google import GoogleModel, GoogleModelSettings
+from pydantic_ai.models.groq import GroqModel
 from pydantic_ai.models.wrapper import WrapperModel
 from pydantic_ai.providers.google import GoogleProvider
+from pydantic_ai.providers.groq import GroqProvider
 from pydantic_ai.settings import ModelSettings
 
 from tcg.schemas import GenerationInput, UsageRecord
 
 T = TypeVar("T")
 
-GENERATION_MODELS = frozenset({"gemini-3.5-flash-lite", "gemini-3.8-flash"})
-DEFAULT_CONTEXT_LIMIT = 1_048_576
+GROQ_MODEL = "openai/gpt-oss-120b"
+_CONTEXT_LIMITS = {
+    "gemini-3.5-flash-lite": 1_048_576,
+    "gemini-3.8-flash": 1_048_576,
+    GROQ_MODEL: 131_072,
+}
+GENERATION_MODELS = frozenset(_CONTEXT_LIMITS)
 DEFAULT_OUTPUT_TOKENS = 8192
 _MAX_OUTPUT_TOKENS = 65_536
 _REQUEST_OVERHEAD_TOKENS = 32
@@ -104,9 +113,8 @@ def sum_usage(records: list[UsageRecord]) -> UsageRecord:
     )
 
 
-# Pydantic AI normalizes omitted Gemini counters to zero. The scoped value
-# keeps the SDK's raw availability even if Pydantic AI cannot process the reply.
-_RAW_USAGE: ContextVar[list[UsageRecord] | None] = ContextVar("gemini_usage", default=None)
+# Keep the provider's counter availability even if Pydantic AI cannot process the reply.
+_RAW_USAGE: ContextVar[list[UsageRecord] | None] = ContextVar("provider_usage", default=None)
 
 
 _USAGE_DETAIL_COUNTERS = (
@@ -219,12 +227,57 @@ class _GeminiModel(GoogleModel):
         raise safe_error from None
 
 
+class _GroqModel(GroqModel):
+    def _process_response(self, response: ChatCompletion) -> ModelResponse:
+        captured = _RAW_USAGE.get()
+        if captured is not None and response.usage is not None:
+            usage = response.usage
+            details = {}
+            if (total := _reported_count(usage.total_tokens)) is not None:
+                details["total_tokens"] = total
+            if (reasoning := _reported_count(
+                getattr(usage.completion_tokens_details, "reasoning_tokens", None)
+            )) is not None:
+                details["reasoning_tokens"] = reasoning
+            captured.append(UsageRecord(
+                input_tokens=_reported_count(usage.prompt_tokens),
+                output_tokens=_reported_count(usage.completion_tokens),
+                details=details or None,
+            ))
+        return super()._process_response(response)
+
+    async def request(
+        self,
+        messages: list[ModelMessage],
+        model_settings: ModelSettings | None,
+        model_request_parameters: ModelRequestParameters,
+    ) -> ModelResponse:
+        try:
+            return await super().request(messages, model_settings, model_request_parameters)
+        except ModelHTTPError as error:
+            safe_error = type(error)(status_code=error.status_code, model_name=self.model_name)
+        except ModelConnectionError as error:
+            safe_error = type(error)(self.model_name, "Groq connection failed", phase=error.phase)
+        except ModelAPIError:
+            safe_error = ModelAPIError(self.model_name, "Groq API request failed")
+        except Exception as error:
+            safe_error = UnexpectedModelBehavior(f"Groq request failed ({type(error).__name__})")
+        raise safe_error from None
+
+
+def credential_variable(model_id: str) -> str:
+    return "GROQ_API_KEY" if model_id == GROQ_MODEL else "GOOGLE_API_KEY"
+
+
 def make_model(model_id: str, api_key: str) -> Model:
-    """Create an allowlisted Gemini Developer API model."""
+    """Create the provider model selected by its CLI model ID."""
     if model_id not in GENERATION_MODELS:
         raise ValueError("Unsupported generation model")
     if not api_key:
-        raise ValueError("Set GOOGLE_API_KEY in .env")
+        raise ValueError(f"Set {credential_variable(model_id)} in .env")
+    if model_id == GROQ_MODEL:
+        client = AsyncGroq(api_key=api_key, base_url="https://api.groq.com", max_retries=0)
+        return _GroqModel(model_id, provider=GroqProvider(groq_client=client))
     provider = GoogleProvider(api_key=api_key, retry_options=HttpRetryOptions(attempts=1))
     return _GeminiModel(model_id, provider=provider)
 
@@ -383,19 +436,23 @@ class _AuditedModel(WrapperModel):
 
 
 class ModelRuntime:
-    """Run typed stages with an independent Gemini conversation for each stage."""
+    """Run typed stages with an independent conversation for each stage."""
 
     def __init__(
         self,
         model_id: str,
         *,
         api_key: str,
-        context_limit: int = DEFAULT_CONTEXT_LIMIT,
+        context_limit: int | None = None,
         output_tokens: int = DEFAULT_OUTPUT_TOKENS,
         retries: int = 1,
     ):
-        if not 0 < context_limit <= DEFAULT_CONTEXT_LIMIT:
-            raise ValueError(f"Context limit must be between 1 and {DEFAULT_CONTEXT_LIMIT}")
+        if model_id not in GENERATION_MODELS:
+            raise ValueError("Unsupported generation model")
+        maximum_context = _CONTEXT_LIMITS[model_id]
+        context_limit = maximum_context if context_limit is None else context_limit
+        if not 0 < context_limit <= maximum_context:
+            raise ValueError(f"Context limit must be between 1 and {maximum_context}")
         if not 0 < output_tokens <= _MAX_OUTPUT_TOKENS:
             raise ValueError(f"Output tokens must be between 1 and {_MAX_OUTPUT_TOKENS}")
         if retries < 0:
@@ -407,6 +464,10 @@ class ModelRuntime:
         self._call_count = 0
         self.call_records: list[CallRecord] = []
         self.usage_records: list[UsageRecord] = []
+
+    async def aclose(self) -> None:
+        if isinstance(self._model, _GroqModel):
+            await self._model.client.close()
 
     async def run(
         self,
@@ -446,10 +507,11 @@ class ModelRuntime:
             self, stage, input.unit_id, self._call_count, estimate, prompt_without_history,
             _estimate_tokens(_json({"history": extra["history"]})) if "history" in extra else 0,
         )
+        output = NativeOutput(output_type, strict=False) if isinstance(self._model, _GroqModel) else NativeOutput(output_type)
         agent = Agent(
             model,
             instructions=instructions,
-            output_type=NativeOutput(output_type),
+            output_type=output,
             retries=self.retries,
             model_settings={"max_tokens": self.output_tokens},
         )
@@ -462,7 +524,7 @@ class ModelRuntime:
             model.records[-1].error_type = type(error).__name__
             if not isinstance(error, UnexpectedModelBehavior):
                 raise
-            safe_error = type(error)("Gemini output was rejected")
+            safe_error = type(error)("Model output was rejected")
         else:
             model.records[-1].status = "succeeded"
             return result.output

@@ -9,10 +9,13 @@ source .venv/bin/activate
 python -m pip install -e .
 ```
 
-Crie `v2/.env` e defina `GOOGLE_API_KEY` com sua chave Gemini. O arquivo
-fica fora do Git. A CLI lê a chave do `.env` no diretório atual.
+Crie `v2/.env` e defina a chave do provedor escolhido. A CLI lê o arquivo
+no diretório atual e o Git ignora o arquivo.
 
 ## tcg · Test Case Generator
+
+Use `GOOGLE_API_KEY` para os modelos Gemini ou `GROQ_API_KEY` para
+`openai/gpt-oss-120b`. A opção `--model` determina o provedor e a chave.
 
 ```bash
 tcg run \
@@ -22,6 +25,10 @@ tcg run \
   --agents analyst critic validator coverage \
   --output-mode batch
 ```
+
+Para executar a mesma geração com Groq, use
+`--model openai/gpt-oss-120b`. Os limites de uso da sua conta Groq se
+aplicam a essa execução.
 
 Omita `--units` para gerar a partir de todos os JSONs elegíveis de
 `data/normalized/`. Os manifestos ficam fora da geração. Use o nome completo com `.json` para
@@ -39,7 +46,7 @@ outros JSONs normalizados. A pasta de cada execução segue o formato
 `requirements_to_tests.md` e uma pasta por unidade, com `requirement.md`
 e `test cases/*.md` por requisito. A execução registra a configuração em
 `configs.md` e o Multiagent grava suas revisões em `intermediate/`.
-A CLI gera casos com Gemini. Não executa os casos, não calcula métricas
+A CLI gera casos com Gemini ou Groq. Não executa os casos, não calcula métricas
 nem cria arquivos de avaliação ou resultados.
 
 ## evalute · Evaluate Results
@@ -52,7 +59,8 @@ evalute --results-dir output/AAAA-MM-DD_HH-MM-SS \
   --embedding-model gemini-embedding-2
 ```
 
-O avaliador usa a mesma `GOOGLE_API_KEY` do `.env`. O gabarito vem de
+O avaliador usa `GOOGLE_API_KEY` do `.env`, inclusive para avaliar casos
+gerados com Groq. O gabarito vem de
 `data/normalized/`, ou do caminho indicado por `--data-dir`. A opção
 `gemini-embedding-2` reproduz o modelo da v1. Também é possível escolher
 `gemini-embedding-001`, com resultados dependentes do modelo.

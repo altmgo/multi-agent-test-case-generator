@@ -11,7 +11,7 @@ dependencies = [
     "google-genai==3.0.0",
     "numpy",
     "pydantic==2.14.3",
-    "pydantic-ai-slim[google]==2.66.0",
+    "pydantic-ai-slim[google,groq]==2.66.0",
     "python-dotenv>=1.0,<2",
     "scipy",
 ]

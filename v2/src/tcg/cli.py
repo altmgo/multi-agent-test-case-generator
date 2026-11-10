@@ -1,4 +1,4 @@
-"""Command line entry point for generation with Gemini."""
+"""Command line entry point for test case generation."""
 
 import argparse
 import asyncio
@@ -15,7 +15,7 @@ from one_shot import generate_one_shot
 
 from .data import DATASETS, select_units
 from .output import RUN_TIMEZONE, reserve_run, save_unit, write_text
-from .runtime import GENERATION_MODELS, ModelRuntime, Runtime, sum_usage
+from .runtime import GENERATION_MODELS, ModelRuntime, credential_variable, sum_usage
 from .schemas import GenerationResult, Unit, generation_input
 
 SOLUTIONS = ("one-shot", "GHL", "Multiagent")
@@ -69,7 +69,7 @@ async def _run(
     options: argparse.Namespace,
     units: list[Unit],
     agents: set[str],
-    runtime: Runtime,
+    runtime: ModelRuntime,
 ) -> int:
     outcomes = {}
     config = {
@@ -80,7 +80,7 @@ async def _run(
         "output_modes": {name: "batch" if name == "one-shot" else options.output_mode for name in options.solutions},
         "max_rounds": MAX_ROUNDS,
         "timezone": str(RUN_TIMEZONE),
-        "credential": ".env:GOOGLE_API_KEY",
+        "credential": f".env:{credential_variable(options.model)}",
         "status": "interrupted",
         "outcomes": outcomes,
     }
@@ -139,8 +139,11 @@ async def _run(
         config["status"] = "failed"
         raise
     finally:
-        write_text(run / "configs.md", "# Experiment configuration\n\n```json\n"
-                   + json.dumps(config, ensure_ascii=False, indent=2) + "\n```\n")
+        try:
+            write_text(run / "configs.md", "# Experiment configuration\n\n```json\n"
+                       + json.dumps(config, ensure_ascii=False, indent=2) + "\n```\n")
+        finally:
+            await runtime.aclose()
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -151,9 +154,10 @@ def main(argv: list[str] | None = None) -> int:
         agents = _agents(options)
         units = select_units(options.data_dir, options.units, options.datasets)
         dotenv_path = Path(".env")
-        api_key = (dotenv_values(dotenv_path, interpolate=False).get("GOOGLE_API_KEY") or "").strip()
+        variable = credential_variable(options.model)
+        api_key = (dotenv_values(dotenv_path, interpolate=False).get(variable) or "").strip()
         if not api_key:
-            raise ValueError("Set GOOGLE_API_KEY in .env")
+            raise ValueError(f"Set {variable} in .env")
         runtime = ModelRuntime(options.model, api_key=api_key, retries=0)
         run = reserve_run(options.output_dir, lambda: datetime.now(timezone.utc))
     except (OSError, ValueError) as error:
