@@ -1,0 +1,317 @@
+{
+  "id": "firefox_image_and_embedded_content",
+  "requirements": [
+    {
+      "id": "R-085",
+      "text": "Large Images shall be resized to the browser window.",
+      "language": "en",
+      "source": "R-set.csv#R-085"
+    },
+    {
+      "id": "R-086",
+      "text": "It shall be possible to resize an image to it's original size after it has been resized to window size.",
+      "language": "en",
+      "source": "R-set.csv#R-086"
+    },
+    {
+      "id": "R-087",
+      "text": "Saving an image to local drive shall be available through right clicking.",
+      "language": "en",
+      "source": "R-set.csv#R-087"
+    },
+    {
+      "id": "R-088",
+      "text": "An image shall be set as wallpaper.",
+      "language": "en",
+      "source": "R-set.csv#R-088"
+    },
+    {
+      "id": "R-089",
+      "text": "An image shall be printed without changing the currently loaded page.",
+      "language": "en",
+      "source": "R-set.csv#R-089"
+    },
+    {
+      "id": "R-090",
+      "text": "Images shall be properly redithered upon system bit-depth changes.",
+      "language": "en",
+      "source": "R-set.csv#R-090"
+    },
+    {
+      "id": "R-091",
+      "text": "Reloaded web pages shall properly display the images modified since the last load.",
+      "language": "en",
+      "source": "R-set.csv#R-091"
+    },
+    {
+      "id": "R-092",
+      "text": "Images shall load directly into the web browser from a networked server.",
+      "language": "en",
+      "source": "R-set.csv#R-092"
+    },
+    {
+      "id": "R-093",
+      "text": "Images shall load directly into the web browser from a local hard drive.",
+      "language": "en",
+      "source": "R-set.csv#R-093"
+    },
+    {
+      "id": "R-094",
+      "text": "Animated GIFs shall continue to animate after an extended period of 24 hours or greater.",
+      "language": "en",
+      "source": "R-set.csv#R-094"
+    },
+    {
+      "id": "R-095",
+      "text": "Multiple differing animated images on the same page shall be properly displayed.",
+      "language": "en",
+      "source": "R-set.csv#R-095"
+    },
+    {
+      "id": "R-096",
+      "text": "GIF 87 images shall be properly displayed across different bit depths.",
+      "language": "en",
+      "source": "R-set.csv#R-096"
+    },
+    {
+      "id": "R-097",
+      "text": "GIF 89a images shall be properly displayed across different bit depths.",
+      "language": "en",
+      "source": "R-set.csv#R-097"
+    },
+    {
+      "id": "R-098",
+      "text": "The web browser shall gracefully deal with unusual, corrupted, or invalid GIF images.",
+      "language": "en",
+      "source": "R-set.csv#R-098"
+    },
+    {
+      "id": "R-099",
+      "text": "X Bitmap (XBM) format images shall be displayed.",
+      "language": "en",
+      "source": "R-set.csv#R-099"
+    },
+    {
+      "id": "R-100",
+      "text": "Applets shall be run within <applet> and <object> tags.",
+      "language": "en",
+      "source": "R-set.csv#R-100"
+    },
+    {
+      "id": "R-101",
+      "text": "Appplets shall have lifecycle.",
+      "language": "en",
+      "source": "R-set.csv#R-101"
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "TC-085",
+      "title": "TC-085",
+      "description": "INITIAL CONDITIONS\nHave mozilla started up\n\nSTEPS/DESCRIPTION\nComplete these steps for all images below\n1. Open each of the files listed below\n2. Right click the image and select resize to window\n\nEXPECTED RESULTS\nImage should resize to the browser window size.\n\nLINKS\n1. JPG file\n2. Gif file\n3. bitmap file\n4. PNG file",
+      "requirement_ids": [
+        "R-085"
+      ],
+      "source": "T-set.csv#TC-085",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-086",
+      "title": "TC-086",
+      "description": "INITIAL CONDITIONS\nHave mozilla started up\n\nSTEPS/DESCRIPTION\nComplete these steps for all images below\n1. Open each of the files listed below\n2. Right click the image and select resize to window\n3. Right click again and select resize to original\n\nEXPECTED RESULTS\nImage should resize to it's original size.\n\nLINKS\nJPG file\nGif file\nbitmap file\nPNG file",
+      "requirement_ids": [
+        "R-086"
+      ],
+      "source": "T-set.csv#TC-086",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-087",
+      "title": "TC-087",
+      "description": "INITIAL CONDITIONS\nHave mozilla started up\n\nSTEPS/DESCRIPTION\nComplete these steps for all images below\n1. Open one of the files listed below\n2. Right click the image and select save image\n3. Browse to where you want to save on your local disk and save.\n4. Open the file in browser (determine the picture has been saved)\n\nEXPECTED RESULTS\nImage should be saved to local disk.\n\nLINKS\nJPG file\nGif file\nbitmap file\nPNG file",
+      "requirement_ids": [
+        "R-087"
+      ],
+      "source": "T-set.csv#TC-087",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-088",
+      "title": "TC-088",
+      "description": "INITIAL CONDITIONS\nHave mozilla started up\n\nSTEPS/DESCRIPTION\nComplete these steps for all images below\n1. Open one of the files listed below\n2. Right click the image and select set as wallpaper\n3. Go to your desktop\n\nEXPECTED RESULTS\nImage should now be the wallpaper on your desktop.\n\nLINKS\nJPG file\nGif file\nbitmap file\nPNG file",
+      "requirement_ids": [
+        "R-088"
+      ],
+      "source": "T-set.csv#TC-088",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-089",
+      "title": "TC-089",
+      "description": "INITIAL CONDITIONS\nHave mozilla started up and a printer installed on your machine.\n\nSTEPS/DESCRIPTION\nComplete these steps for all images below\n1. Open one of the files listed below\n2. Right click the image and select print\n\nEXPECTED RESULTS\nImage should print.\n\nLINKS\nJPG file\nGif file\nbitmap file\nPNG file",
+      "requirement_ids": [
+        "R-089"
+      ],
+      "source": "T-set.csv#TC-089",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": [
+        "firefox_printing"
+      ]
+    },
+    {
+      "id": "TC-090",
+      "title": "TC-090",
+      "description": "INITIAL CONDITIONS\nSystem under test should be capable of 8-bit color (256 colors), 16-bit and 24 bit\n\nSTEPS/DESCRIPTION\n1. Launch Netscape 6\n2. View the test case page (linked below)\n3. Change the system resolution to 8-bit color (256 colors)\n4. Change the system resolution to 16-bit color (65536 colors)\n5. Change the system resolution to 24-bit color (16 million colors)\n\nEXPECTED RESULTS\nAfter Step 2, the page should be properly dithered to 8-bit color\nAfter Step 3, the page should be properly dithered to 16-bit color.\nAfter Step 4, the page should be properly rendered in 24-bit color.\n(After steps 2, 3 and 4, \"proper\" rendering or dithering means that the colors should appear as accurate or more accurate than when this test case is viewed in Communicator 4.x or Internet Explorer 5.x.)\n\nLINKS\nimg_dither.html",
+      "requirement_ids": [
+        "R-090"
+      ],
+      "source": "T-set.csv#TC-090",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-091",
+      "title": "TC-091",
+      "description": "INITIAL CONDITIONS\nDisk and memory caches to be cleared. Write access to test case directory required.\n\nSTEPS/DESCRIPTION\n1. Copy img-reload.html, foo_master.jpg and bar_master.jpg from the test case directory to your local test case directory.\n2. In your test case directory, copy (but do not rename!) foo_master.jpg to foo.jpg\n3. View img_reload.html.\n4. In the test case directory, copy (but do not rename!) bar_master.jpg to foo.jpg\n5. Hold the shift button down, and press the browser's Reload button\n\nEXPECTED RESULTS:\nAfter Step 2, a page should appear containing a picture of John Glenn in a Mercury capsule.\nAfter Step 4, a page should appear containing a picture of a (much older) John Glenn aboard the space shuttle.\n\nLINKS\nimg-reload.html\nbar_master.jpg\nfoo_master.jpg",
+      "requirement_ids": [
+        "R-091"
+      ],
+      "source": "T-set.csv#TC-091",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-092",
+      "title": "TC-092",
+      "description": "INITIAL CONDITIONS\nDisk and memory caches to be cleared.\n\nSTEPS/DESCRIPTION\n1. View vlpan12.gif.\n2. View vlpan11.jpg.\n3. View wall_ni.png.\n\nEXPECTED RESULTS\nAfter step 1, a 530x462 GIF image of the surface of Mars should display.\nAfter step 2, a 1496x1536 JPEG image of the surface of Mars should display.\nAfter step 3, a 640x480 PNG image of the Great Wall should display.\n\nLINKS\nvlpan12.gif\nvlpan11.jpg\nwall_ni.png",
+      "requirement_ids": [
+        "R-092"
+      ],
+      "source": "T-set.csv#TC-092",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-093",
+      "title": "TC-093",
+      "description": "INITIAL CONDITIONS\nDisk and memory caches to be cleared.\n\nSTEPS/DESCRIPTION\n1. Copy these below-linked files to your hard drive: vlpan12.gif, vlpan11.jpg and wall_ni.png.\n2. View each of those images.\n\nEXPECTED RESULTS\nAfter loading vlpan12.gif, a 530x462 GIF image of the surface of Mars should display.\nAfter loading vlpan11.jpg, a 1496x1536 JPEG image of the surface of Mars should display.\nAfter loading wall_ni.png, a 640x480 PNG image of the Great Wall should display.\n\nLINKS\nvlpan12.gif\nvlpan11.jpg\nwall_ni.png",
+      "requirement_ids": [
+        "R-093"
+      ],
+      "source": "T-set.csv#TC-093",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-094",
+      "title": "TC-094",
+      "description": "INITIAL CONDITIONS\nSystem under test must be configured to continue normal operation and not \"sleep\" or power down after an extended period of inactivity.\n\nSTEPS/DESCRIPTION\n1. Launch Netscape 6\n2. View the test page (linked below)\n3. Leave the browser operating untouched for 24 hours\n\nEXPECTED RESULTS\nThe image should be animating properly, and at a speed equivalent to that of step #1.\n\nLINKS\nimg-anim-stability.html",
+      "requirement_ids": [
+        "R-094"
+      ],
+      "source": "T-set.csv#TC-094",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-095",
+      "title": "TC-095",
+      "description": "STEPS/DESCRIPTION\n1. Display the attached web pages\n2. (if site still present, visit http://www.animationcity.net/animcity.htm, as an additional stress test case.)\n\nEXPECTED RESULTS\nAll animated images should animate smoothly, without stopping, or displaying any glitches. (Communicator 4.6x or IE can be used for a more specific description of the expected results.)\nAnimated GIFs off the net occasionally have a pre-specified number of iterations, normally 1000, and will halt animation deliberately.\n\nLINKS\nimg-anim-multiple-2\nimg-anim-multiple-6",
+      "requirement_ids": [
+        "R-095"
+      ],
+      "source": "T-set.csv#TC-095",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-096",
+      "title": "TC-096",
+      "description": "STEPS/DESCRIPTION\n1. Launch Netscape 6\n2. View the test page (linked below)\n\nEXPECTED RESULTS\n1. A mozilla.org banner, displayed at a descending bit depth, starting at 8-bit, and ceasing at 3-bit, followed by a grayscale image.\n2. A Hubble space image, displayed at a descending bit depth, starting at 8-bit, and ceasing at 3-bit, followed by a grayscale image.\n3. 5 rows of a single black pixel.\n\nLINKS\nimg-gif-87",
+      "requirement_ids": [
+        "R-096"
+      ],
+      "source": "T-set.csv#TC-096",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-097",
+      "title": "TC-097",
+      "description": "STEPS/DESCRIPTION\n1. Launch Netscape 6\n2. View the test page (linked below)\n\nEXPECTED RESULTS\n1. A mozilla.org banner, displayed at a descending bit depth, starting at 8-bit, and ceasing at 3-bit, followed by a grayscale image. The \"mozilla.org\" text should be transparent, and inherit the green page background.\n2. A Hubble space image, displayed at a descending bit depth, starting at 8-bit, and ceasing at 3-bit, followed by a grayscale image. A different portion of the top half of each image should be transparent, and inherit the green page background.\n3. 5 rows of a single black pixel.\n\nLINKS\nimg-gif-89",
+      "requirement_ids": [
+        "R-097"
+      ],
+      "source": "T-set.csv#TC-097",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-098",
+      "title": "TC-098",
+      "description": "STEPS/DESCRIPTION\nView each of the below-linked images, and confirm that the web browser does not crash, or display the images in a less-desirable fashion than Communicator 4.5x or IE do.\n\nEXPECTED RESULTS\n(Output equivalent or more desirable than that of Communicator 4.5x or IE.)\nLink(s)\nAnimated GIF with subsequent frame larger than header\nqon1.gif\ncenter.gif\nkillerlogo3.gif\nAnimated GIFs containing at least one corrupted frame\nmerr-01.gif\nGIF with a 1-pixel high frame\none-liner.gif\nNot covered, but should be (from Pam's list):\n1. background: erase\n2. background: overlay\n3. corruption in frame1+\n4. frame1+ dimens < header dimens\n5. global colormaps\n6. local colormaps\n7. 1x1 images",
+      "requirement_ids": [
+        "R-098"
+      ],
+      "source": "T-set.csv#TC-098",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-099",
+      "title": "TC-099",
+      "description": "STEPS/DESCRIPTION\n1. Launch Netscape 6\n2. View the test page (linked below)\n3. Independently view each of the two images files (also linked below)\n\nEXPECTED RESULTS\nAfter step 1, the web page displayed should exhibit display a black & white fancy bitmap image of a clock, followed below by a black and white bitmap image of a penguin.\nAfter step 2, both the clock and penguin images should be displayed, identically to their appearance in step 1 (or as viewed by Communicator 4.x).\n\nLINKS\nimg-xbm.html\nfancyclock.xbm\npenguin.xbm",
+      "requirement_ids": [
+        "R-099"
+      ],
+      "source": "T-set.csv#TC-099",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-100",
+      "title": "TC-100",
+      "description": "STEPS/DESCRIPTION\n1. Testing the <APPLET> tag\n2. Testing the <OBJECT> tag\n\nEXPECTED RESULTS\nAll applets should load and run properly",
+      "requirement_ids": [
+        "R-100"
+      ],
+      "source": "T-set.csv#TC-100",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-101",
+      "title": "TC-101",
+      "description": "INITIAL CONDITIONS\n1. Open the Java console from Tasks | Tools |  Java Console menu\n2. While performing every test, hit the BACK button and FORWARD button in the browser and observe results in browser window or console\n\nSTEPS/DESCRIPTION\nClick the following testcase links\n1. Test 1. Observe the clock display the system time on your machine. Hit BACK and FORWARD button and see that time changes and you see a different time with every visit.\n2. Test 2. Hit BACK and FORWARD button on this page and observe that the init, start and stop methods are called in that order in java console.\n3. Test 3. Hit BACK and FORWARD button on this page and observe that the init, start and stop methods are called in that order in java console.",
+      "requirement_ids": [
+        "R-101"
+      ],
+      "source": "T-set.csv#TC-101",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    }
+  ],
+  "generatable": true,
+  "parent_id": "firefox_legacy"
+}

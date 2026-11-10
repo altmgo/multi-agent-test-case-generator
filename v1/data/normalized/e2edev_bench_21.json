@@ -1,0 +1,129 @@
+{
+  "id": "e2edev_bench_21",
+  "requirements": [
+    {
+      "id": "e2edev_bench_21-R-1",
+      "text": "When the user clicks the play button (data-testid='play-button'), if the music is not playing (the music container doesn't have the 'play' class and the button shows a play icon with class 'fa-play'), the audio (data-testid='audio') should start playing, the 'play' class should be added to the music container (data-testid='music-container'), and the play icon should change to a pause icon (class 'fa-pause'). If the music is already playing (the container has the 'play' class and the button shows a pause icon with class 'fa-pause'), clicking the button should pause the audio, remove the 'play' class from the container, and switch the icon back to play. The music is paused by default when the page loads, and no play/pause state is saved in localStorage.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_21/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_21-R-3",
+      "text": "When the user clicks the next button (data-testid='next-button'), the system should move to the next song in the playlist, update the song title (data-testid='title'), cover image (data-testid='cover'), and audio source (data-testid='audio'), and automatically start playback. If the currently playing song is not the last one, it simply switches to the next; if it's the last song (like \"Ukulele\"), the playlist loops back to the first song (\"Hey\"). In both cases, the play button icon (data-testid='play-button') should reflect the playing state by showing a pause icon (fa-pause). All updates should be seamless, with audio playback starting immediately and UI reflecting the new song.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_21/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_21-R-4",
+      "text": "When the user clicks the previous button (data-testid='prev-button'), the music player should switch to the correct song and start playing it immediately. If the current song is \"Summer\", it should go back to \"Hey\"; if it's \"Hey\" (the first song), it should loop to the last song, \"Ukulele\". In each case, the song title (data-testid='title'), cover image (data-testid='cover'), and audio source (data-testid='audio') should all update to match the new song, and playback should start automatically. This ensures smooth and continuous music navigation for the user.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_21/requirment_with_tests.json#/finegrained_rewith_test/4/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_21-R-7",
+      "text": "When a song finishes playing, the music player should automatically switch to the next song and start playing it without user action. If the current song is \"Summer\", it should move to \"Ukulele\"; if it's the last song \"Ukulele\", it should loop back to the first song \"Hey\". In all cases, the audio should play automatically, and the song title (data-testid='title'), cover image (data-testid='cover'), and audio source (data-testid='audio') must update accordingly to ensure a smooth and uninterrupted listening experience.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_21/requirment_with_tests.json#/finegrained_rewith_test/7/requirement/description"
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_21-R-1-TC-1",
+      "title": "[Normal] User clicks the play button to start playing the song",
+      "description": "Feature: Play Button Functionality\n  The play button should start playing the current song, change its icon to a pause icon, and add a \"play\" class to the music container when clicked.\n\n\n  Scenario: [Normal] User clicks the play button to start playing the song\n    Given the webpage is loaded with the music player visible\n    And the music container does not have the \"play\" class\n    And the play button icon is a play icon with data-testid \"play-button\"\n    When the user clicks the play button with data-testid \"play-button\"\n    Then the audio should start playing\n    And the play button icon should change to a pause icon\n    And the music container should have the \"play\" class\n",
+      "requirement_ids": [
+        "e2edev_bench_21-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_21/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_21-R-1-TC-2",
+      "title": "[Edge] User clicks the play button when the song is already playing",
+      "description": "Feature: Play Button Functionality\n  The play button should start playing the current song, change its icon to a pause icon, and add a \"play\" class to the music container when clicked.\n\n\nScenario: [Edge] User clicks the play button when the song is already playing\n    Given the webpage is loaded with the music player visible\n    And the user clicks the play button with data-testid \"play-button\"\n    And the music container has the \"play\" class\n    And the play button icon is a pause icon with data-testid \"play-button\"\n    When the user clicks the play button with data-testid \"play-button\"\n    Then the audio should pause\n    And the play button icon should change to a play icon\n    And the music container should not have the \"play\" class",
+      "requirement_ids": [
+        "e2edev_bench_21-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_21/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_21-R-3-TC-1",
+      "title": "[Normal] User clicks the next button to switch to the next song",
+      "description": "Feature: Switch to the next song in the playlist\n  The system should switch to the next song in the playlist, update the song title and cover image, and start playing the song when the user clicks the next button.\n\n\nScenario: [Normal] User clicks the next button to switch to the next song\n    Given the music player is loaded\n      And the play button is clicked with data-testid \"play-button\"\n      And the song title is displayed as \"Summer\" in the element with data-testid \"title\"\n      And the cover image source is \"https://github.com/bradtraversy/vanillawebprojects/blob/master/music-player/images/summer.jpg?raw=true\"\n      And the audio source is \"https://github.com/bradtraversy/vanillawebprojects/blob/master/music-player/music/summer.mp3?raw=true\"\n    When the user clicks the next button with data-testid \"next-button\"\n    Then the song title should change to \"Ukulele\" in the element with data-testid \"title\"\n      And the cover image source should update to \"https://github.com/bradtraversy/vanillawebprojects/blob/master/music-player/images/ukulele.jpg?raw=true\"\n      And the audio source should change to \"https://github.com/bradtraversy/vanillawebprojects/blob/master/music-player/music/ukulele.mp3?raw=true\"\n      And the new song should start playing\n      And the play button icon should change to a pause icon in the element with data-testid \"play-button\"",
+      "requirement_ids": [
+        "e2edev_bench_21-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_21/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_21-R-3-TC-2",
+      "title": "[Edge] User clicks the next button when the last song in the playlist is playing",
+      "description": "Feature: Switch to the next song in the playlist\n  The system should switch to the next song in the playlist, update the song title and cover image, and start playing the song when the user clicks the next button.\n\n\n  Scenario: [Edge] User clicks the next button when the last song in the playlist is playing\n    Given the music player is loaded with the song \"Ukulele\" currently playing\n      And the song title is displayed as \"Ukulele\" in the element with data-testid \"title\"\n      And the cover image source is \"https://github.com/bradtraversy/vanillawebprojects/blob/master/music-player/images/ukulele.jpg?raw=true\"\n      And the audio source is \"https://github.com/bradtraversy/vanillawebprojects/blob/master/music-player/music/ukulele.mp3?raw=true\"\n    When the user clicks the button with data-testid \"next-button\"\n    Then the song title should update to \"Hey\" in the element with data-testid \"title\"\n      And the cover image source should update to \"https://github.com/bradtraversy/vanillawebprojects/blob/master/music-player/images/hey.jpg?raw=true\"\n      And the audio source should update to \"https://github.com/bradtraversy/vanillawebprojects/blob/master/music-player/music/hey.mp3?raw=true\"\n      And the song should start playing\n      And the play button icon should change to a pause icon in the element with data-testid \"play-button\"\n",
+      "requirement_ids": [
+        "e2edev_bench_21-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_21/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_21-R-4-TC-1",
+      "title": "[Normal] User clicks the previous button to switch to the previous song",
+      "description": "Feature: Previous Song Functionality\n  The system should switch to the previous song in the playlist, update the song title and cover image, and start playing the song when the user clicks the previous button.\n\n\n  Scenario: [Normal] User clicks the previous button to switch to the previous song\n    Given the music player is loaded with the current song \"Summer\"\n      And the song title is displayed as \"Summer\" in the element with data-testid \"title\"\n      And the cover image source is \"https://github.com/bradtraversy/vanillawebprojects/blob/master/music-player/images/summer.jpg?raw=true\" in the element with data-testid \"cover\"\n      And the audio source is \"https://github.com/bradtraversy/vanillawebprojects/blob/master/music-player/music/summer.mp3?raw=true\" in the element with data-testid \"audio\"\n    When the user clicks the previous button with data-testid \"prev-button\"\n    Then the song title should update to \"Hey\" in the element with data-testid \"title\"\n      And the cover image source should update to \"https://github.com/bradtraversy/vanillawebprojects/blob/master/music-player/images/hey.jpg?raw=true\" in the element with data-testid \"cover\"\n      And the audio source should update to \"https://github.com/bradtraversy/vanillawebprojects/blob/master/music-player/music/hey.mp3?raw=true\" in the element with data-testid \"audio\"\n      And the audio should start playing\n",
+      "requirement_ids": [
+        "e2edev_bench_21-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_21/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_21-R-4-TC-2",
+      "title": "[Edge] User clicks the previous button when the first song in the playlist is playing",
+      "description": "Feature: Previous Song Functionality\n  The system should switch to the previous song in the playlist, update the song title and cover image, and start playing the song when the user clicks the previous button.\n\n\n  Scenario: [Edge] User clicks the previous button when the first song in the playlist is playing\n    Given the music player is loaded with the current song \"Hey\"\n      And the song title is displayed as \"Hey\" in the element with data-testid \"title\"\n    When the user clicks the previous button with data-testid \"prev-button\"\n    Then the song title should update to \"Ukulele\" in the element with data-testid \"title\"\n\n",
+      "requirement_ids": [
+        "e2edev_bench_21-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_21/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_21-R-7-TC-1",
+      "title": "[Normal] Transition to next song when current song ends",
+      "description": "Feature: Automatic Transition to Next Song in Playlist\n  The system should automatically transition to the next song in the playlist and start playing it when a song ends.\n\n\n  Scenario: [Normal] Transition to next song when current song ends\n    Given the music player is loaded with the song \"Summer\"\n    And the audio element with data-testid \"audio\" is playing\n    When the song \"Summer\" ends\n    Then the next song \"Ukulele\" should be loaded\n    And the audio element with data-testid \"audio\" should start playing\n    And the title element with data-testid \"title\" should display \"Ukulele\"\n    And the cover image with data-testid \"cover\" should be updated to \"ukulele.jpg\"\n",
+      "requirement_ids": [
+        "e2edev_bench_21-R-7"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_21/requirment_with_tests.json#/finegrained_rewith_test/7/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_21-R-7-TC-2",
+      "title": "[Edge] Transition to first song when the last song ends",
+      "description": "Feature: Automatic Transition to Next Song in Playlist\n  The system should automatically transition to the next song in the playlist and start playing it when a song ends.\n\n\n  Scenario: [Edge] Transition to first song when the last song ends\n    Given the music player is loaded with the last song \"Ukulele\"\n    And the audio element with data-testid \"audio\" is playing\n    When the song \"Ukulele\" ends\n    Then the first song \"Hey\" should be loaded\n    And the audio element with data-testid \"audio\" should start playing\n    And the title element with data-testid \"title\" should display \"Hey\"\n    And the cover image with data-testid \"cover\" should be updated to \"hey.jpg\"\n",
+      "requirement_ids": [
+        "e2edev_bench_21-R-7"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_21/requirment_with_tests.json#/finegrained_rewith_test/7/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "generatable": true,
+  "parent_id": null
+}

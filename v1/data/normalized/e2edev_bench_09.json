@@ -1,0 +1,249 @@
+{
+  "id": "e2edev_bench_09",
+  "requirements": [
+    {
+      "id": "e2edev_bench_09-R-1",
+      "text": "The web application must allow users to create a schedule through the 'Study Planner' page. Specifically, when the user fills out the 'Subject' (data-testid='subject'), 'Date' (Date picker, data-testid='date'), and 'Time' (Time picker, data-testid='time') fields in the schedule form located within the section with data-testid 'schedule-section', and clicks the 'Add Schedule' button (data-testid='add-schedule-button'), the system must validate that all fields are completed. If any field is left empty, the system should prevent the addition of a new schedule item. Upon successful validation, a new schedule item should be created and appended to the schedule list (data-testid='schedule-list'). The schedule item must display the subject, date, and time in the format 'Subject - YYYY-MM-DD at HH:MM'.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_09/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_09-R-2",
+      "text": "The system must allow users to add a new task to the task list by filling out the task form and clicking the 'Add Task' button. Specifically, when the 'Study Planner' page is loaded, the 'Task' input field (data-testid='task') and the 'Deadline' input field (Date picker, data-testid='deadline') must be visible and empty, and the 'Add Task' button (data-testid='add-task-button') must also be visible. The user can enter a task name in the 'Task' input field and a valid date in the 'Deadline' input field. Upon clicking the 'Add Task' button (data-testid='add-task-button'), if both fields are filled, a new task item will be added to the task list (data-testid='task-list'), displaying the task name and deadline in the format 'Task Name - Deadline: YYYY-MM-DD'. If either the 'Task' or 'Deadline' field is left empty, no new task item will be added to the task list.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_09/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_09-R-3",
+      "text": "The web application must ensure that after a user successfully adds a schedule using the 'Add Schedule' button (located via data-testid 'add-schedule-button'), the input fields for 'Subject', 'Date', and 'Time' (located via data-testid 'subject', 'date', and 'time' respectively) within the schedule form (located via data-testid 'schedule-form') are reset to empty. This allows the user to enter new data without manually clearing the fields. ",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_09/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_09-R-4",
+      "text": "The Study Planner web application must ensure that after a task is successfully added, the task form fields are reset to be empty, allowing the user to enter new data. ",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_09/requirment_with_tests.json#/finegrained_rewith_test/4/requirement/description"
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_09-R-1-TC-1",
+      "title": "[Normal] Add a valid schedule item",
+      "description": "Feature: Schedule Creation\n  The user can create a schedule by filling out the \"Subject\", \"Date\", and \"Time\" fields and clicking the \"Add Schedule\" button. The new schedule item should be added to the schedule list displaying the subject, date, and time.\n\n\n  Scenario: [Normal] Add a valid schedule item\n    Given the \"Study Planner\" page is loaded\n    And the \"Subject\" field with data-testid \"subject\" is empty\n    And the \"Date\" field with data-testid \"date\" is empty\n    And the \"Time\" field with data-testid \"time\" is empty\n    When the user enters \"Math\" into the \"Subject\" field with data-testid \"subject\"\n    And the user enters \"2023-10-15\" into the \"Date\" field with data-testid \"date\"\n    And the user enters \"14:00\" into the \"Time\" field with data-testid \"time\"\n    And the user clicks the \"Add Schedule\" button with data-testid \"add-schedule-button\"\n    Then a new schedule item \"Math - 2023-10-15 at 14:00\" should be added to the schedule list with data-testid \"schedule-list\"\n",
+      "requirement_ids": [
+        "e2edev_bench_09-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_09/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_09-R-1-TC-2",
+      "title": "[Edge] Add a schedule item with minimum input length",
+      "description": "Feature: Schedule Creation\n  The user can create a schedule by filling out the \"Subject\", \"Date\", and \"Time\" fields and clicking the \"Add Schedule\" button. The new schedule item should be added to the schedule list displaying the subject, date, and time.\n\n\n  Scenario: [Edge] Add a schedule item with minimum input length\n    Given the \"Study Planner\" page is loaded\n    And the \"Subject\" field with data-testid \"subject\" is empty\n    And the \"Date\" field with data-testid \"date\" is empty\n    And the \"Time\" field with data-testid \"time\" is empty\n    When the user enters \"A\" into the \"Subject\" field with data-testid \"subject\"\n    And the user enters \"2023-01-01\" into the \"Date\" field with data-testid \"date\"\n    And the user enters \"00:00\" into the \"Time\" field with data-testid \"time\"\n    And the user clicks the \"Add Schedule\" button with data-testid \"add-schedule-button\"\n    Then a new schedule item \"A - 2023-01-01 at 00:00\" should be added to the schedule list with data-testid \"schedule-list\"\n",
+      "requirement_ids": [
+        "e2edev_bench_09-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_09/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_09-R-1-TC-3",
+      "title": "[Error] Fail to add a schedule item with missing subject",
+      "description": "Feature: Schedule Creation\n  The user can create a schedule by filling out the \"Subject\", \"Date\", and \"Time\" fields and clicking the \"Add Schedule\" button. The new schedule item should be added to the schedule list displaying the subject, date, and time.\n\n\n  Scenario: [Error] Fail to add a schedule item with missing subject\n    Given the \"Study Planner\" page is loaded\n    And the \"Subject\" field with data-testid \"subject\" is empty\n    And the \"Date\" field with data-testid \"date\" is empty\n    And the \"Time\" field with data-testid \"time\" is empty\n    When the user enters \"\" into the \"Subject\" field with data-testid \"subject\"\n    And the user enters \"2023-10-15\" into the \"Date\" field with data-testid \"date\"\n    And the user enters \"14:00\" into the \"Time\" field with data-testid \"time\"\n    And the user clicks the \"Add Schedule\" button with data-testid \"add-schedule-button\"\n    Then no new schedule item should be added to the schedule list with data-testid \"schedule-list\"\n",
+      "requirement_ids": [
+        "e2edev_bench_09-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_09/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_09-R-1-TC-4",
+      "title": "[Error] Attempt to add a schedule item with missing date",
+      "description": "Feature: Schedule Creation\n  The user can create a schedule by filling out the \"Subject\", \"Date\", and \"Time\" fields and clicking the \"Add Schedule\" button. The new schedule item should be added to the schedule list displaying the subject, date, and time.\n\n\nScenario: [Error] Attempt to add a schedule item with missing date\n    Given the \"Study Planner\" page is loaded\n    And the \"Subject\" field with data-testid \"subject\" is empty\n    And the \"Date\" field with data-testid \"date\" is empty\n    And the \"Time\" field with data-testid \"time\" is empty\n    When the user enters \"Math\" into the \"Subject\" field with data-testid \"subject\"\n    And the user enters \"14:00\" into the \"Time\" field with data-testid \"time\"\n    And the user clicks the \"Add Schedule\" button with data-testid \"add-schedule-button\"\n    Then no new schedule item should be added to the schedule list with data-testid \"schedule-list\"",
+      "requirement_ids": [
+        "e2edev_bench_09-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_09/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_09-R-1-TC-5",
+      "title": "[Error] Attempt to add a schedule item with missing time",
+      "description": "Feature: Schedule Creation\n  The user can create a schedule by filling out the \"Subject\", \"Date\", and \"Time\" fields and clicking the \"Add Schedule\" button. The new schedule item should be added to the schedule list displaying the subject, date, and time.\n\n\nScenario: [Error] Attempt to add a schedule item with missing time\n    Given the \"Study Planner\" page is loaded\n    And the \"Subject\" field with data-testid \"subject\" is empty\n    And the \"Date\" field with data-testid \"date\" is empty\n    And the \"Time\" field with data-testid \"time\" is empty\n    When the user enters \"Math\" into the \"Subject\" field with data-testid \"subject\"\n    And the user enters \"2023-10-15\" into the \"Date\" field with data-testid \"date\"\n    And the user clicks the \"Add Schedule\" button with data-testid \"add-schedule-button\"\n    Then no new schedule item should be added to the schedule list with data-testid \"schedule-list\"",
+      "requirement_ids": [
+        "e2edev_bench_09-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_09/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/4/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_09-R-2-TC-1",
+      "title": "[Normal] Add a valid task with a valid deadline",
+      "description": "Feature: Add a new task to the task list\n  The system must allow users to add a new task with a deadline to the task list by filling out the task form and clicking the \"Add Task\" button.\n\n\nScenario: [Normal] Add a valid task with a valid deadline\n    Given the \"Study Planner\" page is loaded\n    And the \"Task\" input field with data-testid \"task\" is visible and empty\n    And the \"Deadline\" input field with data-testid \"deadline\" is visible and empty\n    And the \"Add Task\" button with data-testid \"add-task-button\" is visible\n    When the user enters \"Complete homework\" into the \"Task\" input field with data-testid \"task\"\n    And the user enters \"2023-12-01\" into the \"Deadline\" input field with data-testid \"deadline\"\n    And the user clicks the \"Add Task\" button with data-testid \"add-task-button\"\n    Then a new task item is added to the task list with data-testid \"task-list\"\n    And the task item displays \"Complete homework - Deadline: 2023-12-01\"",
+      "requirement_ids": [
+        "e2edev_bench_09-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_09/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_09-R-2-TC-2",
+      "title": "[Edge] Add a task with a deadline set to today\"s date",
+      "description": "Feature: Add a new task to the task list\n  The system must allow users to add a new task with a deadline to the task list by filling out the task form and clicking the \"Add Task\" button.\n\n\nScenario: [Edge] Add a task with a deadline set to today\"s date\n    Given the \"Study Planner\" page is loaded\n    And the \"Task\" input field with data-testid \"task\" is visible and empty\n    And the \"Deadline\" input field with data-testid \"deadline\" is visible and empty\n    And the \"Add Task\" button with data-testid \"add-task-button\" is visible\n    When the user enters \"Submit assignment\" into the \"Task\" input field with data-testid \"task\"\n    And the user enters \"2023-11-01\" into the \"Deadline\" input field with data-testid \"deadline\"\n    And the user clicks the \"Add Task\" button with data-testid \"add-task-button\"\n    Then a new task item is added to the task list with data-testid \"task-list\"\n    And the task item displays \"Submit assignment - Deadline: 2023-11-01\"",
+      "requirement_ids": [
+        "e2edev_bench_09-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_09/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_09-R-2-TC-3",
+      "title": "[Error] Fail to add a task without entering a task name",
+      "description": "Feature: Add a new task to the task list\n  The system must allow users to add a new task with a deadline to the task list by filling out the task form and clicking the \"Add Task\" button.\n\n\nScenario: [Error] Fail to add a task without entering a task name\n    Given the \"Study Planner\" page is loaded\n    And the \"Task\" input field with data-testid \"task\" is visible and empty\n    And the \"Deadline\" input field with data-testid \"deadline\" is visible and empty\n    And the \"Add Task\" button with data-testid \"add-task-button\" is visible\n    When the user leaves the \"Task\" input field with data-testid \"task\" empty\n    And the user enters \"2023-12-01\" into the \"Deadline\" input field with data-testid \"deadline\"\n    And the user clicks the \"Add Task\" button with data-testid \"add-task-button\"\n    Then no new task item is added to the task list with data-testid \"task-list\"",
+      "requirement_ids": [
+        "e2edev_bench_09-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_09/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_09-R-2-TC-4",
+      "title": "[Error] Attempt to add a task without entering a deadline",
+      "description": "Feature: Add a new task to the task list\n  The system must allow users to add a new task with a deadline to the task list by filling out the task form and clicking the \"Add Task\" button.\n\n\nScenario: [Error] Attempt to add a task without entering a deadline\n    Given the \"Study Planner\" page is loaded\n    And the \"Task\" input field with data-testid \"task\" is visible and empty\n    And the \"Deadline\" input field with data-testid \"deadline\" is visible and empty\n    And the \"Add Task\" button with data-testid \"add-task-button\" is visible\n    When the user enters \"Prepare for exam\" into the \"Task\" input field with data-testid \"task\"\n    And the user leaves the \"Deadline\" input field with data-testid \"deadline\" empty\n    And the user clicks the \"Add Task\" button with data-testid \"add-task-button\"\n    Then no new task item is added to the task list with data-testid \"task-list\"",
+      "requirement_ids": [
+        "e2edev_bench_09-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_09/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_09-R-2-TC-5",
+      "title": "[Error] Attempt to add a task with both fields empty",
+      "description": "Feature: Add a new task to the task list\n  The system must allow users to add a new task with a deadline to the task list by filling out the task form and clicking the \"Add Task\" button.\n\n\nScenario: [Error] Attempt to add a task with both fields empty\n    Given the \"Study Planner\" page is loaded\n    And the \"Task\" input field with data-testid \"task\" is visible and empty\n    And the \"Deadline\" input field with data-testid \"deadline\" is visible and empty\n    And the \"Add Task\" button with data-testid \"add-task-button\" is visible\n    When the user leaves the \"Task\" input field with data-testid \"task\" empty\n    And the user leaves the \"Deadline\" input field with data-testid \"deadline\" empty\n    And the user clicks the \"Add Task\" button with data-testid \"add-task-button\"\n    Then no new task item is added to the task list with data-testid \"task-list\"",
+      "requirement_ids": [
+        "e2edev_bench_09-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_09/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/4/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_09-R-3-TC-1",
+      "title": "[Normal] Add a schedule and verify form reset",
+      "description": "Feature: Schedule Form Reset Functionality\n  After a schedule is added, the system must reset the schedule form fields to be empty, allowing the user to enter new data.\n\n\nScenario: [Normal] Add a schedule and verify form reset\n    Given the \"Study Planner\" page is loaded\n    And the user enters \"Mathematics\" into the subject field with data-testid \"subject\"\n    And the user enters \"2023-10-15\" into the date field with data-testid \"date\"\n    And the user enters \"10:00\" into the time field with data-testid \"time\"\n    When the user clicks the \"Add Schedule\" button with data-testid \"add-schedule-button\"\n    Then the subject field with data-testid \"subject\" should be empty\n    And the date field with data-testid \"date\" should be empty\n    And the time field with data-testid \"time\" should be empty",
+      "requirement_ids": [
+        "e2edev_bench_09-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_09/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_09-R-3-TC-2",
+      "title": "[Edge] Add a schedule with minimum input and verify form reset",
+      "description": "Feature: Schedule Form Reset Functionality\n  After a schedule is added, the system must reset the schedule form fields to be empty, allowing the user to enter new data.\n\n\nScenario: [Edge] Add a schedule with minimum input and verify form reset\n    Given the \"Study Planner\" page is loaded\n    And the user enters \"A\" into the subject field with data-testid \"subject\"\n    And the user enters \"2023-01-01\" into the date field with data-testid \"date\"\n    And the user enters \"00:00\" into the time field with data-testid \"time\"\n    When the user clicks the \"Add Schedule\" button with data-testid \"add-schedule-button\"\n    Then the subject field with data-testid \"subject\" should be empty\n    And the date field with data-testid \"date\" should be empty\n    And the time field with data-testid \"time\" should be empty",
+      "requirement_ids": [
+        "e2edev_bench_09-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_09/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_09-R-3-TC-3",
+      "title": "[Error] Attempt to add a schedule with missing subject",
+      "description": "Feature: Schedule Form Reset Functionality\n  After a schedule is added, the system must reset the schedule form fields to be empty, allowing the user to enter new data.\n\n\n  Scenario: [Error] Attempt to add a schedule with missing subject\n    Given the \"Study Planner\" page is loaded\n    And the user leaves the subject field with data-testid \"subject\" empty\n    And the user enters \"2023-10-15\" into the date field with data-testid \"date\"\n    And the user enters \"10:00\" into the time field with data-testid \"time\"\n    When the user clicks the \"Add Schedule\" button with data-testid \"add-schedule-button\"\n    Then the schedule list with data-testid \"schedule-list\" should not contain any new items\n    And the subject field with data-testid \"subject\" should remain empty\n    And the date field with data-testid \"date\" should contain \"2023-10-15\"\n    And the time field with data-testid \"time\" should contain \"10:00\"\n",
+      "requirement_ids": [
+        "e2edev_bench_09-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_09/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_09-R-3-TC-4",
+      "title": "[Error] Attempt to add a schedule with missing date",
+      "description": "Feature: Schedule Form Reset Functionality\n  After a schedule is added, the system must reset the schedule form fields to be empty, allowing the user to enter new data.\n\n\n  Scenario: [Error] Attempt to add a schedule with missing date\n    Given the \"Study Planner\" page is loaded\n    And the user enters \"Mathematics\" into the subject field with data-testid \"subject\"\n    And the user leaves the date field with data-testid \"date\" empty\n    And the user enters \"10:00\" into the time field with data-testid \"time\"\n    When the user clicks the \"Add Schedule\" button with data-testid \"add-schedule-button\"\n    Then the schedule list with data-testid \"schedule-list\" should not contain any new items\n    And the subject field with data-testid \"subject\" should contain \"Mathematics\"\n    And the date field with data-testid \"date\" should remain empty\n    And the time field with data-testid \"time\" should contain \"10:00\"\n",
+      "requirement_ids": [
+        "e2edev_bench_09-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_09/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_09-R-3-TC-5",
+      "title": "[Error] Attempt to add a schedule with missing time",
+      "description": "Feature: Schedule Form Reset Functionality\n  After a schedule is added, the system must reset the schedule form fields to be empty, allowing the user to enter new data.\n\n\n  Scenario: [Error] Attempt to add a schedule with missing time\n    Given the \"Study Planner\" page is loaded\n    And the user enters \"Mathematics\" into the subject field with data-testid \"subject\"\n    And the user enters \"2023-10-15\" into the date field with data-testid \"date\"\n    And the user leaves the time field with data-testid \"time\" empty\n    When the user clicks the \"Add Schedule\" button with data-testid \"add-schedule-button\"\n    Then the schedule list with data-testid \"schedule-list\" should not contain any new items\n    And the subject field with data-testid \"subject\" should contain \"Mathematics\"\n    And the date field with data-testid \"date\" should contain \"2023-10-15\"\n    And the time field with data-testid \"time\" should remain empty",
+      "requirement_ids": [
+        "e2edev_bench_09-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_09/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/4/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_09-R-4-TC-1",
+      "title": "[Normal] Task form fields reset after adding a task",
+      "description": "Feature: Task Form Reset After Submission\n  The system must reset the task form fields to be empty after a task is added, allowing the user to enter new data.\n\n\nScenario: [Normal] Task form fields reset after adding a task\n    Given the Study Planner page is loaded\n    And the user enters \"Complete assignment\" into the task field with data-testid \"task\"\n    And the user enters \"2023-10-15\" into the deadline field with data-testid \"deadline\"\n    When the user clicks the \"Add Task\" button with data-testid \"add-task-button\"\n    Then the task field with data-testid \"task\" should be empty\n    And the deadline field with data-testid \"deadline\" should be empty",
+      "requirement_ids": [
+        "e2edev_bench_09-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_09/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_09-R-4-TC-2",
+      "title": "[Edge Case] Task form fields are not reset when required fields are missing",
+      "description": "Feature: Task Form Reset After Submission\n  The system must reset the task form fields to be empty after a task is added, allowing the user to enter new data.\n\n\nScenario: [Edge Case] Task form fields are not reset when required fields are missing\n  Given the Study Planner page is loaded\n  And the user enters \"Our Task\" into the \"Task\" field with data-testid \"task\"\n  And the user leaves the \"Deadline\" field with data-testid \"deadline\" empty\n  When the user clicks the \"Add Task\" button with data-testid \"add-task-button\"\n  Then the \"Task\" field with data-testid \"task\" should still contain \"Our Task\"",
+      "requirement_ids": [
+        "e2edev_bench_09-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_09/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_09-R-4-TC-3",
+      "title": "[Edge Case] Task form fields are not reset when required fields are missing",
+      "description": "Feature: Task Form Reset After Submission\n  The system must reset the task form fields to be empty after a task is added, allowing the user to enter new data.\n\n\nScenario: [Edge Case] Task form fields are not reset when required fields are missing\n  Given the Study Planner page is loaded\n  And the user leaves the \"Task\" field with data-testid \"task\" empty\n  And the user enters \"2023-09-18\" into the \"Deadline\" field with data-testid \"deadline\"\n  When the user clicks the \"Add Task\" button with data-testid \"add-task-button\"\n  Then the \"Deadline\" field with data-testid \"deadline\" should still contain \"2023-09-18\"",
+      "requirement_ids": [
+        "e2edev_bench_09-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_09/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "generatable": true,
+  "parent_id": null
+}

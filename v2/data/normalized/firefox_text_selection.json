@@ -1,0 +1,81 @@
+{
+  "id": "firefox_text_selection",
+  "requirements": [
+    {
+      "id": "R-140",
+      "text": "Drag-selection of text shall be functional, both from dead space, and from within text.",
+      "language": "en",
+      "source": "R-set.csv#R-140"
+    },
+    {
+      "id": "R-141",
+      "text": "The double-click gesture on text shall highlight it.",
+      "language": "en",
+      "source": "R-set.csv#R-141"
+    },
+    {
+      "id": "R-142",
+      "text": "Text shall be selected via shift-select gestures.",
+      "language": "en",
+      "source": "R-set.csv#R-142"
+    },
+    {
+      "id": "R-143",
+      "text": "Text shall be selected via drag-scrolling gestures.",
+      "language": "en",
+      "source": "R-set.csv#R-143"
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "TC-140",
+      "title": "TC-140",
+      "description": "INITIAL CONDITIONS\nView the below-linked document.\n\nSTEPS/DESCRIPTION\n[from white space to white space, vertically]\n1. Move the mouse pointer to the white space above \"Hi!\".\n2. Click and hold the mouse button, drag to the white space below the first line of text, and release the mouse pointer\n3. Clear the selection (e.g. click anywhere else within the document)\n\n[from white space to white space, horizontally]\n4. Move the mouse pointer to the immediate left of the word \"Hi!\"\n5. Click and hold the mouse button, drag to the last character on the line, and release the mouse pointer.\n6. Clear the selection (e.g. click anywhere else within the document)\n\n[from white space to text, with line breaks]\n7. Move the mouse pointer to the immediate left of the word \"another\" (in the second line of text)\n8. Click and hold the mouse button, dragging to the last character of the word \"final\" (in the 3rd line), and release the mouse pointer.\n\nEXPECTED RESULTS\nAfter step #2, the first line of text should be selected in its entirety.\nAfter step #4, the first line of text should (again) be selected in its entirety.\nAfter step #8, the middle of the second line (beginning with the entire word \"another\") should be selected, through the middle of the third line (ending with the entire word \"final\".)\n\nLINKS\ndrag-select-text.html",
+      "requirement_ids": [
+        "R-140"
+      ],
+      "source": "T-set.csv#TC-140",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-141",
+      "title": "TC-141",
+      "description": "INITIAL CONDITIONS\nView the below-linked document.\n\nSTEPS/DESCRIPTION\nFor each numbered item on the page:\n1. double-click where the instructions say \"HERE\" (stems #1-3) [or]\n2. double-click on each text item, and confirm that it is highlighted pursuant to the boldfaced instructions preceeding each numbered section.\n\nEXPECTED RESULTS\nResults pursuant to the instructions preceeding each numbered section on the page.\n\nLINKS\ndouble-click-text.html",
+      "requirement_ids": [
+        "R-141"
+      ],
+      "source": "T-set.csv#TC-141",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-142",
+      "title": "TC-142",
+      "description": "STEPS/DESCRIPTION\n1. View the attached test case file.\n2. Hold the shift key down.\n3. Click on the \"M\" in \"Multiple\", at the top of the document\n4. Using the scroll bar, drag to the bottom of the document\n5. Click in the white space at the bottom-right of the document (below any page content)\n6. Clear the selection. (e.g. click within the browser window, but outside of the selection)\n7. Double click on the \"A\" in \"August\" (boldfaced)\n8. Place the mouse pointer at the right edge of the selection.\n9. Holding the shift key down, drag down to the end of the paragraph. (\"software\")\n\nEXPECTED RESULTS\nAfter step 5, all of the document content should be selected.\nAfter step 9, the entire first paragraph should be selected.\n\nLINKS\nshift-select-text.html",
+      "requirement_ids": [
+        "R-142"
+      ],
+      "source": "T-set.csv#TC-142",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-143",
+      "title": "TC-143",
+      "description": "STEPS/DESCRIPTION\n1. View the attached drag-scroll-text.html test case\n2. If necessary, shrink the window so that the browser window contains both horizontal and vertical scroll bars.\n3. Start from the first word (\"Currently\") in the upper-left hand corner of the web page, and drag-scroll to the bottom-right hand corner of the page.\n4. From the final word (\"component\") in the document, drag-scroll from the lower-right hand corner of the web to the upper-left hand corner of the web page.\n5. View the drag-scroll-text-frame.html test case.\n6. For each the page's two frames, drag-scroll from the top of the page to its bottom.\n7. View the drag-scroll-box.html test case.\n8. Starting from the first word in the upper-left hand corner of the text area, drag-scroll downwards to the end of the text content.\n\nEXPECTED RESULTS\nAfter Step #3, the page should be successfully drag-scrolled to the bottom-right hand corner. (despite having to drag-scroll through several table cells, and out of the table)\nAfter Step #4, the document should be successfully drag-scrolled to its upper-left hand corner.\nAfter Step #6, drag-scrolling a frame should not impact the contents of its neighbor frame.\nAfter Step #8, the entire text area should be selected.\n\nLINKS\ndrag-scroll-text.html\ndrag-scroll-text-frame.html\ndrag-scroll-box.html",
+      "requirement_ids": [
+        "R-143"
+      ],
+      "source": "T-set.csv#TC-143",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    }
+  ],
+  "generatable": true,
+  "parent_id": "firefox_legacy"
+}

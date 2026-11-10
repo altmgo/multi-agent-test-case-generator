@@ -1,0 +1,171 @@
+{
+  "id": "firefox_web_location",
+  "requirements": [
+    {
+      "id": "R-166",
+      "text": "Web location dialog shall be accessed from the menubar and keyboard.",
+      "language": "en",
+      "source": "R-set.csv#R-166"
+    },
+    {
+      "id": "R-167",
+      "text": "It shall be possible to open a web location (URL) in the current Navigator window (including the dismiss dialog).",
+      "language": "en",
+      "source": "R-set.csv#R-167"
+    },
+    {
+      "id": "R-168",
+      "text": "It shall be possible to open a web location (URL) in a new Navigator window (including the dismiss dialog).",
+      "language": "en",
+      "source": "R-set.csv#R-168"
+    },
+    {
+      "id": "R-169",
+      "text": "It shall be possible to open web location in a Composer window (including the dismiss dialog).",
+      "language": "en",
+      "source": "R-set.csv#R-169"
+    },
+    {
+      "id": "R-170",
+      "text": "Error shall be displayed while trying to open a nonexistent (bogus) web location.",
+      "language": "en",
+      "source": "R-set.csv#R-170"
+    },
+    {
+      "id": "R-171",
+      "text": "It shall be possible to open local files (both HTML and plain text tested) in the current Navigator window (including the dismiss dialog).",
+      "language": "en",
+      "source": "R-set.csv#R-171"
+    },
+    {
+      "id": "R-172",
+      "text": "It shall be possible to open local files (both HTML and plain text tested) in a new Navigator window (including the dismiss dialog).",
+      "language": "en",
+      "source": "R-set.csv#R-172"
+    },
+    {
+      "id": "R-173",
+      "text": "ıt shall be possible to open local files (both HTML and plain text tested) in a Composer window (including the dismiss dialog).",
+      "language": "en",
+      "source": "R-set.csv#R-173"
+    },
+    {
+      "id": "R-174",
+      "text": "Error shall be displayed while trying to open a nonexistent (bogus) local file.",
+      "language": "en",
+      "source": "R-set.csv#R-174"
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "TC-166",
+      "title": "TC-166",
+      "description": "INITIAL CONDITIONS\nThe browser should already be open.\n\nSTEPS/DESCRIPTION\nTest the following to see if all of these tasks will bring up the Open Web Location dialog:\n1. From the menubar of the browser, select File > Open Web Location.\n2. Use the keyboard shortcut specific to your platform: \nWin32 and Unix: Control+Shift+L\nMacintosh: Command+Shift+L\n\nEXPECTED RESULTS\nThe Open Web Location should be displayed, regardless of the means you used above.",
+      "requirement_ids": [
+        "R-166"
+      ],
+      "source": "T-set.csv#TC-166",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-167",
+      "title": "TC-167",
+      "description": "INITIAL CONDITIONS\nThe Open Web Location dialog should already be opened in the browser.\n\nSTEPS/DESCRIPTION - I\n1. In the textfield enter the URL http://www.mozillazine.org/.\n2. Select Current Navigator window from the droplist, if it isn't already displayed there.\n3. Click the Open button (or hit Enter).\n\nEXPECTED RESULTS -I\nThe dialog should go away and the URL load into the current browser window.\n\n\nSTEPS/DESCRIPTION - II\n1. In the textfield enter the URL http://www.mozillazine.org/.\n2. Select Current Navigator window from the droplist, if it isn't already displayed there.\n3. Click the Cancel button (or hit Esc).\n\nEXPECTED RESULTS -II\nThe dialog should go away and the page in the current browser window remain unchanged.",
+      "requirement_ids": [
+        "R-167"
+      ],
+      "source": "T-set.csv#TC-167",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-168",
+      "title": "TC-168",
+      "description": "INITIAL CONDITIONS\nThe Open Web Location dialog should already be opened in the browser.\n\nSTEPS/DESCRIPTION - I\n1. In the textfield enter the URL http://www.mozillazine.org/.\n2. Select New Navigator window from the droplist, if it isn't already displayed there.\n3. Click the Open button (or hit Enter).\n\nEXPECTED RESULTS - I\n1. The dialog should go away.\n2. Another browser window should appear.\n3. The URL should load into the new browser window.\n\n\nSTEPS/DESCRIPTION - II\n1. In the textfield enter the URL http://www.mozillazine.org/.\n2. Select New Navigator window from the droplist, if it isn't already displayed there.\n3. Click the Cancel button (or hit Esc).\n\nEXPECTED RESULTS -II\nThe dialog should go away and the page in the current browser window remain unchanged.",
+      "requirement_ids": [
+        "R-168"
+      ],
+      "source": "T-set.csv#TC-168",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-169",
+      "title": "TC-169",
+      "description": "INITIAL CONDITIONS\nThe Open Web Location dialog should already be opened in the browser.\n\nSTEPS/DESCRIPTION - UI Test\n1. In the textfield enter the URL http://www.mozilla.org/quality/browser/front-end/testcases/xpapps-gui/open-URL/files/boring.html.\n2. Select New Composer window from the droplist, if it isn't already displayed there.\n3. Click the Open button (or hit Enter).\n\nEXPECTED RESULTS - UI Test\n1. The dialog should go away.\n2. An editor window should appear.\n3. The page contents of the URL should load into the editor window.\n \n\nSTEPS/DESCRIPTION - Dismissal test\n1. In the textfield enter the URL http://www.mozilla.org/quality/browser/front-end/testcases/xpapps-gui/open-URL/files/boring.html.\n2. Select New Composer window from the droplist, if it isn't already displayed there.\n3. Click the Cancel button (or hit Esc).\n\nEXPECTED RESULTS - Dismissal test\nThe dialog should go away and the page in the current browser window remain unchanged.",
+      "requirement_ids": [
+        "R-169"
+      ],
+      "source": "T-set.csv#TC-169",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-170",
+      "title": "TC-170",
+      "description": "INITIAL CONDITIONS\nThe Open Web Location dialog should already be opened in the browser.\n\nSTEPS/DESCRIPTION\n1. In the textfield enter the URL http://www.mozilla.org/lizard-eats-all/blarg.html.\n2. Select Current Navigator window from the droplist, if it isn't already displayed there.\n3. Click the Open button (or hit Enter).\n\nEXPECTED RESULTS\n1. The dialog should go away.\n2. Since this page doesn't exist (well, it shouldn't ;-), the page that loads should display the typical 404 error: \nNot Found: The requested object does not exist on this server. The link you followed is either outdated, inaccurate, or the server has been instructed not to let you have it.",
+      "requirement_ids": [
+        "R-170"
+      ],
+      "source": "T-set.csv#TC-170",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-171",
+      "title": "TC-171",
+      "description": "INITIAL CONDITIONS\n1. Copy boring.html and dull.txt into a folder on your machine (eg, your desktop).\n2. Then bring up the Open Web Location dialog in the browser.\n \nSTEPS/DESCRIPTION - UI test #1\n1. Click the Choose File... button.\n2. In the resulting file picker dialog, navigate and select the boring.html file.\n3. Click Open in the file picker to dismiss it.\n4. Select Current Navigator window from the droplist, if it isn't already displayed there.\n5. Click the Open button (or hit Enter).\n\nEXPECTED RESULTS - UI test #1\n1. After step #3, the full path and filename should be displayed in the textfield of the Open Web Location dialog.\n2. After the last step, the Open Web Location dialog should be dismissed, and boring.html displayed in the current browser window.\n\n\nSTEPS/DESCRIPTION - Dismissal #1 \n1. Click the Choose File... button.\n2. In the resulting file picker dialog, navigate and select the boring.html file.\n3. Click Open in the file picker to dismiss it.\n4. Select Current Navigator window from the droplist, if it isn't already displayed there.\n5. Click the Cancel button (or hit Esc).\n\nEXPECTED RESULTS - Dismissal #1 \nThe dialog should go away and the page in the current browser window remain unchanged.\n \nSTEPS/DESCRIPTION - UI test #2\n1. Click the Choose File... button.\n2. In the resulting file picker dialog, navigate and select the dull.txt file.\n3. Click Open in the file picker to dismiss it.\n4. Select Current Navigator window from the droplist, if it isn't already displayed there.\n5. Click the Open button (or hit Enter).\n\nEXPECTED RESULTS - UI test #2\n1. After step #3, the full path and filename should be displayed in the textfield of the Open Web Location dialog.\n2. After the last step, the Open Web Location dialog should be dismissed, and dull.txt displayed in the current browser window.\n\n\nSTEPS/DESCRIPTION - Dismissal #2  \n1. Click the Choose File... button.\n2. In the resulting file picker dialog, navigate and select the dull.txt file.\n3. Click Open in the file picker to dismiss it.\n4. Select Current Navigator window from the droplist, if it isn't already displayed there.\n5. Click the Cancel button (or hit Esc).\n\nEXPECTED RESULTS - Dismissal #2  \nThe dialog should go away and the page in the current browser window remain unchanged.",
+      "requirement_ids": [
+        "R-171"
+      ],
+      "source": "T-set.csv#TC-171",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-172",
+      "title": "TC-172",
+      "description": "INITIAL CONDITIONS\n1. Copy boring.html and dull.txt into a folder on your machine (eg, you desktop).\n2. Then bring up the Open Web Location dialog in the browser.\n\nSTEPS/DESCRIPTION - UI test #1 \n1. Click the Choose File... button.\n2. In the resulting file picker dialog, navigate and select the boring.html file.\n3. Click Open in the file picker to dismiss it.\n4. Select New Navigator window from the droplist, if it isn't already displayed there.\n5. Click the Open button (or hit Enter).\n\nEXPECTED RESULTS - UI test #1 \n1. After step #3, the full path and filename should be displayed in the textfield of the Open Web Location dialog.\n2. After the last step, the Open Web Location dialog should be dismissed.\n3. A new browser window should then come up, and boring.html displayed in it.\n\n\nSTEPS/DESCRIPTION - Dismissal #1 \n1. Click the Choose File... button.\n2. In the resulting file picker dialog, navigate and select the boring.html file.\n3. Click Open in the file picker to dismiss it.\n4. Select New Navigator window from the droplist, if it isn't already displayed there.\n5. Click the Cancel button (or hit Esc).\n\nEXPECTED RESULTS - Dismissal #1 \nThe dialog should go away and the page in the current browser window remain unchanged.\n\n \nSTEPS/DESCRIPTION - UI test #2\n1. Click the Choose File... button.\n2. In the resulting file picker dialog, navigate and select the dull.txt file.\n3. Click Open in the file picker to dismiss it.\n4. Select New Navigator window from the droplist, if it isn't already displayed there.\n5. Click the Open button (or hit Enter).\n\nEXPECTED RESULTS - UI test #2\n1. After step #3, the full path and filename should be displayed in the textfield of the Open Web Location dialog.\n2. After the last step, the Open Web Location dialog should be dismissed.\n3. A new browser window should then come up, and dull.txt displayed in it.\n\n\nSTEPS/DESCRIPTION - Dismissal #2 \n1. Click the Choose File... button.\n2. In the resulting file picker dialog, navigate and select the dull.txt file.\n3. Click Open in the file picker to dismiss it.\n4. Select New Navigator window from the droplist, if it isn't already displayed there.\n5. Click the Cancel button (or hit Esc).\n\nEXPECTED RESULTS - Dismissal #2 \nThe dialog should go away and the page in the current browser window remain unchanged.",
+      "requirement_ids": [
+        "R-172"
+      ],
+      "source": "T-set.csv#TC-172",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-173",
+      "title": "TC-173",
+      "description": "INITIAL CONDITIONS\n1. Copy boring.html and dull.txt into a folder on your machine (eg, you desktop).\n2. Then bring up the Open Web Location dialog in the browser.\n\nSTEPS/DESCRIPTION - UI test #1 \n1. Click the Choose File... button.\n2. In the resulting file picker dialog, navigate and select the boring.html file.\n3. Click Open in the file picker to dismiss it.\n4. Select New Composer window from the droplist, if it isn't already displayed there.\n5. Click the Open button (or hit Enter).\n\nEXPECTED RESULTS - UI test #1 \n1. After step #3, the full path and filename should be displayed in the textfield of the Open Web Location dialog.\n2. After the last step, the Open Web Location dialog should be dismissed.\n3. An editor window should then come up, and boring.html displayed in it.\n\n\nSTEPS/DESCRIPTION - Dismissal #1 \n1. Click the Choose File... button.\n2. In the resulting file picker dialog, navigate and select the boring.html file.\n3. Click Open in the file picker to dismiss it.\n4. Select New Composer window from the droplist, if it isn't already displayed there.\n5. Click the Cancel button (or hit Esc).\n\nEXPECTED RESULTS - Dismissal #1 \nThe dialog should go away and the page in the current browser window remain unchanged.\n\nSTEPS/DESCRIPTION - UI test #2 \n1. Click the Choose File... button.\n2. In the resulting file picker dialog, navigate and select the dull.txt file.\n3. Click Open in the file picker to dismiss it.\n4. Select New Composer window from the droplist, if it isn't already displayed there.\n5. Click the Open button (or hit Enter).\n\nEXPECTED RESULTS - UI test #2 \n1. After step #3, the full path and filename should be displayed in the textfield of the Open Web Location dialog.\n2. After the last step, the Open Web Location dialog should be dismissed.\n3. An editor window should then come up, and dull.txt displayed in it.\n\n\nSTEPS/DESCRIPTION - Dismissal #2 \n1. Click the Choose File... button.\n2. In the resulting file picker dialog, navigate and select the dull.txt file.\n3. Click Open in the file picker to dismiss it.\n4. Select New Composer window from the droplist, if it isn't already displayed there.\n5. Click the Cancel button (or hit Esc).\n\n\nEXPECTED RESULTS - Dismissal #2 \nThe dialog should go away and the page in the current browser window remain unchanged.",
+      "requirement_ids": [
+        "R-173"
+      ],
+      "source": "T-set.csv#TC-173",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-174",
+      "title": "TC-174",
+      "description": "INITIAL CONDITIONS\nThe Open Web Location dialog should already be opened in the browser.\n\nSTEPS/DESCRIPTION\n1. Click the Choose File... button.\n2. In the resulting file picker dialog, enter the filename of a file which doesn't exist locally on your machine, eg, \nNavigate to your desktop location, or stay at whatever directory the file picker is currently at.\nEnter fibble-diddle-teehee.html.\n5. Click Open in the file picker to dismiss it.\n6. Select Current Navigator window from the droplist, if it isn't already displayed there.\n7. Click the Open button (or hit Enter).\n\nEXPECTED RESULTS\n1. After step #3, the full path and filename should appear in the textfield of the Open Web Location dialog.\n2. After the last step, the dialog should go away.\n3. Since this page doesn't exist (well, it shouldn't ;-), the page that loads should display the typical 404 error: \nNot Found: The requested object does not exist on this server. The link you followed is either outdated, inaccurate, or the server has been instructed not to let you have it.",
+      "requirement_ids": [
+        "R-174"
+      ],
+      "source": "T-set.csv#TC-174",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    }
+  ],
+  "generatable": true,
+  "parent_id": "firefox_legacy"
+}

@@ -1,0 +1,45 @@
+{
+  "id": "e2edev_bench_46",
+  "requirements": [
+    {
+      "id": "e2edev_bench_46-R-1",
+      "text": "Upon loading the web page, the application must automatically determine the current day of the week using the user's local date settings. It should display the name of the day in the span element with the attribute data-testid='weekday'. Additionally, a corresponding quote should be displayed in the span element with the attribute data-testid='phrase'. The application should handle all days from Sunday to Saturday, ensuring the correct day name and quote are shown based on the local date settings. No user interaction is required for this functionality, and the display should update immediately upon page load.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_46/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_46-R-2",
+      "text": "Upon loading the web page, the system must dynamically determine the current day of the week using the local computer's date. It should then display the name of the day in the span element with the data-testid 'weekday' and a predefined quote associated with that day in the span element with the data-testid 'phrase'. The page structure includes a container div with data-testid 'container', a heading with data-testid 'heading', and two span elements for displaying the day and quote. The JavaScript code should execute upon page load, selecting the appropriate elements using their data-testid attributes and updating their innerHTML properties with the correct day name and quote. No user interaction is required for this functionality to execute, and no persistent storage is involved.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_46/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_46-R-1-TC-1",
+      "title": "[Normal] Display correct day of the week on a Monday",
+      "description": "Feature: Display Current Day of the Week\n  The system must automatically detect the current day of the week using the user's local date settings and display the corresponding day name in the span element with the data-testid 'weekday'.\n\n\n  Scenario: [Normal] Display correct day of the week on a Monday\n    Given the user opens the web page\n    When the system retrieves the local date settings\n    Then the span element with data-testid 'weekday' should display correctly\n",
+      "requirement_ids": [
+        "e2edev_bench_46-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_46/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_46-R-2-TC-1",
+      "title": "[Normal] Display quote for the right day",
+      "description": "Feature: Display Quote Associated with Current Day of the Week\n  The system must display a predefined quote associated with the current day of the week in the span element with the data-testid 'phrase' upon loading the web page.\n\n\nScenario: [Normal] Display quote for the right day\n    Given the user opens the web page\n    When the page loads completely\n    Then the span element with data-testid 'phrase' should display the corresponding quote",
+      "requirement_ids": [
+        "e2edev_bench_46-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_46/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "generatable": true,
+  "parent_id": null
+}

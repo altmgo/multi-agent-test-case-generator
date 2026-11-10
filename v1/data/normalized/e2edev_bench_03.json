@@ -1,0 +1,279 @@
+{
+  "id": "e2edev_bench_03",
+  "requirements": [
+    {
+      "id": "e2edev_bench_03-R-1",
+      "text": "Upon loading the webpage, users can interact with the seat map and movie dropdown to dynamically update the total price. Clicking on any available seat (i.e., a seat without the occupied class) marks it as selected, and the selected seat count updates in the element with data-testid=\"selected-count\". Users can also select a movie from the dropdown (data-testid=\"movie-select\"), where each option has a value representing the ticket price. The total price, shown in the element with data-testid=\"total-price\", is calculated as the number of selected seats multiplied by the selected movie’s price. Seats marked as occupied must not be selectable and should not affect the count or price. Changing the selected movie at any time updates the total price accordingly.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_03/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_03-R-2",
+      "text": "Upon interacting with the movie seat booking interface, users can select a movie from a dropdown menu, with options like 'The Big Lebowski ($10)', 'Fargo ($12)', 'O Brother ($8)', and 'No Country for Old Men ($9)', each identified by a specific data-testid. Once a movie is selected, its price updates accordingly. When users click on an available seat (e.g., identified by data-testid=\"seat-1-1\"), the system toggles the seat's selection status. Selected seats are visually marked, and their indices are stored in localStorage. The seat count (data-testid=\"selected-count\") and total price (data-testid=\"total-price\") are dynamically updated based on the number of selected seats and the chosen movie's price. Seats marked as 'occupied' cannot be selected or included in the calculation. Users can deselect previously selected seats by clicking on them again, and the UI, along with localStorage, updates accordingly.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_03/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_03-R-3",
+      "text": "Upon loading the 'Movie Seat Booking' webpage, the system retrieves and applies previously selected seats and the movie selection from local storage. If local storage contains the keys 'selectedSeats' and 'selectedMovieIndex', the system will mark the seats corresponding to the indices in 'selectedSeats' with the 'selected' class. Additionally, the movie dropdown will be set to the option corresponding to 'selectedMovieIndex'. If local storage does not contain these values, no seats will be marked as 'selected', and the dropdown will default to the first movie option, 'The Big Lebowski ($10)'.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_03/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_03-R-4",
+      "text": "The system must dynamically display the number of selected seats and the total price as the user interacts with seat selections and movie choices. Specifically, when the user selects a movie from the dropdown menu with data-testid 'movie-select', the ticket price should be set according to the selected movie's value. As the user clicks on available seats (those without the 'occupied' class) within the seating area, the system should toggle the 'selected' class on the clicked seat. The count of selected seats, displayed with data-testid 'selected-count', should update to reflect the current number of seats with the 'selected' class. The total price, displayed with data-testid 'total-price', should be calculated as the product of the number of selected seats and the current ticket price. If a user deselects a seat by clicking on it again, the count and total price should decrease accordingly. If the user changes the movie selection after selecting seats, the total price should update based on the new ticket price while maintaining the count of selected seats. The system must prevent users from selecting seats marked as 'occupied'.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_03/requirment_with_tests.json#/finegrained_rewith_test/4/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_03-R-5",
+      "text": "On the Movie Seat Booking page, users can distinguish between available, selected, and occupied seats through legends that indicate the status of each seat. Each status has its own corresponding legend (e.g., data-testid = 'seat-select') to help users understand the different seat states. Occupied seats are non-interactive and clearly marked to prevent selection. Available seats can be clicked to toggle their selection. When users select or deselect seats, the count of selected seats and the total price are updated accordingly.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_03/requirment_with_tests.json#/finegrained_rewith_test/5/requirement/description"
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_03-R-1-TC-1",
+      "title": "[Normal] User selects a seat and chooses a movie",
+      "description": "Feature: Seat Selection and Price Update\n  The user can select an available seat and choose a movie from the dropdown menu, which updates the total price automatically based on the selected movie's price.\n\n\n  Scenario: [Normal] User selects a seat and chooses a movie\n    Given the webpage is loaded\n    When the user clicks on the seat with data-testid \"seat-1-1\"\n    And the user selects \"Fargo ($12)\" from the dropdown with data-testid \"movie-select\"\n    Then the seat with data-testid \"seat-1-1\" should be marked as selected\n    And the selected count with data-testid \"selected-count\" should display \"1\"\n    And the total price with data-testid \"total-price\" should display \"12\"\n",
+      "requirement_ids": [
+        "e2edev_bench_03-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_03/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_03-R-1-TC-2",
+      "title": "[Edge] User selects multiple seats and changes the movie",
+      "description": "Feature: Seat Selection and Price Update\n  The user can select an available seat and choose a movie from the dropdown menu, which updates the total price automatically based on the selected movie's price.\n\n\nScenario: [Edge] User selects multiple seats and changes the movie\n    Given the webpage is loaded\n    When the user clicks on the seat with data-testid \"seat-1-1\"\n    And the user clicks on the seat with data-testid \"seat-1-2\"\n    And the user selects \"O Brother ($8)\" from the dropdown with data-testid \"movie-select\"\n    Then the seats with data-testid \"seat-1-1\" and \"seat-1-2\" should be marked as selected\n    And the selected count with data-testid \"selected-count\" should display \"2\"\n    And the total price with data-testid \"total-price\" should display \"16\"",
+      "requirement_ids": [
+        "e2edev_bench_03-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_03/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_03-R-1-TC-3",
+      "title": "[Error] User tries to select an occupied seat",
+      "description": "Feature: Seat Selection and Price Update\n  The user can select an available seat and choose a movie from the dropdown menu, which updates the total price automatically based on the selected movie's price.\n\n\nScenario: [Error] User tries to select an occupied seat\n    Given the webpage is loaded\n    When the user clicks on the seat with data-testid \"seat-2-4\"\n    Then the seat with data-testid \"seat-2-4\" should not be marked as selected\n    And the selected count with data-testid \"selected-count\" should display \"0\"\n    And the total price with data-testid \"total-price\" should display \"0\"",
+      "requirement_ids": [
+        "e2edev_bench_03-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_03/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_03-R-1-TC-4",
+      "title": "[Normal] User changes movie selection after selecting a seat",
+      "description": "Feature: Seat Selection and Price Update\n  The user can select an available seat and choose a movie from the dropdown menu, which updates the total price automatically based on the selected movie's price.\n\n\nScenario: [Normal] User changes movie selection after selecting a seat\n    Given the webpage is loaded\n    When the user clicks on the seat with data-testid \"seat-3-1\"\n    And the user selects \"The Big Lebowski ($10)\" from the dropdown with data-testid \"movie-select\"\n    Then the seat with data-testid \"seat-3-1\" should be marked as selected\n    And the selected count with data-testid \"selected-count\" should display \"1\"\n    And the total price with data-testid \"total-price\" should display \"10\"\n    When the user selects \"No Country for Old Men ($9)\" from the dropdown with data-testid \"movie-select\"\n    Then the total price with data-testid \"total-price\" should update to \"9\"",
+      "requirement_ids": [
+        "e2edev_bench_03-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_03/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_03-R-2-TC-1",
+      "title": "[Normal] Toggle seat selection and update count and price",
+      "description": "Feature: Seat Selection and Price Calculation\n  The system should allow users to toggle the selection status of available seats, update the count of selected seats, calculate the total price, and store the indices of selected seats in local storage.\n\n\n  Scenario: [Normal] Toggle seat selection and update count and price\n    Given the movie seat booking page is loaded\n    And the user selects \"The Big Lebowski ($10)\" from the movie dropdown with data-testid \"movie-select\"\n    And the user sees 0 seats selected and a total price of $0\n    When the user clicks on an available seat with data-testid \"seat-1-1\"\n    Then the seat with data-testid \"seat-1-1\" should be marked as selected\n    And the user should see 1 seat selected and a total price of $10\n    And local storage should contain the index of the selected seat\n",
+      "requirement_ids": [
+        "e2edev_bench_03-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_03/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_03-R-2-TC-2",
+      "title": "[Edge] Toggle multiple seats and verify count and price",
+      "description": "Feature: Seat Selection and Price Calculation\n  The system should allow users to toggle the selection status of available seats, update the count of selected seats, calculate the total price, and store the indices of selected seats in local storage.\n\n\n  Scenario: [Edge] Toggle multiple seats and verify count and price\n    Given the movie seat booking page is loaded\n    And the user selects \"Fargo ($12)\" from the movie dropdown with data-testid \"movie-select\"\n    And the user sees 0 seats selected and a total price of $0\n    When the user clicks on available seats with data-testid \"seat-1-1\" and \"seat-1-2\"\n    Then the seats with data-testid \"seat-1-1\" and \"seat-1-2\" should be marked as selected\n    And the user should see 2 seats selected and a total price of $24\n    And local storage should contain the indices of the selected seats\n",
+      "requirement_ids": [
+        "e2edev_bench_03-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_03/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_03-R-2-TC-3",
+      "title": "[Error] Attempt to select an occupied seat",
+      "description": "Feature: Seat Selection and Price Calculation\n  The system should allow users to toggle the selection status of available seats, update the count of selected seats, calculate the total price, and store the indices of selected seats in local storage.\n\n\n  Scenario: [Error] Attempt to select an occupied seat\n    Given the movie seat booking page is loaded\n    And the user selects \"O Brother ($8)\" from the movie dropdown with data-testid \"movie-select\"\n    And the user sees 0 seats selected and a total price of $0\n    When the user clicks on an occupied seat with data-testid \"seat-2-4\"\n    Then the seat with data-testid \"seat-2-4\" should remain occupied and not be marked as selected\n    And the user should see 0 seats selected and a total price of $0\n    And local storage should not contain the index of the occupied seat\n",
+      "requirement_ids": [
+        "e2edev_bench_03-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_03/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_03-R-2-TC-4",
+      "title": "[Normal] Deselect a previously selected seat",
+      "description": "Feature: Seat Selection and Price Calculation\n  The system should allow users to toggle the selection status of available seats, update the count of selected seats, calculate the total price, and store the indices of selected seats in local storage.\n\n\n  Scenario: [Normal] Deselect a previously selected seat\n    Given the movie seat booking page is loaded\n    And the user selects \"No Country for Old Men ($9)\" from the movie dropdown with data-testid \"movie-select\"\n    And the user clicks on an available seat with data-testid \"seat-1-1\"\n    And the user sees 1 seat selected and a total price of $9\n    When the user clicks again on the seat with data-testid \"seat-1-1\"\n    Then the seat with data-testid \"seat-1-1\" should be deselected\n    And the user should see 0 seats selected and a total price of $0\n    And local storage should not contain the index of the deselected seat",
+      "requirement_ids": [
+        "e2edev_bench_03-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_03/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_03-R-3-TC-1",
+      "title": "[Normal] Retrieve and apply previously selected seats and movie selection",
+      "description": "Feature: REQ-003 - Retrieve and apply previously selected seats and movie selection from local storage\n\n  Background:\n    Given the webpage \"Movie Seat Booking\" is loaded\n\n\n  Scenario: [Normal] Retrieve and apply previously selected seats and movie selection\n    Given local storage contains \"selectedSeats\" with value \"[3, 5, 7]\" and \"selectedMovieIndex\" with value \"1\"\n    When the page loads\n    Then the seats with data-testid \"seat-1-4\", \"seat-1-6\", and \"seat-1-8\" should have the class \"selected\"\n    And the movie with data-testid \"movie-option-2\" should be selected in the dropdown\n",
+      "requirement_ids": [
+        "e2edev_bench_03-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_03/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_03-R-3-TC-2",
+      "title": "[Edge] No previously selected seats or movie selection in local storage",
+      "description": "Feature: REQ-003 - Retrieve and apply previously selected seats and movie selection from local storage\n\n  Background:\n    Given the webpage \"Movie Seat Booking\" is loaded\n\n\n  Scenario: [Edge] No previously selected seats or movie selection in local storage\n    Given local storage does not contain \"selectedSeats\" or \"selectedMovieIndex\"\n    When the page loads\n    Then no seats should have the class \"selected\"\n    And the first movie option with data-testid \"movie-option-1\" should be selected in the dropdown\n",
+      "requirement_ids": [
+        "e2edev_bench_03-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_03/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_03-R-4-TC-1",
+      "title": "[Normal] User selects seats and sees updated count and total price",
+      "description": "Feature: Dynamic Seat Selection and Pricing Display\n  The system displays the number of selected seats and the total price dynamically as the user interacts with seat selections and movie choices.\n\n\n  Scenario: [Normal] User selects seats and sees updated count and total price\n    Given the movie seat booking page is loaded\n    And the user selects \"The Big Lebowski ($10)\" from the movie dropdown with data-testid \"movie-select\"\n    When the user clicks on the seat with data-testid \"seat-1-1\"\n    And the user clicks on the seat with data-testid \"seat-1-2\"\n    Then the selected seat count displayed with data-testid \"selected-count\" should be \"2\"\n    And the total price displayed with data-testid \"total-price\" should be \"$20\"\n",
+      "requirement_ids": [
+        "e2edev_bench_03-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_03/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_03-R-4-TC-2",
+      "title": "[Edge] User selects and deselects the same seat",
+      "description": "Feature: Dynamic Seat Selection and Pricing Display\n  The system displays the number of selected seats and the total price dynamically as the user interacts with seat selections and movie choices.\n\n\n  Scenario: [Edge] User selects and deselects the same seat\n    Given the movie seat booking page is loaded\n    And the user selects \"Fargo ($12)\" from the movie dropdown with data-testid \"movie-select\"\n    When the user clicks on the seat with data-testid \"seat-2-1\"\n    And the user clicks again on the seat with data-testid \"seat-2-1\"\n    Then the selected seat count displayed with data-testid \"selected-count\" should be \"0\"\n    And the total price displayed with data-testid \"total-price\" should be \"$0\"\n",
+      "requirement_ids": [
+        "e2edev_bench_03-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_03/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_03-R-4-TC-3",
+      "title": "[Edge] User selects seats in different rows",
+      "description": "Feature: Dynamic Seat Selection and Pricing Display\n  The system displays the number of selected seats and the total price dynamically as the user interacts with seat selections and movie choices.\n\n\n  Scenario: [Edge] User selects seats in different rows\n    Given the movie seat booking page is loaded\n    And the user selects \"O Brother ($8)\" from the movie dropdown with data-testid \"movie-select\"\n    When the user clicks on the seat with data-testid \"seat-3-1\"\n    And the user clicks on the seat with data-testid \"seat-4-1\"\n    Then the selected seat count displayed with data-testid \"selected-count\" should be \"2\"\n    And the total price displayed with data-testid \"total-price\" should be \"$16\"\n",
+      "requirement_ids": [
+        "e2edev_bench_03-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_03/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_03-R-4-TC-4",
+      "title": "[Error] User attempts to select an occupied seat",
+      "description": "Feature: Dynamic Seat Selection and Pricing Display\n  The system displays the number of selected seats and the total price dynamically as the user interacts with seat selections and movie choices.\n\n\n  Scenario: [Error] User attempts to select an occupied seat\n    Given the movie seat booking page is loaded\n    And the user selects \"No Country for Old Men ($9)\" from the movie dropdown with data-testid \"movie-select\"\n    When the user clicks on the occupied seat with data-testid \"seat-2-4\"\n    Then the selected seat count displayed with data-testid \"selected-count\" should remain \"0\"\n    And the total price displayed with data-testid \"total-price\" should remain \"$0\"\n",
+      "requirement_ids": [
+        "e2edev_bench_03-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_03/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_03-R-4-TC-5",
+      "title": "[Normal] User changes movie selection after selecting seats",
+      "description": "Feature: Dynamic Seat Selection and Pricing Display\n  The system displays the number of selected seats and the total price dynamically as the user interacts with seat selections and movie choices.\n\n\n  Scenario: [Normal] User changes movie selection after selecting seats\n    Given the movie seat booking page is loaded\n    And the user selects \"The Big Lebowski ($10)\" from the movie dropdown with data-testid \"movie-select\"\n    And the user clicks on the seat with data-testid \"seat-1-1\"\n    When the user changes the movie selection to \"Fargo ($12)\" from the movie dropdown with data-testid \"movie-select\"\n    Then the selected seat count displayed with data-testid \"selected-count\" should be \"1\"\n    And the total price displayed with data-testid \"total-price\" should be \"$12\"",
+      "requirement_ids": [
+        "e2edev_bench_03-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_03/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/4/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_03-R-5-TC-1",
+      "title": "[Normal] User views seat status",
+      "description": "Feature: Seat Status Visualization and Interaction\n  The user can view the status of seats (available, selected, occupied) visually, with occupied seats being non-interactive.\n\n\n  Scenario: [Normal] User views seat status\n    Given the Movie Seat Booking page is loaded\n    When the user views the seating area\n    Then the seat with data-testid \"seat-1-1\" should be available\n    And the seat with data-testid \"seat-2-4\" should be occupied\n    And the seat with data-testid \"seat-selected\" should be selected\n",
+      "requirement_ids": [
+        "e2edev_bench_03-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_03/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_03-R-5-TC-2",
+      "title": "[Normal] User selects an available seat",
+      "description": "Feature: Seat Status Visualization and Interaction\n  The user can view the status of seats (available, selected, occupied) visually, with occupied seats being non-interactive.\n\n\n  Scenario: [Normal] User selects an available seat\n    Given the Movie Seat Booking page is loaded\n    And the seat with data-testid \"seat-1-1\" is available\n    When the user clicks on the seat with data-testid \"seat-1-1\"\n    Then the seat with data-testid \"seat-1-1\" should be marked as selected\n    And the selected seat count should be updated to \"1\"\n    And the total price should reflect the selected movie price times the number of selected seats\n",
+      "requirement_ids": [
+        "e2edev_bench_03-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_03/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_03-R-5-TC-3",
+      "title": "[Edge] User attempts to select an occupied seat",
+      "description": "Feature: Seat Status Visualization and Interaction\n  The user can view the status of seats (available, selected, occupied) visually, with occupied seats being non-interactive.\n\n\n  Scenario: [Edge] User attempts to select an occupied seat\n    Given the Movie Seat Booking page is loaded\n    And the seat with data-testid \"seat-2-4\" is occupied\n    When the user clicks on the seat with data-testid \"seat-2-4\"\n    Then the seat with data-testid \"seat-2-4\" should remain occupied\n    And the selected seat count should remain \"0\"\n    And the total price should remain \"$0\"\n",
+      "requirement_ids": [
+        "e2edev_bench_03-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_03/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_03-R-5-TC-4",
+      "title": "[Edge] User toggles selection of a seat",
+      "description": "Feature: Seat Status Visualization and Interaction\n  The user can view the status of seats (available, selected, occupied) visually, with occupied seats being non-interactive.\n\n\n  Scenario: [Edge] User toggles selection of a seat\n    Given the Movie Seat Booking page is loaded\n    And the seat with data-testid \"seat-1-1\" is available\n    When the user clicks on the seat with data-testid \"seat-1-1\"\n    And the user clicks again on the seat with data-testid \"seat-1-1\"\n    Then the seat with data-testid \"seat-1-1\" should be marked as available\n    And the selected seat count should be updated to \"0\"\n    And the total price should be \"$0\"\n",
+      "requirement_ids": [
+        "e2edev_bench_03-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_03/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_03-R-5-TC-5",
+      "title": "[Error] User selects a seat and refreshes the page",
+      "description": "Feature: Seat Status Visualization and Interaction\n  The user can view the status of seats (available, selected, occupied) visually, with occupied seats being non-interactive.\n\n\n  Scenario: [Error] User selects a seat and refreshes the page\n    Given the Movie Seat Booking page is loaded\n    And the seat with data-testid \"seat-1-1\" is available\n    When the user clicks on the seat with data-testid \"seat-1-1\"\n    And the user refreshes the page\n    Then the seat with data-testid \"seat-1-1\" should be marked as selected\n    And the selected seat count should be \"1\"\n    And the total price should reflect the selected movie price times the number of selected seats",
+      "requirement_ids": [
+        "e2edev_bench_03-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_03/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/4/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "generatable": true,
+  "parent_id": null
+}

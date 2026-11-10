@@ -1,0 +1,2724 @@
+﻿TestCaseID;TestCaseContent
+TC-001;"INITIAL CONDITIONS
+1. You must have a bookmarks file.
+2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.
+3. You also have the option to use this very large bookmarks file.
+4. You must also customize your sidebar to include a bookmarks panel.
+
+STEPS/DESCRIPTION
+1. Open this link in a new window.
+2. With the new window in front select from the toplevel menu Bookmarks|File Bookmark.
+3. In the folder tree select a folder and click 'OK'.
+
+EXPECTED RESULTS
+1. After Step(2) a dialog should appear with the Name and Location of the current page pre-filled.
+2. After Step(3) the bookmark should immediately appear in the toplevel bookmarks menu, the bookmarks popup on the personal toolbar, the bookmarks sidepanel, and the manage bookmarks window at the specified position within the hierarchy.
+
+LINKS
+1. netscape-bookmarks.html
+2. mozilla-bookmarks.html
+3. large-bookmarks.html
+4. The Bookmarks Testcase Matrix"
+TC-002;"INITIAL CONDITIONS
+1. You must have a bookmarks file.
+2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks.
+3. You also have the option to use this very large bookmarks file.
+4. You must also customize your sidebar to include a bookmarks panel.
+
+STEPS/DESCRIPTION
+Select the toplevel 'Bookmarks' menu then select the 'Manage Bookmarks' menuitem.
+1. Select (highlight) a bookmark, press the delete key, OR
+2. Select (highlight) a bookmark, Select Edit|Delete. Click OK in the dialog that appears.
+
+EXPECTED RESULTS
+The title of and link to the bookmark should now be removed from:
+1. the toplevel 'Bookmarks' menu
+2. the 'Bookmarks' popup menu on the personal toolbar
+3. the 'Bookmarks' panel in MySidebar
+4. in the Manage Bookmarks view (select Bookmarks| Manage Bookmarks)
+
+LINKS
+1. default-bookmarks.html
+2. large-bookmarks.html"
+TC-003;"INITIAL CONDITIONS
+1. You must have a bookmarks file.
+2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks.
+3. You also have the option to use this very large bookmarks file.
+4. You must also customize your sidebar to include a bookmarks panel.
+
+STEPS/DESCRIPTION
+1. Open the Manage Bookmarks Window.
+2. Edit|Cut or Edit|Copy any bookmark.
+3. Select the 'Personal Toolbar Folder'. Double-click it or single-click the triangle to open the folder.
+4. Select Edit|Paste.
+5. Go to a browser window and click once on the new link in the personal toolbar.
+
+EXPECTED RESULTS
+1. The bookmark you added should appear immediately on the personal toolbar in a browser window and be activated by a single click.
+2. It should also be present as a subitem under ""Personal Toolbar Folder"" in the toplevel Bookmarks menu, in the bookmarks popup within the personal toolbar itself, and in the bookmarks sidepanel.
+
+LINKS
+1. default-bookmarks.html
+2. large-bookmarks.html"
+TC-004;"INITIAL CONDITIONS
+1. You must have a bookmarks file.
+2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.
+3. You also have the option to use this very large bookmarks file.
+4. You must also customize your sidebar to include a bookmarks panel.
+
+STEPS/DESCRIPTION
+1. Select Bookmarks|Manage Bookmarks.
+2. Select any item in your list. Select File|New Folder. Click ""OK"" in the dialog that appears.
+3. Select the folder you just created. Select File|New Folder. Click ""OK"" in the dialog that appears.
+4. Double-click the folder you just created. Select File|New Folder. Click ""OK"" in the dialog that appears.
+
+EXPECTED RESULTS
+1. For step (2) a folder named ""New Folder"" should have been created and added just below the item you had selected. That item could be a bookmark, a folder, or a separator.
+2. For step (3) the folder should have again been created below the item (New Folder). In step (4) however, the folder should be created inside the previous folder.
+3. All of the newly created folders should appear with the correct hierarchical structure in the toplevel bookmarks menu, the bookmarks popup on the personal toolbar, the bookmarks panel in the sidebar, and of course the manage bookmarks window.
+
+LINKS
+1. netscape-bookmarks.html
+2. mozilla-bookmarks.html
+3. large-bookmarks.html"
+TC-005;"INITIAL CONDITIONS
+1. You must have a bookmarks file.
+2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks.
+3. You also have the option to use this very large bookmarks file.
+4. You must also customize your sidebar to include a bookmarks panel.
+
+STEPS/DESCRIPTION
+1. Select the toplevel ""Bookmarks"" menu. Select any bookmark on the list.
+2. Click ""Bookmarks"" on the Bookmarks/personal toolbar. Select any bookmark on the list.
+3. Open the sidebar; click on the ""Bookmarks"" panel. Double-click any bookmark on the list.
+4. From the toplevel ""Bookmarks"" menu select ""Manage Bookmarks"". Double-click any bookmark in the window.
+
+EXPECTED RESULTS
+In all cases, the url corresponding to the bookmark you selected should be loaded in the browser window.
+
+LINKS
+1. default-bookmarks.html
+2. large-bookmarks.html"
+TC-006;"INITIAL CONDITIONS
+You must have the default bookmarks file installed. Here is the Netscape bookmarks file, here is the Mozilla bookmarks file.
+
+STEPS/DESCRIPTION
+Using the Bookmarks menu or the Manage Bookmarks window, select and surf each and every bookmark in turn.
+
+EXPECTED RESULTS
+Each bookmark should load completely in the browser window. There should be no ""dead"" links.
+
+LINKS
+1. netscape-bookmarks.html
+2. large-bookmarks.html"
+TC-007;"INITIAL CONDITIONS
+1. You must have a bookmarks file.
+2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.
+3. You also have the option to use this very large bookmarks file.
+4. You must also customize your sidebar to include a bookmarks panel.
+
+STEPS/DESCRIPTION
+1. Select Bookmarks|Manage Bookmarks.
+2. Select a bookmark. Select File|Bookmark Properties. 
+Change the Name OR the Location.
+Edit the Description field. Click ""OK""
+Surf the link.
+6. Select a folder. Select File|Bookmark Properties. 
+Change the Name.
+Change the description. Click ""OK"".
+
+EXPECTED RESULTS
+1. For step(2) the changes should take effect upon pressing ""OK"". The changes should be seen in the four standard locations.If the name changed clicking the new bookmark name should go to the same url. If the url changed, clicking the same name should go to the new url.
+2. For step(3) the changes should take effect upon pressing ""OK"". The changes should be seen in the four standard locations.
+
+LINKS
+1. netscape-bookmarks.html
+2. mozilla-bookmarks.html
+3. large-bookmarks.html"
+TC-008;"INITIAL CONDITIONS
+1. You must have a bookmarks file.
+2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.
+3. You also have the option to use this very large bookmarks file.
+4. You must also customize your sidebar to include a bookmarks panel.
+
+STEPS/DESCRIPTION
+1. Select Bookmarks|Manage Bookmarks.
+2. Select any folder.
+3. Select from the following choices: 
+Select Edit|Delete. Click OK.
+Hit the Backspace key.
+Hit the Delete key
+7. Select 2 or many folders, repeat step (3).
+
+EXPECTED RESULTS
+1. In step (3a) a confirmation dialog should appear, allowing you to cancel the delete operation.
+2. In steps (3b) and (3c), or after clicking ""OK"" in (3a), the folder should be immediately deleted.
+3. In step (4) you should only be presented with one confirmation dialog, clicking ""OK"" should result in all selected folders being deleted.
+4. Folders should immediately disappear (be deleted) from the toplevel bookmarks menu, the bookmarks popup on the personal toolbar, the bookmarks sidepanel, and the manage bookmarks window.
+
+LINKS
+1. netscape-bookmarks.html
+2. mozilla-bookmarks.html
+3. large-bookmarks.html"
+TC-009;"INITIAL CONDITIONS
+1. You must have a bookmarks file.
+2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.
+3. You also have the option to use this very large bookmarks file.
+4. You must also customize your sidebar to include a bookmarks panel.
+
+STEPS/DESCRIPTION
+1. Select Bookmarks|Manage Bookmarks.
+2. Select a bookmark.
+3. Select File|New Separator.
+4. Select the separator. Select Edit|Delete, click ""OK"".
+
+EXPECTED RESULTS
+1. After step (3) separator should immediately appear below the selected item in the toplevel bookmarks menu, the bookmarks popup on the personal toolbar, the bookmarks sidepanel, and the manage bookmarks window.
+2. After step (4) the separator should immediately disappear (be deleted) from the toplevel bookmarks menu, the bookmarks popup on the personal toolbar, the bookmarks sidepanel, and the manage bookmarks window.
+
+LINKS
+1. netscape-bookmarks.html
+2. mozilla-bookmarks.html
+3. large-bookmarks.html"
+TC-010;"INITIAL CONDITIONS
+1. You must have a bookmarks file.
+2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.
+3. You also have the option to use this very large bookmarks file.
+4. You must also customize your sidebar to include a bookmarks panel.
+
+STEPS/DESCRIPTION
+1. Select Bookmarks|Manage Bookmarks.
+2. Click on disclosure triangles to open/close several folders.
+3. Remember which were open/closed.
+4. Do the same for bookmarks folders in the bookmarks sidepanel. (Do not close Manage Bookmarks)
+5. Quit the browser (alternately, induce a crash)
+6. Launch the browser and open the sidebar and Manage Bookmarks.
+
+EXPECTED RESULTS
+1. The bookmarks tree should have the same shape, ie folders that were closed should still be closed and those that were open should still be open.
+2. This should be true for the bookmarks in the sidepanel as well.
+
+LINKS
+1. netscape-bookmarks.html
+2. mozilla-bookmarks.html
+3. large-bookmarks.html"
+TC-011;"INITIAL CONDITIONS
+1. You must have a bookmarks file.
+2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.
+3. You also have the option to use this very large bookmarks file.
+4. You must also customize your sidebar to include a bookmarks panel.
+
+STEPS/DESCRIPTION
+1. Select Bookmarks|Manage Bookmarks.
+2. Select a bookmark. Select File|Bookmark Properties. Verify, click ""OK"".
+3. Select a folder. Select File|Bookmark Properties. Verify, click ""OK"".
+4. Select a separator. Select File|Bookmark Properties.
+
+EXPECTED RESULTS
+1. For step(2) the Bookmark Properties dialog should appear. It should have fields for name, location(url), custom keyword, and description. There should also be a section for setting update and notification options.
+2. For step(3) the Bookmark Properties dialog should appear. It should have fields for name and description. No other fileds should appear in this dialog.
+3. For step(4) no dialog should appear.
+
+LINKS
+1. netscape-bookmarks.html
+2. mozilla-bookmarks.html
+3. large-bookmarks.html"
+TC-012;"INITIAL CONDITIONS
+1. You must have a bookmarks file.
+2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.
+3. You also have the option to use this very large bookmarks file.
+4. You must also customize your sidebar to include a bookmarks panel.
+
+STEPS/DESCRIPTION
+1. Select Bookmarks|Manage Bookmarks.
+2. Click a bookmark by single clicking on the name of the bookmark.
+3. Type a new name. Press enter.
+4. Select Edit|Bookmark Properties, look at the name field.
+
+EXPECTED RESULTS
+1. In step(2) the bookmark name should hilite and become editable.
+2. In step(3) and step(4) the new name you typed should replace the old name.
+
+LINKS
+1. netscape-bookmarks.html
+2. mozilla-bookmarks.html
+3. large-bookmarks.html"
+TC-013;"INITIAL CONDITIONS
+1. You must have a bookmarks file.
+2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.
+3. You also have the option to use this very large bookmarks file.
+4. You must also customize your sidebar to include a bookmarks panel.
+
+STEPS/DESCRIPTION
+1. Select Bookmarks|Manage Bookmarks.
+2. Select a bookmark. Select File|Bookmark Properties.
+3. Enter the word ""blah"" in the custom keyword field. Click ""OK"".
+4. In a browser window. Type ""blah"" into the url field and press enter.
+
+EXPECTED RESULTS
+1. You should be taken to the url associated with the same bookmark the custom keyword ""blah"" was associated with.
+2. The browser should NOT perform an ""internet keyword search"", ""netsape smart browsing search"", or any other search.
+
+LINKS
+1. netscape-bookmarks.html
+2. mozilla-bookmarks.html
+3. large-bookmarks.html"
+TC-014;"INITIAL CONDITIONS
+1. Install this bookmarks file.(abcdbookmarks.html)
+2. You must also customize your sidebar to include a bookmarks panel.
+
+STEPS/DESCRIPTION
+1. Select Bookmarks|Manage Bookmarks.
+2. Click on the ""Name"" column once.
+3. Click on the ""Name"" column a second time.
+4. Click on the ""Name"" column a third time.
+5. Click on the ""URL"" column once, and a second time.
+6. Click on the ""Custom Keyword"" column once, and a second time.
+7. Click on the ""Description"" column once, and a second time.
+8. Click on the ""Last Visit"" column once, and a second time.
+9. Click on the ""Added On"" column once, and a second time.
+10. Click on the ""Last Modified"" column once, and a second time.
+
+EXPECTED RESULTSBy step
+1. The bookmarks should sort into alphabetical order. (a-b-c-d-e)
+2. The bookmarks should sort into reverse-alphabetical order. (e-d-c-b-a)
+3. The bookmarks should sort into ""natural"" order (the way they were originally sorted). (a-d-e-b-c)
+4. The bookmarks should sort into order by URL and then the reverse of that order. (d-a-b-c-e)
+5. The bookmarks should sort into order by Custom Keyword and then the reverse of that order. (c-d-a-b-e)
+6. The bookmarks should sort into order by Description and then the reverse of that order. (b-c-d-a-e)
+7. The bookmarks should sort into order by Last Visited time and then the reverse of that order.
+8. The bookmarks should sort into order by Added On date and then the reverse of that order.
+9. The bookmarks should sort into order by Last Modified date and then the reverse of that order.
+10. Separators should separate the sort as well, ie step one should result in a-b-c-d-e|aa-bb-cc-dd-ee, not a-aa-b-bb-c-cc-d-dd-e|.
+
+LINKS
+1. netscape-bookmarks.html
+2. mozilla-bookmarks.html
+3. large-bookmarks.html"
+TC-015;"INITIAL CONDITIONS
+1. You must have a bookmarks file.
+2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.
+3. You also have the option to use this very large bookmarks file.
+4. You must also customize your sidebar to include a bookmarks panel.
+
+STEPS/DESCRIPTION
+1. Select Bookmarks|Manage Bookmarks.
+2. Mouseover the separator between the ""Name"" and ""URL"" columns.
+3. Click and drag that separator to the left and right.
+4. Repeat this with each of the other column separators.
+
+EXPECTED RESULTS
+1. In step(2) the mouse pointer should change to a double-arrowed icon (platform specific or XP?).
+2. In step(3) the column sizes on either side of the separator should shrink and grow as you drag. The content of the column should move with the column header. Column content that is obscured should be replaced by the ellipsis(?).
+
+LINKS
+1. netscape-bookmarks.html
+2. mozilla-bookmarks.html
+3. large-bookmarks.html"
+TC-016;"INITIAL CONDITIONS
+1. You must have a bookmarks file.
+2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.
+3. You also have the option to use this very large bookmarks file.
+4. You must also customize your sidebar to include a bookmarks panel.
+
+STEPS/DESCRIPTION
+1. Select Bookmarks|Manage Bookmarks.
+2. Click the icon on the far right of the column headers.
+3. Uncheck two of the items (columns).
+4. Recheck an item.
+5. Quit and restart the application.
+
+EXPECTED RESULTS
+1. Step(2) a popup menu should appear listing all of the column headers as menuitems.
+2. Step(3), they should all be checked by default and unchecking should cause that column to disappear from the manage bookmarks window.
+3. Step(4), the columns should reappear upon rechecking its name on the list.
+4. Step(5) the columns should appear just as the did after step(4).
+
+LINKS
+1. netscape-bookmarks.html
+2. mozilla-bookmarks.html
+3. large-bookmarks.html"
+TC-017;"INITIAL CONDITIONS
+1. You must have a bookmarks file.
+2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks.
+3. You also have the option to use this very large bookmarks file.
+4. You must also customize your sidebar to include a bookmarks panel.
+
+STEPS/DESCRIPTION
+1. Select the toplevel ""Bookmarks"" menu. Select Bookmarks|Manage Bookmarks.
+2. Select any bookmark. Shift+click or drag to select more (at least 3).
+3. Select Edit|Delete.
+
+EXPECTED RESULTS
+1. The bookmarks should no longer appear in the Manage Bookmarks window, the bookmarks sidebar panel, the top-level ""Bookmarks"" menu and the bookmarks popup on the personal toolbar.
+
+LINKS
+1. default-bookmarks.html
+2. large-bookmarks.html"
+TC-018;"INITIAL CONDITIONS
+1. You must have a bookmarks file.
+2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.
+3. You also have the option to use this very large bookmarks file.
+4. You must also customize your sidebar to include a bookmarks panel.
+5. As part of your bookmarks file you need a folder (lets' call it folder ""A"") that contains bookmarks and another folder (let's call this folder ""A1"" (read Asub1)) that contains bookmarks as well.
+
+STEPS/DESCRIPTION
+1. Select Bookmarks|Manage Bookmarks.
+2. Select folder A1 then drag&drop it onto or within itself
+3. Select folder A1 then drag&drop it onto or within folder A.
+4. Select folder A then drag&drop it onto or within folder A1.
+5. Select a bookmark within folder A1 and drop it onto folder A1.
+
+EXPECTED RESULTS
+1. Nothing should happen! No bookmark or folder should be moved in any of these cases. Ideally, one should see the International symbol for ""No"" cursor.
+
+LINKS
+1. netscape-bookmarks.html
+2. mozilla-bookmarks.html
+3. large-bookmarks.html
+4. The Bookmarks Testcase Matrix"
+TC-019;"STEPS/DESCRIPTION
+1. View the attached test page
+2. Select all of its contents
+3. View the System Clipboard.
+---
+To view the system Clipboard:
+Mac OS: Select ""Show Clipboard"" from the Finder.
+Windows: Select ""Clipboard Viewer"" from the Accessories subgroup of the Programs group.
+
+
+EXPECTED RESULTS
+The System Clipboard content should not contain any of the page's UI widgets (e.g. buttons, check boxes, etc.). However, all text labels should be properly copied to the Clipboard.
+
+LINKS
+copy-bad-stuff"
+TC-020;"STEPS/DESCRIPTION
+1. Mac OS 
+1. With the mouse, select a text string within the browser window, and choose ""Copy"" from the Edit menu.
+2. From the Edit menu, choose Find on this Page...
+3. Press Command+V to paste the text.
+4. Press Command+A to select the just-pasted text
+5. Select the first three words of the line:
+---> this very line <---
+...and press Command+X to cut the text
+6. Press Command+A to select the remaining text, and choose ""Delete"" from the Edit menu to clear the text selection.
+7. Repeat steps 1-6, but do so using via control+click context menus, rather than through keyboard shortcuts.
+8. Repeat steps 1-6, but do so using Mozilla's menu bar, rather than keyboard shortcuts. (For bonus points, perform this step via a text field in a modal dialog, such as within Preferences.)
+10. Windows 
+1. With the mouse, select a text string within the browser window, and choose ""Copy"" from the Edit menu.
+2. From the Edit menu, choose Find on this Page...
+3. Press Control+V to paste the text.
+4. Press Control+A to select the just-pasted text
+5. Select the first three words of the line:
+---> this very line <---
+...and press Control+X to cut the text
+6. Press Control+A to select the remaining text, and choose Delete from the Edit menu to clear the text selection.
+7. Repeat steps 1-6, but do so using via context menus, rather than through keyboard shortcuts.
+18. Linux 
+1. With the mouse, select a text string within the browser window, and choose Copy from the Edit menu.
+2. From the Edit menu, choose Find on this Page...
+3. Press Alt+V to paste the text.
+4. Press Alt+A to select the just-pasted text
+5. Select the first three words of the line:
+---> this very line <---
+...and press Alt+X to cut the text
+6. Press Alt+A to select the remaining text, and click after the right edge of the text selection.
+7. Press the middle mouse button to paste the selected text.
+8. Presss Alt+A to select the contents of the text field
+9. Choose ""Delete"" from the Edit menu to clear the text selection.
+
+EXPECTED RESULTS
+1. Mac OS & Windows: 
+Step 2: The ""Find on Page"" dialog should appear.
+Step 3: The copied text ""this very line of text"" should be pasted into the text field.
+Step 4: The text field contents should now be selected
+Step 5: The text field should now comprise: "" of text""
+Step 6: The text field should now be empty.
+2. Linux: 
+Step 2: The ""Find on Page"" dialog should appear.
+Step 3: The copied text ""this very line of text"" should be pasted into the text field.
+Step 4: The text field contents should now be selected
+Step 5: The text field should now comprise: "" of text""
+Step 6: The editing caret should exist to the right of the text "" of text""
+Step 7: The text field should now contain "" of text this very line""
+Step 8: The text field contents should now be selected
+Step 9: The text field should now be empty."
+TC-021;"STEPS/DESCRIPTION
+1. Open the testfile.html test file
+2. Open a new browser window
+3. Drag the Drag Me link from the first browser window to the new window
+4. Drag the Space Shuttle image from the first browser window to the new window.
+
+EXPECTED RESULTS
+3. The dragme.html page should open in the new window
+4. The large space shuttle image should open in the new window."
+TC-022;"STEPS/DESCRIPTION
+1. Open the testfile.html test file
+2. Drag the Drag Me link onto the desktop
+3. Open the shortcut created in the last step
+4. Drag the Space Shuttle link onto the desktop
+5. Open the shortcut created in the last step
+
+EXPECTED RESULTS
+2. A link to the dragme.html file should be created
+3. The dragme.html file should open the browser window
+4. A link to the large space shuttle image should be created
+5. The large space shuttle image should open in the browser window"
+TC-023;"STEPS/DESCRIPTION
+1. Open the testfile.html test file
+2. Open a new browser window
+3. Drag the Space Shuttle image from the first browser window to the target window.
+
+EXPECTED RESULTS
+3. The target browser window should open the the space shuttle image"
+TC-024;"STEPS/DESCRIPTION
+1. Open the testfile.html test file
+2. Drag the Space Shuttle image onto the desktop
+
+EXPECTED RESULTS
+2. The image should be saved onto the desktop.
+On Mac OS, the image should also have a file type of JPEG; check using a tool like Resorcerer or ResEdit.)"
+TC-025;"STEPS/DESCRIPTION
+1. Open the frame-test.html test file
+2. Drag the Drag Me link to the left frame
+3. Drag the space shuttle image to the left frame
+4. In a new browser window, open the page-test.html test file
+5. From the single-page (page-test.html) window, drag the Drag Me link to a frame in the frame-set (frame-test.html) window
+6. Press the Back button in the frame-set window
+7. From the single-page window, drag the space shuttle image to a frame in the frame-set window
+
+EXPECTED RESULTS
+2. The dragme.html page should open in the target frame
+3. The space shuttle image should open in the target frame
+5. The dragme.html page should replace the frame-set page
+7. The space shuttle image should replace the frame-set page
+"
+TC-026;"STEPS/DESCRIPTION
+1. Open the testfile.html test file
+2. Open a Composer window
+3. Drag the Drag Me link from the browser window to the Composer window
+4. Drag the space shuttle image from the browser window to the Composer window
+5. Select the formatted text section, including part or all of the table, and drag the selection from the browser window to the Composer window
+6. From the location bar, drag the URL proxy icon to the Composer window.
+7. Open a HTML Compose Mail window (if the compose window opens in plain text mode, close the window, then in the mail window Ctrl+click (Cmd+click in Mac OS) the Compose button)
+8. Repeat steps 4 to 6 for the Compose Mail window
+
+EXPECTED RESULTS
+3-5: The Composer window should accept each content item without any loss of content, formatting, or other attributes.
+6. The editor should add a link to the URL displayed in the location bar.
+8. The Compose Mail winodw should accept each contents just as Composer would"
+TC-027;"STEPS/DESCRIPTION
+1. Open the testfile.html test file
+2. Open a non-modal dialog (e.g. Edit | Find in This Page...)
+3. Make a text selection and drag it onto a text widget in the dialog.
+4. Drag a link onto a text wedget in the dialog
+5. Drag the selected text a blank area or a non-text wedget in the dialog
+6. Drag a link to a blank area or a non-text wedget in the dialog
+7. Drag the space shuttle image to the dialog
+
+EXPECTED RESULTS
+3. The selection text should be copied to the text widget
+4. The link URL should be copied to the text widget
+5-7 The drag attempt should be rejected"
+TC-028;"STEPS/DESCRIPTION
+1. From the desktop or file manager (e.g. Explorer in Windows or Finder in Mac OS), drag a disk icon to the browser window (e.g. C:\: on Windows or Macintosh HD on Mac OS)
+2. From the desktop or file manager, drag a folder (or directory) icon to the browser window
+3. On the desktop or in the file manager, create a shortcut (alias in Mac OS) to a folder (or directory).
+4. Drag the shortcut to the browser window
+
+EXPECTED RESULTS
+1. A file listing of your hard disk should appear, similar to an FTP directory list.
+2. The directory contents should be displayed in the browser window.
+4. The directory contents should be displayed in the browser window."
+TC-029;"STEPS/DESCRIPTION
+Windows
+1. Download and decompress the bookmarks.zip archive file
+2. Drag each shortcut file (from the archives) to the browser window
+Mac OS
+1. Download and decompress the bookmarks.sit archive file
+2. Drag each shortcut file (from the archives) to the browser window
+Linux
+1. Create a Web shortcut on your desktop environment
+2. Drag the shortcut to the browser window
+
+EXPECTED RESULTS
+Windows
+Dragging Netcenter (Internet Explorer-originated shortcut, with off-line availability) should open www.netscape.com
+Dragging Shortcut to mozilla.org (Communicator 4.7-originated shortcut) should open www.mozilla.org
+Mac OS
+Dragging www.netscape.com/ (Mac OS Internet Shortcut) should open www.netscape.com
+Dragging mozilla.org (Navigator bookmark) should open www.mozilla.org
+Linux
+The browser should load the shortcut URL"
+TC-030;"STEPS/DESCRIPTION
+Drag a text file from your desktop to the browser window
+
+EXPECTED RESULTS
+The document content should be displayed in the browser window as if the file were opened from File|Open."
+TC-031;"STEPS/DESCRIPTION
+1. Download each of the image files each below to your computer
+2. From your desktop or file manager, drag each downloaded file to the browser window
+
+EXPECTED RESULTS
+2. Each image should be displayed in the browser window.
+
+LINKS
+1. giftest.gif
+2. jpegtest.jpg
+3. skyvase48.png
+4. cmu-logo.xbm
+5. testimage.bmp"
+TC-032;"STEPS/DESCRIPTION
+1. Download the test archive for your system, linked below, to your computer and decompress it.
+2. Open your system's find application. 
+In Windows, open the Start menu, open the Find sub-menu, and choose Files and Folders.
+In Mac OS, switch to Finder, and choose Find from the File menu.
+3. Search the disk volume for file mozqahome.html. Drag the file icon from the Find window to your browser window.
+4. Search the disk volume for find-folder. Drag the folder icon from the Find window to your browser window.
+5. Search the disk volume for dmozBookmark. Drag the shortcut file icon from the Find window to your browser window.
+
+EXPECTED RESULTS
+3. The browser should display the text of the Mozilla QA Home Page.
+4. The browser should display the directory contents of find-folder.
+5. The browser should display the dmoz.org site.
+
+LINKS
+1. find-folder.zip (Windows)
+2. find-folder.sit (Mac OS)"
+TC-033;"STEPS/DESCRIPTION
+1. Download the test archive for your system, linked below, to your computer and decompress it.
+2. Drag the HTML file mozilla.html onto the application icon
+3. Drag the shortcut file mozilla.org onto the application icon
+4. Drag the text file mozilla.txt onto the application icon
+5. Drag the image file mozilla.jpg onto the application icon
+6. Drag the image file mozilla.gif onto the application icon
+7. Drag your a folder (or directory) icon from your desktop or file manager onto the application icon.
+8. Drag the Recycle Bin (Trash on Mac OS) onto the application icon.
+
+EXPECTED RESULTS
+2. The mozilla.org page should be displayed
+3. The mozilla.org Web site should be displayed
+4. The mozilla.org text file should be displayed
+5. Mozilla himself should be displayed
+6. The mozilla.org banner should be displayed
+7. The directory contents should be displayed
+8. The drag&drop operation should be either rejected or ignored
+
+LINKS
+1. files.zip (Windows)
+2. files.sit (Mac OS)"
+TC-034;"STEPS/DESCRIPTION
+1. Open a Web site
+2. Open a new browser window
+3. Drag the URL proxy icon in the Location Bar of the first browser window to the new window
+
+EXPECTED RESULTS
+3. The Web site should open in the target window"
+TC-035;"STEPS/DESCRIPTION
+1. Open a Web site
+2. Drag the URL proxy icon in the Location Bar onto the desktop
+3. Close the browser window, and then open the shortcut file created
+
+EXPECTED RESULTS
+2. A shortcut to the URL should be created
+3. The URL should re-open in the browser window"
+TC-036;"STEPS/DESCRIPTION
+Replace your browser's bookmarks file with the bookmarks.html file.
+1. Drag the Sample/FTP:URLs folder to your desktop
+2. Drag the FTP: Netscape bookmark to your desktop.
+3. Open the Personal Toolbar Folder, as well as its enclosed Channels folder
+4. Perform a drag-select beginning with Personal Toolbar Folder, and ending with Computing and Internet
+5. Drag these files to your desktop
+6. Drag the @vantage bookmark onto invalid or inappropriate OS interface objects, e.g. Network Neighborhood (win32), or a Desktop Printer (Mac OS).
+7. Drag the Business and Finance folder to the Trash (or on Windows, to the Recycle Bin)
+
+EXPECTED RESULTS
+1. The Sample/FTP:URLs folder should appear on your desktop (containing the bookmarks). The file name should be converted to properly handle the lack of slashes within file names on Windows, and colons on Mac OS.
+2. The FTP: Netscape bookmark should appear on your desktop (on Mac OS, also with a file name converted to properly handle the lack of colons within file names.)
+5. All dragged files should appear on the desktop, with the same hierarchy that existed within the Bookmarks window.
+6. All inappropriate icons should reject the drag.
+7. The Business and Finance folder should no longer exist within Bookmark Manager, and be deleted."
+TC-037;"INITIAL CONDITIONS
+Download the test archive for your system, linked below, to your computer and decompress it.
+
+STEPS/DESCRIPTION
+1. Download the test archive for your system, linked below, to your computer and decompress it.
+2. On Windows, drag the Netcenter file to the to the Bookmark Manager
+3. On Mac OS, drag the Mac OS bookmark and Netscape Bookmark files to the Bookmark Manager
+4. Drag a disk icon (e.g. Macintosh HD on Mac OS, or C:\ on Windows) to the Bookmark Manager
+5. Simultaneously drag the mozilla.gif, mozilla.jpg and OwlAlpha.png files to the Bookmark Manager
+6. Drag mozillazine.html file to the Bookmark Manager
+7. Drag zinealias.html shortcut (alias) to the Bookmark Manager
+8. (Mac OS) Drag the contents of the Stress Tests folder simultaneously to the Bookmark Manager
+
+EXPECTED RESULTS
+2. A URL pointer to the hard drive should be added.
+3. Bookmark links to each of the 3 image files should be created.
+4. A bookmark to the mozillazine.html file should be created
+5. A second bookmark to the mozillazine.html file should be created
+6. (Mac OS) Bookmarks should be created for /. (slashdot.org) and dmoz%3A.org (dmoz.org).
+
+LINKS
+1. bookmarks.zip (Windows)
+2. bookmarks.sit (Mac OS)
+
+Note:
+Sometime, find out whether Manage Bookmarks deals with attempt at adding a second bookmark with name of existing one onto it"
+TC-038;"STEPS/DESCRIPTION
+1. Go to a site that requires you to fill in data such as ivillage.com (then go to the page to create an account)
+2. Fill in data on the form
+3. From the Edit drop down menus, select save form data
+4. Shut down the browser
+5. Start the browser again and return to ivillage.com
+6. Click in the first field
+
+EXPECTED RESULTS
+3. A dialog box should appear, alerting you to the fact that the data has been captured
+6. A popup list should appear with the choice of selecting what you typed in the first time"
+TC-039;"INITIAL CONDITIONS
+You should have no form data saved
+
+STEPS/DESCRIPTION
+1. Go to a site that needs information, for example tripod.com and then click signup
+2. Fill in all the fields on the form
+3. From the Edit menu, select Save Form Info
+4. From the Tools menu, open the Form Manager sub-menu, then choose Edit Form Info
+
+EXPECTED RESULTS
+3. A dialog should appear saying data has been captured and the data from this form should be saved to the form manager
+4. Form manager should appear and your saved data should be listed"
+TC-040;"INITIAL CONDITIONS
+You should have no form data saved
+
+STEPS/DESCRIPTION
+1. Go to a site that needs information, for example mapquest.com<<li> Fill in all the fields for driving directions and click get directions
+2. Click no
+3. From the Tools menu, open the Form Manager sub-menu, and then choose Edit Form Info
+
+EXPECTED RESULTS
+2. A dialog should appear asking if you would like to save the values you filled in
+3. Your data should not be saved to Form Manager
+4. Your saved data should not appear in the Forms Manager"
+TC-041;"INITIAL CONDITIONS
+You should have no form data saved
+
+STEPS/DESCRIPTION
+1. Go to a site that needs information, for example travelocity.com
+2. Fill in all the fields for fare finder and click go
+3. Click Never for this site
+4. From the Tools menu, open the Form Manager sub-menu, and then choose Manage Sites
+5. Click the Forms Never Saved tab
+
+EXPECTED RESULTS
+2. A dialog should appear asking if you would like to save the values you filled in
+3. Your data should not be saved to Form Manager and this site should now be listed as a site to never save form data from
+4. Form manager should appear
+5. The site should be listed under this tab"
+TC-042;"INITIAL CONDITIONS
+You should have no form data saved
+
+STEPS/DESCRIPTION
+1. Go to a site that needs information, for example travelocity.com
+2. Fill in all the fields for fare finder and click go
+3. Click Never for this site
+4. From the Tools menu, open the Form Manager sub-menu, and then choose Manage Sites
+5. Click the Forms Never Saved tab
+6. Close the application
+7. Restart application and return to the site used above
+8. Enter data again and click go
+
+EXPECTED RESULTS
+2. A dialog should appear asking if you would like to save the values you filled in
+3. Your data should not be saved to Form Manager and this site should now be listed as a site to never save form data from
+4. Form manager should appear
+5. The site should be listed under this tab
+8. You should not get a dialog box asking if you would like to save the form data"
+TC-043;"INITIAL CONDITIONS
+You should have no form data saved.
+
+STEPS/DESCRIPTION
+1. 1. From the Tools menu, open the Form Manager sub-menu, then choose Edit Form Info
+2. 2. Click the arrow next to Shipping Information
+3. 3. Enter the Name, Address and Phone information
+4. 4. Click OK
+5. 5. Go to a site that will need a shipping address, for example drugstore.com (First you will have to fill out a quick registration form and then edit shipping addresses)
+6. 6. From the Edit menu, choose Save Form Info
+7. 7. Click Ok
+
+EXPECTED RESULTS
+1. Form Manager should open with fields listed on the left and value fields listed on the right
+2. The Shipping Name, Address and Phone fields should appear below Shipping Information
+5. You will be taken to a shipping address form.
+7. The form should be filled with the correct information."
+TC-044;"INITIAL CONDITIONS
+You should have no form data saved.
+
+STEPS/DESCRIPTION
+1. Go to a site that needs information, for example tripod.com and then click signup
+2. Fill in all the fields on the form
+3. From the Edit menu, select Save Form Info
+4. From the Tools menu, open the Form Manager sub-menu, then choose Edit Form Info
+5. Delete several of the values in the Form Manager (for instance Last: in Name and email in address)
+6. Click Ok
+7. Close the application, start it up and return to this same page
+8. From the Edit menu, select Fill in Form
+
+EXPECTED RESULTS
+3. A dialog should appear saying data has been captured and the data from this form should be saved to the form manager
+4. Form manager should appear and your saved data should be listed
+8. Your previously deleted information should not be filled in"
+TC-045;"INITIAL CONDITIONS
+You should have no form data saved.
+
+STEPS/DESCRIPTION
+1. Go to a site that needs information, for example tripod.com and then click signup
+2. Fill in all the fields on the form
+3. From the Edit menu, select Save Form Info
+4. From the Tools menu, open the Form Manager sub-menu, then choose Edit Form Info
+5. Delete several of the values in the Form Manager (for instance Last: in Name and email in address)
+6. Click Cancel
+7. From the Tools menu, open the Form Manager sub-menu, then choose Edit Form Info
+8. Verify that the previously deleted information is still in Form Manager
+
+EXPECTED RESULTS
+3. A dialog should appear saying data has been captured and the data from this form should be saved to the form manager
+4. Form manager should appear and your saved data should be listed
+7. Your data values should not have been changed
+8. Your previously deleted information should still be in Form Manager"
+TC-046;"INITIAL CONDITIONS
+Mozilla should be started up
+
+STEPS/DESCRIPTION
+1. From the Help drop down menu, select Help and Support Center
+2. Open your sidebar if it is not already open (click on the widget to the left hand side of your browser)
+3. Click on the Index tab
+4. Doubleclick on the T in the index
+5. Click the If You Can't sign on link
+
+EXPECTED RESULTS
+1. The Help and Support Center window should open
+3. An alphabetic list should display on the left hand side of the window
+4. The T should expand and you should see Troubleshooting listed
+5. You should be taken to Help information regarding sign on issues"
+TC-047;"INITIAL CONDITIONS
+Mozilla should be started up
+
+STEPS/DESCRIPTION
+1. From the Help drop down menu, select Help and Support Center
+2. Open your sidebar if it is not already open (click on the widget to the left hand side of your browser)
+3. Click on the Index tab
+4. Doubleclick on the T in the index
+5. Click the If You Can't See Anyone in you Buddy Window
+
+EXPECTED RESULTS
+1. The Help and Support Center window should open
+3. An alphabetic list should display on the left hand side of the window
+4. The T should expand and you should see Troubleshooting listed
+5. You should be taken to Help information regarding Buddy List Window issues"
+TC-048;"INITIAL CONDITIONS
+Mozilla should be started up
+
+STEPS/DESCRIPTION
+1. Select the toplevel Help menu.
+2. Select Help Contents
+3. Click Browsing the web link on left hand side of help page
+4. Click on Copying, Saving and Printing link on the left hand side of help page
+5. Click the back button on the help toolbar
+6. Click the forward button on the help toolbar
+7. Try this on other pages to ensure the behavior is consistant through help
+
+EXPECTED RESULTS
+2. You should be taken to the help contents page
+3. You should now be taken to the appropriate page, navigating web pages
+4. You should now be taken to the appropriate page, copying, saving, and printing
+5. You should return to the first page, navigating web pages
+6. You should return to copying, saving, and printing"
+TC-049;"INITIAL CONDITIONS
+Mozilla should be started up
+
+STEPS/DESCRIPTION
+1. Select the toplevel Help menu.
+2. Select Help Contents
+3. Click the minimize square in the upper right hand corner
+4. Click on the minimized Mozilla in Taskbar
+5. Click on the maximize square in the upper right hand corner
+6. Click on the x square in the upper right hand corner
+
+EXPECTED RESULTS
+2. Help contents should come up with main topics on the left and detailed information on the right
+3. Help should be minimized and show on your taskbar
+4. Help should be restored to the same size it was in the first place
+5. Help should now be expanded to the entire screen
+6. Mozilla should close"
+TC-050;"INITIAL CONDITIONS
+Netscape should be started up
+
+STEPS/DESCRIPTION
+1. Select the toplevel Help menu.
+2. Select Technical Support
+3. Push the Page Down Key on your keyboard
+4. Push the Page Up Key on your keyboard
+5. Click a few random links in help and try using these keys again
+
+EXPECTED RESULTS
+2. You should be taken to http://help.netscape.com/
+4. This should move you down the page until the end
+5. This should move you up the page until you reach the top
+6. Page up and Page Down keys should consistantly move you up and down pages"
+TC-051;"INITIAL CONDITIONS
+Netscape should be started up
+
+STEPS/DESCRIPTION
+1. Select the toplevel Help menu.
+2. Select Help Contents
+3. Click the arrow on the upper right hand corner
+4. Click on the smaller arrow that now appears on the upper left hand corner
+
+EXPECTED RESULTS
+2. You should be taken to the help contents page
+3. The toolbar should collapse
+5. The toolbar should now appear with buttons for forward, back, refresh and print"
+TC-052;"INITIAL CONDITIONS
+Netscape should be started up
+
+STEPS/DESCRIPTION
+1. Select the toplevel Help menu.
+2. Select Technical Support
+3. Push the down arrow key on your keyboard
+4. Push the up arrow key on your keyboard
+5. Click a few random links in help and try using these keys again
+
+EXPECTED RESULTS
+2. You should be taken to http://help.netscape.com/
+4. This should move you down the page until the end
+5. This should move you up the page until you reach the top
+6. Up arrow and down arrow keys should consistantly move you up and down pages"
+TC-053;"INITIAL CONDITIONS
+Netscape should be started up
+
+STEPS/DESCRIPTION
+1. Save the file below to your desktop
+2. Select the toplevel Help menu.
+3. Select Help Contents
+4. Drag the file from your desktop into the help windowr
+
+EXPECTED RESULTS
+3. You should be taken to the help contents page
+4. You should not be able to do this"
+TC-054;"INITIAL CONDITIONS
+Netscape should be started up
+
+STEPS/DESCRIPTION
+1. Select the toplevel Help menu.
+2. Select Help Contents
+3. Click on the greyed out previous button
+4. Click on the greyed out back button
+5. Click on the Netscape logo in uppper right
+
+EXPECTED RESULTS
+2. You should be taken to the help contents page
+3. Nothing should happen
+4. Nothing should happen
+5. Nothing should happen"
+TC-055;"INITIAL CONDITIONS
+Netscape should be started and a printer should be installed
+
+STEPS/DESCRIPTION
+1. Select the toplevel Help menu.
+2. Select Help Contents
+3. Select all contents on right, copy and paste into your favorite word processor and run spell check
+4. Click the printer Icon
+
+EXPECTED RESULTS
+2. Help contents should come up with main topics on the left and detailed information on the right
+3. There should be no spelling errors (Besides obvious computer terms and websites)
+4. Help contents should print"
+TC-056;"INITIAL CONDITIONS
+Netscape should be started and a printer should be installed on the machine you are using
+
+STEPS/DESCRIPTION
+1. Select the toplevel Help menu.
+2. Select Help Contents
+3. Select all contents on right, copy and paste into your favorite word processor and run spell check
+4. Click the printer icon
+
+EXPECTED RESULTS
+2. Help contents should come up with main topics on the left and detailed information on the right
+3. There should be no spelling errors (Besides obvious computer terms and websites)
+4. Browsing the web contents should print"
+TC-057;"INITIAL CONDITIONS
+Netscape should be started and a printer should be installed on the machine you are using
+
+STEPS/DESCRIPTION
+1. Select the toplevel Help menu.
+2. Select Mail and News
+3. Select all contents on right, copy and paste into your favorite word processor and run spell check
+4. Click the printer icon
+
+EXPECTED RESULTS
+2. Mail and news content should come up with main topics on the left and detailed information on the right
+3. There should be no spelling errors (Besides obvious computer terms and websites)
+4. Mail and News content should print"
+TC-058;"INITIAL CONDITIONS
+Netscape should be started and a printer should be installed on the machine you are using
+
+STEPS/DESCRIPTION
+1. Select the toplevel Help menu.
+2. Select Instant Messenger
+3. Select all contents on right, copy and paste into your favorite word processor and run spell check
+4. Click the printer icon
+
+EXPECTED RESULTS
+2. Instant Messenger content should come up with main topics on the left and detailed information on the right
+3. There should be no spelling errors (Besides obvious computer terms and websites)
+4. Instant Messenger content should print"
+TC-059;"INITIAL CONDITIONS
+Netscape should be started and a printer should be installed on the machine you are using
+
+STEPS/DESCRIPTION
+1. Select the toplevel Help menu.
+2. Select Customizing Netscape 6
+3. Select all contents on right, copy and paste into your favorite word processor and run spell check
+4. 4.Click the printer icon
+
+EXPECTED RESULTS
+2. Customizing Netscape 6 help content should come up with main topics on the left and detailed information on the right
+3. There should be no spelling errors (Besides obvious computer terms and websites)
+4. Customizing Netscape 6 help content should print"
+TC-060;"INITIAL CONDITIONS
+Netscape should be started and a printer should be installed on the machine you are using
+
+STEPS/DESCRIPTION
+1. Select the toplevel Help menu.
+2. Select Help Contents
+3. Click Understanding Privacy from the left panel
+4. Select all contents on right, copy and paste into your favorite word processor and run spell check
+5. Click the printer icon
+
+EXPECTED RESULTS
+3. Understanding privacy content should come up with main topics on the left and detailed information on the right
+4. There should be no spelling errors (Besides obvious computer terms and websites)
+5. Understanding Privacy content should print"
+TC-061;"INITIAL CONDITIONS
+Netscape should be started and a printer should be installed on the machine you are using
+
+STEPS/DESCRIPTION
+1. Select the toplevel Help menu.
+2. Select Help Contents
+3. Click Creating web pages from the left panel
+4. Select all contents on right, copy and paste into your favorite word processor and run spell check
+5. Click the printer icon
+
+EXPECTED RESULTS
+3. Creating web pages helpcontent should come up with main topics on the left and detailed information on the right
+4. There should be no spelling errors (Besides obvious computer terms and websites)
+5. Creating web pages content should print"
+TC-062;"INITIAL CONDITIONS
+Netscape should be started and a printer should be installed on the machine you are using
+
+STEPS/DESCRIPTION
+1. Select the toplevel Help menu.
+2. Select What's new in Netscape 6
+3. Click ""My sidebar is yours""
+4. Close the window created in 3 and click on ""Search from anywhere, anytime""
+5. Close the window created in 4 and click on ""Convenient Services""
+6. Close the window created in 5 and click on Start using Netscape
+
+EXPECTED RESULTS
+2. Verify that a screen describing new features in Netscape 6 comes up
+3. Verify that a window describing ""My sidebar"" appears in a new window
+4. Verify that ""Fast and Convenient Search from the Location Bar"" page comes up
+5. Verify that ""A host of Services"" window comes up
+6. Verify that you are taken to http://home.netscape.com/?cp=wn6"
+TC-063;"INITIAL CONDITIONS
+Netscape should be started and a printer should be installed on the machine you are using
+
+STEPS/DESCRIPTION
+1. Select the toplevel Help menu.
+2. Select What's new in Netscape six from the submenu
+3. Click Security and Privacy
+4. Select all contents of the page, and right click, select copy and then paste into your favorite word processor and run spell check
+
+EXPECTED RESULTS
+3. A new window should open with Easier Security at the top of the page
+4. There should be no spelling errors (Besides obvious computer terms and websites)"
+TC-064;"INITIAL CONDITIONS
+Netscape should be started
+
+STEPS/DESCRIPTION
+1. Select the toplevel Help menu.
+2. Select What's new in Netscape six from the submenu
+3. Click Same time messaging
+4. Select all contents of the page, and right click, select copy and then paste into your favorite word processor and run spell check
+
+EXPECTED RESULTS
+3. A new window should open with ""Multiple Mail Accounts & Identities"" at the top of the page
+4. There should be no spelling errors (Besides obvious computer terms and websites)"
+TC-065;"INITIAL CONDITIONS
+Netscape should be started
+
+STEPS/DESCRIPTION
+1. Select the toplevel Help menu.
+2. Select What's new in Netscape six from the submenu
+3. Click Streamlined interface
+4. Select all contents of the page, and right click, select copy and then paste into your favorite word processor and run spell check
+5. There are many links on this page, randomly click several links
+
+EXPECTED RESULTS
+3. A new window should open with ""What's New For Developers?"" at the top of the page
+4. There should be no spelling errors (Besides obvious computer terms and websites)
+5. Verify that you are taken to the appropriate page for links clicked"
+TC-066;"INITIAL CONDITIONS
+Netscape should be started and a printer should be installed on the machine you are using
+
+STEPS/DESCRIPTION
+1. Select the toplevel Help menu.
+2. Select What's new in Netscape six from the submenu
+3. Click The Best Standards Support
+4. Select all contents of the page, and right click, select copy and then paste into your favorite word processor and run spell check
+5. There are many links on this page, click on them randomly
+
+EXPECTED RESULTS
+3. A new window should open with ""What's New For Developers?"" at the top of the page
+4. There should be no spelling errors (Besides obvious computer terms and websites)
+5. Verify that you are taken to the appropriate link in a new browser instance"
+TC-067;"INITIAL CONDITIONS
+Netscape should be started and a printer should be installed on the machine you are using
+
+STEPS/DESCRIPTION
+1. Select the toplevel Help menu.
+2. Select ""What's new in Netscape 6""
+3. Click ""My sidebar is yours""
+4. Close the window created in 3 and click on ""Search from anywhere, anytime""
+5. Close the window created in 4 and click on ""Convenient Services""
+6. Close the window created in 5 and click on Start using Netscape
+
+EXPECTED RESULTS
+2. Verify that a screen describing new features in Netscape 6 comes up
+3. Verify that a window describing ""My sidebar"" appears in a new window
+4. Verify that ""Fast and Convenient Search from the Location Bar"" page comes up
+5. Verify that ""A host of Services"" window comes up
+6. Verify that you are taken to http://home.netscape.com/?cp=wn6"
+TC-068;"INITIAL CONDITIONS
+Netscape should be started up
+
+STEPS/DESCRIPTION
+1. From the Help Drop Down Menu, select Help and Support Center
+2. Click the Assisted Support Options link
+3. Click the Communicator 4.x link
+4. Click on the Netscape link
+5. Click on the Intertional Browsers link
+
+EXPECTED RESULTS
+1. The Help and Support Center page should come up
+2. You should be taken to the Need some help? page
+2. Help number should be listed 1(800)411-0707 (They will help you for low-cost assistance)
+2. There should be links to Communicator 4.x, Netscape 6, International Browsers
+3. You should be taken to a general Help page for Communicator 4.x
+4. You should be taken to a general Help page for Netscape 6
+4. Verify that the browser mentioned on this page is the correct version of the Netscape 6 browser
+5.You should be taken to a general Help page for International Support"
+TC-069;"INITIAL CONDITIONS
+Netscape should be started up
+
+STEPS/DESCRIPTION
+1. From the Help Drop Down Menu, select Help and Support Center
+2. Click on the International Link
+
+EXPECTED RESULTS
+1. The Help and Support Center should come up
+2. You should be taken to an International Users page
+2. This page should Have Current information for International users"
+TC-070;"INITIAL CONDITIONS
+Netscape should be started up
+
+STEPS/DESCRIPTION
+1. From the Help Drop Down Menu, select Feedback Center
+2. Click on the Fill out a problem report link
+3. Click on the Fill out a suggestion form link
+4. Click on the Fill out a survey form link
+
+EXPECTED RESULTS
+1. You should be taken to a page that explains how to send feedback to Netscape about the browser.
+1. You should see links to fill out a problem report, Fill out a suggestion form and Fill out a survey
+2. You should be taken to the Netscape Problem Report Form
+3. You should be taken to the Netscape Suggestion Form
+4. You should be taken to the Netscape Survey"
+TC-071;"INITIAL CONDITIONS
+Netscape should be started up
+
+STEPS/DESCRIPTION
+1. From the help drop down menu, select About Netscape 6
+2. Click on Contributors link
+3. Click on Mozilla Public License and Netscape Public License
+4. Click on the license link
+5. Click on the Java link
+6. Click on the Sun Microsystems link
+7. Click on the Copyright © 1998-2000 Support.com, Inc. link
+8. Click on the Lernout & Hauspie Speech Products N.V. link
+9. Click on the Net2Phone, Inc. Hackensack, NJ USA. link
+
+EXPECTED RESULTS
+1. The About Netscape page should come up
+2. Verify that the Contributors page (Terri Preston should be listed) :-)
+3. Verify that you are taken to http://www.mozilla.org/MPL/
+4. Verify that you are taken to jar:resource:///chrome/en-US.jar!/locale/en-US/global/license.txt
+5. & 6. Verify that you are taken to http://java.sun.com/
+7. Verify that you are taken to http://www.support.com/
+8. Verify that you are taken to the Lernout & Hauspie page (this is currently NS bug 12462)
+9. Verify that you are taken to http://www.net2phone.com/"
+TC-072;"INITIAL CONDITIONS
+Netscape should be started up
+
+STEPS/DESCRIPTION
+Click Alt+H prior to starting each of these steps
+1. Click H
+2. Click W
+3. Click F
+4. Click S
+5. Click P
+6. Click A
+
+EXPECTED RESULTS
+1. Help and Support Center page should open (close the help dialog)
+2. You should be taken to the Welcome page that describes the new features in Netscape
+3. You should be taken to the Feedback page
+4. You should be taken to the Security News page
+5. You should be taken to the Installed plugins page
+6. You should be taken to the About Netscape page"
+TC-073;"INITIAL CONDITIONS
+1. You must have used the installation of the browser you plan to test.
+2. If you have not, browse around some, then come back. Or run the gomenu-list test first.
+
+STEPS/DESCRIPTION
+1. Select Go|History.
+2. Observe the contents of the Global History Window.
+3. Quit and restart the browser.
+4. Select Go|History.
+
+EXPECTED RESULTS
+1. If you've observed the initial conditions, the History window should be non-empty upon first observation.
+2. After restart, the History window should still be non-empty.
+"
+TC-074;"INITIAL CONDITIONS
+1. You must have used the installation of the browser you plan to test.
+2. If you have not, browse around some, then come back. Or run the gomenu-list test first.
+
+STEPS/DESCRIPTION
+1. Select Go|History.
+2. Click this link.
+
+EXPECTED RESULTS
+You should have only one new entry in your history. It should be titled Small Business. The url should be http://home.netscape.com/netcenter/smallbusiness/index.html, NOT http://home.netscape.com/taskbar/6_0b1/bus4.html.
+
+LINKS
+1. redirect: http://home.netscape.com/taskbar/6_0b1/bus4.html
+2. target: http://home.netscape.com/netcenter/smallbusiness/index.html
+3. The History Testcase Matrix"
+TC-075;"INITIAL CONDITIONS
+1. You must have used the installation of the browser you plan to test.
+2. If you have not, browse around some, then come back. Or run the gomenu-list test first.
+
+STEPS/DESCRIPTION
+1. Select Go|History.
+2. Double-click any history link in the window.
+
+EXPECTED RESULTS
+The url for that link should load in your preexisting ""topmost"" browser window, or create a new browser window if none existed."
+TC-076;"INITIAL CONDITIONS
+1. You must have used the installation of the browser you plan to test.
+2. If you have not, browse around some, then come back. Or run the gomenu-list test first.
+
+STEPS/DESCRIPTION
+1. Select Go|History.
+2. Select (highlight) a history entry, press the delete key, OR
+3. Select (highlight) a history entry, Select Edit|Delete.
+4. Restart the browser.
+
+EXPECTED RESULTS
+1. After step(3) the title of and link to the history entry should now be removed from the history window.
+2. After step(4) it should still be gone."
+TC-077;"INITIAL CONDITIONS
+1. You must have used the installation of the browser you plan to test.
+2. If you have not, browse around some, then come back. Or run the gomenu-list test first.
+
+STEPS/DESCRIPTION
+1. Select Go|History.
+2. Select any history entry. Shift+click or drag to select more (at least 3).
+3. Select Edit|Delete.
+4. Restart the browser. Select Go|History
+
+EXPECTED RESULTS
+1. After step(3) the titles and links to the history entries should now be removed from the history window.
+2. After step(4) they should still be gone.
+"
+TC-078;"INITIAL CONDITIONS
+1. You must have used the installation of the browser you plan to test.
+2. If you have not, browse around some, then come back. Or run the gomenu-list test first.
+
+STEPS/DESCRIPTION
+1. Select Go|History.
+2. Observe the contents of the Global History Window.
+3. Select Edit|Preferences (from a navigator window)
+4. Browse to the Navigator|History Panel.
+5. Under ""Browsing History"" click the ""Clear History"" button.
+6. Return to observe the contents of the Global History Window.
+
+EXPECTED RESULTS
+1. If you've observed the initial conditions, the History window should be non-empty upon first observation.
+2. After pressing the button, the history window should be empty of individual history items.
+"
+TC-079;"INITIAL CONDITIONS
+1. You must have used the installation of the browser you plan to test.
+2. If you have not, browse around some, then come back. Or run the gomenu-list test first.
+
+STEPS/DESCRIPTION
+1. Select Go|History.
+2. In the Global History window, select View|Group By|Day.
+3. In the Global History window, select View|Group By|Site.
+4. In the Global History window, select View|Group By|None.
+
+EXPECTED RESULTS
+1. After Step(2), history entries should appear grouped into folders labeled ""Today"", ""Yesterday"", ""2 days ago"", ... ,""6 days ago"", and ""Older than 6 days"".
+2. After Step(3), the history items should appear grouped by domain name (no folders).
+3. After Sep (4), the history items should appear
+"
+TC-080;"INITIAL CONDITIONS
+1. You must have used the installation of the browser you plan to test.
+2. If you have not, browse around some, then come back. Or run the gomenu-list test first.
+
+STEPS/DESCRIPTION
+Select Go|History. This is most easily tested by using the View|Group By|None setting but not strictly necessary.
+1. Click on the ""Title"" column once.
+2. Click on the ""Title"" column a second time.
+3. Click on the ""Title"" column a third time.
+4. Click on the ""Location"" column once, and a second time.
+5. Click on the ""Last Visited"" column once, and a second time.
+
+EXPECTED RESULTS
+By step:
+1. The bookmarks should sort into alphabetical order, by Title.
+2. The bookmarks should sort into reverse-alphabetical order, by Title.
+3. The bookmarks should sort into ""natural"" order (the way they were originally sorted).
+4. The bookmarks should sort into order by Location and then the reverse of that order.
+5. The bookmarks should sort into order by Last Visited and then the reverse of that order.
+"
+TC-081;"INITIAL CONDITIONS
+1. You must have used the installation of the browser you plan to test.
+2. If you have not, browse around some, then come back. Or run the gomenu-list test first.
+
+STEPS/DESCRIPTION
+1. Select Go|History.
+2. Mouseover the separator between the ""Name"" and ""URL"" columns.
+3. Click and drag that separator to the left and right.
+4. Repeat this with each of the other column separators.
+
+EXPECTED RESULTS
+1. In step(2) the mouse pointer should change to a double-arrowed icon(platform specific or XP?).
+2. In step(3) the column sizes on either side of the separator should shrink and grow as you drag. The content of the column should move with the column header. Column content that is obscured should be replaced by the ellipsis(?).
+"
+TC-082;"INITIAL CONDITIONS
+1. You must have used the installation of the browser you plan to test.
+2. If you have not, browse around some, then come back. Or run the gomenu-list test first.
+
+STEPS/DESCRIPTION
+1. Select Go|History.
+2. Click the icon on the far right of the column headers.
+3. Uncheck two of the items (columns).
+4. Recheck an item.
+5. Quit and restart the application.
+
+EXPECTED RESULTS
+1. Step(2) a popup menu should appear listing all of the column headers as menuitems.
+2. Step(3), they should all be checked by default and unchecking should cause that column to disappear from the manage bookmarks window.
+3. Step(4), the columns should reappear upon rechecking its name on the list.
+4. Step(5) the columns should appear just as the did after step(4).
+"
+TC-083;"INITIAL CONDITIONS
+1. Your session history needs to be empty for this test so restart the browser or open a new window. To check, the Back/Forward buttons should be inactive and the dropdowns should not appear at all when the session history is empty.
+
+STEPS/DESCRIPTION
+1. Follow this Netscape link.
+2. Follow this Netscape People link.
+3. Wait for the redirect (15sec).
+4. Follow this Mozilla QA link.
+5. Follow this Mozilla link.
+6. From the ""Back"" button dropdown select the 4th item from the top ""Netscape.com"".
+7. From the ""Forward"" button dropdown select the 3rd item from the top ""Mozilla QA Home Page""
+
+EXPECTED RESULTS
+1. For Step(6), the dropdown menu should be apparent and active, the 4th item should be ""Netscape.com"", the page title, and selecting it should actually load that page
+2. For Step(7), the dropdown menu should be apparent and active, the 3rd item should be ""Mozilla QA Home Page"", the page title, and selecting it should actually load that page."
+TC-084;"INITIAL CONDITIONS
+1. You must have used the installation of the browser you plan to test.
+2. If you have not, browse around some, then come back. Or run the gomenu-list test first.
+
+STEPS/DESCRIPTION
+1. Select File|New Navigator Window.
+2. Select the Go menu.
+3. Quit and restart the browser.
+4. Select the Go menu.
+
+EXPECTED RESULTS
+After steps(2) and (4) the browser go meu should be ""empty"" ie only Back, Forward, and Home should be listed."
+TC-085;"INITIAL CONDITIONS
+Have mozilla started up
+
+STEPS/DESCRIPTION
+Complete these steps for all images below
+1. Open each of the files listed below
+2. Right click the image and select resize to window
+
+EXPECTED RESULTS
+Image should resize to the browser window size.
+
+LINKS
+1. JPG file
+2. Gif file
+3. bitmap file
+4. PNG file"
+TC-086;"INITIAL CONDITIONS
+Have mozilla started up
+
+STEPS/DESCRIPTION
+Complete these steps for all images below
+1. Open each of the files listed below
+2. Right click the image and select resize to window
+3. Right click again and select resize to original
+
+EXPECTED RESULTS
+Image should resize to it's original size.
+
+LINKS
+JPG file
+Gif file
+bitmap file
+PNG file"
+TC-087;"INITIAL CONDITIONS
+Have mozilla started up
+
+STEPS/DESCRIPTION
+Complete these steps for all images below
+1. Open one of the files listed below
+2. Right click the image and select save image
+3. Browse to where you want to save on your local disk and save.
+4. Open the file in browser (determine the picture has been saved)
+
+EXPECTED RESULTS
+Image should be saved to local disk.
+
+LINKS
+JPG file
+Gif file
+bitmap file
+PNG file"
+TC-088;"INITIAL CONDITIONS
+Have mozilla started up
+
+STEPS/DESCRIPTION
+Complete these steps for all images below
+1. Open one of the files listed below
+2. Right click the image and select set as wallpaper
+3. Go to your desktop
+
+EXPECTED RESULTS
+Image should now be the wallpaper on your desktop.
+
+LINKS
+JPG file
+Gif file
+bitmap file
+PNG file"
+TC-089;"INITIAL CONDITIONS
+Have mozilla started up and a printer installed on your machine.
+
+STEPS/DESCRIPTION
+Complete these steps for all images below
+1. Open one of the files listed below
+2. Right click the image and select print
+
+EXPECTED RESULTS
+Image should print.
+
+LINKS
+JPG file
+Gif file
+bitmap file
+PNG file"
+TC-090;"INITIAL CONDITIONS
+System under test should be capable of 8-bit color (256 colors), 16-bit and 24 bit
+
+STEPS/DESCRIPTION
+1. Launch Netscape 6
+2. View the test case page (linked below)
+3. Change the system resolution to 8-bit color (256 colors)
+4. Change the system resolution to 16-bit color (65536 colors)
+5. Change the system resolution to 24-bit color (16 million colors)
+
+EXPECTED RESULTS
+After Step 2, the page should be properly dithered to 8-bit color
+After Step 3, the page should be properly dithered to 16-bit color.
+After Step 4, the page should be properly rendered in 24-bit color.
+(After steps 2, 3 and 4, ""proper"" rendering or dithering means that the colors should appear as accurate or more accurate than when this test case is viewed in Communicator 4.x or Internet Explorer 5.x.)
+
+LINKS
+img_dither.html"
+TC-091;"INITIAL CONDITIONS
+Disk and memory caches to be cleared. Write access to test case directory required.
+
+STEPS/DESCRIPTION
+1. Copy img-reload.html, foo_master.jpg and bar_master.jpg from the test case directory to your local test case directory.
+2. In your test case directory, copy (but do not rename!) foo_master.jpg to foo.jpg
+3. View img_reload.html.
+4. In the test case directory, copy (but do not rename!) bar_master.jpg to foo.jpg
+5. Hold the shift button down, and press the browser's Reload button
+
+EXPECTED RESULTS:
+After Step 2, a page should appear containing a picture of John Glenn in a Mercury capsule.
+After Step 4, a page should appear containing a picture of a (much older) John Glenn aboard the space shuttle.
+
+LINKS
+img-reload.html
+bar_master.jpg
+foo_master.jpg"
+TC-092;"INITIAL CONDITIONS
+Disk and memory caches to be cleared.
+
+STEPS/DESCRIPTION
+1. View vlpan12.gif.
+2. View vlpan11.jpg.
+3. View wall_ni.png.
+
+EXPECTED RESULTS
+After step 1, a 530x462 GIF image of the surface of Mars should display.
+After step 2, a 1496x1536 JPEG image of the surface of Mars should display.
+After step 3, a 640x480 PNG image of the Great Wall should display.
+
+LINKS
+vlpan12.gif
+vlpan11.jpg
+wall_ni.png"
+TC-093;"INITIAL CONDITIONS
+Disk and memory caches to be cleared.
+
+STEPS/DESCRIPTION
+1. Copy these below-linked files to your hard drive: vlpan12.gif, vlpan11.jpg and wall_ni.png.
+2. View each of those images.
+
+EXPECTED RESULTS
+After loading vlpan12.gif, a 530x462 GIF image of the surface of Mars should display.
+After loading vlpan11.jpg, a 1496x1536 JPEG image of the surface of Mars should display.
+After loading wall_ni.png, a 640x480 PNG image of the Great Wall should display.
+
+LINKS
+vlpan12.gif
+vlpan11.jpg
+wall_ni.png"
+TC-094;"INITIAL CONDITIONS
+System under test must be configured to continue normal operation and not ""sleep"" or power down after an extended period of inactivity.
+
+STEPS/DESCRIPTION
+1. Launch Netscape 6
+2. View the test page (linked below)
+3. Leave the browser operating untouched for 24 hours
+
+EXPECTED RESULTS
+The image should be animating properly, and at a speed equivalent to that of step #1.
+
+LINKS
+img-anim-stability.html"
+TC-095;"STEPS/DESCRIPTION
+1. Display the attached web pages
+2. (if site still present, visit http://www.animationcity.net/animcity.htm, as an additional stress test case.)
+
+EXPECTED RESULTS
+All animated images should animate smoothly, without stopping, or displaying any glitches. (Communicator 4.6x or IE can be used for a more specific description of the expected results.)
+Animated GIFs off the net occasionally have a pre-specified number of iterations, normally 1000, and will halt animation deliberately.
+
+LINKS
+img-anim-multiple-2
+img-anim-multiple-6"
+TC-096;"STEPS/DESCRIPTION
+1. Launch Netscape 6
+2. View the test page (linked below)
+
+EXPECTED RESULTS
+1. A mozilla.org banner, displayed at a descending bit depth, starting at 8-bit, and ceasing at 3-bit, followed by a grayscale image.
+2. A Hubble space image, displayed at a descending bit depth, starting at 8-bit, and ceasing at 3-bit, followed by a grayscale image.
+3. 5 rows of a single black pixel.
+
+LINKS
+img-gif-87"
+TC-097;"STEPS/DESCRIPTION
+1. Launch Netscape 6
+2. View the test page (linked below)
+
+EXPECTED RESULTS
+1. A mozilla.org banner, displayed at a descending bit depth, starting at 8-bit, and ceasing at 3-bit, followed by a grayscale image. The ""mozilla.org"" text should be transparent, and inherit the green page background.
+2. A Hubble space image, displayed at a descending bit depth, starting at 8-bit, and ceasing at 3-bit, followed by a grayscale image. A different portion of the top half of each image should be transparent, and inherit the green page background.
+3. 5 rows of a single black pixel.
+
+LINKS
+img-gif-89"
+TC-098;"STEPS/DESCRIPTION
+View each of the below-linked images, and confirm that the web browser does not crash, or display the images in a less-desirable fashion than Communicator 4.5x or IE do.
+
+EXPECTED RESULTS
+(Output equivalent or more desirable than that of Communicator 4.5x or IE.)
+Link(s)
+Animated GIF with subsequent frame larger than header
+qon1.gif
+center.gif
+killerlogo3.gif
+Animated GIFs containing at least one corrupted frame
+merr-01.gif
+GIF with a 1-pixel high frame
+one-liner.gif
+Not covered, but should be (from Pam's list):
+1. background: erase
+2. background: overlay
+3. corruption in frame1+
+4. frame1+ dimens < header dimens
+5. global colormaps
+6. local colormaps
+7. 1x1 images"
+TC-099;"STEPS/DESCRIPTION
+1. Launch Netscape 6
+2. View the test page (linked below)
+3. Independently view each of the two images files (also linked below)
+
+EXPECTED RESULTS
+After step 1, the web page displayed should exhibit display a black & white fancy bitmap image of a clock, followed below by a black and white bitmap image of a penguin.
+After step 2, both the clock and penguin images should be displayed, identically to their appearance in step 1 (or as viewed by Communicator 4.x).
+
+LINKS
+img-xbm.html
+fancyclock.xbm
+penguin.xbm"
+TC-100;"STEPS/DESCRIPTION
+1. Testing the <APPLET> tag
+2. Testing the <OBJECT> tag
+
+EXPECTED RESULTS
+All applets should load and run properly"
+TC-101;"INITIAL CONDITIONS
+1. Open the Java console from Tasks | Tools |  Java Console menu
+2. While performing every test, hit the BACK button and FORWARD button in the browser and observe results in browser window or console
+
+STEPS/DESCRIPTION
+Click the following testcase links
+1. Test 1. Observe the clock display the system time on your machine. Hit BACK and FORWARD button and see that time changes and you see a different time with every visit.
+2. Test 2. Hit BACK and FORWARD button on this page and observe that the init, start and stop methods are called in that order in java console.
+3. Test 3. Hit BACK and FORWARD button on this page and observe that the init, start and stop methods are called in that order in java console."
+TC-102;"INITIAL CONDITIONS
+Clear stored passwords or use a sight that you have not been to before
+
+STEPS/DESCRIPTION
+1. Go to a sight that requires a password, such as http://www.freeride.com
+2. Enter a username and password and click login
+3. When presented with the save password dialog, click never for this site
+4. Shut down Netscape 6
+5. Open Netscape 6
+6. Return to http://www.freeride.com (or other site, if used)
+7. Enter a username and password and click login
+
+EXPECTED RESULTS
+3. No password should be saved in Password Manager
+6. The username and password should not be prefilled
+7. The password dialog box should not appear again"
+TC-103;"STEPS/DESCRIPTION
+1. Go to a sight that requires a password, such as http://mail.yahoo.com
+2. Enter a username and password and click sign in
+3. When presented with the save password dialog, click yes
+4. Shut down Netscape 6
+5. Open Netscape 6
+6. Return to http://mail.yahoo.com (or other site, if used)
+7. Delete the prefilled information and enter the second username and password
+8. Click login
+9. When presented with the save password dialog, click yes
+10. Shut down Netscape 6
+11. Open Netscape 6
+12. Return to http://mail.yahoo.com (or other site, if used)
+13. Select one of these choices and click sign in
+
+EXPECTED RESULTS
+3. The username and password should be saved in Password Manager
+6. The username and password should be prefilled
+8. You should be logged in to the site
+9. The username and password should be saved in Password Manager
+12. You should be presented with a dialog box that offers a choice between the two usernames
+13. You should be signed in to the site"
+TC-104;"STEPS/DESCRIPTION
+1. Go to a sight that requires a password, such as http://my.lycos.com
+2. Enter a username and password and click sign in
+3. When presented with the save password dialog, click yes
+4. Shut down Netscape 6
+5. In a different browser, return to the site and change your password
+6. Open Netscape 6
+7. Return to http://my.lycos.com (or other site, if used)
+8. Delete the prefilled password information and enter the new password
+9. Click login
+10. Shut down Netscape 6
+11. Open Netscape 6
+12. Return to http://my.lycos.com (or other site, if used)
+13. The password and username information should be prefilled, click sign in
+
+EXPECTED RESULTS
+3. The username and password should be saved in Password Manager
+9. You should be logged in to the site
+13. You should be logged in to the site
+9. The username and password should be saved in Password Manager
+12. You should be presented with a dialog box that offers a choice between the two usernames
+13. You should be signed in to the site"
+TC-105;"INITIAL CONDITIONS
+Browser should be started and you should have a username and password for a site, such as www.freeride.com
+
+STEPS/DESCRIPTION
+1. From the Edit drop down list, select preferences
+2. Click the arrow next to advanced
+3. Click passwords
+4. Unclick the box next to remember passwords for sites that require me to log in
+5. Click ok
+6. Go to a sight that requires a password, such as http://www.freeride.com
+7. Enter a username and password and click sign in
+
+EXPECTED RESULTS
+1. The preference panel should be displayed
+2. The advanced options should be displayed
+3. The password panel should be displayed on the right hand side
+5. The preferences panel should close
+7. You should not be presented with a dialog asking if you would like to save your username and password"
+TC-106;"INITIAL CONDITIONS
+Password manager should be enabled, in a different browser create an account at a site that requires a username and password such as http://www.ebay.com
+
+STEPS/DESCRIPTION
+1. Go to a site that you have not been to before in Netscape 6, such as http://www.ebay.com
+2. Enter your username and password
+3. When a dialog appears asking if you would like to save this information, click yes
+4. From the edit drop down menus, select preference
+5. Click on the arrow next to advanced
+6. Click on passwords
+7. Click View saved passwords
+8. Verify that your saved username and password appear in the list
+
+EXPECTED RESULTS
+4. Preference pane should open
+5. Advanced options should appear
+6. Password manager options should appear on right pane
+7. A list of saved passwords should appear"
+TC-107;"INITIAL CONDITIONS
+Password manager should be enabled, in a different browser create an account at a site that requires a username and password such as http://www.espn.com
+
+STEPS/DESCRIPTION
+1. Go to a site that you have not been to before in Netscape 6, such as http://www.espn.com
+2. Enter your username and password
+3. When a dialog appears asking if you would like to save this information, click yes
+4. From the edit drop down menus, select preference
+5. Click on the arrow next to advanced
+6. Click on passwords
+7. Click View saved passwords
+8. Highlight this sight and username in the list and click remove
+9. Click cancel
+10. Click View saved passwords
+11. Highlight this sight and username in the list and click remove
+12. Click ok
+13. Click View saved passwords
+
+EXPECTED RESULTS
+3. Your username and password should be saved to the password manager
+4. Preference pane should open
+5. Advanced options should appear
+6. Password manager options should appear on right pane
+7. A list of saved passwords should appear with your saved sight and username appearing in the list
+8. This site's information should no longer appear in the list
+9. Window should close
+10. This site should once again, be in the list of saved passwords
+11. This site and username should no longer appear on the list of saved passwords
+13. This site should be removed from the list"
+TC-108;"INITIAL CONDITIONS
+Password manager should be enabled and you should have saved username and password information for several sites
+
+STEPS/DESCRIPTION
+1. From the edit drop down menus, select preference
+2. Click on the arrow next to advanced
+3. Click on passwords
+4. Click View stored passwords
+5. Click remove all
+6. Click cancel
+7. Click View saved passwords
+8. Click remove all
+9. Click ok
+10. Click View saved passwords
+
+EXPECTED RESULTS
+1. Preference pane should open
+2. Advanced options should appear
+3. Password manager options should appear on right pane
+4. A list of saved passwords should appear with your saved sights and usernames appearing in the list
+5. All of the saved site and username information should be removed from the list
+7. All of the saved site and username information should again, appear in the list
+8. All of the saved site and username information should be removed from the list
+10. There should be no information listed under the passwords saved tab
+11. This site and username should no longer appear on the list of saved passwords
+13. This site should be removed from the list"
+TC-109;"STEPS/DESCRIPTION
+1. Launch Apprunner
+2. Click here to view a page with horizontal frames
+3. Click here to view a page with vertical frames.
+4. Once each page loads, select menu option ""FILE| PRINT""
+5. Press ""OK"" on Print Dialog Box to print the page.
+
+EXPECTED RESULTS
+After Step 5, the page should be printed as seen on screen"
+TC-110;"STEPS/DESCRIPTION
+1. Launch Apprunner
+2. Click here to view a page with various formats
+3. Select menu option ""FILE | PRINT""
+4. Press ""OK"" on Print Dialog Box to print the page
+
+EXPECTED RESULTS
+After Step 4, the page should be printed as seen on screen"
+TC-111;"STEPS/DESCRIPTION
+1. Launch Apprunner
+2. Click here to view a page with aligned text
+3. Select menu option ""FILE| PRINT""
+4. Press OK on Print Dialog Box to print the page
+
+EXPECTED RESULTS
+After Step 4, the page should be printed as seen on screen"
+TC-112;"STEPS/DESCRIPTION
+1. Launch Apprunner 
+2. Click here to view a page with indentation
+3. Select menu option ""FILE| PRINT""
+4. Press OK on Print Dialog Box to print the page
+
+EXPECTED RESULTS
+After Step 4, the page should be printed as seen on screen"
+TC-113;"STEPS/DESCRIPTION
+1. Launch Apprunner
+2. Click here to view a sample page
+3. Select menu option ""FILE| PRINT""
+4. Click on the ""Properties"" button.
+5. Under the ""Page Setup"" option, in the frame titled ""Orientation"", select the radio button titled ""Portrait""
+6. Press OK twice to print the page
+7. Repeat step 1 thru 3 and select the radio button titled ""Landscape"" under the ""Orientation"" Frame.
+8. Press ""OK"" twice to print the page
+
+EXPECTED RESULTS
+After Step 6, the page should be printed in Portrait setting
+After Step 8, the page should be printed in Landscape setting"
+TC-114;"STEPS/DESCRIPTION
+1. Launch Apprunner
+2. Click here to view a page with HTML widgets 
+3. Select menu option ""FILE| PRINT""
+4. Press ""OK"" to print the page
+
+EXPECTED RESULTS
+After Step 4, all the HTML widgets should print as seen on screen "
+TC-115;"STEPS/DESCRIPTION
+1. Launch Apprunner
+2. Go to mozilla home page
+3. Select menu option ""View | Page Source"" to view the source code
+4. A new window with the source opens up.
+5. Select menu option ""FILE | PRINT""
+6. Press ""OK"" to print the page
+
+EXPECTED RESULTS
+After Step 6, the page source should print as seen on screen "
+TC-116;"STEPS/DESCRIPTION
+1. Run the NIST CSS2 Test Suite
+2. Run the NIST CSS1 Tests
+3. Run David Baron's CSS Tests
+4. Run W3C's CSS Tests Suite
+5. Run Ian Hickson's Evil Test Suite
+6. After visiting each test page, print each test (select Print from the File menu)
+
+EXPECTED RESULTS
+All CSS pages should print as they appear on screen"
+TC-117;"STEPS/DESCRIPTION
+1. Launch Apprunner
+2. Click here to view the mozillazine polls result page
+3. Select menu option ""FILE | PRINT""
+4. Press ""OK"" to print the page
+
+EXPECTED RESULTS
+After Step 4, the polls result page should print as is."
+TC-118;"STEPS/DESCRIPTION
+1. Launch Apprunner
+2. Click here to open a large page with HTML text
+3. Select menu option ""FILE | PRINT""
+4. Press ""OK"" to print the page
+5. Click here to open a large, complex web page
+6. Repeat steps 2 & 3.
+
+EXPECTED RESULTS
+After Step 3 & 5, both pages should print properly."
+TC-119;"STEPS/DESCRIPTION
+1. Launch Apprunner
+2. Click here to open a XML Test suite.
+3. Open each test page and print the page.
+4. Click here to open a listing of .xml and .css pages.
+5. Select any of the xml files to view them.
+6. Select the menu option ""FILE | PRINT"" to print the xml page
+7. Press ""OK"" to print the page
+8. Try printing other xml pages from the listing
+
+EXPECTED RESULTS
+XML pages should print as they appear on screen."
+TC-120;"STEPS/DESCRIPTION
+1. Launch Apprunner
+2. Click here to open a listing of top web sites.. 
+3. Click on the first web page link. 
+4. Select the menu option ""FILE | PRINT"" to print the web page
+5. Press ""OK"" to print the page
+6. Similarly, try printing all the pages one by one.
+
+EXPECTED RESULTS
+All web pages should print properly."
+TC-121;"STEPS/DESCRIPTION
+1. Launch Apprunner
+2. Click here to open a HTML 4.0 page.
+3. Select the menu option ""FILE | PRINT"" to print the web page
+4. Press ""OK"" to print the page
+5. Similarly, try printing this page also.
+
+EXPECTED RESULTS
+All pages should print properly."
+TC-122;"STEPS/DESCRIPTION
+1. Launch Apprunner
+2. Click here to open a small .gif image.
+3. Click here to open a large .gif image.
+4. Click here to open a small .jpg image.
+5. Click here to open a largel .jpg image.
+6. Click here to open a .xbm image.
+7. Click here to open an animated .gif image.
+8. Select the menu option ""FILE | PRINT"" to print the image
+9. Press ""OK"" to print the image.
+10. Similarly, print all the images one by one.
+
+EXPECTED RESULTS
+All images should print properly."
+TC-123;"STEPS/DESCRIPTION
+1. Launch Apprunner
+2. Click here to open a page with different types of lists.
+3. Select ""FILE | PRINT"" menu option to print the page.
+
+EXPECTED RESULTS
+All lists should print as they appear on the screen."
+TC-124;"STEPS/DESCRIPTION
+1. Launch Apprunner
+2. Open first tables test page
+3. After each test page opens, select ""FILE | PRINT"" menu option to print the test.
+4. Click on ""Next Test"" at bottom of the page to proceed to next test. 
+
+EXPECTED RESULTS
+All tables should print as they appear on the screen."
+TC-125;"STEPS/DESCRIPTION
+1. Launch Apprunner
+2. Click here to open first character styles test page.
+3. After each test page opens, select ""FILE | PRINT"" menu option to print the test.
+4. Click on ""Next Test"" at bottom of the page to proceed to next test.
+
+EXPECTED RESULTS
+All pages should print as they appear on the screen."
+TC-126;"STEPS/DESCRIPTION
+1. Launch Apprunner
+2. Click here to open first paragraph styles test page.
+3. After each test page opens, select ""FILE | PRINT"" menu option to print the test.
+4. Click on ""Next Test"" at bottom of the page to proceed to next test.
+
+EXPECTED RESULTS
+All pages should print as they appear on the screen."
+TC-127;"STEPS/DESCRIPTION
+1. Browse test page
+2. Select ""FILE | PRINT"" Preview menu option
+3. Click on Next Page and make sure it goes to next page
+4. Click on Zoom In to zoom into page
+5. Click on Zoom Out to zoom out of page
+6. Click on Previous Page and make sure it goes back
+7. Click on Close and make sure it closes preview window
+
+EXPECTED RESULTS
+Print Preview functions should work properly."
+TC-128;"STEPS/DESCRIPTION
+1. Launch Apprunner
+2. Do ""File | Page Setup""
+
+EXPECTED RESULTS:
+Native Page Setup dialog should come up
+* - This menu option ""Page Setup"" should not be visible on windows/linux platforms."
+TC-129;"INITIAL CONDITIONS
+You should have a local printer connected to your machine to test this
+
+STEPS/DESCRIPTION
+1. Launch the browser
+2. Go to Windows Build Prerequisites
+3. Select ""File | Work Offline""
+4. Select ""File | Print""
+
+EXPECTED RESULTS
+All pages should get printed even when you are offline"
+TC-130;"STEPS/DESCRIPTION
+1. Launch the browser
+2. Go to Windows Build Prerequisites
+3. Select ""File| Print""
+4. The printed pages should have the webpage name and the url on top left/right
+5. The bottom of the printed pages should show the number of pages printed and date/time (system)
+
+EXPECTED RESULTS
+Header/Footer info should print correctly"
+TC-131;"STEPS/DESCRIPTION
+1. Launch the browser
+2. Go to Windows Build Prerequisites
+3. Do ""File | Print""
+4. Once the ""Print"" dialog comes up, click on the radio button titled ""Pages""
+5. Enter a value for the number of pages to print (say 1 to 3)
+
+EXPECTED RESULTS:
+Only pages 1 to 3 should get printed"
+TC-132;"STEPS/DESCRIPTION
+1. Launch the browser
+2. Click here to open a video tests page. Click on the Quicktime movie tests and verify that movies play properly
+3. Click here to visit a page with quicktime movies. Click on all movies one by one to view them.
+4. Click here to view the Apple quicktime trailers page. Click on the images to play the movies. Try the links as well. Try out movies in all sizes (small, medium, large). Move browser scrollbars to see if page paints correctly or not while movie is playing.
+5. Click here to view a page with plugins inside table. Try to play all plugins simultaneously.
+6. In all steps above, press the browser's BACK or FORWARD button and see that the movie unloads/loads properly
+7. Click here. Click on the quicktime logos to watch movies.
+8. Some large quicktime movies on this page.
+9. IFilm website. choose Quicktime to watch movies on this site. To change preferences, click on ""More Options"" in the right pane of the window and select ""Change preferences"" to change player settings.
+10. Green MileVideos.
+11. PlanetOut (Queer Tv) Videos. PlanetOut Archive. Click on ""watch in quicktime for all movies""
+12. Click here. Watch videos in High/Low bandwidth.
+
+EXPECTED RESULTS
+All Quicktime movies should load and play properly."
+TC-133;"INITIAL CONDITIONS
+You can use any compatible plugin to test these files. Quicktime is preferred.
+
+STEPS/DESCRIPTION
+1. Click here for some audio test files
+2. Click here for some sound tests
+3. Click here for audio tests page
+4. Click here for AIF samples
+5. Click here for AU samples
+6. Click here for MIDI samples
+
+EXPECTED RESULTS
+All sound files should play properly."
+TC-134;"STEPS/DESCRIPTION
+1. Click here for nick.com Games page (tons of flash and shockwave games)
+2. Click here for I-Bench Shockwave test
+3. Context Menu Tests
+4. Shockwave Test Page. Click on top 3 links on this page to launch pages with shockwave movies.
+5. Click here to visit shockwave.com website. Click on links to 'Games' , 'Shows', ""Music', 'Greetings' to test shockwave/ flash contents. This website is an exhaustive collection of shockwave/flash movies to test.
+6. Shockwave Gallery website. Click on Games, Toys, Project Samples and other links to test shockwave contents
+7. Click here to visit the macromedia showcase gallery with plenty of shockwave/flash websites
+8. Sanrio Shockwave Gallery . Click and play the games on this page.
+9. DogDay's Shockwave Gallery. Click on links under the title 'Visit The Gallery' to load pages with shockwave content.
+10. ZeoSphere Shockwave Gallery. Click on banners on this page to view shockwave content
+11. Click here to load an extensive testcase suite for shockwave plugin
+12. Click here to load an extensive testcase suite for shockwave plugin
+13. Perceptive Productions ShockwaveGallery. Click on the clips on this page one by one to load and view shockwave movies
+14. CyberMaze Shockwave Gallery. Click on links on this page to see shockwave content.
+
+EXPECTED RESULTS
+All shockwave and /or flash movies should load work properly"
+TC-135;"INITIAL CONDITIONS
+Open a new browser window.
+
+STEPS/DESCRIPTION
+1. Type something into the URL Bar or edit already existing contents.
+2. Click the ""Search"" button to the right of the URL Bar.
+
+EXPECTED RESULTS
+1. Clicking the ""Search"" button with a ""dirty"" URL bar should launch a search on the terms in the URL bar.
+2. You should see a page with search results in the browser content window. *there are MySidebar ramifications with this testcase that are treated elsewhere."
+TC-136;"INITIAL CONDITIONS
+1. Open a new browser window.
+2. All prefs should be set to their defaults (new profile).
+
+STEPS/DESCRIPTION
+1. Type a multi-word search term in the URL bar. Anything will do, ""Claudius 'CMaximus' Gayle"" for example.
+2. Click the ""Search"" Button.
+
+EXPECTED RESULTS
+1. After search results load in the browser window, the Sidebar should pop open to the Search tab and be populated with search results as well.
+2. The textfield in the sidebar search tab should be populated with your search term exactly as you typed it."
+TC-137;"INITIAL CONDITIONS
+1. Open a new browser window.
+2. All prefs should be set to their defaults (new profile).
+
+STEPS/DESCRIPTION
+1. Open the Sidebar to the Search tab.
+2. Type a search term into the textbox. Anything will do, ""CMaximus"" for example.
+3. Click the ""Search"" Button next to the textfield.
+
+EXPECTED RESULTS
+1. Search results from the default search engine should load in the browser window.
+2. Results should load in the Search tab as well.
+3. Search results in the search tab should be prefixed by an icon representing the search engine - for each result."
+TC-138;"INITIAL CONDITIONS
+1. Open a new browser window.
+2. All prefs should be set to their defaults (new profile).
+
+STEPS/DESCRIPTION
+1. Run the single-search test first.
+2. In the dropdown box after the word ""using"" select a different search engine.
+3. Click the ""Search"" Button next to the textfield.
+4. Repeat steps 2-3 as desired.
+
+EXPECTED RESULTS
+1. Search results from the chosen search engine should load in the browser window.
+2. Results should load in the Search tab as well.
+3. Search results in the search tab should be prefixed by an icon representing the new search engine - for each result."
+TC-139;"INITIAL CONDITIONS
+1. Open a new browser window.
+2. All prefs should be set to their defaults (new profile).
+
+STEPS/DESCRIPTION
+1. Run the single-search test first.
+2. Click the ""Bookmark this Search"" button below the search results.
+
+EXPECTED RESULTS
+1. A new bookmark folder titled ""Search:(your query string here)"". Should appear in the 4 Standard locations.
+2. The ""Bookmark this Search"" button should not have become active until search results were generated."
+TC-140;"INITIAL CONDITIONS
+View the below-linked document.
+
+STEPS/DESCRIPTION
+[from white space to white space, vertically]
+1. Move the mouse pointer to the white space above ""Hi!"".
+2. Click and hold the mouse button, drag to the white space below the first line of text, and release the mouse pointer
+3. Clear the selection (e.g. click anywhere else within the document)
+
+[from white space to white space, horizontally]
+4. Move the mouse pointer to the immediate left of the word ""Hi!""
+5. Click and hold the mouse button, drag to the last character on the line, and release the mouse pointer.
+6. Clear the selection (e.g. click anywhere else within the document)
+
+[from white space to text, with line breaks]
+7. Move the mouse pointer to the immediate left of the word ""another"" (in the second line of text)
+8. Click and hold the mouse button, dragging to the last character of the word ""final"" (in the 3rd line), and release the mouse pointer.
+
+EXPECTED RESULTS
+After step #2, the first line of text should be selected in its entirety.
+After step #4, the first line of text should (again) be selected in its entirety.
+After step #8, the middle of the second line (beginning with the entire word ""another"") should be selected, through the middle of the third line (ending with the entire word ""final"".)
+
+LINKS
+drag-select-text.html"
+TC-141;"INITIAL CONDITIONS
+View the below-linked document.
+
+STEPS/DESCRIPTION
+For each numbered item on the page:
+1. double-click where the instructions say ""HERE"" (stems #1-3) [or]
+2. double-click on each text item, and confirm that it is highlighted pursuant to the boldfaced instructions preceeding each numbered section.
+
+EXPECTED RESULTS
+Results pursuant to the instructions preceeding each numbered section on the page.
+
+LINKS
+double-click-text.html"
+TC-142;"STEPS/DESCRIPTION
+1. View the attached test case file.
+2. Hold the shift key down.
+3. Click on the ""M"" in ""Multiple"", at the top of the document
+4. Using the scroll bar, drag to the bottom of the document
+5. Click in the white space at the bottom-right of the document (below any page content)
+6. Clear the selection. (e.g. click within the browser window, but outside of the selection)
+7. Double click on the ""A"" in ""August"" (boldfaced)
+8. Place the mouse pointer at the right edge of the selection.
+9. Holding the shift key down, drag down to the end of the paragraph. (""software"")
+
+EXPECTED RESULTS
+After step 5, all of the document content should be selected.
+After step 9, the entire first paragraph should be selected.
+
+LINKS
+shift-select-text.html"
+TC-143;"STEPS/DESCRIPTION
+1. View the attached drag-scroll-text.html test case
+2. If necessary, shrink the window so that the browser window contains both horizontal and vertical scroll bars.
+3. Start from the first word (""Currently"") in the upper-left hand corner of the web page, and drag-scroll to the bottom-right hand corner of the page.
+4. From the final word (""component"") in the document, drag-scroll from the lower-right hand corner of the web to the upper-left hand corner of the web page.
+5. View the drag-scroll-text-frame.html test case.
+6. For each the page's two frames, drag-scroll from the top of the page to its bottom.
+7. View the drag-scroll-box.html test case.
+8. Starting from the first word in the upper-left hand corner of the text area, drag-scroll downwards to the end of the text content.
+
+EXPECTED RESULTS
+After Step #3, the page should be successfully drag-scrolled to the bottom-right hand corner. (despite having to drag-scroll through several table cells, and out of the table)
+After Step #4, the document should be successfully drag-scrolled to its upper-left hand corner.
+After Step #6, drag-scrolling a frame should not impact the contents of its neighbor frame.
+After Step #8, the entire text area should be selected.
+
+LINKS
+drag-scroll-text.html
+drag-scroll-text-frame.html
+drag-scroll-box.html"
+TC-144;"STEPS/DESCRIPTION
+1. Launch the browser
+2. In the Sidebar, verify that the following default panels appear:
+*Search
+*Buddy List
+*Stocks
+*News (open)
+Shopping
+Today's Tips
+Bookmarks
+3. Also verify the content in each default panel appears by selecting them one by one
+*: Default open panels.
+
+EXPECTED RESULTS
+All the default panels listed above should appear in the Sidebar and their content should be proper."
+TC-145;"STEPS/DESCRIPTION
+1. Launch the browser
+2. Click with the mouse on the Sidebar grippy (mouse pressed) and expand the sidebar
+3. Observe that the width of the Sidebar expands
+4. The maximum that the Sidebar should expand should be approx 1/3rd of the browser window size
+
+EXPECTED RESULTS
+Sidebar max width should be correct"
+TC-146;"STEPS/DESCRIPTION
+1. Launch the browser
+2. Click with the mouse on the Sidebar grippy(mouse pressed) and expand the sidebar
+3. Make the width of the Sidebar to whatever you want (upto max allowed)
+4. Select File| New Navigator Window to open a new browser window
+5. Observe that the Sidebar width should be the same as in the earlier window and should not appear changed
+6. Also, after step3, select File|Quit to close the browser
+7. Restart the browser
+
+EXPECTED RESULTS
+After step 3 and step 6, sidebar non-default width should be the same as changed earlier"
+TC-147;"STEPS/DESCRIPTION
+1. Launch the browser
+2. From the Sidebar, click on any of the default panel,say, CNN.com and open it
+3. Moving the mouse over the links in the panel should change the mouse icon thus making the user understand that the text is clickable
+4. Moving the mouse over plain html text should also change the mouse icon
+5. Moving the mouse away from the clickable text(to a blank space) should change the mouse icon again
+
+EXPECTED RESULTS
+Mouse icons should change properly"
+TC-148;"INITIAL CONDITIONS
+This test works only with the ""Classic"" Theme set for the browser.
+
+STEPS/DESCRIPTION
+1. Launch the browser
+2. Move the mouse on any of the panels in the Sidebar
+3. Each panel should highlight making itself visible when the mouse is over it
+
+EXPECTED RESULTS
+Panels should highlight when mouse is moved over them"
+TC-149;"STEPS/DESCRIPTION
+1. Launch the browser
+2. Point and click with the mouse on te grippy at the center of the Sidebar border
+3. Clicking once should close the sidebar
+4. Again, point with the mouse on the grippy on the left border of the browser window and click the mouse
+5. This should open the Sidebar with the original width
+
+EXPECTED RESULTS
+Sidebar should open/close properly with grippy"
+TC-150;"INITIAL CONDITIONS
+This test works only with the ""Classic"" Theme set for the browser.
+
+STEPS/DESCRIPTION
+1. Launch the browser
+2. From the sidebar, select ""Tabs | Customize Sidebar""
+3. From the window titled 'Customize Sidebar', select any panel from any of the folders available and click on the 'Tabs' button to add the panel to the sidebar.
+4. Press OK to close the window.
+
+EXPECTED RESULTS
+After step 2, the seleced panel should get added to the pane titled ""My Sidebar"". Pressing the OK button in step3 should close the ""Customize Sidebar"" window and the newly added panel should appear at the bottom of the Sidebar in the navigator window."
+TC-151;"STEPS/DESCRIPTION
+1. Launch the browser
+2. From the sidebar, select ""Tabs | Customize Sidebar""
+3. From the window that opens up, select ""What's Related"" or ""Search"" (already added panels) and click on ""Add"" button.
+
+EXPECTED RESULTS
+After step 2, the panel should only be highlighted in the right pane and should not get added again to the list."
+TC-152;"STEPS/DESCRIPTION
+1. Launch the browser
+2. From the sidebar, select ""Tabs | Customize Sidebar""
+3. From the window that opens up, from the pane titled ""My Sidebar"", click on any panel that has been already added
+4. Click on ""Remove"" button to remove the panel
+5. Press ""OK"" to close the window
+
+EXPECTED RESULTS
+After step 3, the selected panel should be removed from the list in the right pane. After step 4, the panel that was removed should no longer be listed in the Sidebar."
+TC-153;"STEPS/DESCRIPTION
+1. Launch the browser
+2. From the Sidebar , select ""Tabs | Customize Sidebar""
+3. From the window that opens up, from the pane titled ""My Sidebar"", click with the mouse on the bottommost panel
+4. Click on ""Remove"" button once for each panel to remove all the panels
+5. Press ""OK"" to close the window
+
+EXPECTED RESULTS
+After step 4, the pane on the right should be blank. After step 5, no panels should be listed in the Sidebar and a mesage saying ""The Sidebar is currently empty.....and select Sidebar"" should appear."
+TC-154;"STEPS/DESCRIPTION
+1. Launch the browser
+2. From the Sidebar, select ""Tabs | Customize Sidebar""
+3. From the window that opens up, the pane titled ""AvailablePanels"" should list the following folders by default: Favorites, From Netscape, From Others, International.
+4. Click and open each folder mentioned above to see that they are not empty and that a listing of panels is available in each folder
+5. Verify that the Favourites folder lists these panels: CNN.com, Horoscope, Mozillazine, News, Stocks, Tech News, Weather
+6. Verify that the From Netscape folder lists these panels: Calender, Horoscopes, Local Events, Local Movies, Local News, News, Sports, Stocks, Tech News, Weather
+7. Verify that the From Others folder lists these panels: BackFlip Buddy, CNET.com, CNN.com, eBay, Kinderview, Mapquest, Mozillazine, Red Herring, Webstakes.com and the folder My Netscape Network
+8. The International folder should list the following folders: Brazil, Canada, France, Germany, Japan, Portugal, Spain, Sweden, UK
+
+EXPECTED RESULTS
+All default remote panels should be available"
+TC-155;"STEPS/DESCRIPTION
+1. Launch the browser
+2. From the Sidebar , select ""Tabs | Customize Sidebar""
+3. From the window that opens up, the pane titled ""AvailablePanels"" should list the following local panels by default: What's Related, Search, Bookmarks
+
+EXPECTED RESULTS
+All default local panels should be available"
+TC-156;"STEPS/DESCRIPTION
+1. Launch the browser
+2. From the Sidebar, select ""Tabs | Customize Sidebar""
+3. From the window that opens up, select and click on any panel from the panel titled ""Available Panels""
+4. The ""Preview..."" button should be highlighted
+5. Clicking on the ""Preview..."" button should open up a window titled ""Panel Preview"" and showing how the panel looks
+6. Pressing the ""x"" button on top right of the window should close the preview window
+
+EXPECTED RESULTS
+Panels can be previewed"
+TC-157;"STEPS/DESCRIPTION
+1. Launch the browser
+2. From the Sidebar, select ""Tabs | Customize Sidebar""
+3. From the window that opens up, select and click on a panel, say, Stocks and press the Add button to add the panel to the Sidebar
+4. Highlight the Stocks panel from the right pane titled ""My Sidebar"" and click on the ""Customize Panel..."" button
+5. A Netscape Registration window should open up
+6. If you already have a netcenter username, press the ""Sign in"" button else fill the form details and press ""Next""
+7. Proceed with the registration. A ""Welcome"" window giving you options to customize your page will open up
+8. Clicking on ""Build My Page!"" button should open a browser window showing all panels for your customized webpage
+9. From the ""Stocks"" window, clicking on the ""smiling face"" icon should open a customize window for Stocks
+10. Add a few stocks to your portfolio and make any changes
+11. Click on the ""Save"" button to clsoe the window
+
+EXPECTED RESULTS
+All your customized changes should be visible in the panel in the Sidebar"
+TC-158;"STEPS/DESCRIPTION
+1. Launch the browser
+2. From the Sidebar , select ""Tabs | Customize Sidebar""
+3. From the window that opens up, add a few panels from the left pane
+4. Highlight on any of the panels in the right pane and click on the reorder arrows on the right side
+5. Clicking the reorder arrows should move the panel up/down and you should be able to place them wherever you want (top to bottom)
+6. Clicking ""OK"" should also reflect the reordering change in the Sidebar in the browser window
+
+EXPECTED RESULTS
+You should be able to reorder panels as you want"
+TC-159;"STEPS/DESCRIPTION
+1. Launch the browser
+2. From the Sidebar , select ""Tabs | Customize Sidebar""
+3. From the window that opens up, add a few panels from the left pane
+4. Highlight on any of the panels in the right pane and click on the reorder arrows on the right side to move thepanel up/down in the panels list
+5. Now, press the CANCEL button
+
+EXPECTED RESULTS
+None of the changes that you made (addition of panels or reordering) should get saved and the Sidebar should be the same as before"
+TC-160;"STEPS/DESCRIPTION
+1. Launch the browser
+2. From the Sidebar, select ""Tabs | Customize Sidebar""
+3. From the window that opens up, add a few panels from the left panel (or delete a few panels)
+4. Highlight any of the panels in the right pane and click on the reorder arrows on the right side to move the panel up/down in the panels list
+5. Press the ""OK"" button to close the window and apply your changes to the Sidebar
+
+EXPECTED RESULTS
+Verify that the panel changes and reordering gets reflected in the Sidebar when you press the OK button"
+TC-161;"STEPS/DESCRIPTION
+1. Launch the browser
+2. Visit any url, say, www.yahoo.com
+3. From the Sidebar, select the ""What's Related"" tab to open it (This tab gets added by default)
+4. Observe that a listing of websites is given in the What's Related tab
+5. Double click with the mouse on any of the links
+6. The selected link should open in the browser window. Try a few more links from the panel
+
+EXPECTED RESULTS
+Appropriate links should open in the browser window when clicked from the What's Related panel in the Sidebar"
+TC-162;"STEPS/DESCRIPTION
+1. Launch the browser
+2. Visit any url, say, www.yahoo.com
+3. Bookmark that link using ""Bookmarks | Add Current Page""
+4. Add theBookmarks panel to the Sidebar using the ""Customize Sidebar"" option
+5. Open the Bookmarks panel in the Sidebar
+6. Double click with the mouse on the bookmark that you just added
+7. The selected link should open in the browser window. Try a few more bookmarks from the panel
+
+EXPECTED RESULTS
+Appropriate bookmarks should open in the browser window when clicked from the Bookmarks panel in the Sidebar"
+TC-163;"STEPS/DESCRIPTION
+1. Launch the browser
+2. From the Sidebar, select ""Tabs | Customize Sidebar""
+3. Highlight any panel from the pane on the left and press the ""Add"" button to add the panel
+4. Press ""OK"" to close the window
+5. Now, click on the Tabs button in the Sidebar to open up a menu that lists all panels in the Sidebar
+6. The panel that you just added should also be listed (title shown) in the menu listing
+
+EXPECTED RESULTS
+Added panel should be listed in the Tabs menu"
+TC-164;"STEPS/DESCRIPTION
+1. Launch the browser
+2. Click on the ""Add"" button in the Sidebar to open up a menu that lists all panels in the Sidebar
+3. All the panels that are presently in the Sidebar should appear ticked and listed in the menu
+4. Now, click on any of the panel titles from the Add menu to remove it from the Sidebar
+5. The panel whose title that was just unchecked should not appear in the Sidebar anymore and the panel title should appear unchecked in the Add menu
+6. Rechecking the panel title in the Add menu should again make the panel title checked and it should appear in the Sidebar again
+
+EXPECTED RESULTS
+Unselecting panels from Add menu should remove the panel from the Sidebar"
+TC-165;"STEPS/DESCRIPTION
+1. Launch the browser
+2. Click here to open a page to add the bugzilla panel to the Sidebar using javascript
+3. Click on the link ""Add Bugzilla panel to your sidebar"" on the page
+4. Press ""OK"" on the confirm dialog
+5. Bugzilla panel should get added to the Sidebar at the bottom
+6. Click on the panel to open it
+
+EXPECTED RESULTS
+Panel should get added by javascript"
+TC-166;"INITIAL CONDITIONS
+The browser should already be open.
+
+STEPS/DESCRIPTION
+Test the following to see if all of these tasks will bring up the Open Web Location dialog:
+1. From the menubar of the browser, select File > Open Web Location.
+2. Use the keyboard shortcut specific to your platform: 
+Win32 and Unix: Control+Shift+L
+Macintosh: Command+Shift+L
+
+EXPECTED RESULTS
+The Open Web Location should be displayed, regardless of the means you used above."
+TC-167;"INITIAL CONDITIONS
+The Open Web Location dialog should already be opened in the browser.
+
+STEPS/DESCRIPTION - I
+1. In the textfield enter the URL http://www.mozillazine.org/.
+2. Select Current Navigator window from the droplist, if it isn't already displayed there.
+3. Click the Open button (or hit Enter).
+
+EXPECTED RESULTS -I
+The dialog should go away and the URL load into the current browser window.
+
+
+STEPS/DESCRIPTION - II
+1. In the textfield enter the URL http://www.mozillazine.org/.
+2. Select Current Navigator window from the droplist, if it isn't already displayed there.
+3. Click the Cancel button (or hit Esc).
+
+EXPECTED RESULTS -II
+The dialog should go away and the page in the current browser window remain unchanged."
+TC-168;"INITIAL CONDITIONS
+The Open Web Location dialog should already be opened in the browser.
+
+STEPS/DESCRIPTION - I
+1. In the textfield enter the URL http://www.mozillazine.org/.
+2. Select New Navigator window from the droplist, if it isn't already displayed there.
+3. Click the Open button (or hit Enter).
+
+EXPECTED RESULTS - I
+1. The dialog should go away.
+2. Another browser window should appear.
+3. The URL should load into the new browser window.
+
+
+STEPS/DESCRIPTION - II
+1. In the textfield enter the URL http://www.mozillazine.org/.
+2. Select New Navigator window from the droplist, if it isn't already displayed there.
+3. Click the Cancel button (or hit Esc).
+
+EXPECTED RESULTS -II
+The dialog should go away and the page in the current browser window remain unchanged."
+TC-169;"INITIAL CONDITIONS
+The Open Web Location dialog should already be opened in the browser.
+
+STEPS/DESCRIPTION - UI Test
+1. In the textfield enter the URL http://www.mozilla.org/quality/browser/front-end/testcases/xpapps-gui/open-URL/files/boring.html.
+2. Select New Composer window from the droplist, if it isn't already displayed there.
+3. Click the Open button (or hit Enter).
+
+EXPECTED RESULTS - UI Test
+1. The dialog should go away.
+2. An editor window should appear.
+3. The page contents of the URL should load into the editor window.
+ 
+
+STEPS/DESCRIPTION - Dismissal test
+1. In the textfield enter the URL http://www.mozilla.org/quality/browser/front-end/testcases/xpapps-gui/open-URL/files/boring.html.
+2. Select New Composer window from the droplist, if it isn't already displayed there.
+3. Click the Cancel button (or hit Esc).
+
+EXPECTED RESULTS - Dismissal test
+The dialog should go away and the page in the current browser window remain unchanged."
+TC-170;"INITIAL CONDITIONS
+The Open Web Location dialog should already be opened in the browser.
+
+STEPS/DESCRIPTION
+1. In the textfield enter the URL http://www.mozilla.org/lizard-eats-all/blarg.html.
+2. Select Current Navigator window from the droplist, if it isn't already displayed there.
+3. Click the Open button (or hit Enter).
+
+EXPECTED RESULTS
+1. The dialog should go away.
+2. Since this page doesn't exist (well, it shouldn't ;-), the page that loads should display the typical 404 error: 
+Not Found: The requested object does not exist on this server. The link you followed is either outdated, inaccurate, or the server has been instructed not to let you have it."
+TC-171;"INITIAL CONDITIONS
+1. Copy boring.html and dull.txt into a folder on your machine (eg, your desktop).
+2. Then bring up the Open Web Location dialog in the browser.
+ 
+STEPS/DESCRIPTION - UI test #1
+1. Click the Choose File... button.
+2. In the resulting file picker dialog, navigate and select the boring.html file.
+3. Click Open in the file picker to dismiss it.
+4. Select Current Navigator window from the droplist, if it isn't already displayed there.
+5. Click the Open button (or hit Enter).
+
+EXPECTED RESULTS - UI test #1
+1. After step #3, the full path and filename should be displayed in the textfield of the Open Web Location dialog.
+2. After the last step, the Open Web Location dialog should be dismissed, and boring.html displayed in the current browser window.
+
+
+STEPS/DESCRIPTION - Dismissal #1 
+1. Click the Choose File... button.
+2. In the resulting file picker dialog, navigate and select the boring.html file.
+3. Click Open in the file picker to dismiss it.
+4. Select Current Navigator window from the droplist, if it isn't already displayed there.
+5. Click the Cancel button (or hit Esc).
+
+EXPECTED RESULTS - Dismissal #1 
+The dialog should go away and the page in the current browser window remain unchanged.
+ 
+STEPS/DESCRIPTION - UI test #2
+1. Click the Choose File... button.
+2. In the resulting file picker dialog, navigate and select the dull.txt file.
+3. Click Open in the file picker to dismiss it.
+4. Select Current Navigator window from the droplist, if it isn't already displayed there.
+5. Click the Open button (or hit Enter).
+
+EXPECTED RESULTS - UI test #2
+1. After step #3, the full path and filename should be displayed in the textfield of the Open Web Location dialog.
+2. After the last step, the Open Web Location dialog should be dismissed, and dull.txt displayed in the current browser window.
+
+
+STEPS/DESCRIPTION - Dismissal #2  
+1. Click the Choose File... button.
+2. In the resulting file picker dialog, navigate and select the dull.txt file.
+3. Click Open in the file picker to dismiss it.
+4. Select Current Navigator window from the droplist, if it isn't already displayed there.
+5. Click the Cancel button (or hit Esc).
+
+EXPECTED RESULTS - Dismissal #2  
+The dialog should go away and the page in the current browser window remain unchanged."
+TC-172;"INITIAL CONDITIONS
+1. Copy boring.html and dull.txt into a folder on your machine (eg, you desktop).
+2. Then bring up the Open Web Location dialog in the browser.
+
+STEPS/DESCRIPTION - UI test #1 
+1. Click the Choose File... button.
+2. In the resulting file picker dialog, navigate and select the boring.html file.
+3. Click Open in the file picker to dismiss it.
+4. Select New Navigator window from the droplist, if it isn't already displayed there.
+5. Click the Open button (or hit Enter).
+
+EXPECTED RESULTS - UI test #1 
+1. After step #3, the full path and filename should be displayed in the textfield of the Open Web Location dialog.
+2. After the last step, the Open Web Location dialog should be dismissed.
+3. A new browser window should then come up, and boring.html displayed in it.
+
+
+STEPS/DESCRIPTION - Dismissal #1 
+1. Click the Choose File... button.
+2. In the resulting file picker dialog, navigate and select the boring.html file.
+3. Click Open in the file picker to dismiss it.
+4. Select New Navigator window from the droplist, if it isn't already displayed there.
+5. Click the Cancel button (or hit Esc).
+
+EXPECTED RESULTS - Dismissal #1 
+The dialog should go away and the page in the current browser window remain unchanged.
+
+ 
+STEPS/DESCRIPTION - UI test #2
+1. Click the Choose File... button.
+2. In the resulting file picker dialog, navigate and select the dull.txt file.
+3. Click Open in the file picker to dismiss it.
+4. Select New Navigator window from the droplist, if it isn't already displayed there.
+5. Click the Open button (or hit Enter).
+
+EXPECTED RESULTS - UI test #2
+1. After step #3, the full path and filename should be displayed in the textfield of the Open Web Location dialog.
+2. After the last step, the Open Web Location dialog should be dismissed.
+3. A new browser window should then come up, and dull.txt displayed in it.
+
+
+STEPS/DESCRIPTION - Dismissal #2 
+1. Click the Choose File... button.
+2. In the resulting file picker dialog, navigate and select the dull.txt file.
+3. Click Open in the file picker to dismiss it.
+4. Select New Navigator window from the droplist, if it isn't already displayed there.
+5. Click the Cancel button (or hit Esc).
+
+EXPECTED RESULTS - Dismissal #2 
+The dialog should go away and the page in the current browser window remain unchanged."
+TC-173;"INITIAL CONDITIONS
+1. Copy boring.html and dull.txt into a folder on your machine (eg, you desktop).
+2. Then bring up the Open Web Location dialog in the browser.
+
+STEPS/DESCRIPTION - UI test #1 
+1. Click the Choose File... button.
+2. In the resulting file picker dialog, navigate and select the boring.html file.
+3. Click Open in the file picker to dismiss it.
+4. Select New Composer window from the droplist, if it isn't already displayed there.
+5. Click the Open button (or hit Enter).
+
+EXPECTED RESULTS - UI test #1 
+1. After step #3, the full path and filename should be displayed in the textfield of the Open Web Location dialog.
+2. After the last step, the Open Web Location dialog should be dismissed.
+3. An editor window should then come up, and boring.html displayed in it.
+
+
+STEPS/DESCRIPTION - Dismissal #1 
+1. Click the Choose File... button.
+2. In the resulting file picker dialog, navigate and select the boring.html file.
+3. Click Open in the file picker to dismiss it.
+4. Select New Composer window from the droplist, if it isn't already displayed there.
+5. Click the Cancel button (or hit Esc).
+
+EXPECTED RESULTS - Dismissal #1 
+The dialog should go away and the page in the current browser window remain unchanged.
+
+STEPS/DESCRIPTION - UI test #2 
+1. Click the Choose File... button.
+2. In the resulting file picker dialog, navigate and select the dull.txt file.
+3. Click Open in the file picker to dismiss it.
+4. Select New Composer window from the droplist, if it isn't already displayed there.
+5. Click the Open button (or hit Enter).
+
+EXPECTED RESULTS - UI test #2 
+1. After step #3, the full path and filename should be displayed in the textfield of the Open Web Location dialog.
+2. After the last step, the Open Web Location dialog should be dismissed.
+3. An editor window should then come up, and dull.txt displayed in it.
+
+
+STEPS/DESCRIPTION - Dismissal #2 
+1. Click the Choose File... button.
+2. In the resulting file picker dialog, navigate and select the dull.txt file.
+3. Click Open in the file picker to dismiss it.
+4. Select New Composer window from the droplist, if it isn't already displayed there.
+5. Click the Cancel button (or hit Esc).
+
+
+EXPECTED RESULTS - Dismissal #2 
+The dialog should go away and the page in the current browser window remain unchanged."
+TC-174;"INITIAL CONDITIONS
+The Open Web Location dialog should already be opened in the browser.
+
+STEPS/DESCRIPTION
+1. Click the Choose File... button.
+2. In the resulting file picker dialog, enter the filename of a file which doesn't exist locally on your machine, eg, 
+Navigate to your desktop location, or stay at whatever directory the file picker is currently at.
+Enter fibble-diddle-teehee.html.
+5. Click Open in the file picker to dismiss it.
+6. Select Current Navigator window from the droplist, if it isn't already displayed there.
+7. Click the Open button (or hit Enter).
+
+EXPECTED RESULTS
+1. After step #3, the full path and filename should appear in the textfield of the Open Web Location dialog.
+2. After the last step, the dialog should go away.
+3. Since this page doesn't exist (well, it shouldn't ;-), the page that loads should display the typical 404 error: 
+Not Found: The requested object does not exist on this server. The link you followed is either outdated, inaccurate, or the server has been instructed not to let you have it."
+TC-175;"STEPS/DESCRIPTION
+From the main menu bar, select Edit > Preferences > Appearance > Themes
+
+EXPECTED RESULTS
+By default, there should be at least two skins under Themes -- Classic and Modern."
+TC-176;"STEPS/DESCRIPTION
+1. From the main menu bar, select Edit > Preferences > Appearances > Themes.
+2. Select ""Classic"" theme on the right hand side of the dialog.
+3. Click the ""Apply Classic"" button. 
+4. Close the Preferences dialog. 
+
+EXPECTED RESULTS
+The following image for the menu bar of the browser should display as follows:"
+TC-177;"STEPS/DESCRIPTION
+1. From the main menu bar, select Edit > Preferences > Appearances > Themes.
+2. Select ""Modern"" theme on the right hand side of the dialog.
+3. Click the ""Apply Modern"" button.
+4. Close the Preferences dialog.
+
+EXPECTED RESULTS
+The folowing image for the menu bar of the browser should display as follows:"
+TC-178;"STEPS/DESCRIPTION
+1. From the main menu bar, select View.
+2. Select ""Apply Theme"" and another submenu should pop up.
+3. Select ""Theme Preferences...""
+
+EXPECTED RESULTS
+The following Theme preferences dialog should appear:"
+TC-179;"STEPS/DESCRIPTION
+1. From the main menu bar, select View. 
+2. Select ""Apply Theme"" and another submenu should pop up.
+3. Select ""Get New Themes"" item
+
+EXPECTED RESULTS
+This should link to http://wp.netscape.com/themes/index.html (netscape browser).
+This should link to http://mozilla.org/themes/download/"
+TC-180;"STEPS/DESCRIPTION
+1. From the main menu bar, select View.
+2. Select ""Apply Theme"" and another submenu should pop up.
+3. Select ""Classic Theme"" item.
+
+EXPECTED RESULTS
+The Classic Skin should appear to the browser menu bar."
+TC-181;"STEPS/DESCRIPTION
+1. From the main menu bar, select View.
+2. Select ""Apply Theme"" and another submenu should pop up.
+3. Select ""Modern Theme"" item.
+
+EXPECTED RESULTS
+The Modern skin should appear to the browser menu bar.
+ "
+TC-182;"INITIAL CONDITIONS
+1. All of the browser's toolbars(3) must be visible.
+2. Make sure they are all visible by selecting the top level 'View' menu and looking at the Toolbars submenu. The Navigation Toolbar, Personal Toolbar, and Taskbar should all have checks next to their names.
+
+STEPS/DESCRIPTION
+1. Click the small triangle at the far left of the Bookmarks(Personal) Toolbar to collapse it. Click again to expand it.
+2. Click the small triangle at the far left of the Navigation Toolbar to collapse it. Click again to expand it.
+3. Collapse the Bookmarks Toolbar again. Collapse the Navigation Toolbar again.
+4. Expand the Navigation Toolbar once more, expand the Bookmarks Toolbar as well(reverse order).
+
+EXPECTED RESULTS
+1. Each click of the triangle widget should alternately show and hide the corresponding toolbar.
+2. For steps(2 & 3), expanding the toolbars in the reverse order from that in which they were collapsed should not affect their positioning upon expansion."
+TC-183;"INITIAL CONDITIONS
+1. All of the browser's toolbars(3) must be visible.
+2. Make sure they are all visible by selecting the top level ""View"" menu and looking at the Toolbars submenu. The Navigation Toolbar, Personal Toolbar, and Taskbar should all have checks next to their names.
+
+STEPS/DESCRIPTION
+1. Select Bookmarks|Manage Bookmarks.
+2. Open the ""Personal Toolbar Folder"". Add a new folder to it, File|New Folder.
+3. Open and add a new bookmark, File|New Bookmark to the folder you just created.
+4. Select the new bookmark and edit its properties, Edit|Bookmark Properties, changing the url to http://www.mozilla.org.
+5. Go back to the browser window and click on the New Folder in the personal toolbar. Click the New Bookmark item.
+
+EXPECTED RESULTS
+1. The New Folder should appear in the personal toolbar.
+2. The link within the New Folder on the personal toolbar should function normally."
+TC-184;"INITIAL CONDITIONS
+1. All of the browser's toolbars(3) must be visible.
+2. Make sure they are all visible by selecting the top level ""View"" menu and looking at the Toolbars submenu. The Navigation Toolbar, Personal Toolbar and Taskbar should all have checks next to their names.
+
+STEPS/DESCRIPTION
+1. Click here to load a page with an animated gif. Wait for it to stop.
+2. Click the ""Back"" button on the Navigation toolbar. It looks like a left-pointing arrow.
+3. Click the ""Forward"" button on the Navigation toolbar. It looks like a right-pointing arrow. Wait for the gif to stop.
+4. Click the ""Reload"" button on the Navigation toolbar. It looks like a curved arrow.
+5. Click the ""Reload"" button again, then quickly click the ""Stop"" button on the Navigation toolbar. It looks like an ""X""
+
+EXPECTED RESULTS
+1. While the gif is animating the ""Forward"" and ""Reload"" buttons should be inactive and the ""Back"" and ""Stop"" buttons should be active. When the gif stops, the ""Reload"" button should be active and the ""Stop"" button should be inactive.
+2. You should go back to the page you were at before. The ""Forward"" button should become active.
+3. The ""Forward"" button should become inactive again.
+4. The gif should begin to animate again.
+5. The gif should stop mid-animation"

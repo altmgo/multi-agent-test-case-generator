@@ -1,0 +1,225 @@
+{
+  "id": "firefox_browser_history",
+  "requirements": [
+    {
+      "id": "R-073",
+      "text": "Visited links shall be recorded to the Global History.",
+      "language": "en",
+      "source": "R-set.csv#R-073"
+    },
+    {
+      "id": "R-074",
+      "text": "The correct link shall be recorded to the Global History after a server redirect.",
+      "language": "en",
+      "source": "R-set.csv#R-074"
+    },
+    {
+      "id": "R-075",
+      "text": "Clicking on a history link shall cause it to be launched in a browser window.",
+      "language": "en",
+      "source": "R-set.csv#R-075"
+    },
+    {
+      "id": "R-076",
+      "text": "A History entry shall be deleted.",
+      "language": "en",
+      "source": "R-set.csv#R-076"
+    },
+    {
+      "id": "R-077",
+      "text": "Multiple History entries shall be deleted and no longer be displayed.",
+      "language": "en",
+      "source": "R-set.csv#R-077"
+    },
+    {
+      "id": "R-078",
+      "text": "Global History shall be cleared.",
+      "language": "en",
+      "source": "R-set.csv#R-078"
+    },
+    {
+      "id": "R-079",
+      "text": "History items shall be grouped by Day / Site / None.",
+      "language": "en",
+      "source": "R-set.csv#R-079"
+    },
+    {
+      "id": "R-080",
+      "text": "History shall be sorted and reverse-sorted per column.",
+      "language": "en",
+      "source": "R-set.csv#R-080"
+    },
+    {
+      "id": "R-081",
+      "text": "History columns shall be resizable to show/hide more of entries.",
+      "language": "en",
+      "source": "R-set.csv#R-081"
+    },
+    {
+      "id": "R-082",
+      "text": "History colmns shall be shown and hidden.",
+      "language": "en",
+      "source": "R-set.csv#R-082"
+    },
+    {
+      "id": "R-083",
+      "text": "Recently visited sites shall be re-visited via Back and Forward button dropdown menu.",
+      "language": "en",
+      "source": "R-set.csv#R-083"
+    },
+    {
+      "id": "R-084",
+      "text": "A new, empty session history file shall be created for a new browser window or a restart.",
+      "language": "en",
+      "source": "R-set.csv#R-084"
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "TC-073",
+      "title": "TC-073",
+      "description": "INITIAL CONDITIONS\n1. You must have used the installation of the browser you plan to test.\n2. If you have not, browse around some, then come back. Or run the gomenu-list test first.\n\nSTEPS/DESCRIPTION\n1. Select Go|History.\n2. Observe the contents of the Global History Window.\n3. Quit and restart the browser.\n4. Select Go|History.\n\nEXPECTED RESULTS\n1. If you've observed the initial conditions, the History window should be non-empty upon first observation.\n2. After restart, the History window should still be non-empty.\n",
+      "requirement_ids": [
+        "R-073"
+      ],
+      "source": "T-set.csv#TC-073",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-074",
+      "title": "TC-074",
+      "description": "INITIAL CONDITIONS\n1. You must have used the installation of the browser you plan to test.\n2. If you have not, browse around some, then come back. Or run the gomenu-list test first.\n\nSTEPS/DESCRIPTION\n1. Select Go|History.\n2. Click this link.\n\nEXPECTED RESULTS\nYou should have only one new entry in your history. It should be titled Small Business. The url should be http://home.netscape.com/netcenter/smallbusiness/index.html, NOT http://home.netscape.com/taskbar/6_0b1/bus4.html.\n\nLINKS\n1. redirect: http://home.netscape.com/taskbar/6_0b1/bus4.html\n2. target: http://home.netscape.com/netcenter/smallbusiness/index.html\n3. The History Testcase Matrix",
+      "requirement_ids": [
+        "R-074"
+      ],
+      "source": "T-set.csv#TC-074",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-075",
+      "title": "TC-075",
+      "description": "INITIAL CONDITIONS\n1. You must have used the installation of the browser you plan to test.\n2. If you have not, browse around some, then come back. Or run the gomenu-list test first.\n\nSTEPS/DESCRIPTION\n1. Select Go|History.\n2. Double-click any history link in the window.\n\nEXPECTED RESULTS\nThe url for that link should load in your preexisting \"topmost\" browser window, or create a new browser window if none existed.",
+      "requirement_ids": [
+        "R-075"
+      ],
+      "source": "T-set.csv#TC-075",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-076",
+      "title": "TC-076",
+      "description": "INITIAL CONDITIONS\n1. You must have used the installation of the browser you plan to test.\n2. If you have not, browse around some, then come back. Or run the gomenu-list test first.\n\nSTEPS/DESCRIPTION\n1. Select Go|History.\n2. Select (highlight) a history entry, press the delete key, OR\n3. Select (highlight) a history entry, Select Edit|Delete.\n4. Restart the browser.\n\nEXPECTED RESULTS\n1. After step(3) the title of and link to the history entry should now be removed from the history window.\n2. After step(4) it should still be gone.",
+      "requirement_ids": [
+        "R-076"
+      ],
+      "source": "T-set.csv#TC-076",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-077",
+      "title": "TC-077",
+      "description": "INITIAL CONDITIONS\n1. You must have used the installation of the browser you plan to test.\n2. If you have not, browse around some, then come back. Or run the gomenu-list test first.\n\nSTEPS/DESCRIPTION\n1. Select Go|History.\n2. Select any history entry. Shift+click or drag to select more (at least 3).\n3. Select Edit|Delete.\n4. Restart the browser. Select Go|History\n\nEXPECTED RESULTS\n1. After step(3) the titles and links to the history entries should now be removed from the history window.\n2. After step(4) they should still be gone.\n",
+      "requirement_ids": [
+        "R-077"
+      ],
+      "source": "T-set.csv#TC-077",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-078",
+      "title": "TC-078",
+      "description": "INITIAL CONDITIONS\n1. You must have used the installation of the browser you plan to test.\n2. If you have not, browse around some, then come back. Or run the gomenu-list test first.\n\nSTEPS/DESCRIPTION\n1. Select Go|History.\n2. Observe the contents of the Global History Window.\n3. Select Edit|Preferences (from a navigator window)\n4. Browse to the Navigator|History Panel.\n5. Under \"Browsing History\" click the \"Clear History\" button.\n6. Return to observe the contents of the Global History Window.\n\nEXPECTED RESULTS\n1. If you've observed the initial conditions, the History window should be non-empty upon first observation.\n2. After pressing the button, the history window should be empty of individual history items.\n",
+      "requirement_ids": [
+        "R-078"
+      ],
+      "source": "T-set.csv#TC-078",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-079",
+      "title": "TC-079",
+      "description": "INITIAL CONDITIONS\n1. You must have used the installation of the browser you plan to test.\n2. If you have not, browse around some, then come back. Or run the gomenu-list test first.\n\nSTEPS/DESCRIPTION\n1. Select Go|History.\n2. In the Global History window, select View|Group By|Day.\n3. In the Global History window, select View|Group By|Site.\n4. In the Global History window, select View|Group By|None.\n\nEXPECTED RESULTS\n1. After Step(2), history entries should appear grouped into folders labeled \"Today\", \"Yesterday\", \"2 days ago\", ... ,\"6 days ago\", and \"Older than 6 days\".\n2. After Step(3), the history items should appear grouped by domain name (no folders).\n3. After Sep (4), the history items should appear\n",
+      "requirement_ids": [
+        "R-079"
+      ],
+      "source": "T-set.csv#TC-079",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-080",
+      "title": "TC-080",
+      "description": "INITIAL CONDITIONS\n1. You must have used the installation of the browser you plan to test.\n2. If you have not, browse around some, then come back. Or run the gomenu-list test first.\n\nSTEPS/DESCRIPTION\nSelect Go|History. This is most easily tested by using the View|Group By|None setting but not strictly necessary.\n1. Click on the \"Title\" column once.\n2. Click on the \"Title\" column a second time.\n3. Click on the \"Title\" column a third time.\n4. Click on the \"Location\" column once, and a second time.\n5. Click on the \"Last Visited\" column once, and a second time.\n\nEXPECTED RESULTS\nBy step:\n1. The bookmarks should sort into alphabetical order, by Title.\n2. The bookmarks should sort into reverse-alphabetical order, by Title.\n3. The bookmarks should sort into \"natural\" order (the way they were originally sorted).\n4. The bookmarks should sort into order by Location and then the reverse of that order.\n5. The bookmarks should sort into order by Last Visited and then the reverse of that order.\n",
+      "requirement_ids": [
+        "R-080"
+      ],
+      "source": "T-set.csv#TC-080",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-081",
+      "title": "TC-081",
+      "description": "INITIAL CONDITIONS\n1. You must have used the installation of the browser you plan to test.\n2. If you have not, browse around some, then come back. Or run the gomenu-list test first.\n\nSTEPS/DESCRIPTION\n1. Select Go|History.\n2. Mouseover the separator between the \"Name\" and \"URL\" columns.\n3. Click and drag that separator to the left and right.\n4. Repeat this with each of the other column separators.\n\nEXPECTED RESULTS\n1. In step(2) the mouse pointer should change to a double-arrowed icon(platform specific or XP?).\n2. In step(3) the column sizes on either side of the separator should shrink and grow as you drag. The content of the column should move with the column header. Column content that is obscured should be replaced by the ellipsis(?).\n",
+      "requirement_ids": [
+        "R-081"
+      ],
+      "source": "T-set.csv#TC-081",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-082",
+      "title": "TC-082",
+      "description": "INITIAL CONDITIONS\n1. You must have used the installation of the browser you plan to test.\n2. If you have not, browse around some, then come back. Or run the gomenu-list test first.\n\nSTEPS/DESCRIPTION\n1. Select Go|History.\n2. Click the icon on the far right of the column headers.\n3. Uncheck two of the items (columns).\n4. Recheck an item.\n5. Quit and restart the application.\n\nEXPECTED RESULTS\n1. Step(2) a popup menu should appear listing all of the column headers as menuitems.\n2. Step(3), they should all be checked by default and unchecking should cause that column to disappear from the manage bookmarks window.\n3. Step(4), the columns should reappear upon rechecking its name on the list.\n4. Step(5) the columns should appear just as the did after step(4).\n",
+      "requirement_ids": [
+        "R-082"
+      ],
+      "source": "T-set.csv#TC-082",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-083",
+      "title": "TC-083",
+      "description": "INITIAL CONDITIONS\n1. Your session history needs to be empty for this test so restart the browser or open a new window. To check, the Back/Forward buttons should be inactive and the dropdowns should not appear at all when the session history is empty.\n\nSTEPS/DESCRIPTION\n1. Follow this Netscape link.\n2. Follow this Netscape People link.\n3. Wait for the redirect (15sec).\n4. Follow this Mozilla QA link.\n5. Follow this Mozilla link.\n6. From the \"Back\" button dropdown select the 4th item from the top \"Netscape.com\".\n7. From the \"Forward\" button dropdown select the 3rd item from the top \"Mozilla QA Home Page\"\n\nEXPECTED RESULTS\n1. For Step(6), the dropdown menu should be apparent and active, the 4th item should be \"Netscape.com\", the page title, and selecting it should actually load that page\n2. For Step(7), the dropdown menu should be apparent and active, the 3rd item should be \"Mozilla QA Home Page\", the page title, and selecting it should actually load that page.",
+      "requirement_ids": [
+        "R-083"
+      ],
+      "source": "T-set.csv#TC-083",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-084",
+      "title": "TC-084",
+      "description": "INITIAL CONDITIONS\n1. You must have used the installation of the browser you plan to test.\n2. If you have not, browse around some, then come back. Or run the gomenu-list test first.\n\nSTEPS/DESCRIPTION\n1. Select File|New Navigator Window.\n2. Select the Go menu.\n3. Quit and restart the browser.\n4. Select the Go menu.\n\nEXPECTED RESULTS\nAfter steps(2) and (4) the browser go meu should be \"empty\" ie only Back, Forward, and Home should be listed.",
+      "requirement_ids": [
+        "R-084"
+      ],
+      "source": "T-set.csv#TC-084",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    }
+  ],
+  "generatable": true,
+  "parent_id": "firefox_legacy"
+}

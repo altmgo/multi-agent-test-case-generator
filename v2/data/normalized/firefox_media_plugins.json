@@ -1,0 +1,63 @@
+{
+  "id": "firefox_media_plugins",
+  "requirements": [
+    {
+      "id": "R-132",
+      "text": "Quicktime movies shall play properly.",
+      "language": "en",
+      "source": "R-set.csv#R-132"
+    },
+    {
+      "id": "R-133",
+      "text": "Files with various sound formats shall be played.",
+      "language": "en",
+      "source": "R-set.csv#R-133"
+    },
+    {
+      "id": "R-134",
+      "text": "Shockwave movies shall be played.",
+      "language": "en",
+      "source": "R-set.csv#R-134"
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "TC-132",
+      "title": "TC-132",
+      "description": "STEPS/DESCRIPTION\n1. Launch the browser\n2. Click here to open a video tests page. Click on the Quicktime movie tests and verify that movies play properly\n3. Click here to visit a page with quicktime movies. Click on all movies one by one to view them.\n4. Click here to view the Apple quicktime trailers page. Click on the images to play the movies. Try the links as well. Try out movies in all sizes (small, medium, large). Move browser scrollbars to see if page paints correctly or not while movie is playing.\n5. Click here to view a page with plugins inside table. Try to play all plugins simultaneously.\n6. In all steps above, press the browser's BACK or FORWARD button and see that the movie unloads/loads properly\n7. Click here. Click on the quicktime logos to watch movies.\n8. Some large quicktime movies on this page.\n9. IFilm website. choose Quicktime to watch movies on this site. To change preferences, click on \"More Options\" in the right pane of the window and select \"Change preferences\" to change player settings.\n10. Green MileVideos.\n11. PlanetOut (Queer Tv) Videos. PlanetOut Archive. Click on \"watch in quicktime for all movies\"\n12. Click here. Watch videos in High/Low bandwidth.\n\nEXPECTED RESULTS\nAll Quicktime movies should load and play properly.",
+      "requirement_ids": [
+        "R-132"
+      ],
+      "source": "T-set.csv#TC-132",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-133",
+      "title": "TC-133",
+      "description": "INITIAL CONDITIONS\nYou can use any compatible plugin to test these files. Quicktime is preferred.\n\nSTEPS/DESCRIPTION\n1. Click here for some audio test files\n2. Click here for some sound tests\n3. Click here for audio tests page\n4. Click here for AIF samples\n5. Click here for AU samples\n6. Click here for MIDI samples\n\nEXPECTED RESULTS\nAll sound files should play properly.",
+      "requirement_ids": [
+        "R-133"
+      ],
+      "source": "T-set.csv#TC-133",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-134",
+      "title": "TC-134",
+      "description": "STEPS/DESCRIPTION\n1. Click here for nick.com Games page (tons of flash and shockwave games)\n2. Click here for I-Bench Shockwave test\n3. Context Menu Tests\n4. Shockwave Test Page. Click on top 3 links on this page to launch pages with shockwave movies.\n5. Click here to visit shockwave.com website. Click on links to 'Games' , 'Shows', \"Music', 'Greetings' to test shockwave/ flash contents. This website is an exhaustive collection of shockwave/flash movies to test.\n6. Shockwave Gallery website. Click on Games, Toys, Project Samples and other links to test shockwave contents\n7. Click here to visit the macromedia showcase gallery with plenty of shockwave/flash websites\n8. Sanrio Shockwave Gallery . Click and play the games on this page.\n9. DogDay's Shockwave Gallery. Click on links under the title 'Visit The Gallery' to load pages with shockwave content.\n10. ZeoSphere Shockwave Gallery. Click on banners on this page to view shockwave content\n11. Click here to load an extensive testcase suite for shockwave plugin\n12. Click here to load an extensive testcase suite for shockwave plugin\n13. Perceptive Productions ShockwaveGallery. Click on the clips on this page one by one to load and view shockwave movies\n14. CyberMaze Shockwave Gallery. Click on links on this page to see shockwave content.\n\nEXPECTED RESULTS\nAll shockwave and /or flash movies should load work properly",
+      "requirement_ids": [
+        "R-134"
+      ],
+      "source": "T-set.csv#TC-134",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    }
+  ],
+  "generatable": true,
+  "parent_id": "firefox_legacy"
+}

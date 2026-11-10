@@ -1,0 +1,513 @@
+{
+  "id": "firefox_help",
+  "requirements": [
+    {
+      "id": "R-046",
+      "text": "There shall be Troubleshooting Help about the problem \"if you can't sign on\".",
+      "language": "en",
+      "source": "R-set.csv#R-046"
+    },
+    {
+      "id": "R-047",
+      "text": "There shall be Troubleshooting Help about the problem \"if you can't see anyone in your buddy list window\".",
+      "language": "en",
+      "source": "R-set.csv#R-047"
+    },
+    {
+      "id": "R-048",
+      "text": "The forward/back buttons shall navigate to the correct page in Help menu.",
+      "language": "en",
+      "source": "R-set.csv#R-048"
+    },
+    {
+      "id": "R-049",
+      "text": "Minimize, maximize and close buttons of the toolbar shall be invoke in Help menu.",
+      "language": "en",
+      "source": "R-set.csv#R-049"
+    },
+    {
+      "id": "R-050",
+      "text": "Page up and page down keys shall be invoked in Help menu.",
+      "language": "en",
+      "source": "R-set.csv#R-050"
+    },
+    {
+      "id": "R-051",
+      "text": "The toolbar shall be hidden in Help, as well as reopen it.",
+      "language": "en",
+      "source": "R-set.csv#R-051"
+    },
+    {
+      "id": "R-052",
+      "text": "Pages shall be moved accordingly with the up and down arrow keys in Help menu.",
+      "language": "en",
+      "source": "R-set.csv#R-052"
+    },
+    {
+      "id": "R-053",
+      "text": "Files shall not be dragged into the Help window.",
+      "language": "en",
+      "source": "R-set.csv#R-053"
+    },
+    {
+      "id": "R-054",
+      "text": "Clicking non clickable regions in help shall trigger no behavior.",
+      "language": "en",
+      "source": "R-set.csv#R-054"
+    },
+    {
+      "id": "R-055",
+      "text": "Help Contents shall be displayed and printed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-055"
+    },
+    {
+      "id": "R-056",
+      "text": "Browsing the web help content shall be displayed and printed.",
+      "language": "en",
+      "source": "R-set.csv#R-056"
+    },
+    {
+      "id": "R-057",
+      "text": "Mail and News help content shall be displayed and printed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-057"
+    },
+    {
+      "id": "R-058",
+      "text": "Instant Messenger help content shall be displayed and printed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-058"
+    },
+    {
+      "id": "R-059",
+      "text": "Customizing Netscape 6 help content shall be displayed and printed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-059"
+    },
+    {
+      "id": "R-060",
+      "text": "Understanding Privacy help content shall be displayed and printed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-060"
+    },
+    {
+      "id": "R-061",
+      "text": "Creating web pages help content shall be displayed and printed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-061"
+    },
+    {
+      "id": "R-062",
+      "text": "What's new in Netscape 6 help content shall be displayed and printed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-062"
+    },
+    {
+      "id": "R-063",
+      "text": "Security and Privacy help content shall be displayed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-063"
+    },
+    {
+      "id": "R-064",
+      "text": "Same time messaging help content shall be displayed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-064"
+    },
+    {
+      "id": "R-065",
+      "text": "Streamlined Interface help content shall be displayed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-065"
+    },
+    {
+      "id": "R-066",
+      "text": "The Best Standards Support help content shall be displayed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-066"
+    },
+    {
+      "id": "R-067",
+      "text": "The New to the net tutorial help content shall be displayed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-067"
+    },
+    {
+      "id": "R-068",
+      "text": "The Netscape Technical Support help content shall be displayed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-068"
+    },
+    {
+      "id": "R-069",
+      "text": "International Users page shall be displayed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-069"
+    },
+    {
+      "id": "R-070",
+      "text": "The Feedback Center page shall be displayed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-070"
+    },
+    {
+      "id": "R-071",
+      "text": "The About Netscape page shall be displayed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-071"
+    },
+    {
+      "id": "R-072",
+      "text": "All the selections in the Help drop down menu shall be opened using short cut buttons.",
+      "language": "en",
+      "source": "R-set.csv#R-072"
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "TC-046",
+      "title": "TC-046",
+      "description": "INITIAL CONDITIONS\nMozilla should be started up\n\nSTEPS/DESCRIPTION\n1. From the Help drop down menu, select Help and Support Center\n2. Open your sidebar if it is not already open (click on the widget to the left hand side of your browser)\n3. Click on the Index tab\n4. Doubleclick on the T in the index\n5. Click the If You Can't sign on link\n\nEXPECTED RESULTS\n1. The Help and Support Center window should open\n3. An alphabetic list should display on the left hand side of the window\n4. The T should expand and you should see Troubleshooting listed\n5. You should be taken to Help information regarding sign on issues",
+      "requirement_ids": [
+        "R-046"
+      ],
+      "source": "T-set.csv#TC-046",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-047",
+      "title": "TC-047",
+      "description": "INITIAL CONDITIONS\nMozilla should be started up\n\nSTEPS/DESCRIPTION\n1. From the Help drop down menu, select Help and Support Center\n2. Open your sidebar if it is not already open (click on the widget to the left hand side of your browser)\n3. Click on the Index tab\n4. Doubleclick on the T in the index\n5. Click the If You Can't See Anyone in you Buddy Window\n\nEXPECTED RESULTS\n1. The Help and Support Center window should open\n3. An alphabetic list should display on the left hand side of the window\n4. The T should expand and you should see Troubleshooting listed\n5. You should be taken to Help information regarding Buddy List Window issues",
+      "requirement_ids": [
+        "R-047"
+      ],
+      "source": "T-set.csv#TC-047",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-048",
+      "title": "TC-048",
+      "description": "INITIAL CONDITIONS\nMozilla should be started up\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select Help Contents\n3. Click Browsing the web link on left hand side of help page\n4. Click on Copying, Saving and Printing link on the left hand side of help page\n5. Click the back button on the help toolbar\n6. Click the forward button on the help toolbar\n7. Try this on other pages to ensure the behavior is consistant through help\n\nEXPECTED RESULTS\n2. You should be taken to the help contents page\n3. You should now be taken to the appropriate page, navigating web pages\n4. You should now be taken to the appropriate page, copying, saving, and printing\n5. You should return to the first page, navigating web pages\n6. You should return to copying, saving, and printing",
+      "requirement_ids": [
+        "R-048"
+      ],
+      "source": "T-set.csv#TC-048",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-049",
+      "title": "TC-049",
+      "description": "INITIAL CONDITIONS\nMozilla should be started up\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select Help Contents\n3. Click the minimize square in the upper right hand corner\n4. Click on the minimized Mozilla in Taskbar\n5. Click on the maximize square in the upper right hand corner\n6. Click on the x square in the upper right hand corner\n\nEXPECTED RESULTS\n2. Help contents should come up with main topics on the left and detailed information on the right\n3. Help should be minimized and show on your taskbar\n4. Help should be restored to the same size it was in the first place\n5. Help should now be expanded to the entire screen\n6. Mozilla should close",
+      "requirement_ids": [
+        "R-049"
+      ],
+      "source": "T-set.csv#TC-049",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-050",
+      "title": "TC-050",
+      "description": "INITIAL CONDITIONS\nNetscape should be started up\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select Technical Support\n3. Push the Page Down Key on your keyboard\n4. Push the Page Up Key on your keyboard\n5. Click a few random links in help and try using these keys again\n\nEXPECTED RESULTS\n2. You should be taken to http://help.netscape.com/\n4. This should move you down the page until the end\n5. This should move you up the page until you reach the top\n6. Page up and Page Down keys should consistantly move you up and down pages",
+      "requirement_ids": [
+        "R-050"
+      ],
+      "source": "T-set.csv#TC-050",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-051",
+      "title": "TC-051",
+      "description": "INITIAL CONDITIONS\nNetscape should be started up\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select Help Contents\n3. Click the arrow on the upper right hand corner\n4. Click on the smaller arrow that now appears on the upper left hand corner\n\nEXPECTED RESULTS\n2. You should be taken to the help contents page\n3. The toolbar should collapse\n5. The toolbar should now appear with buttons for forward, back, refresh and print",
+      "requirement_ids": [
+        "R-051"
+      ],
+      "source": "T-set.csv#TC-051",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": [
+        "firefox_toolbar"
+      ]
+    },
+    {
+      "id": "TC-052",
+      "title": "TC-052",
+      "description": "INITIAL CONDITIONS\nNetscape should be started up\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select Technical Support\n3. Push the down arrow key on your keyboard\n4. Push the up arrow key on your keyboard\n5. Click a few random links in help and try using these keys again\n\nEXPECTED RESULTS\n2. You should be taken to http://help.netscape.com/\n4. This should move you down the page until the end\n5. This should move you up the page until you reach the top\n6. Up arrow and down arrow keys should consistantly move you up and down pages",
+      "requirement_ids": [
+        "R-052"
+      ],
+      "source": "T-set.csv#TC-052",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-053",
+      "title": "TC-053",
+      "description": "INITIAL CONDITIONS\nNetscape should be started up\n\nSTEPS/DESCRIPTION\n1. Save the file below to your desktop\n2. Select the toplevel Help menu.\n3. Select Help Contents\n4. Drag the file from your desktop into the help windowr\n\nEXPECTED RESULTS\n3. You should be taken to the help contents page\n4. You should not be able to do this",
+      "requirement_ids": [
+        "R-053"
+      ],
+      "source": "T-set.csv#TC-053",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": [
+        "firefox_clipboard_and_drag_drop"
+      ]
+    },
+    {
+      "id": "TC-054",
+      "title": "TC-054",
+      "description": "INITIAL CONDITIONS\nNetscape should be started up\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select Help Contents\n3. Click on the greyed out previous button\n4. Click on the greyed out back button\n5. Click on the Netscape logo in uppper right\n\nEXPECTED RESULTS\n2. You should be taken to the help contents page\n3. Nothing should happen\n4. Nothing should happen\n5. Nothing should happen",
+      "requirement_ids": [
+        "R-054"
+      ],
+      "source": "T-set.csv#TC-054",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-055",
+      "title": "TC-055",
+      "description": "INITIAL CONDITIONS\nNetscape should be started and a printer should be installed\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select Help Contents\n3. Select all contents on right, copy and paste into your favorite word processor and run spell check\n4. Click the printer Icon\n\nEXPECTED RESULTS\n2. Help contents should come up with main topics on the left and detailed information on the right\n3. There should be no spelling errors (Besides obvious computer terms and websites)\n4. Help contents should print",
+      "requirement_ids": [
+        "R-055"
+      ],
+      "source": "T-set.csv#TC-055",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": [
+        "firefox_printing"
+      ]
+    },
+    {
+      "id": "TC-056",
+      "title": "TC-056",
+      "description": "INITIAL CONDITIONS\nNetscape should be started and a printer should be installed on the machine you are using\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select Help Contents\n3. Select all contents on right, copy and paste into your favorite word processor and run spell check\n4. Click the printer icon\n\nEXPECTED RESULTS\n2. Help contents should come up with main topics on the left and detailed information on the right\n3. There should be no spelling errors (Besides obvious computer terms and websites)\n4. Browsing the web contents should print",
+      "requirement_ids": [
+        "R-056"
+      ],
+      "source": "T-set.csv#TC-056",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": [
+        "firefox_printing"
+      ]
+    },
+    {
+      "id": "TC-057",
+      "title": "TC-057",
+      "description": "INITIAL CONDITIONS\nNetscape should be started and a printer should be installed on the machine you are using\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select Mail and News\n3. Select all contents on right, copy and paste into your favorite word processor and run spell check\n4. Click the printer icon\n\nEXPECTED RESULTS\n2. Mail and news content should come up with main topics on the left and detailed information on the right\n3. There should be no spelling errors (Besides obvious computer terms and websites)\n4. Mail and News content should print",
+      "requirement_ids": [
+        "R-057"
+      ],
+      "source": "T-set.csv#TC-057",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": [
+        "firefox_printing"
+      ]
+    },
+    {
+      "id": "TC-058",
+      "title": "TC-058",
+      "description": "INITIAL CONDITIONS\nNetscape should be started and a printer should be installed on the machine you are using\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select Instant Messenger\n3. Select all contents on right, copy and paste into your favorite word processor and run spell check\n4. Click the printer icon\n\nEXPECTED RESULTS\n2. Instant Messenger content should come up with main topics on the left and detailed information on the right\n3. There should be no spelling errors (Besides obvious computer terms and websites)\n4. Instant Messenger content should print",
+      "requirement_ids": [
+        "R-058"
+      ],
+      "source": "T-set.csv#TC-058",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": [
+        "firefox_printing"
+      ]
+    },
+    {
+      "id": "TC-059",
+      "title": "TC-059",
+      "description": "INITIAL CONDITIONS\nNetscape should be started and a printer should be installed on the machine you are using\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select Customizing Netscape 6\n3. Select all contents on right, copy and paste into your favorite word processor and run spell check\n4. 4.Click the printer icon\n\nEXPECTED RESULTS\n2. Customizing Netscape 6 help content should come up with main topics on the left and detailed information on the right\n3. There should be no spelling errors (Besides obvious computer terms and websites)\n4. Customizing Netscape 6 help content should print",
+      "requirement_ids": [
+        "R-059"
+      ],
+      "source": "T-set.csv#TC-059",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": [
+        "firefox_printing"
+      ]
+    },
+    {
+      "id": "TC-060",
+      "title": "TC-060",
+      "description": "INITIAL CONDITIONS\nNetscape should be started and a printer should be installed on the machine you are using\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select Help Contents\n3. Click Understanding Privacy from the left panel\n4. Select all contents on right, copy and paste into your favorite word processor and run spell check\n5. Click the printer icon\n\nEXPECTED RESULTS\n3. Understanding privacy content should come up with main topics on the left and detailed information on the right\n4. There should be no spelling errors (Besides obvious computer terms and websites)\n5. Understanding Privacy content should print",
+      "requirement_ids": [
+        "R-060"
+      ],
+      "source": "T-set.csv#TC-060",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": [
+        "firefox_printing"
+      ]
+    },
+    {
+      "id": "TC-061",
+      "title": "TC-061",
+      "description": "INITIAL CONDITIONS\nNetscape should be started and a printer should be installed on the machine you are using\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select Help Contents\n3. Click Creating web pages from the left panel\n4. Select all contents on right, copy and paste into your favorite word processor and run spell check\n5. Click the printer icon\n\nEXPECTED RESULTS\n3. Creating web pages helpcontent should come up with main topics on the left and detailed information on the right\n4. There should be no spelling errors (Besides obvious computer terms and websites)\n5. Creating web pages content should print",
+      "requirement_ids": [
+        "R-061"
+      ],
+      "source": "T-set.csv#TC-061",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": [
+        "firefox_printing"
+      ]
+    },
+    {
+      "id": "TC-062",
+      "title": "TC-062",
+      "description": "INITIAL CONDITIONS\nNetscape should be started and a printer should be installed on the machine you are using\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select What's new in Netscape 6\n3. Click \"My sidebar is yours\"\n4. Close the window created in 3 and click on \"Search from anywhere, anytime\"\n5. Close the window created in 4 and click on \"Convenient Services\"\n6. Close the window created in 5 and click on Start using Netscape\n\nEXPECTED RESULTS\n2. Verify that a screen describing new features in Netscape 6 comes up\n3. Verify that a window describing \"My sidebar\" appears in a new window\n4. Verify that \"Fast and Convenient Search from the Location Bar\" page comes up\n5. Verify that \"A host of Services\" window comes up\n6. Verify that you are taken to http://home.netscape.com/?cp=wn6",
+      "requirement_ids": [
+        "R-062"
+      ],
+      "source": "T-set.csv#TC-062",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-063",
+      "title": "TC-063",
+      "description": "INITIAL CONDITIONS\nNetscape should be started and a printer should be installed on the machine you are using\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select What's new in Netscape six from the submenu\n3. Click Security and Privacy\n4. Select all contents of the page, and right click, select copy and then paste into your favorite word processor and run spell check\n\nEXPECTED RESULTS\n3. A new window should open with Easier Security at the top of the page\n4. There should be no spelling errors (Besides obvious computer terms and websites)",
+      "requirement_ids": [
+        "R-063"
+      ],
+      "source": "T-set.csv#TC-063",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-064",
+      "title": "TC-064",
+      "description": "INITIAL CONDITIONS\nNetscape should be started\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select What's new in Netscape six from the submenu\n3. Click Same time messaging\n4. Select all contents of the page, and right click, select copy and then paste into your favorite word processor and run spell check\n\nEXPECTED RESULTS\n3. A new window should open with \"Multiple Mail Accounts & Identities\" at the top of the page\n4. There should be no spelling errors (Besides obvious computer terms and websites)",
+      "requirement_ids": [
+        "R-064"
+      ],
+      "source": "T-set.csv#TC-064",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-065",
+      "title": "TC-065",
+      "description": "INITIAL CONDITIONS\nNetscape should be started\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select What's new in Netscape six from the submenu\n3. Click Streamlined interface\n4. Select all contents of the page, and right click, select copy and then paste into your favorite word processor and run spell check\n5. There are many links on this page, randomly click several links\n\nEXPECTED RESULTS\n3. A new window should open with \"What's New For Developers?\" at the top of the page\n4. There should be no spelling errors (Besides obvious computer terms and websites)\n5. Verify that you are taken to the appropriate page for links clicked",
+      "requirement_ids": [
+        "R-065"
+      ],
+      "source": "T-set.csv#TC-065",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-066",
+      "title": "TC-066",
+      "description": "INITIAL CONDITIONS\nNetscape should be started and a printer should be installed on the machine you are using\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select What's new in Netscape six from the submenu\n3. Click The Best Standards Support\n4. Select all contents of the page, and right click, select copy and then paste into your favorite word processor and run spell check\n5. There are many links on this page, click on them randomly\n\nEXPECTED RESULTS\n3. A new window should open with \"What's New For Developers?\" at the top of the page\n4. There should be no spelling errors (Besides obvious computer terms and websites)\n5. Verify that you are taken to the appropriate link in a new browser instance",
+      "requirement_ids": [
+        "R-066"
+      ],
+      "source": "T-set.csv#TC-066",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-067",
+      "title": "TC-067",
+      "description": "INITIAL CONDITIONS\nNetscape should be started and a printer should be installed on the machine you are using\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select \"What's new in Netscape 6\"\n3. Click \"My sidebar is yours\"\n4. Close the window created in 3 and click on \"Search from anywhere, anytime\"\n5. Close the window created in 4 and click on \"Convenient Services\"\n6. Close the window created in 5 and click on Start using Netscape\n\nEXPECTED RESULTS\n2. Verify that a screen describing new features in Netscape 6 comes up\n3. Verify that a window describing \"My sidebar\" appears in a new window\n4. Verify that \"Fast and Convenient Search from the Location Bar\" page comes up\n5. Verify that \"A host of Services\" window comes up\n6. Verify that you are taken to http://home.netscape.com/?cp=wn6",
+      "requirement_ids": [
+        "R-067"
+      ],
+      "source": "T-set.csv#TC-067",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-068",
+      "title": "TC-068",
+      "description": "INITIAL CONDITIONS\nNetscape should be started up\n\nSTEPS/DESCRIPTION\n1. From the Help Drop Down Menu, select Help and Support Center\n2. Click the Assisted Support Options link\n3. Click the Communicator 4.x link\n4. Click on the Netscape link\n5. Click on the Intertional Browsers link\n\nEXPECTED RESULTS\n1. The Help and Support Center page should come up\n2. You should be taken to the Need some help? page\n2. Help number should be listed 1(800)411-0707 (They will help you for low-cost assistance)\n2. There should be links to Communicator 4.x, Netscape 6, International Browsers\n3. You should be taken to a general Help page for Communicator 4.x\n4. You should be taken to a general Help page for Netscape 6\n4. Verify that the browser mentioned on this page is the correct version of the Netscape 6 browser\n5.You should be taken to a general Help page for International Support",
+      "requirement_ids": [
+        "R-068"
+      ],
+      "source": "T-set.csv#TC-068",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-069",
+      "title": "TC-069",
+      "description": "INITIAL CONDITIONS\nNetscape should be started up\n\nSTEPS/DESCRIPTION\n1. From the Help Drop Down Menu, select Help and Support Center\n2. Click on the International Link\n\nEXPECTED RESULTS\n1. The Help and Support Center should come up\n2. You should be taken to an International Users page\n2. This page should Have Current information for International users",
+      "requirement_ids": [
+        "R-069"
+      ],
+      "source": "T-set.csv#TC-069",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-070",
+      "title": "TC-070",
+      "description": "INITIAL CONDITIONS\nNetscape should be started up\n\nSTEPS/DESCRIPTION\n1. From the Help Drop Down Menu, select Feedback Center\n2. Click on the Fill out a problem report link\n3. Click on the Fill out a suggestion form link\n4. Click on the Fill out a survey form link\n\nEXPECTED RESULTS\n1. You should be taken to a page that explains how to send feedback to Netscape about the browser.\n1. You should see links to fill out a problem report, Fill out a suggestion form and Fill out a survey\n2. You should be taken to the Netscape Problem Report Form\n3. You should be taken to the Netscape Suggestion Form\n4. You should be taken to the Netscape Survey",
+      "requirement_ids": [
+        "R-070"
+      ],
+      "source": "T-set.csv#TC-070",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-071",
+      "title": "TC-071",
+      "description": "INITIAL CONDITIONS\nNetscape should be started up\n\nSTEPS/DESCRIPTION\n1. From the help drop down menu, select About Netscape 6\n2. Click on Contributors link\n3. Click on Mozilla Public License and Netscape Public License\n4. Click on the license link\n5. Click on the Java link\n6. Click on the Sun Microsystems link\n7. Click on the Copyright © 1998-2000 Support.com, Inc. link\n8. Click on the Lernout & Hauspie Speech Products N.V. link\n9. Click on the Net2Phone, Inc. Hackensack, NJ USA. link\n\nEXPECTED RESULTS\n1. The About Netscape page should come up\n2. Verify that the Contributors page (Terri Preston should be listed) :-)\n3. Verify that you are taken to http://www.mozilla.org/MPL/\n4. Verify that you are taken to jar:resource:///chrome/en-US.jar!/locale/en-US/global/license.txt\n5. & 6. Verify that you are taken to http://java.sun.com/\n7. Verify that you are taken to http://www.support.com/\n8. Verify that you are taken to the Lernout & Hauspie page (this is currently NS bug 12462)\n9. Verify that you are taken to http://www.net2phone.com/",
+      "requirement_ids": [
+        "R-071"
+      ],
+      "source": "T-set.csv#TC-071",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-072",
+      "title": "TC-072",
+      "description": "INITIAL CONDITIONS\nNetscape should be started up\n\nSTEPS/DESCRIPTION\nClick Alt+H prior to starting each of these steps\n1. Click H\n2. Click W\n3. Click F\n4. Click S\n5. Click P\n6. Click A\n\nEXPECTED RESULTS\n1. Help and Support Center page should open (close the help dialog)\n2. You should be taken to the Welcome page that describes the new features in Netscape\n3. You should be taken to the Feedback page\n4. You should be taken to the Security News page\n5. You should be taken to the Installed plugins page\n6. You should be taken to the About Netscape page",
+      "requirement_ids": [
+        "R-072"
+      ],
+      "source": "T-set.csv#TC-072",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    }
+  ],
+  "generatable": true,
+  "parent_id": "firefox_legacy"
+}

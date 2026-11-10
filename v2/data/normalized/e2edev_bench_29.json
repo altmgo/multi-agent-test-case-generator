@@ -1,0 +1,255 @@
+{
+  "id": "e2edev_bench_29",
+  "requirements": [
+    {
+      "id": "e2edev_bench_29-R-1",
+      "text": "Upon loading the Expense Tracker application, the system must initialize and display the financial summary with the current balance, total income, and total expenses all set to $0.00. This initialization should occur when there are no transactions stored in the local storage. The balance should be displayed in the element with data-testid 'balance', the income in the element with data-testid 'income', and the expenses in the element with data-testid 'expense'. The application must ensure these values are accurately retrieved and displayed from the local storage, defaulting to $0.00 if the storage is empty or contains no transactions.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_29-R-2",
+      "text": "The user must be able to enter a transaction description in the 'Description' input field with data-testid 'description-input'. The system must accept text input of any length, including very long descriptions, and display it in the transaction history table with data-testid 'transaction-list' upon adding a transaction. If the 'Description' input field is left empty, the system should display an alert with the message 'Please enter valid description and amount.' and prevent the transaction from being added to the transaction history. The user interaction involves entering a description and an amount in their respective input fields, and clicking the 'Add Transaction' button with data-testid 'add-transaction-button'. The transaction history should update to reflect the new transaction, showing the description, amount, and date of the transaction.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_29-R-3",
+      "text": "The user must be able to add transactions to the Expense Tracker by entering a description and a numerical amount in the respective input fields. The 'Description' input field, identified by data-testid 'description-input', must accept any text input. The 'Amount' input field, identified by data-testid 'amount-input', must accept numerical input, where positive values indicate income and negative values indicate expenses. Upon clicking the 'Add Transaction' button, identified by data-testid 'add-transaction-button', the transaction should be added to the transaction list, identified by data-testid 'transaction-list'. The transaction list should display the transaction with the entered description, amount formatted as currency (e.g., '$100.00' for income and '-$50.00' for expenses), and the current date. If the 'Amount' input field is left empty or contains invalid data, an alert should be displayed with the message 'Please enter valid description and amount.' The application must update the balance, income, and expense totals accordingly, reflecting the changes in the respective elements identified by data-testid 'balance', 'income', and 'expense'. All transactions must be stored in localStorage under the key 'transactions', ensuring persistence across sessions.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_29-R-5",
+      "text": "The Expense Tracker web application must allow users to add transactions by entering a description and an amount into designated input fields with data-testid attributes 'description-input' and 'amount-input'. Upon clicking the 'Add Transaction' button with data-testid 'add-transaction-button', the system must validate that both fields are correctly filled: the description must be a non-empty string, and the amount must be a valid number (positive for income, negative for expenses, zero is allowed). If validation passes, the transaction is added to the transaction history table with data-testid 'transaction-list', displaying the date, description, and formatted amount. The system must update the balance (data-testid 'balance'), income (data-testid 'income'), and expense (data-testid 'expense') values accordingly. The balance should reflect the net total of all transactions, income should sum all positive amounts, and expenses should sum all negative amounts (displayed as positive values). After a successful transaction addition, the input fields must be cleared. All transactions must be stored in localStorage under the key 'transactions' to persist data across sessions. If validation fails, an alert must notify the user to enter valid data without adding the transaction.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/5/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_29-R-6",
+      "text": "The system must allow users to add transactions to the transaction history by entering a description and an amount in the respective input fields with data-testid 'description-input' and 'amount-input'. Upon clicking the 'Add Transaction' button with data-testid 'add-transaction-button', the transaction should be appended to the transaction list with data-testid 'transaction-list'. Each transaction entry must display the date (in YYYY-MM-DD format), the description, and the amount formatted as currency (e.g., '$1000.00' for positive amounts and '$-150.00' for negative amounts). Additionally, each transaction entry must include a remove button that allows users to delete the transaction from the list. The system should update the balance, income, and expense totals displayed in elements with data-testid 'balance', 'income', and 'expense', respectively, whenever a transaction is added or removed. All transactions must be stored in localStorage under the key 'transactions' to persist data across sessions.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/6/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_29-R-7",
+      "text": "The Expense Tracker application must allow users to remove transactions from the transaction history by clicking the 'X' button next to a transaction. Upon clicking, the system should remove the transaction from the DOM, update the displayed balance, income, and expense values accordingly, and ensure these changes are reflected in the local storage. Specifically, the transaction list should be updated by removing the corresponding <tr> element, and the balance, income, and expense elements identified by data-testid attributes ('balance', 'income', 'expense') should display the recalculated values. The local storage key 'transactions' must be updated to exclude the removed transaction, ensuring persistence of the current state. This functionality should handle normal scenarios where multiple transactions exist, as well as edge cases where the transaction history contains only one transaction, resulting in an empty transaction list and zeroed financial values.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/7/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_29-R-8",
+      "text": "The Expense Tracker web application must ensure that all transactions are stored in localStorage under the key 'transactions' to maintain data persistence across page reloads. When the page is loaded, the application must retrieve the stored transactions from localStorage and display them in the transaction list, identified by the data-testid 'transaction-list'. Users must be able to add transactions by entering a description in the input field with data-testid 'description-input' and an amount in the input field with data-testid 'amount-input'. Upon clicking the 'Add Transaction' button with data-testid 'add-transaction-button', the transaction should be added to the list and stored in localStorage. The transaction list must accurately reflect the stored transactions, displaying the description, amount formatted as currency, and the date of the transaction. The balance, income, and expense totals must be updated accordingly and displayed using elements with data-testids 'balance', 'income', and 'expense'. The application must handle edge cases, such as negative amounts for expenses, and ensure that transactions are correctly formatted and persisted.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/8/requirement/description"
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_29-R-1-TC-1",
+      "title": "[Normal] Display initial values on application load",
+      "description": "Feature: Display Initial Financial Summary\n  The application should display the current balance, total income, and total expenses initialized to $0.00 when no transactions exist.\n\n\n  Scenario: [Normal] Display initial values on application load\n    Given the user opens the Expense Tracker application\n    When the application is loaded\n    Then the balance displayed with data-testid \"balance\" should be \"$0.00\"\n    And the income displayed with data-testid \"income\" should be \"$0.00\"\n    And the expenses displayed with data-testid \"expense\" should be \"$0.00\"\n",
+      "requirement_ids": [
+        "e2edev_bench_29-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-1-TC-2",
+      "title": "[Edge] Display initial values with empty local storage",
+      "description": "Feature: Display Initial Financial Summary\n  The application should display the current balance, total income, and total expenses initialized to $0.00 when no transactions exist.\n\n\n  Scenario: [Edge] Display initial values with empty local storage\n    Given the user opens the Expense Tracker application\n    And the local storage is empty\n    When the application is loaded\n    Then the balance displayed with data-testid \"balance\" should be \"$0.00\"\n    And the income displayed with data-testid \"income\" should be \"$0.00\"\n    And the expenses displayed with data-testid \"expense\" should be \"$0.00\"\n",
+      "requirement_ids": [
+        "e2edev_bench_29-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-2-TC-1",
+      "title": "[Normal] User enters a valid transaction description",
+      "description": "Feature: Transaction Description Input\n  The user must be able to enter a transaction description in the 'Description' input field. The system must accept text input and display it in the transaction history upon adding a transaction.\n\n\n  Scenario: [Normal] User enters a valid transaction description\n    Given the Expense Tracker page is loaded\n    And the 'Description' input field with data-testid 'description-input' is visible\n    When the user enters \"Grocery Shopping\" into the 'Description' input field with data-testid 'description-input'\n    And the user enters \"50\" into the 'Amount' input field with data-testid 'amount-input'\n    And the user clicks the 'Add Transaction' button with data-testid 'add-transaction-button'\n    Then the transaction history with data-testid 'transaction-list' should display a row with the description \"Grocery Shopping\"\n",
+      "requirement_ids": [
+        "e2edev_bench_29-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-2-TC-2",
+      "title": "[Edge] User enters a very long transaction description",
+      "description": "Feature: Transaction Description Input\n  The user must be able to enter a transaction description in the 'Description' input field. The system must accept text input and display it in the transaction history upon adding a transaction.\n\n\n  Scenario: [Edge] User enters a very long transaction description\n    Given the Expense Tracker page is loaded\n    And the 'Description' input field with data-testid 'description-input' is visible\n    When the user enters a very long description \"A very long description that exceeds typical length expectations for testing purposes\" into the 'Description' input field with data-testid 'description-input'\n    And the user enters \"100\" into the 'Amount' input field with data-testid 'amount-input'\n    And the user clicks the 'Add Transaction' button with data-testid 'add-transaction-button'\n    Then the transaction history with data-testid 'transaction-list' should display a row with the description \"A very long description that exceeds typical length expectations for testing purposes\"\n",
+      "requirement_ids": [
+        "e2edev_bench_29-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-2-TC-3",
+      "title": "[Error] User leaves the transaction description empty",
+      "description": "Feature: Transaction Description Input\n  The user must be able to enter a transaction description in the 'Description' input field. The system must accept text input and display it in the transaction history upon adding a transaction.\n\n\n  Scenario: [Error] User leaves the transaction description empty\n    Given the Expense Tracker page is loaded\n    And the 'Description' input field with data-testid 'description-input' is visible\n    When the user leaves the 'Description' input field with data-testid 'description-input' empty\n    And the user enters \"20\" into the 'Amount' input field with data-testid 'amount-input'\n    And the user clicks the 'Add Transaction' button with data-testid 'add-transaction-button'\n    Then an alert should be displayed with the message \"Please enter valid description and amount.\"\n    And the transaction history with data-testid 'transaction-list' should not display any new row",
+      "requirement_ids": [
+        "e2edev_bench_29-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-3-TC-1",
+      "title": "[Normal] User enters a positive amount as income",
+      "description": "Feature: Transaction Amount Input\n  The user must be able to enter a transaction amount in the 'Amount' input field. The system must accept numerical input, where positive values indicate income and negative values indicate expenses.\n\n\nScenario: [Normal] User enters a positive amount as income\n    Given the Expense Tracker page is loaded\n    And the user enters \"Grocery Shopping\" into the 'Description' input field with data-testid 'description-input'\n    And the 'Amount' input field with data-testid 'amount-input' is visible\n    When the user enters '100' into the 'Amount' input field with data-testid 'amount-input'\n    And the user clicks the 'Add Transaction' button with data-testid 'add-transaction-button'\n    Then the transaction list with data-testid 'transaction-list' should include a transaction with amount '$100.00'",
+      "requirement_ids": [
+        "e2edev_bench_29-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-3-TC-2",
+      "title": "[Normal] User enters a negative amount as expense",
+      "description": "Feature: Transaction Amount Input\n  The user must be able to enter a transaction amount in the 'Amount' input field. The system must accept numerical input, where positive values indicate income and negative values indicate expenses.\n\n\nScenario: [Normal] User enters a negative amount as expense\n    Given the Expense Tracker page is loaded \n    And the user enters \"Grocery Shopping\" into the 'Description' input field with data-testid 'description-input'\n    And the 'Amount' input field with data-testid 'amount-input' is visible\n    When the user enters '-50' into the 'Amount' input field with data-testid 'amount-input'\n    And the user clicks the 'Add Transaction' button with data-testid 'add-transaction-button'\n    Then the transaction list with data-testid 'transaction-list' should include a transaction with amount '-$50.00'",
+      "requirement_ids": [
+        "e2edev_bench_29-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-3-TC-3",
+      "title": "[Error] User leaves the amount field empty",
+      "description": "Feature: Transaction Amount Input\n  The user must be able to enter a transaction amount in the 'Amount' input field. The system must accept numerical input, where positive values indicate income and negative values indicate expenses.\n\n\nScenario: [Error] User leaves the amount field empty\n    Given the Expense Tracker page is loaded\n    And the user enters \"Grocery Shopping\" into the 'Description' input field with data-testid 'description-input'\n    And the 'Amount' input field with data-testid 'amount-input' is visible\n    When the user leaves the 'Amount' input field with data-testid 'amount-input' empty\n    And the user clicks the 'Add Transaction' button with data-testid 'add-transaction-button'\n    Then an alert should be displayed with the message 'Please enter valid description and amount.'",
+      "requirement_ids": [
+        "e2edev_bench_29-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-5-TC-1",
+      "title": "[Normal] Add a valid income transaction",
+      "description": "Feature: Transaction Addition and UI Update\n  The system must add the transaction to the transaction history, update the balance, income, and expense values, and clear the input fields upon successful validation.\n\n\n  Scenario: [Normal] Add a valid income transaction\n    Given the Expense Tracker page is loaded\n    And the description input with data-testid \"description-input\" is empty\n    And the amount input with data-testid \"amount-input\" is empty\n    When the user enters \"Salary\" into the description input with data-testid \"description-input\"\n    And the user enters \"1000\" into the amount input with data-testid \"amount-input\"\n    And the user clicks the add transaction button with data-testid \"add-transaction-button\"\n    Then the transaction list with data-testid \"transaction-list\" should contain a transaction with description \"Salary\" and amount \"$1000.00\"\n    And the balance with data-testid \"balance\" should display \"$1000.00\"\n    And the income with data-testid \"income\" should display \"$1000.00\"\n    And the expense with data-testid \"expense\" should display \"$0.00\"\n    And the description input with data-testid \"description-input\" should be empty\n    And the amount input with data-testid \"amount-input\" should be empty\n",
+      "requirement_ids": [
+        "e2edev_bench_29-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-5-TC-2",
+      "title": "[Normal] Add a valid expense transaction",
+      "description": "Feature: Transaction Addition and UI Update\n  The system must add the transaction to the transaction history, update the balance, income, and expense values, and clear the input fields upon successful validation.\n\n\n  Scenario: [Normal] Add a valid expense transaction\n    Given the Expense Tracker page is loaded\n    And the description input with data-testid \"description-input\" is empty\n    And the amount input with data-testid \"amount-input\" is empty\n    When the user enters \"Groceries\" into the description input with data-testid \"description-input\"\n    And the user enters \"-200\" into the amount input with data-testid \"amount-input\"\n    And the user clicks the add transaction button with data-testid \"add-transaction-button\"\n    Then the transaction list with data-testid \"transaction-list\" should contain a transaction with description \"Groceries\" and amount \"$-200.00\"\n    And the balance with data-testid \"balance\" should display \"$-200.00\"\n    And the income with data-testid \"income\" should display \"$0.00\"\n    And the expense with data-testid \"expense\" should display \"$200.00\"\n    And the description input with data-testid \"description-input\" should be empty\n    And the amount input with data-testid \"amount-input\" should be empty\n",
+      "requirement_ids": [
+        "e2edev_bench_29-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-5-TC-3",
+      "title": "[Edge] Add a transaction with zero amount",
+      "description": "Feature: Transaction Addition and UI Update\n  The system must add the transaction to the transaction history, update the balance, income, and expense values, and clear the input fields upon successful validation.\n\n\nScenario: [Edge] Add a transaction with zero amount\n  Given the Expense Tracker page is loaded\n  And the description input with data-testid \"description-input\" is empty\n  And the amount input with data-testid \"amount-input\" is empty\n  When the user enters \"Salary\" into the description input with data-testid \"description-input\"\n  And the user enters \"1000\" into the amount input with data-testid \"amount-input\"\n  And the user clicks the add transaction button with data-testid \"add-transaction-button\"\n  And the user enters \"Groceries\" into the description input with data-testid \"description-input\"\n  And the user enters \"-200\" into the amount input with data-testid \"amount-input\"\n  And the user clicks the add transaction button with data-testid \"add-transaction-button\"\n  When the user enters \"Gift\" into the description input with data-testid \"description-input\"\n  And the user enters \"0\" into the amount input with data-testid \"amount-input\"\n  And the user clicks the add transaction button with data-testid \"add-transaction-button\"\n  Then the transaction list with data-testid \"transaction-list\" should contain a transaction with description \"Gift\" and amount \"$0.00\"\n  And the balance with data-testid \"balance\" should remain \"$800.00\"\n  And the income with data-testid \"income\" should remain \"$1000.00\"\n  And the expense with data-testid \"expense\" should remain \"$200.00\"\n  And the description input with data-testid \"description-input\" should be empty\n  And the amount input with data-testid \"amount-input\" should be empty",
+      "requirement_ids": [
+        "e2edev_bench_29-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-6-TC-1",
+      "title": "[Normal] Display transaction in history after adding",
+      "description": "Feature: Display Transaction History\n  The system must display each transaction in the transaction history with the date, description, amount, and an option to remove the transaction.\n\n\n  Scenario: [Normal] Display transaction in history after adding\n    Given the Expense Tracker page is loaded\n    And the transaction list is empty\n    When the user enters \"Salary\" into the description field with data-testid \"description-input\"\n    And the user enters \"1000\" into the amount field with data-testid \"amount-input\"\n    And the user clicks the \"Add Transaction\" button with data-testid \"add-transaction-button\"\n    Then the transaction list with data-testid \"transaction-list\" should display a row with date, description \"Salary\", amount \"$1000.00\", and a remove button\n",
+      "requirement_ids": [
+        "e2edev_bench_29-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-6-TC-2",
+      "title": "[Edge] Display transaction with negative amount in history",
+      "description": "Feature: Display Transaction History\n  The system must display each transaction in the transaction history with the date, description, amount, and an option to remove the transaction.\n\n\nScenario: [Edge] Display transaction with negative amount in history\n    Given the Expense Tracker page is loaded\n    And the transaction list is empty\n    When the user enters \"Groceries\" into the description field with data-testid \"description-input\"\n    And the user enters \"-150\" into the amount field with data-testid \"amount-input\"\n    And the user clicks the \"Add Transaction\" button with data-testid \"add-transaction-button\"\n    Then the transaction list with data-testid \"transaction-list\" should display a row with date, description \"Groceries\", amount “$-150.00\", and a remove button",
+      "requirement_ids": [
+        "e2edev_bench_29-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-7-TC-1",
+      "title": "[Normal] Remove a transaction successfully",
+      "description": "Feature: Transaction Removal\n  The system must allow users to remove transactions from the transaction history, update the balance, income, and expense values, and update the local storage accordingly.\n\n\n  Scenario: [Normal] Remove a transaction successfully\n    Given the Expense Tracker page is loaded\n    And a transaction with description \"Lunch\" and amount \"-15.00\" exists in the transaction history\n    When the user clicks the 'X' button next to the transaction with description \"Lunch\"\n    Then the transaction with description \"Lunch\" should be removed from the transaction history\n    And the balance, income, and expense values should be updated correctly\n    And the local storage should not contain the transaction with description \"Lunch\"\n",
+      "requirement_ids": [
+        "e2edev_bench_29-R-7"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/7/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-7-TC-2",
+      "title": "[Edge] Remove the only transaction in the history",
+      "description": "Feature: Transaction Removal\n  The system must allow users to remove transactions from the transaction history, update the balance, income, and expense values, and update the local storage accordingly.\n\n\n  Scenario: [Edge] Remove the only transaction in the history\n    Given the Expense Tracker page is loaded\n    And a single transaction with description \"Salary\" and amount \"1000.00\" exists in the transaction history\n    When the user clicks the 'X' button next to the transaction with description \"Salary\"\n    Then the transaction history should be empty\n    And the balance should be \"$0.00\"\n    And the income should be \"$0.00\"\n    And the expense should be \"$0.00\"\n    And the local storage should be empty\n",
+      "requirement_ids": [
+        "e2edev_bench_29-R-7"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/7/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-8-TC-1",
+      "title": "[Normal] Store and retrieve transactions from local storage after page reload",
+      "description": "Feature: Transaction Persistence in Local Storage\n  The system must store all transactions in local storage to ensure data persistence across page reloads. Upon loading the application, the system must retrieve and display stored transactions.\n\n\nScenario: [Normal] Store and retrieve transactions from local storage after page reload\n  Given the Expense Tracker page is loaded\n  And the user enters \"Salary\" into the description field with data-testid \"description-input\"\n  And the user enters \"1000\" into the amount field with data-testid \"amount-input\"\n  When the user clicks the \"Add Transaction\" button with data-testid \"add-transaction-button\"\n  And the user reloads the page\n  Then the transaction list with data-testid \"transaction-list\" should contain a transaction with description \"Salary\" and amount \"$1000.00\"\n  And the local storage should contain the transaction with description \"Salary\" and amount \"1000\"",
+      "requirement_ids": [
+        "e2edev_bench_29-R-8"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/8/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-8-TC-2",
+      "title": "[Edge] Reload the page and verify transactions are persisted",
+      "description": "Feature: Transaction Persistence in Local Storage\n  The system must store all transactions in local storage to ensure data persistence across page reloads. Upon loading the application, the system must retrieve and display stored transactions.\n\n\n  Scenario: [Edge] Reload the page and verify transactions are persisted\n    Given the Expense Tracker page is loaded\n    And the local storage contains a transaction with description \"Groceries\" and amount \"-50\"\n    When the page is reloaded\n    Then the transaction list with data-testid \"transaction-list\" should contain a transaction with description \"Groceries\" and amount \"$-50.00\"\n",
+      "requirement_ids": [
+        "e2edev_bench_29-R-8"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/8/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "generatable": true,
+  "parent_id": null
+}

@@ -1,0 +1,177 @@
+{
+  "id": "e2edev_bench_57",
+  "requirements": [
+    {
+      "id": "e2edev_bench_57-R-1",
+      "text": "The web application provides a checkbox list with a 'Select All/None' functionality. The user can interact with the 'Select All/None' checkbox, identified by the data-testid 'checkAll'. When the user clicks this checkbox, all individual checkboxes, identified by data-testids 'checkbox-1' to 'checkbox-10', should be toggled to match the state of the 'Select All/None' checkbox. If the 'Select All/None' checkbox is checked, all individual checkboxes should be checked, and the label with data-testid 'checkAll-label' should update to '全不选'. Conversely, if the 'Select All/None' checkbox is unchecked, all individual checkboxes should be unchecked, and the label should update to '全选'. Additionally, if any individual checkbox is manually toggled, the system should automatically update the 'Select All/None' checkbox and its label to reflect whether all individual checkboxes are selected or not. The 'Reverse Selection' link, identified by data-testid 'checkReverse', allows the user to invert the selection of all individual checkboxes, and the system should update the 'Select All/None' checkbox and its label accordingly.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_57/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_57-R-2",
+      "text": "The web application provides a checkbox list functionality where users can manage the selection of multiple options efficiently. The interface includes a 'Select All/None' checkbox with the attribute data-testid 'checkAll' and a corresponding label with data-testid 'checkAll-label'. When the user clicks the 'Select All/None' checkbox, the system toggles the selection state of all individual checkboxes, which have data-testids ranging from 'checkbox-1' to 'checkbox-10'. If all checkboxes are currently selected, clicking the 'Select All/None' checkbox will deselect all individual checkboxes and update the label text to '全选'. Conversely, if any checkboxes are deselected, clicking the 'Select All/None' checkbox will select all checkboxes and change the label text to '全不选'. Additionally, the system ensures that the 'Select All/None' checkbox reflects the collective state of all individual checkboxes, automatically updating its checked status and label text based on user interactions with individual checkboxes. The 'Reverse Selection' link with data-testid 'checkReverse' allows users to invert the current selection state of all individual checkboxes, and the system will update the 'Select All/None' checkbox and label accordingly.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_57/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_57-R-3",
+      "text": "The web application provides a checkbox list with a 'Reverse Selection' link, identified by the data-testid 'checkReverse'. When the user clicks this link, the application toggles the checked state of each checkbox in the list. Specifically, if a checkbox is checked, it becomes unchecked, and if it is unchecked, it becomes checked. This functionality applies to all checkboxes with data-testids ranging from 'checkbox-1' to 'checkbox-10'. The initial state of the checkboxes can be all checked, all unchecked, or a mix of checked and unchecked states. The system ensures that the toggle operation is accurately reflected in the UI, updating the checked state of each checkbox accordingly.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_57/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_57-R-4",
+      "text": "The web application provides a checkbox list with a 'Select All/None' functionality. The user can interact with individual checkboxes or use the 'Select All/None' checkbox to manage the selection state of all checkboxes. The system must update the state and label of the 'Select All/None' checkbox dynamically based on the selection state of individual checkboxes. Specifically: 1) When all individual checkboxes are selected, the 'Select All/None' checkbox (data-testid: 'checkAll') is checked, and its label (data-testid: 'checkAll-label') displays '全不选'. 2) When no individual checkboxes are selected, the 'Select All/None' checkbox is unchecked, and its label displays '全选'. 3) When some but not all individual checkboxes are selected, the 'Select All/None' checkbox remains unchecked, and its label displays '全选'. Additionally, the user can click the '反选' link (data-testid: 'checkReverse') to toggle the selection state of all individual checkboxes. The system must ensure that the state of the 'Select All/None' checkbox and its label are updated accordingly after any interaction. All checkboxes are identified using unique data-testid attributes (e.g., 'checkbox-1', 'checkbox-2', etc.), and the system must handle edge cases such as toggling already selected checkboxes or selecting no checkboxes.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_57/requirment_with_tests.json#/finegrained_rewith_test/4/requirement/description"
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_57-R-1-TC-1",
+      "title": "[Normal] User selects all checkboxes using 'Select All/None'",
+      "description": "Feature: Select All/None Checkbox Functionality\n  The user can toggle the 'Select All/None' checkbox to select or deselect all individual checkboxes, and the label should update accordingly.\n\n\n  Scenario: [Normal] User selects all checkboxes using 'Select All/None'\n    Given the webpage is loaded with the checkbox list\n    And the 'Select All/None' checkbox with data-testid 'checkAll' is unchecked\n    And the label with data-testid 'checkAll-label' displays '全选'\n    When the user clicks the 'Select All/None' checkbox with data-testid 'checkAll'\n    Then all individual checkboxes with data-testid 'checkbox-1' to 'checkbox-10' are checked\n    And the label with data-testid 'checkAll-label' changes to '全不选'\n",
+      "requirement_ids": [
+        "e2edev_bench_57-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_57/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_57-R-1-TC-2",
+      "title": "[Edge] User toggles 'Select All/None' when all checkboxes are already selected",
+      "description": "Feature: Select All/None Checkbox Functionality\n  The user can toggle the 'Select All/None' checkbox to select or deselect all individual checkboxes, and the label should update accordingly.\n\n\n  Scenario: [Edge] User toggles 'Select All/None' when all checkboxes are already selected\n    Given the webpage is loaded with the checkbox list\n    And all individual checkboxes with data-testid 'checkbox-1' to 'checkbox-10' are checked\n    And the 'Select All/None' checkbox with data-testid 'checkAll' is checked\n    And the label with data-testid 'checkAll-label' displays '全不选'\n    When the user clicks the 'Select All/None' checkbox with data-testid 'checkAll'\n    Then all individual checkboxes with data-testid 'checkbox-1' to 'checkbox-10' are unchecked\n    And the label with data-testid 'checkAll-label' changes to '全选'\n",
+      "requirement_ids": [
+        "e2edev_bench_57-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_57/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_57-R-1-TC-3",
+      "title": "[Error] User clicks 'Select All/None' with some checkboxes already selected",
+      "description": "Feature: Select All/None Checkbox Functionality\n  The user can toggle the 'Select All/None' checkbox to select or deselect all individual checkboxes, and the label should update accordingly.\n\n\n  Scenario: [Error] User clicks 'Select All/None' with some checkboxes already selected\n    Given the webpage is loaded with the checkbox list\n    And some individual checkboxes with data-testid 'checkbox-1' and 'checkbox-2' are checked\n    And the 'Select All/None' checkbox with data-testid 'checkAll' is unchecked\n    And the label with data-testid 'checkAll-label' displays '全选'\n    When the user clicks the 'Select All/None' checkbox with data-testid 'checkAll'\n    Then all individual checkboxes with data-testid 'checkbox-1' to 'checkbox-10' are checked\n    And the label with data-testid 'checkAll-label' changes to '全不选'",
+      "requirement_ids": [
+        "e2edev_bench_57-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_57/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_57-R-2-TC-1",
+      "title": "[Normal] Deselect all checkboxes using 'Select All/None' checkbox",
+      "description": "Feature: Checkbox List Select All/None Functionality\n  The feature allows users to toggle the selection of all checkboxes using a single 'Select All/None' checkbox.\n\n\n  Scenario: [Normal] Deselect all checkboxes using 'Select All/None' checkbox\n    Given the webpage is loaded with all checkboxes selected\n      And the 'Select All/None' checkbox with data-testid 'checkAll' is checked\n      And the label with data-testid 'checkAll-label' displays '全不选'\n    When the user clicks the 'Select All/None' checkbox with data-testid 'checkAll'\n    Then all individual checkboxes with data-testid 'checkbox-1' to 'checkbox-10' are unchecked\n      And the label with data-testid 'checkAll-label' changes to '全选'\n",
+      "requirement_ids": [
+        "e2edev_bench_57-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_57/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_57-R-2-TC-2",
+      "title": "[Edge] Deselect all checkboxes when some are already deselected",
+      "description": "Feature: Checkbox List Select All/None Functionality\n  The feature allows users to toggle the selection of all checkboxes using a single 'Select All/None' checkbox.\n\n\n  Scenario: [Edge] Deselect all checkboxes when some are already deselected\n    Given the webpage is loaded\n      And some checkboxes with data-testid 'checkbox-1' to 'checkbox-10' are unchecked\n      And the 'Select All/None' checkbox with data-testid 'checkAll' is checked\n      And the label with data-testid 'checkAll-label' displays '全不选'\n    When the user clicks the 'Select All/None' checkbox with data-testid 'checkAll'\n    Then all individual checkboxes with data-testid 'checkbox-1' to 'checkbox-10' are unchecked\n      And the label with data-testid 'checkAll-label' changes to '全选'\n",
+      "requirement_ids": [
+        "e2edev_bench_57-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_57/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_57-R-3-TC-1",
+      "title": "[Normal] Reverse selection toggles all checkboxes",
+      "description": "Feature: Reverse Selection Functionality\n  The user can toggle the checked state of each individual checkbox by clicking the 'Reverse Selection' link.\n\n\n  Scenario: [Normal] Reverse selection toggles all checkboxes\n    Given the webpage is loaded with the checkbox list visible\n    And all checkboxes are initially unchecked\n    When the user clicks the 'Reverse Selection' link with data-testid 'checkReverse'\n    Then each checkbox with data-testid 'checkbox-1' to 'checkbox-10' should be checked\n",
+      "requirement_ids": [
+        "e2edev_bench_57-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_57/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_57-R-3-TC-2",
+      "title": "[Normal] Reverse selection toggles all checkboxes again",
+      "description": "Feature: Reverse Selection Functionality\n  The user can toggle the checked state of each individual checkbox by clicking the 'Reverse Selection' link.\n\n\n  Scenario: [Normal] Reverse selection toggles all checkboxes again\n    Given the webpage is loaded with the checkbox list visible\n    And all checkboxes are initially checked\n    When the user clicks the 'Reverse Selection' link with data-testid 'checkReverse'\n    Then each checkbox with data-testid 'checkbox-1' to 'checkbox-10' should be unchecked\n",
+      "requirement_ids": [
+        "e2edev_bench_57-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_57/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_57-R-3-TC-3",
+      "title": "[Edge] Reverse selection with mixed checkbox states",
+      "description": "Feature: Reverse Selection Functionality\n  The user can toggle the checked state of each individual checkbox by clicking the 'Reverse Selection' link.\n\n\n  Scenario: [Edge] Reverse selection with mixed checkbox states\n    Given the webpage is loaded with the checkbox list visible\n    And checkboxes with data-testid 'checkbox-1', 'checkbox-3', 'checkbox-5' are checked\n    And checkboxes with data-testid 'checkbox-2', 'checkbox-4', 'checkbox-6', 'checkbox-7', 'checkbox-8', 'checkbox-9', 'checkbox-10' are unchecked\n    When the user clicks the 'Reverse Selection' link with data-testid 'checkReverse'\n    Then checkboxes with data-testid 'checkbox-1', 'checkbox-3', 'checkbox-5' should be unchecked\n    And checkboxes with data-testid 'checkbox-2', 'checkbox-4', 'checkbox-6', 'checkbox-7', 'checkbox-8', 'checkbox-9', 'checkbox-10' should be checked\n",
+      "requirement_ids": [
+        "e2edev_bench_57-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_57/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_57-R-4-TC-1",
+      "title": "[Normal] User selects all individual checkboxes",
+      "description": "Feature: Checkbox List Interaction and Select All/None Update\n  The user can interact with individual checkboxes, and the 'Select All/None' checkbox updates its state and label accordingly.\n\n\n  Scenario: [Normal] User selects all individual checkboxes\n    Given the webpage with the checkbox list is loaded\n    When the user clicks on the checkbox with data-testid \"checkbox-1\"\n    And the user clicks on the checkbox with data-testid \"checkbox-2\"\n    And the user clicks on the checkbox with data-testid \"checkbox-3\"\n    And the user clicks on the checkbox with data-testid \"checkbox-4\"\n    And the user clicks on the checkbox with data-testid \"checkbox-5\"\n    And the user clicks on the checkbox with data-testid \"checkbox-6\"\n    And the user clicks on the checkbox with data-testid \"checkbox-7\"\n    And the user clicks on the checkbox with data-testid \"checkbox-8\"\n    And the user clicks on the checkbox with data-testid \"checkbox-9\"\n    And the user clicks on the checkbox with data-testid \"checkbox-10\"\n    Then the checkbox with data-testid \"checkAll\" should be checked\n    And the label with data-testid \"checkAll-label\" should display \"全不选\"\n",
+      "requirement_ids": [
+        "e2edev_bench_57-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_57/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_57-R-4-TC-2",
+      "title": "[Edge] User selects no individual checkboxes",
+      "description": "Feature: Checkbox List Interaction and Select All/None Update\n  The user can interact with individual checkboxes, and the 'Select All/None' checkbox updates its state and label accordingly.\n\n\n  Scenario: [Edge] User selects no individual checkboxes\n    Given the webpage with the checkbox list is loaded\n    When the user ensures no checkboxes are selected\n    Then the checkbox with data-testid \"checkAll\" should not be checked\n    And the label with data-testid \"checkAll-label\" should display \"全选\"\n",
+      "requirement_ids": [
+        "e2edev_bench_57-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_57/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_57-R-4-TC-3",
+      "title": "[Edge] User selects some individual checkboxes",
+      "description": "Feature: Checkbox List Interaction and Select All/None Update\n  The user can interact with individual checkboxes, and the 'Select All/None' checkbox updates its state and label accordingly.\n\n\n  Scenario: [Edge] User selects some individual checkboxes\n    Given the webpage with the checkbox list is loaded\n    When the user clicks on the checkbox with data-testid \"checkbox-1\"\n    And the user clicks on the checkbox with data-testid \"checkbox-3\"\n    And the user clicks on the checkbox with data-testid \"checkbox-5\"\n    Then the checkbox with data-testid \"checkAll\" should not be checked\n    And the label with data-testid \"checkAll-label\" should display \"全选\"\n",
+      "requirement_ids": [
+        "e2edev_bench_57-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_57/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_57-R-4-TC-4",
+      "title": "[Error] User clicks an individual checkbox that is already selected",
+      "description": "Feature: Checkbox List Interaction and Select All/None Update\n  The user can interact with individual checkboxes, and the 'Select All/None' checkbox updates its state and label accordingly.\n\n\n  Scenario: [Error] User clicks an individual checkbox that is already selected\n    Given the webpage with the checkbox list is loaded\n    When the user clicks on the checkbox with data-testid \"checkbox-1\"\n    And the user clicks again on the checkbox with data-testid \"checkbox-1\"\n    Then the checkbox with data-testid \"checkAll\" should not be checked\n    And the label with data-testid \"checkAll-label\" should display \"全选\"",
+      "requirement_ids": [
+        "e2edev_bench_57-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_57/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "generatable": true,
+  "parent_id": null
+}

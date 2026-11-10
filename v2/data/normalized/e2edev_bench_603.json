@@ -1,0 +1,93 @@
+{
+  "id": "e2edev_bench_603",
+  "requirements": [
+    {
+      "id": "e2edev_bench_603-R-1",
+      "text": "Upon accessing the application, the user should see the main title 'Number To Words Conversion' prominently displayed at the top of the page within an HTML element with the class 'heading'. This title should be visible immediately upon page load, ensuring that users can easily identify the purpose of the application without any additional interaction. The title should be styled according to the CSS rules associated with the 'heading' class, maintaining consistency with the overall design of the application.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_603/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_603-R-2",
+      "text": "The application provides a real-time number-to-words conversion feature. When a user enters a numeric value into the input field with data-testid 'input-box', the system validates the input and displays the corresponding word representation in the output paragraph with data-testid 'output-paragraph'. The input is padded with leading zeros until its length is divisible by 3 before conversion. If the user enters non-numeric characters, the system shows an error message 'Invalid input. Please enter only digits.' styled in red text. For numbers exceeding 15 digits, the system displays a 'Too Large Number.' error message, also in red. If the input is zero, the output displays 'Zero' in black text. For valid numbers with leading zeros, the leading zeros are ignored, and the number is correctly converted and shown in black text.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_603/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_603-R-1-TC-1",
+      "title": "[Normal] Verify the main title is displayed correctly on page load",
+      "description": "Feature: Display Main Title on Application Load\n  The application should display the heading \"Number To Words Conversion\" at the top of the page when the user accesses the application.\n\n\n  Scenario: [Normal] Verify the main title is displayed correctly on page load\n    Given the user accesses the application\n    When the webpage is fully loaded\n    Then the heading with class \"heading\" should display the text \"Number To Words Conversion\"\n",
+      "requirement_ids": [
+        "e2edev_bench_603-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_603/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_603-R-2-TC-1",
+      "title": "[Normal] Convert a valid number to words",
+      "description": "Feature: Real-time Number-to-Words Conversion\n  The application provides a real-time number-to-words conversion feature. It validates user input and displays the corresponding word representation or an error message.\n\n\n  Scenario: [Normal] Convert a valid number to words\n    Given the \"Number To Words Converter\" page is loaded\n    And the input field with data-testid \"input-box\" is empty\n    When the user enters \"123\" into the input field with data-testid \"input-box\"\n    Then the output paragraph with data-testid \"output-paragraph\" displays \"One Hundred Twenty Three\"\n    And the text color of the output paragraph is black\n",
+      "requirement_ids": [
+        "e2edev_bench_603-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_603/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_603-R-2-TC-2",
+      "title": "[Edge] Convert the number zero",
+      "description": "Feature: Real-time Number-to-Words Conversion\n  The application provides a real-time number-to-words conversion feature. It validates user input and displays the corresponding word representation or an error message.\n\n\n  Scenario: [Edge] Convert the number zero\n    Given the \"Number To Words Converter\" page is loaded\n    And the input field with data-testid \"input-box\" is empty\n    When the user enters \"0\" into the input field with data-testid \"input-box\"\n    Then the output paragraph with data-testid \"output-paragraph\" displays \"Zero\"\n    And the text color of the output paragraph is black\n",
+      "requirement_ids": [
+        "e2edev_bench_603-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_603/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_603-R-2-TC-3",
+      "title": "[Edge] Convert a number with leading zeros",
+      "description": "Feature: Real-time Number-to-Words Conversion\n  The application provides a real-time number-to-words conversion feature. It validates user input and displays the corresponding word representation or an error message.\n\n\n  Scenario: [Edge] Convert a number with leading zeros\n    Given the \"Number To Words Converter\" page is loaded\n    And the input field with data-testid \"input-box\" is empty\n    When the user enters \"000123\" into the input field with data-testid \"input-box\"\n    Then the output paragraph with data-testid \"output-paragraph\" displays \"One Hundred Twenty Three\"\n    And the text color of the output paragraph is black\n",
+      "requirement_ids": [
+        "e2edev_bench_603-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_603/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_603-R-2-TC-4",
+      "title": "[Error] Enter non-numeric characters",
+      "description": "Feature: Real-time Number-to-Words Conversion\n  The application provides a real-time number-to-words conversion feature. It validates user input and displays the corresponding word representation or an error message.\n\n\n  Scenario: [Error] Enter non-numeric characters\n    Given the \"Number To Words Converter\" page is loaded\n    And the input field with data-testid \"input-box\" is empty\n    When the user enters \"abc123\" into the input field with data-testid \"input-box\"\n    Then the output paragraph with data-testid \"output-paragraph\" displays \"Invalid input. Please enter only digits.\"\n    And the text color of the output paragraph is red\n",
+      "requirement_ids": [
+        "e2edev_bench_603-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_603/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_603-R-2-TC-5",
+      "title": "[Error] Enter a number exceeding 15 digits",
+      "description": "Feature: Real-time Number-to-Words Conversion\n  The application provides a real-time number-to-words conversion feature. It validates user input and displays the corresponding word representation or an error message.\n\n\n  Scenario: [Error] Enter a number exceeding 15 digits\n    Given the \"Number To Words Converter\" page is loaded\n    And the input field with data-testid \"input-box\" is empty\n    When the user enters \"1234567890123456\" into the input field with data-testid \"input-box\"\n    Then the output paragraph with data-testid \"output-paragraph\" displays \"Too Large Number.\"\n    And the text color of the output paragraph is red",
+      "requirement_ids": [
+        "e2edev_bench_603-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_603/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/4/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "generatable": true,
+  "parent_id": null
+}

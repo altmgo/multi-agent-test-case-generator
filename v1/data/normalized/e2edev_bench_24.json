@@ -1,0 +1,297 @@
+{
+  "id": "e2edev_bench_24",
+  "requirements": [
+    {
+      "id": "e2edev_bench_24-R-1",
+      "text": "The system shall validate the 'Principal' input field (data-testid='principal') to ensure that it accepts only numeric values greater than 0. The input field should display the entered value if it meets the validation criteria. If the user enters a value less than or equal to 0, non-numeric characters, or leaves the field empty, the system shall prevent further calculations and display an alert message stating 'Please Enter Valid Values!!'. The validation should occur both when the user clicks the 'Calculate' button (data-testid='calculate-button') and when the user presses the 'Enter' key. The input field should allow decimal values (e.g., 0.01) as valid input.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_24-R-2",
+      "text": "The system shall validate the 'Interest Rate (%)' input field (data-testid: 'annual-interest-rate') to ensure it accepts only numeric values greater than 0. The input field must display the entered value immediately upon user input. The system shall handle the following scenarios: (1) Normal case: Accept valid numeric values greater than 0 (e.g., 5). (2) Edge case: Accept the smallest valid numeric value (e.g., 0.01). If the user enters an invalid value (e.g., non-numeric or less than or equal to 0), the system shall not allow the input and shall display an appropriate error message or alert. The validation must occur both when the user interacts with the input field directly and when the 'Calculate' button (data-testid: 'calculate-button') is clicked or the Enter key is pressed.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_24-R-3",
+      "text": "The system shall ensure that the 'Number of Years' input field, identified by the attribute data-testid='number-of-year', accepts only numeric values greater than 0. Upon entering a valid value, the input field should reflect the entered value accurately. The validation should occur both when the user clicks the 'Calculate' button (data-testid='calculate-button') and when the user presses the 'Enter' key while focused on any input field. If the entered value is not valid, an alert should be displayed with the message 'Please Enter Valid Values!!'.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_24-R-4",
+      "text": "The system shall validate and accept a numeric value greater than 0 entered in the 'Number of Times in a Single Year' input field (data-testid='number-of-times-in-year'). The input field shall allow users to type numeric values directly, and the entered value shall be reflected in the field upon submission. The system shall display an alert message ('Please Enter Valid Values!!') if the entered value is invalid (non-numeric, negative, or zero). The validation shall occur both when the user clicks the 'Calculate' button (data-testid='calculate-button') and when the user presses the 'Enter' key. The input field shall support edge cases, including the minimum valid value of '1'.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/4/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_24-R-5",
+      "text": "The web application shall provide a Compound Interest Calculator that allows users to input the principal amount, annual interest rate, number of years, and number of times interest is compounded per year. The user can initiate the calculation by either clicking the 'Calculate' button or pressing the 'Enter' key. The system shall validate that all inputs are positive numeric values greater than zero. If any input is invalid, an alert with the message 'Please Enter Valid Values!!' shall be displayed. Upon valid input, the system shall compute the compound interest using the formula: CI = principal * (1 + (interest / (ntime * 100)))^(ntime * nyear), round the result to two decimal places, and update the 'Result' section with data-testid 'result-value' to display the calculated value. The UI elements involved include: 'Principal' input field with data-testid 'principal', 'Interest rate (%)' input field with data-testid 'annual-interest-rate', 'Number of Years' input field with data-testid 'number-of-year', 'Number of Times in a Single Year' input field with data-testid 'number-of-times-in-year', 'Calculate' button with data-testid 'calculate-button', and 'Result' section with data-testid 'result-value'.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/5/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_24-R-6",
+      "text": "When the user presses the Enter key while focused on any input field, the system shall compute the compound interest based on the provided inputs and display the result in the 'Result' section. The system shall validate all inputs to ensure they are positive numeric values greater than zero. If any input is invalid (e.g., empty, non-numeric, or negative), an alert with the message 'Please Enter Valid Values!!' shall be displayed, and the 'Result' section shall remain unchanged, displaying '0'. The calculation shall use the formula: CI = Principal * (1 + (Interest Rate / (Number of Times in Year * 100)))^(Number of Times in Year * Number of Years), rounded to two decimal places. The following UI elements and attributes are involved: \n\n- Input fields:\n  - Principal: [data-testid='principal']\n  - Interest Rate (%): [data-testid='annual-interest-rate']\n  - Number of Years: [data-testid='number-of-year']\n  - Number of Times in a Single Year: [data-testid='number-of-times-in-year']\n\n- Result section:\n  - Result label: [data-testid='result-label']\n  - Result value: [data-testid='result-value']\n\n- Button:\n  - Calculate button: [data-testid='calculate-button']\n\nThe Enter key functionality shall trigger the calculation regardless of which input field is focused, and the result shall be displayed in the 'Result' section with data-testid='result-value'.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/6/requirement/description"
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_24-R-1-TC-1",
+      "title": "[Normal] User enters a valid principal amount",
+      "description": "Feature: Validate Principal Input Field\n  The system shall accept a numeric value greater than 0 entered in the 'Principal' input field.\n\n\nScenario: [Normal] User enters a valid principal amount\n    Given the Compound Interest Calculator page is loaded\n    And the user sees the input field with data-testid \"principal\"\n    When the user enters \"1000\" into the input field with data-testid \"principal\"\n    Then the principal field with data-testid \"principal\" should have the value \"1000\"",
+      "requirement_ids": [
+        "e2edev_bench_24-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-1-TC-2",
+      "title": "[Edge] User enters the minimum valid principal amount",
+      "description": "Feature: Validate Principal Input Field\n  The system shall accept a numeric value greater than 0 entered in the 'Principal' input field.\n\n\nScenario: [Edge] User enters the minimum valid principal amount\n    Given the Compound Interest Calculator page is loaded\n    And the user sees the input field with data-testid \"principal\"\n    When the user enters \"0.01\" into the input field with data-testid \"principal\"\n    Then the principal field with data-testid \"principal\" should have the value \"0.01\"",
+      "requirement_ids": [
+        "e2edev_bench_24-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-2-TC-1",
+      "title": "[Normal] User enters a valid numeric value greater than 0 in the 'Interest Rate (%)' field",
+      "description": "Feature: Validate the 'Interest Rate (%)' input field to ensure it accepts numeric values greater than 0.\n\n  Background:\n    Given the user is on the \"Compound Interest Calculator\" page\n    And the page displays the title \"Compound Interest Calculator\" with data-testid \"title\"\n    And the input field for \"Interest Rate (%)\" is visible with data-testid \"annual-interest-rate\"\n\n\n  Scenario: [Normal] User enters a valid numeric value greater than 0 in the 'Interest Rate (%)' field\n    Given the \"Interest Rate (%)\" input field with data-testid \"annual-interest-rate\" is empty\n    When the user enters \"5\" into the \"Interest Rate (%)\" input field with data-testid \"annual-interest-rate\"\n    Then the value \"5\" is displayed in the \"Interest Rate (%)\" input field with data-testid \"annual-interest-rate\"\n",
+      "requirement_ids": [
+        "e2edev_bench_24-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-2-TC-2",
+      "title": "[Edge] User enters the smallest valid numeric value (0.01) in the 'Interest Rate (%)' field",
+      "description": "Feature: Validate the 'Interest Rate (%)' input field to ensure it accepts numeric values greater than 0.\n\n  Background:\n    Given the user is on the \"Compound Interest Calculator\" page\n    And the page displays the title \"Compound Interest Calculator\" with data-testid \"title\"\n    And the input field for \"Interest Rate (%)\" is visible with data-testid \"annual-interest-rate\"\n\n\n  Scenario: [Edge] User enters the smallest valid numeric value (0.01) in the 'Interest Rate (%)' field\n    Given the \"Interest Rate (%)\" input field with data-testid \"annual-interest-rate\" is empty\n    When the user enters \"0.01\" into the \"Interest Rate (%)\" input field with data-testid \"annual-interest-rate\"\n    Then the value \"0.01\" is displayed in the \"Interest Rate (%)\" input field with data-testid \"annual-interest-rate\"\n",
+      "requirement_ids": [
+        "e2edev_bench_24-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-3-TC-1",
+      "title": "[Normal] User enters a valid numeric value greater than 0 in 'Number of Years'",
+      "description": "Feature: Validate 'Number of Years' input field for numeric values greater than 0\n\n\nScenario: [Normal] User enters a valid numeric value greater than 0 in 'Number of Years'\n    Given the Compound Interest Calculator page is loaded\n    And the user sees the input field with data-testid \"number-of-year\"\n    When the user enters \"10\" into the input field with data-testid \"number-of-year\"\n    Then the number of years field with data-testid \"number-of-year\" should have the value \"10\"",
+      "requirement_ids": [
+        "e2edev_bench_24-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-3-TC-2",
+      "title": "[Edge] User enters '1' in 'Number of Years' field",
+      "description": "Feature: Validate 'Number of Years' input field for numeric values greater than 0\n\n\nScenario: [Edge] User enters '1' in 'Number of Years' field\n    Given the Compound Interest Calculator page is loaded\n    And the user sees the input field with data-testid \"number-of-year\"\n    When the user enters \"1\" into the input field with data-testid \"number-of-year\"\n    Then the number of years field with data-testid \"number-of-year\" should have the value \"1\"",
+      "requirement_ids": [
+        "e2edev_bench_24-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-4-TC-1",
+      "title": "[Normal] User enters a valid numeric value greater than 0 in 'Number of Times in a Single Year'",
+      "description": "Feature: Validate input for 'Number of Times in a Single Year' field\n  The system shall accept a numeric value greater than 0 entered in the 'Number of Times in a Single Year' input field.\n\n\nScenario: [Normal] User enters a valid numeric value greater than 0 in 'Number of Times in a Single Year'\n    Given the Compound Interest Calculator page is loaded\n    And the user sees the input field with data-testid \"number-of-times-in-year\"\n    When the user enters \"4\" into the input field with data-testid \"number-of-times-in-year\"\n    Then the number of times in a single year field with data-testid \"number-of-times-in-year\" should have the value \"4\"\n",
+      "requirement_ids": [
+        "e2edev_bench_24-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-4-TC-2",
+      "title": "[Edge] User enters the minimum valid numeric value '1' in 'Number of Times in a Single Year'",
+      "description": "Feature: Validate input for 'Number of Times in a Single Year' field\n  The system shall accept a numeric value greater than 0 entered in the 'Number of Times in a Single Year' input field.\n\n\nScenario: [Edge] User enters the minimum valid numeric value '1' in 'Number of Times in a Single Year'\n    Given the Compound Interest Calculator page is loaded\n    And the user sees the input field with data-testid \"number-of-times-in-year\"\n    When the user enters \"1\" into the input field with data-testid \"number-of-times-in-year\"\n    Then the number of times in a single year field with data-testid \"number-of-times-in-year\" should have the value \"1\"",
+      "requirement_ids": [
+        "e2edev_bench_24-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-5-TC-1",
+      "title": "[Normal] Calculate compound interest with valid inputs",
+      "description": "Feature: Compound Interest Calculation\n  The system shall compute the compound interest based on the provided inputs and display the result in the \"Result\" section when the user clicks the \"Calculate\" button.\n\n\n  Scenario: [Normal] Calculate compound interest with valid inputs\n    Given the \"Compound Interest Calculator\" page is loaded\n    And the user enters \"1000\" into the \"Principal\" field with data-testid \"principal\"\n    And the user enters \"5\" into the \"Interest rate (%)\" field with data-testid \"annual-interest-rate\"\n    And the user enters \"10\" into the \"Number of Years\" field with data-testid \"number-of-year\"\n    And the user enters \"4\" into the \"Number of Times in a Single Year\" field with data-testid \"number-of-times-in-year\"\n    When the user clicks the \"Calculate\" button with data-testid \"calculate-button\"\n    Then the \"Result\" section with data-testid \"result-value\" should display \"1643.62\"\n",
+      "requirement_ids": [
+        "e2edev_bench_24-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-5-TC-2",
+      "title": "[Edge] Calculate compound interest with the minimum valid inputs",
+      "description": "Feature: Compound Interest Calculation\n  The system shall compute the compound interest based on the provided inputs and display the result in the \"Result\" section when the user clicks the \"Calculate\" button.\n\n\n  Scenario: [Edge] Calculate compound interest with the minimum valid inputs\n    Given the \"Compound Interest Calculator\" page is loaded\n    And the user enters \"1\" into the \"Principal\" field with data-testid \"principal\"\n    And the user enters \"0.01\" into the \"Interest rate (%)\" field with data-testid \"annual-interest-rate\"\n    And the user enters \"1\" into the \"Number of Years\" field with data-testid \"number-of-year\"\n    And the user enters \"1\" into the \"Number of Times in a Single Year\" field with data-testid \"number-of-times-in-year\"\n    When the user clicks the \"Calculate\" button with data-testid \"calculate-button\"\n    Then the \"Result\" section with data-testid \"result-value\" should display \"1.00\"\n",
+      "requirement_ids": [
+        "e2edev_bench_24-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-5-TC-3",
+      "title": "[Edge] Calculate compound interest with a very large principal amount",
+      "description": "Feature: Compound Interest Calculation\n  The system shall compute the compound interest based on the provided inputs and display the result in the \"Result\" section when the user clicks the \"Calculate\" button.\n\n\n  Scenario: [Edge] Calculate compound interest with a very large principal amount\n    Given the \"Compound Interest Calculator\" page is loaded\n    And the user enters \"1000000000\" into the \"Principal\" field with data-testid \"principal\"\n    And the user enters \"10\" into the \"Interest rate (%)\" field with data-testid \"annual-interest-rate\"\n    And the user enters \"5\" into the \"Number of Years\" field with data-testid \"number-of-year\"\n    And the user enters \"12\" into the \"Number of Times in a Single Year\" field with data-testid \"number-of-times-in-year\"\n    When the user clicks the \"Calculate\" button with data-testid \"calculate-button\"\n    Then the \"Result\" section with data-testid \"result-value\" should display \"1645308934.78\"\n",
+      "requirement_ids": [
+        "e2edev_bench_24-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-5-TC-4",
+      "title": "[Error] Display an error when any input field is empty",
+      "description": "Feature: Compound Interest Calculation\n  The system shall compute the compound interest based on the provided inputs and display the result in the \"Result\" section when the user clicks the \"Calculate\" button.\n\n\n  Scenario: [Error] Display an error when any input field is empty\n    Given the \"Compound Interest Calculator\" page is loaded\n    And the user leaves the \"Principal\" field with data-testid \"principal\" empty\n    And the user enters \"5\" into the \"Interest rate (%)\" field with data-testid \"annual-interest-rate\"\n    And the user enters \"10\" into the \"Number of Years\" field with data-testid \"number-of-year\"\n    And the user enters \"4\" into the \"Number of Times in a Single Year\" field with data-testid \"number-of-times-in-year\"\n    When the user clicks the \"Calculate\" button with data-testid \"calculate-button\"\n    Then an alert should be displayed with the message \"Please Enter Valid Values!!\"\n",
+      "requirement_ids": [
+        "e2edev_bench_24-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-5-TC-5",
+      "title": "[Error] Display an error when any input field contains a negative value",
+      "description": "Feature: Compound Interest Calculation\n  The system shall compute the compound interest based on the provided inputs and display the result in the \"Result\" section when the user clicks the \"Calculate\" button.\n\n\n  Scenario: [Error] Display an error when any input field contains a negative value\n    Given the \"Compound Interest Calculator\" page is loaded\n    And the user enters \"-1000\" into the \"Principal\" field with data-testid \"principal\"\n    And the user enters \"5\" into the \"Interest rate (%)\" field with data-testid \"annual-interest-rate\"\n    And the user enters \"10\" into the \"Number of Years\" field with data-testid \"number-of-year\"\n    And the user enters \"4\" into the \"Number of Times in a Single Year\" field with data-testid \"number-of-times-in-year\"\n    When the user clicks the \"Calculate\" button with data-testid \"calculate-button\"\n    Then an alert should be displayed with the message \"Please Enter Valid Values!!\"\n",
+      "requirement_ids": [
+        "e2edev_bench_24-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/4/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-5-TC-6",
+      "title": "[Error] Display an error when any input field contains a non-numeric value",
+      "description": "Feature: Compound Interest Calculation\n  The system shall compute the compound interest based on the provided inputs and display the result in the \"Result\" section when the user clicks the \"Calculate\" button.\n\n\n  Scenario: [Error] Display an error when any input field contains a non-numeric value\n    Given the \"Compound Interest Calculator\" page is loaded\n    And the user enters \"abc\" into the \"Principal\" field with data-testid \"principal\"\n    And the user enters \"5\" into the \"Interest rate (%)\" field with data-testid \"annual-interest-rate\"\n    And the user enters \"10\" into the \"Number of Years\" field with data-testid \"number-of-year\"\n    And the user enters \"4\" into the \"Number of Times in a Single Year\" field with data-testid \"number-of-times-in-year\"\n    When the user clicks the \"Calculate\" button with data-testid \"calculate-button\"\n    Then an alert should be displayed with the message \"Please Enter Valid Values!!\"\n",
+      "requirement_ids": [
+        "e2edev_bench_24-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/5/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-5-TC-7",
+      "title": "[Normal] Calculate compound interest using the Enter key",
+      "description": "Feature: Compound Interest Calculation\n  The system shall compute the compound interest based on the provided inputs and display the result in the \"Result\" section when the user clicks the \"Calculate\" button.\n\n\n  Scenario: [Normal] Calculate compound interest using the Enter key\n    Given the \"Compound Interest Calculator\" page is loaded\n    And the user enters \"2000\" into the \"Principal\" field with data-testid \"principal\"\n    And the user enters \"3\" into the \"Interest rate (%)\" field with data-testid \"annual-interest-rate\"\n    And the user enters \"15\" into the \"Number of Years\" field with data-testid \"number-of-year\"\n    And the user enters \"2\" into the \"Number of Times in a Single Year\" field with data-testid \"number-of-times-in-year\"\n    When the user presses the \"Enter\" key\n    Then the \"Result\" section with data-testid \"result-value\" should display \"3126.16\"",
+      "requirement_ids": [
+        "e2edev_bench_24-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/6/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-6-TC-1",
+      "title": "[Normal] User presses Enter key with valid inputs in all fields",
+      "description": "Feature: Compute compound interest using the Enter key\n  The system shall compute the compound interest and display the result in the \"Result\" section when the user presses the Enter key while focused on any input field.\n\n\n  Scenario: [Normal] User presses Enter key with valid inputs in all fields\n    Given the \"Compound Interest Calculator\" page is loaded\n    And the user enters \"1000\" into the \"Principal\" field with data-testid \"principal\"\n    And the user enters \"5\" into the \"Interest rate (%)\" field with data-testid \"annual-interest-rate\"\n    And the user enters \"10\" into the \"Number of Years\" field with data-testid \"number-of-year\"\n    And the user enters \"4\" into the \"Number of Times in a Single Year\" field with data-testid \"number-of-times-in-year\"\n    When the user presses the Enter key while focused on the \"Principal\" field with data-testid \"principal\"\n    Then the \"Result\" section with data-testid \"result-value\" should display \"1643.62\"\n",
+      "requirement_ids": [
+        "e2edev_bench_24-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-6-TC-2",
+      "title": "[Edge] User presses Enter key with the minimum valid inputs",
+      "description": "Feature: Compute compound interest using the Enter key\n  The system shall compute the compound interest and display the result in the \"Result\" section when the user presses the Enter key while focused on any input field.\n\n\n  Scenario: [Edge] User presses Enter key with the minimum valid inputs\n    Given the \"Compound Interest Calculator\" page is loaded\n    And the user enters \"1\" into the \"Principal\" field with data-testid \"principal\"\n    And the user enters \"0.01\" into the \"Interest rate (%)\" field with data-testid \"annual-interest-rate\"\n    And the user enters \"1\" into the \"Number of Years\" field with data-testid \"number-of-year\"\n    And the user enters \"1\" into the \"Number of Times in a Single Year\" field with data-testid \"number-of-times-in-year\"\n    When the user presses the Enter key while focused on the \"Interest rate (%)\" field with data-testid \"annual-interest-rate\"\n    Then the \"Result\" section with data-testid \"result-value\" should display \"1.00\"\n",
+      "requirement_ids": [
+        "e2edev_bench_24-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-6-TC-3",
+      "title": "[Edge] User presses Enter key with the maximum valid inputs",
+      "description": "Feature: Compute compound interest using the Enter key\n  The system shall compute the compound interest and display the result in the \"Result\" section when the user presses the Enter key while focused on any input field.\n\n\n  Scenario: [Edge] User presses Enter key with the maximum valid inputs\n    Given the \"Compound Interest Calculator\" page is loaded\n    And the user enters \"1000000\" into the \"Principal\" field with data-testid \"principal\"\n    And the user enters \"100\" into the \"Interest rate (%)\" field with data-testid \"annual-interest-rate\"\n    And the user enters \"50\" into the \"Number of Years\" field with data-testid \"number-of-year\"\n    And the user enters \"365\" into the \"Number of Times in a Single Year\" field with data-testid \"number-of-times-in-year\"\n    When the user presses the Enter key while focused on the \"Number of Years\" field with data-testid \"number-of-year\"\n    Then the \"Result\" section with data-testid \"result-value\" should display a very large number (greater than 0)\n",
+      "requirement_ids": [
+        "e2edev_bench_24-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-6-TC-4",
+      "title": "[Error] User presses Enter key with one or more empty fields",
+      "description": "Feature: Compute compound interest using the Enter key\n  The system shall compute the compound interest and display the result in the \"Result\" section when the user presses the Enter key while focused on any input field.\n\n\n  Scenario: [Error] User presses Enter key with one or more empty fields\n    Given the \"Compound Interest Calculator\" page is loaded\n    And the user enters \"1000\" into the \"Principal\" field with data-testid \"principal\"\n    And the user leaves the \"Interest rate (%)\" field with data-testid \"annual-interest-rate\" empty\n    And the user enters \"10\" into the \"Number of Years\" field with data-testid \"number-of-year\"\n    And the user enters \"4\" into the \"Number of Times in a Single Year\" field with data-testid \"number-of-times-in-year\"\n    When the user presses the Enter key while focused on the \"Number of Times in a Single Year\" field with data-testid \"number-of-times-in-year\"\n    Then an alert should be displayed with the message \"Please Enter Valid Values!!\"\n    And the \"Result\" section with data-testid \"result-value\" should still display \"0\"\n",
+      "requirement_ids": [
+        "e2edev_bench_24-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-6-TC-5",
+      "title": "[Error] User presses Enter key with invalid (non-numeric) inputs",
+      "description": "Feature: Compute compound interest using the Enter key\n  The system shall compute the compound interest and display the result in the \"Result\" section when the user presses the Enter key while focused on any input field.\n\n\n  Scenario: [Error] User presses Enter key with invalid (non-numeric) inputs\n    Given the \"Compound Interest Calculator\" page is loaded\n    And the user enters \"abc\" into the \"Principal\" field with data-testid \"principal\"\n    And the user enters \"5\" into the \"Interest rate (%)\" field with data-testid \"annual-interest-rate\"\n    And the user enters \"10\" into the \"Number of Years\" field with data-testid \"number-of-year\"\n    And the user enters \"4\" into the \"Number of Times in a Single Year\" field with data-testid \"number-of-times-in-year\"\n    When the user presses the Enter key while focused on the \"Principal\" field with data-testid \"principal\"\n    Then an alert should be displayed with the message \"Please Enter Valid Values!!\"\n    And the \"Result\" section with data-testid \"result-value\" should still display \"0\"\n",
+      "requirement_ids": [
+        "e2edev_bench_24-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/4/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-6-TC-6",
+      "title": "[Error] User presses Enter key with negative inputs",
+      "description": "Feature: Compute compound interest using the Enter key\n  The system shall compute the compound interest and display the result in the \"Result\" section when the user presses the Enter key while focused on any input field.\n\n\n  Scenario: [Error] User presses Enter key with negative inputs\n    Given the \"Compound Interest Calculator\" page is loaded\n    And the user enters \"-1000\" into the \"Principal\" field with data-testid \"principal\"\n    And the user enters \"5\" into the \"Interest rate (%)\" field with data-testid \"annual-interest-rate\"\n    And the user enters \"10\" into the \"Number of Years\" field with data-testid \"number-of-year\"\n    And the user enters \"4\" into the \"Number of Times in a Single Year\" field with data-testid \"number-of-times-in-year\"\n    When the user presses the Enter key while focused on the \"Principal\" field with data-testid \"principal\"\n    Then an alert should be displayed with the message \"Please Enter Valid Values!!\"\n    And the \"Result\" section with data-testid \"result-value\" should still display \"0\"",
+      "requirement_ids": [
+        "e2edev_bench_24-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/5/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "generatable": true,
+  "parent_id": null
+}

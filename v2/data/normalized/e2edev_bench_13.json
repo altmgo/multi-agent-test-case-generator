@@ -1,0 +1,231 @@
+{
+  "id": "e2edev_bench_13",
+  "requirements": [
+    {
+      "id": "e2edev_bench_13-R-1",
+      "text": "When the user enters a numeric value in the height input field (data-testid='height-input'), the system must display this value in the height output section (data-testid='height-output') and make both the output row (data-testid='output-row') and the reset button (data-testid='reset-button') visible.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_13/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_13-R-2",
+      "text": "When the user selects an option from the first dropdown (data-testid='first-option-select')—which includes 'Select an Option' (data-testid='first-option-select'), 'Centimeters' (data-testid='first-option-centimeters'), 'Inches' (data-testid='first-option-inches'), 'Meters' (data-testid='first-option-meters'), 'Kilometers' (data-testid='first-option-kilometers'), and 'Miles' (data-testid='first-option-miles'), the system should dynamically update the input field's (data-testid='height-input') placeholder to reflect the selected unit. The placeholder should change to 'Enter [Selected Unit]...' where [Selected Unit] is the unit chosen by the user. Additionally, the height name section (data-testid='height-name') should display '[Selected Unit]:' to indicate the current unit of measurement. If the user selects the default option 'Select an Option', the input field should retain its original placeholder 'Enter Height...', and the height name section should remain empty. ",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_13/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_13-R-3",
+      "text": "When the user selects a unit from the second dropdown (data-testid='second-option-select', which includes 'Select' (data-testid='second-option-select-default'), 'Centimeters' (data-testid='second-option-select-centimeters'), 'Inches' (data-testid='second-option-select-inches'), 'Meters' (data-testid='second-option-select-meters'), 'Kilometers' (data-testid='second-option-select-kilometers'), and 'Miles' (data-testid='second-option-select-miles')), the system must immediately update the converted height name section (data-testid='converted-height-name') to display '[Selected Unit]:', reflecting the chosen unit. ",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_13/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_13-R-4",
+      "text": "The Height Converter web app lets users convert height values between units like 'Centimeters', 'Inches', 'Meters', 'Kilometers', and 'Miles'. It includes an input field (data-testid='height-input') where users enter a height, two dropdown menus (data-testid='first-option-select' and data-testid='second-option-select') to choose the units to convert from and to, and an output section (data-testid='final-output') to show the result. The app updates the input placeholder and labels based on selected units, and shows the converted height.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_13/requirment_with_tests.json#/finegrained_rewith_test/4/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_13-R-5",
+      "text": "When the user clicks the reset button with data-testid 'reset-button', the system should perform the following actions: clear the height input field with data-testid 'height-input', reset the first option select with data-testid 'first-option-select' to display 'Select an Option', reset the second option select with data-testid 'second-option-select' to display 'Select', hide the output row with data-testid 'output-row', and hide the reset button itself. This functionality should work regardless of whether the user has entered valid, invalid, or no input prior to clicking the reset button.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_13/requirment_with_tests.json#/finegrained_rewith_test/5/requirement/description"
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_13-R-1-TC-1",
+      "title": "[Normal] User enters a valid numeric height value",
+      "description": "Feature: Display Height Input Value\n  The system should display the entered height value in the output section and make the output row and reset button visible when a numeric value is entered in the height input field.\n\n\n  Scenario: [Normal] User enters a valid numeric height value\n    Given the \"Height Convertor\" page is loaded\n    And the height input field with data-testid \"height-input\" is visible\n    When the user enters the numeric value \"180\" into the height input field with data-testid \"height-input\"\n    Then the height output section with data-testid \"height-output\" should display \"180\"\n    And the output row with data-testid \"output-row\" should be visible\n    And the reset button with data-testid \"reset-button\" should be visible\n",
+      "requirement_ids": [
+        "e2edev_bench_13-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_13/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_13-R-1-TC-2",
+      "title": "[Edge] User enters the minimum numeric value (0) in the height input field",
+      "description": "Feature: Display Height Input Value\n  The system should display the entered height value in the output section and make the output row and reset button visible when a numeric value is entered in the height input field.\n\n\n  Scenario: [Edge] User enters the minimum numeric value (0) in the height input field\n    Given the \"Height Convertor\" page is loaded\n    And the height input field with data-testid \"height-input\" is visible\n    When the user enters the numeric value \"0\" into the height input field with data-testid \"height-input\"\n    Then the height output section with data-testid \"height-output\" should display \"0\"\n    And the output row with data-testid \"output-row\" should be visible\n    And the reset button with data-testid \"reset-button\" should be visible\n",
+      "requirement_ids": [
+        "e2edev_bench_13-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_13/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_13-R-1-TC-3",
+      "title": "[Edge] User enters a very large numeric value in the height input field",
+      "description": "Feature: Display Height Input Value\n  The system should display the entered height value in the output section and make the output row and reset button visible when a numeric value is entered in the height input field.\n\n\n  Scenario: [Edge] User enters a very large numeric value in the height input field\n    Given the \"Height Convertor\" page is loaded\n    And the height input field with data-testid \"height-input\" is visible\n    When the user enters a very large numeric value \"999999999\" into the height input field with data-testid \"height-input\"\n    Then the height output section with data-testid \"height-output\" should display \"999999999\"\n    And the output row with data-testid \"output-row\" should be visible\n    And the reset button with data-testid \"reset-button\" should be visible\n",
+      "requirement_ids": [
+        "e2edev_bench_13-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_13/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_13-R-1-TC-4",
+      "title": "[Error] User enters a non-numeric value in the height input field",
+      "description": "Feature: Display Height Input Value\n  The system should display the entered height value in the output section and make the output row and reset button visible when a numeric value is entered in the height input field.\n\n\nScenario: [Error] User enters a non-numeric value in the height input field\n    Given the \"Height Convertor\" page is loaded\n    And the height input field with data-testid \"height-input\" is visible\n    When the user enters a non-numeric value \"abc\" into the height input field with data-testid \"height-input\"\n    Then the height output section with data-testid \"height-output\" should not display \"abc\"",
+      "requirement_ids": [
+        "e2edev_bench_13-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_13/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_13-R-2-TC-1",
+      "title": "[Normal] Update placeholder and height name when a valid unit is selected from the first dropdown",
+      "description": "Feature: Update input field placeholder and height name based on the first dropdown selection\n\n  As a user,\n  I want the input field\"s placeholder and height name section to update dynamically\n  So that I can see the selected unit reflected in the UI.\n\n\n  Scenario: [Normal] Update placeholder and height name when a valid unit is selected from the first dropdown\n    Given the webpage is loaded and the first dropdown with data-testid \"first-option-select\" is visible\n    When the user selects \"Centimeters\" from the first dropdown\n    Then the input field with data-testid \"height-input\" should have the placeholder \"Enter Centimeters...\"\n    And the height name section with data-testid \"height-name\" should display \"Centimeters:\"\n",
+      "requirement_ids": [
+        "e2edev_bench_13-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_13/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_13-R-2-TC-2",
+      "title": "[Edge] Update placeholder and height name when the user selects the default option from the first dropdown",
+      "description": "Feature: Update input field placeholder and height name based on the first dropdown selection\n\n  As a user,\n  I want the input field\"s placeholder and height name section to update dynamically\n  So that I can see the selected unit reflected in the UI.\n\n\n  Scenario: [Edge] Update placeholder and height name when the user selects the default option from the first dropdown\n    Given the webpage is loaded and the first dropdown with data-testid \"first-option-select\" is visible\n    When the user selects the default option \"Select an Option\" from the first dropdown\n    Then the input field with data-testid \"height-input\" should retain its placeholder \"Enter Height...\"\n    And the height name section with data-testid \"height-name\" should remain empty\n",
+      "requirement_ids": [
+        "e2edev_bench_13-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_13/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_13-R-2-TC-3",
+      "title": "[Error] Attempt to update placeholder and height name when the first dropdown is empty or not selected",
+      "description": "Feature: Update input field placeholder and height name based on the first dropdown selection\n\n  As a user,\n  I want the input field\"s placeholder and height name section to update dynamically\n  So that I can see the selected unit reflected in the UI.\n\n\n  Scenario: [Error] Attempt to update placeholder and height name when the first dropdown is empty or not selected\n    Given the webpage is loaded and the first dropdown with data-testid \"first-option-select\" is visible\n    When the user does not select any option from the first dropdown\n    Then the input field with data-testid \"height-input\" should retain its placeholder \"Enter Height...\"\n    And the height name section with data-testid \"height-name\" should remain empty",
+      "requirement_ids": [
+        "e2edev_bench_13-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_13/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_13-R-3-TC-1",
+      "title": "[Normal] User selects a valid unit from the second dropdown",
+      "description": "Feature: Display Selected Unit Name in Converted Height Name Section\n  The system should display the selected unit name in the converted height name section when the user selects a unit from the second dropdown.\n\n\nScenario: [Normal] User selects a valid unit from the second dropdown\n    Given the Height Convertor page is loaded\n    And the user has selected \"Miles\" from the first dropdown with data-testid \"first-option-select\"\n    When the user selects \"Centimeters\" from the second dropdown with data-testid \"second-option-select\"\n    Then the converted height name section with data-testid \"converted-height-name\" should display \"Centimeters:\"",
+      "requirement_ids": [
+        "e2edev_bench_13-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_13/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_13-R-4-TC-1",
+      "title": "[Normal] Convert height from Miles to Kilometers",
+      "description": "Feature: Height Conversion Functionality\n  The system should convert the height from the first unit to the second unit and display the result in the final output section when both units are selected and a height value is entered.\n\n\n  Scenario: [Normal] Convert height from Miles to Kilometers\n    Given the Height Convertor page is loaded\n    And the user enters \"5\" into the height input field with data-testid \"height-input\"\n    And the user selects option with data-testid \"first-option-select-miles\" from the first unit dropdown with data-testid \"first-option-select\"\n    And the user selects option with data-testid \"second-option-select-kilometers\" from the second unit dropdown with data-testid \"second-option-select\"\n    When the height is converted\n    Then the final output with data-testid \"final-output\" should display \"8.0467\"\n",
+      "requirement_ids": [
+        "e2edev_bench_13-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_13/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_13-R-4-TC-2",
+      "title": "[Edge] Convert height from 0 Centimeters to Inches",
+      "description": "Feature: Height Conversion Functionality\n  The system should convert the height from the first unit to the second unit and display the result in the final output section when both units are selected and a height value is entered.\n\n\n  Scenario: [Edge] Convert height from 0 Centimeters to Inches\n    Given the Height Convertor page is loaded\n    And the user enters \"0\" into the height input field with data-testid \"height-input\"\n    And the user selects \"Centimeters\" from the first unit dropdown with data-testid \"first-option-select\"\n    And the user selects \"Inches\" from the second unit dropdown with data-testid \"second-option-select\"\n    When the height is converted\n    Then the final output with data-testid \"final-output\" should display \"0\"\n",
+      "requirement_ids": [
+        "e2edev_bench_13-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_13/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_13-R-4-TC-3",
+      "title": "[Error] Convert height with no units selected",
+      "description": "Feature: Height Conversion Functionality\n  The system should convert the height from the first unit to the second unit and display the result in the final output section when both units are selected and a height value is entered.\n\n\n  Scenario: [Error] Convert height with no units selected\n    Given the Height Convertor page is loaded\n    And the user enters \"10\" into the height input field with data-testid \"height-input\"\n    And the user selects \"Select an Option\" from the first unit dropdown with data-testid \"first-option-select\"\n    And the user selects \"Select\" from the second unit dropdown with data-testid \"second-option-select\"\n    When the height is converted\n    Then the final output with data-testid \"final-output\" should display \"10\"\n",
+      "requirement_ids": [
+        "e2edev_bench_13-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_13/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_13-R-4-TC-4",
+      "title": "[Normal] Convert height from Meters to Centimeters",
+      "description": "Feature: Height Conversion Functionality\n  The system should convert the height from the first unit to the second unit and display the result in the final output section when both units are selected and a height value is entered.\n\n\n  Scenario: [Normal] Convert height from Meters to Centimeters\n    Given the Height Convertor page is loaded\n    And the user enters \"3\" into the height input field with data-testid \"height-input\"\n    And the user selects \"Meters\" from the first unit dropdown with data-testid \"first-option-select\"\n    And the user selects \"Centimeters\" from the second unit dropdown with data-testid \"second-option-select\"\n    When the height is converted\n    Then the final output with data-testid \"final-output\" should display \"300\"\n",
+      "requirement_ids": [
+        "e2edev_bench_13-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_13/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_13-R-4-TC-5",
+      "title": "[Edge] Convert height from Kilometers to Miles with a large value",
+      "description": "Feature: Height Conversion Functionality\n  The system should convert the height from the first unit to the second unit and display the result in the final output section when both units are selected and a height value is entered.\n\n\n  Scenario: [Edge] Convert height from Kilometers to Miles with a large value\n    Given the Height Convertor page is loaded\n    And the user enters \"10000\" into the height input field with data-testid \"height-input\"\n    And the user selects \"Kilometers\" from the first unit dropdown with data-testid \"first-option-select\"\n    And the user selects \"Miles\" from the second unit dropdown with data-testid \"second-option-select\"\n    When the height is converted\n    Then the final output with data-testid \"final-output\" should display \"6213.71\"",
+      "requirement_ids": [
+        "e2edev_bench_13-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_13/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/4/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_13-R-5-TC-1",
+      "title": "[Normal] Reset button clears inputs and outputs",
+      "description": "Feature: Reset Functionality\n  The system should clear all inputs and outputs, reset the form, and hide the output row and reset button when the user clicks the reset button.\n\n\n  Scenario: [Normal] Reset button clears inputs and outputs\n    Given the webpage \"Height Convertor\" is loaded\n    And the user enters \"150\" into the height input field with data-testid \"height-input\"\n    And the user selects \"Centimeters\" from the first option select with data-testid \"first-option-select\"\n    And the user selects \"Meters\" from the second option select with data-testid \"second-option-select\"\n    When the user clicks the reset button with data-testid \"reset-button\"\n    Then the height input field with data-testid \"height-input\" should be empty\n    And the output row with data-testid \"output-row\" should be hidden\n    And the reset button with data-testid \"reset-button\" should be hidden\n",
+      "requirement_ids": [
+        "e2edev_bench_13-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_13/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_13-R-5-TC-2",
+      "title": "[Edge] Reset button with no prior input",
+      "description": "Feature: Reset Functionality\n  The system should clear all inputs and outputs, reset the form, and hide the output row and reset button when the user clicks the reset button.\n\n\n  Scenario: [Edge] Reset button with no prior input\n    Given the webpage \"Height Convertor\" is loaded\n    When the user clicks the reset button with data-testid \"reset-button\"\n    Then the height input field with data-testid \"height-input\" should be empty\n    And the first option select with data-testid \"first-option-select\" should display \"Select an Option\"\n    And the second option select with data-testid \"second-option-select\" should display \"Select\"\n    And the output row with data-testid \"output-row\" should be hidden\n    And the reset button with data-testid \"reset-button\" should be hidden\n",
+      "requirement_ids": [
+        "e2edev_bench_13-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_13/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_13-R-5-TC-3",
+      "title": "[Error] Reset button after invalid input",
+      "description": "Feature: Reset Functionality\n  The system should clear all inputs and outputs, reset the form, and hide the output row and reset button when the user clicks the reset button.\n\n\nScenario: [Error] Reset button after invalid input\n    Given the webpage \"Height Convertor\" is loaded\n    And the user enters \"-50\" into the height input field with data-testid \"height-input\"\n    And the user selects \"Miles\" from the first option select with data-testid \"first-option-select\"\n    And the user selects \"Centimeters\" from the second option select with data-testid \"second-option-select\"\n    When the user clicks the reset button with data-testid \"reset-button\"\n    Then the height input field with data-testid \"height-input\" should be empty\n    And the output row with data-testid \"output-row\" should be hidden\n    And the reset button with data-testid \"reset-button\" should be hidden",
+      "requirement_ids": [
+        "e2edev_bench_13-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_13/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "generatable": true,
+  "parent_id": null
+}

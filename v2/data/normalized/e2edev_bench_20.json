@@ -1,0 +1,171 @@
+{
+  "id": "e2edev_bench_20",
+  "requirements": [
+    {
+      "id": "e2edev_bench_20-R-1",
+      "text": "Upon initial load, the 'Register a Car' form (data-testid='register-tab-content') should be visible. When the user clicks the 'Register Car' tab button (data-testid='register-tab-button'), the system must show the 'Register a Car' form (data-testid='register-tab-content') and hide the 'View All Registrations' table (data-testid='view-tab-content'). The 'Register a Car' form should stay visible even after multiple clicks. The active tab button should be visually highlighted with the 'active' class, and the content toggled dynamically based on the active tab.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_20/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_20-R-2",
+      "text": "When the user clicks the 'View All Registrations' tab button (located via data-testid='view-tab-button'), the system should update the UI as follows: the 'View All Registrations' table (located via data-testid='view-tab-content') should become visible, and the 'Register a Car' form (located via data-testid='register-tab-content') should be hidden. Additionally, the 'View All Registrations' tab button should have the 'active' class applied, while the 'Register Car' tab button (located via data-testid='register-tab-button') should have the 'active' class removed. If the user clicks the 'View All Registrations' tab button multiple times, the system should maintain the visibility of the 'View All Registrations' table and the hidden state of the 'Register a Car' form without any changes to the active class states.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_20/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_20-R-3",
+      "text": "When the user interacts with the 'Register a Car' form in the 'Car Registration System' web application, the following requirements must be met: \n1. The form must include the following fields with their respective attributes: \n   - 'Owner's Name' field, located by data-testid 'owner-name-input', which accepts text input. \n   - 'Car Model' field, located by data-testid 'car-model-input', which accepts text input. \n   - 'License Number' field, located by data-testid 'license-number-input', which accepts text input. \n   - 'Registration Date' date picker field, located by data-testid 'registration-date-input', which accepts a date input or select. \n2. When the user clicks the 'Save Registration' button, located by data-testid 'submit-button', the system must validate that all fields are filled. \n3. The following scenarios must be handled: \n   - If all fields are filled: \n     - The system must save the registration data in localStorage under the key 'registrations'. \n     - The registration data must include the following properties: 'ownerName', 'carModel', 'licenseNumber', and 'registrationDate'. \n     - The saved registration must be displayed in the 'All Registrations' table, located by data-testid 'registration-table', with each property displayed in its respective column. \n     - The form must be reset, clearing all input fields. \n   - If any field is empty: \n     - The system must display an alert with the message 'Please fill out all fields.' \nThe system must ensure that the 'Save Registration' button is functional only when the 'Register a Car' tab is active, as determined by the presence of the 'active' class on the tab button located by data-testid 'register-tab-button'.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_20/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_20-R-5",
+      "text": "When the user navigates to the 'View All Registrations' tab by clicking the button with data-testid 'view-tab-button', the system should dynamically populate the table with data-testid 'registration-table' with all saved registrations from local storage. The 'View All Registrations' tab content with data-testid 'view-tab-content' should become active, displaying each registration as a row in the table. Each row should include the Owner's Name, Car Model, License Number, and Registration Date. If local storage contains no registrations, the table should contain no rows, and the table body should be empty. The system should ensure that the 'View All Registrations' tab content is visible and the 'Register Car' tab content is hidden upon navigation.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_20/requirment_with_tests.json#/finegrained_rewith_test/5/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_20-R-8",
+      "text": "The Car Registration System must allow users to delete a car registration from the table and local storage, ensuring the table is updated to reflect the change. When the 'Car Registration System' page is loaded with the 'View All Registrations' tab active and at least one registration displayed in the table, clicking the 'Delete' button for the first row registration (located by data-id='delete-btn-0') should remove the registration from local storage (under the key 'registrations') and refresh the table to no longer display the deleted registration.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_20/requirment_with_tests.json#/finegrained_rewith_test/8/requirement/description"
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_20-R-1-TC-1",
+      "title": "[Normal] Display \"Register a Car\" form when \"Register Car\" tab button is clicked",
+      "description": "Feature: Display the \"Register a Car\" form when the \"Register Car\" tab button is clicked\n\n  Purpose: Ensure that clicking the \"Register Car\" tab button displays the \"Register a Car\" form and hides the \"View All Registrations\" table.\n\n\n  Scenario: [Normal] Display \"Register a Car\" form when \"Register Car\" tab button is clicked\n    Given the webpage is loaded and the \"Register Car\" table is visible\n    When the user clicks on the \"Register Car\" tab button with data-testid \"register-tab-button\"\n    Then the \"Register a Car\" form with data-testid \"register-tab-content\" should be visible\n    And the \"View All Registrations\" table with data-testid \"view-tab-content\" should be hidden\n",
+      "requirement_ids": [
+        "e2edev_bench_20-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_20/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_20-R-1-TC-2",
+      "title": "[Edge] Ensure \"Register a Car\" form remains visible after multiple clicks on \"Register Car\" tab button",
+      "description": "Feature: Display the \"Register a Car\" form when the \"Register Car\" tab button is clicked\n\n  Purpose: Ensure that clicking the \"Register Car\" tab button displays the \"Register a Car\" form and hides the \"View All Registrations\" table.\n\n\nScenario: [Edge] Ensure \"Register a Car\" form remains visible after multiple clicks on \"Register Car\" tab button\n   Given the webpage is loaded and the \"Register Car\" table is visible\n   When the user clicks on the \"Register Car\" tab button with data-testid \"register-tab-button\" multiple times\n   Then the \"Register a Car\" form with data-testid \"register-tab-content\" should remain visible\n   And the \"View All Registrations\" table with data-testid \"view-tab-content\" should remain hidden",
+      "requirement_ids": [
+        "e2edev_bench_20-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_20/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_20-R-2-TC-1",
+      "title": "[Normal] User switches to the \"View All Registrations\" tab",
+      "description": "Feature: View All Registrations Tab Functionality\n  The system should display the \"View All Registrations\" table and hide the \"Register a Car\" form when the user clicks the \"View All Registrations\" tab button.\n\n\n  Scenario: [Normal] User switches to the \"View All Registrations\" tab\n    Given the \"Register a Car\" form is visible with data-testid \"register-tab-content\" and the \"View All Registrations\" table is hidden with data-testid \"view-tab-content\"\n    When the user clicks the \"View All Registrations\" tab button with data-testid \"view-tab-button\"\n    Then the \"View All Registrations\" table with data-testid \"view-tab-content\" should become visible\n    And the \"Register a Car\" form with data-testid \"register-tab-content\" should be hidden\n    And the \"View All Registrations\" tab button with data-testid \"view-tab-button\" should have the \"active\" class\n    And the \"Register Car\" tab button with data-testid \"register-tab-button\" should not have the \"active\" class\n",
+      "requirement_ids": [
+        "e2edev_bench_20-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_20/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_20-R-2-TC-2",
+      "title": "[Edge] User clicks the \"View All Registrations\" tab button multiple times",
+      "description": "Feature: View All Registrations Tab Functionality\n  The system should display the \"View All Registrations\" table and hide the \"Register a Car\" form when the user clicks the \"View All Registrations\" tab button.\n\n\n  Scenario: [Edge] User clicks the \"View All Registrations\" tab button multiple times\n    Given the \"Register a Car\" form is visible with data-testid \"register-tab-content\" and the \"View All Registrations\" table is hidden with data-testid \"view-tab-content\"\n    When the user clicks the \"View All Registrations\" tab button with data-testid \"view-tab-button\" multiple times\n    Then the \"View All Registrations\" table with data-testid \"view-tab-content\" should remain visible\n    And the \"Register a Car\" form with data-testid \"register-tab-content\" should remain hidden\n    And the \"View All Registrations\" tab button with data-testid \"view-tab-button\" should have the \"active\" class\n    And the \"Register Car\" tab button with data-testid \"register-tab-button\" should not have the \"active\" class\n",
+      "requirement_ids": [
+        "e2edev_bench_20-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_20/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_20-R-3-TC-1",
+      "title": "[Normal] User fills out all fields and submits the form successfully",
+      "description": "Feature: Validate form submission in the \"Register a Car\" form\n  The system should ensure that all fields in the \"Register a Car\" form are filled before allowing the user to save the registration. If any field is empty, an alert should be displayed prompting the user to fill out all fields.\n\n\nScenario: [Normal] User fills out all fields and submits the form successfully\n    Given the \"Register a Car\" tab is active and the form is displayed\n    When the user enters \"John Doe\" into the Owner's Name field with data-testid \"owner-name-input\"\n    And the user enters \"Toyota Corolla\" into the Car Model field with data-testid \"car-model-input\"\n    And the user enters \"ABC123\" into the License Number field with data-testid \"license-number-input\"\n    And the user selects \"2023-10-01\" as the Registration Date in the field with data-testid \"registration-date-input\"\n    And the user clicks the Save Registration button with data-testid \"submit-button\"\n    Then the system should save the registration and display it in the \"All Registrations\" table with data-testid \"registration-table\"\n    And the form should be reset with all fields cleared",
+      "requirement_ids": [
+        "e2edev_bench_20-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_20/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_20-R-3-TC-2",
+      "title": "[Edge] User submits the form with one field empty",
+      "description": "Feature: Validate form submission in the \"Register a Car\" form\n  The system should ensure that all fields in the \"Register a Car\" form are filled before allowing the user to save the registration. If any field is empty, an alert should be displayed prompting the user to fill out all fields.\n\n\nScenario: [Edge] User submits the form with one field empty\n    Given the \"Register a Car\" tab is active and the form is displayed\n    When the user enters \"John Doe\" into the Owner‘s Name field with data-testid \"owner-name-input\"\n    And the user enters \"Toyota Corolla\" into the Car Model field with data-testid \"car-model-input\"\n    And the user leaves the License Number field with data-testid \"license-number-input\" empty\n    And the user selects \"2023-10-01\" as the Registration Date in the field with data-testid \"registration-date-input\"\n    And the user clicks the Save Registration button with data-testid \"submit-button\"\n    Then the system should display an alert with the message \"Please fill out all fields.\"",
+      "requirement_ids": [
+        "e2edev_bench_20-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_20/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_20-R-3-TC-3",
+      "title": "[Error] User submits the form with all fields empty",
+      "description": "Feature: Validate form submission in the \"Register a Car\" form\n  The system should ensure that all fields in the \"Register a Car\" form are filled before allowing the user to save the registration. If any field is empty, an alert should be displayed prompting the user to fill out all fields.\n\n\nScenario: [Error] User submits the form with all fields empty\n    Given the \"Register a Car\" tab is active and the form is displayed\n    When the user leaves the Owner’s Name field with data-testid \"owner-name-input\" empty\n    And the user leaves the Car Model field with data-testid \"car-model-input\" empty\n    And the user leaves the License Number field with data-testid \"license-number-input\" empty\n    And the user leaves the Registration Date field with data-testid \"registration-date-input\" empty\n    And the user clicks the Save Registration button with data-testid \"submit-button\"\n    Then the system should display an alert with the message \"Please fill out all fields.\"",
+      "requirement_ids": [
+        "e2edev_bench_20-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_20/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_20-R-5-TC-1",
+      "title": "[Normal] Populate table with saved registrations on tab navigation",
+      "description": "Feature: View All Registrations Tab\n  The system should dynamically populate the table with all saved registrations from local storage when the user navigates to the \"View All Registrations\" tab.\n\n  Scenario: [Normal] Populate table with saved registrations on tab navigation\n    Given the webpage is loaded\n    And local storage contains the following registrations:\n      | Owner's Name | Car Model       | License Number | Registration Date |\n      | John Doe     | Toyota Corolla  | ABC123         | 2023-10-01        |\n      | Jane Smith   | Honda Civic     | XYZ789         | 2023-10-02        |\n    When the user clicks the \"View All Registrations\" tab button with data-testid \"view-tab-button\"\n    Then the content with data-testid \"view-tab-content\" should be visible\n    And the table with data-testid \"registration-table\" should contain the following rows:\n      | Owner's Name | Car Model       | License Number | Registration Date |\n      | John Doe     | Toyota Corolla  | ABC123         | 2023-10-01        |\n      | Jane Smith   | Honda Civic     | XYZ789         | 2023-10-02        |\n",
+      "requirement_ids": [
+        "e2edev_bench_20-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_20/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_20-R-5-TC-2",
+      "title": "[Edge] Navigate to \"View All Registrations\" tab with no saved registrations",
+      "description": "Feature: View All Registrations Tab\n  The system should dynamically populate the table with all saved registrations from local storage when the user navigates to the \"View All Registrations\" tab.\n\n\n  Scenario: [Edge] Navigate to \"View All Registrations\" tab with no saved registrations\n    Given the webpage is loaded and the \"Register Car\" tab is active\n    And local storage contains no registrations\n    When the user clicks the \"View All Registrations\" tab button with data-testid \"view-tab-button\"\n    Then the \"View All Registrations\" tab content with data-testid \"view-tab-content\" becomes active\n    And the table with data-testid \"registration-table\" contains no rows\n    And the table body is empty\n",
+      "requirement_ids": [
+        "e2edev_bench_20-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_20/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_20-R-8-TC-1",
+      "title": "[Normal] Successfully delete a car registration",
+      "description": "Feature: Deleting a car registration\n  The system should allow users to delete a specific car registration from the table and local storage, and refresh the table to reflect the change.\n\n\n  Scenario: [Normal] Successfully delete a car registration\n    Given the \"Car Registration System\" page is loaded with the following registration data:\n      | Owner's Name | Car Model      | License Number | Registration Date |\n      | John Doe     | Toyota Corolla | ABC123         | 2023-10-01        |\n      | Jane Smith   | Honda Civic    | XYZ789         | 2023-10-02        |\n    And the \"View All Registrations\" tab is active\n    And there is at least one registration displayed in the table\n    When the user clicks the \"Delete\" button for the first registration with data-id \"delete-btn-0\"\n    Then the registration should be removed from the local storage\n    And the registration table should refresh and no longer display the deleted registration\n",
+      "requirement_ids": [
+        "e2edev_bench_20-R-8"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_20/requirment_with_tests.json#/finegrained_rewith_test/8/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_20-R-8-TC-2",
+      "title": "[Edge] Delete the only registration in the table",
+      "description": "Feature: Deleting a car registration\n  The system should allow users to delete a specific car registration from the table and local storage, and refresh the table to reflect the change.\n\n\n  Scenario: [Edge] Delete the only registration in the table\n    Given the \"Car Registration System\" page is loaded with the following registration:\n      | Owner's Name | Car Model      | License Number | Registration Date |\n      | John Doe     | Toyota Corolla | ABC123         | 2023-10-01        |\n    And the \"View All Registrations\" tab is active\n    And there is only one registration displayed in the table\n    When the user clicks the \"Delete\" button for the registration with data-id \"delete-btn-0\"\n    Then the registration should be removed from the local storage\n    And the registration table should refresh and display a message indicating no registrations are available\n",
+      "requirement_ids": [
+        "e2edev_bench_20-R-8"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_20/requirment_with_tests.json#/finegrained_rewith_test/8/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "generatable": true,
+  "parent_id": null
+}

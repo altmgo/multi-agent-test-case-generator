@@ -1,0 +1,261 @@
+{
+  "id": "e2edev_bench_601",
+  "requirements": [
+    {
+      "id": "e2edev_bench_601-R-1",
+      "text": "When the user enters a valid numeric value in the 'Bill Amount' input field (data-testid='bill-amount'), the system must enable the following UI elements to allow further interactions: (1) 'Select Tip' buttons (class='tip', located within the container with class='tip-container'), (2) 'Custom Tip' input field (data-testid='custom-tip-input'), and (3) 'Number of People' input field (data-testid='number-of-people-input'). The system must validate that the entered value is numeric and greater than zero. If the input is invalid (e.g., non-numeric or empty), the system must disable these elements and visually indicate their disabled state by applying the 'disabled' class to the 'tip-container' and the 'gray-input' class to the input fields. Additionally, the system must ensure that the 'Generate Bill' button (data-testid='generate-bill-button') remains disabled until both the 'Number of People' input field and a tip percentage are provided.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_601/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_601-R-2",
+      "text": "When the user clicks on a predefined tip percentage button (identified by the class 'tip' and data-testid attributes such as 'tip-button-5', 'tip-button-10', etc.), the system must update the selected tip percentage to the value displayed on the button, visually indicate the selection by adding the 'selected' class to the clicked button and removing it from any previously selected buttons, and clear the value in the custom tip input field (data-testid 'custom-tip-input'). If the 'Number of People' input field (data-testid 'number-of-people-input') contains a valid numeric value greater than or equal to 1, the 'Generate Bill' button (data-testid 'generate-bill-button') must be enabled. If the 'Number of People' input field is empty or invalid, the 'Generate Bill' button must remain disabled. The system must ensure that clicking on a predefined tip button has no effect if the 'Bill Amount' input field (data-testid 'bill-amount') is empty, as the tip container (class 'tip-container') will remain disabled in such cases.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_601/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_601-R-3",
+      "text": "When the user enters a value into the 'Custom Tip' input field (data-testid='custom-tip-input'), the system must validate the input as a positive number. If valid, the system updates the tip percentage to the entered value, removes the 'selected' class from any predefined tip buttons, and enables the 'Generate Bill' button (data-testid='generate-bill-button') if the 'Number of People' input field (data-testid='number-of-people-input') contains a valid positive number. If the input is invalid (e.g., negative numbers, empty, or non-numeric values), the tip percentage should not be updated, predefined tip buttons should remain deselected, and the 'Generate Bill' button should remain disabled. Additionally, switching from a predefined tip button to a custom tip input should clear the selection of the predefined tip button and update the tip percentage to the custom value.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_601/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_601-R-4",
+      "text": "The system should enable the 'Generate Bill' button (data-testid: 'generate-bill-button') only when the following conditions are met: 1) The user has entered a valid, non-zero number in the 'Number of People' input field (data-testid: 'number-of-people-input'). 2) A tip percentage is selected from the predefined tip buttons (data-testid: 'tip-button-5', 'tip-button-10', 'tip-button-15', 'tip-button-25', 'tip-button-50', 'tip-button-75') or a custom tip percentage is entered in the 'Custom Tip' input field (data-testid: 'custom-tip-input'). The 'Generate Bill' button should remain disabled if either the 'Number of People' input is zero or empty, or if no tip percentage is selected or entered. Additionally, the 'Generate Bill' button should be disabled by default and only become enabled when both conditions are satisfied.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_601/requirment_with_tests.json#/finegrained_rewith_test/4/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_601-R-5",
+      "text": "When the user clicks the 'Generate Bill' button (data-testid='generate-bill-button'), the system calculates the tip amount, total bill, and per-person bill based on the following inputs: the bill amount (data-testid='bill-amount'), the selected tip percentage (via tip buttons with data-testid='tip-button-{percentage}' or a custom tip percentage entered in the custom tip input field with data-testid='custom-tip-input'), and the number of people (data-testid='number-of-people-input'). The calculated values are displayed in the respective output fields: tip amount (data-testid='tip-amount-value'), total bill (data-testid='total-value'), and per-person bill (data-testid='each-person-bill-value'). The 'Reset' button (data-testid='reset-button') is enabled after the calculation. The system supports the following scenarios: (1) using predefined tip percentages, (2) using a custom tip percentage, and (3) handling edge cases such as high tip percentages. The system ensures that the 'Generate Bill' button is only enabled when all required inputs are valid and disables it otherwise. Additionally, the 'Reset' button clears all inputs, resets the output fields, and disables itself and the 'Generate Bill' button.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_601/requirment_with_tests.json#/finegrained_rewith_test/5/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_601-R-6",
+      "text": "When the user clicks the 'Reset' button (data-testid: 'reset-button'), the system must perform the following actions: clear the 'Bill Amount' input field (data-testid: 'bill-amount'), the 'Number of People' input field (data-testid: 'number-of-people-input'), and the 'Custom Tip' input field (data-testid: 'custom-tip-input'). It should also clear the 'Tip Amount' output display (data-testid: 'tip-amount-value'), the 'Total Bill' output display (data-testid: 'total-value'), and the 'Each Person Bill' output display (data-testid: 'each-person-bill-value'). Additionally, the system should reset the tip percentage to 0, remove the 'selected' class from any tip buttons within the 'tip-container', and disable both the 'Generate Bill' button (data-testid: 'generate-bill-button') and the 'Reset' button (data-testid: 'reset-button').",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_601/requirment_with_tests.json#/finegrained_rewith_test/6/requirement/description"
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_601-R-1-TC-1",
+      "title": "[Normal] User enters a valid bill amount",
+      "description": "Feature: Enable Tip and People Inputs on Valid Bill Amount Entry\n  The system should enable the 'Select Tip' buttons, 'Custom Tip' input, and 'Number of People' input when a valid bill amount is entered.\n\n\n  Scenario: [Normal] User enters a valid bill amount\n    Given the Bill Splitter page is loaded\n    And the \"Bill Amount\" input field with data-testid \"bill-amount\" is present\n    When the user enters \"1000\" into the \"Bill Amount\" input field\n    Then the \"Select Tip\" buttons should be enabled\n    And the \"Custom Tip\" input with data-testid \"custom-tip-input\" should be enabled\n    And the \"Number of People\" input with data-testid \"number-of-people-input\" should be enabled\n",
+      "requirement_ids": [
+        "e2edev_bench_601-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_601/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_601-R-1-TC-2",
+      "title": "[Edge] User enters a very large bill amount",
+      "description": "Feature: Enable Tip and People Inputs on Valid Bill Amount Entry\n  The system should enable the 'Select Tip' buttons, 'Custom Tip' input, and 'Number of People' input when a valid bill amount is entered.\n\n\n  Scenario: [Edge] User enters a very large bill amount\n    Given the Bill Splitter page is loaded\n    And the \"Bill Amount\" input field with data-testid \"bill-amount\" is present\n    When the user enters \"1000000\" into the \"Bill Amount\" input field\n    Then the \"Select Tip\" buttons should be enabled\n    And the \"Custom Tip\" input with data-testid \"custom-tip-input\" should be enabled\n    And the \"Number of People\" input with data-testid \"number-of-people-input\" should be enabled\n",
+      "requirement_ids": [
+        "e2edev_bench_601-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_601/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_601-R-1-TC-3",
+      "title": "[Error] User enters a non-numeric bill amount",
+      "description": "Feature: Enable Tip and People Inputs on Valid Bill Amount Entry\n  The system should enable the 'Select Tip' buttons, 'Custom Tip' input, and 'Number of People' input when a valid bill amount is entered.\n\n\n  Scenario: [Error] User enters a non-numeric bill amount\n    Given the Bill Splitter page is loaded\n    And the \"Bill Amount\" input field with data-testid \"bill-amount\" is present\n    When the user enters \"abc\" into the \"Bill Amount\" input field\n    Then the \"Select Tip\" buttons should remain disabled\n    And the \"Custom Tip\" input with data-testid \"custom-tip-input\" should remain disabled\n    And the \"Number of People\" input with data-testid \"number-of-people-input\" should remain disabled",
+      "requirement_ids": [
+        "e2edev_bench_601-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_601/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_601-R-2-TC-1",
+      "title": "[Normal] User selects a predefined tip percentage with a valid number of people",
+      "description": "Feature: Predefined Tip Selection\n  The system should allow users to select a predefined tip percentage, clear any custom tip input, and enable the 'Generate Bill' button if the 'Number of People' input has a valid value.\n\n\n  Scenario: [Normal] User selects a predefined tip percentage with a valid number of people\n    Given the Bill Splitter page is loaded\n    And the user enters \"1000\" into the bill amount field with data-testid \"bill-amount\"\n    And the user enters \"4\" into the number of people field with data-testid \"number-of-people-input\"\n    When the user clicks on the \"10%\" tip button with data-testid \"tip-button-10\"\n    Then the tip percentage should be updated to \"10\"\n    And the custom tip input with data-testid \"custom-tip-input\" should be cleared\n    And the \"Generate Bill\" button with data-testid \"generate-bill-button\" should be enabled\n",
+      "requirement_ids": [
+        "e2edev_bench_601-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_601/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_601-R-2-TC-2",
+      "title": "[Edge] User selects a predefined tip percentage with the minimum valid number of people",
+      "description": "Feature: Predefined Tip Selection\n  The system should allow users to select a predefined tip percentage, clear any custom tip input, and enable the 'Generate Bill' button if the 'Number of People' input has a valid value.\n\n\n  Scenario: [Edge] User selects a predefined tip percentage with the minimum valid number of people\n    Given the Bill Splitter page is loaded\n    And the user enters \"500\" into the bill amount field with data-testid \"bill-amount\"\n    And the user enters \"1\" into the number of people field with data-testid \"number-of-people-input\"\n    When the user clicks on the \"25%\" tip button with data-testid \"tip-button-25\"\n    Then the tip percentage should be updated to \"25\"\n    And the custom tip input with data-testid \"custom-tip-input\" should be cleared\n    And the \"Generate Bill\" button with data-testid \"generate-bill-button\" should be enabled\n",
+      "requirement_ids": [
+        "e2edev_bench_601-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_601/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_601-R-2-TC-3",
+      "title": "[Error] User selects a predefined tip percentage without entering the number of people",
+      "description": "Feature: Predefined Tip Selection\n  The system should allow users to select a predefined tip percentage, clear any custom tip input, and enable the 'Generate Bill' button if the 'Number of People' input has a valid value.\n\n\n  Scenario: [Error] User selects a predefined tip percentage without entering the number of people\n    Given the Bill Splitter page is loaded\n    And the user enters \"750\" into the bill amount field with data-testid \"bill-amount\"\n    When the user clicks on the \"50%\" tip button with data-testid \"tip-button-50\"\n    Then the tip percentage should be updated to \"50\"\n    And the custom tip input with data-testid \"custom-tip-input\" should be cleared\n    And the \"Generate Bill\" button with data-testid \"generate-bill-button\" should be disabled",
+      "requirement_ids": [
+        "e2edev_bench_601-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_601/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_601-R-3-TC-1",
+      "title": "[Normal] Entering a valid custom tip percentage with a valid number of people",
+      "description": "Feature: Custom Tip Percentage Input Functionality\n\n  The system should allow users to enter a custom tip percentage, update the tip percentage accordingly, deselect any predefined tip buttons, and enable the 'Generate Bill' button if the 'Number of People' input has a valid value.\n\n\n  Scenario: [Normal] Entering a valid custom tip percentage with a valid number of people\n    Given the Bill Splitter page is loaded\n    And the user enters \"1000\" into the bill amount field with data-testid \"bill-amount\"\n    And the user enters \"3\" into the number of people field with data-testid \"number-of-people-input\"\n    When the user enters \"20\" into the custom tip input field with data-testid \"custom-tip-input\"\n    Then the tip percentage should be updated to \"20\"\n    And no predefined tip buttons should be selected\n    And the \"Generate Bill\" button with data-testid \"generate-bill-button\" should be enabled\n",
+      "requirement_ids": [
+        "e2edev_bench_601-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_601/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_601-R-3-TC-2",
+      "title": "[Edge] Entering a custom tip percentage with no number of people",
+      "description": "Feature: Custom Tip Percentage Input Functionality\n\n  The system should allow users to enter a custom tip percentage, update the tip percentage accordingly, deselect any predefined tip buttons, and enable the 'Generate Bill' button if the 'Number of People' input has a valid value.\n\n\n  Scenario: [Edge] Entering a custom tip percentage with no number of people\n    Given the Bill Splitter page is loaded\n    And the user enters \"1000\" into the bill amount field with data-testid \"bill-amount\"\n    When the user enters \"15\" into the custom tip input field with data-testid \"custom-tip-input\"\n    Then the tip percentage should be updated to \"15\"\n    And no predefined tip buttons should be selected\n    And the \"Generate Bill\" button with data-testid \"generate-bill-button\" should be disabled\n",
+      "requirement_ids": [
+        "e2edev_bench_601-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_601/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_601-R-3-TC-3",
+      "title": "[Error] Entering an invalid custom tip percentage",
+      "description": "Feature: Custom Tip Percentage Input Functionality\n\n  The system should allow users to enter a custom tip percentage, update the tip percentage accordingly, deselect any predefined tip buttons, and enable the 'Generate Bill' button if the 'Number of People' input has a valid value.\n\n\n  Scenario: [Error] Entering an invalid custom tip percentage\n    Given the Bill Splitter page is loaded\n    And the user enters \"1000\" into the bill amount field with data-testid \"bill-amount\"\n    And the user enters \"3\" into the number of people field with data-testid \"number-of-people-input\"\n    When the user enters \"-5\" into the custom tip input field with data-testid \"custom-tip-input\"\n    Then the tip percentage should not be updated\n    And no predefined tip buttons should be selected\n    And the \"Generate Bill\" button with data-testid \"generate-bill-button\" should be disabled\n",
+      "requirement_ids": [
+        "e2edev_bench_601-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_601/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_601-R-3-TC-4",
+      "title": "[Normal] Switching from a predefined tip to a custom tip",
+      "description": "Feature: Custom Tip Percentage Input Functionality\n\n  The system should allow users to enter a custom tip percentage, update the tip percentage accordingly, deselect any predefined tip buttons, and enable the 'Generate Bill' button if the 'Number of People' input has a valid value.\n\n\n  Scenario: [Normal] Switching from a predefined tip to a custom tip\n    Given the Bill Splitter page is loaded\n    And the user enters \"1000\" into the bill amount field with data-testid \"bill-amount\"\n    And the user enters \"3\" into the number of people field with data-testid \"number-of-people-input\"\n    And the user clicks the \"10%\" tip button with data-testid \"tip-button-10\"\n    When the user enters \"25\" into the custom tip input field with data-testid \"custom-tip-input\"\n    Then the tip percentage should be updated to \"25\"\n    And no predefined tip buttons should be selected\n    And the \"Generate Bill\" button with data-testid \"generate-bill-button\" should be enabled",
+      "requirement_ids": [
+        "e2edev_bench_601-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_601/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_601-R-4-TC-1",
+      "title": "[Normal] Enable 'Generate Bill' button with valid 'Number of People' and selected tip",
+      "description": "Feature: Enable 'Generate Bill' Button Based on 'Number of People' Input and Tip Selection\n\n  The system should enable the 'Generate Bill' button when a valid number is entered in the 'Number of People' input field and a tip percentage is selected or entered.\n\n\n  Scenario: [Normal] Enable 'Generate Bill' button with valid 'Number of People' and selected tip\n    Given the Bill Splitter page is loaded\n    And the user enters \"1000\" into the bill amount field with data-testid \"bill-amount\"\n    And the user enters \"3\" into the number of people field with data-testid \"number-of-people-input\"\n    And the user clicks on the \"10%\" tip button with data-testid \"tip-button-10\"\n    When the user checks the \"Generate Bill\" button with data-testid \"generate-bill-button\"\n    Then the \"Generate Bill\" button should be enabled\n",
+      "requirement_ids": [
+        "e2edev_bench_601-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_601/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_601-R-4-TC-2",
+      "title": "[Edge] Enable 'Generate Bill' button with valid 'Number of People' and custom tip",
+      "description": "Feature: Enable 'Generate Bill' Button Based on 'Number of People' Input and Tip Selection\n\n  The system should enable the 'Generate Bill' button when a valid number is entered in the 'Number of People' input field and a tip percentage is selected or entered.\n\n\n  Scenario: [Edge] Enable 'Generate Bill' button with valid 'Number of People' and custom tip\n    Given the Bill Splitter page is loaded\n    And the user enters \"500\" into the bill amount field with data-testid \"bill-amount\"\n    And the user enters \"1\" into the number of people field with data-testid \"number-of-people-input\"\n    And the user enters \"20\" into the custom tip input with data-testid \"custom-tip-input\"\n    When the user checks the \"Generate Bill\" button with data-testid \"generate-bill-button\"\n    Then the \"Generate Bill\" button should be enabled\n",
+      "requirement_ids": [
+        "e2edev_bench_601-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_601/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_601-R-4-TC-3",
+      "title": "[Error] Do not enable \"Generate Bill\" button with valid \"Number of People\" but no tip selected",
+      "description": "Feature: Enable 'Generate Bill' Button Based on 'Number of People' Input and Tip Selection\n\n  The system should enable the 'Generate Bill' button when a valid number is entered in the 'Number of People' input field and a tip percentage is selected or entered.\n\n\nScenario: [Error] Do not enable \"Generate Bill\" button with valid \"Number of People\" but no tip selected\n    Given the Bill Splitter page is loaded\n    And the user enters \"750\" into the bill amount field with data-testid \"bill-amount\"\n    And the user enters \"4\" into the number of people field with data-testid \"number-of-people-input\"\n    When the user checks the \"Generate Bill\" button with data-testid \"generate-bill-button\"\n    Then the \"Generate Bill\" button should be disabled",
+      "requirement_ids": [
+        "e2edev_bench_601-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_601/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_601-R-4-TC-4",
+      "title": "[Error] Do not enable \"Generate Bill\" button with invalid \"Number of People\" and selected tip",
+      "description": "Feature: Enable 'Generate Bill' Button Based on 'Number of People' Input and Tip Selection\n\n  The system should enable the 'Generate Bill' button when a valid number is entered in the 'Number of People' input field and a tip percentage is selected or entered.\n\n\nScenario: [Error] Do not enable \"Generate Bill\" button with invalid \"Number of People\" and selected tip\n    Given the Bill Splitter page is loaded\n    And the user enters \"1200\" into the bill amount field with data-testid \"bill-amount\"\n    And the user enters \"0\" into the number of people field with data-testid \"number-of-people-input\"\n    And the user clicks on the \"15%\" tip button with data-testid \"tip-button-15\"\n    When the user checks the \"Generate Bill\" button with data-testid \"generate-bill-button\"\n    Then the \"Generate Bill\" button should be disabled",
+      "requirement_ids": [
+        "e2edev_bench_601-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_601/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_601-R-5-TC-1",
+      "title": "[Normal] Calculate and display bill details with valid inputs",
+      "description": "Feature: Calculate and display bill details upon clicking the 'Generate Bill' button\n\n  Description: \n    When the user clicks the 'Generate Bill' button, the system calculates the tip amount, total bill, and per-person bill based on the provided inputs. These values are displayed in the respective output fields, and the 'Reset' button is enabled.\n\n\n  Scenario: [Normal] Calculate and display bill details with valid inputs\n    Given the user navigates to the Bill Splitter page\n    And the user enters \"1000\" into the bill amount field with data-testid \"bill-amount\"\n    And the user enters \"4\" into the number of people field with data-testid \"number-of-people-input\"\n    And the user clicks the \"10%\" tip button with data-testid \"tip-button-10\"\n    When the user clicks the \"Generate Bill\" button with data-testid \"generate-bill-button\"\n    Then the tip amount field with data-testid \"tip-amount-value\" should display \"₹100\"\n    And the total bill field with data-testid \"total-value\" should display \"₹1100\"\n    And the each-person bill field with data-testid \"each-person-bill-value\" should display \"₹275\"\n    And the \"Reset\" button with data-testid \"reset-button\" should be enabled\n",
+      "requirement_ids": [
+        "e2edev_bench_601-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_601/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_601-R-5-TC-2",
+      "title": "[Edge] Calculate and display bill details with a custom tip percentage",
+      "description": "Feature: Calculate and display bill details upon clicking the 'Generate Bill' button\n\n  Description: \n    When the user clicks the 'Generate Bill' button, the system calculates the tip amount, total bill, and per-person bill based on the provided inputs. These values are displayed in the respective output fields, and the 'Reset' button is enabled.\n\n\n  Scenario: [Edge] Calculate and display bill details with a custom tip percentage\n    Given the user navigates to the Bill Splitter page\n    And the user enters \"500\" into the bill amount field with data-testid \"bill-amount\"\n    And the user enters \"2\" into the number of people field with data-testid \"number-of-people-input\"\n    And the user enters \"20\" into the custom tip field with data-testid \"custom-tip-input\"\n    When the user clicks the \"Generate Bill\" button with data-testid \"generate-bill-button\"\n    Then the tip amount field with data-testid \"tip-amount-value\" should display \"₹100\"\n    And the total bill field with data-testid \"total-value\" should display \"₹600\"\n    And the each-person bill field with data-testid \"each-person-bill-value\" should display \"₹300\"\n    And the \"Reset\" button with data-testid \"reset-button\" should be enabled\n",
+      "requirement_ids": [
+        "e2edev_bench_601-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_601/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_601-R-5-TC-3",
+      "title": "[Edge] Calculate and display bill details with a high tip percentage",
+      "description": "Feature: Calculate and display bill details upon clicking the 'Generate Bill' button\n\n  Description: \n    When the user clicks the 'Generate Bill' button, the system calculates the tip amount, total bill, and per-person bill based on the provided inputs. These values are displayed in the respective output fields, and the 'Reset' button is enabled.\n\n\n  Scenario: [Edge] Calculate and display bill details with a high tip percentage\n    Given the user navigates to the Bill Splitter page\n    And the user enters \"2000\" into the bill amount field with data-testid \"bill-amount\"\n    And the user enters \"5\" into the number of people field with data-testid \"number-of-people-input\"\n    And the user clicks the \"75%\" tip button with data-testid \"tip-button-75\"\n    When the user clicks the \"Generate Bill\" button with data-testid \"generate-bill-button\"\n    Then the tip amount field with data-testid \"tip-amount-value\" should display \"₹1500\"\n    And the total bill field with data-testid \"total-value\" should display \"₹3500\"\n    And the each-person bill field with data-testid \"each-person-bill-value\" should display \"₹700\"\n    And the \"Reset\" button with data-testid \"reset-button\" should be enabled\n",
+      "requirement_ids": [
+        "e2edev_bench_601-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_601/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_601-R-6-TC-1",
+      "title": "[Normal] Reset button clears inputs and outputs",
+      "description": "Feature: Reset Functionality\n  The system should clear all input fields and output displays, reset the tip percentage, and disable the 'Generate Bill' and 'Reset' buttons when the user clicks the 'Reset' button.\n\n\n  Scenario: [Normal] Reset button clears inputs and outputs\n    Given the webpage is loaded\n    And the user enters \"1000\" into the bill amount field with data-testid \"bill-amount\"\n    And the user enters \"4\" into the number of people field with data-testid \"number-of-people-input\"\n    And the user clicks the tip button with data-testid \"tip-button-10\"\n    And the user clicks the \"Generate Bill\" button with data-testid \"generate-bill-button\"\n    When the user clicks the \"Reset\" button with data-testid \"reset-button\"\n    Then the bill amount field with data-testid \"bill-amount\" should be empty\n    And the number of people field with data-testid \"number-of-people-input\" should be empty\n    And the tip amount output with data-testid \"tip-amount-value\" should be empty\n    And the total bill output with data-testid \"total-value\" should be empty\n    And the each person bill output with data-testid \"each-person-bill-value\" should be empty\n    And the \"Generate Bill\" button with data-testid \"generate-bill-button\" should be disabled\n    And the \"Reset\" button with data-testid \"reset-button\" should be disabled\n",
+      "requirement_ids": [
+        "e2edev_bench_601-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_601/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "generatable": true,
+  "parent_id": null
+}

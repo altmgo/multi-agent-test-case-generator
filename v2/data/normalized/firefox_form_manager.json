@@ -1,0 +1,153 @@
+{
+  "id": "firefox_form_manager",
+  "requirements": [
+    {
+      "id": "R-038",
+      "text": "A form fill popup menu shall be activated when a field gets accessed that has been saved in form manager data.",
+      "language": "en",
+      "source": "R-set.csv#R-038"
+    },
+    {
+      "id": "R-039",
+      "text": "A form's data shall be saved from the edit menu.",
+      "language": "en",
+      "source": "R-set.csv#R-039"
+    },
+    {
+      "id": "R-040",
+      "text": "The user shall be able to discard saving a form's data from the dialog box.",
+      "language": "en",
+      "source": "R-set.csv#R-040"
+    },
+    {
+      "id": "R-041",
+      "text": "The user shall be able to choose never saving a form's data from the dialog box.",
+      "language": "en",
+      "source": "R-set.csv#R-041"
+    },
+    {
+      "id": "R-042",
+      "text": "A form's data shall be saved from the popup dialog box, never for this site and never asked again upon returning to the site.",
+      "language": "en",
+      "source": "R-set.csv#R-042"
+    },
+    {
+      "id": "R-043",
+      "text": "If a new value for a field in Form Manager is added, it shall later be offered as an option when prefilling a form using this field.",
+      "language": "en",
+      "source": "R-set.csv#R-043"
+    },
+    {
+      "id": "R-044",
+      "text": "If data is deleted in the Form Manager, that this data shall not be shown as an option when prefilling a form.",
+      "language": "en",
+      "source": "R-set.csv#R-044"
+    },
+    {
+      "id": "R-045",
+      "text": "If data is deleted in the Form Manager then cancel is clicked, the data shall not have been deleted.",
+      "language": "en",
+      "source": "R-set.csv#R-045"
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "TC-038",
+      "title": "TC-038",
+      "description": "STEPS/DESCRIPTION\n1. Go to a site that requires you to fill in data such as ivillage.com (then go to the page to create an account)\n2. Fill in data on the form\n3. From the Edit drop down menus, select save form data\n4. Shut down the browser\n5. Start the browser again and return to ivillage.com\n6. Click in the first field\n\nEXPECTED RESULTS\n3. A dialog box should appear, alerting you to the fact that the data has been captured\n6. A popup list should appear with the choice of selecting what you typed in the first time",
+      "requirement_ids": [
+        "R-038"
+      ],
+      "source": "T-set.csv#TC-038",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-039",
+      "title": "TC-039",
+      "description": "INITIAL CONDITIONS\nYou should have no form data saved\n\nSTEPS/DESCRIPTION\n1. Go to a site that needs information, for example tripod.com and then click signup\n2. Fill in all the fields on the form\n3. From the Edit menu, select Save Form Info\n4. From the Tools menu, open the Form Manager sub-menu, then choose Edit Form Info\n\nEXPECTED RESULTS\n3. A dialog should appear saying data has been captured and the data from this form should be saved to the form manager\n4. Form manager should appear and your saved data should be listed",
+      "requirement_ids": [
+        "R-039"
+      ],
+      "source": "T-set.csv#TC-039",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-040",
+      "title": "TC-040",
+      "description": "INITIAL CONDITIONS\nYou should have no form data saved\n\nSTEPS/DESCRIPTION\n1. Go to a site that needs information, for example mapquest.com<<li> Fill in all the fields for driving directions and click get directions\n2. Click no\n3. From the Tools menu, open the Form Manager sub-menu, and then choose Edit Form Info\n\nEXPECTED RESULTS\n2. A dialog should appear asking if you would like to save the values you filled in\n3. Your data should not be saved to Form Manager\n4. Your saved data should not appear in the Forms Manager",
+      "requirement_ids": [
+        "R-040"
+      ],
+      "source": "T-set.csv#TC-040",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-041",
+      "title": "TC-041",
+      "description": "INITIAL CONDITIONS\nYou should have no form data saved\n\nSTEPS/DESCRIPTION\n1. Go to a site that needs information, for example travelocity.com\n2. Fill in all the fields for fare finder and click go\n3. Click Never for this site\n4. From the Tools menu, open the Form Manager sub-menu, and then choose Manage Sites\n5. Click the Forms Never Saved tab\n\nEXPECTED RESULTS\n2. A dialog should appear asking if you would like to save the values you filled in\n3. Your data should not be saved to Form Manager and this site should now be listed as a site to never save form data from\n4. Form manager should appear\n5. The site should be listed under this tab",
+      "requirement_ids": [
+        "R-041"
+      ],
+      "source": "T-set.csv#TC-041",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-042",
+      "title": "TC-042",
+      "description": "INITIAL CONDITIONS\nYou should have no form data saved\n\nSTEPS/DESCRIPTION\n1. Go to a site that needs information, for example travelocity.com\n2. Fill in all the fields for fare finder and click go\n3. Click Never for this site\n4. From the Tools menu, open the Form Manager sub-menu, and then choose Manage Sites\n5. Click the Forms Never Saved tab\n6. Close the application\n7. Restart application and return to the site used above\n8. Enter data again and click go\n\nEXPECTED RESULTS\n2. A dialog should appear asking if you would like to save the values you filled in\n3. Your data should not be saved to Form Manager and this site should now be listed as a site to never save form data from\n4. Form manager should appear\n5. The site should be listed under this tab\n8. You should not get a dialog box asking if you would like to save the form data",
+      "requirement_ids": [
+        "R-042"
+      ],
+      "source": "T-set.csv#TC-042",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-043",
+      "title": "TC-043",
+      "description": "INITIAL CONDITIONS\nYou should have no form data saved.\n\nSTEPS/DESCRIPTION\n1. 1. From the Tools menu, open the Form Manager sub-menu, then choose Edit Form Info\n2. 2. Click the arrow next to Shipping Information\n3. 3. Enter the Name, Address and Phone information\n4. 4. Click OK\n5. 5. Go to a site that will need a shipping address, for example drugstore.com (First you will have to fill out a quick registration form and then edit shipping addresses)\n6. 6. From the Edit menu, choose Save Form Info\n7. 7. Click Ok\n\nEXPECTED RESULTS\n1. Form Manager should open with fields listed on the left and value fields listed on the right\n2. The Shipping Name, Address and Phone fields should appear below Shipping Information\n5. You will be taken to a shipping address form.\n7. The form should be filled with the correct information.",
+      "requirement_ids": [
+        "R-043"
+      ],
+      "source": "T-set.csv#TC-043",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-044",
+      "title": "TC-044",
+      "description": "INITIAL CONDITIONS\nYou should have no form data saved.\n\nSTEPS/DESCRIPTION\n1. Go to a site that needs information, for example tripod.com and then click signup\n2. Fill in all the fields on the form\n3. From the Edit menu, select Save Form Info\n4. From the Tools menu, open the Form Manager sub-menu, then choose Edit Form Info\n5. Delete several of the values in the Form Manager (for instance Last: in Name and email in address)\n6. Click Ok\n7. Close the application, start it up and return to this same page\n8. From the Edit menu, select Fill in Form\n\nEXPECTED RESULTS\n3. A dialog should appear saying data has been captured and the data from this form should be saved to the form manager\n4. Form manager should appear and your saved data should be listed\n8. Your previously deleted information should not be filled in",
+      "requirement_ids": [
+        "R-044"
+      ],
+      "source": "T-set.csv#TC-044",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-045",
+      "title": "TC-045",
+      "description": "INITIAL CONDITIONS\nYou should have no form data saved.\n\nSTEPS/DESCRIPTION\n1. Go to a site that needs information, for example tripod.com and then click signup\n2. Fill in all the fields on the form\n3. From the Edit menu, select Save Form Info\n4. From the Tools menu, open the Form Manager sub-menu, then choose Edit Form Info\n5. Delete several of the values in the Form Manager (for instance Last: in Name and email in address)\n6. Click Cancel\n7. From the Tools menu, open the Form Manager sub-menu, then choose Edit Form Info\n8. Verify that the previously deleted information is still in Form Manager\n\nEXPECTED RESULTS\n3. A dialog should appear saying data has been captured and the data from this form should be saved to the form manager\n4. Form manager should appear and your saved data should be listed\n7. Your data values should not have been changed\n8. Your previously deleted information should still be in Form Manager",
+      "requirement_ids": [
+        "R-045"
+      ],
+      "source": "T-set.csv#TC-045",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    }
+  ],
+  "generatable": true,
+  "parent_id": "firefox_legacy"
+}
