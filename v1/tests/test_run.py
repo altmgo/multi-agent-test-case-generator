@@ -8,7 +8,6 @@ from pathlib import Path
 import pytest
 
 from datasets.e2edev import SOURCE_COMMIT
-from evaluation.embeddings import EmbeddingBatch, EmbeddingError
 from model_runtime import CallRecord, ContextEstimate
 from schemas import GeneratedCase, GenerationResult, ReferenceCase, Requirement, Unit, UsageRecord
 
@@ -89,19 +88,6 @@ class FakeRuntime:
         return output
 
 
-class FakeEmbedder:
-    def __init__(self):
-        self.fail_next = False
-
-    def embed(self, texts):
-        if self.fail_next:
-            self.fail_next = False
-            raise EmbeddingError(SECRET, usage=UsageRecord(input_tokens=9), request_count=1)
-        return EmbeddingBatch(
-            [[1.0, 0.0] for _ in texts], UsageRecord(input_tokens=7), request_count=1
-        )
-
-
 def response(stage, unit_id, extra):
     if stage == "ghl_select_techniques":
         return {"selections": [{"technique_id": "use_case", "rationale": "A workflow"}]}
@@ -124,9 +110,12 @@ def cli(tmp_path, monkeypatch):
     data, runs = tmp_path / "data", tmp_path / "results"
     data.mkdir()
     runtime = FakeRuntime(response)
-    embedder = FakeEmbedder()
+
+    def embedder():
+        pytest.fail("Generation runs must not construct an embedder")
+
     monkeypatch.setattr(cli_module, "make_runtime", lambda _: runtime)
-    monkeypatch.setattr(cli_module, "make_embedder", lambda: embedder)
+    monkeypatch.setattr(cli_module, "make_embedder", embedder, raising=False)
 
     def run(*options):
         return cli_module.main([
@@ -185,23 +174,35 @@ def test_persisted_snapshots_and_index_count_a_multi_linked_case_once(cli, monke
     assert result["requirements"] == [item.model_dump() for item in unit.requirements]
     assert result["reference_cases"] == [item.model_dump() for item in unit.reference_cases]
     assert result["generated_cases"][0]["title"] == "../Open document"
-    assert result["evaluation"]["matches"] == [{"generated_id": "G-001", "reference_id": "TC1", "similarity": 1.0}]
-    assert read_json(unit_dir / "semantic_matches.json")["matches"] == result["evaluation"]["matches"]
+    assert result["status"] == "generated"
+    assert result["failure"] is None
+    assert result["evaluation"] is None
+    assert result["usage"]["embedding_requests"] == 0
+    matches = read_json(unit_dir / "semantic_matches.json")
+    assert matches["status"] == "generated"
+    assert matches["matches"] == []
+    assert matches["unmatched_generated_ids"] is None
+    assert matches["unmatched_reference_ids"] is None
     assert set(result["links"]["cases"]["G-001"]) == {"R1", "R2"}
     row = csv_row(unit_dir)
-    assert row["generated_count"] == row["match_count"] == "1"
+    assert row["status"] == "generated"
+    assert row["generated_count"] == "1"
+    assert row["match_count"] == ""
     assert row["tokens_used"] == "5"
-    assert row["precision"] == row["recall"] == row["f1"] == "1.0"
+    assert row["embedding_requests"] == "0"
+    assert row["precision"] == row["recall"] == row["f1"] == ""
+    assert not (execution / "comparison.json").exists()
+    assert config(execution)["status"] == "generated"
+    assert config(execution)["outcomes"] == {"one-shot": {FIREFOX: {"status": "generated"}}}
     assert config(execution)["units"][FIREFOX]["sha256"] == expected_sha
     assert config(execution)["credential"]["present"] is True
     assert SECRET not in (execution / "configs.md").read_text()
 
 
-def test_units_continue_after_generation_and_embedding_failures(cli):
-    _, data, runs, runtime, embedder, run = cli
+def test_units_continue_after_generation_failures(cli):
+    _, data, runs, runtime, _, run = cli
     for unit_id in (E2EDEV, CALIBRATION, FIREFOX):
         put(data, make_unit(unit_id))
-    embedder.fail_next = True
 
     def scripted(stage, unit_id, extra):
         if unit_id == FIREFOX and stage == "multiagent_critic":
@@ -224,18 +225,11 @@ def test_units_continue_after_generation_and_embedding_failures(cli):
     assert read_json(generation_failure / "intermediate" / "trace.json")["status"] == "failed"
     assert read_json(generation_failure / "intermediate" / "initial.json")["assessment"]["cases"][0]["id"] == "G-001"
 
-    embedding_failure = multi / E2EDEV
-    failed = read_json(embedding_failure / "results.json")
-    assert failed["failure"] == {"stage": "evaluation", "error_type": "EmbeddingError"}
-    assert failed["usage"]["embedding"]["input_tokens"] == 9
-    assert failed["usage"]["embedding_requests"] == 1
-    assert csv_row(embedding_failure)["precision"] == ""
-    assert read_json(multi / CALIBRATION / "results.json")["status"] == "evaluated"
-    assert read_json(execution / "one-shot" / FIREFOX / "results.json")["status"] == "evaluated"
-    comparison = read_json(execution / "comparison.json")
-    assert comparison["unit_ids"] == [CALIBRATION]
-    assert comparison["coverage"] == 1 / 3
-    assert comparison["metrics"]["one-shot"]["generated_count"] == 1
+    assert partial["usage"]["embedding_requests"] == 0
+    assert read_json(multi / E2EDEV / "results.json")["status"] == "generated"
+    assert read_json(multi / CALIBRATION / "results.json")["status"] == "generated"
+    assert read_json(execution / "one-shot" / FIREFOX / "results.json")["status"] == "generated"
+    assert not (execution / "comparison.json").exists()
     assert config(execution)["status"] == "partial"
     assert all(SECRET not in file.read_text() for file in execution.rglob("*") if file.is_file())
 
@@ -302,16 +296,18 @@ def test_scoped_modes_leave_one_shot_as_one_batch(cli, mode):
     }
 
 
-def test_non_evaluable_unit_preserves_counts_without_joining_comparison(cli):
+def test_unit_without_references_publishes_generated_counts(cli):
     _, data, runs, _, _, run = cli
     put(data, make_unit(E2EDEV, reference=False))
     assert run("--solutions", "one-shot", "--units", E2EDEV) == 0
     execution, = runs.iterdir()
     unit_dir = execution / "one-shot" / E2EDEV
-    assert csv_row(unit_dir)["status"] == "not_evaluable"
+    assert csv_row(unit_dir)["status"] == "generated"
+    assert csv_row(unit_dir)["generated_count"] == "1"
+    assert csv_row(unit_dir)["reference_count"] == "0"
     assert csv_row(unit_dir)["precision"] == ""
     assert csv_row(unit_dir)["embedding_requests"] == "0"
-    assert read_json(execution / "comparison.json")["unit_ids"] == []
+    assert not (execution / "comparison.json").exists()
 
 
 @pytest.mark.parametrize("unit_id", ["firefox_legacy", "firefox_../../other", "unknown"])
@@ -326,7 +322,6 @@ def test_legacy_unknown_and_traversal_unit_ids_are_rejected(cli, unit_id):
 
 
 def test_public_persistence_maps_unsafe_ids_to_safe_paths(tmp_path):
-    from evaluation.metrics import evaluate
     from persistence import save_unit
 
     unit = make_unit("../outside", reference=False)
@@ -335,13 +330,16 @@ def test_public_persistence_maps_unsafe_ids_to_safe_paths(tmp_path):
     result = GenerationResult(cases=[GeneratedCase(
         id="case-1", title="..\\..//", description="Case", requirement_ids=["../../R1"]
     )])
-    evaluation = evaluate(unit, result.cases, FakeEmbedder())
     run = tmp_path / "run"
     run.mkdir()
-    save_unit(run, "one-shot", unit, result, evaluation)
+    save_unit(run, "one-shot", unit, result, None)
     artifact, = run.glob("one-shot/*/results.json")
     snapshots = read_json(artifact)
     assert snapshots["unit_id"] == "../outside"
+    assert snapshots["status"] == "generated"
+    assert snapshots["failure"] is None
+    assert snapshots["evaluation"] is None
+    assert snapshots["usage"]["embedding_requests"] == 0
     requirement_path = Path(snapshots["links"]["requirements"]["../../R1"])
     assert requirement_path.parts[0] not in {"..", "intermediate"}
     assert (artifact.parent / requirement_path).is_file()
@@ -388,7 +386,6 @@ def test_prepare_e2edev_verifies_local_pin_and_writes_descriptive_profile(tmp_pa
 
 
 def test_existing_unit_artifacts_are_immutable(tmp_path):
-    from evaluation.metrics import evaluate
     from persistence import save_unit
 
     unit = make_unit(FIREFOX, reference=False)
@@ -397,13 +394,13 @@ def test_existing_unit_artifacts_are_immutable(tmp_path):
     ])
     run = tmp_path / "run"
     run.mkdir()
-    save_unit(run, "one-shot", unit, result, evaluate(unit, result.cases, FakeEmbedder()))
+    save_unit(run, "one-shot", unit, result, None)
     old_artifact = run / "one-shot" / FIREFOX / "results.json"
     original = old_artifact.read_bytes()
 
     replacement = GenerationResult(cases=[])
     with pytest.raises(FileExistsError):
-        save_unit(run, "one-shot", unit, replacement, evaluate(unit, replacement.cases, FakeEmbedder()))
+        save_unit(run, "one-shot", unit, replacement, None)
     assert old_artifact.read_bytes() == original
 
 
@@ -451,7 +448,8 @@ def test_late_ghl_failure_preserves_validated_cases_and_techniques(cli, monkeypa
     assert generated["requirement_ids"] == ["R1", "R2"]
     assert set(saved["links"]["cases"]["G-001"]) == {"R1", "R2"}
     assert csv_row(unit_dir)["tokens_used"] == "20"
-    assert read_json(execution / "comparison.json")["unit_ids"] == []
+    assert not (execution / "comparison.json").exists()
+    assert config(execution)["status"] == "failed"
     assert all(SECRET not in path.read_text() for path in execution.rglob("*") if path.is_file())
 
 
@@ -570,7 +568,7 @@ def test_one_shot_interruption_saves_reported_usage(cli, monkeypatch):
     assert csv_row(unit_dir)["tokens_used"] == "5"
 
 
-def test_index_write_failure_preserves_published_evaluations_in_comparison(cli, monkeypatch, capsys):
+def test_index_write_failure_preserves_generated_units_and_continues(cli, monkeypatch, capsys):
     import persistence
 
     _, data, runs, _, _, run = cli
@@ -588,14 +586,12 @@ def test_index_write_failure_preserves_published_evaluations_in_comparison(cli, 
     unit_dir = execution / "one-shot" / FIREFOX
     assert not (execution / "one-shot" / "requirements_to_tests.md").exists()
     assert (execution / "GHL" / "requirements_to_tests.md").is_file()
-    assert read_json(unit_dir / "results.json")["status"] == "evaluated"
-    assert csv_row(unit_dir)["status"] == "evaluated"
-    comparison = read_json(execution / "comparison.json")
-    assert comparison["unit_ids"] == [FIREFOX]
-    assert comparison["metrics"]["one-shot"]["match_count"] == 1
+    assert read_json(unit_dir / "results.json")["status"] == "generated"
+    assert csv_row(unit_dir)["status"] == "generated"
+    assert not (execution / "comparison.json").exists()
     recorded = config(execution)
     assert recorded["status"] == "partial"
-    assert recorded["outcomes"]["one-shot"][FIREFOX] == {"status": "evaluated"}
+    assert recorded["outcomes"]["one-shot"][FIREFOX] == {"status": "generated"}
     assert recorded["index_failures"] == {"one-shot": {"error_type": "OSError"}}
     error = capsys.readouterr().err
     assert "one-shot/requirements_to_tests.md" in error

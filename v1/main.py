@@ -14,9 +14,8 @@ from importlib import metadata
 from pathlib import Path
 
 from datasets import e2edev, firefox, profile
-from evaluation.embeddings import EMBEDDING_INSTRUCTION, EMBEDDING_MODEL, Embedder, EmbeddingError, GeminiEmbedder
+from evaluation.embeddings import EMBEDDING_INSTRUCTION, EMBEDDING_MODEL
 from evaluation.matching import SIMILARITY_THRESHOLD
-from evaluation.metrics import aggregate, evaluate
 from model_runtime import DEFAULT_CONTEXT_LIMIT, DEFAULT_OUTPUT_TOKENS, GENERATION_MODELS, ModelRuntime, Runtime, sum_usage
 from persistence import (
     RUN_TIMEZONE,
@@ -24,11 +23,10 @@ from persistence import (
     TIMESTAMP_FORMAT,
     reserve_run,
     save_unit,
-    write_json,
     write_solution_index,
     write_text,
 )
-from schemas import EvaluationResult, GenerationResult, Unit, UsageRecord, generation_input
+from schemas import GenerationResult, Unit, UsageRecord, generation_input
 from src import GenerationCancelled, ghl, one_shot
 from src.multiagent import MultiagentFailure, run_multiagent
 from src.multiagent.coverage import E2EDevCalibrationProfile
@@ -75,10 +73,6 @@ def make_runtime(model: str) -> Runtime:
         model, context_limit=DEFAULT_CONTEXT_LIMIT, output_tokens=DEFAULT_OUTPUT_TOKENS,
         retries=GENERATION_RETRIES,
     )
-
-
-def make_embedder() -> Embedder:
-    return GeminiEmbedder(model_version=EMBEDDING_MODEL_VERSION)
 
 
 def _solution_name(value: str) -> str:
@@ -318,9 +312,8 @@ async def _execute(
     calibration: E2EDevCalibrationProfile | None, config: dict,
 ) -> int:
     outcomes: dict[str, dict] = {solution: {} for solution in options.solutions}
-    evaluations: dict[str, dict[str, EvaluationResult]] = {solution: {} for solution in options.solutions}
     index_failures: dict[str, dict[str, str]] = {}
-    runtime = embedder = None
+    runtime = None
     config["outcomes"] = outcomes
     config["index_failures"] = index_failures
     config["status"] = "interrupted"
@@ -330,10 +323,8 @@ async def _execute(
                 unit = item.unit
                 attempts_start = len(runtime.usage_records) if runtime is not None else 0
                 calls_start = len(getattr(runtime, "call_records", ()))
-                result = failure = evaluation = None
+                result = failure = None
                 interruption = None
-                embedding_usage = UsageRecord(input_tokens=0, output_tokens=0)
-                embedding_requests = 0
 
                 try:
                     if runtime is None:
@@ -363,32 +354,17 @@ async def _execute(
                         failure["stage"] = calls[-1].stage
                     result = GenerationResult(cases=[], usage=sum_usage(attempts), prompt_version=_PROMPTS[solution])
 
-                if failure is None:
-                    try:
-                        if embedder is None:
-                            embedder = make_embedder()
-                        evaluation = evaluate(unit, result.cases, embedder)
-                    except EmbeddingError as error:
-                        failure = {"stage": "evaluation", "error_type": type(error).__name__}
-                        embedding_usage, embedding_requests = error.usage, error.request_count
-                    except Exception as error:
-                        failure = {"stage": "evaluation", "error_type": type(error).__name__}
-                        embedding_usage, embedding_requests = UsageRecord(), None
-
                 try:
                     save_unit(
-                        run, solution, unit, result, evaluation, failure=failure,
+                        run, solution, unit, result, None, failure=failure,
                         generation_attempts=attempts, generation_calls=calls,
-                        embedding_usage=embedding_usage, embedding_requests=embedding_requests,
+                        embedding_usage=UsageRecord(input_tokens=0, output_tokens=0), embedding_requests=0,
                     )
                 except (ValueError, OSError) as error:
                     failure = {"stage": "persistence", "error_type": type(error).__name__}
-                else:
-                    if evaluation is not None:
-                        evaluations[solution][unit.id] = evaluation
 
                 if failure is None:
-                    outcomes[solution][unit.id] = {"status": evaluation.status}
+                    outcomes[solution][unit.id] = {"status": "generated"}
                 else:
                     outcomes[solution][unit.id] = {"status": "failed", "failure": failure}
                     print(f"{solution}/{unit.id}: {failure['stage']} failed ({failure['error_type']})", file=sys.stderr)
@@ -402,23 +378,15 @@ async def _execute(
                 index_failures[solution] = {"error_type": error_type}
                 print(f"{solution}/requirements_to_tests.md: write failed ({error_type})", file=sys.stderr)
 
-        comparison = aggregate(evaluations, selected_unit_ids=(item.unit.id for item in selected))
-        write_json(run / "comparison.json", comparison.model_dump(mode="json"))
-        config["comparison"] = "comparison.json"
-        completed = sum(len(units) for units in evaluations.values())
+        completed = sum(outcome["status"] == "generated" for units in outcomes.values() for outcome in units.values())
         total = len(selected) * len(options.solutions)
         if completed == total and not index_failures:
-            config["status"] = "completed"
+            config["status"] = "generated"
         else:
             config["status"] = "partial" if completed else "failed"
     finally:
-        try:
-            close = getattr(embedder, "close", None)
-            if close is not None:
-                close()
-        finally:
-            _write_configs(run, config)
-    return 0 if config["status"] == "completed" else 1
+        _write_configs(run, config)
+    return 0 if config["status"] == "generated" else 1
 
 
 def main(argv: list[str] | None = None) -> int:

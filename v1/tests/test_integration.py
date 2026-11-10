@@ -6,6 +6,7 @@ from pathlib import Path
 
 import pytest
 
+import evaluation_cli
 import main
 from datasets import e2edev
 from evaluation.embeddings import EmbeddingBatch
@@ -87,7 +88,7 @@ class FakeEmbedder:
 
 
 @pytest.mark.parametrize("use_local_data", [False, True], ids=["prepared-fixtures", "prepared-real-units"])
-def test_prepare_run_review_and_rereview_all_solutions(tmp_path, monkeypatch, use_local_data):
+def test_prepare_run_evaluate_review_and_rereview_all_solutions(tmp_path, monkeypatch, use_local_data):
     from human_review import main as review_main
 
     if use_local_data:
@@ -106,7 +107,7 @@ def test_prepare_run_review_and_rereview_all_solutions(tmp_path, monkeypatch, us
         return runtime
 
     monkeypatch.setattr(main, "make_runtime", fake_factory)
-    monkeypatch.setattr(main, "make_embedder", FakeEmbedder)
+    monkeypatch.setattr(evaluation_cli, "make_embedder", FakeEmbedder)
     monkeypatch.setattr(main, "now", lambda: datetime(2026, 11, 9, 3, tzinfo=timezone.utc))
     assert main.main([
         "run", "--model", MODEL, "--solutions", *SOLUTIONS, "--units", FIREFOX, E2EDEV,
@@ -127,6 +128,30 @@ def test_prepare_run_review_and_rereview_all_solutions(tmp_path, monkeypatch, us
     assert set(coverage[E2EDEV]["calibration_profile"]) == {"requirement_count", "histogram", "quartiles"}
 
     comparison_path = run / "comparison.json"
+    assert not comparison_path.exists()
+    generated = {}
+    for solution in SOLUTIONS:
+        for name in (FIREFOX, E2EDEV):
+            artifact = run / solution / name / "results.json"
+            snapshot = load_json(artifact)
+            assert snapshot["status"] == "generated"
+            assert snapshot["evaluation"] is None
+            assert snapshot["usage"]["embedding_requests"] == 0
+            generated[artifact] = snapshot
+    generation_files = {
+        path: path.read_bytes() for path in run.rglob("*")
+        if path.is_file() and path.name not in {"configs.md", "results.json", "results.csv", "semantic_matches.json"}
+    }
+    generation_calls = list(runtime.calls)
+    assert evaluation_cli.main(["--results-dir", str(results), "--run", run.name]) == 0
+    assert runtime.calls == generation_calls
+    assert all(path.read_bytes() == content for path, content in generation_files.items())
+    for artifact, snapshot in generated.items():
+        evaluated = load_json(artifact)
+        for key in ("requirements", "generated_cases", "reference_cases", "generation", "links", "artifacts"):
+            assert evaluated[key] == snapshot[key]
+        for key in ("generation", "generation_attempts", "generation_calls"):
+            assert evaluated["usage"][key] == snapshot["usage"][key]
     original_comparison = comparison_path.read_bytes()
     comparison = json.loads(original_comparison)
     assert comparison["unit_ids"] == [E2EDEV, FIREFOX]
