@@ -1,8 +1,13 @@
 """Structured generation with complete requirements and auditable token usage."""
 
 import json
+import math
+import sys
+from asyncio import sleep
+from collections import deque
 from contextvars import ContextVar
 from dataclasses import replace
+from time import monotonic
 from typing import Any, Literal, Protocol, TypeVar
 
 from google.genai.types import (
@@ -21,11 +26,12 @@ from pydantic_ai.exceptions import (
     ModelAPIError,
     ModelConnectionError,
     ModelHTTPError,
+    ModelQuotaExceededError,
+    ModelRateLimitError,
     UnexpectedModelBehavior,
 )
 from pydantic_ai.messages import (
     ModelMessage,
-    ModelMessagesTypeAdapter,
     ModelRequest,
     ModelResponse,
     SystemPromptPart,
@@ -33,7 +39,7 @@ from pydantic_ai.messages import (
 )
 from pydantic_ai.models import Model, ModelRequestParameters
 from pydantic_ai.models.google import GoogleModel, GoogleModelSettings
-from pydantic_ai.models.groq import GroqModel
+from pydantic_ai.models.groq import GroqModel, GroqModelSettings
 from pydantic_ai.models.wrapper import WrapperModel
 from pydantic_ai.providers.google import GoogleProvider
 from pydantic_ai.providers.groq import GroqProvider
@@ -51,6 +57,14 @@ _CONTEXT_LIMITS = {
 }
 GENERATION_MODELS = frozenset(_CONTEXT_LIMITS)
 DEFAULT_OUTPUT_TOKENS = 8192
+MAX_GENERATION_RETRIES = 3
+MAX_RETRY_WAIT_SECONDS = 60
+GROQ_TOKENS_PER_MINUTE = 8_000
+_GROQ_WINDOW_SECONDS = 60
+_GROQ_REQUEST_INTERVAL = 2
+_GROQ_GENERATION_TOKENS = 4096
+_GROQ_REVIEW_TOKENS = 1536
+_GROQ_MIN_OUTPUT_TOKENS = 256
 _MAX_OUTPUT_TOKENS = 65_536
 _REQUEST_OVERHEAD_TOKENS = 32
 _MODE_INSTRUCTIONS = {
@@ -84,6 +98,10 @@ class Runtime(Protocol):
 
 class ContextLimitError(ValueError):
     """The estimated request and reserved output exceed the context budget."""
+
+
+class ProviderQuotaStop(ValueError):
+    """The provider's quota prevents continuing this run within the wait limit."""
 
 
 def check_context(input_tokens: int, output_tokens: int, limit: int) -> None:
@@ -210,11 +228,15 @@ class _GeminiModel(GoogleModel):
             response = await super().request(messages, model_settings, model_request_parameters)
         except ModelHTTPError as error:
             _capture_http_error_usage(error.body)
-            safe_error = type(error)(status_code=error.status_code, model_name=self.model_name)
+            safe_error = type(error)(
+                status_code=error.status_code, model_name=self.model_name, retry_after=error.retry_after,
+            )
         except ModelConnectionError as error:
-            safe_error = type(error)(self.model_name, "Gemini connection failed", phase=error.phase)
-        except ModelAPIError:
-            safe_error = ModelAPIError(self.model_name, "Gemini API request failed")
+            safe_error = type(error)(
+                self.model_name, "Gemini connection failed", phase=error.phase, retry_after=error.retry_after,
+            )
+        except ModelAPIError as error:
+            safe_error = ModelAPIError(self.model_name, "Gemini API request failed", retry_after=error.retry_after)
         except Exception as error:
             safe_error = UnexpectedModelBehavior(f"Gemini request failed ({type(error).__name__})")
         else:
@@ -255,11 +277,15 @@ class _GroqModel(GroqModel):
         try:
             return await super().request(messages, model_settings, model_request_parameters)
         except ModelHTTPError as error:
-            safe_error = type(error)(status_code=error.status_code, model_name=self.model_name)
+            safe_error = type(error)(
+                status_code=error.status_code, model_name=self.model_name, retry_after=error.retry_after,
+            )
         except ModelConnectionError as error:
-            safe_error = type(error)(self.model_name, "Groq connection failed", phase=error.phase)
-        except ModelAPIError:
-            safe_error = ModelAPIError(self.model_name, "Groq API request failed")
+            safe_error = type(error)(
+                self.model_name, "Groq connection failed", phase=error.phase, retry_after=error.retry_after,
+            )
+        except ModelAPIError as error:
+            safe_error = ModelAPIError(self.model_name, "Groq API request failed", retry_after=error.retry_after)
         except Exception as error:
             safe_error = UnexpectedModelBehavior(f"Groq request failed ({type(error).__name__})")
         raise safe_error from None
@@ -321,6 +347,26 @@ class CallRecord(BaseModel):
     error_type: str | None = None
 
 
+def _error_label(error: BaseException) -> str:
+    label = type(error).__name__
+    if isinstance(error, ModelHTTPError):
+        label += f", HTTP {error.status_code}"
+    return label
+
+
+def _rate_limited(error: BaseException) -> bool:
+    return isinstance(error, ModelRateLimitError) or (
+        isinstance(error, ModelHTTPError) and error.status_code == 429
+    )
+
+
+def _retry_delay(error: ModelAPIError | UnexpectedModelBehavior, retry: int, previous: float) -> float:
+    base_delay = 15 if _rate_limited(error) else 2
+    hint = error.retry_after if isinstance(error, ModelAPIError) else None
+    provider_delay = hint if hint is not None and math.isfinite(hint) else 0
+    return max(base_delay * 2 ** (retry - 1), previous + 1, provider_delay)
+
+
 def _json(data: Any) -> str:
     return json.dumps(data, ensure_ascii=False, allow_nan=False)
 
@@ -369,27 +415,16 @@ class _AuditedModel(WrapperModel):
         model_settings: ModelSettings | None,
         model_request_parameters: ModelRequestParameters,
     ) -> ModelResponse:
-        if self.records and self.records[-1].status == "responded":
-            self.records[-1].status = "retry"
-
-        # The fresh Agent starts with our full prompt. Subsequent messages are
-        # response and validation feedback added by Pydantic AI for a retry.
-        retry_history_tokens = (
-            _estimate_tokens(ModelMessagesTypeAdapter.dump_json(messages[1:], exclude_defaults=True))
-            if len(messages) > 1
-            else 0
-        )
         first = messages[0]
         if not isinstance(first, ModelRequest):
             raise RuntimeError("Expected the initial generation prompt")
         estimate = self.estimate.model_copy(update={
-            "history_tokens": retry_history_tokens,
             "instructions_tokens": self.estimate.instructions_tokens + sum(
                 _estimate_tokens(part.content) for part in first.parts if isinstance(part, SystemPromptPart)
             ),
         })
         if self.optional_history_tokens and not self.history_dropped:
-            if estimate.input_tokens + self.optional_history_tokens + estimate.output_tokens <= self.runtime.context_limit:
+            if estimate.input_tokens + self.optional_history_tokens + estimate.output_tokens <= self.runtime.request_budget:
                 estimate.history_tokens += self.optional_history_tokens
             else:
                 self.history_dropped = True
@@ -407,6 +442,11 @@ class _AuditedModel(WrapperModel):
         self.records.append(record)
         self.runtime.call_records.append(record)
         try:
+            if self.runtime.is_groq:
+                available_output = self.runtime.request_budget - estimate.input_tokens
+                if available_output < min(estimate.output_tokens, _GROQ_MIN_OUTPUT_TOKENS):
+                    raise ContextLimitError("Request exceeds the Groq per-minute token budget")
+                estimate.output_tokens = min(estimate.output_tokens, available_output)
             check_context(estimate.input_tokens, estimate.output_tokens, self.runtime.context_limit)
         except ContextLimitError as error:
             record.status = "context_exceeded"
@@ -420,6 +460,10 @@ class _AuditedModel(WrapperModel):
             ])
             messages = [new_first, *messages[1:]]
 
+        reservation = estimate.input_tokens + estimate.output_tokens
+        if self.runtime.is_groq:
+            await self.runtime.pace_groq(reservation, f"{self.unit_id}/{self.stage}")
+            model_settings = {**(model_settings or {}), "max_tokens": estimate.output_tokens}
         capture: list[UsageRecord] = []
         token = _RAW_USAGE.set(capture)
         try:
@@ -427,10 +471,14 @@ class _AuditedModel(WrapperModel):
         except BaseException as error:
             record.status = "failed"
             record.error_type = type(error).__name__
+            if isinstance(error, ModelHTTPError) and error.status_code in {413, 429}:
+                reservation = 0
             raise
         finally:
             if capture:
                 record.usage = capture[-1]
+            if self.runtime.is_groq:
+                self.runtime.record_groq_usage(record.usage, reservation)
             self.runtime.usage_records.append(record.usage)
             _RAW_USAGE.reset(token)
 
@@ -445,7 +493,7 @@ class ModelRuntime:
         api_key: str,
         context_limit: int | None = None,
         output_tokens: int = DEFAULT_OUTPUT_TOKENS,
-        retries: int = 1,
+        retries: int = MAX_GENERATION_RETRIES,
     ):
         if model_id not in GENERATION_MODELS:
             raise ValueError("Unsupported generation model")
@@ -455,12 +503,17 @@ class ModelRuntime:
             raise ValueError(f"Context limit must be between 1 and {maximum_context}")
         if not 0 < output_tokens <= _MAX_OUTPUT_TOKENS:
             raise ValueError(f"Output tokens must be between 1 and {_MAX_OUTPUT_TOKENS}")
-        if retries < 0:
-            raise ValueError("Retries must be nonnegative")
+        if not 0 <= retries <= MAX_GENERATION_RETRIES:
+            raise ValueError(f"Retries must be between 0 and {MAX_GENERATION_RETRIES}")
         self._model = make_model(model_id, api_key)
+        self.is_groq = model_id == GROQ_MODEL
         self.context_limit = context_limit
+        self.request_budget = min(context_limit, GROQ_TOKENS_PER_MINUTE) if self.is_groq else context_limit
         self.output_tokens = output_tokens
         self.retries = retries
+        self.stop_reason: str | None = None
+        self._groq_usage: deque[tuple[float, int]] = deque()
+        self._groq_next_request = 0.0
         self._call_count = 0
         self.call_records: list[CallRecord] = []
         self.usage_records: list[UsageRecord] = []
@@ -468,6 +521,31 @@ class ModelRuntime:
     async def aclose(self) -> None:
         if isinstance(self._model, _GroqModel):
             await self._model.client.close()
+
+    async def pace_groq(self, reservation: int, stage_label: str) -> None:
+        now = monotonic()
+        while self._groq_usage and self._groq_usage[0][0] <= now:
+            self._groq_usage.popleft()
+        used = sum(tokens for _, tokens in self._groq_usage)
+        ready = self._groq_next_request
+        for expires, tokens in self._groq_usage:
+            if used + reservation <= GROQ_TOKENS_PER_MINUTE:
+                break
+            used -= tokens
+            ready = max(ready, expires)
+        if ready > now:
+            delay = ready - now
+            if delay >= 1:
+                print(f"{stage_label}: Groq pacing, waiting {delay:.1f}s", file=sys.stderr, flush=True)
+            await sleep(delay)
+        self._groq_next_request = monotonic() + _GROQ_REQUEST_INTERVAL
+
+    def record_groq_usage(self, usage: UsageRecord, reservation: int) -> None:
+        tokens = reservation
+        if usage.input_tokens is not None and usage.output_tokens is not None:
+            tokens = usage.input_tokens + usage.output_tokens
+        if tokens:
+            self._groq_usage.append((monotonic() + _GROQ_WINDOW_SECONDS, tokens))
 
     async def run(
         self,
@@ -478,6 +556,8 @@ class ModelRuntime:
         *,
         extra: dict[str, Any] | None = None,
     ) -> T:
+        if self.stop_reason is not None:
+            raise ProviderQuotaStop(self.stop_reason)
         extra = dict(extra or {})
         _reject_reference_cases(extra)
         if "output_mode" in extra:
@@ -494,12 +574,20 @@ class ModelRuntime:
             ],
         }
         required_extra = {key: value for key, value in extra.items() if key != "history"}
+        output_tokens = self.output_tokens
+        model_settings: ModelSettings = {}
+        if self.is_groq:
+            is_generation = stage == "one_shot" or stage.startswith("ghl_generate_") or stage == "multiagent_generator"
+            output_tokens = min(output_tokens, _GROQ_GENERATION_TOKENS if is_generation else _GROQ_REVIEW_TOKENS)
+            instructions += " Keep descriptions and feedback concise while preserving expected behavior and traceability."
+            model_settings = GroqModelSettings(groq_reasoning_effort="low")
+        model_settings["max_tokens"] = output_tokens
         estimate = ContextEstimate(
             requirements_tokens=_estimate_tokens(_json(payload)),
             instructions_tokens=_estimate_tokens(instructions),
             extra_tokens=_estimate_tokens(_json(required_extra)) if required_extra else 0,
             schema_tokens=_estimate_tokens(_json(TypeAdapter(output_type).json_schema())),
-            output_tokens=self.output_tokens,
+            output_tokens=output_tokens,
         )
         prompt_without_history = _json({**payload, "extra": required_extra} if required_extra else payload)
         self._call_count += 1
@@ -512,21 +600,57 @@ class ModelRuntime:
             model,
             instructions=instructions,
             output_type=output,
-            retries=self.retries,
-            model_settings={"max_tokens": self.output_tokens},
+            # One request per attempt. The runtime owns the shared retry budget
+            # for provider failures and output rejected by the agent.
+            retries=0,
+            model_settings=model_settings,
         )
-        try:
-            result = await agent.run(_json({**payload, "extra": extra} if extra else payload))
-        except BaseException as error:
-            if not model.records or model.records[-1].status != "responded":
-                raise
-            model.records[-1].status = "failed"
-            model.records[-1].error_type = type(error).__name__
-            if not isinstance(error, UnexpectedModelBehavior):
-                raise
-            safe_error = type(error)("Model output was rejected")
-        else:
-            model.records[-1].status = "succeeded"
-            return result.output
+        prompt = _json({**payload, "extra": extra} if extra else payload)
+        delay = 0.0
+        stage_label = f"{input.unit_id}/{stage}"
+        for attempt in range(1, self.retries + 2):
+            try:
+                result = await agent.run(prompt)
+            except BaseException as error:
+                if len(model.records) != attempt:
+                    raise
+                record = model.records[-1]
+                output_rejected = record.status == "responded"
+                if output_rejected:
+                    record.status = "failed"
+                    record.error_type = type(error).__name__
+                if not isinstance(error, (ModelAPIError, UnexpectedModelBehavior)):
+                    raise
+                label = _error_label(error)
+                hint = error.retry_after if isinstance(error, ModelAPIError) else None
+                if isinstance(error, ModelQuotaExceededError) or (
+                    _rate_limited(error) and hint is not None and hint > MAX_RETRY_WAIT_SECONDS
+                ):
+                    wait = f", Retry-After {hint:g}s" if hint is not None else ""
+                    self.stop_reason = f"{stage_label}: provider quota ({label}{wait})"
+                    print(f"{self.stop_reason}; stopping the run", file=sys.stderr, flush=True)
+                    raise ProviderQuotaStop(self.stop_reason) from None
+                if attempt > self.retries:
+                    print(f"{stage_label}: attempt {attempt} failed ({label}); no retries left",
+                          file=sys.stderr, flush=True)
+                    if not output_rejected or not isinstance(error, UnexpectedModelBehavior):
+                        raise
+                    safe_error = UnexpectedModelBehavior("Model output was rejected")
+                    break
+                delay = _retry_delay(error, attempt, delay)
+                if delay > MAX_RETRY_WAIT_SECONDS:
+                    print(f"{stage_label}: attempt {attempt} failed ({label}); "
+                          f"retry wait {delay:g}s exceeds {MAX_RETRY_WAIT_SECONDS}s",
+                          file=sys.stderr, flush=True)
+                    raise
+                record.status = "retry"
+                print(f"{stage_label}: attempt {attempt} failed ({label}); retry {attempt}/{self.retries} in {delay:g}s",
+                      file=sys.stderr, flush=True)
+            else:
+                model.records[-1].status = "succeeded"
+                if attempt > 1:
+                    print(f"{stage_label}: succeeded on attempt {attempt}", file=sys.stderr, flush=True)
+                return result.output
+            await sleep(delay)
 
         raise safe_error from None

@@ -8,12 +8,17 @@ from .state import Analysis, StageRunner
 async def analyze(
     runner: StageRunner, attempt_id: str, revision: dict[str, JsonValue] | None
 ) -> Analysis:
+    context = None
+    if revision is not None:
+        context = {
+            key: value for key, value in revision.items() if key != "cases"
+        }
     return await runner.call(
         "analyst",
         attempt_id,
         "Identify testable behavior, boundaries, normal and abnormal paths, and ambiguities. "
         "Use every requirement. For revisions, address feedback on the accepted state. "
-        "Return a concise analysis grounded in the supplied requirements.",
+        "Return concise findings grouped by requirement ID. Focus on actionable conditions and gaps.",
         Analysis,
-        revision=revision,
+        revision=context,
     )

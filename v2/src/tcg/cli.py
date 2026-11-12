@@ -15,7 +15,10 @@ from one_shot import generate_one_shot
 
 from .data import DATASETS, select_units
 from .output import RUN_TIMEZONE, reserve_run, save_unit, write_text
-from .runtime import GENERATION_MODELS, ModelRuntime, credential_variable, sum_usage
+from .runtime import (
+    GENERATION_MODELS, GROQ_TOKENS_PER_MINUTE, MAX_RETRY_WAIT_SECONDS,
+    ModelRuntime, credential_variable, sum_usage,
+)
 from .schemas import GenerationResult, Unit, generation_input
 
 SOLUTIONS = ("one-shot", "GHL", "Multiagent")
@@ -79,6 +82,10 @@ async def _run(
         "agents": sorted(agents),
         "output_modes": {name: "batch" if name == "one-shot" else options.output_mode for name in options.solutions},
         "max_rounds": MAX_ROUNDS,
+        "generation_retries": runtime.retries,
+        "max_retry_wait_seconds": MAX_RETRY_WAIT_SECONDS,
+        "groq_tokens_per_minute": GROQ_TOKENS_PER_MINUTE if runtime.is_groq else None,
+        "reasoning_effort": "low" if runtime.is_groq else None,
         "timezone": str(RUN_TIMEZONE),
         "credential": f".env:{credential_variable(options.model)}",
         "status": "interrupted",
@@ -95,6 +102,7 @@ async def _run(
                 source = generation_input(unit)
                 usage_start = len(runtime.usage_records)
                 failure = None
+                failure_stage = None
                 interrupted = None
                 try:
                     if solution == "one-shot":
@@ -105,8 +113,12 @@ async def _run(
                         result = await run_multiagent(
                             source, runtime, agents, MAX_ROUNDS, output_mode=options.output_mode,
                         )
-                except (GHLFailure, MultiagentFailure) as error:
-                    result, failure = error.partial_result, type(error).__name__
+                except GHLFailure as error:
+                    result, failure = error.partial_result, error.error_type
+                    failure_stage = error.stage
+                except MultiagentFailure as error:
+                    result, failure = error.partial_result, error.failure.error_type
+                    failure_stage = error.failure.stage
                 except asyncio.CancelledError as error:
                     interrupted = error
                     failure = type(error).__name__
@@ -127,12 +139,18 @@ async def _run(
                     "selected_techniques": result.selected_techniques,
                     "technique_rationales": result.technique_rationales,
                     "error_type": failure,
+                    "error_stage": failure_stage,
                 }
                 if interrupted is not None:
                     raise interrupted
                 if failure:
                     failed += 1
-                    print(f"{solution}/{unit.id}: generation failed ({failure})", file=sys.stderr)
+                    location = f" at {failure_stage}" if failure_stage else ""
+                    print(f"{solution}/{unit.id}: generation failed{location} ({failure})", file=sys.stderr)
+                if runtime.stop_reason is not None:
+                    config["status"] = "partial"
+                    config["stop_reason"] = runtime.stop_reason
+                    return 1
         config["status"] = "partial" if failed else "completed"
         return int(bool(failed))
     except (OSError, ValueError):
@@ -158,7 +176,7 @@ def main(argv: list[str] | None = None) -> int:
         api_key = (dotenv_values(dotenv_path, interpolate=False).get(variable) or "").strip()
         if not api_key:
             raise ValueError(f"Set {variable} in .env")
-        runtime = ModelRuntime(options.model, api_key=api_key, retries=0)
+        runtime = ModelRuntime(options.model, api_key=api_key)
         run = reserve_run(options.output_dir, lambda: datetime.now(timezone.utc))
     except (OSError, ValueError) as error:
         parser.error(str(error))

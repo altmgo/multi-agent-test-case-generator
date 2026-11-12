@@ -11,8 +11,9 @@ async def review_coverage(
     for attempt in attempts:
         assessment = attempt.assessment
         status = "accepted" if attempt is accepted else "rejected"
+        fields = {"id", "title", "requirement_ids"} if status == "rejected" else None
         index[status].extend(
-            {"candidate_id": assessment.candidate_id, **case.model_dump(mode="json")}
+            {"candidate_id": assessment.candidate_id, **case.model_dump(mode="json", include=fields)}
             for case in assessment.cases
         )
     return await runner.call(

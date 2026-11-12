@@ -9,7 +9,7 @@ from dotenv import dotenv_values
 from tcg.output import write_json
 from tcg.schemas import UsageRecord
 
-from .embeddings import EMBEDDING_MODELS, EmbeddingError, GeminiEmbedder
+from .embeddings import EMBEDDING_MODELS, EmbeddingError, EmbeddingQuotaStop, GeminiEmbedder
 from .matching import SIMILARITY_THRESHOLD
 from .metrics import aggregate, evaluate
 from .reader import read_config, read_generated_unit
@@ -36,6 +36,7 @@ def _run(options: argparse.Namespace) -> int:
         raise ValueError("Set GOOGLE_API_KEY in .env")
     embedder = GeminiEmbedder(model=options.embedding_model, api_key=api_key)
     failed = 0
+    stop_reason = None
     try:
         for unit in units:
             evaluation = None
@@ -48,6 +49,9 @@ def _run(options: argparse.Namespace) -> int:
                 except EmbeddingError as error:
                     usage, requests = error.usage, error.request_count
                     failure = {"stage": "evaluation", "error_type": type(error).__name__}
+                    print(f"{unit.solution}/{unit.dataset.id}: {error}", file=sys.stderr, flush=True)
+                    if isinstance(error, EmbeddingQuotaStop):
+                        stop_reason = str(error)
                 else:
                     evaluations[unit.solution][unit.dataset.id] = evaluation
             publish_unit(unit, options.embedding_model, evaluation, failure, usage, requests)
@@ -55,6 +59,9 @@ def _run(options: argparse.Namespace) -> int:
                 failed += 1
                 print(f"{unit.solution}/{unit.dataset.id}: {failure['stage']} failed ({failure['error_type']})",
                       file=sys.stderr)
+            if stop_reason is not None:
+                print("Embedding quota prevents continuing; writing partial results.", file=sys.stderr, flush=True)
+                break
     finally:
         embedder.close()
 
@@ -63,6 +70,8 @@ def _run(options: argparse.Namespace) -> int:
         **comparison,
         "embedding_model": options.embedding_model,
         "similarity_threshold": SIMILARITY_THRESHOLD,
+        "status": "partial" if failed else "completed",
+        "stop_reason": stop_reason,
     })
     print(f"Results: {destination}")
     return int(bool(failed))

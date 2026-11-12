@@ -30,13 +30,31 @@ Para executar a mesma geração com Groq, use
 `--model openai/gpt-oss-120b`. Os limites de uso da sua conta Groq se
 aplicam a essa execução.
 
+Para GPT-OSS 120B no Groq, a CLI espaça os envios em pelo menos dois segundos
+e usa uma janela móvel de 60 segundos com orçamento local de 8.000 tokens.
+Antes de enviar, reserva a entrada estimada e o limite de saída da chamada.
+O modelo usa raciocínio baixo e reserva até 4.096 tokens para gerar casos
+ou 1.536 para seleção, análise e pareceres. A CLI registra as esperas
+preventivas. O limite da conta é compartilhado com outros processos.
+Se os requisitos completos e o contexto obrigatório deixarem menos espaço
+que a reserva mínima de saída, a CLI sinaliza a chamada como incompatível.
+
+Para Groq e Gemini, cada chamada com erro da API ou resposta rejeitada pelo
+Pydantic AI tem até três retentativas, além da tentativa inicial. O intervalo
+base é de 2, 4 e 8 segundos, ou 15, 30 e 60 segundos se todas as falhas forem
+por limite de taxa. Cada espera automática tem teto de 60 segundos.
+Quando o provedor informa cota esgotada ou devolve limite de taxa com
+`Retry-After` acima desse teto, a execução termina como parcial e preserva
+as saídas já gravadas. A CLI mostra a unidade, a etapa, o erro, o tempo de
+espera e o resultado da retentativa. Retentativas podem consumir tokens.
+
 Omita `--units` para gerar a partir de todos os JSONs elegíveis de
 `data/normalized/`. Os manifestos ficam fora da geração. Use o nome completo com `.json` para
 selecionar uma unidade. A CLI extrai os requisitos de cada arquivo e ignora
 os casos de referência, inclusive na etapa de cobertura do Multiagent.
 
 O GHL usa um catálogo fixo em `src/ghl/__init__.py`, inspirado no fluxo de
-[Masuda et al.](https://arxiv.org/html/2510.03641v1#S3). O Gemini escolhe as
+[Masuda et al.](https://arxiv.org/html/2510.03641v1#S3). O modelo escolhe as
 técnicas aplicáveis a partir dos requisitos e do catálogo, depois gera casos
 para cada técnica escolhida. As escolhas e justificativas ficam em `configs.md`.
 
@@ -64,6 +82,15 @@ gerados com Groq. O gabarito vem de
 `data/normalized/`, ou do caminho indicado por `--data-dir`. A opção
 `gemini-embedding-2` reproduz o modelo da v1. Também é possível escolher
 `gemini-embedding-001`, com resultados dependentes do modelo.
+
+O avaliador reaproveita embeddings idênticos durante a execução. Envia até
+20 textos por lote, com pelo menos 2 segundos entre envios e um orçamento
+local de 100 textos em uma janela móvel de 60 segundos. Os limites do Gemini
+variam por modelo e projeto. Falhas transitórias têm até três retentativas
+com espera crescente e teto de 60 segundos por espera. A CLI registra as
+esperas e retentativas. Se o provedor informar cota diária esgotada, pedir
+uma espera superior a 60 segundos em um HTTP 429 ou continuar devolvendo 429
+até o fim das retentativas, o avaliador grava uma comparação parcial.
 
 O `evalute` lê os casos finais do TCG e compara com o gabarito por
 similaridade cosseno, com limiar 0,70 e pareamento um a um. Grava

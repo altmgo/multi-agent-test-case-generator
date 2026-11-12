@@ -23,6 +23,8 @@ async def generate(
 ) -> None:
     assessment = attempt.assessment
     analysis = attempt.analysis.model_dump(mode="json") if attempt.analysis else None
+    if revision is not None and analysis is not None:
+        revision = {key: value for key, value in revision.items() if key != "analysis"}
     targets = [None] if output_mode == "batch" else [item.id for item in runner.input.requirements]
     for target in targets:
         answer = await runner.call(
