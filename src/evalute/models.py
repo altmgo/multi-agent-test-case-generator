@@ -4,7 +4,7 @@ from typing import Literal
 
 from pydantic import BaseModel, Field, NonNegativeInt
 
-from tcg.schemas import GeneratedCase, Identifier, Unit, UsageRecord
+from src.tcg.schemas import GeneratedCase, Identifier, Unit, UsageRecord
 
 
 class ReferenceCase(GeneratedCase):

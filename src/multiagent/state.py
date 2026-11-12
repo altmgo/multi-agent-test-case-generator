@@ -7,8 +7,8 @@ from typing import Literal, TypeVar
 from pydantic import BaseModel, Field, JsonValue
 from pydantic_ai.exceptions import ModelAPIError, UnexpectedModelBehavior
 
-from tcg.runtime import Runtime, sum_usage
-from tcg.schemas import AgentOpinion, CandidateAssessment, GenerationInput, GenerationResult, UsageRecord
+from src.tcg.runtime import Runtime, sum_usage
+from src.tcg.schemas import AgentOpinion, CandidateAssessment, GenerationInput, GenerationResult, UsageRecord
 
 PROMPT_VERSION = "multiagent-v2"
 CANDIDATES_PER_ROUND = 3

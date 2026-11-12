@@ -2,7 +2,7 @@
 
 from pydantic import BaseModel, JsonValue
 
-from tcg.schemas import GeneratedCase, validate_cases
+from src.tcg.schemas import GeneratedCase, validate_cases
 
 from .state import Attempt, OutputMode, StageRunner
 

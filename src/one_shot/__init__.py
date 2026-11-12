@@ -2,8 +2,8 @@
 
 from pydantic import BaseModel
 
-from tcg.runtime import Runtime, sum_usage
-from tcg.schemas import GeneratedCase, GenerationInput, GenerationResult, UsageRecord, validate_cases
+from src.tcg.runtime import Runtime, sum_usage
+from src.tcg.schemas import GeneratedCase, GenerationInput, GenerationResult, UsageRecord, validate_cases
 
 PROMPT_VERSION = "one-shot-v1"
 

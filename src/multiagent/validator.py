@@ -1,6 +1,6 @@
 """Validate case grounding and traceability against the supplied requirements."""
 
-from tcg.schemas import AgentOpinion, CandidateAssessment
+from src.tcg.schemas import AgentOpinion, CandidateAssessment
 
 from .selection import REVIEW_RUBRIC
 from .state import ControlOutput, StageRunner

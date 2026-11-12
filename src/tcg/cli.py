@@ -9,9 +9,9 @@ from pathlib import Path
 
 from dotenv import dotenv_values
 
-from ghl import GHLFailure, generate_ghl
-from multiagent import MultiagentFailure, run_multiagent
-from one_shot import generate_one_shot
+from src.ghl import GHLFailure, generate_ghl
+from src.multiagent import MultiagentFailure, run_multiagent
+from src.one_shot import generate_one_shot
 
 from .data import DATASETS, select_units
 from .output import RUN_TIMEZONE, reserve_run, save_unit, write_text

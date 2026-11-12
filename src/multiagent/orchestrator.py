@@ -4,8 +4,8 @@ from asyncio import CancelledError
 
 from pydantic import JsonValue
 
-from tcg.runtime import Runtime
-from tcg.schemas import AgentOpinion, CandidateAssessment, GenerationInput, GenerationResult
+from src.tcg.runtime import Runtime
+from src.tcg.schemas import AgentOpinion, CandidateAssessment, GenerationInput, GenerationResult
 
 from .analyst import analyze
 from .coverage import review_coverage
