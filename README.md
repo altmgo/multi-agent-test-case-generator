@@ -70,13 +70,13 @@ e `test cases/*.md` por requisito. A execução registra a configuração em
 A CLI gera casos com Gemini ou Groq. Não executa os casos, não calcula métricas
 nem cria arquivos de avaliação ou resultados.
 
-## evalute · Evaluate Results
+## evaluate · Evaluate Results
 
 Depois de gerar os casos, informe o diretório de uma execução do TCG
 (o que contém `configs.md`) e o modelo de embeddings:
 
 ```bash
-evalute --results-dir output/AAAA-MM-DD_HH-MM-SS \
+evaluate --results-dir output/AAAA-MM-DD_HH-MM-SS \
   --embedding-model gemini-embedding-2
 ```
 
@@ -95,7 +95,7 @@ esperas e retentativas. Se o provedor informar cota diária esgotada, pedir
 uma espera superior a 60 segundos em um HTTP 429 ou continuar devolvendo 429
 até o fim das retentativas, o avaliador grava uma comparação parcial.
 
-O `evalute` lê os casos finais do TCG e compara com o gabarito por
+O `evaluate` lê os casos finais do TCG e compara com o gabarito por
 similaridade cosseno, com limiar 0,70 e pareamento um a um. Grava
 `results.json`, `results.csv` e `semantic_matches.json` em cada unidade
 e `comparison.json` na raiz da execução. Os relatórios incluem precisão,

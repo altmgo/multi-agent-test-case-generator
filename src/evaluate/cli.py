@@ -78,7 +78,7 @@ def _run(options: argparse.Namespace) -> int:
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(prog="evalute", description=__doc__)
+    parser = argparse.ArgumentParser(prog="evaluate", description=__doc__)
     parser.add_argument("--results-dir", type=Path, required=True, help="One TCG run directory containing configs.md.")
     parser.add_argument("--embedding-model", choices=EMBEDDING_MODELS, required=True)
     parser.add_argument("--data-dir", type=Path, default=Path("data/normalized"), help="Normalized datasets with references.")
@@ -86,7 +86,7 @@ def main(argv: list[str] | None = None) -> int:
     try:
         return _run(options)
     except (OSError, ValueError, KeyError, TypeError) as error:
-        print(f"evalute: {error}", file=sys.stderr)
+        print(f"evaluate: {error}", file=sys.stderr)
         return 1
     except KeyboardInterrupt:
         return 130
