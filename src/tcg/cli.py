@@ -9,9 +9,9 @@ from pathlib import Path
 
 from dotenv import dotenv_values
 
-from src.ghl import GHLFailure, generate_ghl
-from src.multiagent import MultiagentFailure, run_multiagent
-from src.one_shot import generate_one_shot
+from ghl import GHLFailure, generate_ghl
+from multiagent import MultiagentFailure, run_multiagent
+from one_shot import generate_one_shot
 
 from .data import DATASETS, select_units
 from .output import RUN_TIMEZONE, reserve_run, save_unit, write_text
@@ -46,7 +46,7 @@ def _parser() -> argparse.ArgumentParser:
                      help="Optional Multiagent stages. Pass without names to disable them.")
     run.add_argument("--output-mode", choices=OUTPUT_MODES, default="batch",
                      help="Output scope for GHL and Multiagent. One-shot uses batch.")
-    run.add_argument("--data-dir", type=Path, help="Normalized datasets. Defaults to data/normalized or v2/data/normalized.")
+    run.add_argument("--data-dir", type=Path, default=Path("data/normalized"), help="Normalized datasets.")
     run.add_argument("--output-dir", "--results-dir", type=Path, default=Path("output"))
     return parser
 
@@ -172,14 +172,8 @@ def main(argv: list[str] | None = None) -> int:
     options.solutions = list(dict.fromkeys(options.solutions))
     try:
         agents = _agents(options)
-        local_data = Path("data/normalized")
-        v2_data = Path("v2") / local_data
-        from_repository_root = v2_data.is_dir()
-        default_data = v2_data if from_repository_root and not local_data.is_dir() else local_data
-        units = select_units(options.data_dir or default_data, options.units, options.datasets)
+        units = select_units(options.data_dir, options.units, options.datasets)
         dotenv_path = Path(".env")
-        if from_repository_root and not dotenv_path.is_file():
-            dotenv_path = Path("v2") / dotenv_path
         variable = credential_variable(options.model)
         api_key = (dotenv_values(dotenv_path, interpolate=False).get(variable) or "").strip()
         if not api_key:

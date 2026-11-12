@@ -1,6 +1,6 @@
 """Compare valid candidates against the same accepted state and control scope."""
 
-from src.tcg.schemas import CandidateAssessment
+from tcg.schemas import CandidateAssessment
 
 from .state import (
     Attempt,

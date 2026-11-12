@@ -1,6 +1,6 @@
 """Critique scenario quality using a common blocker rubric."""
 
-from src.tcg.schemas import AgentOpinion, CandidateAssessment
+from tcg.schemas import AgentOpinion, CandidateAssessment
 
 from .selection import REVIEW_RUBRIC
 from .state import ControlOutput, StageRunner

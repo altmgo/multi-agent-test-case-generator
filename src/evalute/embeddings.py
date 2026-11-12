@@ -18,8 +18,8 @@ from google import genai
 from google.genai import errors, types
 from numpy.typing import NDArray
 
-from src.tcg.runtime import MAX_GENERATION_RETRIES, MAX_RETRY_WAIT_SECONDS, sum_usage
-from src.tcg.schemas import UsageRecord
+from tcg.runtime import MAX_GENERATION_RETRIES, MAX_RETRY_WAIT_SECONDS, sum_usage
+from tcg.schemas import UsageRecord
 
 EMBEDDING_MODEL = "gemini-embedding-2"
 EMBEDDING_MODELS = (EMBEDDING_MODEL, "gemini-embedding-001")

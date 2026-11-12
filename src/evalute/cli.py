@@ -6,8 +6,8 @@ from pathlib import Path
 
 from dotenv import dotenv_values
 
-from src.tcg.output import write_json
-from src.tcg.schemas import UsageRecord
+from tcg.output import write_json
+from tcg.schemas import UsageRecord
 
 from .embeddings import EMBEDDING_MODELS, EmbeddingError, EmbeddingQuotaStop, GeminiEmbedder
 from .matching import SIMILARITY_THRESHOLD

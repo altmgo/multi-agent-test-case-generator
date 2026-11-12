@@ -5,7 +5,7 @@ from collections.abc import Iterable, Mapping
 import numpy as np
 from pydantic import BaseModel, NonNegativeInt
 
-from src.tcg.schemas import GeneratedCase, UsageRecord
+from tcg.schemas import GeneratedCase, UsageRecord
 
 from .embeddings import Embedder, canonical_text, vector_matrix
 from .matching import match

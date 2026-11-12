@@ -1,7 +1,7 @@
-# Ferramentas de pesquisa · v2
+# Ferramentas de pesquisa
 
 As ferramentas usam os JSONs de `data/normalized/` que acompanham o repositório.
-Rode os comandos abaixo a partir de `v2/` com Python 3.11 ou superior.
+Rode os comandos abaixo a partir da raiz do repositório com Python 3.11 ou superior.
 
 ```bash
 python -m venv .venv
@@ -9,7 +9,10 @@ source .venv/bin/activate
 python -m pip install -e .
 ```
 
-Crie `v2/.env` e defina a chave do provedor escolhido. A CLI lê o arquivo
+Se o terminal estava com o ambiente ativo antes de mover o projeto,
+abra um terminal novo antes de ativar a `.venv` da raiz.
+
+Crie `.env` e defina a chave do provedor escolhido. A CLI lê o arquivo
 no diretório atual e o Git ignora o arquivo.
 
 ## tcg · Test Case Generator
@@ -49,9 +52,7 @@ as saídas já gravadas. A CLI mostra a unidade, a etapa, o erro, o tempo de
 espera e o resultado da retentativa. Retentativas podem consumir tokens.
 
 Omita `--units` para gerar a partir de todos os JSONs elegíveis de
-`data/normalized/`. Ao rodar da raiz do repositório, a CLI também procura
-os dados em `v2/data/normalized/` e usa `v2/.env` se a raiz não tiver `.env`.
-Os manifestos ficam fora da geração. Use o nome da unidade com `.json`,
+`data/normalized/`. Os manifestos ficam fora da geração. Use o nome da unidade com `.json`,
 como `firefox_bookmarks.json`. A CLI extrai os requisitos de cada arquivo e ignora
 os casos de referência, inclusive na etapa de cobertura do Multiagent.
 

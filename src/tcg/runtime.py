@@ -45,7 +45,7 @@ from pydantic_ai.providers.google import GoogleProvider
 from pydantic_ai.providers.groq import GroqProvider
 from pydantic_ai.settings import ModelSettings
 
-from src.tcg.schemas import GenerationInput, UsageRecord
+from tcg.schemas import GenerationInput, UsageRecord
 
 T = TypeVar("T")
 

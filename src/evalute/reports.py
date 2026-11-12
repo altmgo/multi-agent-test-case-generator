@@ -4,8 +4,8 @@ import csv
 from io import StringIO
 from pathlib import Path
 
-from src.tcg.output import write_json, write_text
-from src.tcg.schemas import UsageRecord
+from tcg.output import write_json, write_text
+from tcg.schemas import UsageRecord
 
 from .matching import SIMILARITY_THRESHOLD
 from .models import EvaluationResult

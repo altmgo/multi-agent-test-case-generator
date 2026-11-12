@@ -5,8 +5,8 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
-from src.tcg.output import _id_component, _markdown_inline
-from src.tcg.schemas import GeneratedCase, UsageRecord, generation_input, validate_cases
+from tcg.output import _id_component, _markdown_inline
+from tcg.schemas import GeneratedCase, UsageRecord, generation_input, validate_cases
 
 from .models import EvaluationUnit
 
