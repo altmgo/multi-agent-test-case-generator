@@ -1,0 +1,3 @@
+# e2edev\_bench\_59-R-6
+
+Upon completion of the quiz, the system must display a 'Play Again' button with the attribute data-testid set to 'play-again-button'. When this button is clicked, the system must reload the page, which should reset the quiz to the first question and reset the user's score to zero. The first question, 'Which language runs in a web browser?', must be displayed in the element with data-testid 'question'. The answer options should be displayed as 'Java', 'C', 'Python', and 'JavaScript' in the elements with data-testid 'answer-a-text', 'answer-b-text', 'answer-c-text', and 'answer-d-text' respectively. The page reload should ensure that no previous selections or scores are retained, effectively starting a new quiz session.

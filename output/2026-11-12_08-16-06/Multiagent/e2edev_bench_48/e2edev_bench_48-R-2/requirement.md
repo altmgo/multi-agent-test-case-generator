@@ -1,0 +1,3 @@
+# e2edev\_bench\_48-R-2
+
+When the user interacts with the car selection section on the EasyRent page, specifically by clicking the 'Choose SUV' button identified by the data-testid 'choose-suv-button', the system must update the 'Car Type' input field, identified by the data-testid 'car-type', within the booking form to display 'SUV'. Additionally, the system should clear any existing value in the 'Total Price' input field, identified by the data-testid 'total-price'. This behavior should occur regardless of any prior car selection, ensuring that the 'Total Price' field is reset to an empty state upon each new car selection.

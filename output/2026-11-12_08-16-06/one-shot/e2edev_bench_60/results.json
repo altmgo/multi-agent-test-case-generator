@@ -1,0 +1,339 @@
+{
+  "schema_version": 1,
+  "solution": "one-shot",
+  "unit_id": "e2edev_bench_60",
+  "parent_id": null,
+  "status": "failed",
+  "failure": {
+    "stage": "evaluation",
+    "error_type": "EmbeddingQuotaStop"
+  },
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "e2edev_bench_60-R-1",
+      "text": "The Exchange Rate Calculator web application must allow users to select currencies and input amounts to calculate exchange rates. Specifically, when a user selects a currency from the 'currency-one' dropdown (identified by data-testid 'currency-one'), the application must fetch the latest exchange rate for the selected currency using an external API. The exchange rate should be displayed in the element with data-testid 'exchange-rate', formatted as '1 [currency_one] = [currentRate] [currency_two]'. Additionally, the converted amount should be calculated based on the input value in the 'amount-one' field (data-testid 'amount-one') and displayed in the 'amount-two' field (data-testid 'amount-two'), rounded to two decimal places. The application must handle changes in both currency dropdowns and input fields, updating the exchange rate and converted amount dynamically. Furthermore, when the 'swap' button (data-testid 'swap-button') is clicked, the currencies in the dropdowns should be swapped, and the exchange rate and converted amount recalculated accordingly.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_60/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_60-R-2",
+      "text": "The Exchange Rate Calculator must dynamically update the converted amount in the 'amount-two' field whenever the user inputs a value in the 'amount-one' field. This process involves fetching the current exchange rate from an external API based on the selected currencies in the 'currency-one' and 'currency-two' fields. The 'amount-one' field is identified by the data-testid 'amount-one', and the 'amount-two' field is identified by the data-testid 'amount-two'. The system should handle normal input values as well as edge cases, such as very large numbers, ensuring accurate conversion and display of the result. The conversion result should be displayed with two decimal precision in the 'amount-two' field.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_60/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_60-R-3",
+      "text": "When a user selects a currency from the 'currency-two' dropdown (identified by data-testid 'currency-two'), the system must perform the following actions: 1) Fetch the latest exchange rate for the selected currency from the API using the current value of 'currency-one' (identified by data-testid 'currency-one') as the base currency. 2) Update the 'exchange-rate' display (identified by data-testid 'exchange-rate') to show the exchange rate in the format '1 [currency-one] = [currentRate] [currency-two]'. 3) Calculate the converted amount using the value from 'amount-one' input (identified by data-testid 'amount-one') and the fetched exchange rate, then update the 'amount-two' input (identified by data-testid 'amount-two') with the calculated value rounded to two decimal places. This functionality should handle both normal scenarios where the selected currency differs from the initial selection and edge cases where the selected currency remains the same.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_60/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_60-R-5",
+      "text": "The web application must allow users to swap the selected currencies between the dropdowns identified by data-testid 'currency-one' and 'currency-two' when the 'swap' button with data-testid 'swap-button' is clicked. Upon clicking, the system should exchange the values of the two currency selectors, trigger a recalculation of the exchange rate using the latest data from the API, and update the DOM element with data-testid 'exchange-rate' to display the new rate in the format '1 [currency-one] = [rate] [currency-two]'. Additionally, the input field with data-testid 'amount-two' should be updated to reflect the converted amount based on the new exchange rate and the value entered in the input field with data-testid 'amount-one'. The system must handle edge cases, such as when the 'amount-one' input is zero, ensuring the 'amount-two' input displays '0.00'.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_60/requirment_with_tests.json#/finegrained_rewith_test/5/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_60-R-6",
+      "text": "The Exchange Rate Calculator web application must allow users to select two currencies from dropdown menus with data-testid attributes 'currency-one' and 'currency-two', and input an amount using an input field with data-testid 'amount-one'. Upon selection or input change, the system must fetch the latest exchange rate from an external API and display it in the format '1 [currency-one] = [rate] [currency-two]' within the element with data-testid 'exchange-rate'. The calculated equivalent amount should be displayed in the input field with data-testid 'amount-two'. Users can swap the selected currencies using a button with data-testid 'swap-button', which should update the exchange rate and equivalent amount accordingly. The system must handle edge cases, such as when both selected currencies are the same, by displaying '1 [currency-one] = 1 [currency-two]'.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_60/requirment_with_tests.json#/finegrained_rewith_test/6/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_60-R-7",
+      "text": "Upon loading the Exchange Rate Calculator webpage, the system must automatically initialize by fetching the current exchange rate between the default selected currencies, USD and EUR. The UI should display the exchange rate in the element with data-testid 'exchange-rate', formatted as '1 USD = [rate] EUR'. Additionally, the converted amount should be calculated based on the default input value of 1 in the element with data-testid 'amount-one', and displayed in the element with data-testid 'amount-two', rounded to two decimal places. The currency dropdowns should default to USD for the element with data-testid 'currency-one' and EUR for the element with data-testid 'currency-two'.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_60/requirment_with_tests.json#/finegrained_rewith_test/7/requirement/description"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Default Initialization on Page Load",
+      "description": "Verify that upon loading the webpage, default currencies USD and EUR are selected, the exchange rate is fetched and displayed correctly, and amount-two reflects the conversion of default amount 1.",
+      "requirement_ids": [
+        "e2edev_bench_60-R-7"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Select Currency from 'currency-one' Dropdown (Normal)",
+      "description": "Verify that selecting a new currency in 'currency-one' fetches the latest exchange rate, updates the exchange-rate display with the correct format, and dynamically calculates and updates 'amount-two' rounded to two decimal places.",
+      "requirement_ids": [
+        "e2edev_bench_60-R-1"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Dynamic Update of Converted Amount via 'amount-one' Input",
+      "description": "Verify that entering values (including normal values and very large numbers) in 'amount-one' dynamically updates 'amount-two' with accurate conversion results rounded to two decimal places.",
+      "requirement_ids": [
+        "e2edev_bench_60-R-2"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Select Currency from 'currency-two' Dropdown (Normal)",
+      "description": "Verify that selecting a new currency in 'currency-two' fetches the latest rate using 'currency-one' as base, updates the exchange-rate display format, and calculates 'amount-two' correctly.",
+      "requirement_ids": [
+        "e2edev_bench_60-R-3"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Select Same Currency in 'currency-two' Dropdown (Edge Case)",
+      "description": "Verify that selecting the same currency in 'currency-two' as 'currency-one' handles the edge case correctly by updating the exchange rate and amount calculations accordingly.",
+      "requirement_ids": [
+        "e2edev_bench_60-R-3"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Swap Currencies Functionality (Normal)",
+      "description": "Verify that clicking the 'swap-button' exchanges the values of the two currency dropdowns, triggers recalculation, updates the exchange rate display, and updates 'amount-two' based on 'amount-one'.",
+      "requirement_ids": [
+        "e2edev_bench_60-R-5",
+        "e2edev_bench_60-R-6"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Swap Currencies with Zero Amount-One (Edge Case)",
+      "description": "Verify that when 'amount-one' is set to zero, clicking the 'swap-button' swaps the currencies and ensures 'amount-two' displays '0.00'.",
+      "requirement_ids": [
+        "e2edev_bench_60-R-5"
+      ]
+    },
+    {
+      "id": "G-008",
+      "title": "Select Identical Currencies in Both Dropdowns (Edge Case)",
+      "description": "Verify that when both 'currency-one' and 'currency-two' are selected to be the same currency, the system handles the edge case by displaying '1 [currency-one] = 1 [currency-two]' in the exchange rate element.",
+      "requirement_ids": [
+        "e2edev_bench_60-R-6"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_60-R-1-TC-1",
+      "title": "[Normal] User selects a currency from 'currency-one' dropdown",
+      "description": "Feature: Fetch and display the latest exchange rate when a currency is selected from the 'currency-one' dropdown\n  The system must fetch the latest exchange rate for the selected currency and update the exchange rate display and converted amount.\n\n\nScenario: [Normal] User selects a currency from 'currency-one' dropdown\n    Given the Exchange Rate Calculator page is loaded\n    And the 'currency-one' dropdown with data-testid 'currency-one' is visible\n    And the 'currency-two' dropdown with data-testid 'currency-two' is visible\n    And the 'amount-one' input with data-testid 'amount-one' has a value of '1'\n    When the user selects 'AUD' from the 'currency-one' dropdown\n    Then the system fetches the latest exchange rate for 'AUD'\n    And the exchange rate display with data-testid 'exchange-rate' shows \"1 AUD = [currentRate] EUR\"\n    And the 'amount-two' input with data-testid 'amount-two' is updated to \"[convertedAmount]\"",
+      "requirement_ids": [
+        "e2edev_bench_60-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_60/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_60-R-1-TC-2",
+      "title": "[Edge] User selects the same currency from 'currency-one' dropdown",
+      "description": "Feature: Fetch and display the latest exchange rate when a currency is selected from the 'currency-one' dropdown\n  The system must fetch the latest exchange rate for the selected currency and update the exchange rate display and converted amount.\n\n\nScenario: [Edge] User selects the same currency from 'currency-one' dropdown\n    Given the Exchange Rate Calculator page is loaded\n    And the 'currency-one' dropdown with data-testid 'currency-one' is set to 'USD'\n    And the 'currency-two' dropdown with data-testid 'currency-two' is set to 'EUR'\n    And the 'amount-one' input with data-testid 'amount-one' has a value of '1'\n    When the user selects 'USD' again from the 'currency-one' dropdown\n    Then the system fetches the latest exchange rate for 'USD'\n    And the exchange rate display with data-testid 'exchange-rate' shows \"1 USD = [currentRate] EUR\"\n    And the 'amount-two' input with data-testid 'amount-two' is updated to \"[convertedAmount]\"",
+      "requirement_ids": [
+        "e2edev_bench_60-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_60/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_60-R-2-TC-1",
+      "title": "[Normal] User inputs a valid amount in 'amount-one' field",
+      "description": "Feature: REQ-002 - Recalculate converted amount when user inputs a value in the 'amount-one' field\n  The system must recalculate the converted amount using the current exchange rate and update the 'amount-two' field when the user inputs a value in the 'amount-one' field.\n\n\n  Scenario: [Normal] User inputs a valid amount in 'amount-one' field\n    Given the Exchange Rate Calculator page is loaded\n    And the 'amount-one' field with data-testid 'amount-one' is set to '1'\n    And the 'currency-one' field with data-testid 'currency-one' is set to 'USD'\n    And the 'currency-two' field with data-testid 'currency-two' is set to 'EUR'\n    When the user inputs '100' into the 'amount-one' field with data-testid 'amount-one'\n    Then the system should fetch the current exchange rate for 'USD' to 'EUR'\n    And the 'amount-two' field with data-testid 'amount-two' should be updated with the converted amount\n",
+      "requirement_ids": [
+        "e2edev_bench_60-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_60/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_60-R-2-TC-2",
+      "title": "[Edge] User inputs a very large amount in 'amount-one' field",
+      "description": "Feature: REQ-002 - Recalculate converted amount when user inputs a value in the 'amount-one' field\n  The system must recalculate the converted amount using the current exchange rate and update the 'amount-two' field when the user inputs a value in the 'amount-one' field.\n\n\n  Scenario: [Edge] User inputs a very large amount in 'amount-one' field\n    Given the Exchange Rate Calculator page is loaded\n    And the 'amount-one' field with data-testid 'amount-one' is set to '1'\n    And the 'currency-one' field with data-testid 'currency-one' is set to 'USD'\n    And the 'currency-two' field with data-testid 'currency-two' is set to 'EUR'\n    When the user inputs '1000000' into the 'amount-one' field with data-testid 'amount-one'\n    Then the system should fetch the current exchange rate for 'USD' to 'EUR'\n    And the 'amount-two' field with data-testid 'amount-two' should be updated with the converted amount\n",
+      "requirement_ids": [
+        "e2edev_bench_60-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_60/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_60-R-3-TC-1",
+      "title": "[Normal] User selects a different currency from 'currency-two' dropdown",
+      "description": "Feature: REQ-003 - Update exchange rate and converted amount when selecting a currency from 'currency-two' dropdown\n  The system must fetch the latest exchange rate for the selected currency in 'currency-two' and update the exchange rate display and converted amount.\n\n\n  Scenario: [Normal] User selects a different currency from 'currency-two' dropdown\n    Given the webpage is loaded with 'currency-one' set to \"USD\" and 'currency-two' set to \"EUR\"\n    And the 'amount-one' input has a value of \"1\"\n    When the user selects \"GBP\" from the 'currency-two' dropdown with data-testid \"currency-two\"\n    Then the system fetches the latest exchange rate for \"GBP\" from the API\n    And the 'exchange-rate' display with data-testid \"exchange-rate\" shows \"1 USD = [currentRate] GBP\"\n    And the 'amount-two' input with data-testid \"amount-two\" is updated to \"[convertedAmount]\"\n",
+      "requirement_ids": [
+        "e2edev_bench_60-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_60/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_60-R-3-TC-2",
+      "title": "[Edge] User selects the same currency from 'currency-two' dropdown",
+      "description": "Feature: REQ-003 - Update exchange rate and converted amount when selecting a currency from 'currency-two' dropdown\n  The system must fetch the latest exchange rate for the selected currency in 'currency-two' and update the exchange rate display and converted amount.\n\n\n  Scenario: [Edge] User selects the same currency from 'currency-two' dropdown\n    Given the webpage is loaded with 'currency-one' set to \"USD\" and 'currency-two' set to \"EUR\"\n    And the 'amount-one' input has a value of \"1\"\n    When the user selects \"EUR\" from the 'currency-two' dropdown with data-testid \"currency-two\"\n    Then the system fetches the latest exchange rate for \"EUR\" from the API\n    And the 'exchange-rate' display with data-testid \"exchange-rate\" shows \"1 USD = [currentRate] EUR\"\n    And the 'amount-two' input with data-testid \"amount-two\" is updated to \"[convertedAmount]\"\n",
+      "requirement_ids": [
+        "e2edev_bench_60-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_60/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_60-R-5-TC-1",
+      "title": "[Normal] Swap currencies and update exchange rate",
+      "description": "Feature: Swap Currencies Functionality\n  The system must swap the selected currencies between 'currency-one' and 'currency-two', recalculate the exchange rate, and update the display and converted amounts when the user clicks the 'swap' button.\n\n\n  Scenario: [Normal] Swap currencies and update exchange rate\n    Given the webpage is loaded with the Exchange Rate Calculator\n    And the 'currency-one' dropdown with data-testid 'currency-one' is set to 'USD'\n    And the 'currency-two' dropdown with data-testid 'currency-two' is set to 'EUR'\n    And the 'amount-one' input with data-testid 'amount-one' has a value of '1'\n    When the user clicks the 'swap' button with data-testid 'swap-button'\n    Then the 'currency-one' dropdown should be set to 'EUR'\n    And the 'currency-two' dropdown should be set to 'USD'\n    And the exchange rate display with data-testid 'exchange-rate' should show the updated rate for 'EUR' to 'USD'\n    And the 'amount-two' input with data-testid 'amount-two' should be updated with the converted amount\n",
+      "requirement_ids": [
+        "e2edev_bench_60-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_60/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_60-R-5-TC-2",
+      "title": "[Edge] Swap currencies with zero amount",
+      "description": "Feature: Swap Currencies Functionality\n  The system must swap the selected currencies between 'currency-one' and 'currency-two', recalculate the exchange rate, and update the display and converted amounts when the user clicks the 'swap' button.\n\n\nScenario: [Edge] Swap currencies with zero amount\n    Given the webpage is loaded with the Exchange Rate Calculator\n    And the 'currency-one' dropdown with data-testid 'currency-one' is set to 'USD'\n    And the 'currency-two' dropdown with data-testid 'currency-two' is set to 'EUR'\n    And the 'amount-one' input with data-testid 'amount-one' has a value of '0'\n    When the user clicks the 'swap' button with data-testid 'swap-button'\n    Then the 'currency-one' dropdown should be set to 'EUR'\n    And the 'currency-two' dropdown should be set to 'USD'\n    And the exchange rate display with data-testid 'exchange-rate' should show the updated rate for 'EUR' to 'USD'\n    And the 'amount-two' input with data-testid 'amount-two' should remain '0.00'",
+      "requirement_ids": [
+        "e2edev_bench_60-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_60/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_60-R-6-TC-1",
+      "title": "[Normal] Display exchange rate for default currencies",
+      "description": "Feature: Display Current Exchange Rate\n  The system must display the current exchange rate in the format '1 [currency-one] = [rate] [currency-two]' in the 'exchange-rate' element.\n\n\n  Scenario: [Normal] Display exchange rate for default currencies\n    Given the user is on the Exchange Rate Calculator page\n    And the currency-one dropdown with data-testid \"currency-one\" is set to \"USD\"\n    And the currency-two dropdown with data-testid \"currency-two\" is set to \"EUR\"\n    When the system fetches the exchange rate for \"USD\" to \"EUR\"\n    Then the exchange-rate element with data-testid \"exchange-rate\" should display \"1 USD = [rate] EUR\"\n",
+      "requirement_ids": [
+        "e2edev_bench_60-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_60/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_60-R-6-TC-2",
+      "title": "[Normal] Display exchange rate after changing currency-one",
+      "description": "Feature: Display Current Exchange Rate\n  The system must display the current exchange rate in the format '1 [currency-one] = [rate] [currency-two]' in the 'exchange-rate' element.\n\n\n  Scenario: [Normal] Display exchange rate after changing currency-one\n    Given the user is on the Exchange Rate Calculator page\n    And the currency-one dropdown with data-testid \"currency-one\" is set to \"USD\"\n    And the currency-two dropdown with data-testid \"currency-two\" is set to \"EUR\"\n    When the user selects \"GBP\" from the currency-one dropdown\n    And the system fetches the exchange rate for \"GBP\" to \"EUR\"\n    Then the exchange-rate element with data-testid \"exchange-rate\" should display \"1 GBP = [rate] EUR\"\n",
+      "requirement_ids": [
+        "e2edev_bench_60-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_60/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_60-R-6-TC-3",
+      "title": "[Normal] Display exchange rate after changing currency-two",
+      "description": "Feature: Display Current Exchange Rate\n  The system must display the current exchange rate in the format '1 [currency-one] = [rate] [currency-two]' in the 'exchange-rate' element.\n\n\n  Scenario: [Normal] Display exchange rate after changing currency-two\n    Given the user is on the Exchange Rate Calculator page\n    And the currency-one dropdown with data-testid \"currency-one\" is set to \"USD\"\n    And the currency-two dropdown with data-testid \"currency-two\" is set to \"EUR\"\n    When the user selects \"JPY\" from the currency-two dropdown\n    And the system fetches the exchange rate for \"USD\" to \"JPY\"\n    Then the exchange-rate element with data-testid \"exchange-rate\" should display \"1 USD = [rate] JPY\"\n",
+      "requirement_ids": [
+        "e2edev_bench_60-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_60/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_60-R-6-TC-4",
+      "title": "[Edge] Display exchange rate for the same currency",
+      "description": "Feature: Display Current Exchange Rate\n  The system must display the current exchange rate in the format '1 [currency-one] = [rate] [currency-two]' in the 'exchange-rate' element.\n\n\n  Scenario: [Edge] Display exchange rate for the same currency\n    Given the user is on the Exchange Rate Calculator page\n    And the currency-one dropdown with data-testid \"currency-one\" is set to \"USD\"\n    And the currency-two dropdown with data-testid \"currency-two\" is set to \"USD\"\n    When the system fetches the exchange rate for \"USD\" to \"USD\"\n    Then the exchange-rate element with data-testid \"exchange-rate\" should display \"1 USD = 1 USD\"\n",
+      "requirement_ids": [
+        "e2edev_bench_60-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_60/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_60-R-7-TC-1",
+      "title": "[Normal] Application initializes with default currencies and displays exchange rate",
+      "description": "Feature: Initialize Exchange Rate Calculator with Default Currencies\n  The system must initialize the application by fetching the exchange rate for the default selected currencies (USD and EUR) and displaying the rate and converted amount.\n\n\nScenario: [Normal] Application initializes with default currencies and displays exchange rate\n    Given the Exchange Rate Calculator webpage is loaded\n    When the application initializes\n    Then the currency one dropdown with data-testid \"currency-one\" should have the value \"USD\"\n    And the currency two dropdown with data-testid \"currency-two\" should have the value \"EUR\"",
+      "requirement_ids": [
+        "e2edev_bench_60-R-7"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_60/requirment_with_tests.json#/finegrained_rewith_test/7/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": null,
+  "generation": {
+    "selected_techniques": [],
+    "technique_rationales": {},
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "embedding_requests": 1
+  },
+  "links": {
+    "requirements": {
+      "e2edev_bench_60-R-1": "e2edev_bench_60-R-1/requirement.md",
+      "e2edev_bench_60-R-2": "e2edev_bench_60-R-2/requirement.md",
+      "e2edev_bench_60-R-3": "e2edev_bench_60-R-3/requirement.md",
+      "e2edev_bench_60-R-5": "e2edev_bench_60-R-5/requirement.md",
+      "e2edev_bench_60-R-6": "e2edev_bench_60-R-6/requirement.md",
+      "e2edev_bench_60-R-7": "e2edev_bench_60-R-7/requirement.md"
+    },
+    "cases": {
+      "G-002": {
+        "e2edev_bench_60-R-1": "e2edev_bench_60-R-1/test cases/2_Select_Currency_from_currency-one_Dropdown_Norma.md"
+      },
+      "G-003": {
+        "e2edev_bench_60-R-2": "e2edev_bench_60-R-2/test cases/3_Dynamic_Update_of_Converted_Amount_via_amount-on.md"
+      },
+      "G-004": {
+        "e2edev_bench_60-R-3": "e2edev_bench_60-R-3/test cases/4_Select_Currency_from_currency-two_Dropdown_Norma.md"
+      },
+      "G-005": {
+        "e2edev_bench_60-R-3": "e2edev_bench_60-R-3/test cases/5_Select_Same_Currency_in_currency-two_Dropdown_Ed.md"
+      },
+      "G-006": {
+        "e2edev_bench_60-R-5": "e2edev_bench_60-R-5/test cases/6_Swap_Currencies_Functionality_Normal.md",
+        "e2edev_bench_60-R-6": "e2edev_bench_60-R-6/test cases/6_Swap_Currencies_Functionality_Normal.md"
+      },
+      "G-007": {
+        "e2edev_bench_60-R-5": "e2edev_bench_60-R-5/test cases/7_Swap_Currencies_with_Zero_Amount-One_Edge_Case.md"
+      },
+      "G-008": {
+        "e2edev_bench_60-R-6": "e2edev_bench_60-R-6/test cases/8_Select_Identical_Currencies_in_Both_Dropdowns_Ed.md"
+      },
+      "G-001": {
+        "e2edev_bench_60-R-7": "e2edev_bench_60-R-7/test cases/1_Default_Initialization_on_Page_Load.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

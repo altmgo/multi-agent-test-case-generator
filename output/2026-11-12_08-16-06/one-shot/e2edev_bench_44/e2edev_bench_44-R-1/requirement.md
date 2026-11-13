@@ -1,0 +1,3 @@
+# e2edev\_bench\_44-R-1
+
+The calculator application must allow users to interact with number buttons (0-9) such that when a user clicks any number button, the corresponding number is appended to the display screen. The display screen is identified by the attribute data-testid='display'. The application should handle sequences of number button clicks by appending each number in the order clicked. If the display is cleared using the button with data-testid='clear-button', subsequent number button clicks should start a new sequence on the display. The system should support clicking all number buttons in sequence, displaying '0123456789'. The application must ensure that the display accurately reflects the user's input sequence, even after clearing the display.

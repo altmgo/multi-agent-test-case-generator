@@ -1,0 +1,3 @@
+# e2edev\_bench\_27-R-3
+
+Upon clicking a meal element within the meals container (identified by data-testid 'meals-container'), the application must retrieve detailed information about the selected meal using its data-mealid attribute. The details, including the meal's name, image, category, area, ingredients, and instructions, must be displayed in the single meal container (identified by data-testid 'single-meal-container'). The page should then smoothly scroll to bring the single meal container into view. This interaction is triggered by a click event on any element with the class 'meal-info' within the meals container.

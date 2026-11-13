@@ -1,0 +1,376 @@
+{
+  "schema_version": 1,
+  "solution": "one-shot",
+  "unit_id": "e2edev_bench_32",
+  "parent_id": null,
+  "status": "evaluated",
+  "failure": null,
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "e2edev_bench_32-R-2",
+      "text": "The SM-Task Manager application allows users to add tasks through a user-friendly interface. Users can input a task description into the text field identified by the data-testid 'task-input'. Upon entering a valid task description (non-empty and trimmed of leading/trailing spaces), users can either press the 'Enter' key or click the 'Add Task' button, identified by the data-testid 'add-task-btn', to add the task to the task list. The task list is displayed as an unordered list with the data-testid 'task-list'. Each task entry includes the task description, an input for expected completion time, and buttons for marking the task as completed or deleting it. After a task is successfully added, the input field is cleared, and the 'Clear All' button, identified by the data-testid 'clear-all-btn', becomes visible. If the task input is empty or consists solely of spaces, the task is not added, and the 'Clear All' button remains hidden if no tasks exist. The application ensures that the task list is dynamically updated with animations for new entries, and the 'Clear All' button's visibility is contingent on the presence of tasks in the list.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_32/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_32-R-3",
+      "text": "Users can add a task by pressing the 'Enter' key after entering text in the task input field. The task input field is identified by the data-testid 'task-input'. When the user presses the 'Enter' key, the system should trigger the 'Add Task' button click event. If the input contains only whitespace or is empty, no task should be added, and the input field should remain empty. If the input contains valid text, the task should be added to the task list identified by the data-testid 'task-list', with leading and trailing spaces trimmed. After adding the task, the input field should be cleared. The system should ensure that the task list is updated accordingly, and the 'Clear All' button, identified by the data-testid 'clear-all-btn', should be displayed if there are tasks in the list.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_32/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_32-R-4",
+      "text": "The SM-Task Manager web application allows users to manage tasks through a user-friendly interface. Each task entry in the task list includes a 'Completed' button, identifiable by the data-id 'complete-btn', which users can click to toggle the task's completion status. Upon clicking the 'Completed' button, the system visually updates the task by adding or removing the 'completed' class to the task's DOM element, providing immediate feedback on the task's status. This functionality supports toggling for individual tasks as well as multiple tasks simultaneously. The task list is dynamically updated to reflect these changes, ensuring users can efficiently manage their task completion statuses.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_32/requirment_with_tests.json#/finegrained_rewith_test/4/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_32-R-5",
+      "text": "The web application must allow users to delete individual tasks from the task list using a 'Delete' button associated with each task entry. The 'Delete' button must be identifiable by the class 'delete-btn' and should be located within each task's container in the task list, which is identified by the data-testid 'task-list'. Upon clicking the 'Delete' button, the system must remove the corresponding task from the DOM. If the task list becomes empty after deletion, the system must hide the 'Clear All' button, which is identified by the data-testid 'clear-all-btn'. The 'Clear All' button should only be visible when there is at least one task in the list. This functionality must handle normal cases where multiple tasks exist, as well as edge cases where the deleted task is the only task in the list.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_32/requirment_with_tests.json#/finegrained_rewith_test/5/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_32-R-6",
+      "text": "The SM-Task Manager application allows users to clear all tasks from the task list by interacting with the 'Clear All' button. When the user clicks the 'Clear All' button, identified by the data-testid 'clear-all-btn', the system will remove all tasks from the task list, which is identified by the data-testid 'task-list'. Additionally, the 'Clear All' button will be hidden from view after all tasks are cleared. This functionality is only applicable when there are tasks present in the list. The 'Clear All' button should be visible only when there is at least one task in the list, and it should be hidden when the list is empty, ensuring a clear and intuitive user experience.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_32/requirment_with_tests.json#/finegrained_rewith_test/6/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_32-R-7",
+      "text": "The task input field, identified by the data-testid 'task-input' and id 'task-input', must display the placeholder text 'Enter a new task...' when the 'SM-Task Manager' page is fully loaded. This placeholder guides users in entering new tasks. No user action is required for this placeholder to be visible; it should be present by default upon page load. The placeholder text should remain visible until the user begins typing in the input field.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_32/requirment_with_tests.json#/finegrained_rewith_test/7/requirement/description"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Add valid task using Add Task button",
+      "description": "Verify that entering a valid task description and clicking the Add Task button successfully adds the task, clears the input field, shows the Clear All button, and updates the task list.",
+      "requirement_ids": [
+        "e2edev_bench_32-R-2"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Attempt to add empty or whitespace-only task via button",
+      "description": "Verify that attempting to add a task with an empty string or only spaces does not add any task to the list and keeps the Clear All button hidden if no tasks exist.",
+      "requirement_ids": [
+        "e2edev_bench_32-R-2"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Add valid task using Enter key",
+      "description": "Verify that pressing the Enter key after entering valid text in the task input adds the trimmed task to the task list, clears the input, and displays the Clear All button.",
+      "requirement_ids": [
+        "e2edev_bench_32-R-3"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Attempt to add invalid task using Enter key",
+      "description": "Verify that pressing the Enter key when the input is empty or contains only whitespace does not add a task and leaves the input field empty.",
+      "requirement_ids": [
+        "e2edev_bench_32-R-3"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Toggle task completion status",
+      "description": "Verify that clicking the Completed button on a task entry toggles its completion status by adding or removing the 'completed' class on the task DOM element.",
+      "requirement_ids": [
+        "e2edev_bench_32-R-4"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Delete individual task and update Clear All button visibility",
+      "description": "Verify that clicking the Delete button removes the specified task from the DOM and hides the Clear All button if the task list becomes empty.",
+      "requirement_ids": [
+        "e2edev_bench_32-R-5"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Clear all tasks using Clear All button",
+      "description": "Verify that clicking the Clear All button removes all tasks from the task list and hides the button itself when tasks are present.",
+      "requirement_ids": [
+        "e2edev_bench_32-R-6"
+      ]
+    },
+    {
+      "id": "G-008",
+      "title": "Verify task input placeholder on page load",
+      "description": "Verify that the task input field displays the default placeholder text 'Enter a new task...' upon fully loading the page.",
+      "requirement_ids": [
+        "e2edev_bench_32-R-7"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_32-R-2-TC-1",
+      "title": "[Normal] Add a task successfully",
+      "description": "Feature: Task Addition Functionality\n  Users can add a task by clicking the 'Add Task' button. The task should be added to the task list, the input field should be cleared, and the 'Clear All' button should be displayed.\n\n\n  Scenario: [Normal] Add a task successfully\n    Given the SM-Task Manager page is loaded\n    And the task input field with data-testid \"task-input\" is empty\n    When the user enters \"Buy groceries\" into the task input field with data-testid \"task-input\"\n    And the user clicks the 'Add Task' button with data-testid \"add-task-btn\"\n    Then the task list with data-testid \"task-list\" should contain a task with the text \"Buy groceries\"\n    And the task input field with data-testid \"task-input\" should be empty\n    And the 'Clear All' button with data-testid \"clear-all-btn\" should be displayed\n",
+      "requirement_ids": [
+        "e2edev_bench_32-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_32/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_32-R-2-TC-2",
+      "title": "[Edge] Add a task with leading and trailing spaces",
+      "description": "Feature: Task Addition Functionality\n  Users can add a task by clicking the 'Add Task' button. The task should be added to the task list, the input field should be cleared, and the 'Clear All' button should be displayed.\n\n\n  Scenario: [Edge] Add a task with leading and trailing spaces\n    Given the SM-Task Manager page is loaded\n    And the task input field with data-testid \"task-input\" is empty\n    When the user enters \"   Call mom   \" into the task input field with data-testid \"task-input\"\n    And the user clicks the 'Add Task' button with data-testid \"add-task-btn\"\n    Then the task list with data-testid \"task-list\" should contain a task with the text \"Call mom\"\n    And the task input field with data-testid \"task-input\" should be empty\n    And the 'Clear All' button with data-testid \"clear-all-btn\" should be displayed\n",
+      "requirement_ids": [
+        "e2edev_bench_32-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_32/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_32-R-2-TC-3",
+      "title": "[Error] Attempt to add an empty task",
+      "description": "Feature: Task Addition Functionality\n  Users can add a task by clicking the 'Add Task' button. The task should be added to the task list, the input field should be cleared, and the 'Clear All' button should be displayed.\n\n\n  Scenario: [Error] Attempt to add an empty task\n    Given the SM-Task Manager page is loaded\n    And the task input field with data-testid \"task-input\" is empty\n    When the user clicks the 'Add Task' button with data-testid \"add-task-btn\"\n    Then the task list with data-testid \"task-list\" should remain empty\n    And the task input field with data-testid \"task-input\" should be empty\n    And the 'Clear All' button with data-testid \"clear-all-btn\" should not be displayed",
+      "requirement_ids": [
+        "e2edev_bench_32-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_32/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_32-R-3-TC-1",
+      "title": "[Edge] Add a task using the 'Enter' key with leading and trailing spaces",
+      "description": "Feature: REQ-003 - Add Task Using 'Enter' Key\n  Users can add a task by pressing the 'Enter' key after entering text in the task input field.\n\n\n  Scenario: [Edge] Add a task using the 'Enter' key with leading and trailing spaces\n    Given the SM-Task Manager page is loaded\n    And the task input field with data-testid \"task-input\" is empty\n    When the user enters \"   Finish homework   \" into the task input field with data-testid \"task-input\"\n    And presses the 'Enter' key\n    Then the task \"Finish homework\" should be added to the task list with data-testid \"task-list\"\n    And the task input field with data-testid \"task-input\" should be cleared\n",
+      "requirement_ids": [
+        "e2edev_bench_32-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_32/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_32-R-3-TC-2",
+      "title": "[Error] Attempt to add an empty task using the 'Enter' key",
+      "description": "Feature: REQ-003 - Add Task Using 'Enter' Key\n  Users can add a task by pressing the 'Enter' key after entering text in the task input field.\n\n\n  Scenario: [Error] Attempt to add an empty task using the 'Enter' key\n    Given the SM-Task Manager page is loaded\n    And the task input field with data-testid \"task-input\" is empty\n    When the user presses the 'Enter' key\n    Then no task should be added to the task list with data-testid \"task-list\"\n    And the task input field with data-testid \"task-input\" should remain empty",
+      "requirement_ids": [
+        "e2edev_bench_32-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_32/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_32-R-4-TC-1",
+      "title": "[Normal] Toggle task completion status",
+      "description": "Feature: Task Completion Toggle\n  Each task entry includes a 'Completed' button to toggle its completion status. Users can view tasks in the list and click the 'Completed' button on a task to change its visual completion status.\n\n\n  Scenario: [Normal] Toggle task completion status\n    Given the SM-Task Manager page is loaded\n    And the user enters \"Buy groceries\" into the task input field with data-testid \"task-input\"\n    And the user clicks the \"Add Task\" button with data-testid \"add-task-btn\"\n    When the user clicks the \"Completed\" button on the task \"Buy groceries\" with data-id \"complete-btn\"\n    Then the task \"Buy groceries\" should have the class \"completed\"\n",
+      "requirement_ids": [
+        "e2edev_bench_32-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_32/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_32-R-4-TC-2",
+      "title": "[Edge] Toggle completion status of multiple tasks",
+      "description": "Feature: Task Completion Toggle\n  Each task entry includes a 'Completed' button to toggle its completion status. Users can view tasks in the list and click the 'Completed' button on a task to change its visual completion status.\n\n\n  Scenario: [Edge] Toggle completion status of multiple tasks\n    Given the SM-Task Manager page is loaded\n    And the user enters \"Buy groceries\" into the task input field with data-testid \"task-input\"\n    And the user clicks the \"Add Task\" button with data-testid \"add-task-btn\"\n    And the user enters \"Walk the dog\" into the task input field with data-testid \"task-input\"\n    And the user clicks the \"Add Task\" button with data-testid \"add-task-btn\"\n    When the user clicks the \"Completed\" button on the task \"Buy groceries\" with data-id \"complete-btn\"\n    And the user clicks the \"Completed\" button on the task \"Walk the dog\" with data-id \"complete-btn\"\n    Then both tasks \"Buy groceries\" and \"Walk the dog\" should have the class \"completed\"\n",
+      "requirement_ids": [
+        "e2edev_bench_32-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_32/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_32-R-5-TC-1",
+      "title": "[Normal] User deletes a task from the list",
+      "description": "Feature: Task Deletion Functionality\n  The system allows users to delete individual tasks from the task list. Upon deletion, the system checks if the 'Clear All' button should be hidden when no tasks remain.\n\n\n  Scenario: [Normal] User deletes a task from the list\n    Given the SM-Task Manager page is loaded\n    And the user enters \"Buy groceries\" into the task input field with data-testid \"task-input\"\n    And the user clicks the \"Add Task\" button with data-testid \"add-task-btn\"\n    And the task \"Buy groceries\" is displayed in the task list with data-testid \"task-list\"\n    When the user clicks the \"Delete\" button for the task \"Buy groceries\"\n    Then the task \"Buy groceries\" should be removed from the task list\n    And the \"Clear All\" button with data-testid \"clear-all-btn\" should be hidden\n",
+      "requirement_ids": [
+        "e2edev_bench_32-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_32/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_32-R-5-TC-2",
+      "title": "[Edge] User deletes the only task in the list",
+      "description": "Feature: Task Deletion Functionality\n  The system allows users to delete individual tasks from the task list. Upon deletion, the system checks if the 'Clear All' button should be hidden when no tasks remain.\n\n\n  Scenario: [Edge] User deletes the only task in the list\n    Given the SM-Task Manager page is loaded\n    And the user enters \"Read a book\" into the task input field with data-testid \"task-input\"\n    And the user clicks the \"Add Task\" button with data-testid \"add-task-btn\"\n    And the task \"Read a book\" is displayed in the task list with data-testid \"task-list\"\n    When the user clicks the \"Delete\" button for the task \"Read a book\"\n    Then the task \"Read a book\" should be removed from the task list\n    And the \"Clear All\" button with data-testid \"clear-all-btn\" should be hidden\n",
+      "requirement_ids": [
+        "e2edev_bench_32-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_32/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_32-R-6-TC-1",
+      "title": "[Normal] Clear all tasks when tasks are present",
+      "description": "Feature: Clear All Tasks Functionality\n  Users can clear all tasks by clicking the 'Clear All' button to remove all tasks from the list and hide the 'Clear All' button.\n\n\n  Scenario: [Normal] Clear all tasks when tasks are present\n    Given the SM-Task Manager page is loaded\n    And the user enters \"Task 1\" into the task input field with data-testid \"task-input\"\n    And the user clicks the \"Add Task\" button with data-testid \"add-task-btn\"\n    And the user enters \"Task 2\" into the task input field with data-testid \"task-input\"\n    And the user clicks the \"Add Task\" button with data-testid \"add-task-btn\"\n    When the user clicks the \"Clear All\" button with data-testid \"clear-all-btn\"\n    Then the task list with data-testid \"task-list\" should be empty\n    And the \"Clear All\" button with data-testid \"clear-all-btn\" should not be visible\n",
+      "requirement_ids": [
+        "e2edev_bench_32-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_32/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_32-R-7-TC-1",
+      "title": "[Normal] Display placeholder text in task input field",
+      "description": "Feature: Task Input Field Placeholder Text\n  The task input field provides a placeholder text to guide task entry.\n\n\n  Scenario: [Normal] Display placeholder text in task input field\n    Given the user is on the \"SM-Task Manager\" page\n    When the page is fully loaded\n    Then the task input field with data-testid \"task-input\" should display the placeholder text \"Enter a new task...\"\n",
+      "requirement_ids": [
+        "e2edev_bench_32-R-7"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_32/requirment_with_tests.json#/finegrained_rewith_test/7/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 8,
+    "reference_count": 11,
+    "matches": [
+      {
+        "generated_id": "G-001",
+        "reference_id": "e2edev_bench_32-R-2-TC-1",
+        "similarity": 0.9339922383083556
+      },
+      {
+        "generated_id": "G-002",
+        "reference_id": "e2edev_bench_32-R-2-TC-3",
+        "similarity": 0.9237420477652538
+      },
+      {
+        "generated_id": "G-003",
+        "reference_id": "e2edev_bench_32-R-3-TC-1",
+        "similarity": 0.9157949707909463
+      },
+      {
+        "generated_id": "G-004",
+        "reference_id": "e2edev_bench_32-R-3-TC-2",
+        "similarity": 0.9322859027574548
+      },
+      {
+        "generated_id": "G-005",
+        "reference_id": "e2edev_bench_32-R-4-TC-1",
+        "similarity": 0.920272682477326
+      },
+      {
+        "generated_id": "G-006",
+        "reference_id": "e2edev_bench_32-R-5-TC-2",
+        "similarity": 0.917647515161312
+      },
+      {
+        "generated_id": "G-007",
+        "reference_id": "e2edev_bench_32-R-6-TC-1",
+        "similarity": 0.9322141843099828
+      },
+      {
+        "generated_id": "G-008",
+        "reference_id": "e2edev_bench_32-R-7-TC-1",
+        "similarity": 0.9384336879979355
+      }
+    ],
+    "unmatched_generated_ids": [],
+    "unmatched_reference_ids": [
+      "e2edev_bench_32-R-2-TC-2",
+      "e2edev_bench_32-R-4-TC-2",
+      "e2edev_bench_32-R-5-TC-1"
+    ],
+    "precision": 1.0,
+    "recall": 0.7272727272727273,
+    "f1": 0.8421052631578947,
+    "embedding_usage": {
+      "input_tokens": 2350,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 2350
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
+  "generation": {
+    "selected_techniques": [],
+    "technique_rationales": {},
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": 2350,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 2350
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
+  "links": {
+    "requirements": {
+      "e2edev_bench_32-R-2": "e2edev_bench_32-R-2/requirement.md",
+      "e2edev_bench_32-R-3": "e2edev_bench_32-R-3/requirement.md",
+      "e2edev_bench_32-R-4": "e2edev_bench_32-R-4/requirement.md",
+      "e2edev_bench_32-R-5": "e2edev_bench_32-R-5/requirement.md",
+      "e2edev_bench_32-R-6": "e2edev_bench_32-R-6/requirement.md",
+      "e2edev_bench_32-R-7": "e2edev_bench_32-R-7/requirement.md"
+    },
+    "cases": {
+      "G-001": {
+        "e2edev_bench_32-R-2": "e2edev_bench_32-R-2/test cases/1_Add_valid_task_using_Add_Task_button.md"
+      },
+      "G-002": {
+        "e2edev_bench_32-R-2": "e2edev_bench_32-R-2/test cases/2_Attempt_to_add_empty_or_whitespace-only_task_via.md"
+      },
+      "G-003": {
+        "e2edev_bench_32-R-3": "e2edev_bench_32-R-3/test cases/3_Add_valid_task_using_Enter_key.md"
+      },
+      "G-004": {
+        "e2edev_bench_32-R-3": "e2edev_bench_32-R-3/test cases/4_Attempt_to_add_invalid_task_using_Enter_key.md"
+      },
+      "G-005": {
+        "e2edev_bench_32-R-4": "e2edev_bench_32-R-4/test cases/5_Toggle_task_completion_status.md"
+      },
+      "G-006": {
+        "e2edev_bench_32-R-5": "e2edev_bench_32-R-5/test cases/6_Delete_individual_task_and_update_Clear_All_butt.md"
+      },
+      "G-007": {
+        "e2edev_bench_32-R-6": "e2edev_bench_32-R-6/test cases/7_Clear_all_tasks_using_Clear_All_button.md"
+      },
+      "G-008": {
+        "e2edev_bench_32-R-7": "e2edev_bench_32-R-7/test cases/8_Verify_task_input_placeholder_on_page_load.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

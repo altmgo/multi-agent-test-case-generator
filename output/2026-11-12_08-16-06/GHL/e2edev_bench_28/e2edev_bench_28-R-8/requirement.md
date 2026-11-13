@@ -1,0 +1,3 @@
+# e2edev\_bench\_28-R-8
+
+When the reset button (with data-testid 'reset-button') is clicked, the system must perform the following actions: clear all tiles (elements with data-testid 'tile-1' to 'tile-9'), reset the internal game board state to all empty values, hide the announcer section (element with data-testid 'announcer'), and set the current player to 'X' in the element with data-testid 'current-player' if it was previously 'O'. This functionality should work correctly in various scenarios, including when some tiles are marked, when the game is in progress, when a win has been announced, when a tie has been announced, and when no tiles have been marked.

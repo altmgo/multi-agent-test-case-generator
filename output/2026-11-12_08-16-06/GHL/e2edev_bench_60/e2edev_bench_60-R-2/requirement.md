@@ -1,0 +1,3 @@
+# e2edev\_bench\_60-R-2
+
+The Exchange Rate Calculator must dynamically update the converted amount in the 'amount-two' field whenever the user inputs a value in the 'amount-one' field. This process involves fetching the current exchange rate from an external API based on the selected currencies in the 'currency-one' and 'currency-two' fields. The 'amount-one' field is identified by the data-testid 'amount-one', and the 'amount-two' field is identified by the data-testid 'amount-two'. The system should handle normal input values as well as edge cases, such as very large numbers, ensuring accurate conversion and display of the result. The conversion result should be displayed with two decimal precision in the 'amount-two' field.

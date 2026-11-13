@@ -1,0 +1,72 @@
+{
+  "status": "evaluated",
+  "embedding_model": "gemini-embedding-2",
+  "similarity_threshold": 0.7,
+  "matches": [
+    {
+      "generated_id": "G-001",
+      "reference_id": "e2edev_bench_22-R-1-TC-1",
+      "similarity": 0.9457824677491148
+    },
+    {
+      "generated_id": "G-002",
+      "reference_id": "e2edev_bench_22-R-1-TC-2",
+      "similarity": 0.9505010235899292
+    },
+    {
+      "generated_id": "G-003",
+      "reference_id": "e2edev_bench_22-R-2-TC-1",
+      "similarity": 0.9496565761712661
+    },
+    {
+      "generated_id": "G-004",
+      "reference_id": "e2edev_bench_22-R-2-TC-2",
+      "similarity": 0.9462336276319468
+    },
+    {
+      "generated_id": "G-005",
+      "reference_id": "e2edev_bench_22-R-3-TC-1",
+      "similarity": 0.9314075954387953
+    },
+    {
+      "generated_id": "G-006",
+      "reference_id": "e2edev_bench_22-R-3-TC-2",
+      "similarity": 0.9444301763640122
+    },
+    {
+      "generated_id": "G-007",
+      "reference_id": "e2edev_bench_22-R-11-TC-2",
+      "similarity": 0.9248267926085432
+    },
+    {
+      "generated_id": "G-008",
+      "reference_id": "e2edev_bench_22-R-7-TC-2",
+      "similarity": 0.9156620723378042
+    },
+    {
+      "generated_id": "G-009",
+      "reference_id": "e2edev_bench_22-R-9-TC-1",
+      "similarity": 0.960780094458528
+    },
+    {
+      "generated_id": "G-010",
+      "reference_id": "e2edev_bench_22-R-11-TC-1",
+      "similarity": 0.9094581374130841
+    }
+  ],
+  "unmatched_generated_ids": [],
+  "unmatched_reference_ids": [
+    "e2edev_bench_22-R-5-TC-1",
+    "e2edev_bench_22-R-5-TC-2",
+    "e2edev_bench_22-R-5-TC-3",
+    "e2edev_bench_22-R-6-TC-1",
+    "e2edev_bench_22-R-6-TC-2",
+    "e2edev_bench_22-R-6-TC-3",
+    "e2edev_bench_22-R-6-TC-4",
+    "e2edev_bench_22-R-7-TC-1",
+    "e2edev_bench_22-R-9-TC-2",
+    "e2edev_bench_22-R-9-TC-3",
+    "e2edev_bench_22-R-11-TC-3",
+    "e2edev_bench_22-R-11-TC-4"
+  ]
+}

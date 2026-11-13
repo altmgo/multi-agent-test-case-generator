@@ -1,0 +1,466 @@
+{
+  "schema_version": 1,
+  "solution": "one-shot",
+  "unit_id": "e2edev_bench_05",
+  "parent_id": null,
+  "status": "evaluated",
+  "failure": null,
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "e2edev_bench_05-R-2",
+      "text": "The system must allow users to interact with the search functionality on the 'Dictionary' webpage. When the search input field, identified by data-testid 'search-input', is empty and the user clicks the 'Search' button (data-testid 'search-button'), a toast notification with data-testid 'error-toast' should be displayed, containing the message \"ERROR: Please type the word to be searched...\". If the search input contains a valid word, the error toast should not be shown, ensuring the user is only prompted when necessary.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_05/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_05-R-3",
+      "text": "The web application must allow users to search for word details. When a user enters a word in the search input field (data-testid 'search-input') and clicks the 'Search' button (data-testid 'search-button'), the system should fetch the word's definition, pronunciation, and example from the dictionary API. A result card (data-testid 'result-card') should then be displayed with the searched word as the title (data-testid 'card-title'), its pronunciation (data-testid 'word-pronunciation'), meaning (data-testid 'word-meaning'), and an example sentence (data-testid 'word-example'). ",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_05/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_05-R-4",
+      "text": "The system must provide a 'Reset' button on the Dictionary page that clears the search input field and hides the result card. When the user clicks the 'Reset' button (data-testid 'reset-button'), the search input field (data-testid 'search-input') should be cleared, and the result card (data-testid 'result-card') should be hidden. This functionality should work whether the search input field is empty or contains text, and regardless of whether a search has been performed. The system should ensure that the result card remains hidden after the reset, providing a consistent user experience.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_05/requirment_with_tests.json#/finegrained_rewith_test/4/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_05-R-5",
+      "text": "The web application must allow users to toggle the bookmark status of a word's result card and update the list of bookmarked words in the offcanvas section. When the user clicks the 'Bookmark' icon (data-testid 'bookmark-icon') on a word's result card (data-testid 'result-card'), the system should update the icon to reflect the current bookmark status. If the word is bookmarked, it should be added to the list of bookmarked words displayed in the offcanvas section (data-testid 'bookmarked-words-list'). The user can view this list by clicking the 'Bookmarks' button (data-testid 'bookmark-button'), which opens the offcanvas section. The system must ensure that the list accurately reflects the bookmarked words, allowing users to add and remove words from the bookmark list by toggling the bookmark icon.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_05/requirment_with_tests.json#/finegrained_rewith_test/5/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_05-R-8",
+      "text": "The system should maintain a list of the five most recent searched words and display them in the 'Recent Searches' section (data-testid 'recently-searched'). Each time the user performs a search by entering a word in the search input field (data-testid 'search-input') and clicking the 'Search' button (data-testid 'search-button'), the system should update the list. If the list exceeds five entries, the oldest search should be removed to make room for the new one. ",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_05/requirment_with_tests.json#/finegrained_rewith_test/8/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_05-R-9",
+      "text": "The web application must display a 'Back to Top' button (data-testid 'back-to-top-button') when the user scrolls more than 20 pixels down. Clicking the button should smoothly scroll the page to the top, and the button should hide once the page is at the top.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_05/requirment_with_tests.json#/finegrained_rewith_test/9/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_05-R-10",
+      "text": "The system must allow users to manage bookmarked words in the offcanvas section. When the user clicks the 'Bookmarks' button (data-testid=\"bookmark-button\"), the offcanvas opens, displaying the bookmarked words list (data-testid=\"bookmarked-words-list\"). Each word has a close button (data-testid=\"bookmark-delete-button-${index}\") for removal. Clicking the close button deletes the word and updates the list. If no words are bookmarked, an <h5> with the text 'No words bookmarked !!' is shown in the offcanvas.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_05/requirment_with_tests.json#/finegrained_rewith_test/10/requirement/description"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Search with empty input shows error toast",
+      "description": "Verify that clicking the search button with an empty search input displays the error toast with the correct message.",
+      "requirement_ids": [
+        "e2edev_bench_05-R-2"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Search with valid word does not show error toast",
+      "description": "Verify that clicking the search button with a valid word in the input field does not display the error toast.",
+      "requirement_ids": [
+        "e2edev_bench_05-R-2"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Search with valid word displays result card details",
+      "description": "Verify that entering a valid word and clicking search fetches definition, pronunciation, and example, and displays them correctly in the result card.",
+      "requirement_ids": [
+        "e2edev_bench_05-R-3"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Reset button clears input and hides result card",
+      "description": "Verify that clicking the reset button clears the search input field and hides the result card regardless of the current state.",
+      "requirement_ids": [
+        "e2edev_bench_05-R-4"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Toggle bookmark status adds and removes words from offcanvas list",
+      "description": "Verify that clicking the bookmark icon on a result card updates its status and correctly adds or removes the word from the offcanvas bookmarked words list.",
+      "requirement_ids": [
+        "e2edev_bench_05-R-5",
+        "e2edev_bench_05-R-10"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Recent searches list maintains up to five items",
+      "description": "Verify that performing searches updates the recent searches list and trims the oldest entry when exceeding five items.",
+      "requirement_ids": [
+        "e2edev_bench_05-R-8"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Back to top button visibility and scrolling action",
+      "description": "Verify that scrolling down more than 20 pixels shows the back to top button, clicking it scrolls smoothly to the top, and it hides when at the top.",
+      "requirement_ids": [
+        "e2edev_bench_05-R-9"
+      ]
+    },
+    {
+      "id": "G-008",
+      "title": "Manage and remove bookmarks from offcanvas section",
+      "description": "Verify that opening the bookmarks offcanvas shows the list of bookmarked words, and clicking the delete button for a word removes it from the list. Verify empty state message when no bookmarks exist.",
+      "requirement_ids": [
+        "e2edev_bench_05-R-10"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_05-R-2-TC-1",
+      "title": "[Normal] Display error toast when search input is empty",
+      "description": "Feature: Display error toast notification when search input is empty\n  The system should display a toast notification with an error message when the search button is clicked without entering a word in the search input field.\n\n\n  Scenario: [Normal] Display error toast when search input is empty\n    Given the \"Dictionary\" webpage is loaded\n    And the search input field with data-testid \"search-input\" is empty\n    When the user clicks the \"Search\" button with data-testid \"search-button\"\n    Then the error toast with data-testid \"error-toast\" should be visible\n    And the toast message should be \"ERROR: Please type the word to be searched...\"\n",
+      "requirement_ids": [
+        "e2edev_bench_05-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_05/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_05-R-2-TC-2",
+      "title": "[Error] No error toast when search input contains a valid word",
+      "description": "Feature: Display error toast notification when search input is empty\n  The system should display a toast notification with an error message when the search button is clicked without entering a word in the search input field.\n\n\n  Scenario: [Error] No error toast when search input contains a valid word\n    Given the \"Dictionary\" webpage is loaded\n    And the search input field with data-testid \"search-input\" contains the word \"example\"\n    When the user clicks the \"Search\" button with data-testid \"search-button\"\n    Then the error toast with data-testid \"error-toast\" should not be visible",
+      "requirement_ids": [
+        "e2edev_bench_05-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_05/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_05-R-3-TC-1",
+      "title": "[Normal] Display word details for a valid word",
+      "description": "Feature: Fetch and display word details upon clicking the 'Search' button\n  The system should fetch the word's definition, pronunciation, and example from the dictionary API and display them in the result card when a valid word is entered and the 'Search' button is clicked.\n\n\nScenario: [Normal] Display word details for a valid word\n    Given the user is on the Dictionary page\n    And the search input field with data-testid 'search-input' is visible\n    When the user enters 'example' into the search input field with data-testid 'search-input'\n    And the user clicks the 'Search' button with data-testid 'search-button'\n    Then the result card with data-testid 'result-card' should be visible\n    And the card title with data-testid 'card-title' should display 'example'\n    And the word pronunciation with data-testid 'word-pronunciation' should display the pronunciation text\n    And the word meaning with data-testid 'word-meaning' should display the definition\n    And the word example with data-testid 'word-example' should display an example sentence",
+      "requirement_ids": [
+        "e2edev_bench_05-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_05/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_05-R-3-TC-2",
+      "title": "[Edge] Display word details for a word with multiple meanings",
+      "description": "Feature: Fetch and display word details upon clicking the 'Search' button\n  The system should fetch the word's definition, pronunciation, and example from the dictionary API and display them in the result card when a valid word is entered and the 'Search' button is clicked.\n\n\nScenario: [Edge] Display word details for a word with multiple meanings\n    Given the user is on the Dictionary page\n    And the search input field with data-testid 'search-input' is visible\n    When the user enters 'set' into the search input field with data-testid 'search-input'\n    And the user clicks the 'Search' button with data-testid 'search-button'\n    Then the result card with data-testid 'result-card' should be visible\n    And the card title with data-testid 'card-title' should display 'set'\n    And the word pronunciation with data-testid 'word-pronunciation' should display the pronunciation text\n    And the word meaning with data-testid 'word-meaning' should display one of the definitions\n    And the word example with data-testid 'word-example' should display an example sentence",
+      "requirement_ids": [
+        "e2edev_bench_05-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_05/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_05-R-3-TC-3",
+      "title": "[Error] Attempt to search with an empty input",
+      "description": "Feature: Fetch and display word details upon clicking the 'Search' button\n  The system should fetch the word's definition, pronunciation, and example from the dictionary API and display them in the result card when a valid word is entered and the 'Search' button is clicked.\n\n\n  Scenario: [Error] Attempt to search with an empty input\n    Given the user is on the Dictionary page\n    And the search input field with data-testid \"search-input\" is visible\n    When the user leaves the search input field with data-testid \"search-input\" empty\n    And the user clicks the \"Search\" button with data-testid \"search-button\"\n    Then the result card with data-testid \"result-card\" should not be visible\n    And the error toast with data-testid \"error-toast\" should be displayed\n    And the error toast should display the message \"ERROR: Please type the word to be searched...\"",
+      "requirement_ids": [
+        "e2edev_bench_05-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_05/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_05-R-4-TC-1",
+      "title": "[Normal] Reset button clears the search input and hides the result card",
+      "description": "Feature: Reset Search Functionality\n  The system should clear the search input field and hide the result card when the 'Reset' button is clicked.\n\n\nScenario: [Normal] Reset button clears the search input and hides the result card\n    Given the user is on the Dictionary page\n    And the search input field with data-testid \"search-input\" contains the text \"example\" \n    And the user clicks the search button with data-testid \"search-button\"\n    And the result card with data-testid \"result-card\" is visible\n    When the user clicks the 'Reset' button with data-testid \"reset-button\"\n    Then the search input field with data-testid \"search-input\" should be empty\n    And the result card with data-testid \"result-card\" should not be visible",
+      "requirement_ids": [
+        "e2edev_bench_05-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_05/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_05-R-4-TC-2",
+      "title": "[Edge] Reset button is clicked when the search input is already empty",
+      "description": "Feature: Reset Search Functionality\n  The system should clear the search input field and hide the result card when the 'Reset' button is clicked.\n\n\nScenario: [Edge] Reset button is clicked when the search input is already empty\n    Given the user is on the Dictionary page\n    And the search input field with data-testid \"search-input\" contains the text \"example\"\n    And the user clicks the search button with data-testid \"search-button\"\n    And the result card with data-testid \"result-card\" is visible\n    And the user clears the search input field with data-testid \"search-input\"\n    When the user clicks the 'Reset' button with data-testid \"reset-button\"\n    Then the search input field with data-testid \"search-input\" should remain empty\n    And the result card with data-testid \"result-card\" should not be visible",
+      "requirement_ids": [
+        "e2edev_bench_05-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_05/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_05-R-4-TC-3",
+      "title": "[Error] Reset button is clicked when no search has been performed",
+      "description": "Feature: Reset Search Functionality\n  The system should clear the search input field and hide the result card when the 'Reset' button is clicked.\n\n\n  Scenario: [Error] Reset button is clicked when no search has been performed\n    Given the user is on the Dictionary page\n    And the search input field with data-testid \"search-input\" is empty\n    And the result card with data-testid \"result-card\" is not visible\n    When the user clicks the 'Reset' button with data-testid \"reset-button\"\n    Then the search input field with data-testid \"search-input\" should remain empty\n    And the result card with data-testid \"result-card\" should remain not visible",
+      "requirement_ids": [
+        "e2edev_bench_05-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_05/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_05-R-5-TC-1",
+      "title": "[Normal] Bookmark a word and update the list",
+      "description": "Feature: Toggle Bookmark Status and Update Bookmarked Words List\n  The system should allow users to toggle the bookmark status of a word's result card and update the list of bookmarked words in the offcanvas section.\n\n\nScenario: [Normal] Bookmark a word and update the list\n    Given the webpage is loaded\n    And the user has searched for a word and the result card is displayed with data-testid \"result-card\"\n    When the user clicks the bookmark icon with data-testid \"bookmark-icon\"\n    Then the user clicks the bookmark word list show button with data-testid \"bookmark-button\" to show the bookmarked words\n    And the word should be added to the list of bookmarked words in the offcanvas section with data-testid \"bookmarked-words-list\"",
+      "requirement_ids": [
+        "e2edev_bench_05-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_05/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_05-R-8-TC-1",
+      "title": "[Normal] Add a word to the recently searched list",
+      "description": "Feature: Maintain and Display Recently Searched Words\n  The system should maintain a list of recently searched words and display them in the 'Recent Searches' section.\n\n\n  Scenario: [Normal] Add a word to the recently searched list\n    Given the user is on the Dictionary page\n    When the user enters \"example\" into the search input with data-testid \"search-input\"\n    And the user clicks the search button with data-testid \"search-button\"\n    Then the \"Recent Searches\" section with data-testid \"recently-searched\" should display the word \"example\"\n",
+      "requirement_ids": [
+        "e2edev_bench_05-R-8"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_05/requirment_with_tests.json#/finegrained_rewith_test/8/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_05-R-8-TC-2",
+      "title": "[Edge] Add multiple words to the recently searched list",
+      "description": "Feature: Maintain and Display Recently Searched Words\n  The system should maintain a list of recently searched words and display them in the 'Recent Searches' section.\n\n\n  Scenario: [Edge] Add multiple words to the recently searched list\n    Given the user is on the Dictionary page\n    When the user enters \"example\" into the search input with data-testid \"search-input\"\n    And the user clicks the search button with data-testid \"search-button\"\n    And the user enters \"test\" into the search input with data-testid \"search-input\"\n    And the user clicks the search button with data-testid \"search-button\"\n    Then the \"Recent Searches\" section with data-testid \"recently-searched\" should display the words \"example\" and \"test\"\n",
+      "requirement_ids": [
+        "e2edev_bench_05-R-8"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_05/requirment_with_tests.json#/finegrained_rewith_test/8/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_05-R-8-TC-3",
+      "title": "[Edge] Display a maximum of five recently searched words",
+      "description": "Feature: Maintain and Display Recently Searched Words\n  The system should maintain a list of recently searched words and display them in the 'Recent Searches' section.\n\n\nScenario: [Edge] Display a maximum of five recently searched words\n    Given the user is on the Dictionary page\n    When the user enters \"sunset\" into the search input with data-testid \"search-input\"\n    And the user clicks the search button with data-testid \"search-button\"\n    And the user enters \"whisper” into the search input with data-testid \"search-input\"\n    And the user clicks the search button with data-testid \"search-button\"\n    And the user enters “jigsaw” into the search input with data-testid \"search-input\"\n    And the user clicks the search button with data-testid \"search-button\"\n    And the user enters \"word\" into the search input with data-testid \"search-input\"\n    And the user clicks the search button with data-testid \"search-button\"\n    And the user enters “sparkle” into the search input with data-testid \"search-input\"\n    And the user clicks the search button with data-testid \"search-button\"\n    And the user enters “meadow” into the search input with data-testid \"search-input\"\n    And the user clicks the search button with data-testid \"search-button\"\n    Then the \"Recent Searches\" section with data-testid \"recently-searched\" should display the words \"whisper\", “jigsaw\", \"word\", \"sparkle\", and \"meadow\"",
+      "requirement_ids": [
+        "e2edev_bench_05-R-8"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_05/requirment_with_tests.json#/finegrained_rewith_test/8/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_05-R-8-TC-4",
+      "title": "[Error] Attempt to add an empty search to the recently searched list",
+      "description": "Feature: Maintain and Display Recently Searched Words\n  The system should maintain a list of recently searched words and display them in the 'Recent Searches' section.\n\n\n  Scenario: [Error] Attempt to add an empty search to the recently searched list\n    Given the user is on the Dictionary page\n    When the user clicks the search button with data-testid \"search-button\" without entering a word\n    Then the \"Recent Searches\" section with data-testid \"recently-searched\" should not display any new entries\n    And an error toast with data-testid \"error-toast\" should be visible with the message \"ERROR: Please type the word to be searched...\"",
+      "requirement_ids": [
+        "e2edev_bench_05-R-8"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_05/requirment_with_tests.json#/finegrained_rewith_test/8/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_05-R-9-TC-1",
+      "title": "[Normal] Clicking the 'Back to Top' button scrolls the page to the top",
+      "description": "Feature: Back to Top Button Functionality\n  The system should scroll the page to the top when the 'Back to Top' button is clicked.\n\n\n  Scenario: [Normal] Clicking the 'Back to Top' button scrolls the page to the top\n    Given the user is on the \"Dictionary\" webpage\n    And the window height is low enough to display the \"Back to Top\" button\n    And the user has scrolled down the page\n    When the user clicks the 'Back to Top' button with data-testid 'back-to-top-button'\n    Then the page should scroll to the top\n",
+      "requirement_ids": [
+        "e2edev_bench_05-R-9"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_05/requirment_with_tests.json#/finegrained_rewith_test/9/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_05-R-10-TC-1",
+      "title": "[Normal] User deletes a bookmarked word successfully",
+      "description": "Feature: Deleting Bookmarked Words\n  The system should allow users to delete bookmarked words from the list in the offcanvas section.\n\n\n  Scenario: [Normal] User deletes a bookmarked word successfully\n    Given the webpage is loaded\n    And the user has bookmarked words \"example\", \"test\", \"sample\"\n    When the user clicks the \"Bookmarks\" button with data-testid \"bookmark-button\"\n    And the offcanvas section with data-testid \"bookmarked-words-list\" is displayed\n    And the user clicks the close button next to a bookmarked word with data-testid \"bookmark-delete-button-0\"\n    Then the bookmarked word is removed from the list\n    And the list updates to reflect the deletion\n",
+      "requirement_ids": [
+        "e2edev_bench_05-R-10"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_05/requirment_with_tests.json#/finegrained_rewith_test/10/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_05-R-10-TC-2",
+      "title": "[Edge] User deletes the last bookmarked word",
+      "description": "Feature: Deleting Bookmarked Words\n  The system should allow users to delete bookmarked words from the list in the offcanvas section.\n\n\nScenario: [Edge] User deletes the last bookmarked word\n    Given the webpage is loaded\n    And the user has bookmarked words \"example\"\n    When the user clicks the \"Bookmarks\" button with data-testid \"bookmark-button\"\n    And the offcanvas section with data-testid \"bookmarked-words-list\" is displayed\n    And the user clicks the close button next to the last bookmarked word with data-testid \"bookmark-delete-button-0\"\n    Then the last bookmarked word is removed from the list\n    And the list displays a message \"No words bookmarked !!\"",
+      "requirement_ids": [
+        "e2edev_bench_05-R-10"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_05/requirment_with_tests.json#/finegrained_rewith_test/10/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_05-R-10-TC-3",
+      "title": "[Error] User attempts to delete a bookmarked word when none are present",
+      "description": "Feature: Deleting Bookmarked Words\n  The system should allow users to delete bookmarked words from the list in the offcanvas section.\n\n\nScenario: [Error] User attempts to delete a bookmarked word when none are present\n    Given the webpage is loaded\n    When the user clicks the \"Bookmarks\" button with data-testid \"bookmark-button\"\n    And the offcanvas section with data-testid \"bookmarked-words-list\" is displayed\n    Then the user sees the message \"No words bookmarked !!\"",
+      "requirement_ids": [
+        "e2edev_bench_05-R-10"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_05/requirment_with_tests.json#/finegrained_rewith_test/10/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 8,
+    "reference_count": 17,
+    "matches": [
+      {
+        "generated_id": "G-001",
+        "reference_id": "e2edev_bench_05-R-2-TC-1",
+        "similarity": 0.9336155535640231
+      },
+      {
+        "generated_id": "G-002",
+        "reference_id": "e2edev_bench_05-R-2-TC-2",
+        "similarity": 0.9441786048495286
+      },
+      {
+        "generated_id": "G-003",
+        "reference_id": "e2edev_bench_05-R-3-TC-1",
+        "similarity": 0.9345073325035278
+      },
+      {
+        "generated_id": "G-004",
+        "reference_id": "e2edev_bench_05-R-4-TC-1",
+        "similarity": 0.9330347479846068
+      },
+      {
+        "generated_id": "G-005",
+        "reference_id": "e2edev_bench_05-R-5-TC-1",
+        "similarity": 0.9338564519501309
+      },
+      {
+        "generated_id": "G-006",
+        "reference_id": "e2edev_bench_05-R-8-TC-3",
+        "similarity": 0.8735114290486236
+      },
+      {
+        "generated_id": "G-007",
+        "reference_id": "e2edev_bench_05-R-9-TC-1",
+        "similarity": 0.8873931038936185
+      },
+      {
+        "generated_id": "G-008",
+        "reference_id": "e2edev_bench_05-R-10-TC-2",
+        "similarity": 0.9242762644207901
+      }
+    ],
+    "unmatched_generated_ids": [],
+    "unmatched_reference_ids": [
+      "e2edev_bench_05-R-3-TC-2",
+      "e2edev_bench_05-R-3-TC-3",
+      "e2edev_bench_05-R-4-TC-2",
+      "e2edev_bench_05-R-4-TC-3",
+      "e2edev_bench_05-R-8-TC-1",
+      "e2edev_bench_05-R-8-TC-2",
+      "e2edev_bench_05-R-8-TC-4",
+      "e2edev_bench_05-R-10-TC-1",
+      "e2edev_bench_05-R-10-TC-3"
+    ],
+    "precision": 1.0,
+    "recall": 0.47058823529411764,
+    "f1": 0.64,
+    "embedding_usage": {
+      "input_tokens": 3308,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 3308
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 2
+  },
+  "generation": {
+    "selected_techniques": [],
+    "technique_rationales": {},
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": 1483,
+      "output_tokens": 796,
+      "details": {
+        "text_prompt_tokens": 1483,
+        "total_tokens": 2279
+      },
+      "status": "available"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": 3308,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 3308
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 2
+  },
+  "links": {
+    "requirements": {
+      "e2edev_bench_05-R-2": "e2edev_bench_05-R-2/requirement.md",
+      "e2edev_bench_05-R-3": "e2edev_bench_05-R-3/requirement.md",
+      "e2edev_bench_05-R-4": "e2edev_bench_05-R-4/requirement.md",
+      "e2edev_bench_05-R-5": "e2edev_bench_05-R-5/requirement.md",
+      "e2edev_bench_05-R-8": "e2edev_bench_05-R-8/requirement.md",
+      "e2edev_bench_05-R-9": "e2edev_bench_05-R-9/requirement.md",
+      "e2edev_bench_05-R-10": "e2edev_bench_05-R-10/requirement.md"
+    },
+    "cases": {
+      "G-001": {
+        "e2edev_bench_05-R-2": "e2edev_bench_05-R-2/test cases/1_Search_with_empty_input_shows_error_toast.md"
+      },
+      "G-002": {
+        "e2edev_bench_05-R-2": "e2edev_bench_05-R-2/test cases/2_Search_with_valid_word_does_not_show_error_toast.md"
+      },
+      "G-003": {
+        "e2edev_bench_05-R-3": "e2edev_bench_05-R-3/test cases/3_Search_with_valid_word_displays_result_card_deta.md"
+      },
+      "G-004": {
+        "e2edev_bench_05-R-4": "e2edev_bench_05-R-4/test cases/4_Reset_button_clears_input_and_hides_result_card.md"
+      },
+      "G-005": {
+        "e2edev_bench_05-R-5": "e2edev_bench_05-R-5/test cases/5_Toggle_bookmark_status_adds_and_removes_words_fr.md",
+        "e2edev_bench_05-R-10": "e2edev_bench_05-R-10/test cases/5_Toggle_bookmark_status_adds_and_removes_words_fr.md"
+      },
+      "G-006": {
+        "e2edev_bench_05-R-8": "e2edev_bench_05-R-8/test cases/6_Recent_searches_list_maintains_up_to_five_items.md"
+      },
+      "G-007": {
+        "e2edev_bench_05-R-9": "e2edev_bench_05-R-9/test cases/7_Back_to_top_button_visibility_and_scrolling_acti.md"
+      },
+      "G-008": {
+        "e2edev_bench_05-R-10": "e2edev_bench_05-R-10/test cases/8_Manage_and_remove_bookmarks_from_offcanvas_secti.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

@@ -1,0 +1,3 @@
+# e2edev\_bench\_13-R-5
+
+When the user clicks the reset button with data-testid 'reset-button', the system should perform the following actions: clear the height input field with data-testid 'height-input', reset the first option select with data-testid 'first-option-select' to display 'Select an Option', reset the second option select with data-testid 'second-option-select' to display 'Select', hide the output row with data-testid 'output-row', and hide the reset button itself. This functionality should work regardless of whether the user has entered valid, invalid, or no input prior to clicking the reset button.

@@ -1,0 +1,3 @@
+# e2edev\_bench\_46-R-1
+
+Upon loading the web page, the application must automatically determine the current day of the week using the user's local date settings. It should display the name of the day in the span element with the attribute data-testid='weekday'. Additionally, a corresponding quote should be displayed in the span element with the attribute data-testid='phrase'. The application should handle all days from Sunday to Saturday, ensuring the correct day name and quote are shown based on the local date settings. No user interaction is required for this functionality, and the display should update immediately upon page load.

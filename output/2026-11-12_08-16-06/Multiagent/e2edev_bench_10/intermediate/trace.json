@@ -1,0 +1,104 @@
+{
+  "initial": {
+    "assessment": {
+      "candidate_id": "initial",
+      "cases": [],
+      "opinions": [],
+      "valid": false,
+      "confirmed_blockers": 0,
+      "covered_requirements": 0,
+      "duplicates": 0,
+      "comparable": true
+    },
+    "analysis": {
+      "analysis": "R-1: Testable behavior includes verifying initial DOM elements (h1, h2, div, radio buttons, button) with exact text and data-testids. Boundaries: initial load state. Normal path: elements render correctly. Abnormal path: missing elements or incorrect attributes. R-2: Testable behavior includes question text updating across clicks on 'next-button'. Boundaries: exactly 3 questions ('What is the capital of France?', 'What is 2 + 2?', 'What is the largest ocean on Earth?'). Normal path: sequential updates. Abnormal path: out-of-order or missing updates. R-3: Testable behavior involves dynamic generation of radio buttons using quizData. Boundaries: array bounds of quizData. Normal path: correct options rendered with shared name 'option' and correct values/labels. Abnormal path: incorrect mapping or missing attributes. R-4: Testable behavior includes single-selection logic using radio buttons with data-testid 'option-{index}'. Boundaries: no selection by default. Normal path: selecting one option deselects others. Abnormal path: multiple selections allowed or no selection registered. R-5: Testable behavior includes score incrementing on correct answers and handling unselected options. Boundaries: max score equals total questions. Normal path: correct selection increments score by 1, unselected proceeds without increment. Ambiguity: R-5 says 'if correct, it increments the score by 1; if not selected, it proceeds without scoring', but doesn't explicitly detail incorrect selections (though implied as non-incrementing). R-6: Testable behavior includes hiding question, options, and next-button, and showing final score in data-testid 'score'. Boundaries: end of quiz. Normal path: elements receive 'hidden' class, score displays 'You scored X out of Y'."
+    },
+    "failure": {
+      "stage": "generator",
+      "error_type": "ModelRateLimitError",
+      "detail": null
+    }
+  },
+  "rounds": [],
+  "status": "failed",
+  "failure": {
+    "stage": "generator",
+    "error_type": "ModelRateLimitError",
+    "detail": null
+  },
+  "accepted_id": null,
+  "accepted_assessment": null,
+  "pending": [],
+  "pending_controls": [
+    "critic",
+    "validator"
+  ],
+  "coverage": null,
+  "coverage_failure": null,
+  "calls": [
+    {
+      "stage": "analyst",
+      "subject_id": "initial",
+      "output": {
+        "analysis": "R-1: Testable behavior includes verifying initial DOM elements (h1, h2, div, radio buttons, button) with exact text and data-testids. Boundaries: initial load state. Normal path: elements render correctly. Abnormal path: missing elements or incorrect attributes. R-2: Testable behavior includes question text updating across clicks on 'next-button'. Boundaries: exactly 3 questions ('What is the capital of France?', 'What is 2 + 2?', 'What is the largest ocean on Earth?'). Normal path: sequential updates. Abnormal path: out-of-order or missing updates. R-3: Testable behavior involves dynamic generation of radio buttons using quizData. Boundaries: array bounds of quizData. Normal path: correct options rendered with shared name 'option' and correct values/labels. Abnormal path: incorrect mapping or missing attributes. R-4: Testable behavior includes single-selection logic using radio buttons with data-testid 'option-{index}'. Boundaries: no selection by default. Normal path: selecting one option deselects others. Abnormal path: multiple selections allowed or no selection registered. R-5: Testable behavior includes score incrementing on correct answers and handling unselected options. Boundaries: max score equals total questions. Normal path: correct selection increments score by 1, unselected proceeds without increment. Ambiguity: R-5 says 'if correct, it increments the score by 1; if not selected, it proceeds without scoring', but doesn't explicitly detail incorrect selections (though implied as non-incrementing). R-6: Testable behavior includes hiding question, options, and next-button, and showing final score in data-testid 'score'. Boundaries: end of quiz. Normal path: elements receive 'hidden' class, score displays 'You scored X out of Y'."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": 1179,
+          "output_tokens": 386,
+          "details": {
+            "total_tokens": 1565,
+            "text_prompt_tokens": 1179
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": null,
+      "error_type": "ModelRateLimitError",
+      "usage": [
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        }
+      ]
+    }
+  ],
+  "monotonicity": "confirmed"
+}

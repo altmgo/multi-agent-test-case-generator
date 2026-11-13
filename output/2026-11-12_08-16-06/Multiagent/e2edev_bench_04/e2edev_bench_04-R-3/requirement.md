@@ -1,0 +1,3 @@
+# e2edev\_bench\_04-R-3
+
+The system must populate the 'Choose Voice' dropdown (data-testid='voice-select') with available voices from the Web Speech API after the user opens the text box using the 'Toggle Text Box' button (data-testid='toggle-button'). Once the text box (data-testid='text-box') becomes visible, the system invokes the getVoices function, which retrieves the voices using speechSynthesis.getVoices(), and populates the dropdown with option elements whose values are set to the voice names and whose display texts show the voice names and languages. If the available voices change, the system listens for the 'voiceschanged' event and updates the dropdown accordingly. When a user selects a voice, it is assigned to message.voice for speech synthesis.

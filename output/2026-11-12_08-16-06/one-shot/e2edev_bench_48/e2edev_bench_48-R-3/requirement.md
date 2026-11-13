@@ -1,0 +1,3 @@
+# e2edev\_bench\_48-R-3
+
+When the user clicks the 'Choose Convertible' button with the attribute data-testid='choose-convertible-button', the system must update the 'Car Type' field, identified by data-testid='car-type', in the booking form to display 'Convertible'. Additionally, the 'Total Price' field, identified by data-testid='total-price', should be cleared and display an empty value. This functionality should work regardless of any previous car selections, ensuring that the 'Car Type' field accurately reflects the latest selection and the 'Total Price' field is reset. The system should handle scenarios where the user selects the Convertible car after previously selecting another car, ensuring the fields are updated correctly.

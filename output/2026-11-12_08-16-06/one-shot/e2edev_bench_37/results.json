@@ -1,0 +1,315 @@
+{
+  "schema_version": 1,
+  "solution": "one-shot",
+  "unit_id": "e2edev_bench_37",
+  "parent_id": null,
+  "status": "evaluated",
+  "failure": null,
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "e2edev_bench_37-R-1",
+      "text": "The web application should allow users to transfer text from a textarea to a content display area through a button click. Specifically, when a user inputs text into the textarea with data-testid 'text-area' and clicks the button with data-testid 'move-text-button', the text should be moved to the content display area with data-testid 'content-display'. The textarea should then be cleared. The system should handle various scenarios: 1) If the textarea is empty when the button is clicked, an alert with the message '请输入文本信息' should be displayed, and no changes should occur in the content display area or textarea. 2) The system should support text input up to a maximum length of 280 characters, including special characters. 3) A progress indicator with data-testid 'progress-indicator' should update to reflect the number of characters moved relative to the total characters initially entered. Additionally, a progress bar with data-testid 'progress-bar' should visually indicate the text movement process, with each list item (data-testid 'progress-bar-item-1' to 'progress-bar-item-6') changing color sequentially during the transfer. The button should change its background color to '#ccc' during the text transfer process and revert once complete.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_37/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_37-R-3",
+      "text": "The web application should allow users to move text from a textarea (data-testid='text-area', id='text') to a content display area (data-testid='content-display', id='content') by clicking a button (data-testid='move-text-button', id='button'). Upon clicking the button, if the textarea is empty, an alert with the message '请输入文本信息' should be displayed, and no further action should occur. If the textarea contains text, the button's background should change to '#ccc', and a progress bar (data-testid='progress-bar') should become visible. The text should be moved character by character from the textarea to the content display area, updating the progress indicator (data-testid='progress-indicator', strong element) to show the format 'X/Y', where X is the number of characters moved and Y is the total number of characters initially present in the textarea. The progress bar should visually indicate progress by changing the background color of its items (data-testid='progress-bar-item-1' to 'progress-bar-item-6') as the text is moved. The system should handle text up to a maximum length of 280 characters, and the progress indicator should accurately reflect the movement of special characters as well.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_37/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_37-R-4",
+      "text": "When the button with data-testid 'move-text-button' is clicked, the system should change the button's background color to '#ccc' to indicate activation, provided that the textarea with data-testid 'text-area' is not empty. If the textarea is empty, the button's background color should remain unchanged, and an alert should be displayed with the message '请输入文本信息'.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_37/requirment_with_tests.json#/finegrained_rewith_test/4/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_37-R-6",
+      "text": "The system must clear the content display area with data-testid 'content-display' each time the button with data-testid 'move-text-button' is clicked. If the text area with data-testid 'text-area' contains text, the content display area should initially be empty before displaying the text. If the text area is empty, an alert with the message '请输入文本信息' should be shown, and the content display area should remain empty.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_37/requirment_with_tests.json#/finegrained_rewith_test/6/requirement/description"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Successful text transfer with normal input",
+      "description": "User inputs normal text into the textarea and clicks the move button. The text is successfully transferred to the content display area, the textarea is cleared, progress indicator and progress bar update appropriately, and the button background temporarily changes to '#ccc'.",
+      "requirement_ids": [
+        "e2edev_bench_37-R-1",
+        "e2edev_bench_37-R-3",
+        "e2edev_bench_37-R-6"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Text transfer with empty textarea",
+      "description": "User clicks the move button while the textarea is empty. An alert with the message '请输入文本信息' is displayed, the content display area and textarea remain unchanged, and the button background does not change to '#ccc'.",
+      "requirement_ids": [
+        "e2edev_bench_37-R-1",
+        "e2edev_bench_37-R-3",
+        "e2edev_bench_37-R-4",
+        "e2edev_bench_37-R-6"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Text transfer with maximum allowed length including special characters",
+      "description": "User inputs up to the maximum limit of 280 characters including special characters into the textarea and clicks the move button. The text is accurately transferred character by character, and progress indicators correctly reflect special characters.",
+      "requirement_ids": [
+        "e2edev_bench_37-R-1",
+        "e2edev_bench_37-R-3"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_37-R-1-TC-1",
+      "title": "[Normal] Move text from textarea to content display",
+      "description": "Feature: Text Movement from Textarea to Content Display\n  The system should allow users to move text from the textarea to the content display area by clicking a button.\n\n\n  Scenario: [Normal] Move text from textarea to content display\n    Given the webpage is loaded\n    And the textarea with data-testid \"text-area\" is visible\n    And the content display area with data-testid \"content-display\" is empty\n    When the user enters \"Hello World\" into the textarea with data-testid \"text-area\"\n    And the user clicks the button with data-testid \"move-text-button\"\n    Then the content display area with data-testid \"content-display\" should contain \"Hello World\"\n    And the textarea with data-testid \"text-area\" should be empty\n",
+      "requirement_ids": [
+        "e2edev_bench_37-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_37/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_37-R-1-TC-2",
+      "title": "[Edge] Move text with long length from textarea to content display",
+      "description": "Feature: Text Movement from Textarea to Content Display\n  The system should allow users to move text from the textarea to the content display area by clicking a button.\n\n\n  Scenario: [Edge] Move text with long length from textarea to content display\n    Given the webpage is loaded\n    And the textarea with data-testid \"text-area\" is visible\n    And the content display area with data-testid \"content-display\" is empty\n    When the user enters a text of 280 characters into the textarea with data-testid \"text-area\"\n    And the user clicks the button with data-testid \"move-text-button\"\n    Then the content display area with data-testid \"content-display\" should contain the 280 characters\n    And the textarea with data-testid \"text-area\" should be empty\n",
+      "requirement_ids": [
+        "e2edev_bench_37-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_37/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_37-R-1-TC-3",
+      "title": "[Edge] Move text with special characters from textarea to content display",
+      "description": "Feature: Text Movement from Textarea to Content Display\n  The system should allow users to move text from the textarea to the content display area by clicking a button.\n\n\n  Scenario: [Edge] Move text with special characters from textarea to content display\n    Given the webpage is loaded\n    And the textarea with data-testid \"text-area\" is visible\n    And the content display area with data-testid \"content-display\" is empty\n    When the user enters \"!@#$%^&*()_+\" into the textarea with data-testid \"text-area\"\n    And the user clicks the button with data-testid \"move-text-button\"\n    Then the content display area with data-testid \"content-display\" should contain \"!@#$%^&*()_+\"\n    And the textarea with data-testid \"text-area\" should be empty\n",
+      "requirement_ids": [
+        "e2edev_bench_37-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_37/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_37-R-1-TC-4",
+      "title": "[Error] Attempt to move text when textarea is empty",
+      "description": "Feature: Text Movement from Textarea to Content Display\n  The system should allow users to move text from the textarea to the content display area by clicking a button.\n\n\n  Scenario: [Error] Attempt to move text when textarea is empty\n    Given the webpage is loaded\n    And the textarea with data-testid \"text-area\" is visible\n    And the content display area with data-testid \"content-display\" is empty\n    When the user clicks the button with data-testid \"move-text-button\"\n    Then an alert should be displayed with the message \"请输入文本信息\"\n    And the content display area with data-testid \"content-display\" should remain empty\n    And the textarea with data-testid \"text-area\" should remain empty",
+      "requirement_ids": [
+        "e2edev_bench_37-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_37/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_37-R-3-TC-1",
+      "title": "[Normal] Move text and update progress indicator",
+      "description": "Feature: Text Movement Progress Indicator\n  The system should update the progress indicator to reflect the number of characters moved versus the total number of characters as text is moved from the textarea to the content display area.\n\n\n  Scenario: [Normal] Move text and update progress indicator\n    Given the webpage is loaded\n    And the textarea with data-testid \"text-area\" contains the text \"Hello World\"\n    When the user clicks the button with data-testid \"move-text-button\"\n    Then the content display area with data-testid \"content-display\" should eventually contain \"Hello World\"\n    And the progress indicator with data-testid \"progress-indicator\" should eventually display \"11/11\"\n",
+      "requirement_ids": [
+        "e2edev_bench_37-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_37/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_37-R-3-TC-2",
+      "title": "[Edge] Move text with maximum length character by character and update progress indicator",
+      "description": "Feature: Text Movement Progress Indicator\n  The system should update the progress indicator to reflect the number of characters moved versus the total number of characters as text is moved from the textarea to the content display area.\n\n\nScenario: [Edge] Move text with maximum length character by character and update progress indicator\n    Given the webpage is loaded\n    And the textarea with data-testid \"text-area\" contains 280 characters of \"A\"\n    When the user clicks the button with data-testid \"move-text-button\"\n    Then the content display area with data-testid \"content-display\" should gradually increase from 0 to 280 characters\n    And the progress indicator with data-testid \"progress-indicator\" should gradually update from \"0/280\" to \"280/280\"",
+      "requirement_ids": [
+        "e2edev_bench_37-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_37/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_37-R-3-TC-3",
+      "title": "[Edge] Move text with no characters",
+      "description": "Feature: Text Movement Progress Indicator\n  The system should update the progress indicator to reflect the number of characters moved versus the total number of characters as text is moved from the textarea to the content display area.\n\n\n  Scenario: [Edge] Move text with no characters\n    Given the webpage is loaded\n    And the textarea with data-testid \"text-area\" is empty\n    When the user clicks the button with data-testid \"move-text-button\"\n    Then an alert should be displayed with the message \"请输入文本信息\"\n    And the progress indicator with data-testid \"progress-indicator\" should display \"0/0\"\n",
+      "requirement_ids": [
+        "e2edev_bench_37-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_37/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_37-R-3-TC-4",
+      "title": "[Error] Attempt to move text with special characters",
+      "description": "Feature: Text Movement Progress Indicator\n  The system should update the progress indicator to reflect the number of characters moved versus the total number of characters as text is moved from the textarea to the content display area.\n\n\n  Scenario: [Error] Attempt to move text with special characters\n    Given the webpage is loaded\n    And the textarea with data-testid \"text-area\" contains the text \"!@#$%^&*()\"\n    When the user clicks the button with data-testid \"move-text-button\"\n    Then the content display area with data-testid \"content-display\" should eventually contain \"!@#$%^&*()\"\n    And the progress indicator with data-testid \"progress-indicator\" should eventually display \"10/10\"",
+      "requirement_ids": [
+        "e2edev_bench_37-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_37/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_37-R-4-TC-1",
+      "title": "[Normal] Button background color changes on click",
+      "description": "Feature: Button Activation Visual Feedback\n  The system should change the button's background color to '#ccc' when clicked to indicate activation.\n\n\nScenario: [Normal] Button background color changes on click\n    Given the webpage is loaded\n    And the textarea with data-testid \"text-area\" contains 10 characters of \"A\"\n    And the button with data-testid \"move-text-button\" is visible\n    When the user clicks the button with data-testid \"move-text-button\"\n    Then the button's background color should be \"#ccc\"",
+      "requirement_ids": [
+        "e2edev_bench_37-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_37/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_37-R-4-TC-2",
+      "title": "[Edge] Button click with empty text area",
+      "description": "Feature: Button Activation Visual Feedback\n  The system should change the button's background color to '#ccc' when clicked to indicate activation.\n\n\nScenario: [Edge] Button click with empty text area\n    Given the webpage is loaded\n    And the text area with data-testid \"text-area\" is empty\n    And the button with data-testid \"move-text-button\" is visible\n    When the user clicks the button with data-testid \"move-text-button\"\n    Then an alert should be displayed with the message \"请输入文本信息\"\n    And the button's background color should not be \"#ccc\"",
+      "requirement_ids": [
+        "e2edev_bench_37-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_37/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_37-R-6-TC-1",
+      "title": "[Normal] Clear content display area when button is clicked with text input",
+      "description": "Feature: Clear content display area on button click\n  The system should clear the content display area each time the button is clicked to ensure only the current text is displayed.\n\n\nScenario: [Normal] Clear content display area when button is clicked with text input\n    Given the webpage is loaded\n    And the text area with data-testid \"text-area\" contains the text \"Hello World\"\n    When the user clicks the button with data-testid \"move-text-button\"\n    Then the text area with data-testid \"text-area\" should be empty",
+      "requirement_ids": [
+        "e2edev_bench_37-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_37/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_37-R-6-TC-2",
+      "title": "[Edge] Click button with empty text area",
+      "description": "Feature: Clear content display area on button click\n  The system should clear the content display area each time the button is clicked to ensure only the current text is displayed.\n\n\nScenario: [Edge] Click button with empty text area\n    Given the webpage is loaded\n    And the text area with data-testid \"text-area\" is empty\n    When the user clicks the button with data-testid \"move-text-button\"\n    Then an alert should be displayed with the message \"请输入文本信息\"\n    And the text area with data-testid \"text-area\" should be empty",
+      "requirement_ids": [
+        "e2edev_bench_37-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_37/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 3,
+    "reference_count": 12,
+    "matches": [
+      {
+        "generated_id": "G-001",
+        "reference_id": "e2edev_bench_37-R-1-TC-1",
+        "similarity": 0.9083107352654288
+      },
+      {
+        "generated_id": "G-002",
+        "reference_id": "e2edev_bench_37-R-1-TC-4",
+        "similarity": 0.948056459829467
+      },
+      {
+        "generated_id": "G-003",
+        "reference_id": "e2edev_bench_37-R-3-TC-2",
+        "similarity": 0.9149986340357644
+      }
+    ],
+    "unmatched_generated_ids": [],
+    "unmatched_reference_ids": [
+      "e2edev_bench_37-R-1-TC-2",
+      "e2edev_bench_37-R-1-TC-3",
+      "e2edev_bench_37-R-3-TC-1",
+      "e2edev_bench_37-R-3-TC-3",
+      "e2edev_bench_37-R-3-TC-4",
+      "e2edev_bench_37-R-4-TC-1",
+      "e2edev_bench_37-R-4-TC-2",
+      "e2edev_bench_37-R-6-TC-1",
+      "e2edev_bench_37-R-6-TC-2"
+    ],
+    "precision": 1.0,
+    "recall": 0.25,
+    "f1": 0.4,
+    "embedding_usage": {
+      "input_tokens": 1999,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 1999
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
+  "generation": {
+    "selected_techniques": [],
+    "technique_rationales": {},
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": 1144,
+      "output_tokens": 452,
+      "details": {
+        "text_prompt_tokens": 1144,
+        "total_tokens": 1596
+      },
+      "status": "available"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": 1999,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 1999
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
+  "links": {
+    "requirements": {
+      "e2edev_bench_37-R-1": "e2edev_bench_37-R-1/requirement.md",
+      "e2edev_bench_37-R-3": "e2edev_bench_37-R-3/requirement.md",
+      "e2edev_bench_37-R-4": "e2edev_bench_37-R-4/requirement.md",
+      "e2edev_bench_37-R-6": "e2edev_bench_37-R-6/requirement.md"
+    },
+    "cases": {
+      "G-001": {
+        "e2edev_bench_37-R-1": "e2edev_bench_37-R-1/test cases/1_Successful_text_transfer_with_normal_input.md",
+        "e2edev_bench_37-R-3": "e2edev_bench_37-R-3/test cases/1_Successful_text_transfer_with_normal_input.md",
+        "e2edev_bench_37-R-6": "e2edev_bench_37-R-6/test cases/1_Successful_text_transfer_with_normal_input.md"
+      },
+      "G-002": {
+        "e2edev_bench_37-R-1": "e2edev_bench_37-R-1/test cases/2_Text_transfer_with_empty_textarea.md",
+        "e2edev_bench_37-R-3": "e2edev_bench_37-R-3/test cases/2_Text_transfer_with_empty_textarea.md",
+        "e2edev_bench_37-R-4": "e2edev_bench_37-R-4/test cases/2_Text_transfer_with_empty_textarea.md",
+        "e2edev_bench_37-R-6": "e2edev_bench_37-R-6/test cases/2_Text_transfer_with_empty_textarea.md"
+      },
+      "G-003": {
+        "e2edev_bench_37-R-1": "e2edev_bench_37-R-1/test cases/3_Text_transfer_with_maximum_allowed_length_includ.md",
+        "e2edev_bench_37-R-3": "e2edev_bench_37-R-3/test cases/3_Text_transfer_with_maximum_allowed_length_includ.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

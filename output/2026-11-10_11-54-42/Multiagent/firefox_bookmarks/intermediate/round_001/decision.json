@@ -1,0 +1,286 @@
+{
+  "number": 1,
+  "requester": "critic",
+  "accepted_before": {
+    "candidate_id": "initial",
+    "cases": [
+      {
+        "id": "G-001",
+        "title": "Add Bookmark to Specific Folder",
+        "description": "Create a new bookmark with a valid URL and name under a user‑selected existing folder and verify it appears in the hierarchy, the bookmark file is updated, and the change persists after restart.",
+        "requirement_ids": [
+          "R-001",
+          "R-007",
+          "R-010"
+        ]
+      },
+      {
+        "id": "G-002",
+        "title": "Delete Bookmark from All Access Points",
+        "description": "Select an existing bookmark, delete it, then confirm the entry is removed from the bookmark file, the UI tree, the toolbar, and search results; restart the browser to ensure the deletion is permanent.",
+        "requirement_ids": [
+          "R-002",
+          "R-010"
+        ]
+      },
+      {
+        "id": "G-003",
+        "title": "Add and Delete Bookmark on Personal Toolbar",
+        "description": "Add a bookmark directly to the personal toolbar folder, verify its presence on the toolbar UI, then delete it and confirm it disappears from the toolbar and persistent storage.",
+        "requirement_ids": [
+          "R-003",
+          "R-010"
+        ]
+      },
+      {
+        "id": "G-004",
+        "title": "Create New Bookmark Folder",
+        "description": "Create a new folder with a valid name under a chosen parent folder, check that the folder appears in the hierarchy, that its ID is unique, and that the structure is saved correctly.",
+        "requirement_ids": [
+          "R-004",
+          "R-007"
+        ]
+      },
+      {
+        "id": "G-005",
+        "title": "Double‑Click Launches Bookmark",
+        "description": "Double‑click a visible bookmark entry and verify that a new browser window/tab opens with the correct URL; repeat with an invalid URL to confirm no launch occurs and an error is shown.",
+        "requirement_ids": [
+          "R-005"
+        ]
+      },
+      {
+        "id": "G-006",
+        "title": "Validate Default Bookmarks Links",
+        "description": "On first run, load the packaged default bookmark file and programmatically verify each entry has a syntactically correct HTTP/HTTPS URL; optionally perform a HEAD request to ensure the link is reachable (status 200).",
+        "requirement_ids": [
+          "R-006"
+        ]
+      },
+      {
+        "id": "G-007",
+        "title": "Inline Rename Bookmark",
+        "description": "Select a bookmark, edit its name inline, commit the change, and verify the new name is displayed, persisted in the file, and survives a crash/restart; also test canceling edit and entering an invalid name.",
+        "requirement_ids": [
+          "R-012",
+          "R-007",
+          "R-010"
+        ]
+      },
+      {
+        "id": "G-008",
+        "title": "Multi‑Delete Bookmarks",
+        "description": "Select multiple bookmark items (including a mix of bookmarks and folders), execute a single delete command, and verify all selected items are removed from the UI and storage; ensure operation is atomic and persists after restart.",
+        "requirement_ids": [
+          "R-017",
+          "R-010"
+        ]
+      },
+      {
+        "id": "G-009",
+        "title": "Drag‑and‑Drop Restrictions",
+        "description": "Attempt to drag a bookmark onto itself, its immediate parent, and its immediate child; verify the UI rejects each drop with a visual cue and no hierarchy change; also perform a valid drag to confirm normal movement works.",
+        "requirement_ids": [
+          "R-018"
+        ]
+      },
+      {
+        "id": "G-010",
+        "title": "Sort and Reverse‑Sort Bookmark Columns",
+        "description": "Click each sortable column header (Name, URL, Date) to sort ascending, verify order, click again to sort descending, verify reverse order; confirm sorting handles null or mixed‑type values without errors and that the sort state is retained after restart.",
+        "requirement_ids": [
+          "R-014",
+          "R-010"
+        ]
+      }
+    ],
+    "opinions": [
+      {
+        "agent": "critic",
+        "feedback": "The high‑level cases are generally well scoped, but several contain expectations that are not covered by the stated requirements, making them untestable or unsupported.  \n1. **G-005** expects an error dialog when a bookmark with an invalid URL is double‑clicked. R-005 only mandates launching a bookmark; error handling for invalid URLs is not specified.  \n2. **G-006** proposes performing HTTP HEAD requests to confirm reachability of default bookmarks. R-006 only requires that the packaged links be syntactically valid; network checks add external dependency and are outside the requirement.  \n3. **G-007** includes tests for entering an invalid name and cancelling the inline edit. Neither R-012 nor any other requirement defines the behaviour for invalid names or cancel actions, so these expectations are unsupported.  \n4. **G-004** validates that the newly created folder’s ID is unique. Uniqueness of IDs is an implementation detail not mentioned in R-004 or related requirements, making that verification irrelevant to the specification.\n\nTo make the test suite compliant, remove or replace the unsupported steps and align each case strictly with the listed requirements.\n",
+        "request_revision": true,
+        "confirmed_blockers": [
+          "G-005 includes verification of error handling for an invalid URL, which is not covered by requirement R-005.",
+          "G-006 proposes HTTP HEAD requests to test link reachability, exceeding the syntactic validity scope of requirement R-006 and adding external dependency.",
+          "G-007 tests handling of invalid bookmark names and canceling inline rename, behaviors not defined in requirement R-012 or related requirements.",
+          "G-004 checks for a unique folder ID, which is an implementation detail not mandated by requirement R-004."
+        ],
+        "blocker_assessment_complete": true
+      }
+    ],
+    "valid": true,
+    "confirmed_blockers": 4,
+    "covered_requirements": 12,
+    "duplicates": 0,
+    "comparable": true
+  },
+  "candidates": [
+    {
+      "attempt": {
+        "assessment": {
+          "candidate_id": "round-1-candidate-1",
+          "cases": [],
+          "opinions": [],
+          "valid": false,
+          "confirmed_blockers": 0,
+          "covered_requirements": 0,
+          "duplicates": 0,
+          "comparable": true
+        },
+        "analysis": null,
+        "failure": {
+          "stage": "analyst",
+          "error_type": "UnexpectedModelBehavior",
+          "detail": null
+        }
+      },
+      "comparison": "invalid"
+    },
+    {
+      "attempt": {
+        "assessment": {
+          "candidate_id": "round-1-candidate-2",
+          "cases": [
+            {
+              "id": "G-001",
+              "title": "Add Bookmark to Specific Folder",
+              "description": "Create a new bookmark with a valid URL and name under a user‑selected existing folder and verify it appears in the hierarchy, the bookmark file is updated, and the change persists after restart.",
+              "requirement_ids": [
+                "R-001",
+                "R-007",
+                "R-010"
+              ]
+            },
+            {
+              "id": "G-002",
+              "title": "Delete Bookmark from All Access Points",
+              "description": "Select an existing bookmark, delete it, then confirm the entry is removed from the bookmark file, the UI tree, the toolbar, and search results; restart the browser to ensure the deletion is permanent.",
+              "requirement_ids": [
+                "R-002",
+                "R-010"
+              ]
+            },
+            {
+              "id": "G-003",
+              "title": "Add and Delete Bookmark on Personal Toolbar",
+              "description": "Add a bookmark directly to the personal toolbar folder, verify its presence on the toolbar UI, then delete it and confirm it disappears from the toolbar and persistent storage.",
+              "requirement_ids": [
+                "R-003",
+                "R-010"
+              ]
+            },
+            {
+              "id": "G-004",
+              "title": "Create New Bookmark Folder",
+              "description": "Create a new folder with a valid name under a chosen parent folder, check that the folder appears in the hierarchy and that the structure is saved correctly.",
+              "requirement_ids": [
+                "R-004",
+                "R-007"
+              ]
+            },
+            {
+              "id": "G-005",
+              "title": "Double‑Click Launches Bookmark",
+              "description": "Double‑click a visible bookmark entry and verify that a new browser window/tab opens with the correct URL.",
+              "requirement_ids": [
+                "R-005"
+              ]
+            },
+            {
+              "id": "G-006",
+              "title": "Validate Default Bookmarks Links",
+              "description": "On first run, load the packaged default bookmark file and programmatically verify each entry has a syntactically correct HTTP/HTTPS URL.",
+              "requirement_ids": [
+                "R-006"
+              ]
+            },
+            {
+              "id": "G-007",
+              "title": "Inline Rename Bookmark",
+              "description": "Select a bookmark, edit its name inline, commit the change, and verify the new name is displayed, persisted in the file, and survives a restart.",
+              "requirement_ids": [
+                "R-012",
+                "R-007",
+                "R-010"
+              ]
+            },
+            {
+              "id": "G-008",
+              "title": "Multi‑Delete Bookmarks",
+              "description": "Select multiple bookmark items (including a mix of bookmarks and folders), execute a single delete command, and verify all selected items are removed from the UI and storage; ensure the operation persists after restart.",
+              "requirement_ids": [
+                "R-017",
+                "R-010"
+              ]
+            },
+            {
+              "id": "G-009",
+              "title": "Drag‑and‑Drop Restrictions",
+              "description": "Attempt to drag a bookmark onto itself, its immediate parent, and its immediate child; verify the UI rejects each drop with a visual cue and no hierarchy change; also perform a valid drag to confirm normal movement works.",
+              "requirement_ids": [
+                "R-018"
+              ]
+            },
+            {
+              "id": "G-010",
+              "title": "Sort and Reverse‑Sort Bookmark Columns",
+              "description": "Click each sortable column header (Name, URL, Date) to sort ascending, verify order, click again to sort descending, verify reverse order; confirm sorting handles null or mixed‑type values without errors and that the sort state is retained after restart.",
+              "requirement_ids": [
+                "R-014",
+                "R-010"
+              ]
+            }
+          ],
+          "opinions": [
+            {
+              "agent": "critic",
+              "feedback": "Most cases are well‑scoped and traceable to requirements. Ensure each test case only asserts behavior that is explicitly required. Adjust G-008 to either limit the multi‑delete to bookmarks only or add a requirement covering multi‑delete of folders. Modify G-010 to verify sorting within a session; if persistence is required, add a corresponding requirement.",
+              "request_revision": true,
+              "confirmed_blockers": [
+                "G-008 expects deletion of folders in a multi‑delete operation, but only requirement R-017 covers deleting multiple bookmarks; folder deletion is covered by R-008, making the case unsupported.",
+                "G-010 asserts that the sort order is retained after restart, which is not specified by any requirement (R‑014 covers sorting, R‑010 covers data persistence, but not UI sort state), resulting in unsupported expected behavior."
+              ],
+              "blocker_assessment_complete": true
+            }
+          ],
+          "valid": true,
+          "confirmed_blockers": 2,
+          "covered_requirements": 12,
+          "duplicates": 0,
+          "comparable": true
+        },
+        "analysis": {
+          "analysis": "**Revised Testable Behavior, Boundaries, Normal/Abnormal Paths, and Ambiguities (post‑feedback)**\n\n**R-001 – Add bookmark to specific location**\n- *Behavior*: Create a bookmark node under a user‑selected existing folder.\n- *Boundaries*: URL length (0‑2083 chars typical), name length, allowed characters, maximum folder depth (if any).\n- *Normal*: Valid URL + folder → bookmark appears in hierarchy and file.\n- *Abnormal*: Empty/invalid URL, non‑existent folder, read‑only folder, name exceeds limit → operation rejected with UI error; no file change.\n- *Open questions*: Identification of folder (ID vs path); handling of duplicate URLs.\n\n**R-002 – Delete bookmark from all access points**\n- *Behavior*: Removal updates the persistent store and every UI view (tree, toolbar, search results).\n- *Boundaries*: Deleting root‑level vs nested, single vs multiple selection.\n- *Normal*: Select existing bookmark → Delete → disappears everywhere; file reflects removal.\n- *Abnormal*: Bookmark already absent, file‑write failure, concurrent modification → graceful failure, UI remains unchanged.\n- *Open questions*: Scope of “all access points” (search, sync, history?).\n\n**R-003 – Add/delete bookmark on personal toolbar**\n- *Behavior*: Toolbar is a special folder; bookmarks can be added or removed directly.\n- *Boundaries*: Max toolbar items (implementation limit), URL/name limits.\n- *Normal*: Add → icon appears on toolbar; Delete → icon disappears; change persisted.\n- *Abnormal*: Duplicate addition, exceeding capacity, missing toolbar folder → error.\n- *Open questions*: Whether toolbar is separate storage or just a flagged folder.\n\n**R-004 – Insert new bookmark folder**\n- *Behavior*: Create a folder node under a chosen parent.\n- *Boundaries*: Folder name length, prohibited characters, max nesting depth.\n- *Normal*: Provide non‑empty name → folder appears in hierarchy and file.\n- *Abnormal*: Empty name, name conflict, invalid parent, depth limit exceeded → operation rejected.\n- *Open questions*: Policy for duplicate folder names; uniqueness of internal IDs is an implementation detail and not required for verification.\n\n**R-005 – Double‑click launches bookmark**\n- *Behavior*: Double‑click opens the bookmark’s URL in a new window/tab.\n- *Boundaries*: Double‑click timing, disabled/blocked URLs, user preferences for tab vs window.\n- *Normal*: Valid bookmark → new tab/window with correct URL.\n- *Abnormal*: Double‑click on separator or non‑bookmark → no launch; invalid URL handling is not specified by R-005 and therefore not required.\n- *Open questions*: Preference handling; UI feedback for blocked URLs is out of scope.\n\n**R-006 – Default bookmarks must be valid links**\n- *Behavior*: On first run, packaged default bookmarks are loaded; each URL must be syntactically correct (http/https).\n- *Boundaries*: Allowed schemes, URL length, character set.\n- *Normal*: All default entries pass syntactic validation.\n- *Abnormal*: Corrupted entry, unsupported scheme, missing URL → flagged as invalid; no network request is required.\n- *Open questions*: Whether “valid” includes network reachability (currently no).\n\n**R-007 – Save changes without loss of integrity**\n- *Behavior*: Any edit (add, delete, rename) persists atomically, preserving hierarchy and attributes.\n- *Boundaries*: Concurrent edits, power loss during write, file size limits.\n- *Normal*: Edit → file updated atomically; reload shows identical structure.\n- *Abnormal*: Simulated crash during write → system recovers to last consistent state; no orphan nodes.\n- *Open questions*: Definition of “integrity” (unique IDs, correct parent links).\n\n**R-008 – Delete bookmark folder**\n- *Behavior*: Remove a folder (and optionally its children) from hierarchy and file.\n- *Boundaries*: Empty vs non‑empty folder, root‑folder protection.\n- *Normal*: Delete empty folder → disappears; delete non‑empty folder → all contained items removed.\n- *Abnormal*: Attempt to delete protected/root folder, permission errors → operation denied.\n- *Open questions*: Confirmation requirement; recursive deletion policy.\n\n**R-009 – Add/delete separators**\n- *Behavior*: Separator nodes can be inserted between items or removed.\n- *Boundaries*: Position (cannot be first/last if UI disallows), maximum count.\n- *Normal*: Insert → visual separator appears; Delete → separator disappears.\n- *Abnormal*: Insert at invalid index, delete non‑existent separator → error.\n- *Open questions*: Whether separators participate in drag‑and‑drop.\n\n**R-010 – Persist changes across restart/crash**\n- *Behavior*: All modifications survive application termination and restart.\n- *Boundaries*: Bookmark file size, write‑ahead logging, crash during write.\n- *Normal*: Modify → close → reopen → changes present.\n- *Abnormal*: Crash mid‑write → on next start, system restores last good state.\n- *Open questions*: Recovery strategy (auto‑restore, user prompt).\n\n**R-011 – View properties (negative test)**\n- *Behavior*: Attempting to open a properties dialog for bookmarks, folders, or separators must be disallowed.\n- *Boundaries*: UI entry points (right‑click, menu).\n- *Normal*: Invocation does nothing or shows disabled state.\n- *Abnormal*: Dialog appears → test fails.\n- *Open questions*: Reason for prohibition (e.g., future feature).\n\n**R-012 – Inline rename without dialog**\n- *Behavior*: User can edit the name of a bookmark directly in the list/tree view.\n- *Boundaries*: Name length, character set, non‑empty requirement.\n- *Normal*: Edit → press Enter → name updated in UI and persisted.\n- *Abnormal*: Cancel edit (Esc) → original name retained; entering an empty name → edit rejected and original restored.\n- *Open questions*: Whether inline rename applies to folders/separators (currently only bookmarks).\n\n**R-013 – Search by custom keyword**\n- *Behavior*: Bookmarks may have a user‑defined keyword; searching with that keyword returns the bookmark.\n- *Boundaries*: Keyword length, uniqueness, case sensitivity.\n- *Normal*: Define keyword → search → bookmark appears.\n- *Abnormal*: Duplicate keywords, reserved words, empty keyword → no match or appropriate handling.\n- *Open questions*: Storage scope of keyword (per‑bookmark) and conflict resolution.\n\n**R-014 – Sort/reverse‑sort per column**\n- *Behavior*: UI can sort bookmarks by selectable columns (Name, URL, Date) ascending or descending.\n- *Boundaries*: Data type handling, locale‑specific ordering, null values.\n- *Normal*: Click column → ascending; click again → descending; order persists if required.\n- *Abnormal*: Mixed null/mixed‑type values → sorting must not crash.\n- *Open questions*: Persistence of sort state across restarts.\n\n**R-015 – Resizable columns**\n- *Behavior*: Users can drag column borders to adjust width.\n- *Boundaries*: Minimum/maximum width, persistence of size.\n- *Normal*: Resize → new width retained after reload.\n- *Abnormal*: Resize to zero or extreme values → UI remains functional.\n- *Open questions*: Interaction with hidden columns.\n\n**R-016 – Show/hide columns**\n- *Behavior*: Users can toggle visibility of columns.\n- *Boundaries*: At least one column must stay visible; default visible set defined.\n- *Normal*: Hide → column disappears; Show → column returns; state persisted.\n- *Abnormal*: Attempt to hide all columns → UI should warn/prevent.\n- *Open questions*: Per‑profile storage of visibility settings.\n\n**R-017 – Multi‑delete**\n- *Behavior*: Multiple selected items can be deleted with a single command.\n- *Boundaries*: Max selection count, mixed item types.\n- *Normal*: Select N items → Delete → all removed; operation is atomic (all‑or‑nothing) unless a non‑deletable item is included, in which case the operation aborts with warning.\n- *Abnormal*: Include protected/root item → deletion aborted or partial with warning.\n- *Open questions*: Desired atomicity semantics.\n\n**R-018 – Drag‑and‑drop restrictions**\n- *Behavior*: Prevent dropping a bookmark onto itself, its immediate parent, or its immediate child.\n- *Boundaries*: Immediate relationship limited to one level; moving a folder containing the source node is also prohibited.\n- *Normal*: Valid drag → item moves; invalid drop → UI shows visual cue and rejects.\n- *Abnormal*: Multi‑node drag where any node violates rule → entire operation rejected.\n- *Open questions*: Definition of “immediate” beyond one level, handling of complex subtree moves.\n\n**Adjustments from Critic Feedback**\n- Removed expectations that are not covered by requirements:\n  * G‑005 error dialog for invalid URLs (R‑005 does not define error handling).\n  * G‑006 network HEAD checks (R‑006 only mandates syntactic validity).\n  * G‑007 invalid‑name and cancel‑edit checks not defined in R‑012.\n  * G‑004 verification of unique folder ID (implementation detail, not required).\n- Test cases should now align strictly with the listed requirements, focusing on UI actions and persistent‑storage verification without external dependencies.\n"
+        },
+        "failure": null
+      },
+      "comparison": "improves"
+    },
+    {
+      "attempt": {
+        "assessment": {
+          "candidate_id": "round-1-candidate-3",
+          "cases": [],
+          "opinions": [],
+          "valid": false,
+          "confirmed_blockers": 0,
+          "covered_requirements": 0,
+          "duplicates": 0,
+          "comparable": true
+        },
+        "analysis": null,
+        "failure": {
+          "stage": "analyst",
+          "error_type": "UnexpectedModelBehavior",
+          "detail": null
+        }
+      },
+      "comparison": "invalid"
+    }
+  ],
+  "selected_id": "round-1-candidate-2",
+  "decision": "objective",
+  "qualitative": null,
+  "failure": null,
+  "monotonicity": "confirmed"
+}

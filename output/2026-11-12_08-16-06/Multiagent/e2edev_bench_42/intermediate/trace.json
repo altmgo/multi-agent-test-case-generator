@@ -1,0 +1,71 @@
+{
+  "initial": {
+    "assessment": {
+      "candidate_id": "initial",
+      "cases": [],
+      "opinions": [],
+      "valid": false,
+      "confirmed_blockers": 0,
+      "covered_requirements": 0,
+      "duplicates": 0,
+      "comparable": true
+    },
+    "analysis": null,
+    "failure": {
+      "stage": "analyst",
+      "error_type": "ModelRateLimitError",
+      "detail": null
+    }
+  },
+  "rounds": [],
+  "status": "failed",
+  "failure": {
+    "stage": "analyst",
+    "error_type": "ModelRateLimitError",
+    "detail": null
+  },
+  "accepted_id": null,
+  "accepted_assessment": null,
+  "pending": [],
+  "pending_controls": [
+    "critic",
+    "validator"
+  ],
+  "coverage": null,
+  "coverage_failure": null,
+  "calls": [
+    {
+      "stage": "analyst",
+      "subject_id": "initial",
+      "output": null,
+      "error_type": "ModelRateLimitError",
+      "usage": [
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        }
+      ]
+    }
+  ],
+  "monotonicity": "confirmed"
+}

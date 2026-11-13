@@ -1,0 +1,3 @@
+# e2edev\_bench\_57-R-3
+
+The web application provides a checkbox list with a 'Reverse Selection' link, identified by the data-testid 'checkReverse'. When the user clicks this link, the application toggles the checked state of each checkbox in the list. Specifically, if a checkbox is checked, it becomes unchecked, and if it is unchecked, it becomes checked. This functionality applies to all checkboxes with data-testids ranging from 'checkbox-1' to 'checkbox-10'. The initial state of the checkboxes can be all checked, all unchecked, or a mix of checked and unchecked states. The system ensures that the toggle operation is accurately reflected in the UI, updating the checked state of each checkbox accordingly.

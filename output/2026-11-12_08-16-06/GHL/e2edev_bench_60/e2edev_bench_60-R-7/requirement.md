@@ -1,0 +1,3 @@
+# e2edev\_bench\_60-R-7
+
+Upon loading the Exchange Rate Calculator webpage, the system must automatically initialize by fetching the current exchange rate between the default selected currencies, USD and EUR. The UI should display the exchange rate in the element with data-testid 'exchange-rate', formatted as '1 USD = [rate] EUR'. Additionally, the converted amount should be calculated based on the default input value of 1 in the element with data-testid 'amount-one', and displayed in the element with data-testid 'amount-two', rounded to two decimal places. The currency dropdowns should default to USD for the element with data-testid 'currency-one' and EUR for the element with data-testid 'currency-two'.

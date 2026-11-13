@@ -1,0 +1,402 @@
+{
+  "schema_version": 1,
+  "solution": "one-shot",
+  "unit_id": "e2edev_bench_27",
+  "parent_id": null,
+  "status": "evaluated",
+  "failure": null,
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "e2edev_bench_27-R-1",
+      "text": "The Meal Finder web application must allow users to search for meals by entering a keyword into the search input field identified by the attribute data-testid 'search-input'. Upon clicking the search button with data-testid 'search-button', the application should fetch meals matching the keyword from the API and display them within the meals container with data-testid 'meals-container'. The result heading with data-testid 'result-heading' should update to show 'Search results for \"<keyword>\":'. If no matching meals are found, the meals container should be cleared, and the result heading should display 'No results found. Try another keyword!'. In the case of an empty keyword, the application should automatically fetch and display a random meal in the single meal container with data-testid 'single-meal-container', leaving the result heading empty. Additionally, clicking on a meal within the meals container should navigate to detailed meal information, fetched using the meal's ID, and displayed in the single meal container, ensuring smooth scrolling into view.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_27/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_27-R-2",
+      "text": "When the user clicks the 'Random' button with data-testid 'random-button', the system must fetch a random meal from the API and display its details in the single meal container with data-testid 'single-meal-container'. The meals container with data-testid 'meals-container' and the result heading with data-testid 'result-heading' must be cleared. If the user clicks the 'Random' button multiple times in quick succession, the single meal container should display the latest meal details fetched, ensuring the result heading remains empty throughout.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_27/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_27-R-3",
+      "text": "Upon clicking a meal element within the meals container (identified by data-testid 'meals-container'), the application must retrieve detailed information about the selected meal using its data-mealid attribute. The details, including the meal's name, image, category, area, ingredients, and instructions, must be displayed in the single meal container (identified by data-testid 'single-meal-container'). The page should then smoothly scroll to bring the single meal container into view. This interaction is triggered by a click event on any element with the class 'meal-info' within the meals container.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_27/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_27-R-4",
+      "text": "When the 'Meal Finder' webpage loads, the system must automatically fetch a random meal from the MealDB API using the endpoint 'https://www.themealdb.com/api/json/v1/1/random.php'. The fetched meal must be displayed in the 'single meal container' (identified by the attribute data-testid='single-meal-container'). The displayed meal must include the following details: the meal's title, an image of the meal, a list of ingredients with their corresponding measurements, and preparation instructions. Additionally, the 'result heading' (identified by data-testid='result-heading') and the 'meals container' (identified by data-testid='meals-container') must be cleared and remain empty. If the API request fails, the 'single meal container' must display an error message stating 'Failed to fetch a random meal.'",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_27/requirment_with_tests.json#/finegrained_rewith_test/4/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_27-R-5",
+      "text": "When the user submits the search form with an empty input field or an input containing only whitespace, the system must fetch and display a random meal in the single meal container. The search form is identified by the data-testid 'submit-form', and the search input field is identified by the data-testid 'search-input'. The search button is identified by the data-testid 'search-button'. Upon submission, the single meal container, identified by the data-testid 'single-meal-container', should be updated to display the random meal details, including the meal name, image, category, area, ingredients, and instructions. The result heading, identified by the data-testid 'result-heading', should be cleared to ensure no search results are displayed.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_27/requirment_with_tests.json#/finegrained_rewith_test/5/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_27-R-10",
+      "text": "The system must clear the search input field (identified by the attribute data-testid='search-input') after the user submits the search form (identified by the attribute data-testid='submit-form') under all scenarios. This includes: (1) a valid search where results are successfully fetched and displayed, (2) an empty search submission where no input is provided, and (3) an invalid search where no results are found. The clearing of the input field must occur immediately after the form submission event is triggered, regardless of the outcome of the search. The search button is identified by the attribute data-testid='search-button'.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_27/requirment_with_tests.json#/finegrained_rewith_test/10/requirement/description"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Search meals with a valid keyword",
+      "description": "Enter a valid keyword into the search input and click the search button to display matching meals and update the result heading.",
+      "requirement_ids": [
+        "e2edev_bench_27-R-1",
+        "e2edev_bench_27-R-10"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Search meals with no matching results",
+      "description": "Enter a keyword that yields no matches, verify the meals container is cleared, and the result heading displays 'No results found. Try another keyword!'.",
+      "requirement_ids": [
+        "e2edev_bench_27-R-1",
+        "e2edev_bench_27-R-10"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Search with an empty keyword",
+      "description": "Submit the search form with an empty search input or whitespace only, and verify a random meal is displayed in the single meal container and the result heading is empty.",
+      "requirement_ids": [
+        "e2edev_bench_27-R-1",
+        "e2edev_bench_27-R-5",
+        "e2edev_bench_27-R-10"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Click Random button to fetch random meal",
+      "description": "Click the random button to fetch a random meal, display its details in the single meal container, and clear the meals container and result heading.",
+      "requirement_ids": [
+        "e2edev_bench_27-R-2"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Click Random button multiple times in quick succession",
+      "description": "Click the random button multiple times quickly and ensure the single meal container displays the latest fetched meal with an empty result heading.",
+      "requirement_ids": [
+        "e2edev_bench_27-R-2"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Click meal element to view details and scroll into view",
+      "description": "Click a meal item within the meals container to fetch and display its detailed information in the single meal container and smoothly scroll into view.",
+      "requirement_ids": [
+        "e2edev_bench_27-R-1",
+        "e2edev_bench_27-R-3"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Webpage load automatic random meal fetch",
+      "description": "Verify that upon loading the Meal Finder webpage, a random meal is automatically fetched and displayed with all required details, while result and meals containers remain empty.",
+      "requirement_ids": [
+        "e2edev_bench_27-R-4"
+      ]
+    },
+    {
+      "id": "G-008",
+      "title": "Webpage load random meal fetch failure",
+      "description": "Verify that if the automatic random meal fetch fails upon webpage load, the single meal container displays an error message stating 'Failed to fetch a random meal.'",
+      "requirement_ids": [
+        "e2edev_bench_27-R-4"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_27-R-1-TC-1",
+      "title": "[Normal] Search for meals with a valid keyword",
+      "description": "Feature: Search for meals using a keyword\n  The user can search for meals by typing a keyword into the search input field and clicking the search button. The system fetches meals matching the keyword from the API and displays them. If no results are found, a message is displayed.\n\n\n  Scenario: [Normal] Search for meals with a valid keyword\n    Given the Meal Finder webpage is loaded\n    And the search input field with data-testid \"search-input\" is visible\n    When the user enters \"chicken\" into the search input field with data-testid \"search-input\"\n    And clicks the search button with data-testid \"search-button\"\n    Then the system fetches meals matching the keyword \"chicken\" from the API\n    And displays the meals in the meals container with data-testid \"meals-container\"\n    And the result heading with data-testid \"result-heading\" shows \"Search results for \"chicken\":\"\n",
+      "requirement_ids": [
+        "e2edev_bench_27-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_27/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_27-R-1-TC-2",
+      "title": "[Edge] Search for meals with a keyword that has no matching results",
+      "description": "Feature: Search for meals using a keyword\n  The user can search for meals by typing a keyword into the search input field and clicking the search button. The system fetches meals matching the keyword from the API and displays them. If no results are found, a message is displayed.\n\n\n  Scenario: [Edge] Search for meals with a keyword that has no matching results\n    Given the Meal Finder webpage is loaded\n    And the search input field with data-testid \"search-input\" is visible\n    When the user enters \"xyzabc\" into the search input field with data-testid \"search-input\"\n    And clicks the search button with data-testid \"search-button\"\n    Then the system fetches meals matching the keyword \"xyzabc\" from the API\n    And the meals container with data-testid \"meals-container\" is empty\n    And the result heading with data-testid \"result-heading\" shows \"No results found. Try another keyword!\"\n",
+      "requirement_ids": [
+        "e2edev_bench_27-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_27/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_27-R-1-TC-3",
+      "title": "[Error] Search for meals with an empty keyword",
+      "description": "Feature: Search for meals using a keyword\n  The user can search for meals by typing a keyword into the search input field and clicking the search button. The system fetches meals matching the keyword from the API and displays them. If no results are found, a message is displayed.\n\n\n  Scenario: [Error] Search for meals with an empty keyword\n    Given the Meal Finder webpage is loaded\n    And the search input field with data-testid \"search-input\" is visible\n    When the user enters \"\" (empty string) into the search input field with data-testid \"search-input\"\n    And clicks the search button with data-testid \"search-button\"\n    Then the system fetches a random meal from the API\n    And displays the meal details in the single meal container with data-testid \"single-meal-container\"\n    And the result heading with data-testid \"result-heading\" is empty",
+      "requirement_ids": [
+        "e2edev_bench_27-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_27/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_27-R-2-TC-1",
+      "title": "[Normal] User clicks the 'Random' button to fetch a random meal",
+      "description": "Feature: Fetch and display a random meal\n  The system must fetch a random meal from the API and display its details in the single meal container when the user clicks the 'Random' button. The meals container and result heading must be cleared.\n\n\nScenario: [Normal] User clicks the 'Random' button to fetch a random meal\n    Given the Meal Finder page is loaded\n    When the user clicks the 'Random' button with data-testid \"random-button\"\n    Then the single meal container with data-testid \"single-meal-container\" should display the meal details\n    And the result heading with data-testid \"result-heading\" should remain empty",
+      "requirement_ids": [
+        "e2edev_bench_27-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_27/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_27-R-2-TC-2",
+      "title": "[Edge] User clicks the 'Random' button multiple times in quick succession",
+      "description": "Feature: Fetch and display a random meal\n  The system must fetch a random meal from the API and display its details in the single meal container when the user clicks the 'Random' button. The meals container and result heading must be cleared.\n\n\nScenario: [Edge] User clicks the 'Random' button multiple times in quick succession\n    Given the Meal Finder page is loaded\n    When the user clicks the 'Random' button with data-testid \"random-button\" multiple times quickly\n    Then the single meal container with data-testid \"single-meal-container\" should display the latest meal details fetched\n    And the result heading with data-testid \"result-heading\" should remain empty",
+      "requirement_ids": [
+        "e2edev_bench_27-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_27/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_27-R-3-TC-1",
+      "title": "[Normal] User clicks on a meal element to view its details",
+      "description": "Feature: Display detailed information about a selected meal\n  The system must fetch and display detailed information about a selected meal when the user clicks on a meal element in the meals container. The page must scroll smoothly to the single meal container.\n\n\nScenario: [Normal] User clicks on a meal element to view its details\n    Given the Meal Finder page is loaded\n    And the user searches for the keyword \"chicken\"\n    And the meals are displayed in the meals container with data-testid \"meals-container\"\n    And each meal element has a valid data-mealid attribute\n    When the user clicks on a meal element\n    Then the system should fetch the details of the selected meal\n    And the single meal container with data-testid \"single-meal-container\" should display the meal's name, image, category, ingredients, and instructions\n    And the page should smoothly scroll to the single meal container",
+      "requirement_ids": [
+        "e2edev_bench_27-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_27/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_27-R-4-TC-1",
+      "title": "[Normal] Display a random meal on page load",
+      "description": "Feature: Automatically display a random meal on page load\n  The system must fetch and display a random meal in the single meal container when the page loads.\n\n\nScenario: [Normal] Display a random meal on page load\n    Given the user opens the \"Meal Finder\" webpage\n    When the page finishes loading\n    Then the \"single meal container\" with data-testid \"single-meal-container\" should display a meal\n    And the meal should include a title, an image, and a list of ingredients\n    And the \"result heading\" with data-testid \"result-heading\" should be empty",
+      "requirement_ids": [
+        "e2edev_bench_27-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_27/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_27-R-5-TC-1",
+      "title": "[Normal] Submit search form with empty input field",
+      "description": "Feature: REQ-005 - Display Random Meal on Empty Search Submission\n  The system must fetch and display a random meal in the single meal container when the user submits the search form with an empty input field.\n\n\nScenario: [Normal] Submit search form with empty input field\n    Given the \"Meal Finder\" webpage is loaded\n    And the search input field with data-testid \"search-input\" is empty\n    When the user clicks the search button with data-testid \"search-button\"\n    Then the single meal container with data-testid \"single-meal-container\" should display a random meal\n    And the result heading with data-testid \"result-heading\" should be empty",
+      "requirement_ids": [
+        "e2edev_bench_27-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_27/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_27-R-5-TC-2",
+      "title": "[Edge] Submit search form with whitespace in input field",
+      "description": "Feature: REQ-005 - Display Random Meal on Empty Search Submission\n  The system must fetch and display a random meal in the single meal container when the user submits the search form with an empty input field.\n\n\nScenario: [Edge] Submit search form with whitespace in input field\n    Given the \"Meal Finder\" webpage is loaded\n    And the search input field with data-testid \"search-input\" contains only whitespace\n    When the user clicks the search button with data-testid \"search-button\"\n    Then the single meal container with data-testid \"single-meal-container\" should display a random meal\n    And the result heading with data-testid \"result-heading\" should be empty",
+      "requirement_ids": [
+        "e2edev_bench_27-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_27/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_27-R-10-TC-1",
+      "title": "[Normal] Clear search input field after a valid search",
+      "description": "Feature: Clear search input field after form submission\n  The system must clear the search input field after the user submits the search form to ensure a clean state for subsequent searches.\n\n\n  Scenario: [Normal] Clear search input field after a valid search\n    Given the user is on the \"Meal Finder\" page\n    And the search input field with data-testid \"search-input\" is visible\n    And the user enters \"chicken\" into the search input field with data-testid \"search-input\"\n    When the user clicks the search button with data-testid \"search-button\"\n    Then the search input field with data-testid \"search-input\" should be empty\n",
+      "requirement_ids": [
+        "e2edev_bench_27-R-10"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_27/requirment_with_tests.json#/finegrained_rewith_test/10/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_27-R-10-TC-2",
+      "title": "[Edge] Clear search input field after submitting an empty search",
+      "description": "Feature: Clear search input field after form submission\n  The system must clear the search input field after the user submits the search form to ensure a clean state for subsequent searches.\n\n\n  Scenario: [Edge] Clear search input field after submitting an empty search\n    Given the user is on the \"Meal Finder\" page\n    And the search input field with data-testid \"search-input\" is visible\n    And the search input field with data-testid \"search-input\" is empty\n    When the user clicks the search button with data-testid \"search-button\"\n    Then the search input field with data-testid \"search-input\" should remain empty\n",
+      "requirement_ids": [
+        "e2edev_bench_27-R-10"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_27/requirment_with_tests.json#/finegrained_rewith_test/10/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_27-R-10-TC-3",
+      "title": "[Error] Clear search input field after a failed search due to no results",
+      "description": "Feature: Clear search input field after form submission\n  The system must clear the search input field after the user submits the search form to ensure a clean state for subsequent searches.\n\n\nScenario: [Error] Clear search input field after a failed search due to no results\n    Given the user is on the \"Meal Finder\" page\n    And the search input field with data-testid \"search-input\" is visible\n    And the user enters \"invalidsearchterm\" into the search input field with data-testid \"search-input\"\n    When the user clicks the search button with data-testid \"search-button\"\n    Then the search input field with data-testid \"search-input\" should be empty",
+      "requirement_ids": [
+        "e2edev_bench_27-R-10"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_27/requirment_with_tests.json#/finegrained_rewith_test/10/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 8,
+    "reference_count": 12,
+    "matches": [
+      {
+        "generated_id": "G-001",
+        "reference_id": "e2edev_bench_27-R-1-TC-1",
+        "similarity": 0.9283019285348187
+      },
+      {
+        "generated_id": "G-002",
+        "reference_id": "e2edev_bench_27-R-1-TC-2",
+        "similarity": 0.9235000852132024
+      },
+      {
+        "generated_id": "G-003",
+        "reference_id": "e2edev_bench_27-R-5-TC-1",
+        "similarity": 0.9528271969713147
+      },
+      {
+        "generated_id": "G-004",
+        "reference_id": "e2edev_bench_27-R-2-TC-1",
+        "similarity": 0.9460693629702606
+      },
+      {
+        "generated_id": "G-005",
+        "reference_id": "e2edev_bench_27-R-2-TC-2",
+        "similarity": 0.9514412675123813
+      },
+      {
+        "generated_id": "G-006",
+        "reference_id": "e2edev_bench_27-R-3-TC-1",
+        "similarity": 0.9338699417889301
+      },
+      {
+        "generated_id": "G-007",
+        "reference_id": "e2edev_bench_27-R-4-TC-1",
+        "similarity": 0.9445341814791666
+      },
+      {
+        "generated_id": "G-008",
+        "reference_id": "e2edev_bench_27-R-1-TC-3",
+        "similarity": 0.8747525980724097
+      }
+    ],
+    "unmatched_generated_ids": [],
+    "unmatched_reference_ids": [
+      "e2edev_bench_27-R-5-TC-2",
+      "e2edev_bench_27-R-10-TC-1",
+      "e2edev_bench_27-R-10-TC-2",
+      "e2edev_bench_27-R-10-TC-3"
+    ],
+    "precision": 1.0,
+    "recall": 0.6666666666666666,
+    "f1": 0.8,
+    "embedding_usage": {
+      "input_tokens": 2288,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 2288
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
+  "generation": {
+    "selected_techniques": [],
+    "technique_rationales": {},
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": 1483,
+      "output_tokens": 837,
+      "details": {
+        "text_prompt_tokens": 1483,
+        "total_tokens": 2320
+      },
+      "status": "available"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": 2288,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 2288
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
+  "links": {
+    "requirements": {
+      "e2edev_bench_27-R-1": "e2edev_bench_27-R-1/requirement.md",
+      "e2edev_bench_27-R-2": "e2edev_bench_27-R-2/requirement.md",
+      "e2edev_bench_27-R-3": "e2edev_bench_27-R-3/requirement.md",
+      "e2edev_bench_27-R-4": "e2edev_bench_27-R-4/requirement.md",
+      "e2edev_bench_27-R-5": "e2edev_bench_27-R-5/requirement.md",
+      "e2edev_bench_27-R-10": "e2edev_bench_27-R-10/requirement.md"
+    },
+    "cases": {
+      "G-001": {
+        "e2edev_bench_27-R-1": "e2edev_bench_27-R-1/test cases/1_Search_meals_with_a_valid_keyword.md",
+        "e2edev_bench_27-R-10": "e2edev_bench_27-R-10/test cases/1_Search_meals_with_a_valid_keyword.md"
+      },
+      "G-002": {
+        "e2edev_bench_27-R-1": "e2edev_bench_27-R-1/test cases/2_Search_meals_with_no_matching_results.md",
+        "e2edev_bench_27-R-10": "e2edev_bench_27-R-10/test cases/2_Search_meals_with_no_matching_results.md"
+      },
+      "G-003": {
+        "e2edev_bench_27-R-1": "e2edev_bench_27-R-1/test cases/3_Search_with_an_empty_keyword.md",
+        "e2edev_bench_27-R-5": "e2edev_bench_27-R-5/test cases/3_Search_with_an_empty_keyword.md",
+        "e2edev_bench_27-R-10": "e2edev_bench_27-R-10/test cases/3_Search_with_an_empty_keyword.md"
+      },
+      "G-006": {
+        "e2edev_bench_27-R-1": "e2edev_bench_27-R-1/test cases/6_Click_meal_element_to_view_details_and_scroll_in.md",
+        "e2edev_bench_27-R-3": "e2edev_bench_27-R-3/test cases/6_Click_meal_element_to_view_details_and_scroll_in.md"
+      },
+      "G-004": {
+        "e2edev_bench_27-R-2": "e2edev_bench_27-R-2/test cases/4_Click_Random_button_to_fetch_random_meal.md"
+      },
+      "G-005": {
+        "e2edev_bench_27-R-2": "e2edev_bench_27-R-2/test cases/5_Click_Random_button_multiple_times_in_quick_succ.md"
+      },
+      "G-007": {
+        "e2edev_bench_27-R-4": "e2edev_bench_27-R-4/test cases/7_Webpage_load_automatic_random_meal_fetch.md"
+      },
+      "G-008": {
+        "e2edev_bench_27-R-4": "e2edev_bench_27-R-4/test cases/8_Webpage_load_random_meal_fetch_failure.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

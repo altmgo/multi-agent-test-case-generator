@@ -1,0 +1,3 @@
+# e2edev\_bench\_24-R-1
+
+The system shall validate the 'Principal' input field (data-testid='principal') to ensure that it accepts only numeric values greater than 0. The input field should display the entered value if it meets the validation criteria. If the user enters a value less than or equal to 0, non-numeric characters, or leaves the field empty, the system shall prevent further calculations and display an alert message stating 'Please Enter Valid Values!!'. The validation should occur both when the user clicks the 'Calculate' button (data-testid='calculate-button') and when the user presses the 'Enter' key. The input field should allow decimal values (e.g., 0.01) as valid input.

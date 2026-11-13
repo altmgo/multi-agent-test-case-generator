@@ -1,0 +1,3 @@
+# e2edev\_bench\_44-R-7
+
+The web application must provide a theme toggle functionality for the calculator interface. Initially, the calculator is displayed in dark mode. The theme toggle button, identifiable by the attribute data-testid='theme-toggler', allows users to switch between dark and light themes. Upon clicking this button, the calculator element with the class 'calculator' should toggle the 'dark' class, effectively changing the theme. Additionally, the theme toggle button itself should toggle the 'active' class to reflect the current theme state. This interaction should be seamless and immediate, ensuring that users can easily switch themes without any delay or additional actions.

@@ -1,0 +1,432 @@
+{
+  "schema_version": 1,
+  "solution": "GHL",
+  "unit_id": "e2edev_bench_01",
+  "parent_id": null,
+  "status": "evaluated",
+  "failure": null,
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "e2edev_bench_01-R-1",
+      "text": "When the user drags a product item (li element) from the product list, the system should initiate a drag event, capturing the product's title and price for transfer. The product items are represented as 'li' elements with the attribute 'draggable' set to 'true'. Each product item contains an image, a title, and a price, identified by data-testid attributes such as 'product-item-1', 'product-title-1', and 'product-price-1'. The drag event should capture the title and price of the product being dragged. ",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_01/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_01-R-3",
+      "text": "The system should allow users to drag and drop product items(data-testid=\"product-item-1\", data-testid=\"product-item-2\", etc.) into a designated drop area (id=\"div1\", data-testid=\"drop-area\") to add them to the cart. Upon dropping, the cart display should automatically update: the product title appears in .box2, the unit price in .box3, and the quantity in .box1. The system supports adding both different and repeated products.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_01/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_01-R-5",
+      "text": "\"The system calculates the total price by summing the prices of all products in the cart, formatting the total to two decimal places with the appropriate currency symbol (e.g., '$80.00'), and displays the total in the <div id=\"allMoney\"> element.\"",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_01/requirment_with_tests.json#/finegrained_rewith_test/5/requirement/description"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Drag valid product item",
+      "description": "Verify that dragging a valid draggable product item successfully initiates a drag event and captures its title and price.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-1"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Drop product item into drop area",
+      "description": "Verify that dropping a product item into the designated drop area updates the cart display including quantity, title, and unit price for both new and repeated products.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-3"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Calculate and display total price",
+      "description": "Verify that the total price is correctly calculated by summing all cart product prices, formatted to two decimal places with the currency symbol, and displayed in the allMoney element.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-5"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Initiate Drag Event for Product Item",
+      "description": "Transition from Idle state to Dragging state when user drags a product item with draggable set to true, capturing title and price.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-1"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Drop Product into Cart Drop Area",
+      "description": "Transition from Dragging state to Cart Updated state when product item is dropped into the designated drop area, updating quantity in box1, title in box2, and unit price in box3.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-3"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Calculate and Display Total Price",
+      "description": "Transition from Cart Updated state to Total Calculated state where the total price of all products in the cart is summed, formatted to two decimal places with currency symbol, and displayed in the allMoney element.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-5"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Forbidden Drop Outside Designated Area",
+      "description": "Forbidden state transition when a product item is dragged and dropped outside the designated drop area, ensuring no cart update or price calculation occurs.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-1",
+        "e2edev_bench_01-R-3"
+      ]
+    },
+    {
+      "id": "G-008",
+      "title": "Drag and Drop Product to Cart Successfully",
+      "description": "Verify that a user can drag a product item from the product list and drop it into the designated drop area to add it to the cart. Ensure that the cart display automatically updates the product title in .box2, the unit price in .box3, the quantity in .box1, and calculates the total price in the #allMoney element.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-1",
+        "e2edev_bench_01-R-3",
+        "e2edev_bench_01-R-5"
+      ]
+    },
+    {
+      "id": "G-009",
+      "title": "Drag product item missing title or price attributes",
+      "description": "Attempt to drag a product item where data attributes for title or price are missing or malformed to check if the system handles missing transfer data gracefully without throwing unhandled exceptions.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-1"
+      ]
+    },
+    {
+      "id": "G-010",
+      "title": "Drop onto non-designated drop area elements",
+      "description": "Attempt to drop a dragged product item outside the designated drop area (id=\"div1\", data-testid=\"drop-area\") to verify that cart state and updates are not incorrectly triggered.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-3"
+      ]
+    },
+    {
+      "id": "G-011",
+      "title": "Total price calculation with invalid currency string or malformed price format",
+      "description": "Test the total price calculation in <div id=\"allMoney\"> when items with malformed or non-numeric price formats are added to the cart, ensuring robust handling of formatting to two decimal places.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-5"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_01-R-1-TC-1",
+      "title": "[Normal] Dragging a product item initiates a drag event",
+      "description": "Feature: Drag and Drop Product Item\n  The system should initiate a drag event when a user drags a product item from the product list, capturing the product's title and price for transfer.\n\n\n  Scenario: [Normal] Dragging a product item initiates a drag event\n    Given the webpage is loaded with a product list\n    When the user drags the product item with data-testid \"product-item-1\"\n    Then the drag event should be initiated\n    And the product title \"The Essence of JavaScript\" should be captured\n    And the product price \"$40\" should be captured\n",
+      "requirement_ids": [
+        "e2edev_bench_01-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_01/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_01-R-1-TC-2",
+      "title": "[Edge] Dragging a product item with the highest price",
+      "description": "Feature: Drag and Drop Product Item\n  The system should initiate a drag event when a user drags a product item from the product list, capturing the product's title and price for transfer.\n\n\n  Scenario: [Edge] Dragging a product item with the highest price\n    Given the webpage is loaded with a product list\n    When the user drags the product item with data-testid \"product-item-2\"\n    Then the drag event should be initiated\n    And the product title \"JavaScript: The Definitive Guide\" should be captured\n    And the product price \"$120\" should be captured\n",
+      "requirement_ids": [
+        "e2edev_bench_01-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_01/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_01-R-1-TC-3",
+      "title": "[Edge] Dragging a product item with the lowest price",
+      "description": "Feature: Drag and Drop Product Item\n  The system should initiate a drag event when a user drags a product item from the product list, capturing the product's title and price for transfer.\n\n\n  Scenario: [Edge] Dragging a product item with the lowest price\n    Given the webpage is loaded with a product list\n    When the user drags the product item with data-testid \"product-item-3\"\n    Then the drag event should be initiated\n    And the product title \"Mastering JavaScript\" should be captured\n    And the product price \"$35\" should be captured\n",
+      "requirement_ids": [
+        "e2edev_bench_01-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_01/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_01-R-1-TC-4",
+      "title": "[Error] Attempting to drag a non-draggable element",
+      "description": "Feature: Drag and Drop Product Item\n  The system should initiate a drag event when a user drags a product item from the product list, capturing the product's title and price for transfer.\n\n\n  Scenario: [Error] Attempting to drag a non-draggable element\n    Given the webpage is loaded with a product list\n    When the user attempts to drag the non-draggable element with data-testid \"drop-area\"\n    Then no drag event should be initiated\n    And no product title should be captured\n    And no product price should be captured",
+      "requirement_ids": [
+        "e2edev_bench_01-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_01/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_01-R-3-TC-1",
+      "title": "[Normal] Add a single product to the cart",
+      "description": "Feature: Add product to cart display when dropped into the drop area\n  The system should add the product to the cart display, showing the product's title, price, and quantity when a product item is dropped into the drop area.\n\n\n  Scenario: [Normal] Add a single product to the cart\n    Given the webpage is loaded\n    And the product item with data-testid \"product-item-1\" is visible\n    When the user drags the product with data-testid \"product-item-1\" and drops it into the cart container with data-testid \"drop-area\"\n    Then the cart display should show a product with title \"The Essence of JavaScript\"\n    And the price \"$40\"\n    And the quantity \"1\"\n",
+      "requirement_ids": [
+        "e2edev_bench_01-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_01/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_01-R-3-TC-2",
+      "title": "[Normal] Add multiple different products to the cart",
+      "description": "Feature: Add product to cart display when dropped into the drop area\n  The system should add the product to the cart display, showing the product's title, price, and quantity when a product item is dropped into the drop area.\n\n\n  Scenario: [Normal] Add multiple different products to the cart\n    Given the webpage is loaded\n    And the product items with data-testid \"product-item-1\" and \"product-item-2\" are visible\n    When the user drags the product with data-testid \"product-item-1\" and drops it into the cart container with data-testid \"drop-area\"\n    And the user drags the product with data-testid \"product-item-2\" and drops it into the cart container with data-testid \"drop-area\"\n    Then the cart display should show a product with title \"The Essence of JavaScript\"\n    And the price \"$40\"\n    And the quantity \"1\"\n    And the cart display should show a product with title \"JavaScript: The Definitive Guide\"\n    And the price \"$120\"\n    And the quantity \"1\"\n\n",
+      "requirement_ids": [
+        "e2edev_bench_01-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_01/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_01-R-3-TC-3",
+      "title": "[Normal] Add the same product multiple times to the cart",
+      "description": "Feature: Add product to cart display when dropped into the drop area\n  The system should add the product to the cart display, showing the product's title, price, and quantity when a product item is dropped into the drop area.\n\n\nScenario: [Normal] Add the same product multiple times to the cart\n    Given the webpage is loaded\n    And the product item with data-testid \"product-item-3\" is visible\n    When the user drags the product item with data-testid \"product-item-3\" and drops it into the drop area with data-testid \"drop-area\"\n    And the user drags the product item with data-testid \"product-item-3\" and drops it into the drop area with data-testid \"drop-area\"\n    Then the cart display should show a product with title \"Mastering JavaScript\"\n    And the price \"$35\"\n    And the quantity \"2\"",
+      "requirement_ids": [
+        "e2edev_bench_01-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_01/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_01-R-3-TC-4",
+      "title": "[Edge] Add a product with a high price to the cart",
+      "description": "Feature: Add product to cart display when dropped into the drop area\n  The system should add the product to the cart display, showing the product's title, price, and quantity when a product item is dropped into the drop area.\n\n\nScenario: [Edge] Add a product with a high price to the cart\n    Given the webpage is loaded\n    And the product item with data-testid \"product-item-2\" is visible\n    When the user drags the product item with data-testid \"product-item-2\" and drops it into the drop area with data-testid \"drop-area\"\n    Then the cart display should show a product with title \"JavaScript: The Definitive Guide\"\n    And the price \"$120\"\n    And the quantity \"1\"",
+      "requirement_ids": [
+        "e2edev_bench_01-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_01/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_01-R-5-TC-1",
+      "title": "[Normal] Add a single product to the cart and verify total price",
+      "description": "Feature: Calculate and display the total price of products in the cart\n  The system should calculate and display the total price of all products in the cart, updating the total each time a product is added.\n\n\n  Scenario: [Normal] Add a single product to the cart and verify total price\n    Given the webpage is loaded with a list of products\n    When the user drags the product with data-testid \"product-item-1\" to the drop area with data-testid \"drop-area\"\n    Then the total price displayed in the element with id \"allMoney\" should be \"$40.00\"\n",
+      "requirement_ids": [
+        "e2edev_bench_01-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_01/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_01-R-5-TC-2",
+      "title": "[Normal] Add multiple different products to the cart and verify total price",
+      "description": "Feature: Calculate and display the total price of products in the cart\n  The system should calculate and display the total price of all products in the cart, updating the total each time a product is added.\n\n\n  Scenario: [Normal] Add multiple different products to the cart and verify total price\n    Given the webpage is loaded with a list of products\n    When the user drags the product with data-testid \"product-item-1\" to the drop area with data-testid \"drop-area\"\n    And the user drags the product with data-testid \"product-item-2\" to the drop area with data-testid \"drop-area\"\n    Then the total price displayed in the element with id \"allMoney\" should be \"$160.00\"\n",
+      "requirement_ids": [
+        "e2edev_bench_01-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_01/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_01-R-5-TC-3",
+      "title": "[Normal] Add the same product multiple times and verify total price",
+      "description": "Feature: Calculate and display the total price of products in the cart\n  The system should calculate and display the total price of all products in the cart, updating the total each time a product is added.\n\n\n  Scenario: [Normal] Add the same product multiple times and verify total price\n    Given the webpage is loaded with a list of products\n    When the user drags the product with data-testid \"product-item-3\" to the drop area with data-testid \"drop-area\"\n    And the user drags the product with data-testid \"product-item-3\" to the drop area with data-testid \"drop-area\"\n    Then the total price displayed in the element with id \"allMoney\" should be \"$70.00\"\n",
+      "requirement_ids": [
+        "e2edev_bench_01-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_01/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_01-R-5-TC-4",
+      "title": "[Edge] Add all available products to the cart and verify total price",
+      "description": "Feature: Calculate and display the total price of products in the cart\n  The system should calculate and display the total price of all products in the cart, updating the total each time a product is added.\n\n\n  Scenario: [Edge] Add all available products to the cart and verify total price\n    Given the webpage is loaded with a list of products\n    When the user drags the product with data-testid \"product-item-1\" to the drop area with data-testid \"drop-area\"\n    And the user drags the product with data-testid \"product-item-2\" to the drop area with data-testid \"drop-area\"\n    And the user drags the product with data-testid \"product-item-3\" to the drop area with data-testid \"drop-area\"\n    And the user drags the product with data-testid \"product-item-4\" to the drop area with data-testid \"drop-area\"\n    Then the total price displayed in the element with id \"allMoney\" should be \"$240.00\"\n",
+      "requirement_ids": [
+        "e2edev_bench_01-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_01/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 11,
+    "reference_count": 12,
+    "matches": [
+      {
+        "generated_id": "G-001",
+        "reference_id": "e2edev_bench_01-R-1-TC-2",
+        "similarity": 0.9046366811703634
+      },
+      {
+        "generated_id": "G-002",
+        "reference_id": "e2edev_bench_01-R-3-TC-3",
+        "similarity": 0.9011942604558788
+      },
+      {
+        "generated_id": "G-003",
+        "reference_id": "e2edev_bench_01-R-5-TC-4",
+        "similarity": 0.8869831814265227
+      },
+      {
+        "generated_id": "G-004",
+        "reference_id": "e2edev_bench_01-R-1-TC-1",
+        "similarity": 0.911061955093553
+      },
+      {
+        "generated_id": "G-005",
+        "reference_id": "e2edev_bench_01-R-3-TC-4",
+        "similarity": 0.8814745260934372
+      },
+      {
+        "generated_id": "G-006",
+        "reference_id": "e2edev_bench_01-R-5-TC-3",
+        "similarity": 0.8647392806623261
+      },
+      {
+        "generated_id": "G-007",
+        "reference_id": "e2edev_bench_01-R-1-TC-4",
+        "similarity": 0.8856334070265262
+      },
+      {
+        "generated_id": "G-008",
+        "reference_id": "e2edev_bench_01-R-3-TC-1",
+        "similarity": 0.9133521224005503
+      },
+      {
+        "generated_id": "G-009",
+        "reference_id": "e2edev_bench_01-R-1-TC-3",
+        "similarity": 0.867311743826244
+      },
+      {
+        "generated_id": "G-010",
+        "reference_id": "e2edev_bench_01-R-3-TC-2",
+        "similarity": 0.8472474293959866
+      },
+      {
+        "generated_id": "G-011",
+        "reference_id": "e2edev_bench_01-R-5-TC-2",
+        "similarity": 0.8528613690751172
+      }
+    ],
+    "unmatched_generated_ids": [],
+    "unmatched_reference_ids": [
+      "e2edev_bench_01-R-5-TC-1"
+    ],
+    "precision": 1.0,
+    "recall": 0.9166666666666666,
+    "f1": 0.9565217391304348,
+    "embedding_usage": {
+      "input_tokens": 544,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 544
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
+  "generation": {
+    "selected_techniques": [
+      "equivalence_partitioning",
+      "state_transition",
+      "use_case",
+      "error_guessing"
+    ],
+    "technique_rationales": {
+      "equivalence_partitioning": "Cover important input partitions such as different and repeated products dropped into the cart.",
+      "state_transition": "Cover the states and transitions of product items being dragged, dropped, and updating the cart display and total price.",
+      "use_case": "Cover end-to-end user flows including dragging products from the list, dropping them into the designated drop area, and verifying cart updates and total price calculation.",
+      "error_guessing": "Explore plausible failures such as dropping invalid elements or handling formatting of the total price with the currency symbol."
+    },
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": 3625,
+      "output_tokens": 1206,
+      "details": {
+        "text_prompt_tokens": 3625,
+        "total_tokens": 4831
+      },
+      "status": "available"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": 544,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 544
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
+  "links": {
+    "requirements": {
+      "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/requirement.md",
+      "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/requirement.md",
+      "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/requirement.md"
+    },
+    "cases": {
+      "G-001": {
+        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/1_Drag_valid_product_item.md"
+      },
+      "G-004": {
+        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/4_Initiate_Drag_Event_for_Product_Item.md"
+      },
+      "G-007": {
+        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/7_Forbidden_Drop_Outside_Designated_Area.md",
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/7_Forbidden_Drop_Outside_Designated_Area.md"
+      },
+      "G-008": {
+        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/8_Drag_and_Drop_Product_to_Cart_Successfully.md",
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/8_Drag_and_Drop_Product_to_Cart_Successfully.md",
+        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/8_Drag_and_Drop_Product_to_Cart_Successfully.md"
+      },
+      "G-009": {
+        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/9_Drag_product_item_missing_title_or_price_attribu.md"
+      },
+      "G-010": {
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/10_Drop_onto_non-designated_drop_area_elements.md"
+      },
+      "G-002": {
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/2_Drop_product_item_into_drop_area.md"
+      },
+      "G-005": {
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/5_Drop_Product_into_Cart_Drop_Area.md"
+      },
+      "G-011": {
+        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/11_Total_price_calculation_with_invalid_currency_st.md"
+      },
+      "G-003": {
+        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/3_Calculate_and_display_total_price.md"
+      },
+      "G-006": {
+        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/6_Calculate_and_Display_Total_Price.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

@@ -1,0 +1,595 @@
+{
+  "schema_version": 1,
+  "solution": "one-shot",
+  "unit_id": "e2edev_bench_22",
+  "parent_id": null,
+  "status": "evaluated",
+  "failure": null,
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "e2edev_bench_22-R-1",
+      "text": "The web application must allow users to cast a vote for Candidate A by clicking the button with the attribute data-testid 'vote-button-A'. Upon clicking, if the user has not voted before (verified by the absence of the 'hasVoted' key in localStorage), the system should increment the vote count for Candidate A, update the total votes displayed in the element with data-testid 'total-votes', and append a confirmation message to the DOM stating 'Thank you for voting for Candidate A!'. If the user has already voted (indicated by the presence of the 'hasVoted' key set to 'true' in localStorage), an alert should be triggered with the message 'You've already voted!', and no changes should be made to the vote counts or total votes. The confirmation message should fade out after 3 seconds and be removed from the DOM.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_22-R-2",
+      "text": "When the user clicks the 'Vote for B' button with data-testid 'vote-button-B', the system should first check if the user has already voted by verifying the presence of the 'hasVoted' key in localStorage. If the user has not voted, the system increments the vote count for Candidate B, updates the total votes displayed in the element with data-testid 'total-votes', and displays a confirmation message 'Thank you for voting for Candidate B!' as a temporary DOM element with the class 'confirmation'. This element should fade out after 3 seconds and be removed from the DOM. If the user has already voted, an alert with the message 'You've already voted!' should be displayed, and the vote counts should remain unchanged. The system should ensure that the voting results are updated in the chart with data-testid 'results-chart', reflecting the new vote counts for Candidate B, and the detailed results section should remain hidden unless explicitly shown by the user.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_22-R-3",
+      "text": "The web application must allow users to vote for Candidate C by clicking the button with data-testid 'vote-button-C'. Upon clicking, if the user has not voted yet, the system should increment the vote count for Candidate C, update the total votes displayed in the element with data-testid 'total-votes', and show a confirmation message 'Thank you for voting for Candidate C!' on the page. The confirmation message should appear as a temporary DOM element with the class 'confirmation' and fade out after 3 seconds. If the user has already voted, the system should prevent additional votes by displaying an alert with the message 'You've already voted!' and ensure the total votes remain unchanged. The system should track voting status using localStorage with the key 'hasVoted'.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_22-R-5",
+      "text": "The web application must dynamically update the bar chart to reflect the current vote counts for all candidates whenever a vote is cast. The page should include a voting section with buttons for each candidate, each having a unique data-testid attribute ('vote-button-A', 'vote-button-B', 'vote-button-C') for Candidate A, B, and C respectively. When a user clicks any of these buttons, the system should check if the user has already voted by verifying the presence of a 'hasVoted' key in localStorage. If the user has not voted, the system should increment the vote count for the selected candidate, update the total vote count, and store a 'hasVoted' flag in localStorage to prevent multiple votes. The bar chart, identified by the data-testid 'results-chart', should be updated to display the new vote counts. Additionally, a confirmation message should appear on the screen, thanking the user for their vote, and should fade out after a few seconds. If the user attempts to vote again, an alert should notify them that they have already voted. The system should also provide a 'Reset' button with data-testid 'reset-button' to clear all votes and remove the 'hasVoted' flag from localStorage, resetting the chart and vote counts to zero.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/5/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_22-R-6",
+      "text": "The system must update the 'Total Votes' count displayed on the page whenever a vote is cast, reset, or modified, ensuring accurate real-time updates. Specifically: 1) When a user clicks a vote button (data-testid: 'vote-button-A', 'vote-button-B', or 'vote-button-C'), the 'Total Votes' count (data-testid: 'total-votes') must increment by 1. 2) If the 'Reset' button (data-testid: 'reset-button') is clicked, the 'Total Votes' count must reset to '0'. 3) The 'Total Votes' count must reflect the cumulative votes cast across all candidates and update dynamically in the DOM. Persistent storage (localStorage) must prevent duplicate voting by storing a key 'hasVoted' with a value of 'true' after a vote is cast. If 'hasVoted' exists, the system must display an alert preventing further votes. All updates must be visually reflected in the UI without requiring a page refresh.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/6/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_22-R-7",
+      "text": "The web application must allow users to view a detailed vote breakdown by clicking the 'Show Results' button, identified by the attribute data-testid='show-results-button'. Upon clicking, the section with data-testid='detailed-results' should become visible, displaying the number of votes and percentage for each candidate. The vote count for each candidate is shown in elements with data-testid='votes-A', 'votes-B', and 'votes-C', respectively, while the percentage is displayed in elements with data-testid='percent-A', 'percent-B', and 'percent-C'. The percentage calculation should be based on the total votes, which is updated dynamically and shown in the element with data-testid='total-votes'. If no votes have been cast, all vote counts and percentages should display '0' and '0%', respectively. The system should ensure that the detailed results are accurately updated and displayed based on the current voting data stored in the application state.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/7/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_22-R-9",
+      "text": "Upon clicking the 'Reset' button with data-testid 'reset-button', the system must reset all vote counts to zero, remove the 'hasVoted' flag from localStorage, hide the detailed results section with data-testid 'detailed-results', and display an alert message confirming the reset. This functionality should work regardless of whether the user has voted or not. After resetting, if the user clicks the 'Show Results' button with data-testid 'show-results-button', the detailed results section should become visible, showing zero votes and zero percent for all candidates. The total votes displayed in the element with data-testid 'total-votes' should be updated to '0'.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/9/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_22-R-11",
+      "text": "The voting application must ensure that the detailed results section, identified by the data-testid 'detailed-results', is initially hidden upon page load. This section should only become visible when the user clicks the 'Show Results' button, identified by the data-testid 'show-results-button'. The visibility of the detailed results section should remain consistent even if the 'Show Results' button is clicked multiple times. Additionally, if the 'Reset' button, identified by the data-testid 'reset-button', is clicked, the detailed results section should be hidden again, and the user should be alerted with a confirmation message that the votes have been reset. The application must handle these interactions without errors, ensuring a seamless user experience.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/11/requirement/description"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Normal vote casting for Candidate A",
+      "description": "Verify that a user who has not voted before can successfully vote for Candidate A by clicking the vote button, increments the vote count, updates total votes, displays a confirmation message which disappears after 3 seconds, and sets the 'hasVoted' key in localStorage.",
+      "requirement_ids": [
+        "e2edev_bench_22-R-1",
+        "e2edev_bench_22-R-5",
+        "e2edev_bench_22-R-6"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Abnormal duplicate vote attempt for Candidate A",
+      "description": "Verify that if a user has already voted ('hasVoted' key is set to 'true' in localStorage), clicking the vote button for Candidate A triggers an alert saying 'You've already voted!' and does not change vote counts or total votes.",
+      "requirement_ids": [
+        "e2edev_bench_22-R-1",
+        "e2edev_bench_22-R-5",
+        "e2edev_bench_22-R-6"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Normal vote casting for Candidate B",
+      "description": "Verify that a user who has not voted can successfully vote for Candidate B, updates the results chart, increments Candidate B's vote count and total votes, and shows a temporary confirmation message.",
+      "requirement_ids": [
+        "e2edev_bench_22-R-2",
+        "e2edev_bench_22-R-5",
+        "e2edev_bench_22-R-6"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Abnormal duplicate vote attempt for Candidate B",
+      "description": "Verify that attempting to vote for Candidate B when the user has already voted triggers an alert message 'You've already voted!' and keeps vote counts unchanged.",
+      "requirement_ids": [
+        "e2edev_bench_22-R-2",
+        "e2edev_bench_22-R-5",
+        "e2edev_bench_22-R-6"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Normal vote casting for Candidate C",
+      "description": "Verify that voting for Candidate C when no prior vote exists increments the count for Candidate C, updates total votes, tracks status in localStorage, and shows a temporary confirmation message.",
+      "requirement_ids": [
+        "e2edev_bench_22-R-3",
+        "e2edev_bench_22-R-5",
+        "e2edev_bench_22-R-6"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Abnormal duplicate vote attempt for Candidate C",
+      "description": "Verify that clicking the vote button for Candidate C when 'hasVoted' is already present prevents additional votes and displays an alert with 'You've already voted!'.",
+      "requirement_ids": [
+        "e2edev_bench_22-R-3",
+        "e2edev_bench_22-R-5",
+        "e2edev_bench_22-R-6"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Normal display of detailed results breakdown",
+      "description": "Verify that clicking the 'Show Results' button makes the detailed results section visible and displays accurate vote counts and percentages for all candidates based on application state.",
+      "requirement_ids": [
+        "e2edev_bench_22-R-7",
+        "e2edev_bench_22-R-11"
+      ]
+    },
+    {
+      "id": "G-008",
+      "title": "Abnormal detailed results display with no votes cast",
+      "description": "Verify that if no votes have been cast, clicking the 'Show Results' button displays zero counts and zero percent for all candidates.",
+      "requirement_ids": [
+        "e2edev_bench_22-R-7"
+      ]
+    },
+    {
+      "id": "G-009",
+      "title": "Normal reset functionality",
+      "description": "Verify that clicking the 'Reset' button resets all vote counts to zero, updates total votes to '0', removes the 'hasVoted' flag from localStorage, hides the detailed results section, and displays a reset confirmation alert.",
+      "requirement_ids": [
+        "e2edev_bench_22-R-5",
+        "e2edev_bench_22-R-6",
+        "e2edev_bench_22-R-9",
+        "e2edev_bench_22-R-11"
+      ]
+    },
+    {
+      "id": "G-010",
+      "title": "Initial page load state for detailed results",
+      "description": "Verify that upon initial page load, the detailed results section is hidden by default and remains consistent upon multiple clicks to the show results button.",
+      "requirement_ids": [
+        "e2edev_bench_22-R-11"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_22-R-1-TC-1",
+      "title": "[Normal] User votes for Candidate A successfully",
+      "description": "Feature: Voting for Candidate A\n  The system should allow users to vote for Candidate A by clicking the \"Vote for A\" button. Upon voting, the vote count for Candidate A should increment, the total votes should update, and a confirmation message should be displayed.\n\n\nScenario: [Normal] User votes for Candidate A successfully\n    Given the voting page is loaded\n    And the total votes displayed in the element with data-testid \"total-votes\" is \"0\"\n    And the user has not voted before\n    When the user clicks the button with data-testid \"vote-button-A\"\n    Then the total votes displayed in the element with data-testid \"total-votes\" should be \"1\"\n    And a confirmation message saying \"Thank you for voting for Candidate A!\" should be displayed on the page",
+      "requirement_ids": [
+        "e2edev_bench_22-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_22-R-1-TC-2",
+      "title": "[Error] User attempts to vote for Candidate A after already voting",
+      "description": "Feature: Voting for Candidate A\n  The system should allow users to vote for Candidate A by clicking the \"Vote for A\" button. Upon voting, the vote count for Candidate A should increment, the total votes should update, and a confirmation message should be displayed.\n\n\nScenario: [Error] User attempts to vote for Candidate A after already voting\n    Given the voting page is loaded\n    And the user has already voted (localStorage contains \"hasVoted\" set to \"true\")\n    When the user clicks the button with data-testid \"vote-button-A\"\n    Then an alert should be displayed with the message \"You've already voted!\"\n    And the total votes displayed in the element with data-testid \"total-votes\" should remain unchanged",
+      "requirement_ids": [
+        "e2edev_bench_22-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_22-R-2-TC-1",
+      "title": "[Normal] User votes for Candidate B",
+      "description": "Feature: Voting for Candidate B\n  The system should increment the vote count for Candidate B, update the total votes, and display a confirmation message when the user clicks the 'Vote for B' button.\n\n\nScenario: [Normal] User votes for Candidate B\n    Given the voting page is loaded\n    And the total votes displayed is \"0\"\n    When the user clicks the 'Vote for B' button with data-testid \"vote-button-B\"\n    Then the total votes displayed should be \"1\"\n    And a confirmation message \"Thank you for voting for Candidate B!\" should be displayed",
+      "requirement_ids": [
+        "e2edev_bench_22-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_22-R-2-TC-2",
+      "title": "[Error] User attempts to vote for Candidate B after already voting",
+      "description": "Feature: Voting for Candidate B\n  The system should increment the vote count for Candidate B, update the total votes, and display a confirmation message when the user clicks the 'Vote for B' button.\n\n\nScenario: [Error] User attempts to vote for Candidate B after already voting\n    Given the voting page is loaded\n    And the user has already voted\n    When the user clicks the 'Vote for B' button with data-testid \"vote-button-B\"\n    Then an alert with the message \"You've already voted!\" should be displayed\n    And the total votes displayed should remain unchanged",
+      "requirement_ids": [
+        "e2edev_bench_22-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_22-R-3-TC-1",
+      "title": "[Normal] User votes for Candidate C successfully",
+      "description": "Feature: Voting for Candidate C\n  The system should allow users to vote for Candidate C, update the total votes, and display a confirmation message.\n\n\n  Scenario: [Normal] User votes for Candidate C successfully\n    Given the voting page is loaded\n    And the total votes displayed is \"0\"\n    And the user has not voted yet\n    When the user clicks the \"Vote for C\" button with data-testid \"vote-button-C\"\n    Then the total votes should be updated to \"1\"\n    And a confirmation message \"Thank you for voting for Candidate C!\" should be displayed\n",
+      "requirement_ids": [
+        "e2edev_bench_22-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_22-R-3-TC-2",
+      "title": "[Error] User attempts to vote for Candidate C after already voting",
+      "description": "Feature: Voting for Candidate C\n  The system should allow users to vote for Candidate C, update the total votes, and display a confirmation message.\n\n\n  Scenario: [Error] User attempts to vote for Candidate C after already voting\n    Given the voting page is loaded\n    And the user has already voted\n    When the user clicks the \"Vote for C\" button with data-testid \"vote-button-C\"\n    Then an alert with the message \"You've already voted!\" should be displayed\n    And the total votes should remain unchanged",
+      "requirement_ids": [
+        "e2edev_bench_22-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_22-R-5-TC-1",
+      "title": "[Normal] Vote for Candidate A and update chart",
+      "description": "Feature: Dynamic Update of Bar Chart on Vote Cast\n  The system dynamically updates the bar chart to reflect the current vote counts for all candidates whenever a vote is cast.\n\n\nScenario: [Normal] Vote for Candidate A and update chart\n    Given the \"Voting App\" page is loaded\n    And the bar chart is initialized with 0 votes for all candidates\n    When the user clicks the \"Vote for A\" button with data-testid \"vote-button-A\"\n    Then the bar chart should update to show 1 vote for Candidate A",
+      "requirement_ids": [
+        "e2edev_bench_22-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_22-R-5-TC-2",
+      "title": "[Normal] Vote for Candidate B and update chart",
+      "description": "Feature: Dynamic Update of Bar Chart on Vote Cast\n  The system dynamically updates the bar chart to reflect the current vote counts for all candidates whenever a vote is cast.\n\n\nScenario: [Normal] Vote for Candidate B and update chart\n    Given the \"Voting App\" page is loaded\n    And the bar chart is initialized with 0 votes for all candidates\n    When the user clicks the \"Vote for B\" button with data-testid \"vote-button-B\"\n    Then the bar chart should update to show 1 vote for Candidate B",
+      "requirement_ids": [
+        "e2edev_bench_22-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_22-R-5-TC-3",
+      "title": "[Normal] Vote for Candidate C and update chart",
+      "description": "Feature: Dynamic Update of Bar Chart on Vote Cast\n  The system dynamically updates the bar chart to reflect the current vote counts for all candidates whenever a vote is cast.\n\n\nScenario: [Normal] Vote for Candidate C and update chart\n    Given the \"Voting App\" page is loaded\n    And the bar chart is initialized with 0 votes for all candidates\n    When the user clicks the \"Vote for C\" button with data-testid \"vote-button-C\"\n    Then the bar chart should update to show 1 vote for Candidate C",
+      "requirement_ids": [
+        "e2edev_bench_22-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_22-R-6-TC-1",
+      "title": "[Normal] User casts a vote for Candidate A",
+      "description": "Feature: Update Total Votes Count\n  The system updates the 'Total Votes' count displayed on the page whenever a vote is cast.\n\n\n  Scenario: [Normal] User casts a vote for Candidate A\n    Given the voting page is loaded\n    And the 'Total Votes' count is displayed as \"0\" with data-testid \"total-votes\"\n    When the user clicks the \"Vote for A\" button with data-testid \"vote-button-A\"\n    Then the 'Total Votes' count should be updated to \"1\" with data-testid \"total-votes\"\n",
+      "requirement_ids": [
+        "e2edev_bench_22-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_22-R-6-TC-2",
+      "title": "[Normal] User casts a vote for Candidate B",
+      "description": "Feature: Update Total Votes Count\n  The system updates the 'Total Votes' count displayed on the page whenever a vote is cast.\n\n\n  Scenario: [Normal] User casts a vote for Candidate B\n    Given the voting page is loaded\n    And the 'Total Votes' count is displayed as \"0\" with data-testid \"total-votes\"\n    When the user clicks the \"Vote for B\" button with data-testid \"vote-button-B\"\n    Then the 'Total Votes' count should be updated to \"1\" with data-testid \"total-votes\"\n",
+      "requirement_ids": [
+        "e2edev_bench_22-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_22-R-6-TC-3",
+      "title": "[Normal] User casts a vote for Candidate C",
+      "description": "Feature: Update Total Votes Count\n  The system updates the 'Total Votes' count displayed on the page whenever a vote is cast.\n\n\n  Scenario: [Normal] User casts a vote for Candidate C\n    Given the voting page is loaded\n    And the 'Total Votes' count is displayed as \"0\" with data-testid \"total-votes\"\n    When the user clicks the \"Vote for C\" button with data-testid \"vote-button-C\"\n    Then the 'Total Votes' count should be updated to \"1\" with data-testid \"total-votes\"\n",
+      "requirement_ids": [
+        "e2edev_bench_22-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_22-R-6-TC-4",
+      "title": "[Error] User votes and then resets the votes",
+      "description": "Feature: Update Total Votes Count\n  The system updates the 'Total Votes' count displayed on the page whenever a vote is cast.\n\n\nScenario: [Error] User votes and then resets the votes\n    Given the voting page is loaded\n    When the user clicks the \"Reset\" button with data-testid \"reset-button\"\n    And the alert message \"Votes have been reset!\" is displayed\n    Then the 'Total Votes' count should be reset to \"0\" with data-testid \"total-votes\"",
+      "requirement_ids": [
+        "e2edev_bench_22-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_22-R-7-TC-1",
+      "title": "[Normal] Display detailed results after voting",
+      "description": "Feature: Display Detailed Vote Breakdown\n  The system should display a detailed vote breakdown, including the number of votes and percentage for each candidate, when the user clicks the 'Show Results' button.\n\n\n  Scenario: [Normal] Display detailed results after voting\n    Given the user is on the \"Voting App\" page\n    And the user has voted for Candidate A by clicking the button with data-testid \"vote-button-A\"\n    When the user clicks the \"Show Results\" button with data-testid \"show-results-button\"\n    Then the detailed results section with data-testid \"detailed-results\" should be visible\n    And the number of votes for Candidate A with data-testid \"votes-A\" should be \"1\"\n    And the percentage for Candidate A with data-testid \"percent-A\" should be \"100%\"\n    And the number of votes for Candidate B with data-testid \"votes-B\" should be \"0\"\n    And the percentage for Candidate B with data-testid \"percent-B\" should be \"0%\"\n    And the number of votes for Candidate C with data-testid \"votes-C\" should be \"0\"\n    And the percentage for Candidate C with data-testid \"percent-C\" should be \"0%\"\n",
+      "requirement_ids": [
+        "e2edev_bench_22-R-7"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/7/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_22-R-7-TC-2",
+      "title": "[Edge] Display detailed results with no votes cast",
+      "description": "Feature: Display Detailed Vote Breakdown\n  The system should display a detailed vote breakdown, including the number of votes and percentage for each candidate, when the user clicks the 'Show Results' button.\n\n\n  Scenario: [Edge] Display detailed results with no votes cast\n    Given the user is on the \"Voting App\" page\n    When the user clicks the \"Show Results\" button with data-testid \"show-results-button\"\n    Then the detailed results section with data-testid \"detailed-results\" should be visible\n    And the number of votes for Candidate A with data-testid \"votes-A\" should be \"0\"\n    And the percentage for Candidate A with data-testid \"percent-A\" should be \"0%\"\n    And the number of votes for Candidate B with data-testid \"votes-B\" should be \"0\"\n    And the percentage for Candidate B with data-testid \"percent-B\" should be \"0%\"\n    And the number of votes for Candidate C with data-testid \"votes-C\" should be \"0\"\n    And the percentage for Candidate C with data-testid \"percent-C\" should be \"0%\"\n",
+      "requirement_ids": [
+        "e2edev_bench_22-R-7"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/7/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_22-R-9-TC-1",
+      "title": "[Normal] Reset vote counts successfully",
+      "description": "Feature: Reset Vote Counts\n  The system should reset all vote counts to zero, clear the voting flag from localStorage, hide the detailed results section, and display an alert message confirming the reset when the user clicks the 'Reset' button.\n\n\nScenario: [Normal] Reset vote counts successfully\n    Given the voting page is loaded\n    And the user has voted for Candidate A by clicking the button with data-testid \"vote-button-A” \n    When the user clicks the 'Reset' button with data-testid 'reset-button'\n    Then an alert message should be displayed confirming the reset\n    And the total votes should be \"0\"\n    And the localStorage should not contain the key 'hasVoted'\n    And the detailed results section should be hidden\n",
+      "requirement_ids": [
+        "e2edev_bench_22-R-9"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/9/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_22-R-9-TC-2",
+      "title": "[Edge] Reset without prior voting",
+      "description": "Feature: Reset Vote Counts\n  The system should reset all vote counts to zero, clear the voting flag from localStorage, hide the detailed results section, and display an alert message confirming the reset when the user clicks the 'Reset' button.\n\n\nScenario: [Edge] Reset without prior voting\n    Given the voting page is loaded\n    And the user has not voted\n    When the user clicks the 'Reset' button with data-testid 'reset-button'\n    Then an alert message should be displayed confirming the reset\n    And the total votes should be \"0\"\n    And the localStorage should not contain the key 'hasVoted'\n    And the detailed results section should be hidden",
+      "requirement_ids": [
+        "e2edev_bench_22-R-9"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/9/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_22-R-9-TC-3",
+      "title": "[Edge] Attempt to show results after resetting votes",
+      "description": "Feature: Reset Vote Counts\n  The system should reset all vote counts to zero, clear the voting flag from localStorage, hide the detailed results section, and display an alert message confirming the reset when the user clicks the 'Reset' button.\n\n\nScenario: [Edge] Attempt to show results after resetting votes\n    Given the user is on the \"Voting App\" page\n    And the user has voted for Candidate B by clicking the button with data-testid \"vote-button-B\"\n    And the user clicks the \"Reset\" button with data-testid \"reset-button\"\n    And an alert message should be displayed confirming the reset\n    When the user clicks the \"Show Results\" button with data-testid \"show-results-button\"\n    Then the detailed results section with data-testid \"detailed-results\" should be visible\n    And the number of votes for Candidate A with data-testid \"votes-A\" should be \"0\"\n    And the percentage for Candidate A with data-testid \"percent-A\" should be \"0%\"\n    And the number of votes for Candidate B with data-testid \"votes-B\" should be \"0\"\n    And the percentage for Candidate B with data-testid \"percent-B\" should be \"0%\"\n    And the number of votes for Candidate C with data-testid \"votes-C\" should be \"0\"",
+      "requirement_ids": [
+        "e2edev_bench_22-R-9"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/9/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_22-R-11-TC-1",
+      "title": "[Normal] Detailed results section is hidden initially",
+      "description": "Feature: Detailed Results Visibility\n  The system ensures that the detailed results section is initially hidden and only becomes visible when the 'Show Results' button is clicked.\n\n\n  Scenario: [Normal] Detailed results section is hidden initially\n    Given the voting app webpage is loaded\n    Then the detailed results section with data-testid \"detailed-results\" should not be visible\n",
+      "requirement_ids": [
+        "e2edev_bench_22-R-11"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/11/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_22-R-11-TC-2",
+      "title": "[Normal] Detailed results section becomes visible after clicking 'Show Results'",
+      "description": "Feature: Detailed Results Visibility\n  The system ensures that the detailed results section is initially hidden and only becomes visible when the 'Show Results' button is clicked.\n\n\n  Scenario: [Normal] Detailed results section becomes visible after clicking 'Show Results'\n    Given the voting app webpage is loaded\n    When the user clicks the 'Show Results' button with data-testid \"show-results-button\"\n    Then the detailed results section with data-testid \"detailed-results\" should be visible\n",
+      "requirement_ids": [
+        "e2edev_bench_22-R-11"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/11/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_22-R-11-TC-3",
+      "title": "[Edge] Detailed results section remains visible after multiple clicks on 'Show Results'",
+      "description": "Feature: Detailed Results Visibility\n  The system ensures that the detailed results section is initially hidden and only becomes visible when the 'Show Results' button is clicked.\n\n\n  Scenario: [Edge] Detailed results section remains visible after multiple clicks on 'Show Results'\n    Given the voting app webpage is loaded\n    When the user clicks the 'Show Results' button with data-testid \"show-results-button\" twice\n    Then the detailed results section with data-testid \"detailed-results\" should be visible\n",
+      "requirement_ids": [
+        "e2edev_bench_22-R-11"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/11/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_22-R-11-TC-4",
+      "title": "[Error] Detailed results section visibility is affected by clicking 'Reset'",
+      "description": "Feature: Detailed Results Visibility\n  The system ensures that the detailed results section is initially hidden and only becomes visible when the 'Show Results' button is clicked.\n\n\nScenario: [Error] Detailed results section visibility is affected by clicking 'Reset'\n    Given the voting app webpage is loaded\n    And the user clicks the 'Show Results' button with data-testid \"show-results-button\"\n    When the user clicks the 'Reset' button with data-testid \"reset-button\"\n    And accept the alert message displayed confirming the reset\n    Then the detailed results section with data-testid \"detailed-results\" should not be visible",
+      "requirement_ids": [
+        "e2edev_bench_22-R-11"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_22/requirment_with_tests.json#/finegrained_rewith_test/11/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 10,
+    "reference_count": 22,
+    "matches": [
+      {
+        "generated_id": "G-001",
+        "reference_id": "e2edev_bench_22-R-1-TC-1",
+        "similarity": 0.9457824677491148
+      },
+      {
+        "generated_id": "G-002",
+        "reference_id": "e2edev_bench_22-R-1-TC-2",
+        "similarity": 0.9505010235899292
+      },
+      {
+        "generated_id": "G-003",
+        "reference_id": "e2edev_bench_22-R-2-TC-1",
+        "similarity": 0.9496565761712661
+      },
+      {
+        "generated_id": "G-004",
+        "reference_id": "e2edev_bench_22-R-2-TC-2",
+        "similarity": 0.9462336276319468
+      },
+      {
+        "generated_id": "G-005",
+        "reference_id": "e2edev_bench_22-R-3-TC-1",
+        "similarity": 0.9314075954387953
+      },
+      {
+        "generated_id": "G-006",
+        "reference_id": "e2edev_bench_22-R-3-TC-2",
+        "similarity": 0.9444301763640122
+      },
+      {
+        "generated_id": "G-007",
+        "reference_id": "e2edev_bench_22-R-11-TC-2",
+        "similarity": 0.9248267926085432
+      },
+      {
+        "generated_id": "G-008",
+        "reference_id": "e2edev_bench_22-R-7-TC-2",
+        "similarity": 0.9156620723378042
+      },
+      {
+        "generated_id": "G-009",
+        "reference_id": "e2edev_bench_22-R-9-TC-1",
+        "similarity": 0.960780094458528
+      },
+      {
+        "generated_id": "G-010",
+        "reference_id": "e2edev_bench_22-R-11-TC-1",
+        "similarity": 0.9094581374130841
+      }
+    ],
+    "unmatched_generated_ids": [],
+    "unmatched_reference_ids": [
+      "e2edev_bench_22-R-5-TC-1",
+      "e2edev_bench_22-R-5-TC-2",
+      "e2edev_bench_22-R-5-TC-3",
+      "e2edev_bench_22-R-6-TC-1",
+      "e2edev_bench_22-R-6-TC-2",
+      "e2edev_bench_22-R-6-TC-3",
+      "e2edev_bench_22-R-6-TC-4",
+      "e2edev_bench_22-R-7-TC-1",
+      "e2edev_bench_22-R-9-TC-2",
+      "e2edev_bench_22-R-9-TC-3",
+      "e2edev_bench_22-R-11-TC-3",
+      "e2edev_bench_22-R-11-TC-4"
+    ],
+    "precision": 1.0,
+    "recall": 0.45454545454545453,
+    "f1": 0.625,
+    "embedding_usage": {
+      "input_tokens": 3719,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 3719
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 2
+  },
+  "generation": {
+    "selected_techniques": [],
+    "technique_rationales": {},
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": 3719,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 3719
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 2
+  },
+  "links": {
+    "requirements": {
+      "e2edev_bench_22-R-1": "e2edev_bench_22-R-1/requirement.md",
+      "e2edev_bench_22-R-2": "e2edev_bench_22-R-2/requirement.md",
+      "e2edev_bench_22-R-3": "e2edev_bench_22-R-3/requirement.md",
+      "e2edev_bench_22-R-5": "e2edev_bench_22-R-5/requirement.md",
+      "e2edev_bench_22-R-6": "e2edev_bench_22-R-6/requirement.md",
+      "e2edev_bench_22-R-7": "e2edev_bench_22-R-7/requirement.md",
+      "e2edev_bench_22-R-9": "e2edev_bench_22-R-9/requirement.md",
+      "e2edev_bench_22-R-11": "e2edev_bench_22-R-11/requirement.md"
+    },
+    "cases": {
+      "G-001": {
+        "e2edev_bench_22-R-1": "e2edev_bench_22-R-1/test cases/1_Normal_vote_casting_for_Candidate_A.md",
+        "e2edev_bench_22-R-5": "e2edev_bench_22-R-5/test cases/1_Normal_vote_casting_for_Candidate_A.md",
+        "e2edev_bench_22-R-6": "e2edev_bench_22-R-6/test cases/1_Normal_vote_casting_for_Candidate_A.md"
+      },
+      "G-002": {
+        "e2edev_bench_22-R-1": "e2edev_bench_22-R-1/test cases/2_Abnormal_duplicate_vote_attempt_for_Candidate_A.md",
+        "e2edev_bench_22-R-5": "e2edev_bench_22-R-5/test cases/2_Abnormal_duplicate_vote_attempt_for_Candidate_A.md",
+        "e2edev_bench_22-R-6": "e2edev_bench_22-R-6/test cases/2_Abnormal_duplicate_vote_attempt_for_Candidate_A.md"
+      },
+      "G-003": {
+        "e2edev_bench_22-R-2": "e2edev_bench_22-R-2/test cases/3_Normal_vote_casting_for_Candidate_B.md",
+        "e2edev_bench_22-R-5": "e2edev_bench_22-R-5/test cases/3_Normal_vote_casting_for_Candidate_B.md",
+        "e2edev_bench_22-R-6": "e2edev_bench_22-R-6/test cases/3_Normal_vote_casting_for_Candidate_B.md"
+      },
+      "G-004": {
+        "e2edev_bench_22-R-2": "e2edev_bench_22-R-2/test cases/4_Abnormal_duplicate_vote_attempt_for_Candidate_B.md",
+        "e2edev_bench_22-R-5": "e2edev_bench_22-R-5/test cases/4_Abnormal_duplicate_vote_attempt_for_Candidate_B.md",
+        "e2edev_bench_22-R-6": "e2edev_bench_22-R-6/test cases/4_Abnormal_duplicate_vote_attempt_for_Candidate_B.md"
+      },
+      "G-005": {
+        "e2edev_bench_22-R-3": "e2edev_bench_22-R-3/test cases/5_Normal_vote_casting_for_Candidate_C.md",
+        "e2edev_bench_22-R-5": "e2edev_bench_22-R-5/test cases/5_Normal_vote_casting_for_Candidate_C.md",
+        "e2edev_bench_22-R-6": "e2edev_bench_22-R-6/test cases/5_Normal_vote_casting_for_Candidate_C.md"
+      },
+      "G-006": {
+        "e2edev_bench_22-R-3": "e2edev_bench_22-R-3/test cases/6_Abnormal_duplicate_vote_attempt_for_Candidate_C.md",
+        "e2edev_bench_22-R-5": "e2edev_bench_22-R-5/test cases/6_Abnormal_duplicate_vote_attempt_for_Candidate_C.md",
+        "e2edev_bench_22-R-6": "e2edev_bench_22-R-6/test cases/6_Abnormal_duplicate_vote_attempt_for_Candidate_C.md"
+      },
+      "G-009": {
+        "e2edev_bench_22-R-5": "e2edev_bench_22-R-5/test cases/9_Normal_reset_functionality.md",
+        "e2edev_bench_22-R-6": "e2edev_bench_22-R-6/test cases/9_Normal_reset_functionality.md",
+        "e2edev_bench_22-R-9": "e2edev_bench_22-R-9/test cases/9_Normal_reset_functionality.md",
+        "e2edev_bench_22-R-11": "e2edev_bench_22-R-11/test cases/9_Normal_reset_functionality.md"
+      },
+      "G-007": {
+        "e2edev_bench_22-R-7": "e2edev_bench_22-R-7/test cases/7_Normal_display_of_detailed_results_breakdown.md",
+        "e2edev_bench_22-R-11": "e2edev_bench_22-R-11/test cases/7_Normal_display_of_detailed_results_breakdown.md"
+      },
+      "G-008": {
+        "e2edev_bench_22-R-7": "e2edev_bench_22-R-7/test cases/8_Abnormal_detailed_results_display_with_no_votes.md"
+      },
+      "G-010": {
+        "e2edev_bench_22-R-11": "e2edev_bench_22-R-11/test cases/10_Initial_page_load_state_for_detailed_results.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

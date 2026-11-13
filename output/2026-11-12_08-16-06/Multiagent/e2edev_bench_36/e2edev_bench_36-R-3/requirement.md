@@ -1,0 +1,3 @@
+# e2edev\_bench\_36-R-3
+
+The web application must provide a 'Clear' button, identifiable by the data-testid 'clear-button', which, when clicked by the user, clears the text input field with data-testid 'text-input' and resets the word count (data-testid 'word-count'), character count (data-testid 'char-count'), and paragraph count (data-testid 'para-count') to zero. This functionality should work regardless of the current state of the text input, including when it is already empty. Upon clearing, the text input field should be empty, and the counts should display 'Words: 0', 'Characters: 0', and 'Paragraphs: 0'. The system should ensure that these changes are reflected in the UI immediately after the button is clicked.

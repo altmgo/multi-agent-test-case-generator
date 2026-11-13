@@ -1,0 +1,710 @@
+{
+  "schema_version": 1,
+  "solution": "Multiagent",
+  "unit_id": "firefox_bookmarks",
+  "parent_id": null,
+  "status": "evaluated",
+  "failure": null,
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "R-001",
+      "text": "A new bookmark shall be added into a specific location within the bookmarks hierarchy.",
+      "language": "en",
+      "source": "R-set.csv#R-001"
+    },
+    {
+      "id": "R-002",
+      "text": "Bookmarks shall be properly deleted from bookmarks file and no longer be displayed  from all access points.",
+      "language": "en",
+      "source": "R-set.csv#R-002"
+    },
+    {
+      "id": "R-003",
+      "text": "Bookmarks shall be added and deleted from the personal toolbar.",
+      "language": "en",
+      "source": "R-set.csv#R-003"
+    },
+    {
+      "id": "R-004",
+      "text": "New bookmark folder shall be inserted into the bookmarks hierarchy.",
+      "language": "en",
+      "source": "R-set.csv#R-004"
+    },
+    {
+      "id": "R-005",
+      "text": "Double-clicking on a bookmark shall cause it to be launched in a browser window.",
+      "language": "en",
+      "source": "R-set.csv#R-005"
+    },
+    {
+      "id": "R-006",
+      "text": "Bookmarks within the default bookmarks file that is packaged with the browser shall be valid links.",
+      "language": "en",
+      "source": "R-set.csv#R-006"
+    },
+    {
+      "id": "R-007",
+      "text": "Changes to a bookmark item shall be saved without loss of item integrity.",
+      "language": "en",
+      "source": "R-set.csv#R-007"
+    },
+    {
+      "id": "R-008",
+      "text": "Bookmarks folder shall be deleted.",
+      "language": "en",
+      "source": "R-set.csv#R-008"
+    },
+    {
+      "id": "R-009",
+      "text": "Bookmarks separators shall be added and deleted.",
+      "language": "en",
+      "source": "R-set.csv#R-009"
+    },
+    {
+      "id": "R-010",
+      "text": "Bookmarks changes shall be saved over restart/crash.",
+      "language": "en",
+      "source": "R-set.csv#R-010"
+    },
+    {
+      "id": "R-011",
+      "text": "View properties shall execute for bookmarks, folders, and separators(negative).",
+      "language": "en",
+      "source": "R-set.csv#R-011"
+    },
+    {
+      "id": "R-012",
+      "text": "Bookmarks shall be renamed \"inline\", i.e. without having to use the bookmarks properties dialog.",
+      "language": "en",
+      "source": "R-set.csv#R-012"
+    },
+    {
+      "id": "R-013",
+      "text": "Bookmarks shall be found using user-defined custom keyword.",
+      "language": "en",
+      "source": "R-set.csv#R-013"
+    },
+    {
+      "id": "R-014",
+      "text": "Bookmarks shall be sorted and reverse-sorted per column.",
+      "language": "en",
+      "source": "R-set.csv#R-014"
+    },
+    {
+      "id": "R-015",
+      "text": "Bookmark columns shall be resizable to show/hide more of entries.",
+      "language": "en",
+      "source": "R-set.csv#R-015"
+    },
+    {
+      "id": "R-016",
+      "text": "Bookmark columns shall be showed and hidden.",
+      "language": "en",
+      "source": "R-set.csv#R-016"
+    },
+    {
+      "id": "R-017",
+      "text": "Several bookmarks shall be deleted at one time.",
+      "language": "en",
+      "source": "R-set.csv#R-017"
+    },
+    {
+      "id": "R-018",
+      "text": "It shall be not possible to drop a bookmark item onto itself or its immediate parent or child.",
+      "language": "en",
+      "source": "R-set.csv#R-018"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Add Bookmark to Specific Location",
+      "description": "Verify that a new bookmark can be added into a specific target location within the bookmarks hierarchy.",
+      "requirement_ids": [
+        "R-001"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Delete Bookmarks from File and Access Points",
+      "description": "Verify that deleted bookmarks are properly removed from the bookmarks file and no longer displayed in any access points or UI elements.",
+      "requirement_ids": [
+        "R-002"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Add and Delete Bookmarks from Personal Toolbar",
+      "description": "Verify that bookmarks can be successfully added to and deleted from the personal toolbar.",
+      "requirement_ids": [
+        "R-003"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Insert New Bookmark Folder",
+      "description": "Verify that a new bookmark folder can be inserted into the bookmarks hierarchy at root or nested levels.",
+      "requirement_ids": [
+        "R-004"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Launch Bookmark via Double-Click",
+      "description": "Verify that double-clicking on a bookmark launches the associated URL in a browser window.",
+      "requirement_ids": [
+        "R-005"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Default Bookmarks Link Validation",
+      "description": "Verify that all links within the default bookmarks file packaged with the browser are valid and accessible.",
+      "requirement_ids": [
+        "R-006"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Save Changes to Bookmark Item",
+      "description": "Verify that modifications to a bookmark item are saved successfully without loss of item integrity.",
+      "requirement_ids": [
+        "R-007"
+      ]
+    },
+    {
+      "id": "G-008",
+      "title": "Delete Bookmark Folder",
+      "description": "Verify that a bookmarks folder can be deleted along with its hierarchy contents.",
+      "requirement_ids": [
+        "R-008"
+      ]
+    },
+    {
+      "id": "G-009",
+      "title": "Add and Delete Bookmark Separators",
+      "description": "Verify that bookmark separators can be added and deleted correctly at various positions in the list.",
+      "requirement_ids": [
+        "R-009"
+      ]
+    },
+    {
+      "id": "G-010",
+      "title": "Persist Bookmark Changes over Restart or Crash",
+      "description": "Verify that bookmark changes remain saved and intact over a browser restart or unexpected crash.",
+      "requirement_ids": [
+        "R-010"
+      ]
+    },
+    {
+      "id": "G-011",
+      "title": "Negative Test for View Properties",
+      "description": "Verify negative test behavior where view properties are restricted or denied for bookmarks, folders, and separators.",
+      "requirement_ids": [
+        "R-011"
+      ]
+    },
+    {
+      "id": "G-012",
+      "title": "Inline Renaming of Bookmarks",
+      "description": "Verify that bookmarks can be renamed inline directly in the UI without opening the bookmarks properties dialog.",
+      "requirement_ids": [
+        "R-012"
+      ]
+    },
+    {
+      "id": "G-013",
+      "title": "Find Bookmarks Using Custom Keyword",
+      "description": "Verify that bookmarks can be searched and found using user-defined custom keywords.",
+      "requirement_ids": [
+        "R-013"
+      ]
+    },
+    {
+      "id": "G-014",
+      "title": "Sort and Reverse-Sort Bookmark Columns",
+      "description": "Verify that bookmark columns can be sorted and reverse-sorted properly per column.",
+      "requirement_ids": [
+        "R-014"
+      ]
+    },
+    {
+      "id": "G-015",
+      "title": "Resize Bookmark Columns",
+      "description": "Verify that bookmark columns are resizable to show or hide more entry details.",
+      "requirement_ids": [
+        "R-015"
+      ]
+    },
+    {
+      "id": "G-016",
+      "title": "Show and Hide Bookmark Columns",
+      "description": "Verify that individual bookmark columns can be toggled between visible and hidden states.",
+      "requirement_ids": [
+        "R-016"
+      ]
+    },
+    {
+      "id": "G-017",
+      "title": "Bulk Deletion of Several Bookmarks",
+      "description": "Verify that multiple bookmarks can be deleted simultaneously in a single bulk operation.",
+      "requirement_ids": [
+        "R-017"
+      ]
+    },
+    {
+      "id": "G-018",
+      "title": "Prevent Invalid Drag-and-Drop on Self or Relatives",
+      "description": "Verify that it is not possible to drop a bookmark item onto itself, its immediate parent, or its child.",
+      "requirement_ids": [
+        "R-018"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "TC-001",
+      "title": "TC-001",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Open this link in a new window.\n2. With the new window in front select from the toplevel menu Bookmarks|File Bookmark.\n3. In the folder tree select a folder and click 'OK'.\n\nEXPECTED RESULTS\n1. After Step(2) a dialog should appear with the Name and Location of the current page pre-filled.\n2. After Step(3) the bookmark should immediately appear in the toplevel bookmarks menu, the bookmarks popup on the personal toolbar, the bookmarks sidepanel, and the manage bookmarks window at the specified position within the hierarchy.\n\nLINKS\n1. netscape-bookmarks.html\n2. mozilla-bookmarks.html\n3. large-bookmarks.html\n4. The Bookmarks Testcase Matrix",
+      "requirement_ids": [
+        "R-001"
+      ],
+      "source": "T-set.csv#TC-001",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-002",
+      "title": "TC-002",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\nSelect the toplevel 'Bookmarks' menu then select the 'Manage Bookmarks' menuitem.\n1. Select (highlight) a bookmark, press the delete key, OR\n2. Select (highlight) a bookmark, Select Edit|Delete. Click OK in the dialog that appears.\n\nEXPECTED RESULTS\nThe title of and link to the bookmark should now be removed from:\n1. the toplevel 'Bookmarks' menu\n2. the 'Bookmarks' popup menu on the personal toolbar\n3. the 'Bookmarks' panel in MySidebar\n4. in the Manage Bookmarks view (select Bookmarks| Manage Bookmarks)\n\nLINKS\n1. default-bookmarks.html\n2. large-bookmarks.html",
+      "requirement_ids": [
+        "R-002"
+      ],
+      "source": "T-set.csv#TC-002",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-003",
+      "title": "TC-003",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Open the Manage Bookmarks Window.\n2. Edit|Cut or Edit|Copy any bookmark.\n3. Select the 'Personal Toolbar Folder'. Double-click it or single-click the triangle to open the folder.\n4. Select Edit|Paste.\n5. Go to a browser window and click once on the new link in the personal toolbar.\n\nEXPECTED RESULTS\n1. The bookmark you added should appear immediately on the personal toolbar in a browser window and be activated by a single click.\n2. It should also be present as a subitem under \"Personal Toolbar Folder\" in the toplevel Bookmarks menu, in the bookmarks popup within the personal toolbar itself, and in the bookmarks sidepanel.\n\nLINKS\n1. default-bookmarks.html\n2. large-bookmarks.html",
+      "requirement_ids": [
+        "R-003"
+      ],
+      "source": "T-set.csv#TC-003",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": [
+        "firefox_toolbar"
+      ]
+    },
+    {
+      "id": "TC-004",
+      "title": "TC-004",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Select Bookmarks|Manage Bookmarks.\n2. Select any item in your list. Select File|New Folder. Click \"OK\" in the dialog that appears.\n3. Select the folder you just created. Select File|New Folder. Click \"OK\" in the dialog that appears.\n4. Double-click the folder you just created. Select File|New Folder. Click \"OK\" in the dialog that appears.\n\nEXPECTED RESULTS\n1. For step (2) a folder named \"New Folder\" should have been created and added just below the item you had selected. That item could be a bookmark, a folder, or a separator.\n2. For step (3) the folder should have again been created below the item (New Folder). In step (4) however, the folder should be created inside the previous folder.\n3. All of the newly created folders should appear with the correct hierarchical structure in the toplevel bookmarks menu, the bookmarks popup on the personal toolbar, the bookmarks panel in the sidebar, and of course the manage bookmarks window.\n\nLINKS\n1. netscape-bookmarks.html\n2. mozilla-bookmarks.html\n3. large-bookmarks.html",
+      "requirement_ids": [
+        "R-004"
+      ],
+      "source": "T-set.csv#TC-004",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-005",
+      "title": "TC-005",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Select the toplevel \"Bookmarks\" menu. Select any bookmark on the list.\n2. Click \"Bookmarks\" on the Bookmarks/personal toolbar. Select any bookmark on the list.\n3. Open the sidebar; click on the \"Bookmarks\" panel. Double-click any bookmark on the list.\n4. From the toplevel \"Bookmarks\" menu select \"Manage Bookmarks\". Double-click any bookmark in the window.\n\nEXPECTED RESULTS\nIn all cases, the url corresponding to the bookmark you selected should be loaded in the browser window.\n\nLINKS\n1. default-bookmarks.html\n2. large-bookmarks.html",
+      "requirement_ids": [
+        "R-005"
+      ],
+      "source": "T-set.csv#TC-005",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-006",
+      "title": "TC-006",
+      "description": "INITIAL CONDITIONS\nYou must have the default bookmarks file installed. Here is the Netscape bookmarks file, here is the Mozilla bookmarks file.\n\nSTEPS/DESCRIPTION\nUsing the Bookmarks menu or the Manage Bookmarks window, select and surf each and every bookmark in turn.\n\nEXPECTED RESULTS\nEach bookmark should load completely in the browser window. There should be no \"dead\" links.\n\nLINKS\n1. netscape-bookmarks.html\n2. large-bookmarks.html",
+      "requirement_ids": [
+        "R-006"
+      ],
+      "source": "T-set.csv#TC-006",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-007",
+      "title": "TC-007",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Select Bookmarks|Manage Bookmarks.\n2. Select a bookmark. Select File|Bookmark Properties. \nChange the Name OR the Location.\nEdit the Description field. Click \"OK\"\nSurf the link.\n6. Select a folder. Select File|Bookmark Properties. \nChange the Name.\nChange the description. Click \"OK\".\n\nEXPECTED RESULTS\n1. For step(2) the changes should take effect upon pressing \"OK\". The changes should be seen in the four standard locations.If the name changed clicking the new bookmark name should go to the same url. If the url changed, clicking the same name should go to the new url.\n2. For step(3) the changes should take effect upon pressing \"OK\". The changes should be seen in the four standard locations.\n\nLINKS\n1. netscape-bookmarks.html\n2. mozilla-bookmarks.html\n3. large-bookmarks.html",
+      "requirement_ids": [
+        "R-007"
+      ],
+      "source": "T-set.csv#TC-007",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-008",
+      "title": "TC-008",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Select Bookmarks|Manage Bookmarks.\n2. Select any folder.\n3. Select from the following choices: \nSelect Edit|Delete. Click OK.\nHit the Backspace key.\nHit the Delete key\n7. Select 2 or many folders, repeat step (3).\n\nEXPECTED RESULTS\n1. In step (3a) a confirmation dialog should appear, allowing you to cancel the delete operation.\n2. In steps (3b) and (3c), or after clicking \"OK\" in (3a), the folder should be immediately deleted.\n3. In step (4) you should only be presented with one confirmation dialog, clicking \"OK\" should result in all selected folders being deleted.\n4. Folders should immediately disappear (be deleted) from the toplevel bookmarks menu, the bookmarks popup on the personal toolbar, the bookmarks sidepanel, and the manage bookmarks window.\n\nLINKS\n1. netscape-bookmarks.html\n2. mozilla-bookmarks.html\n3. large-bookmarks.html",
+      "requirement_ids": [
+        "R-008"
+      ],
+      "source": "T-set.csv#TC-008",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-009",
+      "title": "TC-009",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Select Bookmarks|Manage Bookmarks.\n2. Select a bookmark.\n3. Select File|New Separator.\n4. Select the separator. Select Edit|Delete, click \"OK\".\n\nEXPECTED RESULTS\n1. After step (3) separator should immediately appear below the selected item in the toplevel bookmarks menu, the bookmarks popup on the personal toolbar, the bookmarks sidepanel, and the manage bookmarks window.\n2. After step (4) the separator should immediately disappear (be deleted) from the toplevel bookmarks menu, the bookmarks popup on the personal toolbar, the bookmarks sidepanel, and the manage bookmarks window.\n\nLINKS\n1. netscape-bookmarks.html\n2. mozilla-bookmarks.html\n3. large-bookmarks.html",
+      "requirement_ids": [
+        "R-009"
+      ],
+      "source": "T-set.csv#TC-009",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-010",
+      "title": "TC-010",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Select Bookmarks|Manage Bookmarks.\n2. Click on disclosure triangles to open/close several folders.\n3. Remember which were open/closed.\n4. Do the same for bookmarks folders in the bookmarks sidepanel. (Do not close Manage Bookmarks)\n5. Quit the browser (alternately, induce a crash)\n6. Launch the browser and open the sidebar and Manage Bookmarks.\n\nEXPECTED RESULTS\n1. The bookmarks tree should have the same shape, ie folders that were closed should still be closed and those that were open should still be open.\n2. This should be true for the bookmarks in the sidepanel as well.\n\nLINKS\n1. netscape-bookmarks.html\n2. mozilla-bookmarks.html\n3. large-bookmarks.html",
+      "requirement_ids": [
+        "R-010"
+      ],
+      "source": "T-set.csv#TC-010",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-011",
+      "title": "TC-011",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Select Bookmarks|Manage Bookmarks.\n2. Select a bookmark. Select File|Bookmark Properties. Verify, click \"OK\".\n3. Select a folder. Select File|Bookmark Properties. Verify, click \"OK\".\n4. Select a separator. Select File|Bookmark Properties.\n\nEXPECTED RESULTS\n1. For step(2) the Bookmark Properties dialog should appear. It should have fields for name, location(url), custom keyword, and description. There should also be a section for setting update and notification options.\n2. For step(3) the Bookmark Properties dialog should appear. It should have fields for name and description. No other fileds should appear in this dialog.\n3. For step(4) no dialog should appear.\n\nLINKS\n1. netscape-bookmarks.html\n2. mozilla-bookmarks.html\n3. large-bookmarks.html",
+      "requirement_ids": [
+        "R-011"
+      ],
+      "source": "T-set.csv#TC-011",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-012",
+      "title": "TC-012",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Select Bookmarks|Manage Bookmarks.\n2. Click a bookmark by single clicking on the name of the bookmark.\n3. Type a new name. Press enter.\n4. Select Edit|Bookmark Properties, look at the name field.\n\nEXPECTED RESULTS\n1. In step(2) the bookmark name should hilite and become editable.\n2. In step(3) and step(4) the new name you typed should replace the old name.\n\nLINKS\n1. netscape-bookmarks.html\n2. mozilla-bookmarks.html\n3. large-bookmarks.html",
+      "requirement_ids": [
+        "R-012"
+      ],
+      "source": "T-set.csv#TC-012",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-013",
+      "title": "TC-013",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Select Bookmarks|Manage Bookmarks.\n2. Select a bookmark. Select File|Bookmark Properties.\n3. Enter the word \"blah\" in the custom keyword field. Click \"OK\".\n4. In a browser window. Type \"blah\" into the url field and press enter.\n\nEXPECTED RESULTS\n1. You should be taken to the url associated with the same bookmark the custom keyword \"blah\" was associated with.\n2. The browser should NOT perform an \"internet keyword search\", \"netsape smart browsing search\", or any other search.\n\nLINKS\n1. netscape-bookmarks.html\n2. mozilla-bookmarks.html\n3. large-bookmarks.html",
+      "requirement_ids": [
+        "R-013"
+      ],
+      "source": "T-set.csv#TC-013",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-014",
+      "title": "TC-014",
+      "description": "INITIAL CONDITIONS\n1. Install this bookmarks file.(abcdbookmarks.html)\n2. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Select Bookmarks|Manage Bookmarks.\n2. Click on the \"Name\" column once.\n3. Click on the \"Name\" column a second time.\n4. Click on the \"Name\" column a third time.\n5. Click on the \"URL\" column once, and a second time.\n6. Click on the \"Custom Keyword\" column once, and a second time.\n7. Click on the \"Description\" column once, and a second time.\n8. Click on the \"Last Visit\" column once, and a second time.\n9. Click on the \"Added On\" column once, and a second time.\n10. Click on the \"Last Modified\" column once, and a second time.\n\nEXPECTED RESULTSBy step\n1. The bookmarks should sort into alphabetical order. (a-b-c-d-e)\n2. The bookmarks should sort into reverse-alphabetical order. (e-d-c-b-a)\n3. The bookmarks should sort into \"natural\" order (the way they were originally sorted). (a-d-e-b-c)\n4. The bookmarks should sort into order by URL and then the reverse of that order. (d-a-b-c-e)\n5. The bookmarks should sort into order by Custom Keyword and then the reverse of that order. (c-d-a-b-e)\n6. The bookmarks should sort into order by Description and then the reverse of that order. (b-c-d-a-e)\n7. The bookmarks should sort into order by Last Visited time and then the reverse of that order.\n8. The bookmarks should sort into order by Added On date and then the reverse of that order.\n9. The bookmarks should sort into order by Last Modified date and then the reverse of that order.\n10. Separators should separate the sort as well, ie step one should result in a-b-c-d-e|aa-bb-cc-dd-ee, not a-aa-b-bb-c-cc-d-dd-e|.\n\nLINKS\n1. netscape-bookmarks.html\n2. mozilla-bookmarks.html\n3. large-bookmarks.html",
+      "requirement_ids": [
+        "R-014"
+      ],
+      "source": "T-set.csv#TC-014",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-015",
+      "title": "TC-015",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Select Bookmarks|Manage Bookmarks.\n2. Mouseover the separator between the \"Name\" and \"URL\" columns.\n3. Click and drag that separator to the left and right.\n4. Repeat this with each of the other column separators.\n\nEXPECTED RESULTS\n1. In step(2) the mouse pointer should change to a double-arrowed icon (platform specific or XP?).\n2. In step(3) the column sizes on either side of the separator should shrink and grow as you drag. The content of the column should move with the column header. Column content that is obscured should be replaced by the ellipsis(?).\n\nLINKS\n1. netscape-bookmarks.html\n2. mozilla-bookmarks.html\n3. large-bookmarks.html",
+      "requirement_ids": [
+        "R-015"
+      ],
+      "source": "T-set.csv#TC-015",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-016",
+      "title": "TC-016",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Select Bookmarks|Manage Bookmarks.\n2. Click the icon on the far right of the column headers.\n3. Uncheck two of the items (columns).\n4. Recheck an item.\n5. Quit and restart the application.\n\nEXPECTED RESULTS\n1. Step(2) a popup menu should appear listing all of the column headers as menuitems.\n2. Step(3), they should all be checked by default and unchecking should cause that column to disappear from the manage bookmarks window.\n3. Step(4), the columns should reappear upon rechecking its name on the list.\n4. Step(5) the columns should appear just as the did after step(4).\n\nLINKS\n1. netscape-bookmarks.html\n2. mozilla-bookmarks.html\n3. large-bookmarks.html",
+      "requirement_ids": [
+        "R-016"
+      ],
+      "source": "T-set.csv#TC-016",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-017",
+      "title": "TC-017",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Select the toplevel \"Bookmarks\" menu. Select Bookmarks|Manage Bookmarks.\n2. Select any bookmark. Shift+click or drag to select more (at least 3).\n3. Select Edit|Delete.\n\nEXPECTED RESULTS\n1. The bookmarks should no longer appear in the Manage Bookmarks window, the bookmarks sidebar panel, the top-level \"Bookmarks\" menu and the bookmarks popup on the personal toolbar.\n\nLINKS\n1. default-bookmarks.html\n2. large-bookmarks.html",
+      "requirement_ids": [
+        "R-017"
+      ],
+      "source": "T-set.csv#TC-017",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-018",
+      "title": "TC-018",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n5. As part of your bookmarks file you need a folder (lets' call it folder \"A\") that contains bookmarks and another folder (let's call this folder \"A1\" (read Asub1)) that contains bookmarks as well.\n\nSTEPS/DESCRIPTION\n1. Select Bookmarks|Manage Bookmarks.\n2. Select folder A1 then drag&drop it onto or within itself\n3. Select folder A1 then drag&drop it onto or within folder A.\n4. Select folder A then drag&drop it onto or within folder A1.\n5. Select a bookmark within folder A1 and drop it onto folder A1.\n\nEXPECTED RESULTS\n1. Nothing should happen! No bookmark or folder should be moved in any of these cases. Ideally, one should see the International symbol for \"No\" cursor.\n\nLINKS\n1. netscape-bookmarks.html\n2. mozilla-bookmarks.html\n3. large-bookmarks.html\n4. The Bookmarks Testcase Matrix",
+      "requirement_ids": [
+        "R-018"
+      ],
+      "source": "T-set.csv#TC-018",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": [
+        "firefox_clipboard_and_drag_drop"
+      ]
+    }
+  ],
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 18,
+    "reference_count": 18,
+    "matches": [
+      {
+        "generated_id": "G-001",
+        "reference_id": "TC-001",
+        "similarity": 0.877855744942262
+      },
+      {
+        "generated_id": "G-002",
+        "reference_id": "TC-002",
+        "similarity": 0.8845432422291313
+      },
+      {
+        "generated_id": "G-003",
+        "reference_id": "TC-003",
+        "similarity": 0.8763579499777415
+      },
+      {
+        "generated_id": "G-004",
+        "reference_id": "TC-004",
+        "similarity": 0.890040259378387
+      },
+      {
+        "generated_id": "G-005",
+        "reference_id": "TC-005",
+        "similarity": 0.867954387202565
+      },
+      {
+        "generated_id": "G-006",
+        "reference_id": "TC-006",
+        "similarity": 0.8995824127477573
+      },
+      {
+        "generated_id": "G-007",
+        "reference_id": "TC-007",
+        "similarity": 0.8473174419158087
+      },
+      {
+        "generated_id": "G-008",
+        "reference_id": "TC-008",
+        "similarity": 0.885697485477047
+      },
+      {
+        "generated_id": "G-009",
+        "reference_id": "TC-009",
+        "similarity": 0.9019723354629577
+      },
+      {
+        "generated_id": "G-010",
+        "reference_id": "TC-010",
+        "similarity": 0.8660025399273844
+      },
+      {
+        "generated_id": "G-011",
+        "reference_id": "TC-011",
+        "similarity": 0.8124305946493916
+      },
+      {
+        "generated_id": "G-012",
+        "reference_id": "TC-012",
+        "similarity": 0.87840060427261
+      },
+      {
+        "generated_id": "G-013",
+        "reference_id": "TC-013",
+        "similarity": 0.8763127076877025
+      },
+      {
+        "generated_id": "G-014",
+        "reference_id": "TC-014",
+        "similarity": 0.8868374993137061
+      },
+      {
+        "generated_id": "G-015",
+        "reference_id": "TC-015",
+        "similarity": 0.8914566065798302
+      },
+      {
+        "generated_id": "G-016",
+        "reference_id": "TC-016",
+        "similarity": 0.8750175250785703
+      },
+      {
+        "generated_id": "G-017",
+        "reference_id": "TC-017",
+        "similarity": 0.8774035633166959
+      },
+      {
+        "generated_id": "G-018",
+        "reference_id": "TC-018",
+        "similarity": 0.8565436205780262
+      }
+    ],
+    "unmatched_generated_ids": [],
+    "unmatched_reference_ids": [],
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "embedding_usage": {
+      "input_tokens": 533,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 533
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
+  "generation": {
+    "selected_techniques": [],
+    "technique_rationales": {},
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": 9219,
+      "output_tokens": 2345,
+      "details": {
+        "text_prompt_tokens": 9219,
+        "total_tokens": 11564
+      },
+      "status": "available"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": 533,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 533
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
+  "links": {
+    "requirements": {
+      "R-001": "R-001/requirement.md",
+      "R-002": "R-002/requirement.md",
+      "R-003": "R-003/requirement.md",
+      "R-004": "R-004/requirement.md",
+      "R-005": "R-005/requirement.md",
+      "R-006": "R-006/requirement.md",
+      "R-007": "R-007/requirement.md",
+      "R-008": "R-008/requirement.md",
+      "R-009": "R-009/requirement.md",
+      "R-010": "R-010/requirement.md",
+      "R-011": "R-011/requirement.md",
+      "R-012": "R-012/requirement.md",
+      "R-013": "R-013/requirement.md",
+      "R-014": "R-014/requirement.md",
+      "R-015": "R-015/requirement.md",
+      "R-016": "R-016/requirement.md",
+      "R-017": "R-017/requirement.md",
+      "R-018": "R-018/requirement.md"
+    },
+    "cases": {
+      "G-001": {
+        "R-001": "R-001/test cases/1_Add_Bookmark_to_Specific_Location.md"
+      },
+      "G-002": {
+        "R-002": "R-002/test cases/2_Delete_Bookmarks_from_File_and_Access_Points.md"
+      },
+      "G-003": {
+        "R-003": "R-003/test cases/3_Add_and_Delete_Bookmarks_from_Personal_Toolbar.md"
+      },
+      "G-004": {
+        "R-004": "R-004/test cases/4_Insert_New_Bookmark_Folder.md"
+      },
+      "G-005": {
+        "R-005": "R-005/test cases/5_Launch_Bookmark_via_Double-Click.md"
+      },
+      "G-006": {
+        "R-006": "R-006/test cases/6_Default_Bookmarks_Link_Validation.md"
+      },
+      "G-007": {
+        "R-007": "R-007/test cases/7_Save_Changes_to_Bookmark_Item.md"
+      },
+      "G-008": {
+        "R-008": "R-008/test cases/8_Delete_Bookmark_Folder.md"
+      },
+      "G-009": {
+        "R-009": "R-009/test cases/9_Add_and_Delete_Bookmark_Separators.md"
+      },
+      "G-010": {
+        "R-010": "R-010/test cases/10_Persist_Bookmark_Changes_over_Restart_or_Crash.md"
+      },
+      "G-011": {
+        "R-011": "R-011/test cases/11_Negative_Test_for_View_Properties.md"
+      },
+      "G-012": {
+        "R-012": "R-012/test cases/12_Inline_Renaming_of_Bookmarks.md"
+      },
+      "G-013": {
+        "R-013": "R-013/test cases/13_Find_Bookmarks_Using_Custom_Keyword.md"
+      },
+      "G-014": {
+        "R-014": "R-014/test cases/14_Sort_and_Reverse-Sort_Bookmark_Columns.md"
+      },
+      "G-015": {
+        "R-015": "R-015/test cases/15_Resize_Bookmark_Columns.md"
+      },
+      "G-016": {
+        "R-016": "R-016/test cases/16_Show_and_Hide_Bookmark_Columns.md"
+      },
+      "G-017": {
+        "R-017": "R-017/test cases/17_Bulk_Deletion_of_Several_Bookmarks.md"
+      },
+      "G-018": {
+        "R-018": "R-018/test cases/18_Prevent_Invalid_Drag-and-Drop_on_Self_or_Relativ.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv",
+    "trace": "intermediate/trace.json",
+    "initial": "intermediate/initial.json",
+    "rounds": []
+  }
+}

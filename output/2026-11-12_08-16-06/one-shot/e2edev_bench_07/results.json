@@ -1,0 +1,426 @@
+{
+  "schema_version": 1,
+  "solution": "one-shot",
+  "unit_id": "e2edev_bench_07",
+  "parent_id": null,
+  "status": "evaluated",
+  "failure": null,
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "e2edev_bench_07-R-1",
+      "text": "The system must allow the user to input a height value in centimeters in the 'Height in cm' input field, identified by the data-testid 'height-input'. The system should accept and store this value for BMI calculation.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_07/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_07-R-2",
+      "text": "The system must allow the user to input a weight value in kilograms into the 'Weight in kg' input field. The input field is located in the DOM with the attribute `data-testid='weight-input'`. The system must ensure that the entered value is stored in memory for subsequent BMI calculations.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_07/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_07-R-3",
+      "text": "The web application must enable users to calculate their Body Mass Index (BMI) based on their height and weight inputs using the formula BMI = weight (kg) / (height (m) * height (m)). The result must be rounded to two decimal places and displayed in the result area identified by data-testid \"result-display\" in the format \"Your BMI is <calculated_value>\". The implementation must support normal and edge scenarios, including valid numeric input, minimum non-zero values (e.g., weight = 1, height = 0.01 resulting in \"Your BMI is 10000.00\"), and maximum reasonable values (e.g., weight = 635, height = 2.72 resulting in \"Your BMI is 85.89\"). It must also handle error conditions gracefully: if either height or weight input is non-numeric, such as \"xyz\", or left empty, the result must be \"NaN\". The interface must use the specified data-testid attributes: \"weight-input\" for the weight field, \"calculate-button\" for the trigger button, and \"result-display\" for the output, and must ensure consistent behavior across all cases.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_07/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_07-R-4",
+      "text": "The system must display a static, responsive, and accessible table upon page load that provides users with BMI ranges and their corresponding categories for reference. The table must contain two headers—'BMI' and 'Category'—with data-testid='bmi-header' and data-testid='category-header', respectively. It must include four rows: 'less than 18.5' (data-testid='bmi-value-1') paired with 'Underweight' (data-testid='category-value-1'), 'between 18.5 and 24.9' (data-testid='bmi-value-2') with 'Ideal' (data-testid='category-value-2'), 'between 25 and 29.9' (data-testid='bmi-value-3') with 'Overweight' (data-testid='category-value-3'), and 'over 30' (data-testid='bmi-value-4') with 'Obesity' (data-testid='category-value-4'). The table must be properly formatted and remain fully visible across different screen sizes without requiring user interaction, and all elements must be accessible through their respective data-testid attributes for testing purposes.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_07/requirment_with_tests.json#/finegrained_rewith_test/4/requirement/description"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Valid height input entry",
+      "description": "Verify that the user can input a valid height in centimeters into the height-input field and that the system stores it.",
+      "requirement_ids": [
+        "e2edev_bench_07-R-1"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Valid weight input entry",
+      "description": "Verify that the user can input a valid weight in kilograms into the weight-input field and that the system stores it.",
+      "requirement_ids": [
+        "e2edev_bench_07-R-2"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Successful BMI calculation with normal numeric inputs",
+      "description": "Verify that clicking the calculate button with valid height and weight correctly computes and displays the rounded BMI.",
+      "requirement_ids": [
+        "e2edev_bench_07-R-3"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "BMI calculation edge scenarios with extreme values",
+      "description": "Verify the calculation using minimum non-zero values and maximum reasonable values, ensuring correct rounded output format.",
+      "requirement_ids": [
+        "e2edev_bench_07-R-3"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Error handling for non-numeric or empty inputs",
+      "description": "Verify that entering non-numeric characters (e.g., \"xyz\") or leaving inputs empty results in \"NaN\" in the result display area.",
+      "requirement_ids": [
+        "e2edev_bench_07-R-3"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Reference BMI ranges table display on page load",
+      "description": "Verify that the BMI ranges table is displayed upon page load with correct headers and all four category rows using proper data-testid attributes.",
+      "requirement_ids": [
+        "e2edev_bench_07-R-4"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_07-R-1-TC-1",
+      "title": "[Normal] User enters a valid height value",
+      "description": "Feature: Accept and store the 'Height in cm' input value for BMI calculation\n  The system should allow the user to input a height value in centimeters, validate it, and store it for BMI calculation.\n\n\n  Scenario: [Normal] User enters a valid height value\n    Given the BMI Calculator page is loaded\n    And the 'Height in cm' input field with data-testid 'height-input' is visible\n    When the user enters \"170\" into the 'Height in cm' input field with data-testid 'height-input'\n    Then the system should store the value \"170\" for BMI calculation\n    And the 'Height in cm' input field should display \"170\"\n",
+      "requirement_ids": [
+        "e2edev_bench_07-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_07/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_07-R-1-TC-2",
+      "title": "[Edge] User enters the minimum valid height value",
+      "description": "Feature: Accept and store the 'Height in cm' input value for BMI calculation\n  The system should allow the user to input a height value in centimeters, validate it, and store it for BMI calculation.\n\n\n  Scenario: [Edge] User enters the minimum valid height value\n    Given the BMI Calculator page is loaded\n    And the 'Height in cm' input field with data-testid 'height-input' is visible\n    When the user enters \"1\" into the 'Height in cm' input field with data-testid 'height-input'\n    Then the system should store the value \"1\" for BMI calculation\n    And the 'Height in cm' input field should display \"1\"\n",
+      "requirement_ids": [
+        "e2edev_bench_07-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_07/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_07-R-1-TC-3",
+      "title": "[Edge] User enters the maximum valid height value",
+      "description": "Feature: Accept and store the 'Height in cm' input value for BMI calculation\n  The system should allow the user to input a height value in centimeters, validate it, and store it for BMI calculation.\n\n\n  Scenario: [Edge] User enters the maximum valid height value\n    Given the BMI Calculator page is loaded\n    And the 'Height in cm' input field with data-testid 'height-input' is visible\n    When the user enters \"300\" into the 'Height in cm' input field with data-testid 'height-input'\n    Then the system should store the value \"300\" for BMI calculation\n    And the 'Height in cm' input field should display \"300\"\n",
+      "requirement_ids": [
+        "e2edev_bench_07-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_07/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_07-R-1-TC-4",
+      "title": "[Error] User enters a non-numeric value in the height field",
+      "description": "Feature: Accept and store the 'Height in cm' input value for BMI calculation\n  The system should allow the user to input a height value in centimeters, validate it, and store it for BMI calculation.\n\n\n  Scenario: [Error] User enters a non-numeric value in the height field\n    Given the BMI Calculator page is loaded\n    And the 'Height in cm' input field with data-testid 'height-input' is visible\n    When the user enters \"abc\" into the 'Height in cm' input field with data-testid 'height-input'\n    Then the system should not store the value \"abc\" for BMI calculation\n\n",
+      "requirement_ids": [
+        "e2edev_bench_07-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_07/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_07-R-1-TC-5",
+      "title": "[Error] User enters a negative value in the height field",
+      "description": "Feature: Accept and store the 'Height in cm' input value for BMI calculation\n  The system should allow the user to input a height value in centimeters, validate it, and store it for BMI calculation.\n\n\nScenario: [Error] User enters a negative value in the height field\n    Given the BMI Calculator page is loaded\n    And the 'Height in cm' input field with data-testid 'height-input' is visible\n    When the user enters \"-170\" into the 'Height in cm' input field with data-testid 'height-input'\n    Then the system should store the value \"-170\" for BMI calculation",
+      "requirement_ids": [
+        "e2edev_bench_07-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_07/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/4/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_07-R-1-TC-6",
+      "title": "[Error] User leaves the height field empty",
+      "description": "Feature: Accept and store the 'Height in cm' input value for BMI calculation\n  The system should allow the user to input a height value in centimeters, validate it, and store it for BMI calculation.\n\n\n  Scenario: [Error] User leaves the height field empty\n    Given the BMI Calculator page is loaded\n    And the 'Height in cm' input field with data-testid 'height-input' is visible\n    When the user does not enter any value into the 'Height in cm' input field with data-testid 'height-input'\n    Then the system should not store any value for BMI calculation\n    And the 'Height in cm' input field should remain empty",
+      "requirement_ids": [
+        "e2edev_bench_07-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_07/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/5/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_07-R-2-TC-1",
+      "title": "[Normal] User enters a valid weight value",
+      "description": "Feature: Accept and store the weight input for BMI calculation\n  The system should allow the user to input a weight value in kilograms, validate it, and store it for BMI calculation.\n\n\n  Scenario: [Normal] User enters a valid weight value\n    Given the BMI Calculator page is loaded\n    And the \"Weight in kg\" input field with data-testid \"weight-input\" is visible\n    When the user enters \"70\" into the \"Weight in kg\" input field with data-testid \"weight-input\"\n    Then the \"Weight in kg\" input field with data-testid \"weight-input\" should display the value \"70\"\n",
+      "requirement_ids": [
+        "e2edev_bench_07-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_07/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_07-R-2-TC-2",
+      "title": "[Edge] User enters the minimum valid weight value",
+      "description": "Feature: Accept and store the weight input for BMI calculation\n  The system should allow the user to input a weight value in kilograms, validate it, and store it for BMI calculation.\n\n\n  Scenario: [Edge] User enters the minimum valid weight value\n    Given the BMI Calculator page is loaded\n    And the \"Weight in kg\" input field with data-testid \"weight-input\" is visible\n    When the user enters \"0.1\" into the \"Weight in kg\" input field with data-testid \"weight-input\"\n    Then the \"Weight in kg\" input field with data-testid \"weight-input\" should display the value \"0.1\"\n",
+      "requirement_ids": [
+        "e2edev_bench_07-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_07/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_07-R-2-TC-3",
+      "title": "[Edge] User enters the maximum valid weight value",
+      "description": "Feature: Accept and store the weight input for BMI calculation\n  The system should allow the user to input a weight value in kilograms, validate it, and store it for BMI calculation.\n\n\n  Scenario: [Edge] User enters the maximum valid weight value\n    Given the BMI Calculator page is loaded\n    And the \"Weight in kg\" input field with data-testid \"weight-input\" is visible\n    When the user enters \"500\" into the \"Weight in kg\" input field with data-testid \"weight-input\"\n    Then the \"Weight in kg\" input field with data-testid \"weight-input\" should display the value \"500\"\n",
+      "requirement_ids": [
+        "e2edev_bench_07-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_07/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_07-R-3-TC-1",
+      "title": "[Normal] Calculate BMI with valid height and weight inputs",
+      "description": "Feature: BMI Calculation\n  The system calculates and displays the Body Mass Index (BMI) based on user input for height and weight, rounding the result to two decimal places.\n\n\n  Scenario: [Normal] Calculate BMI with valid height and weight inputs\n    Given the BMI Calculator page is loaded\n    And the user enters \"170\" into the height input field with data-testid \"height-input\"\n    And the user enters \"65\" into the weight input field with data-testid \"weight-input\"\n    When the user clicks the \"Calculate\" button with data-testid \"calculate-button\"\n    Then the result display area with data-testid \"result-display\" should show \"Your BMI is 22.49\"\n",
+      "requirement_ids": [
+        "e2edev_bench_07-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_07/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_07-R-3-TC-2",
+      "title": "[Edge] Calculate BMI with minimum non-zero height and weight inputs",
+      "description": "Feature: BMI Calculation\n  The system calculates and displays the Body Mass Index (BMI) based on user input for height and weight, rounding the result to two decimal places.\n\n\n  Scenario: [Edge] Calculate BMI with minimum non-zero height and weight inputs\n    Given the BMI Calculator page is loaded\n    And the user enters \"1\" into the height input field with data-testid \"height-input\"\n    And the user enters \"1\" into the weight input field with data-testid \"weight-input\"\n    When the user clicks the \"Calculate\" button with data-testid \"calculate-button\"\n    Then the result display area with data-testid \"result-display\" should show \"Your BMI is 10000.00\"\n",
+      "requirement_ids": [
+        "e2edev_bench_07-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_07/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_07-R-3-TC-3",
+      "title": "[Edge] Calculate BMI with maximum reasonable height and weight inputs",
+      "description": "Feature: BMI Calculation\n  The system calculates and displays the Body Mass Index (BMI) based on user input for height and weight, rounding the result to two decimal places.\n\n\n  Scenario: [Edge] Calculate BMI with maximum reasonable height and weight inputs\n    Given the BMI Calculator page is loaded\n    And the user enters \"272\" into the height input field with data-testid \"height-input\"\n    And the user enters \"635\" into the weight input field with data-testid \"weight-input\"\n    When the user clicks the \"Calculate\" button with data-testid \"calculate-button\"\n    Then the result display area with data-testid \"result-display\" should show \"Your BMI is 85.83\"\n",
+      "requirement_ids": [
+        "e2edev_bench_07-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_07/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_07-R-3-TC-4",
+      "title": "[Error] Calculate BMI with non-numeric height input",
+      "description": "Feature: BMI Calculation\n  The system calculates and displays the Body Mass Index (BMI) based on user input for height and weight, rounding the result to two decimal places.\n\n\nScenario: [Error] Calculate BMI with non-numeric height input\n    Given the BMI Calculator page is loaded\n    And the user enters \"abc\" into the height input field with data-testid \"height-input\"\n    And the user enters \"65\" into the weight input field with data-testid \"weight-input\"\n    When the user clicks the \"Calculate\" button with data-testid \"calculate-button\"\n    Then the result display area with data-testid \"result-display\" should be NaN",
+      "requirement_ids": [
+        "e2edev_bench_07-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_07/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_07-R-3-TC-5",
+      "title": "[Error] Calculate BMI with non-numeric weight input",
+      "description": "Feature: BMI Calculation\n  The system calculates and displays the Body Mass Index (BMI) based on user input for height and weight, rounding the result to two decimal places.\n\n\nScenario: [Error] Calculate BMI with non-numeric weight input\n    Given the BMI Calculator page is loaded\n    And the user enters \"170\" into the height input field with data-testid \"height-input\"\n    And the user enters \"xyz\" into the weight input field with data-testid \"weight-input\"\n    When the user clicks the \"Calculate\" button with data-testid \"calculate-button\"\n    Then the result display area with data-testid \"result-display\" should be NaN",
+      "requirement_ids": [
+        "e2edev_bench_07-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_07/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/4/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_07-R-3-TC-6",
+      "title": "[Error] Calculate BMI with empty height and weight inputs",
+      "description": "Feature: BMI Calculation\n  The system calculates and displays the Body Mass Index (BMI) based on user input for height and weight, rounding the result to two decimal places.\n\n\nScenario: [Error] Calculate BMI with empty height and weight inputs\n    Given the BMI Calculator page is loaded\n    And the height input field with data-testid \"height-input\" is empty\n    And the weight input field with data-testid \"weight-input\" is empty\n    When the user clicks the \"Calculate\" button with data-testid \"calculate-button\"\n    Then the result display area with data-testid \"result-display\" should be NaN",
+      "requirement_ids": [
+        "e2edev_bench_07-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_07/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/5/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_07-R-4-TC-1",
+      "title": "[Normal] Verify the presence of the BMI table and its headers",
+      "description": "Feature: Display BMI ranges and corresponding categories for user reference\n  The system should display a table with BMI ranges and their corresponding categories (Underweight, Ideal, Overweight, Obesity) for user reference.\n\n\n  Scenario: [Normal] Verify the presence of the BMI table and its headers\n    Given the user navigates to the BMI Calculator webpage\n    Then the table with BMI ranges and categories should be visible\n    And the table header \"BMI\" should be displayed with data-testid \"bmi-header\"\n    And the table header \"Category\" should be displayed with data-testid \"category-header\"\n",
+      "requirement_ids": [
+        "e2edev_bench_07-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_07/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_07-R-4-TC-2",
+      "title": "[Normal] Verify the BMI range and category values in the table",
+      "description": "Feature: Display BMI ranges and corresponding categories for user reference\n  The system should display a table with BMI ranges and their corresponding categories (Underweight, Ideal, Overweight, Obesity) for user reference.\n\n\n  Scenario: [Normal] Verify the BMI range and category values in the table\n    Given the user navigates to the BMI Calculator webpage\n    Then the table should contain the BMI range \"less than 18.5\" with data-testid \"bmi-value-1\"\n    And the corresponding category \"Underweight\" should be displayed with data-testid \"category-value-1\"\n    And the table should contain the BMI range \"between 18.5 and 24.9\" with data-testid \"bmi-value-2\"\n    And the corresponding category \"Ideal\" should be displayed with data-testid \"category-value-2\"\n    And the table should contain the BMI range \"between 25 and 29.9\" with data-testid \"bmi-value-3\"\n    And the corresponding category \"Overweight\" should be displayed with data-testid \"category-value-3\"\n    And the table should contain the BMI range \"over 30\" with data-testid \"bmi-value-4\"\n    And the corresponding category \"Obesity\" should be displayed with data-testid \"category-value-4\"\n",
+      "requirement_ids": [
+        "e2edev_bench_07-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_07/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_07-R-4-TC-3",
+      "title": "[Edge] Verify table visibility on different screen sizes",
+      "description": "Feature: Display BMI ranges and corresponding categories for user reference\n  The system should display a table with BMI ranges and their corresponding categories (Underweight, Ideal, Overweight, Obesity) for user reference.\n\n\n  Scenario: [Edge] Verify table visibility on different screen sizes\n    Given the user navigates to the BMI Calculator webpage\n    When the user resizes the browser window to a small screen size\n    Then the table with BMI ranges and categories should remain visible and properly formatted\n",
+      "requirement_ids": [
+        "e2edev_bench_07-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_07/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 6,
+    "reference_count": 18,
+    "matches": [
+      {
+        "generated_id": "G-001",
+        "reference_id": "e2edev_bench_07-R-1-TC-1",
+        "similarity": 0.9303649931454275
+      },
+      {
+        "generated_id": "G-002",
+        "reference_id": "e2edev_bench_07-R-2-TC-1",
+        "similarity": 0.9257471433155764
+      },
+      {
+        "generated_id": "G-003",
+        "reference_id": "e2edev_bench_07-R-3-TC-1",
+        "similarity": 0.9149709196791616
+      },
+      {
+        "generated_id": "G-004",
+        "reference_id": "e2edev_bench_07-R-3-TC-2",
+        "similarity": 0.8873897184290436
+      },
+      {
+        "generated_id": "G-005",
+        "reference_id": "e2edev_bench_07-R-3-TC-5",
+        "similarity": 0.8880178705036549
+      },
+      {
+        "generated_id": "G-006",
+        "reference_id": "e2edev_bench_07-R-4-TC-1",
+        "similarity": 0.9304371317897994
+      }
+    ],
+    "unmatched_generated_ids": [],
+    "unmatched_reference_ids": [
+      "e2edev_bench_07-R-1-TC-2",
+      "e2edev_bench_07-R-1-TC-3",
+      "e2edev_bench_07-R-1-TC-4",
+      "e2edev_bench_07-R-1-TC-5",
+      "e2edev_bench_07-R-1-TC-6",
+      "e2edev_bench_07-R-2-TC-2",
+      "e2edev_bench_07-R-2-TC-3",
+      "e2edev_bench_07-R-3-TC-3",
+      "e2edev_bench_07-R-3-TC-4",
+      "e2edev_bench_07-R-3-TC-6",
+      "e2edev_bench_07-R-4-TC-2",
+      "e2edev_bench_07-R-4-TC-3"
+    ],
+    "precision": 1.0,
+    "recall": 0.3333333333333333,
+    "f1": 0.5,
+    "embedding_usage": {
+      "input_tokens": 2991,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 2991
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 2
+  },
+  "generation": {
+    "selected_techniques": [],
+    "technique_rationales": {},
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": 1052,
+      "output_tokens": 542,
+      "details": {
+        "text_prompt_tokens": 1052,
+        "total_tokens": 1594
+      },
+      "status": "available"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": 2991,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 2991
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 2
+  },
+  "links": {
+    "requirements": {
+      "e2edev_bench_07-R-1": "e2edev_bench_07-R-1/requirement.md",
+      "e2edev_bench_07-R-2": "e2edev_bench_07-R-2/requirement.md",
+      "e2edev_bench_07-R-3": "e2edev_bench_07-R-3/requirement.md",
+      "e2edev_bench_07-R-4": "e2edev_bench_07-R-4/requirement.md"
+    },
+    "cases": {
+      "G-001": {
+        "e2edev_bench_07-R-1": "e2edev_bench_07-R-1/test cases/1_Valid_height_input_entry.md"
+      },
+      "G-002": {
+        "e2edev_bench_07-R-2": "e2edev_bench_07-R-2/test cases/2_Valid_weight_input_entry.md"
+      },
+      "G-003": {
+        "e2edev_bench_07-R-3": "e2edev_bench_07-R-3/test cases/3_Successful_BMI_calculation_with_normal_numeric_i.md"
+      },
+      "G-004": {
+        "e2edev_bench_07-R-3": "e2edev_bench_07-R-3/test cases/4_BMI_calculation_edge_scenarios_with_extreme_valu.md"
+      },
+      "G-005": {
+        "e2edev_bench_07-R-3": "e2edev_bench_07-R-3/test cases/5_Error_handling_for_non-numeric_or_empty_inputs.md"
+      },
+      "G-006": {
+        "e2edev_bench_07-R-4": "e2edev_bench_07-R-4/test cases/6_Reference_BMI_ranges_table_display_on_page_load.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

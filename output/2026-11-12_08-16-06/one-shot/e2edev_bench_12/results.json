@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "solution": "one-shot",
+  "unit_id": "e2edev_bench_12",
+  "parent_id": null,
+  "status": "evaluated",
+  "failure": null,
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "e2edev_bench_12-R-1",
+      "text": "Upon loading the 'Dad Jokes' webpage, the system must automatically initiate a fetch request to the 'https://icanhazdadjoke.com' API to retrieve a random dad joke. The joke must be displayed in the designated joke display area, which is identified by the data-testid attribute 'joke'. ",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_12/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_12-R-2",
+      "text": "The user must be able to click the 'Get Another Joke' button (data-testid='get-another-joke-button'). Upon clicking, the application must asynchronously fetch a new random dad joke and display it in the joke container (data-testid='joke').",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_12/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_12-R-3",
+      "text": "The user must be able to click the 'Get Another Joke' button (data-testid='get-another-joke-button'). Upon clicking, the application must asynchronously fetch a new random dad joke and display it in the joke container (data-testid='joke'), replacing either the placeholder text '// Joke goes here' or the previously displayed joke.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_12/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Automatic Joke Fetch on Page Load",
+      "description": "Verify that upon loading the Dad Jokes webpage, the system automatically fetches a random joke from the API and displays it in the element with data-testid='joke'.",
+      "requirement_ids": [
+        "e2edev_bench_12-R-1"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Fetch Another Joke on Button Click",
+      "description": "Verify that clicking the 'Get Another Joke' button (data-testid='get-another-joke-button') fetches a new random dad joke and displays it correctly in the joke container (data-testid='joke').",
+      "requirement_ids": [
+        "e2edev_bench_12-R-2"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Replace Placeholder or Previous Joke on Button Click",
+      "description": "Verify that clicking the 'Get Another Joke' button replaces either the initial placeholder text '// Joke goes here' or the previously displayed joke with the newly fetched joke.",
+      "requirement_ids": [
+        "e2edev_bench_12-R-3"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_12-R-1-TC-1",
+      "title": "[Normal] Display a dad joke on page load",
+      "description": "Feature: Automatic Joke Fetching on Page Load\n  The system must automatically fetch a random dad joke from the \"https://icanhazdadjoke.com\" API and display it in the joke display area when the page loads.\n\n\n  Scenario: [Normal] Display a dad joke on page load\n    Given the webpage \"Dad Jokes\" is loaded\n    When the system fetches a joke from \"https://icanhazdadjoke.com\"\n    Then the joke display area with data-testid \"joke\" should show a dad joke\n",
+      "requirement_ids": [
+        "e2edev_bench_12-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_12/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_12-R-2-TC-1",
+      "title": "[Normal] Fetch and display a new dad joke when the button is clicked",
+      "description": "Feature: Fetch and display a new random dad joke when the user clicks the \"Get Another Joke\" button\n  The user must be able to click the \"Get Another Joke\" button to fetch a new random dad joke from the \"https://icanhazdadjoke.com\" API and display it on the page.\n\n\n  Scenario: [Normal] Fetch and display a new dad joke when the button is clicked\n    Given the webpage is loaded and the joke container with data-testid \"joke\" displays \"// Joke goes here\"\n    And the \"Get Another Joke\" button with data-testid \"get-another-joke-button\" is visible\n    When the user clicks the \"Get Another Joke\" button\n    Then a new dad joke is fetched from the \"https://icanhazdadjoke.com\" API\n    And the joke container with data-testid \"joke\" is updated to display the fetched joke\n",
+      "requirement_ids": [
+        "e2edev_bench_12-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_12/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_12-R-3-TC-1",
+      "title": "[Normal] User clicks the \"Get Another Joke\" button to fetch a new joke",
+      "description": "Feature: REQ-003 - Fetch and Display New Joke\n  The system must replace the current joke in the joke display area with a newly fetched joke when the user clicks the \"Get Another Joke\" button.\n\n\n  Scenario: [Normal] User clicks the \"Get Another Joke\" button to fetch a new joke\n    Given the webpage is loaded with the title \"Dad Jokes\"\n    And the joke display area with data-testid \"joke\" contains a joke\n    When the user clicks the \"Get Another Joke\" button with data-testid \"get-another-joke-button\"\n    Then the joke display area with data-testid \"joke\" should be updated with a new joke\n",
+      "requirement_ids": [
+        "e2edev_bench_12-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_12/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_12-R-3-TC-2",
+      "title": "[Edge] User clicks the \"Get Another Joke\" button multiple times in quick succession",
+      "description": "Feature: REQ-003 - Fetch and Display New Joke\n  The system must replace the current joke in the joke display area with a newly fetched joke when the user clicks the \"Get Another Joke\" button.\n\n\n  Scenario: [Edge] User clicks the \"Get Another Joke\" button multiple times in quick succession\n    Given the webpage is loaded with the title \"Dad Jokes\"\n    And the joke display area with data-testid \"joke\" contains a joke\n    When the user clicks the \"Get Another Joke\" button with data-testid \"get-another-joke-button\" rapidly multiple times\n    Then the joke display area with data-testid \"joke\" should eventually display a new joke\n    And the joke should be different from the initial joke\n",
+      "requirement_ids": [
+        "e2edev_bench_12-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_12/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 3,
+    "reference_count": 4,
+    "matches": [
+      {
+        "generated_id": "G-001",
+        "reference_id": "e2edev_bench_12-R-1-TC-1",
+        "similarity": 0.9467941075011065
+      },
+      {
+        "generated_id": "G-002",
+        "reference_id": "e2edev_bench_12-R-2-TC-1",
+        "similarity": 0.943997391342178
+      },
+      {
+        "generated_id": "G-003",
+        "reference_id": "e2edev_bench_12-R-3-TC-1",
+        "similarity": 0.9036864053946216
+      }
+    ],
+    "unmatched_generated_ids": [],
+    "unmatched_reference_ids": [
+      "e2edev_bench_12-R-3-TC-2"
+    ],
+    "precision": 1.0,
+    "recall": 0.75,
+    "f1": 0.8571428571428571,
+    "embedding_usage": {
+      "input_tokens": 786,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 786
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
+  "generation": {
+    "selected_techniques": [],
+    "technique_rationales": {},
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": 786,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 786
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
+  "links": {
+    "requirements": {
+      "e2edev_bench_12-R-1": "e2edev_bench_12-R-1/requirement.md",
+      "e2edev_bench_12-R-2": "e2edev_bench_12-R-2/requirement.md",
+      "e2edev_bench_12-R-3": "e2edev_bench_12-R-3/requirement.md"
+    },
+    "cases": {
+      "G-001": {
+        "e2edev_bench_12-R-1": "e2edev_bench_12-R-1/test cases/1_Automatic_Joke_Fetch_on_Page_Load.md"
+      },
+      "G-002": {
+        "e2edev_bench_12-R-2": "e2edev_bench_12-R-2/test cases/2_Fetch_Another_Joke_on_Button_Click.md"
+      },
+      "G-003": {
+        "e2edev_bench_12-R-3": "e2edev_bench_12-R-3/test cases/3_Replace_Placeholder_or_Previous_Joke_on_Button_C.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

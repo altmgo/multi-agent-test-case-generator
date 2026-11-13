@@ -1,0 +1,361 @@
+{
+  "schema_version": 1,
+  "solution": "one-shot",
+  "unit_id": "e2edev_bench_30",
+  "parent_id": null,
+  "status": "evaluated",
+  "failure": null,
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "e2edev_bench_30-R-1",
+      "text": "When the user accesses the application, the system shall display a form with the following fields and elements: an input field for 'Event Name' with data-testid 'eventname', an input field for 'Person Name' with data-testid 'name', an input field for 'Designation' with data-testid 'designation', an input field for 'Company Name' with data-testid 'company', and a select dropdown for 'Access Level' with data-testid 'access'. Each of these fields is required. Additionally, a 'Generate Badge' button with data-testid 'generate-badge-button' shall be visible. The form, identified by data-testid 'badgeForm', must be fully accessible and visible on all screen sizes, ensuring that all fields and the button are accessible without horizontal scrolling on small screen devices.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_30/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_30-R-2",
+      "text": "The web application shall provide a form within a container identified by data-testid 'formContainer' for generating badges. The form, identified by data-testid 'badgeForm', shall include input fields for 'Event Name', 'Person Name', 'Designation', and 'Company Name', each with corresponding data-testids 'eventname', 'name', 'designation', and 'company'. Additionally, a dropdown for 'Access Level' with data-testid 'access' shall be present, offering options 'Attendee' and 'VIP'. All fields are required for form submission. Upon clicking the submit button with data-testid 'generate-badge-button', if all fields are correctly filled, the form container shall be hidden, and a badge container with data-testid 'badge' shall be displayed, showing the entered details. A QR code shall be generated within the badge, containing the user's ID and entered information. The 'Download Badge' button with data-testid 'dwnBadge' shall become visible, allowing the user to download the badge as a PNG image. If any field is left empty, the form shall remain visible, and the badge and download button shall not be displayed.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_30/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_30-R-3",
+      "text": "The web application shall provide a badge generation feature where users can input details including Event Name, Person Name, Designation, Company Name, and Access Level through a form. The form fields are identified by data-testid attributes: 'eventname', 'name', 'designation', 'company', and 'access'. Upon clicking the 'Generate Badge' button (data-testid: 'generate-badge-button'), the form (data-testid: 'formContainer') shall be hidden, and a badge (data-testid: 'badge') shall be displayed. The badge will dynamically update to show the entered Event Name (data-testid: 'badgeEvent'), Person Name (data-testid: 'badgeName'), Designation (data-testid: 'badgeDesignation'), Company Name prefixed with '@' (data-testid: 'badgecontainer'), and Access Level (data-testid: 'badgeAccess'). Additionally, a QR code will be generated within the badge (data-testid: 'qrcode') containing the badge details. The 'Download Badge' button (data-testid: 'dwnBadge') will be enabled to allow users to download the badge as a PNG image. The system shall handle both normal and edge cases, including minimum input lengths for each field.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_30/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_30-R-4",
+      "text": "Upon form submission on the Badge Generator page, the system shall generate a unique ID for each badge. The user must provide inputs for Event Name, Person Name, Designation, Company Name, and select an Access Level from the dropdown options ('Attendee' or 'VIP'). These inputs, along with the generated unique ID, shall be embedded within a QR code displayed on the badge. The badge and QR code are shown in the designated badge area with data-testid 'badge' and 'qrcode', respectively. The form submission hides the form container with data-testid 'formContainer' and displays the badge container. The QR code text format should be 'ID: IDxxxx\\nEvent: [Event Name]\\nName: [Person Name]\\nDesignation: [Designation]\\nCompany: @[Company Name]\\nAccess: [Access Level]'. Additionally, a 'Download Badge' button with data-testid 'dwnBadge' is displayed, allowing users to download the badge as a PNG image. The download functionality uses the html-to-image library to convert the badge HTML element into an image file.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_30/requirment_with_tests.json#/finegrained_rewith_test/4/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_30-R-6",
+      "text": "The system shall display a 'Download Badge' button with the data-testid 'dwnBadge' after the user successfully generates a badge by submitting the form with all required fields: 'Event Name' (data-testid 'eventname'), 'Person Name' (data-testid 'name'), 'Designation' (data-testid 'designation'), 'Company Name' (data-testid 'company'), and 'Access Level' (data-testid 'access'). Upon clicking the 'Generate Badge' button (data-testid 'generate-badge-button'), the form container (data-testid 'formContainer') should be hidden, and the badge details should be displayed in the badge section (data-testid 'badge'). The badge should include a QR code (data-testid 'qrcode') generated with the user's details. The 'Download Badge' button should become visible, allowing the user to download the badge as a PNG image when clicked. The download process should create a link element, set its 'href' attribute to the generated image data URL, and trigger a click event to initiate the download.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_30/requirment_with_tests.json#/finegrained_rewith_test/6/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_30-R-7",
+      "text": "The system shall allow users to generate and download a badge as a PNG image. When the user fills out the badge form with fields for 'Event Name', 'Person Name', 'Designation', 'Company Name', and 'Access Level', and submits the form by clicking the 'Generate Badge' button (data-testid: 'generate-badge-button'), the badge is displayed with the entered details. The badge includes a QR code generated with the user's information. Upon clicking the 'Download Badge' button (data-testid: 'dwnBadge'), the system shall convert the visible badge, including the QR code, to a PNG image and initiate a download to the user's device. The download functionality must handle normal and edge cases, such as large text content, ensuring the image is correctly formatted and downloaded without errors.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_30/requirment_with_tests.json#/finegrained_rewith_test/7/requirement/description"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Verify Initial Form Display and Elements",
+      "description": "Verify that when the user accesses the application, the form with all required input fields ('eventname', 'name', 'designation', 'company', 'access'), the generate button ('generate-badge-button'), and form container ('badgeForm') are correctly displayed and accessible.",
+      "requirement_ids": [
+        "e2edev_bench_30-R-1",
+        "e2edev_bench_30-R-2"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Successful Badge Generation with Valid Inputs",
+      "description": "Verify that filling in all required fields and clicking 'Generate Badge' hides the form container, displays the badge container with correct details, generates a QR code, and shows the 'Download Badge' button.",
+      "requirement_ids": [
+        "e2edev_bench_30-R-2",
+        "e2edev_bench_30-R-3",
+        "e2edev_bench_30-R-4",
+        "e2edev_bench_30-R-6"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Form Submission with Missing Fields (Abnormal)",
+      "description": "Verify that leaving any of the required form fields empty and attempting to submit prevents badge generation, keeps the form visible, and does not display the badge or download button.",
+      "requirement_ids": [
+        "e2edev_bench_30-R-2"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Verify QR Code Content and Unique ID Format",
+      "description": "Verify that upon successful submission, a unique ID is generated and the QR code contains the correct formatted text including ID, Event, Name, Designation, Company prefixed with '@', and Access Level.",
+      "requirement_ids": [
+        "e2edev_bench_30-R-3",
+        "e2edev_bench_30-R-4"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Download Badge as PNG Image",
+      "description": "Verify that clicking the 'Download Badge' button ('dwnBadge') after generating the badge successfully converts the badge HTML element into a PNG image and initiates the download process.",
+      "requirement_ids": [
+        "e2edev_bench_30-R-4",
+        "e2edev_bench_30-R-6",
+        "e2edev_bench_30-R-7"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_30-R-1-TC-1",
+      "title": "[Normal] Display form with all required fields and button",
+      "description": "Feature: Display Badge Generation Form\n  The system shall display a form with fields for Event Name, Person Name, Designation, Company Name, and Access Level, along with a 'Generate Badge' button when the user accesses the application.\n\n\n  Scenario: [Normal] Display form with all required fields and button\n    Given the user accesses the application\n    When the webpage is fully loaded\n    Then the form with data-testid \"badgeForm\" should be visible\n    And the input field with data-testid \"eventname\" should be visible and required\n    And the input field with data-testid \"name\" should be visible and required\n    And the input field with data-testid \"designation\" should be visible and required\n    And the input field with data-testid \"company\" should be visible and required\n    And the select dropdown with data-testid \"access\" should be visible and required\n    And the button with data-testid \"generate-badge-button\" should be visible\n",
+      "requirement_ids": [
+        "e2edev_bench_30-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_30/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_30-R-1-TC-2",
+      "title": "[Edge] Verify form visibility on different screen sizes",
+      "description": "Feature: Display Badge Generation Form\n  The system shall display a form with fields for Event Name, Person Name, Designation, Company Name, and Access Level, along with a 'Generate Badge' button when the user accesses the application.\n\n\n  Scenario: [Edge] Verify form visibility on different screen sizes\n    Given the user accesses the application\n    When the webpage is fully loaded on a small screen device\n    Then the form with data-testid \"badgeForm\" should be visible\n    And all form fields and the button should be accessible without horizontal scrolling\n",
+      "requirement_ids": [
+        "e2edev_bench_30-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_30/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_30-R-2-TC-1",
+      "title": "[Normal] Successful form submission with all fields filled",
+      "description": "Feature: Form Submission Requirement\n  The system shall require the user to fill in all fields in the form before allowing submission, ensuring that Event Name, Person Name, Designation, Company Name, and Access Level are provided.\n\n\n  Scenario: [Normal] Successful form submission with all fields filled\n    Given the webpage \"ID Card and Badge Generator\" is loaded\n    And the form with data-testid \"badgeForm\" is visible\n    When the user enters \"Tech Conference 2023\" into the event name field with data-testid \"eventname\"\n    And the user enters \"John Doe\" into the person name field with data-testid \"name\"\n    And the user enters \"Software Engineer\" into the designation field with data-testid \"designation\"\n    And the user enters \"TechCorp\" into the company name field with data-testid \"company\"\n    And the user selects \"VIP\" from the access level dropdown with data-testid \"access\"\n    And the user clicks the submit button with data-testid \"generate-badge-button\"\n    Then the form with data-testid \"formContainer\" is hidden\n    And the badge with data-testid \"badge\" is displayed\n    And the download badge button with data-testid \"dwnBadge\" is visible\n",
+      "requirement_ids": [
+        "e2edev_bench_30-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_30/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_30-R-2-TC-2",
+      "title": "[Edge] Attempt to submit form with one field empty",
+      "description": "Feature: Form Submission Requirement\n  The system shall require the user to fill in all fields in the form before allowing submission, ensuring that Event Name, Person Name, Designation, Company Name, and Access Level are provided.\n\n\n  Scenario: [Edge] Attempt to submit form with one field empty\n    Given the webpage \"ID Card and Badge Generator\" is loaded\n    And the form with data-testid \"badgeForm\" is visible\n    When the user enters \"Tech Conference 2023\" into the event name field with data-testid \"eventname\"\n    And the user enters \"John Doe\" into the person name field with data-testid \"name\"\n    And the user enters \"Software Engineer\" into the designation field with data-testid \"designation\"\n    And the user enters \"\" into the company name field with data-testid \"company\"\n    And the user selects \"VIP\" from the access level dropdown with data-testid \"access\"\n    And the user clicks the submit button with data-testid \"generate-badge-button\"\n    Then the form with data-testid \"formContainer\" remains visible\n    And the badge with data-testid \"badge\" is not displayed\n    And the download badge button with data-testid \"dwnBadge\" is not visible\n",
+      "requirement_ids": [
+        "e2edev_bench_30-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_30/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_30-R-2-TC-3",
+      "title": "[Error] Attempt to submit form with all fields empty",
+      "description": "Feature: Form Submission Requirement\n  The system shall require the user to fill in all fields in the form before allowing submission, ensuring that Event Name, Person Name, Designation, Company Name, and Access Level are provided.\n\n\n  Scenario: [Error] Attempt to submit form with all fields empty\n    Given the webpage \"ID Card and Badge Generator\" is loaded\n    And the form with data-testid \"badgeForm\" is visible\n    When the user enters \"\" into the event name field with data-testid \"eventname\"\n    And the user enters \"\" into the person name field with data-testid \"name\"\n    And the user enters \"\" into the designation field with data-testid \"designation\"\n    And the user enters \"\" into the company name field with data-testid \"company\"\n    And the user selects \"\" from the access level dropdown with data-testid \"access\"\n    And the user clicks the submit button with data-testid \"generate-badge-button\"\n    Then the form with data-testid \"formContainer\" remains visible\n    And the badge with data-testid \"badge\" is not displayed\n    And the download badge button with data-testid \"dwnBadge\" is not visible",
+      "requirement_ids": [
+        "e2edev_bench_30-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_30/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_30-R-3-TC-1",
+      "title": "[Normal] Generate badge with valid inputs",
+      "description": "Feature: Badge Generation and Display\n  The system shall hide the form and display the badge with the entered Event Name, Person Name, Designation, Company Name, and Access Level upon clicking the 'Generate Badge' button.\n\n\n  Scenario: [Normal] Generate badge with valid inputs\n    Given the badge generation page is loaded\n    And the user enters \"Tech Conference\" into the event name field with data-testid \"eventname\"\n    And the user enters \"John Doe\" into the person name field with data-testid \"name\"\n    And the user enters \"Developer\" into the designation field with data-testid \"designation\"\n    And the user enters \"TechCorp\" into the company name field with data-testid \"company\"\n    And the user selects \"VIP\" from the access level dropdown with data-testid \"access\"\n    When the user clicks the \"Generate Badge\" button with data-testid \"generate-badge-button\"\n    Then the form with data-testid \"formContainer\" should be hidden\n    And the badge with data-testid \"badge\" should be displayed\n    And the badge should show \"Tech Conference\" in the event name with data-testid \"badgeEvent\"\n    And the badge should show \"John Doe\" in the person name with data-testid \"badgeName\"\n    And the badge should show \"Developer\" in the designation with data-testid \"badgeDesignation\"\n    And the badge should show \"@TechCorp\" in the company name with data-testid \"badgecontainer\"\n    And the badge should show \"VIP\" in the access level with data-testid \"badgeAccess\"\n",
+      "requirement_ids": [
+        "e2edev_bench_30-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_30/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_30-R-3-TC-2",
+      "title": "[Edge] Generate badge with minimum input length",
+      "description": "Feature: Badge Generation and Display\n  The system shall hide the form and display the badge with the entered Event Name, Person Name, Designation, Company Name, and Access Level upon clicking the 'Generate Badge' button.\n\n\n  Scenario: [Edge] Generate badge with minimum input length\n    Given the badge generation page is loaded\n    And the user enters \"A\" into the event name field with data-testid \"eventname\"\n    And the user enters \"B\" into the person name field with data-testid \"name\"\n    And the user enters \"C\" into the designation field with data-testid \"designation\"\n    And the user enters \"D\" into the company name field with data-testid \"company\"\n    And the user selects \"Attendee\" from the access level dropdown with data-testid \"access\"\n    When the user clicks the \"Generate Badge\" button with data-testid \"generate-badge-button\"\n    Then the form with data-testid \"formContainer\" should be hidden\n    And the badge with data-testid \"badge\" should be displayed\n    And the badge should show \"A\" in the event name with data-testid \"badgeEvent\"\n    And the badge should show \"B\" in the person name with data-testid \"badgeName\"\n    And the badge should show \"C\" in the designation with data-testid \"badgeDesignation\"\n    And the badge should show \"@D\" in the company name with data-testid \"badgecontainer\"\n    And the badge should show \"Attendee\" in the access level with data-testid \"badgeAccess\"\n",
+      "requirement_ids": [
+        "e2edev_bench_30-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_30/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_30-R-4-TC-1",
+      "title": "[Normal] Generate badge with unique ID and QR code",
+      "description": "Feature: Badge Generation with Unique ID and QR Code Embedding\n\n  The system generates a unique ID for each badge upon form submission and embeds this ID along with user-provided information in the QR code displayed on the badge.\n\n\nScenario: [Normal] Generate badge with unique ID and QR code\n    Given the user is on the Badge Generator page\n    When the user enters \"Tech Conference\" into the \"Event Name\" field\n    And the user enters \"John Doe\" into the \"Person Name\" field\n    And the user enters \"Developer\" into the \"Designation\" field\n    And the user enters \"TechCorp\" into the \"Company Name\" field\n    And the user selects \"VIP\" from the \"Access Level\" dropdown\n    And the user clicks the \"Generate Badge\" button with data-testid \"generate-badge-button\"\n    Then the badge with data-testid \"badge\" is displayed\n    And the QR code with data-testid \"qrcode\" is generated\n    And the QR code contains the text \"ID: IDxxxx\\nEvent: Tech Conference\\nName: John Doe\\nDesignation: Developer\\nCompany: @TechCorp\\nAccess: VIP\"",
+      "requirement_ids": [
+        "e2edev_bench_30-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_30/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_30-R-4-TC-2",
+      "title": "[Edge] Generate badge with minimum input length",
+      "description": "Feature: Badge Generation with Unique ID and QR Code Embedding\n\n  The system generates a unique ID for each badge upon form submission and embeds this ID along with user-provided information in the QR code displayed on the badge.\n\n\n  Scenario: [Edge] Generate badge with minimum input length\n    Given the user is on the Badge Generator page\n    When the user enters \"A\" into the \"Event Name\" field\n    And the user enters \"B\" into the \"Person Name\" field\n    And the user enters \"C\" into the \"Designation\" field\n    And the user enters \"D\" into the \"Company Name\" field\n    And the user selects \"Attendee\" from the \"Access Level\" dropdown\n    And the user clicks the \"Generate Badge\" button with data-testid \"generate-badge-button\"\n    Then the badge with data-testid \"badge\" is displayed\n    And the QR code with data-testid \"qrcode\" is generated\n    And the QR code contains the text \"ID: IDxxxx\\nEvent: A\\nName: B\\nDesignation: C\\nCompany: @D\\nAccess: Attendee\"\n",
+      "requirement_ids": [
+        "e2edev_bench_30-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_30/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_30-R-6-TC-1",
+      "title": "[Normal] Display 'Download Badge' button after badge generation",
+      "description": "Feature: Display and functionality of 'Download Badge' button after badge generation\n\n  Background:\n    Given the user is on the \"ID Card and Badge Generator\" page\n\n\n  Scenario: [Normal] Display 'Download Badge' button after badge generation\n    Given the user enters \"Tech Conference\" into the event name field with data-testid \"eventname\"\n    And the user enters \"John Doe\" into the person name field with data-testid \"name\"\n    And the user enters \"Software Engineer\" into the designation field with data-testid \"designation\"\n    And the user enters \"TechCorp\" into the company name field with data-testid \"company\"\n    And the user selects \"VIP\" from the access level dropdown with data-testid \"access\"\n    When the user clicks the \"Generate Badge\" button with data-testid \"generate-badge-button\"\n    Then the 'Download Badge' button with data-testid \"dwnBadge\" should be displayed\n",
+      "requirement_ids": [
+        "e2edev_bench_30-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_30/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_30-R-7-TC-1",
+      "title": "[Normal] Successful badge download as PNG",
+      "description": "Feature: Download Badge as PNG Image\n  The system shall convert the badge to a PNG image and initiate a download to the user's device upon clicking the 'Download Badge' button.\n\n\n  Scenario: [Normal] Successful badge download as PNG\n    Given the badge is generated and displayed on the page\n    When the user clicks the 'Download Badge' button with data-testid 'dwnBadge'\n    Then the system should convert the badge to a PNG image\n    And initiate a download of the image to the user's device\n",
+      "requirement_ids": [
+        "e2edev_bench_30-R-7"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_30/requirment_with_tests.json#/finegrained_rewith_test/7/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_30-R-7-TC-2",
+      "title": "[Edge] Badge download with large content",
+      "description": "Feature: Download Badge as PNG Image\n  The system shall convert the badge to a PNG image and initiate a download to the user's device upon clicking the 'Download Badge' button.\n\n\n  Scenario: [Edge] Badge download with large content\n    Given the badge is generated with large text content and displayed on the page\n    When the user clicks the 'Download Badge' button with data-testid 'dwnBadge'\n    Then the system should convert the badge to a PNG image\n    And initiate a download of the image to the user's device\n",
+      "requirement_ids": [
+        "e2edev_bench_30-R-7"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_30/requirment_with_tests.json#/finegrained_rewith_test/7/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 5,
+    "reference_count": 12,
+    "matches": [
+      {
+        "generated_id": "G-001",
+        "reference_id": "e2edev_bench_30-R-1-TC-1",
+        "similarity": 0.9452335297196748
+      },
+      {
+        "generated_id": "G-002",
+        "reference_id": "e2edev_bench_30-R-2-TC-1",
+        "similarity": 0.9061766205345345
+      },
+      {
+        "generated_id": "G-003",
+        "reference_id": "e2edev_bench_30-R-2-TC-3",
+        "similarity": 0.9062455165609317
+      },
+      {
+        "generated_id": "G-004",
+        "reference_id": "e2edev_bench_30-R-4-TC-1",
+        "similarity": 0.8806165284902256
+      },
+      {
+        "generated_id": "G-005",
+        "reference_id": "e2edev_bench_30-R-7-TC-1",
+        "similarity": 0.9424974029450794
+      }
+    ],
+    "unmatched_generated_ids": [],
+    "unmatched_reference_ids": [
+      "e2edev_bench_30-R-1-TC-2",
+      "e2edev_bench_30-R-2-TC-2",
+      "e2edev_bench_30-R-3-TC-1",
+      "e2edev_bench_30-R-3-TC-2",
+      "e2edev_bench_30-R-4-TC-2",
+      "e2edev_bench_30-R-6-TC-1",
+      "e2edev_bench_30-R-7-TC-2"
+    ],
+    "precision": 1.0,
+    "recall": 0.4166666666666667,
+    "f1": 0.5882352941176471,
+    "embedding_usage": {
+      "input_tokens": 2903,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 2903
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
+  "generation": {
+    "selected_techniques": [],
+    "technique_rationales": {},
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": 1859,
+      "output_tokens": 665,
+      "details": {
+        "text_prompt_tokens": 1859,
+        "total_tokens": 2524
+      },
+      "status": "available"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": 2903,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 2903
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
+  "links": {
+    "requirements": {
+      "e2edev_bench_30-R-1": "e2edev_bench_30-R-1/requirement.md",
+      "e2edev_bench_30-R-2": "e2edev_bench_30-R-2/requirement.md",
+      "e2edev_bench_30-R-3": "e2edev_bench_30-R-3/requirement.md",
+      "e2edev_bench_30-R-4": "e2edev_bench_30-R-4/requirement.md",
+      "e2edev_bench_30-R-6": "e2edev_bench_30-R-6/requirement.md",
+      "e2edev_bench_30-R-7": "e2edev_bench_30-R-7/requirement.md"
+    },
+    "cases": {
+      "G-001": {
+        "e2edev_bench_30-R-1": "e2edev_bench_30-R-1/test cases/1_Verify_Initial_Form_Display_and_Elements.md",
+        "e2edev_bench_30-R-2": "e2edev_bench_30-R-2/test cases/1_Verify_Initial_Form_Display_and_Elements.md"
+      },
+      "G-002": {
+        "e2edev_bench_30-R-2": "e2edev_bench_30-R-2/test cases/2_Successful_Badge_Generation_with_Valid_Inputs.md",
+        "e2edev_bench_30-R-3": "e2edev_bench_30-R-3/test cases/2_Successful_Badge_Generation_with_Valid_Inputs.md",
+        "e2edev_bench_30-R-4": "e2edev_bench_30-R-4/test cases/2_Successful_Badge_Generation_with_Valid_Inputs.md",
+        "e2edev_bench_30-R-6": "e2edev_bench_30-R-6/test cases/2_Successful_Badge_Generation_with_Valid_Inputs.md"
+      },
+      "G-003": {
+        "e2edev_bench_30-R-2": "e2edev_bench_30-R-2/test cases/3_Form_Submission_with_Missing_Fields_Abnormal.md"
+      },
+      "G-004": {
+        "e2edev_bench_30-R-3": "e2edev_bench_30-R-3/test cases/4_Verify_QR_Code_Content_and_Unique_ID_Format.md",
+        "e2edev_bench_30-R-4": "e2edev_bench_30-R-4/test cases/4_Verify_QR_Code_Content_and_Unique_ID_Format.md"
+      },
+      "G-005": {
+        "e2edev_bench_30-R-4": "e2edev_bench_30-R-4/test cases/5_Download_Badge_as_PNG_Image.md",
+        "e2edev_bench_30-R-6": "e2edev_bench_30-R-6/test cases/5_Download_Badge_as_PNG_Image.md",
+        "e2edev_bench_30-R-7": "e2edev_bench_30-R-7/test cases/5_Download_Badge_as_PNG_Image.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

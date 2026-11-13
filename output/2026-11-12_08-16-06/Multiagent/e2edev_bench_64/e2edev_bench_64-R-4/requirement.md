@@ -1,0 +1,3 @@
+# e2edev\_bench\_64-R-4
+
+When the user interacts with the 'Guess My Number!' web application, if the user's score reaches 0 after clicking the 'Check!' button (identified by data-testid 'check-button'), the system must update the UI to reflect the game loss. Specifically, the message element (identified by data-testid 'game-message') should display the text '💥 You lost the game!', and the score element (identified by data-testid 'current-score') should be updated to show a score of 0. This behavior should occur regardless of the number of attempts made, ensuring that the user is clearly informed of their loss once their score depletes to zero.

@@ -1,0 +1,674 @@
+{
+  "schema_version": 1,
+  "solution": "one-shot",
+  "unit_id": "e2edev_bench_18",
+  "parent_id": null,
+  "status": "evaluated",
+  "failure": null,
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "e2edev_bench_18-R-1",
+      "text": "The 'Subject' input field (identified by data-testid='subject') must accept and display valid text input, including long names and special characters, without truncation or alteration.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_18-R-2",
+      "text": "The user must be able to either select or input a valid time using the start-time picker (data-testid='start-time'), in 24-hour HH:MM format (00:00–23:59).",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_18-R-3",
+      "text": "The user must be able to either select or input a valid time using the end-time picker (data-testid='end-time'), in 24-hour HH:MM format (00:00–23:59).",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_18-R-4",
+      "text": "The user must be able to select or deselect one or more days (Monday to Saturday) using checkboxes in the 'Days' group (data-testid='days'). The functionality should support selecting a single day, multiple days, all days, and deselecting a selected day. Each checkbox is uniquely identifiable (e.g., data-testid='day-monday'). ",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/4/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_18-R-5",
+      "text": "When the user clicks the 'Add to Timetable' button (data-testid='add-timetable-button') after filling out the required fields in the form (data-testid='timetable-form'), a new row is added to the timetable table (data-testid='timetable'). The row will display the time range in the first column and the subject under the selected days' columns. If any required field is empty (e.g., data-testid='subject', data-testid='start-time', data-testid='end-time', or no days selected with data-testid='days'), an alert with the message 'Please fill in all the fields.' will appear, and no row will be added. Each dynamically added row has a unique data-id in the format 'timetable-row-{startTime}-{endTime}'.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/5/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_18-R-6",
+      "text": "If a row with the same time range already exists in the timetable, the system will update the cells for the selected days with the new subject name instead of creating a new row.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/6/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_18-R-7",
+      "text": "When the user adds a new row to the timetable table, the system must insert the row in chronological order based on the start time.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/7/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_18-R-8",
+      "text": "When the user clicks the 'Add to Timetable' button (located by data-testid 'add-timetable-button'), the system must reset the form fields to their default state after successfully adding or updating a timetable entry. This includes clearing the 'Subject' input field (located by data-testid 'subject'), resetting the 'Start Time' input field (located by data-testid 'start-time'), resetting the 'End Time' input field (located by data-testid 'end-time'), and ensuring that no checkboxes within the 'Days' checkbox group (located by data-testid 'days') are checked. The reset should occur only if all required fields are filled and at least one day is selected, ensuring a valid timetable entry is added to the table (located by data-testid 'timetable').",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/8/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_18-R-9",
+      "text": "Upon loading the Timetable Generator webpage, the system must display an empty timetable table with the following specifications: The table should be located within a <table> element with the data-testid attribute set to 'timetable'. The table must include a <thead> section containing headers with data-testids 'time-header', 'monday-header', 'tuesday-header', 'wednesday-header', 'thursday-header', 'friday-header', and 'saturday-header', corresponding to the columns 'Time', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', and 'Saturday', respectively. The <tbody> section of the table must be empty, ensuring no rows are present with any data-id attributes. This setup ensures that the timetable is ready for user interaction without any pre-existing data.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/9/requirement/description"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Subject Field Valid Input",
+      "description": "Verify that the Subject input field accepts and displays valid text, long names, and special characters without truncation.",
+      "requirement_ids": [
+        "e2edev_bench_18-R-1"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Start Time Picker Valid Input",
+      "description": "Verify that the start-time picker accepts valid 24-hour HH:MM format input.",
+      "requirement_ids": [
+        "e2edev_bench_18-R-2"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "End Time Picker Valid Input",
+      "description": "Verify that the end-time picker accepts valid 24-hour HH:MM format input.",
+      "requirement_ids": [
+        "e2edev_bench_18-R-3"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Days Selection Functionality",
+      "description": "Verify selecting and deselecting single, multiple, or all days using the days checkboxes.",
+      "requirement_ids": [
+        "e2edev_bench_18-R-4"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Add Entry to Timetable Successfully",
+      "description": "Verify filling out all required fields and adding a new row to the timetable table correctly.",
+      "requirement_ids": [
+        "e2edev_bench_18-R-5",
+        "e2edev_bench_18-R-7"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Add Entry with Missing Fields Alert",
+      "description": "Verify that clicking 'Add to Timetable' with empty fields triggers an alert and prevents row creation.",
+      "requirement_ids": [
+        "e2edev_bench_18-R-5"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Update Existing Time Range Row",
+      "description": "Verify that adding an entry with a duplicate time range updates the existing row rather than creating a new one.",
+      "requirement_ids": [
+        "e2edev_bench_18-R-6"
+      ]
+    },
+    {
+      "id": "G-008",
+      "title": "Reset Form After Successful Addition",
+      "description": "Verify that form fields are reset to their default state after a successful timetable entry.",
+      "requirement_ids": [
+        "e2edev_bench_18-R-8"
+      ]
+    },
+    {
+      "id": "G-009",
+      "title": "Initial Timetable Page Load State",
+      "description": "Verify that the webpage loads with an empty timetable table and all required headers.",
+      "requirement_ids": [
+        "e2edev_bench_18-R-9"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_18-R-1-TC-1",
+      "title": "[Normal] User enters a valid subject name",
+      "description": "Feature: User can enter a subject name in the \"Subject\" input field\n  The user should be able to input a subject name into the \"Subject\" input field, and the field should accept valid text input.\n\n\n  Scenario: [Normal] User enters a valid subject name\n    Given the \"Timetable Generator\" page is loaded\n    And the \"Subject\" input field with data-testid \"subject\" is visible\n    When the user enters \"Mathematics\" into the \"Subject\" input field with data-testid \"subject\"\n    Then the \"Subject\" input field with data-testid \"subject\" should display the value \"Mathematics\"\n",
+      "requirement_ids": [
+        "e2edev_bench_18-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-1-TC-2",
+      "title": "[Edge] User enters a very long subject name",
+      "description": "Feature: User can enter a subject name in the \"Subject\" input field\n  The user should be able to input a subject name into the \"Subject\" input field, and the field should accept valid text input.\n\n\n  Scenario: [Edge] User enters a very long subject name\n    Given the \"Timetable Generator\" page is loaded\n    And the \"Subject\" input field with data-testid \"subject\" is visible\n    When the user enters \"Advanced Theoretical Physics and Quantum Mechanics\" into the \"Subject\" input field with data-testid \"subject\"\n    Then the \"Subject\" input field with data-testid \"subject\" should display the value \"Advanced Theoretical Physics and Quantum Mechanics\"\n",
+      "requirement_ids": [
+        "e2edev_bench_18-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-1-TC-3",
+      "title": "[Edge] User enters a subject name with special characters",
+      "description": "Feature: User can enter a subject name in the \"Subject\" input field\n  The user should be able to input a subject name into the \"Subject\" input field, and the field should accept valid text input.\n\n\n  Scenario: [Edge] User enters a subject name with special characters\n    Given the \"Timetable Generator\" page is loaded\n    And the \"Subject\" input field with data-testid \"subject\" is visible\n    When the user enters \"Art & Design: 101!\" into the \"Subject\" input field with data-testid \"subject\"\n    Then the \"Subject\" input field with data-testid \"subject\" should display the value \"Art & Design: 101!\"\n",
+      "requirement_ids": [
+        "e2edev_bench_18-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-2-TC-1",
+      "title": "[Normal] User selects a valid start time",
+      "description": "Feature: User can select a start time using the \"Start Time\" input field\n  The user should be able to interact with the \"Start Time\" input field to select a valid time for the timetable entry.\n\n\n  Scenario: [Normal] User selects a valid start time\n    Given the \"Timetable Generator\" page is loaded\n    And the \"Start Time\" input field with data-testid \"start-time\" is visible\n    When the user enters \"09:00\" into the \"Start Time\" input field with data-testid \"start-time\"\n    Then the \"Start Time\" input field with data-testid \"start-time\" should display \"09:00\"\n",
+      "requirement_ids": [
+        "e2edev_bench_18-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-2-TC-2",
+      "title": "[Edge] User selects the earliest possible start time",
+      "description": "Feature: User can select a start time using the \"Start Time\" input field\n  The user should be able to interact with the \"Start Time\" input field to select a valid time for the timetable entry.\n\n\n  Scenario: [Edge] User selects the earliest possible start time\n    Given the \"Timetable Generator\" page is loaded\n    And the \"Start Time\" input field with data-testid \"start-time\" is visible\n    When the user enters \"00:00\" into the \"Start Time\" input field with data-testid \"start-time\"\n    Then the \"Start Time\" input field with data-testid \"start-time\" should display \"00:00\"\n",
+      "requirement_ids": [
+        "e2edev_bench_18-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-2-TC-3",
+      "title": "[Edge] User selects the latest possible start time",
+      "description": "Feature: User can select a start time using the \"Start Time\" input field\n  The user should be able to interact with the \"Start Time\" input field to select a valid time for the timetable entry.\n\n\n  Scenario: [Edge] User selects the latest possible start time\n    Given the \"Timetable Generator\" page is loaded\n    And the \"Start Time\" input field with data-testid \"start-time\" is visible\n    When the user enters \"23:59\" into the \"Start Time\" input field with data-testid \"start-time\"\n    Then the \"Start Time\" input field with data-testid \"start-time\" should display \"23:59\"\n",
+      "requirement_ids": [
+        "e2edev_bench_18-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-2-TC-4",
+      "title": "[Edge] User enters an invalid time with out-of-bound minutes",
+      "description": "Feature: User can select a start time using the \"Start Time\" input field\n  The user should be able to interact with the \"Start Time\" input field to select a valid time for the timetable entry.\n\n\nScenario: [Edge] User enters an invalid time with out-of-bound minutes\n  Given the \"Timetable Generator\" page is loaded\n  And the \"Start Time\" input field with data-testid \"start-time\" is visible\n  When the user enters \"12:78\" into the \"Start Time\" input field with data-testid \"start-time\"\n  And the user clicks outside the \"Start Time\" input field to trigger validation\n  Then the \"Start Time\" input field with data-testid \"start-time\" should display \"12:59\"",
+      "requirement_ids": [
+        "e2edev_bench_18-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-2-TC-5",
+      "title": "[Edge] User enters an invalid time with out-of-bound hours",
+      "description": "Feature: User can select a start time using the \"Start Time\" input field\n  The user should be able to interact with the \"Start Time\" input field to select a valid time for the timetable entry.\n\n\nScenario: [Edge] User enters an invalid time with out-of-bound hours\n  Given the \"Timetable Generator\" page is loaded\n  And the \"Start Time\" input field with data-testid \"start-time\" is visible\n  When the user enters \"29:35\" into the \"Start Time\" input field with data-testid \"start-time\"\n  Then the \"Start Time\" input field with data-testid \"start-time\" should display \"23:35\"",
+      "requirement_ids": [
+        "e2edev_bench_18-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/4/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-3-TC-1",
+      "title": "[Normal] User selects a valid end time",
+      "description": "Feature: End Time Selection\n  The user can select an end time using the \"End Time\" input field.\n\n\n  Scenario: [Normal] User selects a valid end time\n    Given the \"Timetable Generator\" page is loaded\n    And the \"End Time\" input field with data-testid \"end-time\" is visible and empty\n    When the user enters \"14:00\" into the \"End Time\" input field with data-testid \"end-time\"\n    Then the \"End Time\" input field with data-testid \"end-time\" should display \"14:00\"\n",
+      "requirement_ids": [
+        "e2edev_bench_18-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-3-TC-2",
+      "title": "[Edge] User selects the earliest possible end time",
+      "description": "Feature: End Time Selection\n  The user can select an end time using the \"End Time\" input field.\n\n\n  Scenario: [Edge] User selects the earliest possible end time\n    Given the \"Timetable Generator\" page is loaded\n    And the \"End Time\" input field with data-testid \"end-time\" is visible and empty\n    When the user enters \"00:00\" into the \"End Time\" input field with data-testid \"end-time\"\n    Then the \"End Time\" input field with data-testid \"end-time\" should display \"00:00\"\n",
+      "requirement_ids": [
+        "e2edev_bench_18-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-3-TC-3",
+      "title": "[Edge] User selects the latest possible end time",
+      "description": "Feature: End Time Selection\n  The user can select an end time using the \"End Time\" input field.\n\n\n  Scenario: [Edge] User selects the latest possible end time\n    Given the \"Timetable Generator\" page is loaded\n    And the \"End Time\" input field with data-testid \"end-time\" is visible and empty\n    When the user enters \"23:59\" into the \"End Time\" input field with data-testid \"end-time\"\n    Then the \"End Time\" input field with data-testid \"end-time\" should display \"23:59\"\n",
+      "requirement_ids": [
+        "e2edev_bench_18-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-3-TC-4",
+      "title": "[Edge] User enters an invalid time with out-of-bound minutes for End Time",
+      "description": "Feature: End Time Selection\n  The user can select an end time using the \"End Time\" input field.\n\n\nScenario: [Edge] User enters an invalid time with out-of-bound minutes for End Time\n  Given the \"Timetable Generator\" page is loaded\n  And the \"End Time\" input field with data-testid \"end-time\" is visible\n  When the user enters \"12:78\" into the \"End Time\" input field with data-testid \"end-time\"\n  And the user clicks outside the \"End Time\" input field to trigger validation\n  Then the \"End Time\" input field with data-testid \"end-time\" should display \"12:59\"",
+      "requirement_ids": [
+        "e2edev_bench_18-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-3-TC-5",
+      "title": "[Edge] User enters completely invalid time for End Time",
+      "description": "Feature: End Time Selection\n  The user can select an end time using the \"End Time\" input field.\n\n\nScenario: [Edge] User enters completely invalid time for End Time\n  Given the \"Timetable Generator\" page is loaded\n  And the \"End Time\" input field with data-testid \"end-time\" is visible\n  When the user enters \"29:99\" into the \"End Time\" input field with data-testid \"end-time\"\n  And the user clicks outside the \"End Time\" input field to trigger validation\n  Then the \"End Time\" input field with data-testid \"end-time\" should display \"23:59\"",
+      "requirement_ids": [
+        "e2edev_bench_18-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/4/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-4-TC-1",
+      "title": "[Normal] User selects a single day",
+      "description": "Feature: User can select one or more days using the checkboxes in the \"Days\" group\n  The user should be able to select one or multiple days using the checkboxes provided in the \"Days\" group. The selected days should be accurately captured and used in the timetable entry.\n\n\nScenario: [Normal] User selects a single day\n    Given the \"Timetable Generator\" page is loaded\n    And the \"Days\" checkbox group with data-testid \"days\" is visible\n    When the user checks the checkbox labeled \"Monday\" with data-testid \"day-monday\"\n    Then the checkbox labeled \"Monday\" should be marked as checked",
+      "requirement_ids": [
+        "e2edev_bench_18-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-4-TC-2",
+      "title": "[Normal] User selects multiple days",
+      "description": "Feature: User can select one or more days using the checkboxes in the \"Days\" group\n  The user should be able to select one or multiple days using the checkboxes provided in the \"Days\" group. The selected days should be accurately captured and used in the timetable entry.\n\n\nScenario: [Normal] User selects multiple days\n    Given the \"Timetable Generator\" page is loaded\n    And the \"Days\" checkbox group with data-testid \"days\" is visible\n    When the user checks the checkboxes labeled \"Monday\" with data-testid \"day-monday\" and \"Wednesday\" with data-testid \"day-wednesday\"\n    Then the checkboxes labeled \"Monday\" and \"Wednesday\" should be marked as checked",
+      "requirement_ids": [
+        "e2edev_bench_18-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-4-TC-3",
+      "title": "[Edge] User selects all available days",
+      "description": "Feature: User can select one or more days using the checkboxes in the \"Days\" group\n  The user should be able to select one or multiple days using the checkboxes provided in the \"Days\" group. The selected days should be accurately captured and used in the timetable entry.\n\n\nScenario: [Edge] User selects all available days\n    Given the \"Timetable Generator\" page is loaded\n    And the \"Days\" checkbox group with data-testid \"days\" is visible\n    When the user checks all checkboxes labeled \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", and \"Saturday\"\n    Then all checkboxes should be marked as checked",
+      "requirement_ids": [
+        "e2edev_bench_18-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-4-TC-4",
+      "title": "[Edge] User deselects a previously selected day",
+      "description": "Feature: User can select one or more days using the checkboxes in the \"Days\" group\n  The user should be able to select one or multiple days using the checkboxes provided in the \"Days\" group. The selected days should be accurately captured and used in the timetable entry.\n\n\nScenario: [Edge] User deselects a previously selected day\n    Given the \"Timetable Generator\" page is loaded\n    And the \"Days\" checkbox group with data-testid \"days\" is visible\n    And the checkbox labeled \"Monday\" with data-testid \"day-monday\" is already checked\n    When the user unchecks the checkbox labeled \"Monday\" with data-testid \"day-monday\"\n    Then the checkbox labeled \"Monday\" should no longer be marked as checked",
+      "requirement_ids": [
+        "e2edev_bench_18-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-5-TC-1",
+      "title": "[Normal] Add a new row to the timetable with valid inputs",
+      "description": "Feature: Add a new row to the timetable table when all required fields are filled and the \"Add to Timetable\" button is clicked.\n\n  As a user,\n  I want to dynamically add a new row to the timetable table\n  So that I can see my scheduled subjects for the selected days and time range.\n\n  Background:\n    Given the \"Timetable Generator\" page is loaded\n    And the timetable form with data-testid \"timetable-form\" is visible\n    And the timetable table with data-testid \"timetable\" is visible\n\n\n  Scenario: [Normal] Add a new row to the timetable with valid inputs\n    Given the user enters \"Mathematics\" into the subject field with data-testid \"subject\"\n    And the user enters \"09:00\" into the start time field with data-testid \"start-time\"\n    And the user enters \"10:00\" into the end time field with data-testid \"end-time\"\n    And the user selects \"Monday\" and \"Wednesday\" checkboxes under the days group with data-testid \"days\"\n    When the user clicks the \"Add to Timetable\" button with data-testid \"add-timetable-button\"\n    Then a new row is added to the timetable table with data-testid \"timetable\"\n    And the row contains \"09:00 - 10:00\" in the first column\n    And the row contains \"Mathematics\" under the \"Monday\" column\n    And the row contains \"Mathematics\" under the \"Wednesday\" column\n\n",
+      "requirement_ids": [
+        "e2edev_bench_18-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-5-TC-2",
+      "title": "[Edge] Add a new row when only one day is selected",
+      "description": "Feature: Add a new row to the timetable table when all required fields are filled and the \"Add to Timetable\" button is clicked.\n\n  As a user,\n  I want to dynamically add a new row to the timetable table\n  So that I can see my scheduled subjects for the selected days and time range.\n\n  Background:\n    Given the \"Timetable Generator\" page is loaded\n    And the timetable form with data-testid \"timetable-form\" is visible\n    And the timetable table with data-testid \"timetable\" is visible\n\n\nScenario: [Edge] Add a new row when only one day is selected\n    Given the user enters \"Physics\" into the subject field with data-testid \"subject\"\n    And the user enters \"11:00\" into the start time field with data-testid \"start-time\"\n    And the user enters \"12:00\" into the end time field with data-testid \"end-time\"\n    And the user selects \"Friday\" checkbox under the days group with data-testid \"days\"\n    When the user clicks the \"Add to Timetable\" button with data-testid \"add-timetable-button\"\n    Then a new row is added to the timetable table with data-testid \"timetable\"\n    And the row contains \"11:00 - 12:00\" in the first column\n    And the row contains \"Physics\" under the \"Friday\" column",
+      "requirement_ids": [
+        "e2edev_bench_18-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-5-TC-3",
+      "title": "[Edge] Add a new row when all days are selected",
+      "description": "Feature: Add a new row to the timetable table when all required fields are filled and the \"Add to Timetable\" button is clicked.\n\n  As a user,\n  I want to dynamically add a new row to the timetable table\n  So that I can see my scheduled subjects for the selected days and time range.\n\n  Background:\n    Given the \"Timetable Generator\" page is loaded\n    And the timetable form with data-testid \"timetable-form\" is visible\n    And the timetable table with data-testid \"timetable\" is visible\n\n\n  Scenario: [Edge] Add a new row when all days are selected\n    Given the user enters \"Chemistry\" into the subject field with data-testid \"subject\"\n    And the user enters \"13:00\" into the start time field with data-testid \"start-time\"\n    And the user enters \"14:00\" into the end time field with data-testid \"end-time\"\n    And the user selects all checkboxes under the days group with data-testid \"days\"\n    When the user clicks the \"Add to Timetable\" button with data-testid \"add-timetable-button\"\n    Then a new row is added to the timetable table with data-testid \"timetable\"\n    And the row contains \"13:00 - 14:00\" in the first column\n    And the row contains \"Chemistry\" under all day columns from \"Monday\" to \"Saturday\"\n",
+      "requirement_ids": [
+        "e2edev_bench_18-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-5-TC-4",
+      "title": "[Error] Attempt to add a row with missing subject",
+      "description": "Feature: Add a new row to the timetable table when all required fields are filled and the \"Add to Timetable\" button is clicked.\n\n  As a user,\n  I want to dynamically add a new row to the timetable table\n  So that I can see my scheduled subjects for the selected days and time range.\n\n  Background:\n    Given the \"Timetable Generator\" page is loaded\n    And the timetable form with data-testid \"timetable-form\" is visible\n    And the timetable table with data-testid \"timetable\" is visible\n\n\nScenario: [Error] Attempt to add a row with missing subject\n    Given the user leaves the subject field with data-testid \"subject\" empty\n    And the user enters \"15:00\" into the start time field with data-testid \"start-time\"\n    And the user enters \"16:00\" into the end time field with data-testid \"end-time\"\n    And the user selects \"Tuesday\" checkbox under the days group with data-testid \"days\"\n    When the user clicks the \"Add to Timetable\" button with data-testid \"add-timetable-button\"\n    Then an alert is displayed\n    And no new row is added to the timetable table with data-testid \"timetable\"",
+      "requirement_ids": [
+        "e2edev_bench_18-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-5-TC-5",
+      "title": "[Error] Attempt to add a row with missing time range",
+      "description": "Feature: Add a new row to the timetable table when all required fields are filled and the \"Add to Timetable\" button is clicked.\n\n  As a user,\n  I want to dynamically add a new row to the timetable table\n  So that I can see my scheduled subjects for the selected days and time range.\n\n  Background:\n    Given the \"Timetable Generator\" page is loaded\n    And the timetable form with data-testid \"timetable-form\" is visible\n    And the timetable table with data-testid \"timetable\" is visible\n\n\n  Scenario: [Error] Attempt to add a row with missing time range\n    Given the user enters \"Biology\" into the subject field with data-testid \"subject\"\n    And the user leaves the start time field with data-testid \"start-time\" empty\n    And the user enters \"17:00\" into the end time field with data-testid \"end-time\"\n    And the user selects \"Thursday\" checkbox under the days group with data-testid \"days\"\n    When the user clicks the \"Add to Timetable\" button with data-testid \"add-timetable-button\"\n    Then an alert is displayed with the message \"Please fill in all the fields.\"\n    And no new row is added to the timetable table with data-testid \"timetable\"\n",
+      "requirement_ids": [
+        "e2edev_bench_18-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/4/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-5-TC-6",
+      "title": "[Error] Attempt to add a row with no days selected",
+      "description": "Feature: Add a new row to the timetable table when all required fields are filled and the \"Add to Timetable\" button is clicked.\n\n  As a user,\n  I want to dynamically add a new row to the timetable table\n  So that I can see my scheduled subjects for the selected days and time range.\n\n  Background:\n    Given the \"Timetable Generator\" page is loaded\n    And the timetable form with data-testid \"timetable-form\" is visible\n    And the timetable table with data-testid \"timetable\" is visible\n\n\n  Scenario: [Error] Attempt to add a row with no days selected\n    Given the user enters \"History\" into the subject field with data-testid \"subject\"\n    And the user enters \"18:00\" into the start time field with data-testid \"start-time\"\n    And the user enters \"19:00\" into the end time field with data-testid \"end-time\"\n    And the user does not select any checkboxes under the days group with data-testid \"days\"\n    When the user clicks the \"Add to Timetable\" button with data-testid \"add-timetable-button\"\n    Then an alert is displayed with the message \"Please fill in all the fields.\"\n    And no new row is added to the timetable table with data-testid \"timetable\"",
+      "requirement_ids": [
+        "e2edev_bench_18-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/5/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-6-TC-1",
+      "title": "[Normal] Update existing row when a time range overlaps and days are selected",
+      "description": "Feature: Update existing timetable row with new subject for overlapping time range\n  The system must update the cells corresponding to the selected days with the new subject name if a row with the same time range already exists in the timetable table.\n\n\n  Scenario: [Normal] Update existing row when a time range overlaps and days are selected\n    Given the timetable page is loaded\n    And a row exists in the timetable with time range \"09:00 - 10:00\" and subject \"Math\" on Monday and Tuesday\n    When the user enters \"Science\" into the subject field with data-testid \"subject\"\n    And the user enters \"09:00\" into the start time field with data-testid \"start-time\"\n    And the user enters \"10:00\" into the end time field with data-testid \"end-time\"\n    And the user selects \"Monday\" and \"Tuesday\" checkboxes with data-testid \"day-monday\" and \"day-tuesday\"\n    And the user clicks the \"Add to Timetable\" button with data-testid \"add-timetable-button\"\n    Then the existing row with time range \"09:00 - 10:00\" is updated\n    And the cell for Monday displays \"Science\"\n    And the cell for Tuesday displays \"Science\"\n    And no new row is created in the timetable\n",
+      "requirement_ids": [
+        "e2edev_bench_18-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-6-TC-2",
+      "title": "[Edge] Update existing row when only one day overlaps with the new subject",
+      "description": "Feature: Update existing timetable row with new subject for overlapping time range\n  The system must update the cells corresponding to the selected days with the new subject name if a row with the same time range already exists in the timetable table.\n\n\n  Scenario: [Edge] Update existing row when only one day overlaps with the new subject\n    Given the timetable page is loaded\n    And a row exists in the timetable with time range \"11:00 - 12:00\" and subject \"History\" on Wednesday\n    When the user enters \"Geography\" into the subject field with data-testid \"subject\"\n    And the user enters \"11:00\" into the start time field with data-testid \"start-time\"\n    And the user enters \"12:00\" into the end time field with data-testid \"end-time\"\n    And the user selects \"Wednesday\" checkbox with data-testid \"day-wednesday\"\n    And the user clicks the \"Add to Timetable\" button with data-testid \"add-timetable-button\"\n    Then the existing row with time range \"11:00 - 12:00\" is updated\n    And the cell for Wednesday displays \"Geography\"\n    And no new row is created in the timetable\n",
+      "requirement_ids": [
+        "e2edev_bench_18-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-7-TC-1",
+      "title": "[Normal] Add a new row with a start time earlier than existing rows",
+      "description": "Feature: Insert timetable rows in chronological order based on start time\n  The system must ensure that when a user adds a new row to the timetable, it is inserted in chronological order based on the start time.\n\n\n  Scenario: [Normal] Add a new row with a start time earlier than existing rows\n    Given the timetable table is empty\n    And the user enters \"Math\" into the subject field with data-testid \"subject\"\n    And the user enters \"09:00\" into the start time field with data-testid \"start-time\"\n    And the user enters \"10:00\" into the end time field with data-testid \"end-time\"\n    And the user selects \"Monday\" from the days checkboxes with data-testid \"day-monday\"\n    When the user clicks the \"Add to Timetable\" button with data-testid \"add-timetable-button\"\n    Then a new row is added to the timetable table with data-id \"timetable-row-09:00-10:00\"\n    And the row displays \"09:00 - 10:00\" in the first column\n    And the row displays \"Math\" in the Monday column\n    And the row is the first row in the timetable table\n",
+      "requirement_ids": [
+        "e2edev_bench_18-R-7"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/7/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-7-TC-2",
+      "title": "[Normal] Add a new row with a start time later than existing rows",
+      "description": "Feature: Insert timetable rows in chronological order based on start time\n  The system must ensure that when a user adds a new row to the timetable, it is inserted in chronological order based on the start time.\n\n\n  Scenario: [Normal] Add a new row with a start time later than existing rows\n    Given the timetable table contains a row with start time \"09:00\" and end time \"10:00\"\n    And the user enters \"Science\" into the subject field with data-testid \"subject\"\n    And the user enters \"11:00\" into the start time field with data-testid \"start-time\"\n    And the user enters \"12:00\" into the end time field with data-testid \"end-time\"\n    And the user selects \"Tuesday\" from the days checkboxes with data-testid \"day-tuesday\"\n    When the user clicks the \"Add to Timetable\" button with data-testid \"add-timetable-button\"\n    Then a new row is added to the timetable table with data-id \"timetable-row-11:00-12:00\"\n    And the row displays \"11:00 - 12:00\" in the first column\n    And the row displays \"Science\" in the Tuesday column\n    And the row is placed after the row with start time \"09:00\"\n",
+      "requirement_ids": [
+        "e2edev_bench_18-R-7"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/7/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-7-TC-3",
+      "title": "[Edge] Add a new row with a start time between two existing rows",
+      "description": "Feature: Insert timetable rows in chronological order based on start time\n  The system must ensure that when a user adds a new row to the timetable, it is inserted in chronological order based on the start time.\n\n\n  Scenario: [Edge] Add a new row with a start time between two existing rows\n    Given the timetable table contains rows with start times \"09:00\" and \"11:00\"\n    And the user enters \"History\" into the subject field with data-testid \"subject\"\n    And the user enters \"10:00\" into the start time field with data-testid \"start-time\"\n    And the user enters \"11:00\" into the end time field with data-testid \"end-time\"\n    And the user selects \"Wednesday\" from the days checkboxes with data-testid \"day-wednesday\"\n    When the user clicks the \"Add to Timetable\" button with data-testid \"add-timetable-button\"\n    Then a new row is added to the timetable table with data-id \"timetable-row-10:00-11:00\"\n    And the row displays \"10:00 - 11:00\" in the first column\n    And the row displays \"History\" in the Wednesday column\n    And the row is placed between the rows with start times \"09:00\" and \"11:00\"\n",
+      "requirement_ids": [
+        "e2edev_bench_18-R-7"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/7/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-8-TC-1",
+      "title": "[Normal] Reset form fields after adding a new timetable entry",
+      "description": "Feature: Form Reset After Timetable Entry\n  The system must reset the form fields to their default state after successfully adding or updating a timetable entry when the user clicks the \"Add to Timetable\" button.\n\n\n  Scenario: [Normal] Reset form fields after adding a new timetable entry\n    Given the \"Timetable Generator\" page is loaded\n    And the user enters \"Mathematics\" into the subject field with data-testid \"subject\"\n    And the user enters \"09:00\" into the start time field with data-testid \"start-time\"\n    And the user enters \"10:00\" into the end time field with data-testid \"end-time\"\n    And the user checks the \"Monday\" checkbox with data-testid \"day-monday\"\n    When the user clicks the \"Add to Timetable\" button with data-testid \"add-timetable-button\"\n    Then the subject field with data-testid \"subject\" should be empty\n    And the start time field with data-testid \"start-time\" should be empty\n    And the end time field with data-testid \"end-time\" should be empty\n    And no checkboxes in the days group with data-testid \"days\" should be checked\n",
+      "requirement_ids": [
+        "e2edev_bench_18-R-8"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/8/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-9-TC-1",
+      "title": "[Normal] Verify empty timetable table with headers on page load",
+      "description": "Feature: Display Empty Timetable Table on Page Load\n  The system must display an empty timetable table with headers for \"Time\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", and \"Saturday\" when the page loads.\n\n\n  Scenario: [Normal] Verify empty timetable table with headers on page load\n    Given the user navigates to the Timetable Generator webpage\n    Then the timetable table with data-testid \"timetable\" should be visible\n    And the table should have headers with data-testids \"time-header\", \"monday-header\", \"tuesday-header\", \"wednesday-header\", \"thursday-header\", \"friday-header\", and \"saturday-header\"\n    And the table body should be empty\n",
+      "requirement_ids": [
+        "e2edev_bench_18-R-9"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/9/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_18-R-9-TC-2",
+      "title": "[Error] Verify no unexpected data is present in the timetable table on page load",
+      "description": "Feature: Display Empty Timetable Table on Page Load\n  The system must display an empty timetable table with headers for \"Time\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", and \"Saturday\" when the page loads.\n\n\n  Scenario: [Error] Verify no unexpected data is present in the timetable table on page load\n    Given the user navigates to the Timetable Generator webpage\n    Then the timetable table with data-testid \"timetable\" should be visible\n    And the table should have headers with data-testids \"time-header\", \"monday-header\", \"tuesday-header\", \"wednesday-header\", \"thursday-header\", \"friday-header\", and \"saturday-header\"\n    And the table body should be empty\n    And no rows should exist with data-id attributes",
+      "requirement_ids": [
+        "e2edev_bench_18-R-9"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_18/requirment_with_tests.json#/finegrained_rewith_test/9/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 9,
+    "reference_count": 31,
+    "matches": [
+      {
+        "generated_id": "G-001",
+        "reference_id": "e2edev_bench_18-R-1-TC-3",
+        "similarity": 0.8836277643617046
+      },
+      {
+        "generated_id": "G-002",
+        "reference_id": "e2edev_bench_18-R-2-TC-1",
+        "similarity": 0.8691434546443707
+      },
+      {
+        "generated_id": "G-003",
+        "reference_id": "e2edev_bench_18-R-3-TC-1",
+        "similarity": 0.8806919563003439
+      },
+      {
+        "generated_id": "G-004",
+        "reference_id": "e2edev_bench_18-R-4-TC-2",
+        "similarity": 0.906568484984532
+      },
+      {
+        "generated_id": "G-005",
+        "reference_id": "e2edev_bench_18-R-5-TC-1",
+        "similarity": 0.902669785173814
+      },
+      {
+        "generated_id": "G-006",
+        "reference_id": "e2edev_bench_18-R-5-TC-4",
+        "similarity": 0.9080104522628336
+      },
+      {
+        "generated_id": "G-007",
+        "reference_id": "e2edev_bench_18-R-6-TC-1",
+        "similarity": 0.8826103150991486
+      },
+      {
+        "generated_id": "G-008",
+        "reference_id": "e2edev_bench_18-R-8-TC-1",
+        "similarity": 0.9445691041243294
+      },
+      {
+        "generated_id": "G-009",
+        "reference_id": "e2edev_bench_18-R-9-TC-1",
+        "similarity": 0.9282442653561367
+      }
+    ],
+    "unmatched_generated_ids": [],
+    "unmatched_reference_ids": [
+      "e2edev_bench_18-R-1-TC-1",
+      "e2edev_bench_18-R-1-TC-2",
+      "e2edev_bench_18-R-2-TC-2",
+      "e2edev_bench_18-R-2-TC-3",
+      "e2edev_bench_18-R-2-TC-4",
+      "e2edev_bench_18-R-2-TC-5",
+      "e2edev_bench_18-R-3-TC-2",
+      "e2edev_bench_18-R-3-TC-3",
+      "e2edev_bench_18-R-3-TC-4",
+      "e2edev_bench_18-R-3-TC-5",
+      "e2edev_bench_18-R-4-TC-1",
+      "e2edev_bench_18-R-4-TC-3",
+      "e2edev_bench_18-R-4-TC-4",
+      "e2edev_bench_18-R-5-TC-2",
+      "e2edev_bench_18-R-5-TC-3",
+      "e2edev_bench_18-R-5-TC-5",
+      "e2edev_bench_18-R-5-TC-6",
+      "e2edev_bench_18-R-6-TC-2",
+      "e2edev_bench_18-R-7-TC-1",
+      "e2edev_bench_18-R-7-TC-2",
+      "e2edev_bench_18-R-7-TC-3",
+      "e2edev_bench_18-R-9-TC-2"
+    ],
+    "precision": 1.0,
+    "recall": 0.2903225806451613,
+    "f1": 0.45,
+    "embedding_usage": {
+      "input_tokens": 6569,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 6569
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 2
+  },
+  "generation": {
+    "selected_techniques": [],
+    "technique_rationales": {},
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": 6569,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 6569
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 2
+  },
+  "links": {
+    "requirements": {
+      "e2edev_bench_18-R-1": "e2edev_bench_18-R-1/requirement.md",
+      "e2edev_bench_18-R-2": "e2edev_bench_18-R-2/requirement.md",
+      "e2edev_bench_18-R-3": "e2edev_bench_18-R-3/requirement.md",
+      "e2edev_bench_18-R-4": "e2edev_bench_18-R-4/requirement.md",
+      "e2edev_bench_18-R-5": "e2edev_bench_18-R-5/requirement.md",
+      "e2edev_bench_18-R-6": "e2edev_bench_18-R-6/requirement.md",
+      "e2edev_bench_18-R-7": "e2edev_bench_18-R-7/requirement.md",
+      "e2edev_bench_18-R-8": "e2edev_bench_18-R-8/requirement.md",
+      "e2edev_bench_18-R-9": "e2edev_bench_18-R-9/requirement.md"
+    },
+    "cases": {
+      "G-001": {
+        "e2edev_bench_18-R-1": "e2edev_bench_18-R-1/test cases/1_Subject_Field_Valid_Input.md"
+      },
+      "G-002": {
+        "e2edev_bench_18-R-2": "e2edev_bench_18-R-2/test cases/2_Start_Time_Picker_Valid_Input.md"
+      },
+      "G-003": {
+        "e2edev_bench_18-R-3": "e2edev_bench_18-R-3/test cases/3_End_Time_Picker_Valid_Input.md"
+      },
+      "G-004": {
+        "e2edev_bench_18-R-4": "e2edev_bench_18-R-4/test cases/4_Days_Selection_Functionality.md"
+      },
+      "G-005": {
+        "e2edev_bench_18-R-5": "e2edev_bench_18-R-5/test cases/5_Add_Entry_to_Timetable_Successfully.md",
+        "e2edev_bench_18-R-7": "e2edev_bench_18-R-7/test cases/5_Add_Entry_to_Timetable_Successfully.md"
+      },
+      "G-006": {
+        "e2edev_bench_18-R-5": "e2edev_bench_18-R-5/test cases/6_Add_Entry_with_Missing_Fields_Alert.md"
+      },
+      "G-007": {
+        "e2edev_bench_18-R-6": "e2edev_bench_18-R-6/test cases/7_Update_Existing_Time_Range_Row.md"
+      },
+      "G-008": {
+        "e2edev_bench_18-R-8": "e2edev_bench_18-R-8/test cases/8_Reset_Form_After_Successful_Addition.md"
+      },
+      "G-009": {
+        "e2edev_bench_18-R-9": "e2edev_bench_18-R-9/test cases/9_Initial_Timetable_Page_Load_State.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

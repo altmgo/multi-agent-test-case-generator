@@ -1,0 +1,3 @@
+# e2edev\_bench\_28-R-3
+
+When a player clicks on a tile that is already occupied, the system must ignore the action and prevent any changes to the tile or game state. Specifically: 1) The tile's content (innerText) and associated class (e.g., 'playerX' or 'playerO') must remain unchanged. 2) The current player indicator (element with data-testid='current-player') must not update. 3) The game state must remain active or inactive as it was prior to the click. 4) If the game is inactive (e.g., after a win or tie), clicking on any tile must not alter the announcer's message (element with data-testid='announcer') or the game state. These behaviors must apply consistently across all tiles (elements with class 'tile' and data-testid attributes 'tile-1' through 'tile-9').

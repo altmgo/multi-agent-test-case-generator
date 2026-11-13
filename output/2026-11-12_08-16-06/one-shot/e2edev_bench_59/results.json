@@ -1,0 +1,346 @@
+{
+  "schema_version": 1,
+  "solution": "one-shot",
+  "unit_id": "e2edev_bench_59",
+  "parent_id": null,
+  "status": "evaluated",
+  "failure": null,
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "e2edev_bench_59-R-1",
+      "text": "Upon loading the Quiz App webpage, the system must automatically display the first question from the predefined quiz data within the element identified by data-testid 'question'. The question text should be visible to the user. Additionally, four radio buttons, each associated with a unique answer option, must be presented. These radio buttons should have the following attributes: data-testid 'answer-a', 'answer-b', 'answer-c', and 'answer-d', and must be initially unchecked. Corresponding labels for each radio button, identified by data-testid 'answer-a-text', 'answer-b-text', 'answer-c-text', and 'answer-d-text', should display the respective answer options. No radio button should be pre-selected when the page loads, ensuring the user can make an unbiased choice.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_59/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_59-R-2",
+      "text": "The quiz application must allow users to select one answer option per question by interacting with radio buttons, ensuring mutual exclusivity among the options. The UI must include radio buttons with specific data-testid attributes ('answer-a', 'answer-b', 'answer-c', 'answer-d') within the quiz container (data-testid='quiz'). Upon page load, all answer options should be deselected. When a user clicks on a radio button, it should become selected, and all other radio buttons should remain deselected, even if clicked rapidly or repeatedly. The selected answer can be submitted using the submit button (data-testid='submit-button'), which triggers the evaluation of the answer and updates the score. The system should handle edge cases such as rapid clicks or re-selection of the same option without compromising the exclusivity of the selection. After answering all questions, the quiz container should display the user's score and provide a 'Play Again' button (data-testid='play-again-button') to restart the quiz.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_59/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_59-R-4",
+      "text": "When the user clicks the 'Submit' button (identified by data-testid 'submit-button'), the system must evaluate the currently selected answer (if any) and proceed as follows: 1) If no answer is selected, the system must not proceed to the next question, and the current question and its answer options remain displayed without any changes. 2) If an answer is selected, the system evaluates whether the selected answer is correct or incorrect. If there are remaining questions, the system must load the next question and update the UI to display the new question text (via the element with data-testid 'question') and its corresponding answer options (via elements with data-testid 'answer-a-text', 'answer-b-text', 'answer-c-text', and 'answer-d-text'). All previously selected answers must be deselected before displaying the new question. 3) If there are no remaining questions, the system must display a final score message in the quiz container (identified by data-testid 'quiz') in the format 'You answered X/Y questions correctly', where X is the number of correct answers and Y is the total number of questions. Additionally, a 'Play Again' button (identified by data-testid 'play-again-button') must be displayed, which reloads the page when clicked. The system must ensure that all interactions and updates are reflected in the DOM as specified, and no unintended behavior occurs when no answer is selected or when the quiz ends.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_59/requirment_with_tests.json#/finegrained_rewith_test/4/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_59-R-5",
+      "text": "Upon completing all questions in the quiz, the system must dynamically update the DOM to display the user's total score in the format 'You answered X/Y questions correctly', where X is the number of correct answers and Y is the total number of questions. This message should be inserted into the element with data-testid 'quiz'. Additionally, a 'Play Again' button with data-testid 'play-again-button' must be rendered below the score message. This button should be configured to reload the page when clicked, effectively restarting the quiz. The system must ensure that all radio buttons with the class 'answer' are deselected at the start of each new quiz session, and the first question is displayed with its corresponding answer options. The submit button with data-testid 'submit-button' should be used to progress through the quiz, checking the selected answer against the correct answer stored in the quizData array. The system must handle both correct and incorrect answers, updating the score accordingly and ensuring the quiz progresses until all questions are answered.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_59/requirment_with_tests.json#/finegrained_rewith_test/5/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_59-R-6",
+      "text": "Upon completion of the quiz, the system must display a 'Play Again' button with the attribute data-testid set to 'play-again-button'. When this button is clicked, the system must reload the page, which should reset the quiz to the first question and reset the user's score to zero. The first question, 'Which language runs in a web browser?', must be displayed in the element with data-testid 'question'. The answer options should be displayed as 'Java', 'C', 'Python', and 'JavaScript' in the elements with data-testid 'answer-a-text', 'answer-b-text', 'answer-c-text', and 'answer-d-text' respectively. The page reload should ensure that no previous selections or scores are retained, effectively starting a new quiz session.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_59/requirment_with_tests.json#/finegrained_rewith_test/6/requirement/description"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Verify Initial Page Load and Default UI Elements",
+      "description": "Verify that upon loading the Quiz App webpage, the first question is automatically displayed, four unselected radio buttons with correct data-testid attributes are present, and their corresponding text labels are correctly populated without any pre-selected choices.",
+      "requirement_ids": [
+        "e2edev_bench_59-R-1"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Verify Answer Selection and Mutual Exclusivity",
+      "description": "Verify that a user can select an answer option via radio buttons and that options remain mutually exclusive even during rapid or repeated clicks, and that answers can be submitted.",
+      "requirement_ids": [
+        "e2edev_bench_59-R-2"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Verify Submission with No Answer Selected (Abnormal Case)",
+      "description": "Verify that when the user clicks the 'Submit' button without selecting any answer, the system does not proceed to the next question and the current question remains displayed without changes.",
+      "requirement_ids": [
+        "e2edev_bench_59-R-4"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Verify Question Progression and Score Evaluation",
+      "description": "Verify that when an answer is selected and submitted, the system evaluates it, updates the score, deselects previous choices, and loads the next question or finishes the quiz.",
+      "requirement_ids": [
+        "e2edev_bench_59-R-4",
+        "e2edev_bench_59-R-5"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Verify Final Score Display and Play Again Functionality",
+      "description": "Verify that upon completing all questions, the final score is displayed in the format 'You answered X/Y questions correctly' inside the quiz container, along with a 'Play Again' button that reloads the page to restart the quiz.",
+      "requirement_ids": [
+        "e2edev_bench_59-R-4",
+        "e2edev_bench_59-R-5",
+        "e2edev_bench_59-R-6"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_59-R-1-TC-1",
+      "title": "[Normal] Display first question and answer options on page load",
+      "description": "Feature: Display First Question and Answer Options on Page Load\n  The system must display the first question and its corresponding answer options from the predefined quiz data when the page loads.\n\n\n  Scenario: [Normal] Display first question and answer options on page load\n    Given the user opens the Quiz App webpage\n    When the page is fully loaded\n    Then the question element with data-testid \"question\" should display the text \"Which language runs in a web browser?\"\n    And the radio button with data-testid \"answer-a\" should be present and unchecked\n    And the label with data-testid \"answer-a-text\" should display the text \"Java\"\n    And the radio button with data-testid \"answer-b\" should be present and unchecked\n    And the label with data-testid \"answer-b-text\" should display the text \"C\"\n    And the radio button with data-testid \"answer-c\" should be present and unchecked\n    And the label with data-testid \"answer-c-text\" should display the text \"Python\"\n    And the radio button with data-testid \"answer-d\" should be present and unchecked\n    And the label with data-testid \"answer-d-text\" should display the text \"JavaScript\"\n",
+      "requirement_ids": [
+        "e2edev_bench_59-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_59/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_59-R-1-TC-2",
+      "title": "[Edge] Verify no answer is pre-selected on page load",
+      "description": "Feature: Display First Question and Answer Options on Page Load\n  The system must display the first question and its corresponding answer options from the predefined quiz data when the page loads.\n\n\n  Scenario: [Edge] Verify no answer is pre-selected on page load\n    Given the user opens the Quiz App webpage\n    When the page is fully loaded\n    Then none of the radio buttons with data-testid \"answer-a\", \"answer-b\", \"answer-c\", or \"answer-d\" should be checked\n",
+      "requirement_ids": [
+        "e2edev_bench_59-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_59/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_59-R-2-TC-1",
+      "title": "[Normal] User selects one answer option",
+      "description": "Feature: Ensure mutual exclusivity of answer selection in the quiz\n  The user can select one answer option by clicking on a radio button. The system must allow only one radio button to be selected at a time, ensuring mutual exclusivity among the options.\n\n\n  Scenario: [Normal] User selects one answer option\n    Given the quiz page is loaded with the first question displayed\n    And all answer options are deselected\n    When the user clicks on the radio button with data-testid \"answer-a\"\n    Then the radio button with data-testid \"answer-a\" is selected\n    And the radio buttons with data-testid \"answer-b\", \"answer-c\", and \"answer-d\" remain deselected\n",
+      "requirement_ids": [
+        "e2edev_bench_59-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_59/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_59-R-2-TC-2",
+      "title": "[Edge] User changes selection to another answer option",
+      "description": "Feature: Ensure mutual exclusivity of answer selection in the quiz\n  The user can select one answer option by clicking on a radio button. The system must allow only one radio button to be selected at a time, ensuring mutual exclusivity among the options.\n\n\n  Scenario: [Edge] User changes selection to another answer option\n    Given the quiz page is loaded with the first question displayed\n    And the radio button with data-testid \"answer-a\" is selected\n    When the user clicks on the radio button with data-testid \"answer-c\"\n    Then the radio button with data-testid \"answer-c\" is selected\n    And the radio buttons with data-testid \"answer-a\", \"answer-b\", and \"answer-d\" remain deselected\n",
+      "requirement_ids": [
+        "e2edev_bench_59-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_59/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_59-R-2-TC-3",
+      "title": "[Error] User clicks on multiple radio buttons rapidly",
+      "description": "Feature: Ensure mutual exclusivity of answer selection in the quiz\n  The user can select one answer option by clicking on a radio button. The system must allow only one radio button to be selected at a time, ensuring mutual exclusivity among the options.\n\n\n  Scenario: [Error] User clicks on multiple radio buttons rapidly\n    Given the quiz page is loaded with the first question displayed\n    And all answer options are deselected\n    When the user clicks on the radio button with data-testid \"answer-b\"\n    And immediately clicks on the radio button with data-testid \"answer-d\"\n    Then the radio button with data-testid \"answer-d\" is selected\n    And the radio buttons with data-testid \"answer-a\", \"answer-b\", and \"answer-c\" remain deselected\n",
+      "requirement_ids": [
+        "e2edev_bench_59-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_59/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_59-R-2-TC-4",
+      "title": "[Edge] User clicks on an already selected radio button",
+      "description": "Feature: Ensure mutual exclusivity of answer selection in the quiz\n  The user can select one answer option by clicking on a radio button. The system must allow only one radio button to be selected at a time, ensuring mutual exclusivity among the options.\n\n\n  Scenario: [Edge] User clicks on an already selected radio button\n    Given the quiz page is loaded with the first question displayed\n    And the radio button with data-testid \"answer-a\" is selected\n    When the user clicks again on the radio button with data-testid \"answer-a\"\n    Then the radio button with data-testid \"answer-a\" remains selected\n    And the radio buttons with data-testid \"answer-b\", \"answer-c\", and \"answer-d\" remain deselected\n",
+      "requirement_ids": [
+        "e2edev_bench_59-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_59/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_59-R-4-TC-1",
+      "title": "[Normal] User submits a correct answer and proceeds to the next question",
+      "description": "Feature: Evaluate selected answer and load next question\n  The system must evaluate the selected answer upon clicking the 'Submit' button and load the next question with its answer options if there are remaining questions.\n\n\n  Scenario: [Normal] User submits a correct answer and proceeds to the next question\n    Given the quiz page is loaded with the first question displayed\n    And the user selects the correct answer \"JavaScript\" using the radio button with data-testid \"answer-d\"\n    When the user clicks the 'Submit' button with data-testid \"submit-button\"\n    Then the system evaluates the answer is selected\n    And the next question \"What does CSS stand for?\" is displayed with answer options\n    And the user can select an answer\n",
+      "requirement_ids": [
+        "e2edev_bench_59-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_59/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_59-R-4-TC-2",
+      "title": "[Edge] User submits without selecting an answer",
+      "description": "Feature: Evaluate selected answer and load next question\n  The system must evaluate the selected answer upon clicking the 'Submit' button and load the next question with its answer options if there are remaining questions.\n\n\n  Scenario: [Edge] User submits without selecting an answer\n    Given the quiz page is loaded with the first question displayed\n    And no answer is selected\n    When the user clicks the 'Submit' button with data-testid \"submit-button\"\n    Then the system does not proceed to the next question\n    And the current question \"Which language runs in a web browser?\" remains displayed\n",
+      "requirement_ids": [
+        "e2edev_bench_59-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_59/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_59-R-4-TC-3",
+      "title": "[Error] User submits an answer when no questions are left",
+      "description": "Feature: Evaluate selected answer and load next question\n  The system must evaluate the selected answer upon clicking the 'Submit' button and load the next question with its answer options if there are remaining questions.\n\n\n  Scenario: [Error] User submits an answer when no questions are left\n    Given the quiz page is loaded with the last question \"What year was JavaScript launched?\"\n    And the user selects the correct answer \"1995\" using the radio button with data-testid \"answer-b\"\n    When the user clicks the 'Submit' button with data-testid \"submit-button\"\n    Then the quiz with data-testid \"quiz\" displays the final score message \"You answered X/4 questions correctly\"\n    And a 'Play Again' button with data-testid \"play-again-button\" is displayed",
+      "requirement_ids": [
+        "e2edev_bench_59-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_59/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_59-R-5-TC-1",
+      "title": "[Normal] User completes the quiz and sees the total score",
+      "description": "Feature: Display total score and allow quiz restart after answering all questions\n  The system must display the user's total score and a 'Play Again' button after all questions are answered. The user can see a summary of their performance and restart the quiz by clicking the button.\n\n\n  Scenario: [Normal] User completes the quiz and sees the total score\n    Given the quiz page is loaded with the first question displayed\n    When the user selects the correct answer for each question and clicks the submit button with data-testid \"submit-button\"\n    Then the quiz should display \"You answered 4/4 questions correctly\" with a 'Play Again' button having data-testid \"play-again-button\"\n",
+      "requirement_ids": [
+        "e2edev_bench_59-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_59/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_59-R-5-TC-2",
+      "title": "[Edge] User completes the quiz with some incorrect answers",
+      "description": "Feature: Display total score and allow quiz restart after answering all questions\n  The system must display the user's total score and a 'Play Again' button after all questions are answered. The user can see a summary of their performance and restart the quiz by clicking the button.\n\n\n  Scenario: [Edge] User completes the quiz with some incorrect answers\n    Given the quiz page is loaded with the first question displayed\n    When the user selects incorrect answers for some questions and clicks the submit button with data-testid \"submit-button\"\n    Then the quiz should display \"You answered 1/4 questions correctly\" with a 'Play Again' button having data-testid \"play-again-button\"\n",
+      "requirement_ids": [
+        "e2edev_bench_59-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_59/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_59-R-6-TC-1",
+      "title": "[Normal] Clicking 'Play Again' button reloads the quiz",
+      "description": "Feature: REQ-006 - Play Again Button Functionality\n  The system must reload the page, resetting the quiz to the first question and resetting the user's score to zero when the 'Play Again' button is clicked.\n\n\nScenario: [Normal] Clicking 'Play Again' button reloads the quiz\n    Given the quiz is completed and the 'Play Again' button with data-testid 'play-again-button' is displayed\n    When the user clicks the 'Play Again' button\n    Then the page should reload\n    And the first question \"Which language runs in a web browser?\" should be displayed in the element with data-testid 'question'\n    And the answers should be \"Java\", \"C\", \"Python\", \"JavaScript\" in the elements with data-testid 'answer-a-text', 'answer-b-text', 'answer-c-text', 'answer-d-text' respectively",
+      "requirement_ids": [
+        "e2edev_bench_59-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_59/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 5,
+    "reference_count": 12,
+    "matches": [
+      {
+        "generated_id": "G-001",
+        "reference_id": "e2edev_bench_59-R-1-TC-2",
+        "similarity": 0.9303704053482779
+      },
+      {
+        "generated_id": "G-002",
+        "reference_id": "e2edev_bench_59-R-2-TC-1",
+        "similarity": 0.9178799386546299
+      },
+      {
+        "generated_id": "G-003",
+        "reference_id": "e2edev_bench_59-R-4-TC-2",
+        "similarity": 0.9045298262836147
+      },
+      {
+        "generated_id": "G-004",
+        "reference_id": "e2edev_bench_59-R-4-TC-1",
+        "similarity": 0.8870013492762547
+      },
+      {
+        "generated_id": "G-005",
+        "reference_id": "e2edev_bench_59-R-5-TC-1",
+        "similarity": 0.9272515469892887
+      }
+    ],
+    "unmatched_generated_ids": [],
+    "unmatched_reference_ids": [
+      "e2edev_bench_59-R-1-TC-1",
+      "e2edev_bench_59-R-2-TC-2",
+      "e2edev_bench_59-R-2-TC-3",
+      "e2edev_bench_59-R-2-TC-4",
+      "e2edev_bench_59-R-4-TC-3",
+      "e2edev_bench_59-R-5-TC-2",
+      "e2edev_bench_59-R-6-TC-1"
+    ],
+    "precision": 1.0,
+    "recall": 0.4166666666666667,
+    "f1": 0.5882352941176471,
+    "embedding_usage": {
+      "input_tokens": 2250,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 2250
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
+  "generation": {
+    "selected_techniques": [],
+    "technique_rationales": {},
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": 1567,
+      "output_tokens": 597,
+      "details": {
+        "text_prompt_tokens": 1567,
+        "total_tokens": 2164
+      },
+      "status": "available"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": 2250,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 2250
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
+  "links": {
+    "requirements": {
+      "e2edev_bench_59-R-1": "e2edev_bench_59-R-1/requirement.md",
+      "e2edev_bench_59-R-2": "e2edev_bench_59-R-2/requirement.md",
+      "e2edev_bench_59-R-4": "e2edev_bench_59-R-4/requirement.md",
+      "e2edev_bench_59-R-5": "e2edev_bench_59-R-5/requirement.md",
+      "e2edev_bench_59-R-6": "e2edev_bench_59-R-6/requirement.md"
+    },
+    "cases": {
+      "G-001": {
+        "e2edev_bench_59-R-1": "e2edev_bench_59-R-1/test cases/1_Verify_Initial_Page_Load_and_Default_UI_Elements.md"
+      },
+      "G-002": {
+        "e2edev_bench_59-R-2": "e2edev_bench_59-R-2/test cases/2_Verify_Answer_Selection_and_Mutual_Exclusivity.md"
+      },
+      "G-003": {
+        "e2edev_bench_59-R-4": "e2edev_bench_59-R-4/test cases/3_Verify_Submission_with_No_Answer_Selected_Abnorm.md"
+      },
+      "G-004": {
+        "e2edev_bench_59-R-4": "e2edev_bench_59-R-4/test cases/4_Verify_Question_Progression_and_Score_Evaluation.md",
+        "e2edev_bench_59-R-5": "e2edev_bench_59-R-5/test cases/4_Verify_Question_Progression_and_Score_Evaluation.md"
+      },
+      "G-005": {
+        "e2edev_bench_59-R-4": "e2edev_bench_59-R-4/test cases/5_Verify_Final_Score_Display_and_Play_Again_Functi.md",
+        "e2edev_bench_59-R-5": "e2edev_bench_59-R-5/test cases/5_Verify_Final_Score_Display_and_Play_Again_Functi.md",
+        "e2edev_bench_59-R-6": "e2edev_bench_59-R-6/test cases/5_Verify_Final_Score_Display_and_Play_Again_Functi.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

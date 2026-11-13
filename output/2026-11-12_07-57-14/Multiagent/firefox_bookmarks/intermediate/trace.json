@@ -1,0 +1,607 @@
+{
+  "initial": {
+    "assessment": {
+      "candidate_id": "initial",
+      "cases": [
+        {
+          "id": "G-001",
+          "title": "Add Bookmark to Specific Location",
+          "description": "Verify that a new bookmark can be added into a specific target location within the bookmarks hierarchy.",
+          "requirement_ids": [
+            "R-001"
+          ]
+        },
+        {
+          "id": "G-002",
+          "title": "Delete Bookmarks from File and Access Points",
+          "description": "Verify that deleted bookmarks are properly removed from the bookmarks file and no longer displayed in any access points or UI elements.",
+          "requirement_ids": [
+            "R-002"
+          ]
+        },
+        {
+          "id": "G-003",
+          "title": "Add and Delete Bookmarks from Personal Toolbar",
+          "description": "Verify that bookmarks can be successfully added to and deleted from the personal toolbar.",
+          "requirement_ids": [
+            "R-003"
+          ]
+        },
+        {
+          "id": "G-004",
+          "title": "Insert New Bookmark Folder",
+          "description": "Verify that a new bookmark folder can be inserted into the bookmarks hierarchy at root or nested levels.",
+          "requirement_ids": [
+            "R-004"
+          ]
+        },
+        {
+          "id": "G-005",
+          "title": "Launch Bookmark via Double-Click",
+          "description": "Verify that double-clicking on a bookmark launches the associated URL in a browser window.",
+          "requirement_ids": [
+            "R-005"
+          ]
+        },
+        {
+          "id": "G-006",
+          "title": "Default Bookmarks Link Validation",
+          "description": "Verify that all links within the default bookmarks file packaged with the browser are valid and accessible.",
+          "requirement_ids": [
+            "R-006"
+          ]
+        },
+        {
+          "id": "G-007",
+          "title": "Save Changes to Bookmark Item",
+          "description": "Verify that modifications to a bookmark item are saved successfully without loss of item integrity.",
+          "requirement_ids": [
+            "R-007"
+          ]
+        },
+        {
+          "id": "G-008",
+          "title": "Delete Bookmark Folder",
+          "description": "Verify that a bookmarks folder can be deleted along with its hierarchy contents.",
+          "requirement_ids": [
+            "R-008"
+          ]
+        },
+        {
+          "id": "G-009",
+          "title": "Add and Delete Bookmark Separators",
+          "description": "Verify that bookmark separators can be added and deleted correctly at various positions in the list.",
+          "requirement_ids": [
+            "R-009"
+          ]
+        },
+        {
+          "id": "G-010",
+          "title": "Persist Bookmark Changes over Restart or Crash",
+          "description": "Verify that bookmark changes remain saved and intact over a browser restart or unexpected crash.",
+          "requirement_ids": [
+            "R-010"
+          ]
+        },
+        {
+          "id": "G-011",
+          "title": "Negative Test for View Properties",
+          "description": "Verify negative test behavior where view properties are restricted or denied for bookmarks, folders, and separators.",
+          "requirement_ids": [
+            "R-011"
+          ]
+        },
+        {
+          "id": "G-012",
+          "title": "Inline Renaming of Bookmarks",
+          "description": "Verify that bookmarks can be renamed inline directly in the UI without opening the bookmarks properties dialog.",
+          "requirement_ids": [
+            "R-012"
+          ]
+        },
+        {
+          "id": "G-013",
+          "title": "Find Bookmarks Using Custom Keyword",
+          "description": "Verify that bookmarks can be searched and found using user-defined custom keywords.",
+          "requirement_ids": [
+            "R-013"
+          ]
+        },
+        {
+          "id": "G-014",
+          "title": "Sort and Reverse-Sort Bookmark Columns",
+          "description": "Verify that bookmark columns can be sorted and reverse-sorted properly per column.",
+          "requirement_ids": [
+            "R-014"
+          ]
+        },
+        {
+          "id": "G-015",
+          "title": "Resize Bookmark Columns",
+          "description": "Verify that bookmark columns are resizable to show or hide more entry details.",
+          "requirement_ids": [
+            "R-015"
+          ]
+        },
+        {
+          "id": "G-016",
+          "title": "Show and Hide Bookmark Columns",
+          "description": "Verify that individual bookmark columns can be toggled between visible and hidden states.",
+          "requirement_ids": [
+            "R-016"
+          ]
+        },
+        {
+          "id": "G-017",
+          "title": "Bulk Deletion of Several Bookmarks",
+          "description": "Verify that multiple bookmarks can be deleted simultaneously in a single bulk operation.",
+          "requirement_ids": [
+            "R-017"
+          ]
+        },
+        {
+          "id": "G-018",
+          "title": "Prevent Invalid Drag-and-Drop on Self or Relatives",
+          "description": "Verify that it is not possible to drop a bookmark item onto itself, its immediate parent, or its child.",
+          "requirement_ids": [
+            "R-018"
+          ]
+        }
+      ],
+      "opinions": [
+        {
+          "agent": "critic",
+          "feedback": "All proposed high-level test cases are well-defined, distinct, cover the requirements comprehensively, and are fully testable without any blockers.",
+          "request_revision": false,
+          "confirmed_blockers": [],
+          "blocker_assessment_complete": true
+        },
+        {
+          "agent": "validator",
+          "feedback": "All cases and expected behaviors accurately follow the requirements and their cited IDs. No blockers found.",
+          "request_revision": false,
+          "confirmed_blockers": [],
+          "blocker_assessment_complete": true
+        }
+      ],
+      "valid": true,
+      "confirmed_blockers": 0,
+      "covered_requirements": 18,
+      "duplicates": 0,
+      "comparable": true
+    },
+    "analysis": {
+      "analysis": "R-001: Testable behavior: Adding a bookmark to a specific hierarchy location. Boundaries: Valid/invalid target folders, root vs subfolder. Normal: Successfully adds to target. Abnormal: Target folder does not exist. Ambiguity: What defines specific location format? R-002: Testable behavior: Deleting bookmarks from file and access points. Boundaries: Single, multiple, all bookmarks. Normal: Removed from file and UI. Abnormal: File locked or inaccessible. Ambiguity: None. R-003: Testable behavior: Personal toolbar add/delete operations. Boundaries: Empty toolbar, full toolbar overflow. Normal: Toolbar updates instantly. Abnormal: Drag-and-drop failure. Ambiguity: Toolbar capacity limits not specified. R-004: Testable behavior: Inserting new bookmark folders into hierarchy. Boundaries: Nested folders, root level. Normal: Folder created correctly. Abnormal: Duplicate folder names. Ambiguity: Maximum nesting depth not defined. R-005: Testable behavior: Launching bookmarks via double-click. Boundaries: Valid URLs, invalid URLs, empty URLs. Normal: Opens in browser window. Abnormal: Browser fails to load or blocks popup. Ambiguity: Active window vs new tab/window not specified. R-006: Testable behavior: Validating default packaged bookmarks links. Boundaries: All default links checked. Normal: All links return 200 OK. Abnormal: Broken links (404, timeout). Ambiguity: Frequency of link validity checks. R-007: Testable behavior: Saving bookmark edits without integrity loss. Boundaries: Special characters in names/URLs, max length fields. Normal: Changes persist accurately. Abnormal: Corruption on save. Ambiguity: Integrity definition criteria. R-008: Testable behavior: Deleting bookmark folders. Boundaries: Empty folder vs folder with contents. Normal: Folder and its contents removed or handled safely. Abnormal: Orphaned child items. Ambiguity: Cascading delete behavior for non-empty folders. R-009: Testable behavior: Adding and deleting bookmark separators. Boundaries: Start, middle, end of lists. Normal: Separator added/removed correctly. Abnormal: Multiple consecutive separators. Ambiguity: None. R-010: Testable behavior: Persistence of changes over restart or crash. Boundaries: Graceful restart vs abrupt crash/kill process. Normal: State restored accurately. Abnormal: Data loss or corruption on crash. Ambiguity: Crash recovery mechanism details. R-011: Testable behavior: Negative test for view properties on bookmarks, folders, and separators. Boundaries: Unsupported property views. Normal: Properties correctly restricted/denied. Abnormal: Properties incorrectly exposed. Ambiguity: Which specific properties are tested. R-012: Testable behavior: Inline renaming without properties dialog. Boundaries: Empty name, extremely long name. Normal: Renames directly in UI tree. Abnormal: Escape key cancels, invalid characters. Ambiguity: Commit action (Enter key vs blur). R-013: Testable behavior: Finding bookmarks via custom keyword. Boundaries: Unique keyword, duplicate keyword, non-existent keyword. Normal: Resolves to correct bookmark. Abnormal: Multiple matches behavior. Ambiguity: Keyword conflict resolution. R-014: Testable behavior: Column sorting and reverse-sorting. Boundaries: Alphabetical, numerical, date columns. Normal: Sorts ascending and descending. Abnormal: Unsortable columns. Ambiguity: Secondary sort criteria. R-015: Testable behavior: Resizing bookmark columns. Boundaries: Minimum width, maximum width. Normal: Columns resize smoothly. Abnormal: Clipping issues. Ambiguity: Auto-fit behavior. R-016: Testable behavior: Showing and hiding bookmark columns. Boundaries: All columns hidden vs all visible. Normal: UI updates correctly. Abnormal: Mandatory column hidden. Ambiguity: Persistence of column visibility state. R-017: Testable behavior: Bulk deletion of several bookmarks simultaneously. Boundaries: All selected, mixed selection (folders and bookmarks). Normal: All selected items deleted. Abnormal: Partial deletion failure. Ambiguity: Undo behavior for bulk deletes. R-018: Testable behavior: Preventing drop onto self, immediate parent, or child. Boundaries: Self-drop, parent-drop, child-drop. Normal: Drop rejected and prevented. Abnormal: Circular hierarchy reference created. Ambiguity: Visual feedback during invalid drop."
+    },
+    "failure": null
+  },
+  "rounds": [],
+  "status": "completed",
+  "failure": null,
+  "accepted_id": "initial",
+  "accepted_assessment": {
+    "candidate_id": "initial",
+    "cases": [
+      {
+        "id": "G-001",
+        "title": "Add Bookmark to Specific Location",
+        "description": "Verify that a new bookmark can be added into a specific target location within the bookmarks hierarchy.",
+        "requirement_ids": [
+          "R-001"
+        ]
+      },
+      {
+        "id": "G-002",
+        "title": "Delete Bookmarks from File and Access Points",
+        "description": "Verify that deleted bookmarks are properly removed from the bookmarks file and no longer displayed in any access points or UI elements.",
+        "requirement_ids": [
+          "R-002"
+        ]
+      },
+      {
+        "id": "G-003",
+        "title": "Add and Delete Bookmarks from Personal Toolbar",
+        "description": "Verify that bookmarks can be successfully added to and deleted from the personal toolbar.",
+        "requirement_ids": [
+          "R-003"
+        ]
+      },
+      {
+        "id": "G-004",
+        "title": "Insert New Bookmark Folder",
+        "description": "Verify that a new bookmark folder can be inserted into the bookmarks hierarchy at root or nested levels.",
+        "requirement_ids": [
+          "R-004"
+        ]
+      },
+      {
+        "id": "G-005",
+        "title": "Launch Bookmark via Double-Click",
+        "description": "Verify that double-clicking on a bookmark launches the associated URL in a browser window.",
+        "requirement_ids": [
+          "R-005"
+        ]
+      },
+      {
+        "id": "G-006",
+        "title": "Default Bookmarks Link Validation",
+        "description": "Verify that all links within the default bookmarks file packaged with the browser are valid and accessible.",
+        "requirement_ids": [
+          "R-006"
+        ]
+      },
+      {
+        "id": "G-007",
+        "title": "Save Changes to Bookmark Item",
+        "description": "Verify that modifications to a bookmark item are saved successfully without loss of item integrity.",
+        "requirement_ids": [
+          "R-007"
+        ]
+      },
+      {
+        "id": "G-008",
+        "title": "Delete Bookmark Folder",
+        "description": "Verify that a bookmarks folder can be deleted along with its hierarchy contents.",
+        "requirement_ids": [
+          "R-008"
+        ]
+      },
+      {
+        "id": "G-009",
+        "title": "Add and Delete Bookmark Separators",
+        "description": "Verify that bookmark separators can be added and deleted correctly at various positions in the list.",
+        "requirement_ids": [
+          "R-009"
+        ]
+      },
+      {
+        "id": "G-010",
+        "title": "Persist Bookmark Changes over Restart or Crash",
+        "description": "Verify that bookmark changes remain saved and intact over a browser restart or unexpected crash.",
+        "requirement_ids": [
+          "R-010"
+        ]
+      },
+      {
+        "id": "G-011",
+        "title": "Negative Test for View Properties",
+        "description": "Verify negative test behavior where view properties are restricted or denied for bookmarks, folders, and separators.",
+        "requirement_ids": [
+          "R-011"
+        ]
+      },
+      {
+        "id": "G-012",
+        "title": "Inline Renaming of Bookmarks",
+        "description": "Verify that bookmarks can be renamed inline directly in the UI without opening the bookmarks properties dialog.",
+        "requirement_ids": [
+          "R-012"
+        ]
+      },
+      {
+        "id": "G-013",
+        "title": "Find Bookmarks Using Custom Keyword",
+        "description": "Verify that bookmarks can be searched and found using user-defined custom keywords.",
+        "requirement_ids": [
+          "R-013"
+        ]
+      },
+      {
+        "id": "G-014",
+        "title": "Sort and Reverse-Sort Bookmark Columns",
+        "description": "Verify that bookmark columns can be sorted and reverse-sorted properly per column.",
+        "requirement_ids": [
+          "R-014"
+        ]
+      },
+      {
+        "id": "G-015",
+        "title": "Resize Bookmark Columns",
+        "description": "Verify that bookmark columns are resizable to show or hide more entry details.",
+        "requirement_ids": [
+          "R-015"
+        ]
+      },
+      {
+        "id": "G-016",
+        "title": "Show and Hide Bookmark Columns",
+        "description": "Verify that individual bookmark columns can be toggled between visible and hidden states.",
+        "requirement_ids": [
+          "R-016"
+        ]
+      },
+      {
+        "id": "G-017",
+        "title": "Bulk Deletion of Several Bookmarks",
+        "description": "Verify that multiple bookmarks can be deleted simultaneously in a single bulk operation.",
+        "requirement_ids": [
+          "R-017"
+        ]
+      },
+      {
+        "id": "G-018",
+        "title": "Prevent Invalid Drag-and-Drop on Self or Relatives",
+        "description": "Verify that it is not possible to drop a bookmark item onto itself, its immediate parent, or its child.",
+        "requirement_ids": [
+          "R-018"
+        ]
+      }
+    ],
+    "opinions": [
+      {
+        "agent": "critic",
+        "feedback": "All proposed high-level test cases are well-defined, distinct, cover the requirements comprehensively, and are fully testable without any blockers.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      {
+        "agent": "validator",
+        "feedback": "All cases and expected behaviors accurately follow the requirements and their cited IDs. No blockers found.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      }
+    ],
+    "valid": true,
+    "confirmed_blockers": 0,
+    "covered_requirements": 18,
+    "duplicates": 0,
+    "comparable": true
+  },
+  "pending": [],
+  "pending_controls": [],
+  "coverage": {
+    "feedback": "All requirements from R-001 to R-018 are fully covered by the accepted cases on a one-to-one basis. There are no coverage gaps, excess test cases, or redundancies present in the accepted set."
+  },
+  "coverage_failure": null,
+  "calls": [
+    {
+      "stage": "analyst",
+      "subject_id": "initial",
+      "output": {
+        "analysis": "R-001: Testable behavior: Adding a bookmark to a specific hierarchy location. Boundaries: Valid/invalid target folders, root vs subfolder. Normal: Successfully adds to target. Abnormal: Target folder does not exist. Ambiguity: What defines specific location format? R-002: Testable behavior: Deleting bookmarks from file and access points. Boundaries: Single, multiple, all bookmarks. Normal: Removed from file and UI. Abnormal: File locked or inaccessible. Ambiguity: None. R-003: Testable behavior: Personal toolbar add/delete operations. Boundaries: Empty toolbar, full toolbar overflow. Normal: Toolbar updates instantly. Abnormal: Drag-and-drop failure. Ambiguity: Toolbar capacity limits not specified. R-004: Testable behavior: Inserting new bookmark folders into hierarchy. Boundaries: Nested folders, root level. Normal: Folder created correctly. Abnormal: Duplicate folder names. Ambiguity: Maximum nesting depth not defined. R-005: Testable behavior: Launching bookmarks via double-click. Boundaries: Valid URLs, invalid URLs, empty URLs. Normal: Opens in browser window. Abnormal: Browser fails to load or blocks popup. Ambiguity: Active window vs new tab/window not specified. R-006: Testable behavior: Validating default packaged bookmarks links. Boundaries: All default links checked. Normal: All links return 200 OK. Abnormal: Broken links (404, timeout). Ambiguity: Frequency of link validity checks. R-007: Testable behavior: Saving bookmark edits without integrity loss. Boundaries: Special characters in names/URLs, max length fields. Normal: Changes persist accurately. Abnormal: Corruption on save. Ambiguity: Integrity definition criteria. R-008: Testable behavior: Deleting bookmark folders. Boundaries: Empty folder vs folder with contents. Normal: Folder and its contents removed or handled safely. Abnormal: Orphaned child items. Ambiguity: Cascading delete behavior for non-empty folders. R-009: Testable behavior: Adding and deleting bookmark separators. Boundaries: Start, middle, end of lists. Normal: Separator added/removed correctly. Abnormal: Multiple consecutive separators. Ambiguity: None. R-010: Testable behavior: Persistence of changes over restart or crash. Boundaries: Graceful restart vs abrupt crash/kill process. Normal: State restored accurately. Abnormal: Data loss or corruption on crash. Ambiguity: Crash recovery mechanism details. R-011: Testable behavior: Negative test for view properties on bookmarks, folders, and separators. Boundaries: Unsupported property views. Normal: Properties correctly restricted/denied. Abnormal: Properties incorrectly exposed. Ambiguity: Which specific properties are tested. R-012: Testable behavior: Inline renaming without properties dialog. Boundaries: Empty name, extremely long name. Normal: Renames directly in UI tree. Abnormal: Escape key cancels, invalid characters. Ambiguity: Commit action (Enter key vs blur). R-013: Testable behavior: Finding bookmarks via custom keyword. Boundaries: Unique keyword, duplicate keyword, non-existent keyword. Normal: Resolves to correct bookmark. Abnormal: Multiple matches behavior. Ambiguity: Keyword conflict resolution. R-014: Testable behavior: Column sorting and reverse-sorting. Boundaries: Alphabetical, numerical, date columns. Normal: Sorts ascending and descending. Abnormal: Unsortable columns. Ambiguity: Secondary sort criteria. R-015: Testable behavior: Resizing bookmark columns. Boundaries: Minimum width, maximum width. Normal: Columns resize smoothly. Abnormal: Clipping issues. Ambiguity: Auto-fit behavior. R-016: Testable behavior: Showing and hiding bookmark columns. Boundaries: All columns hidden vs all visible. Normal: UI updates correctly. Abnormal: Mandatory column hidden. Ambiguity: Persistence of column visibility state. R-017: Testable behavior: Bulk deletion of several bookmarks simultaneously. Boundaries: All selected, mixed selection (folders and bookmarks). Normal: All selected items deleted. Abnormal: Partial deletion failure. Ambiguity: Undo behavior for bulk deletes. R-018: Testable behavior: Preventing drop onto self, immediate parent, or child. Boundaries: Self-drop, parent-drop, child-drop. Normal: Drop rejected and prevented. Abnormal: Circular hierarchy reference created. Ambiguity: Visual feedback during invalid drop."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1028,
+          "output_tokens": 929,
+          "details": {
+            "total_tokens": 1957,
+            "text_prompt_tokens": 1028
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-001",
+            "title": "Add Bookmark to Specific Location",
+            "description": "Verify that a new bookmark can be added into a specific target location within the bookmarks hierarchy.",
+            "requirement_ids": [
+              "R-001"
+            ]
+          },
+          {
+            "id": "TC-002",
+            "title": "Delete Bookmarks from File and Access Points",
+            "description": "Verify that deleted bookmarks are properly removed from the bookmarks file and no longer displayed in any access points or UI elements.",
+            "requirement_ids": [
+              "R-002"
+            ]
+          },
+          {
+            "id": "TC-003",
+            "title": "Add and Delete Bookmarks from Personal Toolbar",
+            "description": "Verify that bookmarks can be successfully added to and deleted from the personal toolbar.",
+            "requirement_ids": [
+              "R-003"
+            ]
+          },
+          {
+            "id": "TC-004",
+            "title": "Insert New Bookmark Folder",
+            "description": "Verify that a new bookmark folder can be inserted into the bookmarks hierarchy at root or nested levels.",
+            "requirement_ids": [
+              "R-004"
+            ]
+          },
+          {
+            "id": "TC-005",
+            "title": "Launch Bookmark via Double-Click",
+            "description": "Verify that double-clicking on a bookmark launches the associated URL in a browser window.",
+            "requirement_ids": [
+              "R-005"
+            ]
+          },
+          {
+            "id": "TC-006",
+            "title": "Default Bookmarks Link Validation",
+            "description": "Verify that all links within the default bookmarks file packaged with the browser are valid and accessible.",
+            "requirement_ids": [
+              "R-006"
+            ]
+          },
+          {
+            "id": "TC-007",
+            "title": "Save Changes to Bookmark Item",
+            "description": "Verify that modifications to a bookmark item are saved successfully without loss of item integrity.",
+            "requirement_ids": [
+              "R-007"
+            ]
+          },
+          {
+            "id": "TC-008",
+            "title": "Delete Bookmark Folder",
+            "description": "Verify that a bookmarks folder can be deleted along with its hierarchy contents.",
+            "requirement_ids": [
+              "R-008"
+            ]
+          },
+          {
+            "id": "TC-009",
+            "title": "Add and Delete Bookmark Separators",
+            "description": "Verify that bookmark separators can be added and deleted correctly at various positions in the list.",
+            "requirement_ids": [
+              "R-009"
+            ]
+          },
+          {
+            "id": "TC-010",
+            "title": "Persist Bookmark Changes over Restart or Crash",
+            "description": "Verify that bookmark changes remain saved and intact over a browser restart or unexpected crash.",
+            "requirement_ids": [
+              "R-010"
+            ]
+          },
+          {
+            "id": "TC-011",
+            "title": "Negative Test for View Properties",
+            "description": "Verify negative test behavior where view properties are restricted or denied for bookmarks, folders, and separators.",
+            "requirement_ids": [
+              "R-011"
+            ]
+          },
+          {
+            "id": "TC-012",
+            "title": "Inline Renaming of Bookmarks",
+            "description": "Verify that bookmarks can be renamed inline directly in the UI without opening the bookmarks properties dialog.",
+            "requirement_ids": [
+              "R-012"
+            ]
+          },
+          {
+            "id": "TC-013",
+            "title": "Find Bookmarks Using Custom Keyword",
+            "description": "Verify that bookmarks can be searched and found using user-defined custom keywords.",
+            "requirement_ids": [
+              "R-013"
+            ]
+          },
+          {
+            "id": "TC-014",
+            "title": "Sort and Reverse-Sort Bookmark Columns",
+            "description": "Verify that bookmark columns can be sorted and reverse-sorted properly per column.",
+            "requirement_ids": [
+              "R-014"
+            ]
+          },
+          {
+            "id": "TC-015",
+            "title": "Resize Bookmark Columns",
+            "description": "Verify that bookmark columns are resizable to show or hide more entry details.",
+            "requirement_ids": [
+              "R-015"
+            ]
+          },
+          {
+            "id": "TC-016",
+            "title": "Show and Hide Bookmark Columns",
+            "description": "Verify that individual bookmark columns can be toggled between visible and hidden states.",
+            "requirement_ids": [
+              "R-016"
+            ]
+          },
+          {
+            "id": "TC-017",
+            "title": "Bulk Deletion of Several Bookmarks",
+            "description": "Verify that multiple bookmarks can be deleted simultaneously in a single bulk operation.",
+            "requirement_ids": [
+              "R-017"
+            ]
+          },
+          {
+            "id": "TC-018",
+            "title": "Prevent Invalid Drag-and-Drop on Self or Relatives",
+            "description": "Verify that it is not possible to drop a bookmark item onto itself, its immediate parent, or its child.",
+            "requirement_ids": [
+              "R-018"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1983,
+          "output_tokens": 1237,
+          "details": {
+            "total_tokens": 3220,
+            "text_prompt_tokens": 1983
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "critic",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "All proposed high-level test cases are well-defined, distinct, cover the requirements comprehensively, and are fully testable without any blockers.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 2034,
+          "output_tokens": 66,
+          "details": {
+            "total_tokens": 2100,
+            "text_prompt_tokens": 2034
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "validator",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "All cases and expected behaviors accurately follow the requirements and their cited IDs. No blockers found.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 2031,
+          "output_tokens": 56,
+          "details": {
+            "total_tokens": 2087,
+            "text_prompt_tokens": 2031
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "coverage",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "All requirements from R-001 to R-018 are fully covered by the accepted cases on a one-to-one basis. There are no coverage gaps, excess test cases, or redundancies present in the accepted set."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 2143,
+          "output_tokens": 57,
+          "details": {
+            "total_tokens": 2200,
+            "text_prompt_tokens": 2143
+          },
+          "status": "available"
+        }
+      ]
+    }
+  ],
+  "monotonicity": "confirmed"
+}

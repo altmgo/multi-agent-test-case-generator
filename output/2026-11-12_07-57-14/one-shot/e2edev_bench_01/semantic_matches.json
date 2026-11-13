@@ -1,0 +1,38 @@
+{
+  "status": "evaluated",
+  "embedding_model": "gemini-embedding-2",
+  "similarity_threshold": 0.7,
+  "matches": [
+    {
+      "generated_id": "G-001",
+      "reference_id": "e2edev_bench_01-R-1-TC-1",
+      "similarity": 0.9299548466045345
+    },
+    {
+      "generated_id": "G-002",
+      "reference_id": "e2edev_bench_01-R-3-TC-1",
+      "similarity": 0.8910646559427393
+    },
+    {
+      "generated_id": "G-003",
+      "reference_id": "e2edev_bench_01-R-3-TC-3",
+      "similarity": 0.9131683001591646
+    },
+    {
+      "generated_id": "G-004",
+      "reference_id": "e2edev_bench_01-R-5-TC-3",
+      "similarity": 0.8848726728250539
+    }
+  ],
+  "unmatched_generated_ids": [],
+  "unmatched_reference_ids": [
+    "e2edev_bench_01-R-1-TC-2",
+    "e2edev_bench_01-R-1-TC-3",
+    "e2edev_bench_01-R-1-TC-4",
+    "e2edev_bench_01-R-3-TC-2",
+    "e2edev_bench_01-R-3-TC-4",
+    "e2edev_bench_01-R-5-TC-1",
+    "e2edev_bench_01-R-5-TC-2",
+    "e2edev_bench_01-R-5-TC-4"
+  ]
+}
