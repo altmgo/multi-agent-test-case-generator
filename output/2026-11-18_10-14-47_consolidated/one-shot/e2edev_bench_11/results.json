@@ -1,0 +1,609 @@
+{
+  "schema_version": 1,
+  "solution": "one-shot",
+  "unit_id": "e2edev_bench_11",
+  "parent_id": null,
+  "status": "evaluated",
+  "failure": null,
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "e2edev_bench_11-R-1",
+      "text": "The system must allow users to toggle between light and dark themes using a dark mode switch. Specifically, when the user interacts with the dark mode switch located by the data-testid 'dark-mode-switch', the system should apply the 'dark-mode' class to the body element when the switch is in the 'checked' position, thereby enabling dark mode. Conversely, when the switch is in the 'unchecked' position, the 'dark-mode' class should be removed from the body element, reverting to light mode.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_11-R-2",
+      "text": "The Loan Calculator web application must handle user valid numeric input in the 'Loan Amount' input field with data-testid 'amount-input'.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_11-R-3",
+      "text": "When the user enters a value in the 'Interest Rate' input field with data-testid 'rate-input', the system should accept and store the numeric value for calculation purposes.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_11-R-4",
+      "text": "When the user interacts with the 'Loan Term' input field, the system should handle and store the numeric value for calculation purposes, covering various scenarios including normal, edge, and error cases.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/4/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_11-R-5",
+      "text": "The Loan Calculator web application must ensure that when a user adjusts the 'Loan Term' slider, the 'Loan Term' input field is dynamically updated to reflect the slider's current value. Specifically, the slider element, identified by data-testid 'year-slider', should allow users to select a value between 1 and 30, inclusive. Upon adjustment, the input field with data-testid 'years-input' must immediately display the selected slider value. ",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/5/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_11-R-6",
+      "text": "The system must calculate and display the monthly payment, total payment, and total interest when the user clicks the 'Calculate' button (data-testid 'calculate-button'). The monthly payment is calculated using the formula M = P * (r * (1 + r)^n) / ((1 + r)^n - 1), with special handling for 0 interest rate (M = P / n). Total payment is M * n, and total interest is Total Payment - Principal. The results are displayed in the format 'Monthly Payment: $[value]', 'Total Payment: $[value]', and 'Total Interest: $[value]' (data-testids 'monthly-payment', 'total-payment', 'total-interest'). If any input is invalid or missing, the system must alert the user with the message \"Please check your numbers\" and prevent the calculation. ",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/6/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_11-R-7",
+      "text": "When the user clicks the 'Calculate' button and the input values are valid, the doughnut chart (data-testid 'payment-chart') will update to show the proportions of principal and interest.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/7/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_11-R-8",
+      "text": "When the 'Calculate' button is clicked, the system should check the validity of the input values. If any of the values are zero or invalid, an alert should be displayed with the message 'Please check your numbers'. ",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/8/requirement/description"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Enable Dark Mode",
+      "description": "Verify that toggling the dark mode switch to the checked position applies the 'dark-mode' class to the body element.",
+      "requirement_ids": [
+        "e2edev_bench_11-R-1"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Disable Dark Mode",
+      "description": "Verify that toggling the dark mode switch to the unchecked position removes the 'dark-mode' class from the body element.",
+      "requirement_ids": [
+        "e2edev_bench_11-R-1"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Valid Loan Amount Input",
+      "description": "Verify that the loan amount input field correctly accepts and stores valid numeric input.",
+      "requirement_ids": [
+        "e2edev_bench_11-R-2"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Valid Interest Rate Input",
+      "description": "Verify that the interest rate input field accepts and stores valid numeric values for calculations.",
+      "requirement_ids": [
+        "e2edev_bench_11-R-3"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Loan Term Input Handling",
+      "description": "Verify that the loan term input field properly handles and stores numeric values across normal, edge, and error scenarios.",
+      "requirement_ids": [
+        "e2edev_bench_11-R-4"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Loan Term Slider and Input Sync",
+      "description": "Verify that adjusting the year slider between 1 and 30 dynamically updates the years input field with the current slider value.",
+      "requirement_ids": [
+        "e2edev_bench_11-R-5"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Successful Loan Calculation with Positive Interest",
+      "description": "Verify that clicking the calculate button with valid inputs computes and displays the correct monthly payment, total payment, and total interest.",
+      "requirement_ids": [
+        "e2edev_bench_11-R-6",
+        "e2edev_bench_11-R-7"
+      ]
+    },
+    {
+      "id": "G-008",
+      "title": "Successful Loan Calculation with Zero Interest",
+      "description": "Verify that the system correctly calculates payments when the interest rate is set to zero using the specific zero-interest formula.",
+      "requirement_ids": [
+        "e2edev_bench_11-R-6"
+      ]
+    },
+    {
+      "id": "G-009",
+      "title": "Calculation with Invalid or Missing Inputs",
+      "description": "Verify that clicking the calculate button with invalid or missing inputs triggers an alert with 'Please check your numbers' and prevents calculation.",
+      "requirement_ids": [
+        "e2edev_bench_11-R-6",
+        "e2edev_bench_11-R-8"
+      ]
+    },
+    {
+      "id": "G-010",
+      "title": "Calculation with Zero Value Inputs",
+      "description": "Verify that clicking the calculate button when any input value is zero displays the alert 'Please check your numbers'.",
+      "requirement_ids": [
+        "e2edev_bench_11-R-8"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_11-R-1-TC-1",
+      "title": "[Normal] User enables dark mode",
+      "description": "Feature: Dark Mode Toggle\n  The system should apply or remove the \"dark-mode\" class to the body element when the user toggles the dark mode switch, changing the application\"s theme.\n\n\n  Scenario: [Normal] User enables dark mode\n    Given the Loan Calculator page is loaded\n    When the user toggles the dark mode switch with data-testid \"dark-mode-slider\" to the \"checked\" position\n    Then the body element should have the class \"dark-mode\"\n",
+      "requirement_ids": [
+        "e2edev_bench_11-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_11-R-1-TC-2",
+      "title": "[Normal] User disables dark mode",
+      "description": "Feature: Dark Mode Toggle\n  The system should apply or remove the \"dark-mode\" class to the body element when the user toggles the dark mode switch, changing the application\"s theme.\n\n\nScenario: [Normal] User disables dark mode  \n  Given the \"Loan Calculator\" page is loaded and dark mode is enabled  \n  When the user toggles the dark mode slider with data-testid \"dark-mode-slider\" to the \"unchecked\" position  \n  Then the body element should not have the class \"dark-mode\"",
+      "requirement_ids": [
+        "e2edev_bench_11-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_11-R-1-TC-3",
+      "title": "[Edge] User rapidly toggles dark mode switch multiple times",
+      "description": "Feature: Dark Mode Toggle\n  The system should apply or remove the \"dark-mode\" class to the body element when the user toggles the dark mode switch, changing the application\"s theme.\n\n\nScenario: [Edge] User rapidly toggles dark mode switch multiple times\n    Given the Loan Calculator page is loaded\n    When the user toggles the dark mode switch with data-testid \"dark-mode-slider\" to the \"checked\" position\n    And the user toggles the dark mode switch with data-testid \"dark-mode-slider” to the \"unchecked\" position\n    And the user toggles the dark mode switch with data-testid \"dark-mode-slider” to the \"checked\" position\n    Then the body element should have the class \"dark-mode\"",
+      "requirement_ids": [
+        "e2edev_bench_11-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_11-R-2-TC-1",
+      "title": "[Normal] User enters a valid loan amount",
+      "description": "Feature: Loan Amount Input Handling\n  The system should accept and store numeric values entered in the \"Loan Amount\" input field for calculation purposes.\n\n\n  Scenario: [Normal] User enters a valid loan amount\n    Given the Loan Calculator page is loaded\n    When the user enters \"10000\" into the loan amount input field with data-testid \"amount-input\"\n    Then the loan amount input field with data-testid \"amount-input\" should have the value \"10000\"\n",
+      "requirement_ids": [
+        "e2edev_bench_11-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_11-R-2-TC-2",
+      "title": "[Edge] User enters the minimum possible loan amount",
+      "description": "Feature: Loan Amount Input Handling\n  The system should accept and store numeric values entered in the \"Loan Amount\" input field for calculation purposes.\n\n\n  Scenario: [Edge] User enters the minimum possible loan amount\n    Given the Loan Calculator page is loaded\n    When the user enters \"0.01\" into the loan amount input field with data-testid \"amount-input\"\n    Then the loan amount input field with data-testid \"amount-input\" should have the value \"0.01\"\n",
+      "requirement_ids": [
+        "e2edev_bench_11-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_11-R-2-TC-3",
+      "title": "[Edge] User enters a very large loan amount",
+      "description": "Feature: Loan Amount Input Handling\n  The system should accept and store numeric values entered in the \"Loan Amount\" input field for calculation purposes.\n\n\n  Scenario: [Edge] User enters a very large loan amount\n    Given the Loan Calculator page is loaded\n    When the user enters \"1000000000\" into the loan amount input field with data-testid \"amount-input\"\n    Then the loan amount input field with data-testid \"amount-input\" should have the value \"1000000000\"\n",
+      "requirement_ids": [
+        "e2edev_bench_11-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_11-R-2-TC-4",
+      "title": "[Error] User enters a non-numeric value in the loan amount field",
+      "description": "Feature: Loan Amount Input Handling\n  The system should accept and store numeric values entered in the \"Loan Amount\" input field for calculation purposes.\n\n\nScenario: [Error] User enters a non-numeric value in the loan amount field\n    Given the Loan Calculator page is loaded\n    When the user enters \"abc\" into the loan amount input field with data-testid \"amount-input\"\n    Then the loan amount input field with data-testid \"amount-input\" should not accept the value \"abc\"",
+      "requirement_ids": [
+        "e2edev_bench_11-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_11-R-3-TC-1",
+      "title": "[Normal] User enters a valid interest rate",
+      "description": "Feature: Interest Rate Input Handling\n  The system should accept and store the numeric value entered in the \"Interest Rate\" input field for calculation purposes.\n\n\n  Scenario: [Normal] User enters a valid interest rate\n    Given the Loan Calculator page is loaded\n    And the user sees the interest rate input field with data-testid \"rate-input\"\n    When the user enters \"5\" into the interest rate input field with data-testid \"rate-input\"\n    Then the interest rate input field with data-testid \"rate-input\" should contain the value \"5\"\n",
+      "requirement_ids": [
+        "e2edev_bench_11-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_11-R-3-TC-2",
+      "title": "[Edge] User enters the minimum possible interest rate",
+      "description": "Feature: Interest Rate Input Handling\n  The system should accept and store the numeric value entered in the \"Interest Rate\" input field for calculation purposes.\n\n\n  Scenario: [Edge] User enters the minimum possible interest rate\n    Given the Loan Calculator page is loaded\n    And the user sees the interest rate input field with data-testid \"rate-input\"\n    When the user enters \"0\" into the interest rate input field with data-testid \"rate-input\"\n    Then the interest rate input field with data-testid \"rate-input\" should contain the value \"0\"\n",
+      "requirement_ids": [
+        "e2edev_bench_11-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_11-R-3-TC-3",
+      "title": "[Edge] User enters the maximum possible interest rate",
+      "description": "Feature: Interest Rate Input Handling\n  The system should accept and store the numeric value entered in the \"Interest Rate\" input field for calculation purposes.\n\n\n  Scenario: [Edge] User enters the maximum possible interest rate\n    Given the Loan Calculator page is loaded\n    And the user sees the interest rate input field with data-testid \"rate-input\"\n    When the user enters \"100\" into the interest rate input field with data-testid \"rate-input\"\n    Then the interest rate input field with data-testid \"rate-input\" should contain the value \"100\"\n",
+      "requirement_ids": [
+        "e2edev_bench_11-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_11-R-3-TC-4",
+      "title": "[Error] User enters a non-numeric value in the interest rate field",
+      "description": "Feature: Interest Rate Input Handling\n  The system should accept and store the numeric value entered in the \"Interest Rate\" input field for calculation purposes.\n\n\nScenario: [Error] User enters a non-numeric value in the interest rate field\n    Given the Loan Calculator page is loaded\n    And the user sees the interest rate input field with data-testid \"rate-input\"\n    When the user enters \"abc\" into the interest rate input field with data-testid \"rate-input\"\n    Then the interest rate input field with data-testid \"rate-input\" should be empty",
+      "requirement_ids": [
+        "e2edev_bench_11-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_11-R-4-TC-1",
+      "title": "[Normal] User enters a valid loan term value",
+      "description": "Feature: Loan Term Input Handling\n  The system should accept and store the numeric value entered in the \"Loan Term\" input field for calculation purposes.\n\n\n  Scenario: [Normal] User enters a valid loan term value\n    Given the Loan Calculator page is loaded\n    And the \"Loan Term\" input field with data-testid \"years-input\" is visible\n    When the user enters \"15\" into the \"Loan Term\" input field with data-testid \"years-input\"\n    Then the \"Loan Term\" input field with data-testid \"years-input\" should have the value \"15\"\n",
+      "requirement_ids": [
+        "e2edev_bench_11-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_11-R-4-TC-2",
+      "title": "[Edge] User enters the minimum loan term value",
+      "description": "Feature: Loan Term Input Handling\n  The system should accept and store the numeric value entered in the \"Loan Term\" input field for calculation purposes.\n\n\n  Scenario: [Edge] User enters the minimum loan term value\n    Given the Loan Calculator page is loaded\n    And the \"Loan Term\" input field with data-testid \"years-input\" is visible\n    When the user enters \"1\" into the \"Loan Term\" input field with data-testid \"years-input\"\n    Then the \"Loan Term\" input field with data-testid \"years-input\" should have the value \"1\"\n",
+      "requirement_ids": [
+        "e2edev_bench_11-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_11-R-4-TC-3",
+      "title": "[Edge] User enters the maximum loan term value",
+      "description": "Feature: Loan Term Input Handling\n  The system should accept and store the numeric value entered in the \"Loan Term\" input field for calculation purposes.\n\n\n  Scenario: [Edge] User enters the maximum loan term value\n    Given the Loan Calculator page is loaded\n    And the \"Loan Term\" input field with data-testid \"years-input\" is visible\n    When the user enters \"30\" into the \"Loan Term\" input field with data-testid \"years-input\"\n    Then the \"Loan Term\" input field with data-testid \"years-input\" should have the value \"30\"\n",
+      "requirement_ids": [
+        "e2edev_bench_11-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_11-R-4-TC-4",
+      "title": "[Error] User enters a non-numeric value in the loan term field",
+      "description": "Feature: Loan Term Input Handling\n  The system should accept and store the numeric value entered in the \"Loan Term\" input field for calculation purposes.\n\n\nScenario: [Error] User enters a non-numeric value in the loan term field\n    Given the Loan Calculator page is loaded\n    And the \"Loan Term\" input field with data-testid \"years-input\" is visible\n    When the user enters \"abc\" into the \"Loan Term\" input field with data-testid \"years-input\"\n    Then the \"Loan Term\" input field with data-testid \"years-input\" should be empty",
+      "requirement_ids": [
+        "e2edev_bench_11-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_11-R-5-TC-1",
+      "title": "[Normal] Adjusting the Loan Term slider updates the input field",
+      "description": "Feature: Loan Term Slider Adjustment\n  The system should update the \"Loan Term\" input field to reflect the slider\"s current value when the user adjusts the \"Loan Term\" slider.\n\n\n  Scenario: [Normal] Adjusting the Loan Term slider updates the input field\n    Given the Loan Calculator page is loaded\n    And the Loan Term slider with data-testid \"year-slider\" is set to 15\n    When the user moves the Loan Term slider to 20\n    Then the Loan Term input field with data-testid \"years-input\" should display the value 20\n",
+      "requirement_ids": [
+        "e2edev_bench_11-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_11-R-5-TC-2",
+      "title": "[Edge] Adjusting the Loan Term slider to its minimum value",
+      "description": "Feature: Loan Term Slider Adjustment\n  The system should update the \"Loan Term\" input field to reflect the slider\"s current value when the user adjusts the \"Loan Term\" slider.\n\n\n  Scenario: [Edge] Adjusting the Loan Term slider to its minimum value\n    Given the Loan Calculator page is loaded\n    And the Loan Term slider with data-testid \"year-slider\" is set to 15\n    When the user moves the Loan Term slider to 1\n    Then the Loan Term input field with data-testid \"years-input\" should display the value 1\n",
+      "requirement_ids": [
+        "e2edev_bench_11-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_11-R-5-TC-3",
+      "title": "[Edge] Adjusting the Loan Term slider to its maximum value",
+      "description": "Feature: Loan Term Slider Adjustment\n  The system should update the \"Loan Term\" input field to reflect the slider\"s current value when the user adjusts the \"Loan Term\" slider.\n\n\n  Scenario: [Edge] Adjusting the Loan Term slider to its maximum value\n    Given the Loan Calculator page is loaded\n    And the Loan Term slider with data-testid \"year-slider\" is set to 15\n    When the user moves the Loan Term slider to 30\n    Then the Loan Term input field with data-testid \"years-input\" should display the value 30\n",
+      "requirement_ids": [
+        "e2edev_bench_11-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_11-R-6-TC-1",
+      "title": "[Normal] Calculate loan payments with valid inputs",
+      "description": "Feature: REQ-006 Calculate Loan Payments\n  The system should calculate and display the monthly payment, total payment, and total interest when the user clicks the \"Calculate\" button based on the input values.\n\n\n  Scenario: [Normal] Calculate loan payments with valid inputs\n    Given the Loan Calculator page is loaded\n    And the user enters \"10000\" into the loan amount field with data-testid \"amount-input\"\n    And the user enters \"5\" into the interest rate field with data-testid \"rate-input\"\n    And the user enters \"15\" into the loan term field with data-testid \"years-input\"\n    When the user clicks the \"Calculate\" button with data-testid \"calculate-button\"\n    Then the monthly payment should be displayed as \"Monthly Payment: $79.08\" in the result box with data-testid \"monthly-payment\"\n    And the total payment should be displayed as \"Total Payment: $14234.40\" in the result box with data-testid \"total-payment\"\n    And the total interest should be displayed as \"Total Interest: $4234.40\" in the result box with data-testid \"total-interest\"\n",
+      "requirement_ids": [
+        "e2edev_bench_11-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_11-R-6-TC-2",
+      "title": "[Edge] Calculate loan payments with zero interest rate",
+      "description": "Feature: REQ-006 Calculate Loan Payments\n  The system should calculate and display the monthly payment, total payment, and total interest when the user clicks the \"Calculate\" button based on the input values.\n\n\n  Scenario: [Edge] Calculate loan payments with zero interest rate\n    Given the Loan Calculator page is loaded\n    And the user enters \"10000\" into the loan amount field with data-testid \"amount-input\"\n    And the user enters \"0\" into the interest rate field with data-testid \"rate-input\"\n    And the user enters \"15\" into the loan term field with data-testid \"years-input\"\n    When the user clicks the \"Calculate\" button with data-testid \"calculate-button\"\n    Then an alert should be displayed with the message \"Please check your numbers\"\n",
+      "requirement_ids": [
+        "e2edev_bench_11-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_11-R-6-TC-3",
+      "title": "[Edge] Calculate loan payments with maximum loan term",
+      "description": "Feature: REQ-006 Calculate Loan Payments\n  The system should calculate and display the monthly payment, total payment, and total interest when the user clicks the \"Calculate\" button based on the input values.\n\n\n  Scenario: [Edge] Calculate loan payments with maximum loan term\n    Given the Loan Calculator page is loaded\n    And the user enters \"10000\" into the loan amount field with data-testid \"amount-input\"\n    And the user enters \"5\" into the interest rate field with data-testid \"rate-input\"\n    And the user enters \"30\" into the loan term field with data-testid \"years-input\"\n    When the user clicks the \"Calculate\" button with data-testid \"calculate-button\"\n    Then the monthly payment should be displayed as \"Monthly Payment: $53.68\" in the result box with data-testid \"monthly-payment\"\n    And the total payment should be displayed as \"Total Payment: $19324.80\" in the result box with data-testid \"total-payment\"\n    And the total interest should be displayed as \"Total Interest: $9324.80\" in the result box with data-testid \"total-interest\"\n",
+      "requirement_ids": [
+        "e2edev_bench_11-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_11-R-7-TC-1",
+      "title": "[Normal] Update payment chart with valid input values",
+      "description": "Feature: REQ-007 - Update Payment Chart on Valid Input\n\n  The system should update the payment chart to visually represent the breakdown of principal and interest when the user clicks the \"Calculate\" button with valid input values.\n\n\n  Scenario: [Normal] Update payment chart with valid input values\n    Given the Loan Calculator page is loaded\n    And the user enters \"10000\" into the loan amount field with data-testid \"amount-input\"\n    And the user enters \"5\" into the interest rate field with data-testid \"rate-input\"\n    And the user enters \"15\" into the loan term field with data-testid \"years-input\"\n    When the user clicks the \"Calculate\" button with data-testid \"calculate-button\"\n    Then the payment chart with data-testid \"payment-chart\" should display a breakdown of principal and interest\n",
+      "requirement_ids": [
+        "e2edev_bench_11-R-7"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/7/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_11-R-7-TC-2",
+      "title": "[Edge] Update payment chart with minimum valid input values",
+      "description": "Feature: REQ-007 - Update Payment Chart on Valid Input\n\n  The system should update the payment chart to visually represent the breakdown of principal and interest when the user clicks the \"Calculate\" button with valid input values.\n\n\n  Scenario: [Edge] Update payment chart with minimum valid input values\n    Given the Loan Calculator page is loaded\n    And the user enters \"1\" into the loan amount field with data-testid \"amount-input\"\n    And the user enters \"0.01\" into the interest rate field with data-testid \"rate-input\"\n    And the user enters \"1\" into the loan term field with data-testid \"years-input\"\n    When the user clicks the \"Calculate\" button with data-testid \"calculate-button\"\n    Then the payment chart with data-testid \"payment-chart\" should display a breakdown of principal and interest\n",
+      "requirement_ids": [
+        "e2edev_bench_11-R-7"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/7/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_11-R-8-TC-1",
+      "title": "[Edge] User enters zero as interest rate and clicks \"Calculate\"",
+      "description": "Feature: Alert user on invalid input values when calculating loan payments\n  The system should alert the user to check their numbers if the input values are invalid when the \"Calculate\" button is clicked.\n\n\n  Scenario: [Edge] User enters zero as interest rate and clicks \"Calculate\"\n    Given the Loan Calculator page is loaded\n    And the user enters \"10000\" into the loan amount field with data-testid \"amount-input\"\n    And the user enters \"0\" into the interest rate field with data-testid \"rate-input\"\n    And the user enters \"15\" into the loan term field with data-testid \"years-input\"\n    When the user clicks the \"Calculate\" button with data-testid \"calculate-button\"\n    Then an alert should be displayed with the message \"Please check your numbers\"\n",
+      "requirement_ids": [
+        "e2edev_bench_11-R-8"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/8/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_11-R-8-TC-2",
+      "title": "[Edge] User enters zero as loan term and clicks \"Calculate\"",
+      "description": "Feature: Alert user on invalid input values when calculating loan payments\n  The system should alert the user to check their numbers if the input values are invalid when the \"Calculate\" button is clicked.\n\n\n  Scenario: [Edge] User enters zero as loan term and clicks \"Calculate\"\n    Given the Loan Calculator page is loaded\n    And the user enters \"10000\" into the loan amount field with data-testid \"amount-input\"\n    And the user enters \"5\" into the interest rate field with data-testid \"rate-input\"\n    And the user enters \"0\" into the loan term field with data-testid \"years-input\"\n    When the user clicks the \"Calculate\" button with data-testid \"calculate-button\"\n    Then an alert should be displayed with the message \"Please check your numbers\"\n",
+      "requirement_ids": [
+        "e2edev_bench_11-R-8"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_11/requirment_with_tests.json#/finegrained_rewith_test/8/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 10,
+    "reference_count": 25,
+    "matches": [
+      {
+        "generated_id": "G-001",
+        "reference_id": "e2edev_bench_11-R-1-TC-1",
+        "similarity": 0.9287857779260071
+      },
+      {
+        "generated_id": "G-002",
+        "reference_id": "e2edev_bench_11-R-1-TC-2",
+        "similarity": 0.9250865054325331
+      },
+      {
+        "generated_id": "G-003",
+        "reference_id": "e2edev_bench_11-R-2-TC-1",
+        "similarity": 0.9292932545370655
+      },
+      {
+        "generated_id": "G-004",
+        "reference_id": "e2edev_bench_11-R-3-TC-1",
+        "similarity": 0.9280489977249732
+      },
+      {
+        "generated_id": "G-005",
+        "reference_id": "e2edev_bench_11-R-4-TC-1",
+        "similarity": 0.9201128841205697
+      },
+      {
+        "generated_id": "G-006",
+        "reference_id": "e2edev_bench_11-R-5-TC-1",
+        "similarity": 0.9268797223738395
+      },
+      {
+        "generated_id": "G-007",
+        "reference_id": "e2edev_bench_11-R-6-TC-1",
+        "similarity": 0.8911536413245296
+      },
+      {
+        "generated_id": "G-008",
+        "reference_id": "e2edev_bench_11-R-6-TC-2",
+        "similarity": 0.8820099560467498
+      },
+      {
+        "generated_id": "G-009",
+        "reference_id": "e2edev_bench_11-R-8-TC-2",
+        "similarity": 0.8891268609102778
+      },
+      {
+        "generated_id": "G-010",
+        "reference_id": "e2edev_bench_11-R-8-TC-1",
+        "similarity": 0.9043479415059276
+      }
+    ],
+    "unmatched_generated_ids": [],
+    "unmatched_reference_ids": [
+      "e2edev_bench_11-R-1-TC-3",
+      "e2edev_bench_11-R-2-TC-2",
+      "e2edev_bench_11-R-2-TC-3",
+      "e2edev_bench_11-R-2-TC-4",
+      "e2edev_bench_11-R-3-TC-2",
+      "e2edev_bench_11-R-3-TC-3",
+      "e2edev_bench_11-R-3-TC-4",
+      "e2edev_bench_11-R-4-TC-2",
+      "e2edev_bench_11-R-4-TC-3",
+      "e2edev_bench_11-R-4-TC-4",
+      "e2edev_bench_11-R-5-TC-2",
+      "e2edev_bench_11-R-5-TC-3",
+      "e2edev_bench_11-R-6-TC-3",
+      "e2edev_bench_11-R-7-TC-1",
+      "e2edev_bench_11-R-7-TC-2"
+    ],
+    "precision": 1.0,
+    "recall": 0.4,
+    "f1": 0.5714285714285714,
+    "embedding_usage": {
+      "input_tokens": 4076,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 4076
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 2
+  },
+  "generation": {
+    "selected_techniques": [],
+    "technique_rationales": {},
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": 1287,
+      "output_tokens": 920,
+      "details": {
+        "text_prompt_tokens": 1287,
+        "total_tokens": 2207
+      },
+      "status": "available"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": 4076,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 4076
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 2
+  },
+  "links": {
+    "requirements": {
+      "e2edev_bench_11-R-1": "e2edev_bench_11-R-1/requirement.md",
+      "e2edev_bench_11-R-2": "e2edev_bench_11-R-2/requirement.md",
+      "e2edev_bench_11-R-3": "e2edev_bench_11-R-3/requirement.md",
+      "e2edev_bench_11-R-4": "e2edev_bench_11-R-4/requirement.md",
+      "e2edev_bench_11-R-5": "e2edev_bench_11-R-5/requirement.md",
+      "e2edev_bench_11-R-6": "e2edev_bench_11-R-6/requirement.md",
+      "e2edev_bench_11-R-7": "e2edev_bench_11-R-7/requirement.md",
+      "e2edev_bench_11-R-8": "e2edev_bench_11-R-8/requirement.md"
+    },
+    "cases": {
+      "G-001": {
+        "e2edev_bench_11-R-1": "e2edev_bench_11-R-1/test cases/1_Enable_Dark_Mode.md"
+      },
+      "G-002": {
+        "e2edev_bench_11-R-1": "e2edev_bench_11-R-1/test cases/2_Disable_Dark_Mode.md"
+      },
+      "G-003": {
+        "e2edev_bench_11-R-2": "e2edev_bench_11-R-2/test cases/3_Valid_Loan_Amount_Input.md"
+      },
+      "G-004": {
+        "e2edev_bench_11-R-3": "e2edev_bench_11-R-3/test cases/4_Valid_Interest_Rate_Input.md"
+      },
+      "G-005": {
+        "e2edev_bench_11-R-4": "e2edev_bench_11-R-4/test cases/5_Loan_Term_Input_Handling.md"
+      },
+      "G-006": {
+        "e2edev_bench_11-R-5": "e2edev_bench_11-R-5/test cases/6_Loan_Term_Slider_and_Input_Sync.md"
+      },
+      "G-007": {
+        "e2edev_bench_11-R-6": "e2edev_bench_11-R-6/test cases/7_Successful_Loan_Calculation_with_Positive_Intere.md",
+        "e2edev_bench_11-R-7": "e2edev_bench_11-R-7/test cases/7_Successful_Loan_Calculation_with_Positive_Intere.md"
+      },
+      "G-008": {
+        "e2edev_bench_11-R-6": "e2edev_bench_11-R-6/test cases/8_Successful_Loan_Calculation_with_Zero_Interest.md"
+      },
+      "G-009": {
+        "e2edev_bench_11-R-6": "e2edev_bench_11-R-6/test cases/9_Calculation_with_Invalid_or_Missing_Inputs.md",
+        "e2edev_bench_11-R-8": "e2edev_bench_11-R-8/test cases/9_Calculation_with_Invalid_or_Missing_Inputs.md"
+      },
+      "G-010": {
+        "e2edev_bench_11-R-8": "e2edev_bench_11-R-8/test cases/10_Calculation_with_Zero_Value_Inputs.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

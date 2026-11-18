@@ -1,0 +1,3 @@
+# e2edev\_bench\_26-R-1
+
+When the user clicks on the list item with the attribute data-testid='expand-list-item', the system must display the sub-list with the attribute data-testid='lis'. The sub-list should contain two options: '查找' and '替换', each represented as list items with respective data-testid attributes ('search-list-item' and 'replace-list-item'). If the user does not interact with the '展开' list item, the sub-list must remain hidden. The visibility of the sub-list is controlled by the CSS 'display' property, which should toggle between 'none' (hidden) and 'block' (visible) based on user interaction.

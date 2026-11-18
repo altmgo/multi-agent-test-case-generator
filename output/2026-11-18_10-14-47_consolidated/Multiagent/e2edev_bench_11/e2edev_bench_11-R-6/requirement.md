@@ -1,0 +1,3 @@
+# e2edev\_bench\_11-R-6
+
+The system must calculate and display the monthly payment, total payment, and total interest when the user clicks the 'Calculate' button (data-testid 'calculate-button'). The monthly payment is calculated using the formula M = P * (r * (1 + r)^n) / ((1 + r)^n - 1), with special handling for 0 interest rate (M = P / n). Total payment is M * n, and total interest is Total Payment - Principal. The results are displayed in the format 'Monthly Payment: $[value]', 'Total Payment: $[value]', and 'Total Interest: $[value]' (data-testids 'monthly-payment', 'total-payment', 'total-interest'). If any input is invalid or missing, the system must alert the user with the message "Please check your numbers" and prevent the calculation. 

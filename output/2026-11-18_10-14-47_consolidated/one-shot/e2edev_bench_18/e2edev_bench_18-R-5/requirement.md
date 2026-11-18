@@ -1,0 +1,3 @@
+# e2edev\_bench\_18-R-5
+
+When the user clicks the 'Add to Timetable' button (data-testid='add-timetable-button') after filling out the required fields in the form (data-testid='timetable-form'), a new row is added to the timetable table (data-testid='timetable'). The row will display the time range in the first column and the subject under the selected days' columns. If any required field is empty (e.g., data-testid='subject', data-testid='start-time', data-testid='end-time', or no days selected with data-testid='days'), an alert with the message 'Please fill in all the fields.' will appear, and no row will be added. Each dynamically added row has a unique data-id in the format 'timetable-row-{startTime}-{endTime}'.

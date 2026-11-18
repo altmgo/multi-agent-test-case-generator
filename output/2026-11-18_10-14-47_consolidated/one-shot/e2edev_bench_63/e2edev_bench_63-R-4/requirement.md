@@ -1,0 +1,3 @@
+# e2edev\_bench\_63-R-4
+
+The user must be able to input two numbers into the HCF form using the input fields with placeholders 'Num1...' and 'Num2...', identified by data-testid attributes 'hcf-num1-input' and 'hcf-num2-input', respectively. Upon loading the webpage, the user should see a button with the text 'Click here to find HCF of two numbers.' and data-testid 'hcf-button'. Clicking this button should reveal the HCF form. The form must accept any valid integer inputs, including edge cases such as both fields having the same number or one field having zero. The input values should be accurately reflected in their respective fields upon entry.

@@ -1,0 +1,3 @@
+# e2edev\_bench\_19-R-4
+
+The system must allow users to remove todo items by right-clicking on them, ensuring the default context menu is suppressed. This applies to all items, including completed ones, and works even when there's only one item in the list. After removal, the 'todos' list in localStorage must be updated to reflect the change. The todo items are represented as `<li>` elements within the `<ul>` element with the attribute `data-testid='todo-list'`. The removal process involves updating the `localStorage` variable named 'todos' to reflect the current state of the list after any item is removed.

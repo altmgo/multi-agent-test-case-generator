@@ -1,0 +1,3 @@
+# e2edev\_bench\_63-R-1
+
+Upon loading the webpage, the user should see two buttons: one labeled 'Click here to find LCM of two numbers.' with data-testid 'lcm-button', and another labeled 'Click here to find HCF of two numbers.' with data-testid 'hcf-button'. When the user clicks the 'lcm-button', the LCM input form, identified by the class 'resultboxLcm', should smoothly slide into view using a slow animation, while simultaneously ensuring that the HCF input form, identified by the class 'resultboxHcf', is hidden from view. This interaction should be seamless and intuitive, providing immediate visual feedback to the user by toggling the visibility of the respective forms.

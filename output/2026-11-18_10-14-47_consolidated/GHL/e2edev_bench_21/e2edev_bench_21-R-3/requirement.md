@@ -1,0 +1,3 @@
+# e2edev\_bench\_21-R-3
+
+When the user clicks the next button (data-testid='next-button'), the system should move to the next song in the playlist, update the song title (data-testid='title'), cover image (data-testid='cover'), and audio source (data-testid='audio'), and automatically start playback. If the currently playing song is not the last one, it simply switches to the next; if it's the last song (like "Ukulele"), the playlist loops back to the first song ("Hey"). In both cases, the play button icon (data-testid='play-button') should reflect the playing state by showing a pause icon (fa-pause). All updates should be seamless, with audio playback starting immediately and UI reflecting the new song.

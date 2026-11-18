@@ -1,0 +1,733 @@
+{
+  "initial": {
+    "assessment": {
+      "candidate_id": "initial",
+      "cases": [
+        {
+          "id": "G-001",
+          "title": "Print Page with Frames on Seamonkey",
+          "description": "Verify that a web page containing frames prints properly on Seamonkey, ensuring all frame contents render correctly in the printed output.",
+          "requirement_ids": [
+            "R-109"
+          ]
+        },
+        {
+          "id": "G-002",
+          "title": "Print Page with Various Formats on Seamonkey",
+          "description": "Verify that pages incorporating various formatting elements print successfully without layout corruption or missing content.",
+          "requirement_ids": [
+            "R-110"
+          ]
+        },
+        {
+          "id": "G-003",
+          "title": "Print Aligned Text on Seamonkey",
+          "description": "Verify that text alignments (left, right, center, justified) on a page print exactly as they appear on the screen.",
+          "requirement_ids": [
+            "R-111"
+          ]
+        },
+        {
+          "id": "G-004",
+          "title": "Print Indented Text on Seamonkey",
+          "description": "Verify that single and nested text indentations print accurately as seen on the screen.",
+          "requirement_ids": [
+            "R-112"
+          ]
+        },
+        {
+          "id": "G-005",
+          "title": "Print with Portrait and Landscape Settings on Seamonkey",
+          "description": "Verify that pages print properly when switching between portrait and landscape orientation settings.",
+          "requirement_ids": [
+            "R-113"
+          ]
+        },
+        {
+          "id": "G-006",
+          "title": "Print HTML Widgets on Seamonkey",
+          "description": "Verify that HTML widgets such as buttons, input fields, and dropdowns print correctly.",
+          "requirement_ids": [
+            "R-114"
+          ]
+        },
+        {
+          "id": "G-007",
+          "title": "Print Page Source on Seamonkey",
+          "description": "Verify that raw page source views print accurately as seen on the screen.",
+          "requirement_ids": [
+            "R-115"
+          ]
+        },
+        {
+          "id": "G-008",
+          "title": "Print CSS Pages on Seamonkey",
+          "description": "Verify that pages styled with external, internal, and inline CSS sheets print properly.",
+          "requirement_ids": [
+            "R-116"
+          ]
+        },
+        {
+          "id": "G-009",
+          "title": "Print Mozillazine Poll Results Page on Seamonkey",
+          "description": "Verify that the specific Mozillazine Poll results page prints correctly without formatting errors.",
+          "requirement_ids": [
+            "R-117"
+          ]
+        },
+        {
+          "id": "G-010",
+          "title": "Print Large Pages on Seamonkey",
+          "description": "Verify that large pages with multi-page splitting requirements print properly without performance or memory issues.",
+          "requirement_ids": [
+            "R-118"
+          ]
+        },
+        {
+          "id": "G-011",
+          "title": "Print XML Pages on Seamonkey",
+          "description": "Verify that XML documents, including raw XML and XML with XSLT, print properly.",
+          "requirement_ids": [
+            "R-119"
+          ]
+        },
+        {
+          "id": "G-012",
+          "title": "Print Top Web Sites on Seamonkey",
+          "description": "Verify that popular top web sites print properly and maintain structural integrity.",
+          "requirement_ids": [
+            "R-120"
+          ]
+        },
+        {
+          "id": "G-013",
+          "title": "Print HTML 4.0 Pages on Seamonkey",
+          "description": "Verify that HTML 4.0 compliant pages print properly across strict and transitional DTDs.",
+          "requirement_ids": [
+            "R-121"
+          ]
+        },
+        {
+          "id": "G-014",
+          "title": "Print Images Correctly on Seamonkey",
+          "description": "Verify that images in various formats (JPEG, PNG, GIF) print correctly and missing image links are handled appropriately.",
+          "requirement_ids": [
+            "R-122"
+          ]
+        },
+        {
+          "id": "G-015",
+          "title": "Print Lists Correctly on Seamonkey",
+          "description": "Verify that ordered, unordered, and nested lists print correctly with proper bulleting and numbering.",
+          "requirement_ids": [
+            "R-123"
+          ]
+        },
+        {
+          "id": "G-016",
+          "title": "Print Tables Correctly on Seamonkey",
+          "description": "Verify that tables, including multi-page tables, cell padding, and borders, print correctly.",
+          "requirement_ids": [
+            "R-124"
+          ]
+        },
+        {
+          "id": "G-017",
+          "title": "Print Character Styles Correctly on Seamonkey",
+          "description": "Verify that character styles such as bold, italic, underline, and custom fonts print accurately.",
+          "requirement_ids": [
+            "R-125"
+          ]
+        },
+        {
+          "id": "G-018",
+          "title": "Print Paragraph Styles Correctly on Seamonkey",
+          "description": "Verify that paragraph styles including line spacing and margins print accurately.",
+          "requirement_ids": [
+            "R-126"
+          ]
+        },
+        {
+          "id": "G-019",
+          "title": "Print Preview Functionality on Seamonkey",
+          "description": "Verify that Print Preview functions correctly and matches the final printed output.",
+          "requirement_ids": [
+            "R-127"
+          ]
+        },
+        {
+          "id": "G-020",
+          "title": "Page Setup Dialog Display on Seamonkey",
+          "description": "Verify that the Page Setup dialog displays correctly with fully responsive controls and proper layout rendering.",
+          "requirement_ids": [
+            "R-128"
+          ]
+        },
+        {
+          "id": "G-021",
+          "title": "Off-line Printing on Seamonkey",
+          "description": "Verify that off-line printing functions correctly without network connectivity and handles missing remote resources gracefully.",
+          "requirement_ids": [
+            "R-129"
+          ]
+        },
+        {
+          "id": "G-022",
+          "title": "Print Header and Footer Info on Seamonkey",
+          "description": "Verify that header and footer information, including custom variables like date, title, URL, and page numbers, gets printed properly.",
+          "requirement_ids": [
+            "R-130"
+          ]
+        },
+        {
+          "id": "G-023",
+          "title": "Print Files with Page Ranges on Seamonkey",
+          "description": "Verify that files print successfully using a range of page numbers (e.g., single pages, comma-separated lists, and page ranges), and handle invalid ranges correctly.",
+          "requirement_ids": [
+            "R-131"
+          ]
+        }
+      ],
+      "opinions": [
+        {
+          "agent": "critic",
+          "feedback": "The high-level test cases cover all requirements adequately, maintain distinct scenarios, and pose no blockers to execution or testability.",
+          "request_revision": false,
+          "confirmed_blockers": [],
+          "blocker_assessment_complete": true
+        },
+        {
+          "agent": "validator",
+          "feedback": "All test cases cover the specified requirements accurately and completely. No blockers found.",
+          "request_revision": false,
+          "confirmed_blockers": [],
+          "blocker_assessment_complete": true
+        }
+      ],
+      "valid": true,
+      "confirmed_blockers": 0,
+      "covered_requirements": 23,
+      "duplicates": 0,
+      "comparable": true
+    },
+    "analysis": {
+      "analysis": "R-109: Testable behavior includes printing framed pages on Seamonkey; boundary is single vs multiple frames; ambiguity is the definition of 'properly'. R-110: Testable behavior includes printing pages with various formats; normal path prints standard formats; abnormal path handles malformed formats; ambiguity is 'various formats'. R-111: Testable behavior includes printing aligned text matching screen display; boundary is left, right, center, and justified alignments. R-112: Testable behavior includes printing indented text matching screen display; boundary is single and nested indentations. R-113: Testable behavior includes printing in portrait and landscape orientations; normal path switches between settings successfully. R-114: Testable behavior includes printing HTML widgets (buttons, inputs, dropdowns); ambiguity is 'properly'. R-115: Testable behavior includes printing raw page source matching screen view. R-116: Testable behavior includes printing CSS-styled pages; boundary includes external, internal, and inline CSS. R-117: Testable behavior includes printing the specific Mozillazine Poll results page; dependency on external URL content stability is a gap. R-118: Testable behavior includes printing large pages; boundary involves multi-page splitting and memory limits; ambiguity is 'large'. R-119: Testable behavior includes printing XML documents; boundary includes raw XML and XML with XSLT. R-120: Testable behavior includes printing popular top web sites; ambiguity is the dynamic list of 'top web sites'. R-121: Testable behavior includes printing HTML 4.0 compliant pages; boundary is strict vs transitional DTDs. R-122: Testable behavior includes printing images; boundary includes various formats (JPEG, PNG, GIF) and missing image links. R-123: Testable behavior includes printing lists; boundary includes ordered, unordered, and nested lists. R-124: Testable behavior includes printing tables; boundary includes multi-page tables, cell padding, and borders; typo in source ('shal'). R-125: Testable behavior includes printing character styles (bold, italic, underline, fonts); ambiguity is exact visual fidelity. R-126: Testable behavior includes printing paragraph styles (line spacing, margins); ambiguity is rendering precision. R-127: Testable behavior includes Print Preview functionality; normal path opens preview matching final print. R-128: Testable behavior includes Page Setup dialog display; boundary includes control responsiveness and layout rendering. R-129: Testable behavior includes off-line printing mode; normal path prints without network connectivity; abnormal path handles missing remote resources. R-130: Testable behavior includes printing headers and footers; boundary includes custom variables (date, title, URL, page numbers). R-131: Testable behavior includes printing specific page ranges; boundary includes single pages, comma-separated lists, and page ranges (e.g., 1-5); abnormal path handles invalid ranges."
+    },
+    "failure": null
+  },
+  "rounds": [],
+  "status": "completed",
+  "failure": null,
+  "accepted_id": "initial",
+  "accepted_assessment": {
+    "candidate_id": "initial",
+    "cases": [
+      {
+        "id": "G-001",
+        "title": "Print Page with Frames on Seamonkey",
+        "description": "Verify that a web page containing frames prints properly on Seamonkey, ensuring all frame contents render correctly in the printed output.",
+        "requirement_ids": [
+          "R-109"
+        ]
+      },
+      {
+        "id": "G-002",
+        "title": "Print Page with Various Formats on Seamonkey",
+        "description": "Verify that pages incorporating various formatting elements print successfully without layout corruption or missing content.",
+        "requirement_ids": [
+          "R-110"
+        ]
+      },
+      {
+        "id": "G-003",
+        "title": "Print Aligned Text on Seamonkey",
+        "description": "Verify that text alignments (left, right, center, justified) on a page print exactly as they appear on the screen.",
+        "requirement_ids": [
+          "R-111"
+        ]
+      },
+      {
+        "id": "G-004",
+        "title": "Print Indented Text on Seamonkey",
+        "description": "Verify that single and nested text indentations print accurately as seen on the screen.",
+        "requirement_ids": [
+          "R-112"
+        ]
+      },
+      {
+        "id": "G-005",
+        "title": "Print with Portrait and Landscape Settings on Seamonkey",
+        "description": "Verify that pages print properly when switching between portrait and landscape orientation settings.",
+        "requirement_ids": [
+          "R-113"
+        ]
+      },
+      {
+        "id": "G-006",
+        "title": "Print HTML Widgets on Seamonkey",
+        "description": "Verify that HTML widgets such as buttons, input fields, and dropdowns print correctly.",
+        "requirement_ids": [
+          "R-114"
+        ]
+      },
+      {
+        "id": "G-007",
+        "title": "Print Page Source on Seamonkey",
+        "description": "Verify that raw page source views print accurately as seen on the screen.",
+        "requirement_ids": [
+          "R-115"
+        ]
+      },
+      {
+        "id": "G-008",
+        "title": "Print CSS Pages on Seamonkey",
+        "description": "Verify that pages styled with external, internal, and inline CSS sheets print properly.",
+        "requirement_ids": [
+          "R-116"
+        ]
+      },
+      {
+        "id": "G-009",
+        "title": "Print Mozillazine Poll Results Page on Seamonkey",
+        "description": "Verify that the specific Mozillazine Poll results page prints correctly without formatting errors.",
+        "requirement_ids": [
+          "R-117"
+        ]
+      },
+      {
+        "id": "G-010",
+        "title": "Print Large Pages on Seamonkey",
+        "description": "Verify that large pages with multi-page splitting requirements print properly without performance or memory issues.",
+        "requirement_ids": [
+          "R-118"
+        ]
+      },
+      {
+        "id": "G-011",
+        "title": "Print XML Pages on Seamonkey",
+        "description": "Verify that XML documents, including raw XML and XML with XSLT, print properly.",
+        "requirement_ids": [
+          "R-119"
+        ]
+      },
+      {
+        "id": "G-012",
+        "title": "Print Top Web Sites on Seamonkey",
+        "description": "Verify that popular top web sites print properly and maintain structural integrity.",
+        "requirement_ids": [
+          "R-120"
+        ]
+      },
+      {
+        "id": "G-013",
+        "title": "Print HTML 4.0 Pages on Seamonkey",
+        "description": "Verify that HTML 4.0 compliant pages print properly across strict and transitional DTDs.",
+        "requirement_ids": [
+          "R-121"
+        ]
+      },
+      {
+        "id": "G-014",
+        "title": "Print Images Correctly on Seamonkey",
+        "description": "Verify that images in various formats (JPEG, PNG, GIF) print correctly and missing image links are handled appropriately.",
+        "requirement_ids": [
+          "R-122"
+        ]
+      },
+      {
+        "id": "G-015",
+        "title": "Print Lists Correctly on Seamonkey",
+        "description": "Verify that ordered, unordered, and nested lists print correctly with proper bulleting and numbering.",
+        "requirement_ids": [
+          "R-123"
+        ]
+      },
+      {
+        "id": "G-016",
+        "title": "Print Tables Correctly on Seamonkey",
+        "description": "Verify that tables, including multi-page tables, cell padding, and borders, print correctly.",
+        "requirement_ids": [
+          "R-124"
+        ]
+      },
+      {
+        "id": "G-017",
+        "title": "Print Character Styles Correctly on Seamonkey",
+        "description": "Verify that character styles such as bold, italic, underline, and custom fonts print accurately.",
+        "requirement_ids": [
+          "R-125"
+        ]
+      },
+      {
+        "id": "G-018",
+        "title": "Print Paragraph Styles Correctly on Seamonkey",
+        "description": "Verify that paragraph styles including line spacing and margins print accurately.",
+        "requirement_ids": [
+          "R-126"
+        ]
+      },
+      {
+        "id": "G-019",
+        "title": "Print Preview Functionality on Seamonkey",
+        "description": "Verify that Print Preview functions correctly and matches the final printed output.",
+        "requirement_ids": [
+          "R-127"
+        ]
+      },
+      {
+        "id": "G-020",
+        "title": "Page Setup Dialog Display on Seamonkey",
+        "description": "Verify that the Page Setup dialog displays correctly with fully responsive controls and proper layout rendering.",
+        "requirement_ids": [
+          "R-128"
+        ]
+      },
+      {
+        "id": "G-021",
+        "title": "Off-line Printing on Seamonkey",
+        "description": "Verify that off-line printing functions correctly without network connectivity and handles missing remote resources gracefully.",
+        "requirement_ids": [
+          "R-129"
+        ]
+      },
+      {
+        "id": "G-022",
+        "title": "Print Header and Footer Info on Seamonkey",
+        "description": "Verify that header and footer information, including custom variables like date, title, URL, and page numbers, gets printed properly.",
+        "requirement_ids": [
+          "R-130"
+        ]
+      },
+      {
+        "id": "G-023",
+        "title": "Print Files with Page Ranges on Seamonkey",
+        "description": "Verify that files print successfully using a range of page numbers (e.g., single pages, comma-separated lists, and page ranges), and handle invalid ranges correctly.",
+        "requirement_ids": [
+          "R-131"
+        ]
+      }
+    ],
+    "opinions": [
+      {
+        "agent": "critic",
+        "feedback": "The high-level test cases cover all requirements adequately, maintain distinct scenarios, and pose no blockers to execution or testability.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      {
+        "agent": "validator",
+        "feedback": "All test cases cover the specified requirements accurately and completely. No blockers found.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      }
+    ],
+    "valid": true,
+    "confirmed_blockers": 0,
+    "covered_requirements": 23,
+    "duplicates": 0,
+    "comparable": true
+  },
+  "pending": [],
+  "pending_controls": [],
+  "coverage": {
+    "feedback": "All requirements (R-109 through R-131) have been fully covered by the accepted test cases on a one-to-one basis. There are no coverage gaps, excess test cases, or redundancies present in the current set."
+  },
+  "coverage_failure": null,
+  "calls": [
+    {
+      "stage": "analyst",
+      "subject_id": "initial",
+      "output": {
+        "analysis": "R-109: Testable behavior includes printing framed pages on Seamonkey; boundary is single vs multiple frames; ambiguity is the definition of 'properly'. R-110: Testable behavior includes printing pages with various formats; normal path prints standard formats; abnormal path handles malformed formats; ambiguity is 'various formats'. R-111: Testable behavior includes printing aligned text matching screen display; boundary is left, right, center, and justified alignments. R-112: Testable behavior includes printing indented text matching screen display; boundary is single and nested indentations. R-113: Testable behavior includes printing in portrait and landscape orientations; normal path switches between settings successfully. R-114: Testable behavior includes printing HTML widgets (buttons, inputs, dropdowns); ambiguity is 'properly'. R-115: Testable behavior includes printing raw page source matching screen view. R-116: Testable behavior includes printing CSS-styled pages; boundary includes external, internal, and inline CSS. R-117: Testable behavior includes printing the specific Mozillazine Poll results page; dependency on external URL content stability is a gap. R-118: Testable behavior includes printing large pages; boundary involves multi-page splitting and memory limits; ambiguity is 'large'. R-119: Testable behavior includes printing XML documents; boundary includes raw XML and XML with XSLT. R-120: Testable behavior includes printing popular top web sites; ambiguity is the dynamic list of 'top web sites'. R-121: Testable behavior includes printing HTML 4.0 compliant pages; boundary is strict vs transitional DTDs. R-122: Testable behavior includes printing images; boundary includes various formats (JPEG, PNG, GIF) and missing image links. R-123: Testable behavior includes printing lists; boundary includes ordered, unordered, and nested lists. R-124: Testable behavior includes printing tables; boundary includes multi-page tables, cell padding, and borders; typo in source ('shal'). R-125: Testable behavior includes printing character styles (bold, italic, underline, fonts); ambiguity is exact visual fidelity. R-126: Testable behavior includes printing paragraph styles (line spacing, margins); ambiguity is rendering precision. R-127: Testable behavior includes Print Preview functionality; normal path opens preview matching final print. R-128: Testable behavior includes Page Setup dialog display; boundary includes control responsiveness and layout rendering. R-129: Testable behavior includes off-line printing mode; normal path prints without network connectivity; abnormal path handles missing remote resources. R-130: Testable behavior includes printing headers and footers; boundary includes custom variables (date, title, URL, page numbers). R-131: Testable behavior includes printing specific page ranges; boundary includes single pages, comma-separated lists, and page ranges (e.g., 1-5); abnormal path handles invalid ranges."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1231,
+          "output_tokens": 651,
+          "details": {
+            "total_tokens": 1882,
+            "text_prompt_tokens": 1231
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-109",
+            "title": "Print Page with Frames on Seamonkey",
+            "description": "Verify that a web page containing frames prints properly on Seamonkey, ensuring all frame contents render correctly in the printed output.",
+            "requirement_ids": [
+              "R-109"
+            ]
+          },
+          {
+            "id": "TC-110",
+            "title": "Print Page with Various Formats on Seamonkey",
+            "description": "Verify that pages incorporating various formatting elements print successfully without layout corruption or missing content.",
+            "requirement_ids": [
+              "R-110"
+            ]
+          },
+          {
+            "id": "TC-111",
+            "title": "Print Aligned Text on Seamonkey",
+            "description": "Verify that text alignments (left, right, center, justified) on a page print exactly as they appear on the screen.",
+            "requirement_ids": [
+              "R-111"
+            ]
+          },
+          {
+            "id": "TC-112",
+            "title": "Print Indented Text on Seamonkey",
+            "description": "Verify that single and nested text indentations print accurately as seen on the screen.",
+            "requirement_ids": [
+              "R-112"
+            ]
+          },
+          {
+            "id": "TC-113",
+            "title": "Print with Portrait and Landscape Settings on Seamonkey",
+            "description": "Verify that pages print properly when switching between portrait and landscape orientation settings.",
+            "requirement_ids": [
+              "R-113"
+            ]
+          },
+          {
+            "id": "TC-114",
+            "title": "Print HTML Widgets on Seamonkey",
+            "description": "Verify that HTML widgets such as buttons, input fields, and dropdowns print correctly.",
+            "requirement_ids": [
+              "R-114"
+            ]
+          },
+          {
+            "id": "TC-115",
+            "title": "Print Page Source on Seamonkey",
+            "description": "Verify that raw page source views print accurately as seen on the screen.",
+            "requirement_ids": [
+              "R-115"
+            ]
+          },
+          {
+            "id": "TC-116",
+            "title": "Print CSS Pages on Seamonkey",
+            "description": "Verify that pages styled with external, internal, and inline CSS sheets print properly.",
+            "requirement_ids": [
+              "R-116"
+            ]
+          },
+          {
+            "id": "TC-117",
+            "title": "Print Mozillazine Poll Results Page on Seamonkey",
+            "description": "Verify that the specific Mozillazine Poll results page prints correctly without formatting errors.",
+            "requirement_ids": [
+              "R-117"
+            ]
+          },
+          {
+            "id": "TC-118",
+            "title": "Print Large Pages on Seamonkey",
+            "description": "Verify that large pages with multi-page splitting requirements print properly without performance or memory issues.",
+            "requirement_ids": [
+              "R-118"
+            ]
+          },
+          {
+            "id": "TC-119",
+            "title": "Print XML Pages on Seamonkey",
+            "description": "Verify that XML documents, including raw XML and XML with XSLT, print properly.",
+            "requirement_ids": [
+              "R-119"
+            ]
+          },
+          {
+            "id": "TC-120",
+            "title": "Print Top Web Sites on Seamonkey",
+            "description": "Verify that popular top web sites print properly and maintain structural integrity.",
+            "requirement_ids": [
+              "R-120"
+            ]
+          },
+          {
+            "id": "TC-121",
+            "title": "Print HTML 4.0 Pages on Seamonkey",
+            "description": "Verify that HTML 4.0 compliant pages print properly across strict and transitional DTDs.",
+            "requirement_ids": [
+              "R-121"
+            ]
+          },
+          {
+            "id": "TC-122",
+            "title": "Print Images Correctly on Seamonkey",
+            "description": "Verify that images in various formats (JPEG, PNG, GIF) print correctly and missing image links are handled appropriately.",
+            "requirement_ids": [
+              "R-122"
+            ]
+          },
+          {
+            "id": "TC-123",
+            "title": "Print Lists Correctly on Seamonkey",
+            "description": "Verify that ordered, unordered, and nested lists print correctly with proper bulleting and numbering.",
+            "requirement_ids": [
+              "R-123"
+            ]
+          },
+          {
+            "id": "TC-124",
+            "title": "Print Tables Correctly on Seamonkey",
+            "description": "Verify that tables, including multi-page tables, cell padding, and borders, print correctly.",
+            "requirement_ids": [
+              "R-124"
+            ]
+          },
+          {
+            "id": "TC-125",
+            "title": "Print Character Styles Correctly on Seamonkey",
+            "description": "Verify that character styles such as bold, italic, underline, and custom fonts print accurately.",
+            "requirement_ids": [
+              "R-125"
+            ]
+          },
+          {
+            "id": "TC-126",
+            "title": "Print Paragraph Styles Correctly on Seamonkey",
+            "description": "Verify that paragraph styles including line spacing and margins print accurately.",
+            "requirement_ids": [
+              "R-126"
+            ]
+          },
+          {
+            "id": "TC-127",
+            "title": "Print Preview Functionality on Seamonkey",
+            "description": "Verify that Print Preview functions correctly and matches the final printed output.",
+            "requirement_ids": [
+              "R-127"
+            ]
+          },
+          {
+            "id": "TC-128",
+            "title": "Page Setup Dialog Display on Seamonkey",
+            "description": "Verify that the Page Setup dialog displays correctly with fully responsive controls and proper layout rendering.",
+            "requirement_ids": [
+              "R-128"
+            ]
+          },
+          {
+            "id": "TC-129",
+            "title": "Off-line Printing on Seamonkey",
+            "description": "Verify that off-line printing functions correctly without network connectivity and handles missing remote resources gracefully.",
+            "requirement_ids": [
+              "R-129"
+            ]
+          },
+          {
+            "id": "TC-130",
+            "title": "Print Header and Footer Info on Seamonkey",
+            "description": "Verify that header and footer information, including custom variables like date, title, URL, and page numbers, gets printed properly.",
+            "requirement_ids": [
+              "R-130"
+            ]
+          },
+          {
+            "id": "TC-131",
+            "title": "Print Files with Page Ranges on Seamonkey",
+            "description": "Verify that files print successfully using a range of page numbers (e.g., single pages, comma-separated lists, and page ranges), and handle invalid ranges correctly.",
+            "requirement_ids": [
+              "R-131"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": 1908,
+          "output_tokens": 1665,
+          "details": {
+            "total_tokens": 3573,
+            "text_prompt_tokens": 1908
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "critic",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "The high-level test cases cover all requirements adequately, maintain distinct scenarios, and pose no blockers to execution or testability.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 2594,
+          "output_tokens": 63,
+          "details": {
+            "total_tokens": 2657,
+            "text_prompt_tokens": 2594
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "validator",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "All test cases cover the specified requirements accurately and completely. No blockers found.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 2591,
+          "output_tokens": 53,
+          "details": {
+            "total_tokens": 2644,
+            "text_prompt_tokens": 2591
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "coverage",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "All requirements (R-109 through R-131) have been fully covered by the accepted test cases on a one-to-one basis. There are no coverage gaps, excess test cases, or redundancies present in the current set."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 2743,
+          "output_tokens": 56,
+          "details": {
+            "total_tokens": 2799,
+            "text_prompt_tokens": 2743
+          },
+          "status": "available"
+        }
+      ]
+    }
+  ],
+  "monotonicity": "confirmed"
+}

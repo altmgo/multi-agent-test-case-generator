@@ -1,0 +1,3 @@
+# e2edev\_bench\_28-R-6
+
+When the game ends in a tie (i.e., all tiles are filled without any player meeting the winning conditions), the system must perform the following actions: 1) Display the message 'Tie' in the announcer section, replacing its innerText with 'Tie'. 2) Ensure the announcer section becomes visible by removing the 'hide' class from its class list. 3) Disable further interactions with the game board by preventing any additional clicks on tiles. The announcer section is identified by the attribute 'data-testid="announcer"', and each tile on the game board is identified by the attribute 'data-testid' with values ranging from 'tile-1' to 'tile-9'.

@@ -1,0 +1,421 @@
+{
+  "initial": {
+    "assessment": {
+      "candidate_id": "initial",
+      "cases": [
+        {
+          "id": "G-001",
+          "title": "Verify complete salary calculation and result display with valid inputs",
+          "description": "Enter valid parameters into all form fields including job title, work hours per day, workdays per week, gross monthly salary, tax percentage, overtime hours, and overtime rate. Click the 'Calculate Salary' button and verify that all results (job title, hourly salary, daily salary, monthly gross salary, tax deduction, monthly net salary, yearly net salary, overtime earnings, and total earnings) are correctly computed and displayed in the results section with proper formatting.",
+          "requirement_ids": [
+            "e2edev_bench_42-R-1",
+            "e2edev_bench_42-R-9",
+            "e2edev_bench_42-R-11"
+          ]
+        },
+        {
+          "id": "G-002",
+          "title": "Verify form reset functionality via the Clear button",
+          "description": "Populate all form fields and execute a calculation to populate the results section. Click the 'Clear' button (data-testid='clear-button') and verify that all form inputs are reset to their default empty state, the job title display is reset to '______', and all salary-related fields are reset to '$0'.",
+          "requirement_ids": [
+            "e2edev_bench_42-R-2",
+            "e2edev_bench_42-R-4",
+            "e2edev_bench_42-R-8"
+          ]
+        },
+        {
+          "id": "G-003",
+          "title": "Verify job title handling including long strings and special characters",
+          "description": "Enter a very long job title containing special characters into the 'Job' input field (data-testid='job-input') and calculate salary. Verify that the job title is displayed correctly without truncation or formatting issues in both the overview title and results section. Additionally, verify that leaving the field empty defaults the display to '______'.",
+          "requirement_ids": [
+            "e2edev_bench_42-R-3",
+            "e2edev_bench_42-R-7"
+          ]
+        },
+        {
+          "id": "G-004",
+          "title": "Verify handling of missing or empty numeric input fields",
+          "description": "Leave various numeric input fields empty while providing a gross salary, then click 'Calculate Salary'. Verify that the system automatically defaults missing numeric values to '0' for calculation purposes and completes the calculations without throwing errors.",
+          "requirement_ids": [
+            "e2edev_bench_42-R-1",
+            "e2edev_bench_42-R-4",
+            "e2edev_bench_42-R-6"
+          ]
+        },
+        {
+          "id": "G-005",
+          "title": "Verify tax deduction calculation and negative value formatting",
+          "description": "Input a gross salary and tax percentage, then click 'Calculate Salary'. Verify that the tax deduction is computed as (grossSalary * tax / 100) and displayed as a negative value. Test edge cases including zero gross salary, zero tax percentage, and negative tax percentages to ensure the output gracefully defaults or handles them correctly as '-$0.00'.",
+          "requirement_ids": [
+            "e2edev_bench_42-R-5",
+            "e2edev_bench_42-R-6"
+          ]
+        },
+        {
+          "id": "G-006",
+          "title": "Verify detailed salary breakdown calculations (Net, Hourly, Daily, Yearly)",
+          "description": "Provide standard gross salary, work hours per day, workdays per week, and tax percentage, then calculate. Verify that net monthly salary, hourly salary, daily salary, and yearly net salary are derived accurately based on the established formulas, assuming a standard monthly structure.",
+          "requirement_ids": [
+            "e2edev_bench_42-R-6",
+            "e2edev_bench_42-R-7",
+            "e2edev_bench_42-R-8",
+            "e2edev_bench_42-R-9"
+          ]
+        },
+        {
+          "id": "G-007",
+          "title": "Verify error and edge cases for gross salary and work hours",
+          "description": "Input a negative gross salary or zero work hours per day/workdays per week and trigger calculation. Verify that related salary fields handle these error/edge conditions correctly by defaulting to zero or '$0.00' without breaking the application UI.",
+          "requirement_ids": [
+            "e2edev_bench_42-R-6",
+            "e2edev_bench_42-R-7",
+            "e2edev_bench_42-R-8"
+          ]
+        },
+        {
+          "id": "G-008",
+          "title": "Verify overtime earnings and total earnings calculation",
+          "description": "Input valid overtime hours per week and overtime rate per hour alongside salary parameters. Verify that overtime earnings are calculated by multiplying hours by rate by 4 (weeks per month), and that total earnings correctly sum the yearly net salary and total overtime earnings. Test edge cases such as zero overtime hours and negative values resulting in $0.00 overtime earnings.",
+          "requirement_ids": [
+            "e2edev_bench_42-R-1",
+            "e2edev_bench_42-R-9",
+            "e2edev_bench_42-R-10",
+            "e2edev_bench_42-R-11"
+          ]
+        }
+      ],
+      "opinions": [
+        {
+          "agent": "critic",
+          "feedback": "",
+          "request_revision": false,
+          "confirmed_blockers": [],
+          "blocker_assessment_complete": true
+        },
+        {
+          "agent": "validator",
+          "feedback": "All test cases align with the requirements and correctly reference the specified IDs. The scenarios cover normal, edge, and error cases comprehensively without any blockers.",
+          "request_revision": false,
+          "confirmed_blockers": [],
+          "blocker_assessment_complete": true
+        }
+      ],
+      "valid": true,
+      "confirmed_blockers": 0,
+      "covered_requirements": 11,
+      "duplicates": 0,
+      "comparable": true
+    },
+    "analysis": {
+      "analysis": "The requirements outline a 'Salary Calculator' web application with a form containing specific inputs ('job-input', 'work-hour-input', 'work-week-input', 'gross-salary-input', 'tax-input', 'overtime-hours-input', 'overtime-rate-input'), action buttons ('calculate-button', 'clear-button'), and a results section ('results-section') displaying various computed metrics with dedicated data-testids ('job-title', 'hourly-salary', 'daily-salary', 'monthly-gross-salary', 'tax-deduction', 'monthly-net-salary', 'yearly-net-salary', 'overtime-earnings', 'total-earnings'). Testable behaviors include: form submission via calculate-button, input validation and defaulting missing/empty numeric fields to 0, resetting state via clear-button, handling special characters and long strings for job titles, computing tax deductions as negative values, calculating net/hourly/daily/yearly salaries, computing monthly overtime earnings using a 4-week multiplier, and calculating total earnings incorporating yearly net salary and overtime earnings. Boundaries and edge cases comprise zero or negative inputs (gross salary, tax percentage, work hours, overtime hours/rate), missing fields, and formatting rules such as displaying currency with two decimal places and setting the default job title and cleared title state to '______' and salary fields to '$0' or '$0.00'."
+    },
+    "failure": null
+  },
+  "rounds": [],
+  "status": "completed",
+  "failure": null,
+  "accepted_id": "initial",
+  "accepted_assessment": {
+    "candidate_id": "initial",
+    "cases": [
+      {
+        "id": "G-001",
+        "title": "Verify complete salary calculation and result display with valid inputs",
+        "description": "Enter valid parameters into all form fields including job title, work hours per day, workdays per week, gross monthly salary, tax percentage, overtime hours, and overtime rate. Click the 'Calculate Salary' button and verify that all results (job title, hourly salary, daily salary, monthly gross salary, tax deduction, monthly net salary, yearly net salary, overtime earnings, and total earnings) are correctly computed and displayed in the results section with proper formatting.",
+        "requirement_ids": [
+          "e2edev_bench_42-R-1",
+          "e2edev_bench_42-R-9",
+          "e2edev_bench_42-R-11"
+        ]
+      },
+      {
+        "id": "G-002",
+        "title": "Verify form reset functionality via the Clear button",
+        "description": "Populate all form fields and execute a calculation to populate the results section. Click the 'Clear' button (data-testid='clear-button') and verify that all form inputs are reset to their default empty state, the job title display is reset to '______', and all salary-related fields are reset to '$0'.",
+        "requirement_ids": [
+          "e2edev_bench_42-R-2",
+          "e2edev_bench_42-R-4",
+          "e2edev_bench_42-R-8"
+        ]
+      },
+      {
+        "id": "G-003",
+        "title": "Verify job title handling including long strings and special characters",
+        "description": "Enter a very long job title containing special characters into the 'Job' input field (data-testid='job-input') and calculate salary. Verify that the job title is displayed correctly without truncation or formatting issues in both the overview title and results section. Additionally, verify that leaving the field empty defaults the display to '______'.",
+        "requirement_ids": [
+          "e2edev_bench_42-R-3",
+          "e2edev_bench_42-R-7"
+        ]
+      },
+      {
+        "id": "G-004",
+        "title": "Verify handling of missing or empty numeric input fields",
+        "description": "Leave various numeric input fields empty while providing a gross salary, then click 'Calculate Salary'. Verify that the system automatically defaults missing numeric values to '0' for calculation purposes and completes the calculations without throwing errors.",
+        "requirement_ids": [
+          "e2edev_bench_42-R-1",
+          "e2edev_bench_42-R-4",
+          "e2edev_bench_42-R-6"
+        ]
+      },
+      {
+        "id": "G-005",
+        "title": "Verify tax deduction calculation and negative value formatting",
+        "description": "Input a gross salary and tax percentage, then click 'Calculate Salary'. Verify that the tax deduction is computed as (grossSalary * tax / 100) and displayed as a negative value. Test edge cases including zero gross salary, zero tax percentage, and negative tax percentages to ensure the output gracefully defaults or handles them correctly as '-$0.00'.",
+        "requirement_ids": [
+          "e2edev_bench_42-R-5",
+          "e2edev_bench_42-R-6"
+        ]
+      },
+      {
+        "id": "G-006",
+        "title": "Verify detailed salary breakdown calculations (Net, Hourly, Daily, Yearly)",
+        "description": "Provide standard gross salary, work hours per day, workdays per week, and tax percentage, then calculate. Verify that net monthly salary, hourly salary, daily salary, and yearly net salary are derived accurately based on the established formulas, assuming a standard monthly structure.",
+        "requirement_ids": [
+          "e2edev_bench_42-R-6",
+          "e2edev_bench_42-R-7",
+          "e2edev_bench_42-R-8",
+          "e2edev_bench_42-R-9"
+        ]
+      },
+      {
+        "id": "G-007",
+        "title": "Verify error and edge cases for gross salary and work hours",
+        "description": "Input a negative gross salary or zero work hours per day/workdays per week and trigger calculation. Verify that related salary fields handle these error/edge conditions correctly by defaulting to zero or '$0.00' without breaking the application UI.",
+        "requirement_ids": [
+          "e2edev_bench_42-R-6",
+          "e2edev_bench_42-R-7",
+          "e2edev_bench_42-R-8"
+        ]
+      },
+      {
+        "id": "G-008",
+        "title": "Verify overtime earnings and total earnings calculation",
+        "description": "Input valid overtime hours per week and overtime rate per hour alongside salary parameters. Verify that overtime earnings are calculated by multiplying hours by rate by 4 (weeks per month), and that total earnings correctly sum the yearly net salary and total overtime earnings. Test edge cases such as zero overtime hours and negative values resulting in $0.00 overtime earnings.",
+        "requirement_ids": [
+          "e2edev_bench_42-R-1",
+          "e2edev_bench_42-R-9",
+          "e2edev_bench_42-R-10",
+          "e2edev_bench_42-R-11"
+        ]
+      }
+    ],
+    "opinions": [
+      {
+        "agent": "critic",
+        "feedback": "",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      {
+        "agent": "validator",
+        "feedback": "All test cases align with the requirements and correctly reference the specified IDs. The scenarios cover normal, edge, and error cases comprehensively without any blockers.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      }
+    ],
+    "valid": true,
+    "confirmed_blockers": 0,
+    "covered_requirements": 11,
+    "duplicates": 0,
+    "comparable": true
+  },
+  "pending": [],
+  "pending_controls": [],
+  "coverage": {
+    "feedback": "The accepted cases provide comprehensive and well-structured coverage of all requirements (R-1 through R-11) without notable gaps, excess, or repetition. Each requirement is mapped logically to test cases that address normal flows, edge cases, and error states appropriately."
+  },
+  "coverage_failure": null,
+  "calls": [
+    {
+      "stage": "analyst",
+      "subject_id": "initial",
+      "output": {
+        "analysis": "The requirements outline a 'Salary Calculator' web application with a form containing specific inputs ('job-input', 'work-hour-input', 'work-week-input', 'gross-salary-input', 'tax-input', 'overtime-hours-input', 'overtime-rate-input'), action buttons ('calculate-button', 'clear-button'), and a results section ('results-section') displaying various computed metrics with dedicated data-testids ('job-title', 'hourly-salary', 'daily-salary', 'monthly-gross-salary', 'tax-deduction', 'monthly-net-salary', 'yearly-net-salary', 'overtime-earnings', 'total-earnings'). Testable behaviors include: form submission via calculate-button, input validation and defaulting missing/empty numeric fields to 0, resetting state via clear-button, handling special characters and long strings for job titles, computing tax deductions as negative values, calculating net/hourly/daily/yearly salaries, computing monthly overtime earnings using a 4-week multiplier, and calculating total earnings incorporating yearly net salary and overtime earnings. Boundaries and edge cases comprise zero or negative inputs (gross salary, tax percentage, work hours, overtime hours/rate), missing fields, and formatting rules such as displaying currency with two decimal places and setting the default job title and cleared title state to '______' and salary fields to '$0' or '$0.00'."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 3918,
+          "output_tokens": 305,
+          "details": {
+            "total_tokens": 4223,
+            "text_prompt_tokens": 3918
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-SAL-01",
+            "title": "Verify complete salary calculation and result display with valid inputs",
+            "description": "Enter valid parameters into all form fields including job title, work hours per day, workdays per week, gross monthly salary, tax percentage, overtime hours, and overtime rate. Click the 'Calculate Salary' button and verify that all results (job title, hourly salary, daily salary, monthly gross salary, tax deduction, monthly net salary, yearly net salary, overtime earnings, and total earnings) are correctly computed and displayed in the results section with proper formatting.",
+            "requirement_ids": [
+              "e2edev_bench_42-R-1",
+              "e2edev_bench_42-R-9",
+              "e2edev_bench_42-R-11"
+            ]
+          },
+          {
+            "id": "TC-SAL-02",
+            "title": "Verify form reset functionality via the Clear button",
+            "description": "Populate all form fields and execute a calculation to populate the results section. Click the 'Clear' button (data-testid='clear-button') and verify that all form inputs are reset to their default empty state, the job title display is reset to '______', and all salary-related fields are reset to '$0'.",
+            "requirement_ids": [
+              "e2edev_bench_42-R-2",
+              "e2edev_bench_42-R-4",
+              "e2edev_bench_42-R-8"
+            ]
+          },
+          {
+            "id": "TC-SAL-03",
+            "title": "Verify job title handling including long strings and special characters",
+            "description": "Enter a very long job title containing special characters into the 'Job' input field (data-testid='job-input') and calculate salary. Verify that the job title is displayed correctly without truncation or formatting issues in both the overview title and results section. Additionally, verify that leaving the field empty defaults the display to '______'.",
+            "requirement_ids": [
+              "e2edev_bench_42-R-3",
+              "e2edev_bench_42-R-7"
+            ]
+          },
+          {
+            "id": "TC-SAL-04",
+            "title": "Verify handling of missing or empty numeric input fields",
+            "description": "Leave various numeric input fields empty while providing a gross salary, then click 'Calculate Salary'. Verify that the system automatically defaults missing numeric values to '0' for calculation purposes and completes the calculations without throwing errors.",
+            "requirement_ids": [
+              "e2edev_bench_42-R-1",
+              "e2edev_bench_42-R-4",
+              "e2edev_bench_42-R-6"
+            ]
+          },
+          {
+            "id": "TC-SAL-05",
+            "title": "Verify tax deduction calculation and negative value formatting",
+            "description": "Input a gross salary and tax percentage, then click 'Calculate Salary'. Verify that the tax deduction is computed as (grossSalary * tax / 100) and displayed as a negative value. Test edge cases including zero gross salary, zero tax percentage, and negative tax percentages to ensure the output gracefully defaults or handles them correctly as '-$0.00'.",
+            "requirement_ids": [
+              "e2edev_bench_42-R-5",
+              "e2edev_bench_42-R-6"
+            ]
+          },
+          {
+            "id": "TC-SAL-06",
+            "title": "Verify detailed salary breakdown calculations (Net, Hourly, Daily, Yearly)",
+            "description": "Provide standard gross salary, work hours per day, workdays per week, and tax percentage, then calculate. Verify that net monthly salary, hourly salary, daily salary, and yearly net salary are derived accurately based on the established formulas, assuming a standard monthly structure.",
+            "requirement_ids": [
+              "e2edev_bench_42-R-6",
+              "e2edev_bench_42-R-7",
+              "e2edev_bench_42-R-8",
+              "e2edev_bench_42-R-9"
+            ]
+          },
+          {
+            "id": "TC-SAL-07",
+            "title": "Verify error and edge cases for gross salary and work hours",
+            "description": "Input a negative gross salary or zero work hours per day/workdays per week and trigger calculation. Verify that related salary fields handle these error/edge conditions correctly by defaulting to zero or '$0.00' without breaking the application UI.",
+            "requirement_ids": [
+              "e2edev_bench_42-R-6",
+              "e2edev_bench_42-R-7",
+              "e2edev_bench_42-R-8"
+            ]
+          },
+          {
+            "id": "TC-SAL-08",
+            "title": "Verify overtime earnings and total earnings calculation",
+            "description": "Input valid overtime hours per week and overtime rate per hour alongside salary parameters. Verify that overtime earnings are calculated by multiplying hours by rate by 4 (weeks per month), and that total earnings correctly sum the yearly net salary and total overtime earnings. Test edge cases such as zero overtime hours and negative values resulting in $0.00 overtime earnings.",
+            "requirement_ids": [
+              "e2edev_bench_42-R-1",
+              "e2edev_bench_42-R-9",
+              "e2edev_bench_42-R-10",
+              "e2edev_bench_42-R-11"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": 4250,
+          "output_tokens": 1358,
+          "details": {
+            "total_tokens": 5608,
+            "text_prompt_tokens": 4250
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "critic",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 5097,
+          "output_tokens": 38,
+          "details": {
+            "total_tokens": 5135,
+            "text_prompt_tokens": 5097
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "validator",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "All test cases align with the requirements and correctly reference the specified IDs. The scenarios cover normal, edge, and error cases comprehensively without any blockers.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 5094,
+          "output_tokens": 67,
+          "details": {
+            "total_tokens": 5161,
+            "text_prompt_tokens": 5094
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "coverage",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "The accepted cases provide comprehensive and well-structured coverage of all requirements (R-1 through R-11) without notable gaps, excess, or repetition. Each requirement is mapped logically to test cases that address normal flows, edge cases, and error states appropriately."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 5126,
+          "output_tokens": 62,
+          "details": {
+            "total_tokens": 5188,
+            "text_prompt_tokens": 5126
+          },
+          "status": "available"
+        }
+      ]
+    }
+  ],
+  "monotonicity": "confirmed"
+}

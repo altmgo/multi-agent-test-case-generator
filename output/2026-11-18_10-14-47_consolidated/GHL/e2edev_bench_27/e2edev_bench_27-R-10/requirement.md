@@ -1,0 +1,3 @@
+# e2edev\_bench\_27-R-10
+
+The system must clear the search input field (identified by the attribute data-testid='search-input') after the user submits the search form (identified by the attribute data-testid='submit-form') under all scenarios. This includes: (1) a valid search where results are successfully fetched and displayed, (2) an empty search submission where no input is provided, and (3) an invalid search where no results are found. The clearing of the input field must occur immediately after the form submission event is triggered, regardless of the outcome of the search. The search button is identified by the attribute data-testid='search-button'.

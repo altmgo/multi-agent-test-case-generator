@@ -1,0 +1,3 @@
+# e2edev\_bench\_63-R-5
+
+When the user clicks the 'Calculate' button in the LCM form, the system should calculate the LCM of the two input numbers entered in the fields with data-testid 'lcm-num1-input' and 'lcm-num2-input'. The result should be displayed in the area with data-testid 'lcm-result-display'. The button with data-testid 'lcm-button' should be clicked to reveal the LCM form. If either input field is empty, the result area should remain unchanged. The system should also indicate whether the calculated LCM is even or odd by adjusting the opacity of elements with data-testid 'lcm-even-display' and 'lcm-odd-display'. The form should handle normal cases, such as both inputs being positive integers, and edge cases, such as one input being empty.

@@ -1,0 +1,3 @@
+# e2edev\_bench\_13-R-3
+
+When the user selects a unit from the second dropdown (data-testid='second-option-select', which includes 'Select' (data-testid='second-option-select-default'), 'Centimeters' (data-testid='second-option-select-centimeters'), 'Inches' (data-testid='second-option-select-inches'), 'Meters' (data-testid='second-option-select-meters'), 'Kilometers' (data-testid='second-option-select-kilometers'), and 'Miles' (data-testid='second-option-select-miles')), the system must immediately update the converted height name section (data-testid='converted-height-name') to display '[Selected Unit]:', reflecting the chosen unit. 

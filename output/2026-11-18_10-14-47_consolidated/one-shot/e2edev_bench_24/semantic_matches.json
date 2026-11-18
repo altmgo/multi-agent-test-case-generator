@@ -1,0 +1,79 @@
+{
+  "status": "evaluated",
+  "embedding_model": "gemini-embedding-2",
+  "similarity_threshold": 0.7,
+  "matches": [
+    {
+      "generated_id": "G-001",
+      "reference_id": "e2edev_bench_24-R-1-TC-1",
+      "similarity": 0.9394040997340704
+    },
+    {
+      "generated_id": "G-002",
+      "reference_id": "e2edev_bench_24-R-5-TC-4",
+      "similarity": 0.904544153219843
+    },
+    {
+      "generated_id": "G-003",
+      "reference_id": "e2edev_bench_24-R-2-TC-1",
+      "similarity": 0.9305785227505398
+    },
+    {
+      "generated_id": "G-004",
+      "reference_id": "e2edev_bench_24-R-6-TC-6",
+      "similarity": 0.8884146514119158
+    },
+    {
+      "generated_id": "G-005",
+      "reference_id": "e2edev_bench_24-R-3-TC-1",
+      "similarity": 0.935769036035049
+    },
+    {
+      "generated_id": "G-006",
+      "reference_id": "e2edev_bench_24-R-5-TC-6",
+      "similarity": 0.9193383484937672
+    },
+    {
+      "generated_id": "G-007",
+      "reference_id": "e2edev_bench_24-R-4-TC-2",
+      "similarity": 0.9099909718757857
+    },
+    {
+      "generated_id": "G-008",
+      "reference_id": "e2edev_bench_24-R-5-TC-5",
+      "similarity": 0.9130907911181962
+    },
+    {
+      "generated_id": "G-009",
+      "reference_id": "e2edev_bench_24-R-5-TC-1",
+      "similarity": 0.9148903759685508
+    },
+    {
+      "generated_id": "G-010",
+      "reference_id": "e2edev_bench_24-R-6-TC-5",
+      "similarity": 0.8944300096145662
+    },
+    {
+      "generated_id": "G-011",
+      "reference_id": "e2edev_bench_24-R-6-TC-1",
+      "similarity": 0.9158696720614812
+    },
+    {
+      "generated_id": "G-012",
+      "reference_id": "e2edev_bench_24-R-6-TC-4",
+      "similarity": 0.9096137072431237
+    }
+  ],
+  "unmatched_generated_ids": [],
+  "unmatched_reference_ids": [
+    "e2edev_bench_24-R-1-TC-2",
+    "e2edev_bench_24-R-2-TC-2",
+    "e2edev_bench_24-R-3-TC-2",
+    "e2edev_bench_24-R-4-TC-1",
+    "e2edev_bench_24-R-5-TC-2",
+    "e2edev_bench_24-R-5-TC-3",
+    "e2edev_bench_24-R-5-TC-7",
+    "e2edev_bench_24-R-6-TC-2",
+    "e2edev_bench_24-R-6-TC-3"
+  ]
+}

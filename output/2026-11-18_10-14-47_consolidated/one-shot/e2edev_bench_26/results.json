@@ -1,0 +1,483 @@
+{
+  "schema_version": 1,
+  "solution": "one-shot",
+  "unit_id": "e2edev_bench_26",
+  "parent_id": null,
+  "status": "evaluated",
+  "failure": null,
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "e2edev_bench_26-R-1",
+      "text": "When the user clicks on the list item with the attribute data-testid='expand-list-item', the system must display the sub-list with the attribute data-testid='lis'. The sub-list should contain two options: '查找' and '替换', each represented as list items with respective data-testid attributes ('search-list-item' and 'replace-list-item'). If the user does not interact with the '展开' list item, the sub-list must remain hidden. The visibility of the sub-list is controlled by the CSS 'display' property, which should toggle between 'none' (hidden) and 'block' (visible) based on user interaction.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_26/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_26-R-2",
+      "text": "When the user interacts with the 查找和替换 functionality, the system must ensure the following behavior: Upon clicking the '展开' button (data-testid: 'expand-list-item'), the list (data-testid: 'lis') becomes visible. If the user clicks the '查找' list item (data-testid: 'search-list-item') within the expanded list, the system must display the '查找' tab (data-testid: 'search') along with its associated input field (data-testid: 'search-input') and button (data-testid: 'search-button'). The system must handle edge cases where the '展开' button is clicked multiple times, ensuring the list remains visible and the '查找' tab is displayed correctly upon selection. All UI elements must update their visibility dynamically without requiring a page reload.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_26/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_26-R-3",
+      "text": "When the user clicks the '展开' button with data-testid 'expand-list-item', the system should display the list with data-testid 'lis'. If the user then clicks the '替换' list item with data-testid 'replace-list-item', the system should display the '替换' tab with data-testid 'replace'. This tab must include the input field for old text with data-testid 'replace-input-old', the input field for new text with data-testid 'replace-input-new', and the '替换' button with data-testid 'replace-button'. If the list is already expanded, clicking '替换' should still display the '替换' tab and its components. If the user attempts to click '替换' without expanding the list first, the '替换' tab should not be displayed, and no action should occur.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_26/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_26-R-4",
+      "text": "The web application should provide a '查找' functionality that allows users to search for text within a specified paragraph. The user can initiate this by clicking the '展开' list item with data-testid 'expand-list-item', followed by selecting the '查找' list item with data-testid 'search-list-item'. This action displays the '查找' tab with data-testid 'search'. Users can then enter text into the input field with data-testid 'search-input' and click the '查找' button with data-testid 'search-button'. Upon clicking, the system should highlight all occurrences of the entered text within the paragraph using a yellow background applied through the <span> tag. If the entered text is not found, the system should display an alert with the message '未找到您要找的文字！'. Additionally, if the input field is left empty, the system should prompt an alert stating '请输入文字！'. The functionality should handle edge cases such as searching for single characters and text that appears multiple times, ensuring all occurrences are highlighted.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_26/requirment_with_tests.json#/finegrained_rewith_test/4/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_26-R-5",
+      "text": "The web application must provide a '替换' (Replace) functionality that allows users to replace occurrences of specified text within a paragraph. The functionality should adhere to the following requirements: \n\n1. **UI Elements and Interactions:**\n   - The '替换' functionality is accessible via a dropdown menu triggered by clicking the '展开' list item with `data-testid='expand-list-item'`.\n   - Within the dropdown, the user must click the '替换' list item with `data-testid='replace-list-item'` to display the '替换' tab with `data-testid='replace`.\n   - The '替换' tab contains:\n     - An input field for the old text with `data-testid='replace-input-old'`.\n     - An input field for the new text with `data-testid='replace-input-new'`.\n     - A button labeled '替换' with `data-testid='replace-button'`.\n\n2. **Functionality:**\n   - When the user enters text into both input fields and clicks the '替换' button:\n     - All occurrences of the old text (case-sensitive) in the paragraph should be replaced with the new text.\n     - The paragraph should visually highlight the replaced text using a `<span>` element with a yellow background.\n   - If the old text appears multiple times in the paragraph, all occurrences must be replaced.\n   - If the old text is a substring of other words, only the exact matches should be replaced.\n\n3. **Error Handling:**\n   - If the old text is not found in the paragraph, an alert should be displayed with the message '未找到您要找的文字！'.\n   - If the old text input field is empty, an alert should be displayed with the message '请输入文字！'.\n\n4. **Expected Results:**\n   - The paragraph's content should be updated dynamically in the DOM to reflect the replacements.\n   - The original paragraph content should be restored when switching between tabs or dropdown options.\n\n5. **Boundary Conditions:**\n   - The system must handle edge cases where the old text appears multiple times or is a substring of other words.\n   - The system must ensure that the replacement process does not affect unrelated text or introduce formatting errors.\n\n6. **UI Behavior:**\n   - The '替换' tab should only be displayed when the corresponding dropdown option is selected.\n   - The dropdown menu should toggle visibility when the '展开' list item is clicked.\n\nThis refined requirement ensures that the '替换' functionality is robust, user-friendly, and handles all specified scenarios, including normal cases, edge cases, and error conditions.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_26/requirment_with_tests.json#/finegrained_rewith_test/5/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_26-R-6",
+      "text": "Upon loading the webpage, the user should be able to interact with the tab switching functionality. Initially, the user clicks the '展开' button, identified by the data-testid 'expand-list-item', to reveal the options '查找' and '替换'. When the user selects a tab by clicking either the '查找' tab with data-testid 'search-tab-item' or the '替换' tab with data-testid 'replace-tab-item', the system must display the corresponding tab content. Specifically, for the '查找' tab, the system should display the input field with data-testid 'search-input' and the button with data-testid 'search-button', while hiding the '替换' tab content, which includes the input fields with data-testids 'replace-input-old' and 'replace-input-new', and the button with data-testid 'replace-button'. Conversely, when the '替换' tab is selected, its content should be displayed, and the '查找' tab content should be hidden. This ensures a seamless user experience in navigating between the search and replace functionalities.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_26/requirment_with_tests.json#/finegrained_rewith_test/6/requirement/description"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Sub-list initial hidden state and expand toggle behavior",
+      "description": "Verify that the sub-list remains hidden by default and toggles between 'none' and 'block' when clicking the expand list item.",
+      "requirement_ids": [
+        "e2edev_bench_26-R-1"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Display search tab and components upon clicking search list item",
+      "description": "Verify that clicking the search list item within the expanded list displays the search tab along with its input field and button, and handles multiple clicks on expand correctly.",
+      "requirement_ids": [
+        "e2edev_bench_26-R-2"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Display replace tab and components upon clicking replace list item",
+      "description": "Verify that clicking the replace list item displays the replace tab containing old text input, new text input, and replace button. Also verify that attempting to click replace without expanding does nothing.",
+      "requirement_ids": [
+        "e2edev_bench_26-R-3"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Successful text search with yellow highlighting",
+      "description": "Verify that entering text and clicking the search button highlights all occurrences within the paragraph using a span with a yellow background.",
+      "requirement_ids": [
+        "e2edev_bench_26-R-4"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Search error handling for empty input and not found text",
+      "description": "Verify that searching with an empty input triggers an alert '请输入文字！' and searching for non-existent text triggers '未找到您要找的文字！'.",
+      "requirement_ids": [
+        "e2edev_bench_26-R-4"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Successful text replacement and DOM update",
+      "description": "Verify that entering valid old and new text and clicking the replace button replaces all exact occurrences, highlights them with yellow span elements, and updates the DOM dynamically.",
+      "requirement_ids": [
+        "e2edev_bench_26-R-5"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Replace error handling and boundary conditions",
+      "description": "Verify that leaving the old text input empty triggers an alert '请输入文字！' and entering non-existent old text triggers '未找到您要找的文字！'. Ensure substring matches are handled correctly.",
+      "requirement_ids": [
+        "e2edev_bench_26-R-5"
+      ]
+    },
+    {
+      "id": "G-008",
+      "title": "Tab switching between search and replace functionalities",
+      "description": "Verify that switching between the search tab and replace tab correctly shows the active tab content while hiding the inactive tab content.",
+      "requirement_ids": [
+        "e2edev_bench_26-R-6"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_26-R-1-TC-1",
+      "title": "[Normal] Display sub-list when '展开' is clicked",
+      "description": "Feature: Display sub-list options when '展开' is clicked\n  The system should display the sub-list containing '查找' and '替换' options when the user clicks on the '展开' list item.\n\n\n  Scenario: [Normal] Display sub-list when '展开' is clicked\n    Given the webpage is loaded and the element with data-testid \"expand-list-item\" is visible\n    When the user clicks on the list item with data-testid \"expand-list-item\"\n    Then the sub-list with data-testid \"lis\" should be displayed\n    And the sub-list should contain two options: \"查找\" and \"替换\"\n",
+      "requirement_ids": [
+        "e2edev_bench_26-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_26/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_26-R-1-TC-2",
+      "title": "[Edge] Ensure sub-list remains hidden if '展开' is not clicked",
+      "description": "Feature: Display sub-list options when '展开' is clicked\n  The system should display the sub-list containing '查找' and '替换' options when the user clicks on the '展开' list item.\n\n\n  Scenario: [Edge] Ensure sub-list remains hidden if '展开' is not clicked\n    Given the webpage is loaded and the element with data-testid \"expand-list-item\" is visible\n    When the user does not interact with the list item with data-testid \"expand-list-item\"\n    Then the sub-list with data-testid \"lis\" should remain hidden\n",
+      "requirement_ids": [
+        "e2edev_bench_26-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_26/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_26-R-2-TC-1",
+      "title": "[Normal] User clicks \"展开\" and selects \"查找\" to display the \"查找\" tab",
+      "description": "Feature: Display the \"查找\" tab and its associated input field and button after selecting \"查找\" from the expanded list\n\n  Background:\n    Given the webpage containing the 查找和替换 functionality is loaded\n    And the user sees the \"展开\" button with data-testid \"expand-list-item\"\n\n\n  Scenario: [Normal] User clicks \"展开\" and selects \"查找\" to display the \"查找\" tab\n    Given the user clicks the \"展开\" button with data-testid \"expand-list-item\"\n    Then the list with data-testid \"lis\" becomes visible\n    When the user clicks the \"查找\" list item with data-testid \"search-list-item\"\n    Then the \"查找\" tab with data-testid \"search\" becomes visible\n    And the input field with data-testid \"search-input\" is displayed\n    And the button with data-testid \"search-button\" is displayed\n",
+      "requirement_ids": [
+        "e2edev_bench_26-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_26/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_26-R-2-TC-2",
+      "title": "[Edge] User clicks \"展开\" multiple times before selecting \"查找\"",
+      "description": "Feature: Display the \"查找\" tab and its associated input field and button after selecting \"查找\" from the expanded list\n\n  Background:\n    Given the webpage containing the 查找和替换 functionality is loaded\n    And the user sees the \"展开\" button with data-testid \"expand-list-item\"\n\n\n  Scenario: [Edge] User clicks \"展开\" multiple times before selecting \"查找\"\n    Given the user clicks the \"展开\" button with data-testid \"expand-list-item\" multiple times\n    Then the list with data-testid \"lis\" remains visible\n    When the user clicks the \"查找\" list item with data-testid \"search-list-item\"\n    Then the \"查找\" tab with data-testid \"search\" becomes visible\n    And the input field with data-testid \"search-input\" is displayed\n    And the button with data-testid \"search-button\" is displayed\n",
+      "requirement_ids": [
+        "e2edev_bench_26-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_26/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_26-R-3-TC-1",
+      "title": "[Normal] User clicks \"展开\" and selects \"替换\" to display the \"替换\" tab",
+      "description": "Feature: Display the \"替换\" tab and its associated input fields and button when the user clicks the \"替换\" list item\n  The system should allow the user to expand the list, select the \"替换\" option, and display the \"替换\" tab with its input fields and button.\n\n\n  Scenario: [Normal] User clicks \"展开\" and selects \"替换\" to display the \"替换\" tab\n    Given the webpage is loaded and the \"展开\" button with data-testid \"expand-list-item\" is visible\n    When the user clicks the \"展开\" button with data-testid \"expand-list-item\"\n    And the user clicks the \"替换\" list item with data-testid \"replace-list-item\"\n    Then the \"替换\" tab with data-testid \"replace\" should be displayed\n    And the input field for old text with data-testid \"replace-input-old\" should be visible\n    And the input field for new text with data-testid \"replace-input-new\" should be visible\n    And the \"替换\" button with data-testid \"replace-button\" should be visible\n",
+      "requirement_ids": [
+        "e2edev_bench_26-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_26/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_26-R-3-TC-2",
+      "title": "[Edge] User clicks \"展开\" and selects \"替换\" when the list is already expanded",
+      "description": "Feature: Display the \"替换\" tab and its associated input fields and button when the user clicks the \"替换\" list item\n  The system should allow the user to expand the list, select the \"替换\" option, and display the \"替换\" tab with its input fields and button.\n\n\n  Scenario: [Edge] User clicks \"展开\" and selects \"替换\" when the list is already expanded\n    Given the webpage is loaded and the \"展开\" button with data-testid \"expand-list-item\" is clicked\n    And the list with data-testid \"lis\" is already expanded\n    When the user clicks the \"替换\" list item with data-testid \"replace-list-item\"\n    Then the \"替换\" tab with data-testid \"replace\" should be displayed\n    And the input field for old text with data-testid \"replace-input-old\" should be visible\n    And the input field for new text with data-testid \"replace-input-new\" should be visible\n    And the \"替换\" button with data-testid \"replace-button\" should be visible\n",
+      "requirement_ids": [
+        "e2edev_bench_26-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_26/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_26-R-3-TC-3",
+      "title": "[Error] User clicks \"替换\" without expanding the list",
+      "description": "Feature: Display the \"替换\" tab and its associated input fields and button when the user clicks the \"替换\" list item\n  The system should allow the user to expand the list, select the \"替换\" option, and display the \"替换\" tab with its input fields and button.\n\n\n  Scenario: [Error] User clicks \"替换\" without expanding the list\n    Given the webpage is loaded and the \"展开\" button with data-testid \"expand-list-item\" is visible\n    And the list with data-testid \"lis\" is not expanded\n    When the user clicks the \"替换\" list item with data-testid \"replace-list-item\"\n    Then the \"替换\" tab with data-testid \"replace\" should not be displayed\n    And an error or no action should occur",
+      "requirement_ids": [
+        "e2edev_bench_26-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_26/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_26-R-4-TC-1",
+      "title": "[Normal] Highlight all occurrences of a valid text input",
+      "description": "Feature: Highlight occurrences of text in the paragraph when using the '查找' functionality\n  The system should allow users to search for text within the paragraph and highlight all occurrences. If the text is not found, an appropriate alert should be displayed.\n\n\n  Scenario: [Normal] Highlight all occurrences of a valid text input\n    Given the webpage is loaded and the paragraph contains the text \"1969年1月，我到文安驿公社接北京知青。\"\n    And the user clicks on the \"展开\" list item with data-testid \"expand-list-item\"\n    And the user clicks on the \"查找\" list item with data-testid \"search-list-item\"\n    And the \"查找\" tab with data-testid \"search\" is displayed\n    When the user enters \"文安驿\" into the input field with data-testid \"search-input\"\n    And the user clicks the \"查找\" button with data-testid \"search-button\"\n    Then all occurrences of \"文安驿\" in the paragraph should be highlighted with a yellow background using the <span> tag\n",
+      "requirement_ids": [
+        "e2edev_bench_26-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_26/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_26-R-4-TC-2",
+      "title": "[Edge] Highlight occurrences of a single character",
+      "description": "Feature: Highlight occurrences of text in the paragraph when using the '查找' functionality\n  The system should allow users to search for text within the paragraph and highlight all occurrences. If the text is not found, an appropriate alert should be displayed.\n\n\n  Scenario: [Edge] Highlight occurrences of a single character\n    Given the webpage is loaded and the paragraph contains the text \"1969年1月，我到文安驿公社接北京知青。\"\n    And the user clicks on the \"展开\" list item with data-testid \"expand-list-item\"\n    And the user clicks on the \"查找\" list item with data-testid \"search-list-item\"\n    And the \"查找\" tab with data-testid \"search\" is displayed\n    When the user enters \"1\" into the input field with data-testid \"search-input\"\n    And the user clicks the \"查找\" button with data-testid \"search-button\"\n    Then all occurrences of \"1\" in the paragraph should be highlighted with a yellow background using the <span> tag\n",
+      "requirement_ids": [
+        "e2edev_bench_26-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_26/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_26-R-4-TC-3",
+      "title": "[Edge] Search for text that appears multiple times",
+      "description": "Feature: Highlight occurrences of text in the paragraph when using the '查找' functionality\n  The system should allow users to search for text within the paragraph and highlight all occurrences. If the text is not found, an appropriate alert should be displayed.\n\n\n  Scenario: [Edge] Search for text that appears multiple times\n    Given the webpage is loaded and the paragraph contains the text \"1969年1月，我到文安驿公社接北京知青。\"\n    And the user clicks on the \"展开\" list item with data-testid \"expand-list-item\"\n    And the user clicks on the \"查找\" list item with data-testid \"search-list-item\"\n    And the \"查找\" tab with data-testid \"search\" is displayed\n    When the user enters \"知青\" into the input field with data-testid \"search-input\"\n    And the user clicks the \"查找\" button with data-testid \"search-button\"\n    Then all occurrences of \"知青\" in the paragraph should be highlighted with a yellow background using the <span> tag\n",
+      "requirement_ids": [
+        "e2edev_bench_26-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_26/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_26-R-4-TC-4",
+      "title": "[Error] Search for text that does not exist in the paragraph",
+      "description": "Feature: Highlight occurrences of text in the paragraph when using the '查找' functionality\n  The system should allow users to search for text within the paragraph and highlight all occurrences. If the text is not found, an appropriate alert should be displayed.\n\n\n  Scenario: [Error] Search for text that does not exist in the paragraph\n    Given the webpage is loaded and the paragraph contains the text \"1969年1月，我到文安驿公社接北京知青。\"\n    And the user clicks on the \"展开\" list item with data-testid \"expand-list-item\"\n    And the user clicks on the \"查找\" list item with data-testid \"search-list-item\"\n    And the \"查找\" tab with data-testid \"search\" is displayed\n    When the user enters \"不存在的文字\" into the input field with data-testid \"search-input\"\n    And the user clicks the \"查找\" button with data-testid \"search-button\"\n    Then an alert should be displayed with the message \"未找到您要找的文字！\"\n",
+      "requirement_ids": [
+        "e2edev_bench_26-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_26/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_26-R-4-TC-5",
+      "title": "[Error] Search with an empty input field",
+      "description": "Feature: Highlight occurrences of text in the paragraph when using the '查找' functionality\n  The system should allow users to search for text within the paragraph and highlight all occurrences. If the text is not found, an appropriate alert should be displayed.\n\n\n  Scenario: [Error] Search with an empty input field\n    Given the webpage is loaded and the paragraph contains the text \"1969年1月，我到文安驿公社接北京知青。\"\n    And the user clicks on the \"展开\" list item with data-testid \"expand-list-item\"\n    And the user clicks on the \"查找\" list item with data-testid \"search-list-item\"\n    And the \"查找\" tab with data-testid \"search\" is displayed\n    When the user leaves the input field with data-testid \"search-input\" empty\n    And the user clicks the \"查找\" button with data-testid \"search-button\"\n    Then an alert should be displayed with the message \"请输入文字！\"",
+      "requirement_ids": [
+        "e2edev_bench_26-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_26/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/4/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_26-R-5-TC-1",
+      "title": "[Normal] Replace occurrences of old text with new text",
+      "description": "Feature: Replace text functionality in the paragraph\n  The system should allow users to replace occurrences of specified text in the paragraph with new text. If the old text is not found, an alert should be displayed.\n\n\n  Scenario: [Normal] Replace occurrences of old text with new text\n    Given the webpage is loaded and the paragraph contains the text \"梁家河村一共来了十五名北京知青\"\n    And the user clicks on the \"展开\" list item with data-testid \"expand-list-item\"\n    And the user clicks on the \"替换\" list item with data-testid \"replace-list-item\"\n    And the \"替换\" tab with data-testid \"replace\" is displayed\n    When the user enters \"北京知青\" into the old text input field with data-testid \"replace-input-old\"\n    And the user enters \"知青们\" into the new text input field with data-testid \"replace-input-new\"\n    And the user clicks the \"替换\" button with data-testid \"replace-button\"\n    Then all occurrences of \"北京知青\" in the paragraph should be replaced with \"知青们\"\n    And the paragraph should display \"梁家河村一共来了十五名知青们\"\n",
+      "requirement_ids": [
+        "e2edev_bench_26-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_26/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_26-R-5-TC-2",
+      "title": "[Edge] Replace text when the old text appears multiple times",
+      "description": "Feature: Replace text functionality in the paragraph\n  The system should allow users to replace occurrences of specified text in the paragraph with new text. If the old text is not found, an alert should be displayed.\n\n\n  Scenario: [Edge] Replace text when the old text appears multiple times\n    Given the webpage is loaded and the paragraph contains the text \"梁家河村一共来了十五名北京知青\"\n    And the user clicks on the \"展开\" list item with data-testid \"expand-list-item\"\n    And the user clicks on the \"替换\" list item with data-testid \"replace-list-item\"\n    And the \"替换\" tab with data-testid \"replace\" is displayed\n    When the user enters \"北京知青\" into the old text input field with data-testid \"replace-input-old\"\n    And the user enters \"知青们\" into the new text input field with data-testid \"replace-input-new\"\n    And the user clicks the \"替换\" button with data-testid \"replace-button\"\n    Then all occurrences of \"北京知青\" in the paragraph should be replaced with \"知青们\"\n    And the paragraph should contain \"梁家河村一共来了十五名知青们\"\n",
+      "requirement_ids": [
+        "e2edev_bench_26-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_26/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_26-R-5-TC-3",
+      "title": "[Edge] Replace text when the old text is a substring of other words",
+      "description": "Feature: Replace text functionality in the paragraph\n  The system should allow users to replace occurrences of specified text in the paragraph with new text. If the old text is not found, an alert should be displayed.\n\n\nScenario: [Edge] Replace text when the old text is a substring of other words\n    Given the webpage is loaded and the paragraph contains the text \"梁家河村一共来了十五名北京知青\"\n    And the user clicks on the \"展开\" list item with data-testid \"expand-list-item\"\n    And the user clicks on the \"替换\" list item with data-testid \"replace-list-item\"\n    And the \"替换\" tab with data-testid \"replace\" is displayed\n    When the user enters \"北\" into the old text input field with data-testid \"replace-input-old\"\n    And the user enters \"南\" into the new text input field with data-testid \"replace-input-new\"\n    And the user clicks the \"替换\" button with data-testid \"replace-button\"\n    Then all occurrences of \"北\" in the paragraph should be replaced with \"南\"\n    And the paragraph should contain \"梁家河村一共来了十五名南京知青\"",
+      "requirement_ids": [
+        "e2edev_bench_26-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_26/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_26-R-5-TC-4",
+      "title": "[Error] Replace text when the old text is not found",
+      "description": "Feature: Replace text functionality in the paragraph\n  The system should allow users to replace occurrences of specified text in the paragraph with new text. If the old text is not found, an alert should be displayed.\n\n\n  Scenario: [Error] Replace text when the old text is not found\n    Given the webpage is loaded and the paragraph contains the text \"梁家河村一共来了十五名北京知青\"\n    And the user clicks on the \"展开\" list item with data-testid \"expand-list-item\"\n    And the user clicks on the \"替换\" list item with data-testid \"replace-list-item\"\n    And the \"替换\" tab with data-testid \"replace\" is displayed\n    When the user enters \"不存在的文字\" into the old text input field with data-testid \"replace-input-old\"\n    And the user enters \"新文字\" into the new text input field with data-testid \"replace-input-new\"\n    And the user clicks the \"替换\" button with data-testid \"replace-button\"\n    Then an alert should be displayed with the message \"未找到您要找的文字！\"\n",
+      "requirement_ids": [
+        "e2edev_bench_26-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_26/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_26-R-5-TC-5",
+      "title": "[Error] Replace text when the old text input field is empty",
+      "description": "Feature: Replace text functionality in the paragraph\n  The system should allow users to replace occurrences of specified text in the paragraph with new text. If the old text is not found, an alert should be displayed.\n\n\n  Scenario: [Error] Replace text when the old text input field is empty\n    Given the webpage is loaded and the paragraph contains the text \"梁家河村一共来了十五名北京知青\"\n    And the user clicks on the \"展开\" list item with data-testid \"expand-list-item\"\n    And the user clicks on the \"替换\" list item with data-testid \"replace-list-item\"\n    And the \"替换\" tab with data-testid \"replace\" is displayed\n    When the user leaves the old text input field with data-testid \"replace-input-old\" empty\n    And the user enters \"新文字\" into the new text input field with data-testid \"replace-input-new\"\n    And the user clicks the \"替换\" button with data-testid \"replace-button\"\n    Then an alert should be displayed with the message \"请输入文字！\"\n",
+      "requirement_ids": [
+        "e2edev_bench_26-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_26/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/4/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_26-R-6-TC-1",
+      "title": "[Normal] User switches to the \"查找\" tab",
+      "description": "Feature: Tab Switching Functionality\n  The system should allow users to switch between \"查找\" and \"替换\" tabs, displaying the relevant input fields and buttons while hiding the other tab's content.\n\n\n  Scenario: [Normal] User switches to the \"查找\" tab\n    Given the webpage is loaded\n    And the user sees the \"展开\" button with data-testid \"expand-list-item\"\n    And the user clicks the \"展开\" button with data-testid \"expand-list-item\"\n    And the user clicks the \"替换\" option with data-testid \"replace-list-item\"\n    When the user clicks the \"查找\" tab with data-testid \"search-tab-item\"\n    Then the \"查找\" tab content with data-testid \"search\" should be displayed\n    And the \"替换\" tab content with data-testid \"replace\" should be hidden\n",
+      "requirement_ids": [
+        "e2edev_bench_26-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_26/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_26-R-6-TC-2",
+      "title": "[Normal] User switches to the \"替换\" tab",
+      "description": "Feature: Tab Switching Functionality\n  The system should allow users to switch between \"查找\" and \"替换\" tabs, displaying the relevant input fields and buttons while hiding the other tab's content.\n\n\nScenario: [Normal] User switches to the \"替换\" tab\n    Given the webpage is loaded\n    And the user sees the \"展开\" button with data-testid \"expand-list-item\"\n    And the user clicks the \"展开\" button with data-testid \"expand-list-item\"\n    And the user clicks the \"查找\" option with data-testid \"search-list-item\"\n    When the user clicks the \"替换\" tab with data-testid \"replace-tab-item\"\n    Then the \"替换\" tab content with data-testid \"replace\" should be displayed\n    And the \"查找\" tab content with data-testid \"search\" should be hidden",
+      "requirement_ids": [
+        "e2edev_bench_26-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_26/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 8,
+    "reference_count": 19,
+    "matches": [
+      {
+        "generated_id": "G-001",
+        "reference_id": "e2edev_bench_26-R-1-TC-2",
+        "similarity": 0.8932964892209209
+      },
+      {
+        "generated_id": "G-002",
+        "reference_id": "e2edev_bench_26-R-2-TC-2",
+        "similarity": 0.9080169066138719
+      },
+      {
+        "generated_id": "G-003",
+        "reference_id": "e2edev_bench_26-R-3-TC-1",
+        "similarity": 0.9309757249736685
+      },
+      {
+        "generated_id": "G-004",
+        "reference_id": "e2edev_bench_26-R-4-TC-1",
+        "similarity": 0.9064208422631213
+      },
+      {
+        "generated_id": "G-005",
+        "reference_id": "e2edev_bench_26-R-4-TC-5",
+        "similarity": 0.9117957189289669
+      },
+      {
+        "generated_id": "G-006",
+        "reference_id": "e2edev_bench_26-R-5-TC-3",
+        "similarity": 0.8518085576225223
+      },
+      {
+        "generated_id": "G-007",
+        "reference_id": "e2edev_bench_26-R-5-TC-5",
+        "similarity": 0.8914195161516106
+      },
+      {
+        "generated_id": "G-008",
+        "reference_id": "e2edev_bench_26-R-6-TC-2",
+        "similarity": 0.9205335715371495
+      }
+    ],
+    "unmatched_generated_ids": [],
+    "unmatched_reference_ids": [
+      "e2edev_bench_26-R-1-TC-1",
+      "e2edev_bench_26-R-2-TC-1",
+      "e2edev_bench_26-R-3-TC-2",
+      "e2edev_bench_26-R-3-TC-3",
+      "e2edev_bench_26-R-4-TC-2",
+      "e2edev_bench_26-R-4-TC-3",
+      "e2edev_bench_26-R-4-TC-4",
+      "e2edev_bench_26-R-5-TC-1",
+      "e2edev_bench_26-R-5-TC-2",
+      "e2edev_bench_26-R-5-TC-4",
+      "e2edev_bench_26-R-6-TC-1"
+    ],
+    "precision": 1.0,
+    "recall": 0.42105263157894735,
+    "f1": 0.5925925925925926,
+    "embedding_usage": {
+      "input_tokens": 4493,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 4493
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 2
+  },
+  "generation": {
+    "selected_techniques": [],
+    "technique_rationales": {},
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": 2098,
+      "output_tokens": 820,
+      "details": {
+        "text_prompt_tokens": 2098,
+        "total_tokens": 2918
+      },
+      "status": "available"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": 4493,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 4493
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 2
+  },
+  "links": {
+    "requirements": {
+      "e2edev_bench_26-R-1": "e2edev_bench_26-R-1/requirement.md",
+      "e2edev_bench_26-R-2": "e2edev_bench_26-R-2/requirement.md",
+      "e2edev_bench_26-R-3": "e2edev_bench_26-R-3/requirement.md",
+      "e2edev_bench_26-R-4": "e2edev_bench_26-R-4/requirement.md",
+      "e2edev_bench_26-R-5": "e2edev_bench_26-R-5/requirement.md",
+      "e2edev_bench_26-R-6": "e2edev_bench_26-R-6/requirement.md"
+    },
+    "cases": {
+      "G-001": {
+        "e2edev_bench_26-R-1": "e2edev_bench_26-R-1/test cases/1_Sub-list_initial_hidden_state_and_expand_toggle.md"
+      },
+      "G-002": {
+        "e2edev_bench_26-R-2": "e2edev_bench_26-R-2/test cases/2_Display_search_tab_and_components_upon_clicking.md"
+      },
+      "G-003": {
+        "e2edev_bench_26-R-3": "e2edev_bench_26-R-3/test cases/3_Display_replace_tab_and_components_upon_clicking.md"
+      },
+      "G-004": {
+        "e2edev_bench_26-R-4": "e2edev_bench_26-R-4/test cases/4_Successful_text_search_with_yellow_highlighting.md"
+      },
+      "G-005": {
+        "e2edev_bench_26-R-4": "e2edev_bench_26-R-4/test cases/5_Search_error_handling_for_empty_input_and_not_fo.md"
+      },
+      "G-006": {
+        "e2edev_bench_26-R-5": "e2edev_bench_26-R-5/test cases/6_Successful_text_replacement_and_DOM_update.md"
+      },
+      "G-007": {
+        "e2edev_bench_26-R-5": "e2edev_bench_26-R-5/test cases/7_Replace_error_handling_and_boundary_conditions.md"
+      },
+      "G-008": {
+        "e2edev_bench_26-R-6": "e2edev_bench_26-R-6/test cases/8_Tab_switching_between_search_and_replace_functio.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

@@ -1,0 +1,3 @@
+# e2edev\_bench\_15-R-7
+
+When the user clicks the Fullscreen button, the video player should toggle between fullscreen mode and normal mode. The Fullscreen button is identified by the attribute 'data-testid' with the value 'fullscreen-button'. The video player element is represented by the 'player' class in the DOM. When toggling to fullscreen mode, the 'fullPlayer' class should be added to the player element, and when toggling back to normal mode, the 'fullPlayer' class should be removed. The functionality should work regardless of the current state of the video player (fullscreen or normal mode).

@@ -1,0 +1,403 @@
+{
+  "schema_version": 1,
+  "solution": "one-shot",
+  "unit_id": "e2edev_bench_10",
+  "parent_id": null,
+  "status": "evaluated",
+  "failure": null,
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "e2edev_bench_10-R-1",
+      "text": "When the user accesses the Online Quiz Portal webpage, the system must display an h1 element with the text 'Online Quiz Portal', an h2 element with the text 'What is the capital of France?' (data-testid: 'question'), a div (data-testid: 'options') containing four radio button options ('Berlin', 'Madrid', 'Paris', 'Lisbon', each with type 'radio', name 'option', and their respective data-testids: 'option-0' to 'option-3'), and a button labeled 'Next Question' (data-testid: 'next-button').",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_10/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_10-R-2",
+      "text": "When the user views a question on the Online Quiz Portal page, the system displays the current question text in the <h2> element (data-testid: 'question'). Initially, it shows 'What is the capital of France?'. After the user clicks the button (data-testid: 'next-button'), the question updates to 'What is 2 + 2?', and after another click, it updates to 'What is the largest ocean on Earth?'.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_10/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_10-R-3",
+      "text": "When the user accesses the 'Online Quiz Portal' page, the system dynamically generates answer options for the current question, displaying them as radio buttons within the <div> element (data-testid: 'options'). Each option is a radio input with a unique value matching the option text, a label showing the text, and a shared name attribute 'option' to allow single selection. The system updates the radio buttons for each question based on the quizData array.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_10/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_10-R-4",
+      "text": "The Online Quiz Portal must allow users to select one answer per question using radio buttons within the <div> element (data-testid: 'options'). Each radio button has a unique data-testid in the format 'option-{index}', and no option is selected by default. When the user clicks a radio button, it becomes selected while any previous selection is cleared.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_10/requirment_with_tests.json#/finegrained_rewith_test/4/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_10-R-5",
+      "text": "After the user selects an option and clicks the <button> (data-testid: 'next-button') to proceed. Upon clicking, the system checks if an option is selected: if correct, it increments the score by 1; if not selected, it proceeds without scoring. The system updates to the next question or, if none remain, hides the question, options, and button (by adding the 'hidden' class) and displays the final score in the <div> (data-testid: 'score') with the message 'You scored {score} out of {total number of questions}'.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_10/requirment_with_tests.json#/finegrained_rewith_test/5/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_10-R-6",
+      "text": "When the user clicks the button with data-testid 'next-button' after answering or skipping the last question on the Online Quiz Portal, if all questions are completed, the system must hide the element with data-testid 'question', hide the element with data-testid 'options', hide the element with data-testid 'next-button', and display the element with data-testid 'score' showing the text 'You scored X out of Y'.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_10/requirment_with_tests.json#/finegrained_rewith_test/6/requirement/description"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Verify initial page elements load correctly",
+      "description": "Access the Online Quiz Portal webpage and verify the presence of the h1 title, the h2 question element, the options div with four radio buttons, and the Next Question button.",
+      "requirement_ids": [
+        "e2edev_bench_10-R-1"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Verify question navigation sequence",
+      "description": "Verify the initial question text, click the next button to view the second question, and click again to view the third question.",
+      "requirement_ids": [
+        "e2edev_bench_10-R-2"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Verify dynamic answer options generation",
+      "description": "Verify that answer options are dynamically generated as radio buttons with correct values, labels, and shared name attribute for each question.",
+      "requirement_ids": [
+        "e2edev_bench_10-R-3"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Verify single selection behavior for radio buttons",
+      "description": "Select an answer option and verify it becomes selected while ensuring no option is selected by default and previous selections are cleared upon a new selection.",
+      "requirement_ids": [
+        "e2edev_bench_10-R-4"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Verify scoring and navigation with correct answers",
+      "description": "Select correct options, proceed through questions, and verify that the score increments and the final score is displayed properly when questions are exhausted.",
+      "requirement_ids": [
+        "e2edev_bench_10-R-5"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Verify proceeding without selection (abnormal case)",
+      "description": "Click the next button without selecting any option and verify that the system proceeds without incrementing the score.",
+      "requirement_ids": [
+        "e2edev_bench_10-R-5"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Verify final score display and UI element hiding",
+      "description": "Complete all questions, click the next button on the last question, and verify that the question, options, and next button elements are hidden while the score element is displayed with the final results.",
+      "requirement_ids": [
+        "e2edev_bench_10-R-6"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_10-R-1-TC-1",
+      "title": "[Normal] User accesses the Online Quiz Portal",
+      "description": "Feature: Display Initial Page of Online Quiz Portal\n  The purpose of this feature is to ensure that when a user accesses the Online Quiz Portal, the system correctly displays the title and the first question with its options.\n\n\n  Scenario: [Normal] User accesses the Online Quiz Portal\n    Given the user navigates to the Online Quiz Portal webpage\n    Then the system displays the title \"Online Quiz Portal\"\n    And the system displays the first question \"What is the capital of France?\" with its options\n    And the options displayed are \"Berlin\", \"Madrid\", \"Paris\", \"Lisbon\"\n",
+      "requirement_ids": [
+        "e2edev_bench_10-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_10/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_10-R-2-TC-1",
+      "title": "[Normal] Display the first question",
+      "description": "Feature: Displaying Questions in the Online Quiz Portal\n  The system should display the text of the current question in the <h2> element with ID \"question\" when the user views a question.\n\n\n  Scenario: [Normal] Display the first question\n    Given the Online Quiz Portal page is loaded\n    When the user views the question displayed in the <h2> element with data-testid \"question\"\n    Then the system displays \"What is the capital of France?\" in the <h2> element with data-testid \"question\"\n",
+      "requirement_ids": [
+        "e2edev_bench_10-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_10/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_10-R-2-TC-2",
+      "title": "[Normal] Display the second question after clicking Next",
+      "description": "Feature: Displaying Questions in the Online Quiz Portal\n  The system should display the text of the current question in the <h2> element with ID \"question\" when the user views a question.\n\n\n  Scenario: [Normal] Display the second question after clicking Next\n    Given the Online Quiz Portal page is loaded\n    And the user views the question displayed in the <h2> element with data-testid \"question\"\n    When the user clicks the button with data-testid \"next-button\"\n    Then the system displays \"What is 2 + 2?\" in the <h2> element with data-testid \"question\"\n",
+      "requirement_ids": [
+        "e2edev_bench_10-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_10/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_10-R-2-TC-3",
+      "title": "[Normal] Display the third question after clicking Next twice",
+      "description": "Feature: Displaying Questions in the Online Quiz Portal\n  The system should display the text of the current question in the <h2> element with ID \"question\" when the user views a question.\n\n\nScenario: [Normal] Display the third question after clicking Next twice\n    Given the Online Quiz Portal page is loaded\n    And the user views the question displayed in the <h2> element with data-testid \"question\"\n    When the user clicks the button with data-testid \"next-button\"\n    And the user clicks the button with data-testid \"next-button\" \n    Then the system displays \"What is the largest ocean on Earth?\" in the <h2> element with data-testid \"question\"",
+      "requirement_ids": [
+        "e2edev_bench_10-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_10/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_10-R-3-TC-1",
+      "title": "[Normal] Display radio buttons for answer options",
+      "description": "Feature: Display of Answer Options as Radio Buttons\n  The system should dynamically generate and display radio buttons for each answer option when the user views a question.\n\n\n  Scenario: [Normal] Display radio buttons for answer options\n    Given the \"Online Quiz Portal\" page is loaded\n    When the user views the question \"What is the capital of France?\"\n    Then the system should display radio buttons for the options \"Berlin\", \"Madrid\", \"Paris\", and \"Lisbon\" within the <div> element with data-testid \"options\"\n",
+      "requirement_ids": [
+        "e2edev_bench_10-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_10/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_10-R-4-TC-1",
+      "title": "[Normal] User selects an answer option",
+      "description": "Feature: Answer Selection in Online Quiz Portal\n  The feature ensures that when a user selects an answer option, the system correctly marks the selected radio button as checked.\n\n\n  Scenario: [Normal] User selects an answer option\n    Given the \"Online Quiz Portal\" page is loaded\n    And the first question \"What is the capital of France?\" is displayed with options \"Berlin\", \"Madrid\", \"Paris\", \"Lisbon\"\n    When the user clicks on the radio button for the option \"Paris\" with data-testid \"option-2\"\n    Then the radio button for the option \"Paris\" should be marked as checked\n",
+      "requirement_ids": [
+        "e2edev_bench_10-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_10/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_10-R-4-TC-2",
+      "title": "[Edge] User selects an answer option and changes selection",
+      "description": "Feature: Answer Selection in Online Quiz Portal\n  The feature ensures that when a user selects an answer option, the system correctly marks the selected radio button as checked.\n\n\n  Scenario: [Edge] User selects an answer option and changes selection\n    Given the \"Online Quiz Portal\" page is loaded\n    And the first question \"What is the capital of France?\" is displayed with options \"Berlin\", \"Madrid\", \"Paris\", \"Lisbon\"\n    When the user clicks on the radio button for the option \"Berlin\" with data-testid \"option-0\"\n    And the user clicks on the radio button for the option \"Paris\" with data-testid \"option-2\"\n    Then the radio button for the option \"Berlin\" should not be marked as checked\n    And the radio button for the option \"Paris\" should be marked as checked\n",
+      "requirement_ids": [
+        "e2edev_bench_10-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_10/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_10-R-4-TC-3",
+      "title": "[Error] User attempts to select an answer option without clicking",
+      "description": "Feature: Answer Selection in Online Quiz Portal\n  The feature ensures that when a user selects an answer option, the system correctly marks the selected radio button as checked.\n\n\n  Scenario: [Error] User attempts to select an answer option without clicking\n    Given the \"Online Quiz Portal\" page is loaded\n    And the first question \"What is the capital of France?\" is displayed with options \"Berlin\", \"Madrid\", \"Paris\", \"Lisbon\"\n    When the user does not click any radio button\n    Then no radio button should be marked as checked",
+      "requirement_ids": [
+        "e2edev_bench_10-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_10/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_10-R-5-TC-1",
+      "title": "[Normal] User clicks \"Next Question\" after selecting the correct answer",
+      "description": "Feature: Quiz Navigation and Scoring\n  The purpose of this feature is to ensure that when the user clicks the \"Next Question\" button, the system correctly calculates the score, updates the question index, and loads the next question if available.\n\n\n  Scenario: [Normal] User clicks \"Next Question\" after selecting the correct answer\n    Given the quiz page is loaded\n    And the first question \"What is the capital of France?\" is displayed\n    And the user selects the option \"Paris\" with data-testid \"option-2\"\n    When the user clicks the \"Next Question\" button with data-testid \"next-button\"\n    Then the next question \"What is 2 + 2?\" should be displayed\n",
+      "requirement_ids": [
+        "e2edev_bench_10-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_10/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_10-R-5-TC-2",
+      "title": "[Normal] User clicks \"Next Question\" after selecting an incorrect answer",
+      "description": "Feature: Quiz Navigation and Scoring\n  The purpose of this feature is to ensure that when the user clicks the \"Next Question\" button, the system correctly calculates the score, updates the question index, and loads the next question if available.\n\n\nScenario: [Normal] User clicks \"Next Question\" after selecting an incorrect answer\n    Given the quiz page is loaded\n    And the first question \"What is the capital of France?\" is displayed\n    And the user selects the option \"Berlin\" with data-testid \"option-0\"\n    When the user clicks the \"Next Question\" button with data-testid \"next-button\"\n    Then the next question \"What is 2 + 2?\" should be displayed",
+      "requirement_ids": [
+        "e2edev_bench_10-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_10/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_10-R-5-TC-3",
+      "title": "[Edge] User clicks \"Next Question\" without selecting any answer",
+      "description": "Feature: Quiz Navigation and Scoring\n  The purpose of this feature is to ensure that when the user clicks the \"Next Question\" button, the system correctly calculates the score, updates the question index, and loads the next question if available.\n\n\nScenario: [Edge] User clicks \"Next Question\" without selecting any answer\n    Given the quiz page is loaded\n    And the first question \"What is the capital of France?\" is displayed\n    And no option is selected\n    When the user clicks the \"Next Question\" button with data-testid \"next-button\"\n    Then the next question \"What is 2 + 2?\" should be displayed",
+      "requirement_ids": [
+        "e2edev_bench_10-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_10/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_10-R-6-TC-1",
+      "title": "[Normal] User completes all questions and views final score",
+      "description": "Feature: Display Final Score After Completing All Questions\n  The system should hide the question, options, and button elements, and display the final score when the user completes all questions and clicks the \"Next Question\" button.\n\n\nScenario: [Normal] User completes all questions and views final score  \n  Given the \"Online Quiz Portal\" page is loaded  \n  When the user selects the answer \"Paris\" with data-testid \"option-2\" on question 1\n  And the user clicks the \"Next Question\" button with data-testid \"next-button\"  \n  And the user selects the correct answer \"4\" with data-testid \"option-1\" on question 2\n  And the user clicks the \"Next Question\" button with data-testid \"next-button\"  \n  And the user selects the correct answer \"Pacific Ocean\" with data-testid \"option-3\" on question 3  \n  And the user clicks the \"Next Question\" button with data-testid \"next-button\"  \n  Then the element with data-testid \"question\" should be hidden  \n  And the element with data-testid \"options\" should be hidden  \n  And the element with data-testid \"next-button\" should be hidden  \n  And the element with data-testid \"score\" should be visible  \n  And the element with data-testid \"score\" should display \"You scored 3 out of 3\"",
+      "requirement_ids": [
+        "e2edev_bench_10-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_10/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_10-R-6-TC-2",
+      "title": "[Normal] User completes all questions with incorrect answers",
+      "description": "Feature: Display Final Score After Completing All Questions\n  The system should hide the question, options, and button elements, and display the final score when the user completes all questions and clicks the \"Next Question\" button.\n\n\nScenario: [Normal] User completes all questions with incorrect answers  \n  Given the \"Online Quiz Portal\" page is loaded  \n  When the user selects the answer \"Berlin\" with data-testid \"option-0\" on question 1  \n  And the user clicks the \"Next Question\" button with data-testid \"next-button\"  \n  And the user selects the answer \"5\" with data-testid \"option-2” on question 2  \n  And the user clicks the \"Next Question\" button with data-testid \"next-button\"  \n  And the user selects the answer \"Atlantic Ocean\" with data-testid \"option-0” on question 3  \n  And the user clicks the \"Next Question\" button with data-testid \"next-button\"  \n  Then the element with data-testid \"question\" should be hidden  \n  And the element with data-testid \"options\" should be hidden  \n  And the element with data-testid \"next-button\" should be hidden  \n  And the element with data-testid \"score\" should be visible  \n  And the element with data-testid \"score\" should display \"You scored 0 out of 3\"",
+      "requirement_ids": [
+        "e2edev_bench_10-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_10/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_10-R-6-TC-3",
+      "title": "[Error] User does not select an answer for the last question",
+      "description": "Feature: Display Final Score After Completing All Questions\n  The system should hide the question, options, and button elements, and display the final score when the user completes all questions and clicks the \"Next Question\" button.\n\n\nScenario: [Error] User does not select an answer for the last question  \n  Given the \"Online Quiz Portal\" page is loaded  \n  When the user selects the answer \"Paris\" with data-testid \"option-2” on question 1  \n  And the user clicks the \"Next Question\" button with data-testid \"next-button\"  \n  And the user selects the answer \"4\" with data-testid \"option-1” on question 2  \n  And the user clicks the \"Next Question\" button with data-testid \"next-button\"  \n  And the user does not select any answer on question 3  \n  And the user clicks the \"Next Question\" button with data-testid \"next-button\"  \n  Then the element with data-testid \"question\" should not be visible\n  And the element with data-testid \"options\" should not be visible\n  And the element with data-testid \"score\" should be visible\n  And the element with data-testid \"score\" should display \"You scored 2 out of 3\"",
+      "requirement_ids": [
+        "e2edev_bench_10-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_10/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 7,
+    "reference_count": 14,
+    "matches": [
+      {
+        "generated_id": "G-001",
+        "reference_id": "e2edev_bench_10-R-2-TC-2",
+        "similarity": 0.8687756824688967
+      },
+      {
+        "generated_id": "G-002",
+        "reference_id": "e2edev_bench_10-R-2-TC-3",
+        "similarity": 0.8489953683623939
+      },
+      {
+        "generated_id": "G-003",
+        "reference_id": "e2edev_bench_10-R-3-TC-1",
+        "similarity": 0.8529290515439775
+      },
+      {
+        "generated_id": "G-004",
+        "reference_id": "e2edev_bench_10-R-4-TC-2",
+        "similarity": 0.8594421676097131
+      },
+      {
+        "generated_id": "G-005",
+        "reference_id": "e2edev_bench_10-R-5-TC-1",
+        "similarity": 0.8645548790299511
+      },
+      {
+        "generated_id": "G-006",
+        "reference_id": "e2edev_bench_10-R-5-TC-3",
+        "similarity": 0.8671677862661402
+      },
+      {
+        "generated_id": "G-007",
+        "reference_id": "e2edev_bench_10-R-6-TC-1",
+        "similarity": 0.9030665751687801
+      }
+    ],
+    "unmatched_generated_ids": [],
+    "unmatched_reference_ids": [
+      "e2edev_bench_10-R-1-TC-1",
+      "e2edev_bench_10-R-2-TC-1",
+      "e2edev_bench_10-R-4-TC-1",
+      "e2edev_bench_10-R-4-TC-3",
+      "e2edev_bench_10-R-5-TC-2",
+      "e2edev_bench_10-R-6-TC-2",
+      "e2edev_bench_10-R-6-TC-3"
+    ],
+    "precision": 1.0,
+    "recall": 0.5,
+    "f1": 0.6666666666666666,
+    "embedding_usage": {
+      "input_tokens": 2642,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 2642
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 2
+  },
+  "generation": {
+    "selected_techniques": [],
+    "technique_rationales": {},
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": 1175,
+      "output_tokens": 680,
+      "details": {
+        "text_prompt_tokens": 1175,
+        "total_tokens": 1855
+      },
+      "status": "available"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": 2642,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 2642
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 2
+  },
+  "links": {
+    "requirements": {
+      "e2edev_bench_10-R-1": "e2edev_bench_10-R-1/requirement.md",
+      "e2edev_bench_10-R-2": "e2edev_bench_10-R-2/requirement.md",
+      "e2edev_bench_10-R-3": "e2edev_bench_10-R-3/requirement.md",
+      "e2edev_bench_10-R-4": "e2edev_bench_10-R-4/requirement.md",
+      "e2edev_bench_10-R-5": "e2edev_bench_10-R-5/requirement.md",
+      "e2edev_bench_10-R-6": "e2edev_bench_10-R-6/requirement.md"
+    },
+    "cases": {
+      "G-001": {
+        "e2edev_bench_10-R-1": "e2edev_bench_10-R-1/test cases/1_Verify_initial_page_elements_load_correctly.md"
+      },
+      "G-002": {
+        "e2edev_bench_10-R-2": "e2edev_bench_10-R-2/test cases/2_Verify_question_navigation_sequence.md"
+      },
+      "G-003": {
+        "e2edev_bench_10-R-3": "e2edev_bench_10-R-3/test cases/3_Verify_dynamic_answer_options_generation.md"
+      },
+      "G-004": {
+        "e2edev_bench_10-R-4": "e2edev_bench_10-R-4/test cases/4_Verify_single_selection_behavior_for_radio_butto.md"
+      },
+      "G-005": {
+        "e2edev_bench_10-R-5": "e2edev_bench_10-R-5/test cases/5_Verify_scoring_and_navigation_with_correct_answe.md"
+      },
+      "G-006": {
+        "e2edev_bench_10-R-5": "e2edev_bench_10-R-5/test cases/6_Verify_proceeding_without_selection_abnormal_cas.md"
+      },
+      "G-007": {
+        "e2edev_bench_10-R-6": "e2edev_bench_10-R-6/test cases/7_Verify_final_score_display_and_UI_element_hiding.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

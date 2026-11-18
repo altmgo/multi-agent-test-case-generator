@@ -1,0 +1,3 @@
+# e2edev\_bench\_64-R-2
+
+When the user correctly guesses the secret number by entering it into the input field with data-testid 'guess-input' and clicking the 'Check!' button with data-testid 'check-button', the system should perform the following actions: display the message '🎉 Correct Number!' in the element with data-testid 'game-message', reveal the secret number in the element with data-testid 'hidden-number', change the background color of the body to '#60b347', and increase the width of the element with data-testid 'hidden-number' to '30rem'. Additionally, if the current score is higher than the highscore, update the highscore displayed in the element with data-testid 'highscore-value'.

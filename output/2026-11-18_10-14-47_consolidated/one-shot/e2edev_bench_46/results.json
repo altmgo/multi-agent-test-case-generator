@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "solution": "one-shot",
+  "unit_id": "e2edev_bench_46",
+  "parent_id": null,
+  "status": "evaluated",
+  "failure": null,
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "e2edev_bench_46-R-1",
+      "text": "Upon loading the web page, the application must automatically determine the current day of the week using the user's local date settings. It should display the name of the day in the span element with the attribute data-testid='weekday'. Additionally, a corresponding quote should be displayed in the span element with the attribute data-testid='phrase'. The application should handle all days from Sunday to Saturday, ensuring the correct day name and quote are shown based on the local date settings. No user interaction is required for this functionality, and the display should update immediately upon page load.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_46/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_46-R-2",
+      "text": "Upon loading the web page, the system must dynamically determine the current day of the week using the local computer's date. It should then display the name of the day in the span element with the data-testid 'weekday' and a predefined quote associated with that day in the span element with the data-testid 'phrase'. The page structure includes a container div with data-testid 'container', a heading with data-testid 'heading', and two span elements for displaying the day and quote. The JavaScript code should execute upon page load, selecting the appropriate elements using their data-testid attributes and updating their innerHTML properties with the correct day name and quote. No user interaction is required for this functionality to execute, and no persistent storage is involved.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_46/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Verify automatic weekday and quote display on page load",
+      "description": "Verify that upon loading the web page, the application correctly determines the current day of the week using local date settings and displays the correct weekday name in the span with data-testid='weekday' and the corresponding quote in the span with data-testid='phrase' without any user interaction.",
+      "requirement_ids": [
+        "e2edev_bench_46-R-1",
+        "e2edev_bench_46-R-2"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_46-R-1-TC-1",
+      "title": "[Normal] Display correct day of the week on a Monday",
+      "description": "Feature: Display Current Day of the Week\n  The system must automatically detect the current day of the week using the user's local date settings and display the corresponding day name in the span element with the data-testid 'weekday'.\n\n\n  Scenario: [Normal] Display correct day of the week on a Monday\n    Given the user opens the web page\n    When the system retrieves the local date settings\n    Then the span element with data-testid 'weekday' should display correctly\n",
+      "requirement_ids": [
+        "e2edev_bench_46-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_46/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_46-R-2-TC-1",
+      "title": "[Normal] Display quote for the right day",
+      "description": "Feature: Display Quote Associated with Current Day of the Week\n  The system must display a predefined quote associated with the current day of the week in the span element with the data-testid 'phrase' upon loading the web page.\n\n\nScenario: [Normal] Display quote for the right day\n    Given the user opens the web page\n    When the page loads completely\n    Then the span element with data-testid 'phrase' should display the corresponding quote",
+      "requirement_ids": [
+        "e2edev_bench_46-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_46/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 1,
+    "reference_count": 2,
+    "matches": [
+      {
+        "generated_id": "G-001",
+        "reference_id": "e2edev_bench_46-R-2-TC-1",
+        "similarity": 0.9324536914994233
+      }
+    ],
+    "unmatched_generated_ids": [],
+    "unmatched_reference_ids": [
+      "e2edev_bench_46-R-1-TC-1"
+    ],
+    "precision": 1.0,
+    "recall": 0.5,
+    "f1": 0.6666666666666666,
+    "embedding_usage": {
+      "input_tokens": 279,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 279
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
+  "generation": {
+    "selected_techniques": [],
+    "technique_rationales": {},
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": 279,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 279
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
+  "links": {
+    "requirements": {
+      "e2edev_bench_46-R-1": "e2edev_bench_46-R-1/requirement.md",
+      "e2edev_bench_46-R-2": "e2edev_bench_46-R-2/requirement.md"
+    },
+    "cases": {
+      "G-001": {
+        "e2edev_bench_46-R-1": "e2edev_bench_46-R-1/test cases/1_Verify_automatic_weekday_and_quote_display_on_pa.md",
+        "e2edev_bench_46-R-2": "e2edev_bench_46-R-2/test cases/1_Verify_automatic_weekday_and_quote_display_on_pa.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

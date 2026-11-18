@@ -1,0 +1,298 @@
+{
+  "schema_version": 1,
+  "solution": "one-shot",
+  "unit_id": "e2edev_bench_52",
+  "parent_id": null,
+  "status": "evaluated",
+  "failure": null,
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "e2edev_bench_52-R-1",
+      "text": "Upon initial page load, the Progress Steps web application must display the first progress circle with the data-testid 'progress-circle-1' having the class 'active', indicating its active state. All other progress circles ('progress-circle-2', 'progress-circle-3', 'progress-circle-4') should not have the class 'active'. The progress bar, identified by the data-testid 'progress-bar', must have a width of '0%', reflecting no progress. The 'Prev' button, with data-testid 'prev-button', should be disabled, while the 'Next' button, with data-testid 'next-button', should be enabled, allowing the user to proceed to the next step.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_52/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_52-R-2",
+      "text": "The web application should provide a progress tracking feature with a series of progress circles and a progress bar. When the user clicks the 'Next' button (data-testid='next-button'), the following actions should occur: 1) The next progress circle, identified by data-testid attributes in the format 'progress-circle-X', should be marked as active by adding the 'active' class. 2) The progress bar (data-testid='progress-bar') should update its width to reflect the proportion of active circles, calculated as ((number of active circles - 1) / (total number of circles - 1)) * 100%. 3) If the first circle is active, the 'Prev' button (data-testid='prev-button') should be disabled. 4) If the last circle becomes active, the 'Next' button should be disabled. Conversely, clicking the 'Prev' button should deactivate the current circle, reduce the progress bar width accordingly, and enable the 'Next' button if it was previously disabled. The application should ensure that the 'Prev' button is enabled only when there is more than one active circle.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_52/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_52-R-3",
+      "text": "The web application must provide a progress component with a series of progress circles and a progress bar. The component should include a 'Prev' button with data-testid 'prev-button' and a 'Next' button with data-testid 'next-button'. When the user clicks the 'Prev' button, the following behaviors must occur: 1) The current active progress circle, identified by data-testid attributes such as 'progress-circle-1', 'progress-circle-2', etc., should be marked as inactive by removing the 'active' class. 2) The progress bar, identified by data-testid 'progress-bar', should decrease in width proportionally to the number of active circles, calculated as ((number of active circles - 1) / (total number of circles - 1)) * 100%. 3) If the first circle is active, the 'Prev' button should be disabled to prevent further clicks. 4) The 'Next' button should be enabled unless the last circle is active. The application must handle rapid clicks on the 'Prev' button gracefully, ensuring that the first circle remains active and the progress bar width does not fall below 0%.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_52/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_52-R-4",
+      "text": "The web application features a progress tracker with four circles, each representing a step in the process. The progress tracker is visually represented by a progress bar with the attribute data-testid='progress-bar'. Users can navigate through the steps using 'Prev' and 'Next' buttons, identified by data-testid='prev-button' and data-testid='next-button', respectively. The 'Prev' button must be disabled when the first progress circle (data-testid='progress-circle-1') is active, ensuring users cannot navigate to a previous step. Conversely, the 'Next' button should be disabled when the last progress circle (data-testid='progress-circle-4') is active, preventing further navigation. The progress bar's width dynamically updates based on the number of active circles, calculated as a percentage of the total circles. The application must handle edge cases where users attempt to navigate beyond the first or last circle, maintaining the integrity of the navigation controls and visual indicators.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_52/requirment_with_tests.json#/finegrained_rewith_test/4/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_52-R-5",
+      "text": "The 'Next' button (identified by data-testid='next-button') must be disabled when the last progress circle (identified by data-testid='progress-circle-4') is active. The progress circles (identified by data-testid attributes in the format 'progress-circle-{number}') should visually indicate the current step by toggling the 'active' class. When the user clicks the 'Next' button, the following behavior must occur: 1) The 'active' class is added to the next progress circle, 2) The progress bar (identified by data-testid='progress-bar') updates its width proportionally to the number of active circles, and 3) The 'Next' button is disabled when the last circle becomes active. Conversely, the 'Prev' button (identified by data-testid='prev-button') must be enabled or disabled based on whether the first circle is active. The system must ensure that users cannot navigate beyond the last step or before the first step, maintaining proper button states and visual feedback at all times.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_52/requirment_with_tests.json#/finegrained_rewith_test/5/requirement/description"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Verify initial page load state of progress component",
+      "description": "Verify that upon initial page load, 'progress-circle-1' is active, others are inactive, 'progress-bar' width is 0%, 'prev-button' is disabled, and 'next-button' is enabled.",
+      "requirement_ids": [
+        "e2edev_bench_52-R-1"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Verify navigation forward using the Next button",
+      "description": "Verify that clicking the 'Next' button activates the next progress circle, updates the progress bar width proportionally, disables 'Prev' only if first is active, and disables 'Next' when the last circle is active.",
+      "requirement_ids": [
+        "e2edev_bench_52-R-2",
+        "e2edev_bench_52-R-4",
+        "e2edev_bench_52-R-5"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Verify navigation backward using the Prev button",
+      "description": "Verify that clicking the 'Prev' button deactivates the current circle, decreases the progress bar width proportionally, updates button states appropriately, and handles rapid clicks gracefully without dropping below 0% width.",
+      "requirement_ids": [
+        "e2edev_bench_52-R-2",
+        "e2edev_bench_52-R-3",
+        "e2edev_bench_52-R-4"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Verify boundary handling for first and last steps",
+      "description": "Verify that the application prevents navigation beyond the first step (disabling 'Prev' when 'progress-circle-1' is active) and beyond the last step (disabling 'Next' when 'progress-circle-4' is active).",
+      "requirement_ids": [
+        "e2edev_bench_52-R-3",
+        "e2edev_bench_52-R-4",
+        "e2edev_bench_52-R-5"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_52-R-1-TC-1",
+      "title": "[Normal] Verify initial state on page load",
+      "description": "Feature: Initial Page Load State\n  The page should initialize with the first progress circle active and the progress bar at 0% width.\n\n\n  Scenario: [Normal] Verify initial state on page load\n    Given the user navigates to the Progress Steps page\n    Then the progress circle with data-testid \"progress-circle-1\" should have the class \"active\"\n    And the progress circle with data-testid \"progress-circle-2\" should not have the class \"active\"\n    And the progress circle with data-testid \"progress-circle-3\" should not have the class \"active\"\n    And the progress circle with data-testid \"progress-circle-4\" should not have the class \"active\"\n    And the progress bar with data-testid \"progress-bar\" should have a width of \"0%\"\n",
+      "requirement_ids": [
+        "e2edev_bench_52-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_52/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_52-R-1-TC-2",
+      "title": "[Edge] Verify initial state with no user interaction",
+      "description": "Feature: Initial Page Load State\n  The page should initialize with the first progress circle active and the progress bar at 0% width.\n\n\n  Scenario: [Edge] Verify initial state with no user interaction\n    Given the user navigates to the Progress Steps page\n    When no interaction occurs\n    Then the progress circle with data-testid \"progress-circle-1\" should have the class \"active\"\n    And the progress bar with data-testid \"progress-bar\" should have a width of \"0%\"\n",
+      "requirement_ids": [
+        "e2edev_bench_52-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_52/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_52-R-2-TC-1",
+      "title": "[Normal] Activate next progress circle and update progress bar width",
+      "description": "Feature: Progress Circle Activation and Progress Bar Update\n  The feature ensures that clicking the 'Next' button activates the next progress circle and updates the progress bar width proportionally.\n\n\n  Scenario: [Normal] Activate next progress circle and update progress bar width\n    Given the webpage with progress steps is loaded\n    And the first progress circle with data-testid \"progress-circle-1\" is active\n    And the progress bar with data-testid \"progress-bar\" has width \"0%\"\n    When the user clicks the 'Next' button with data-testid \"next-button\"\n    Then the second progress circle with data-testid \"progress-circle-2\" should be active\n    And the progress bar with data-testid \"progress-bar\" should have width \"33%\"\n",
+      "requirement_ids": [
+        "e2edev_bench_52-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_52/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_52-R-2-TC-2",
+      "title": "[Edge] Activate last progress circle and disable 'Next' button",
+      "description": "Feature: Progress Circle Activation and Progress Bar Update\n  The feature ensures that clicking the 'Next' button activates the next progress circle and updates the progress bar width proportionally.\n\n\nScenario: [Edge] Activate last progress circle and disable 'Next' button\n    Given the webpage with progress steps is loaded\n    And the third progress circle with data-testid \"progress-circle-3\" is active\n    When the user clicks the 'Next' button with data-testid \"next-button\"\n    Then the fourth progress circle with data-testid \"progress-circle-4\" should be active\n    And the progress bar with data-testid \"progress-bar\" should have width \"100%\"",
+      "requirement_ids": [
+        "e2edev_bench_52-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_52/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_52-R-3-TC-1",
+      "title": "[Normal] User clicks 'Prev' button to deactivate the current active circle",
+      "description": "Feature: Progress Circle Deactivation and Progress Bar Decrease\n  The purpose of this feature is to ensure that when the user clicks the 'Prev' button, the current active progress circle is marked as inactive, and the progress bar decreases in width proportionally to the number of active circles.\n\n\n  Scenario: [Normal] User clicks 'Prev' button to deactivate the current active circle\n    Given the webpage is loaded with the progress component\n    And the user has clicked the 'Next' button twice\n    When the user clicks the 'Prev' button with data-testid 'prev-button'\n    Then the progress circle with data-testid 'progress-circle-3' should not have the 'active' class\n    And the progress bar with data-testid 'progress-bar' should have a width of 33%\n",
+      "requirement_ids": [
+        "e2edev_bench_52-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_52/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_52-R-3-TC-2",
+      "title": "[Error] User clicks 'Prev' button multiple times rapidly",
+      "description": "Feature: Progress Circle Deactivation and Progress Bar Decrease\n  The purpose of this feature is to ensure that when the user clicks the 'Prev' button, the current active progress circle is marked as inactive, and the progress bar decreases in width proportionally to the number of active circles.\n\n\nScenario: [Error] User clicks 'Prev' button multiple times rapidly\n    Given the webpage is loaded with the progress component\n    And the user has clicked the 'Next' button three times\n    When the user clicks the 'Prev' button with data-testid 'prev-button' rapidly three times\n    Then the progress circle with data-testid 'progress-circle-1' should have the 'active' class\n    And the progress bar with data-testid 'progress-bar' should have a width of 0%",
+      "requirement_ids": [
+        "e2edev_bench_52-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_52/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_52-R-4-TC-1",
+      "title": "[Normal] 'Prev' button is disabled when the first progress circle is active",
+      "description": "Feature: Disable 'Prev' Button on First Progress Circle\n  The 'Prev' button should be disabled when the first progress circle is active, preventing the user from navigating to a previous step.\n\n\n  Scenario: [Normal] 'Prev' button is disabled when the first progress circle is active\n    Given the webpage is loaded\n    And the first progress circle with data-testid \"progress-circle-1\" is active\n    When the user observes the 'Prev' button with data-testid \"prev-button\"\n    Then the 'Prev' button should be disabled\n",
+      "requirement_ids": [
+        "e2edev_bench_52-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_52/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_52-R-4-TC-2",
+      "title": "[Edge] 'Prev' button remains disabled after navigating back to the first circle",
+      "description": "Feature: Disable 'Prev' Button on First Progress Circle\n  The 'Prev' button should be disabled when the first progress circle is active, preventing the user from navigating to a previous step.\n\n\nScenario: [Edge] 'Prev' button remains disabled after navigating back to the first circle\n    Given the webpage is loaded\n    And the progress circle with data-testid \"progress-circle-1\" is active\n    When the user clicks the 'Next' button with data-testid \"next-button\"\n    And the user clicks the 'Prev' button with data-testid \"prev-button\"\n    Then the 'Prev' button with data-testid \"prev-button\" should be disabled",
+      "requirement_ids": [
+        "e2edev_bench_52-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_52/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_52-R-5-TC-1",
+      "title": "[Normal] Disable 'Next' button when last circle is active",
+      "description": "Feature: Disable 'Next' Button at Last Progress Circle\n  The 'Next' button should be disabled when the last progress circle is active, preventing the user from navigating to a next step.\n\n\n  Scenario: [Normal] Disable 'Next' button when last circle is active\n    Given the webpage is loaded with the progress steps\n    When the user clicks the 'Next' button with data-testid 'next-button' three times\n    Then the 'Next' button with data-testid 'next-button' should be disabled\n    And the progress circle with data-testid 'progress-circle-4' should have the class 'active'\n",
+      "requirement_ids": [
+        "e2edev_bench_52-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_52/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 4,
+    "reference_count": 9,
+    "matches": [
+      {
+        "generated_id": "G-001",
+        "reference_id": "e2edev_bench_52-R-1-TC-1",
+        "similarity": 0.948934036003545
+      },
+      {
+        "generated_id": "G-002",
+        "reference_id": "e2edev_bench_52-R-2-TC-2",
+        "similarity": 0.9171516729361064
+      },
+      {
+        "generated_id": "G-003",
+        "reference_id": "e2edev_bench_52-R-3-TC-2",
+        "similarity": 0.9258387044493263
+      },
+      {
+        "generated_id": "G-004",
+        "reference_id": "e2edev_bench_52-R-5-TC-1",
+        "similarity": 0.9111045323693637
+      }
+    ],
+    "unmatched_generated_ids": [],
+    "unmatched_reference_ids": [
+      "e2edev_bench_52-R-1-TC-2",
+      "e2edev_bench_52-R-2-TC-1",
+      "e2edev_bench_52-R-3-TC-1",
+      "e2edev_bench_52-R-4-TC-1",
+      "e2edev_bench_52-R-4-TC-2"
+    ],
+    "precision": 1.0,
+    "recall": 0.4444444444444444,
+    "f1": 0.6153846153846154,
+    "embedding_usage": {
+      "input_tokens": 1615,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 1615
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
+  "generation": {
+    "selected_techniques": [],
+    "technique_rationales": {},
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": 1552,
+      "output_tokens": 569,
+      "details": {
+        "text_prompt_tokens": 1552,
+        "total_tokens": 2121
+      },
+      "status": "available"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": 1615,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 1615
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
+  "links": {
+    "requirements": {
+      "e2edev_bench_52-R-1": "e2edev_bench_52-R-1/requirement.md",
+      "e2edev_bench_52-R-2": "e2edev_bench_52-R-2/requirement.md",
+      "e2edev_bench_52-R-3": "e2edev_bench_52-R-3/requirement.md",
+      "e2edev_bench_52-R-4": "e2edev_bench_52-R-4/requirement.md",
+      "e2edev_bench_52-R-5": "e2edev_bench_52-R-5/requirement.md"
+    },
+    "cases": {
+      "G-001": {
+        "e2edev_bench_52-R-1": "e2edev_bench_52-R-1/test cases/1_Verify_initial_page_load_state_of_progress_compo.md"
+      },
+      "G-002": {
+        "e2edev_bench_52-R-2": "e2edev_bench_52-R-2/test cases/2_Verify_navigation_forward_using_the_Next_button.md",
+        "e2edev_bench_52-R-4": "e2edev_bench_52-R-4/test cases/2_Verify_navigation_forward_using_the_Next_button.md",
+        "e2edev_bench_52-R-5": "e2edev_bench_52-R-5/test cases/2_Verify_navigation_forward_using_the_Next_button.md"
+      },
+      "G-003": {
+        "e2edev_bench_52-R-2": "e2edev_bench_52-R-2/test cases/3_Verify_navigation_backward_using_the_Prev_button.md",
+        "e2edev_bench_52-R-3": "e2edev_bench_52-R-3/test cases/3_Verify_navigation_backward_using_the_Prev_button.md",
+        "e2edev_bench_52-R-4": "e2edev_bench_52-R-4/test cases/3_Verify_navigation_backward_using_the_Prev_button.md"
+      },
+      "G-004": {
+        "e2edev_bench_52-R-3": "e2edev_bench_52-R-3/test cases/4_Verify_boundary_handling_for_first_and_last_step.md",
+        "e2edev_bench_52-R-4": "e2edev_bench_52-R-4/test cases/4_Verify_boundary_handling_for_first_and_last_step.md",
+        "e2edev_bench_52-R-5": "e2edev_bench_52-R-5/test cases/4_Verify_boundary_handling_for_first_and_last_step.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

@@ -1,0 +1,3 @@
+# e2edev\_bench\_40-R-3
+
+The user must be able to specify the desired password length using the number input field with the attribute data-testid 'password-length-input'. The input field should accept values ranging from a minimum of 4 to a maximum of 20. Upon entering a valid length and clicking the 'Generate Password' button with data-testid 'generate-password-button', the application should generate and display a password in the result element with data-testid 'result-display' that matches the specified length. The system should handle edge cases where the minimum and maximum lengths are specified, ensuring the generated password adheres to these constraints.

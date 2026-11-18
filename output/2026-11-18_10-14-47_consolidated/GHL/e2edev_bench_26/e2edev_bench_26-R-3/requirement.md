@@ -1,0 +1,3 @@
+# e2edev\_bench\_26-R-3
+
+When the user clicks the '展开' button with data-testid 'expand-list-item', the system should display the list with data-testid 'lis'. If the user then clicks the '替换' list item with data-testid 'replace-list-item', the system should display the '替换' tab with data-testid 'replace'. This tab must include the input field for old text with data-testid 'replace-input-old', the input field for new text with data-testid 'replace-input-new', and the '替换' button with data-testid 'replace-button'. If the list is already expanded, clicking '替换' should still display the '替换' tab and its components. If the user attempts to click '替换' without expanding the list first, the '替换' tab should not be displayed, and no action should occur.

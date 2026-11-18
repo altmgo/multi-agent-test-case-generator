@@ -1,0 +1,3 @@
+# e2edev\_bench\_44-R-4
+
+The calculator application must allow users to remove the last character from the display screen by clicking the backspace button. The backspace button is identified by the data-testid 'backspace-button'. When clicked, if the display (identified by data-testid 'display') contains characters, the last character should be removed. If the display is empty, clicking the backspace button should have no effect, and the display should remain empty. The system should handle repeated clicks on the backspace button, removing characters one by one until the display is empty. Additionally, if the user enters an invalid character sequence and clicks backspace, the last character of the sequence should be removed, leaving the remaining valid sequence intact.

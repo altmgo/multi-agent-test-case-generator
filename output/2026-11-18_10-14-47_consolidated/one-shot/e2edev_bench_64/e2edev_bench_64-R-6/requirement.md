@@ -1,0 +1,3 @@
+# e2edev\_bench\_64-R-6
+
+When the user clicks the 'Again!' button with the data-testid 'again-button', the system should reset the game by performing the following actions: generate a new secret number between 1 and 20, reset the score to 20 and update the score display in the element with data-testid 'current-score', clear the input field with data-testid 'guess-input', set the hidden number display with data-testid 'hidden-number' to '?', change the background color of the body to '#222', and reset the width of the hidden number display to '15rem'. These actions ensure the game is restored to its initial state, ready for a new round of play.

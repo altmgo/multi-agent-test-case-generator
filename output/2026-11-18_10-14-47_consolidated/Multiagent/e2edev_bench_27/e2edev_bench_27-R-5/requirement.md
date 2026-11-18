@@ -1,0 +1,3 @@
+# e2edev\_bench\_27-R-5
+
+When the user submits the search form with an empty input field or an input containing only whitespace, the system must fetch and display a random meal in the single meal container. The search form is identified by the data-testid 'submit-form', and the search input field is identified by the data-testid 'search-input'. The search button is identified by the data-testid 'search-button'. Upon submission, the single meal container, identified by the data-testid 'single-meal-container', should be updated to display the random meal details, including the meal name, image, category, area, ingredients, and instructions. The result heading, identified by the data-testid 'result-heading', should be cleared to ensure no search results are displayed.

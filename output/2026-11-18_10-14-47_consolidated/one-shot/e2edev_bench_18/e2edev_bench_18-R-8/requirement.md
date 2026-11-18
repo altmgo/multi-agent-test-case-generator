@@ -1,0 +1,3 @@
+# e2edev\_bench\_18-R-8
+
+When the user clicks the 'Add to Timetable' button (located by data-testid 'add-timetable-button'), the system must reset the form fields to their default state after successfully adding or updating a timetable entry. This includes clearing the 'Subject' input field (located by data-testid 'subject'), resetting the 'Start Time' input field (located by data-testid 'start-time'), resetting the 'End Time' input field (located by data-testid 'end-time'), and ensuring that no checkboxes within the 'Days' checkbox group (located by data-testid 'days') are checked. The reset should occur only if all required fields are filled and at least one day is selected, ensuring a valid timetable entry is added to the table (located by data-testid 'timetable').

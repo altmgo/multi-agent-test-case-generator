@@ -1,0 +1,387 @@
+{
+  "schema_version": 1,
+  "solution": "one-shot",
+  "unit_id": "e2edev_bench_49",
+  "parent_id": null,
+  "status": "evaluated",
+  "failure": null,
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "e2edev_bench_49-R-1",
+      "text": "The web application should provide a 'Student Grade Book' interface where users can add student details. The interface must include a form with a 'Student Name' input field (data-testid: 'student-name') and a 'Grade (0-100)' input field (data-testid: 'student-grade'), both of which are required. The grade input should accept numeric values between 0 and 100, inclusive. A submit button labeled 'Add Student' (data-testid: 'add-student-button') should be present to submit the form. Upon clicking the 'Add Student' button, if the inputs are valid, the student's name and grade should be appended to a list (data-testid: 'student-list') as a new list item with a unique data-id attribute. The form fields should then be reset to empty. If the grade is outside the 0-100 range, the system should prevent submission, display an error message indicating the valid range, and retain the entered values in the input fields. The system should handle normal cases, edge cases (minimum and maximum grades), and error scenarios (invalid grades) as described.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_49/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_49-R-2",
+      "text": "The system must validate form submissions on the 'Student Grade Book' page to ensure data integrity. Specifically: 1) The 'Student Name' input field (identified by data-testid='student-name') must not be empty. 2) The 'Grade (0-100)' input field (identified by data-testid='student-grade') must contain a numeric value within the inclusive range of 0 to 100. If either condition is violated, the form submission should be blocked, and no new student entry should be added to the student list (identified by data-testid='student-list'). Upon successful validation, the form submission should add a new list item to the student list, displaying the student's name and grade in the format 'Name: Grade'. Each list item must have a unique data-id attribute in the format 'student-item-{index}', where {index} is the 1-based position of the student in the list. The form (identified by data-testid='student-form') should reset after a successful submission. The system must handle edge cases, including grades at the boundaries (0 and 100), and prevent submission for grades below 0 or above 100. All interactions should be performed using the specified data-testid attributes for consistency and testability.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_49/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_49-R-5",
+      "text": "The web application 'Student Grade Book' must allow users to add students with their respective grades using a form. The form consists of an input field for the student's name (data-testid: 'student-name') and an input field for the student's grade (data-testid: 'student-grade'), which accepts numeric values between 0 and 100 inclusive. Upon clicking the 'Add Student' button (data-testid: 'add-student-button'), the system should validate the inputs. If the inputs are valid, the student's name and grade should be added to the student list (data-testid: 'student-list'), displayed as a list item with a unique data-id attribute. After successfully adding a student, the input fields should be cleared to allow for new entries. If the grade input is invalid (e.g., not within the 0-100 range), the student should not be added to the list, and the input fields should retain their values for correction. The system should ensure consistent use of data-testid attributes for accessing and manipulating DOM elements.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_49/requirment_with_tests.json#/finegrained_rewith_test/5/requirement/description"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Add student with valid name and grade",
+      "description": "Verify that a student can be successfully added to the grade book with a valid name and a grade within the 0-100 range, and the form resets.",
+      "requirement_ids": [
+        "e2edev_bench_49-R-1",
+        "e2edev_bench_49-R-2",
+        "e2edev_bench_49-R-5"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Add student with minimum boundary grade (0)",
+      "description": "Verify that a student with a grade of 0 is successfully added to the student list.",
+      "requirement_ids": [
+        "e2edev_bench_49-R-1",
+        "e2edev_bench_49-R-2",
+        "e2edev_bench_49-R-5"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Add student with maximum boundary grade (100)",
+      "description": "Verify that a student with a grade of 100 is successfully added to the student list.",
+      "requirement_ids": [
+        "e2edev_bench_49-R-1",
+        "e2edev_bench_49-R-2",
+        "e2edev_bench_49-R-5"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Prevent submission with grade below 0",
+      "description": "Verify that the system prevents submission, displays an error message, and retains input values when the grade is less than 0.",
+      "requirement_ids": [
+        "e2edev_bench_49-R-1",
+        "e2edev_bench_49-R-2",
+        "e2edev_bench_49-R-5"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Prevent submission with grade above 100",
+      "description": "Verify that the system prevents submission, displays an error message, and retains input values when the grade is greater than 100.",
+      "requirement_ids": [
+        "e2edev_bench_49-R-1",
+        "e2edev_bench_49-R-2",
+        "e2edev_bench_49-R-5"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Prevent submission with empty student name",
+      "description": "Verify that form submission is blocked and no student is added when the 'Student Name' field is empty.",
+      "requirement_ids": [
+        "e2edev_bench_49-R-1",
+        "e2edev_bench_49-R-2",
+        "e2edev_bench_49-R-5"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_49-R-1-TC-1",
+      "title": "[Normal] Add a student with valid name and grade",
+      "description": "Feature: Student Grade Book Management\n  The system should allow users to add student details to a list and reset the form fields upon submission.\n\n\n  Scenario: [Normal] Add a student with valid name and grade\n    Given the \"Student Grade Book\" page is loaded\n    And the \"Student Name\" input field with data-testid \"student-name\" is present\n    And the \"Grade (0-100)\" input field with data-testid \"student-grade\" is present\n    And the \"Add Student\" button with data-testid \"add-student-button\" is present\n    When the user enters \"John Doe\" into the \"Student Name\" input field with data-testid \"student-name\"\n    And the user enters \"85\" into the \"Grade (0-100)\" input field with data-testid \"student-grade\"\n    And the user clicks the \"Add Student\" button with data-testid \"add-student-button\"\n    Then the student list with data-testid \"student-list\" should contain an item with text \"John Doe: 85\"\n    And the \"Student Name\" input field with data-testid \"student-name\" should be empty\n    And the \"Grade (0-100)\" input field with data-testid \"student-grade\" should be empty\n",
+      "requirement_ids": [
+        "e2edev_bench_49-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_49/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_49-R-1-TC-2",
+      "title": "[Edge] Add a student with minimum grade",
+      "description": "Feature: Student Grade Book Management\n  The system should allow users to add student details to a list and reset the form fields upon submission.\n\n\n  Scenario: [Edge] Add a student with minimum grade\n    Given the \"Student Grade Book\" page is loaded\n    And the \"Student Name\" input field with data-testid \"student-name\" is present\n    And the \"Grade (0-100)\" input field with data-testid \"student-grade\" is present\n    And the \"Add Student\" button with data-testid \"add-student-button\" is present\n    When the user enters \"Jane Smith\" into the \"Student Name\" input field with data-testid \"student-name\"\n    And the user enters \"0\" into the \"Grade (0-100)\" input field with data-testid \"student-grade\"\n    And the user clicks the \"Add Student\" button with data-testid \"add-student-button\"\n    Then the student list with data-testid \"student-list\" should contain an item with text \"Jane Smith: 0\"\n    And the \"Student Name\" input field with data-testid \"student-name\" should be empty\n    And the \"Grade (0-100)\" input field with data-testid \"student-grade\" should be empty\n",
+      "requirement_ids": [
+        "e2edev_bench_49-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_49/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_49-R-1-TC-3",
+      "title": "[Edge] Add a student with maximum grade",
+      "description": "Feature: Student Grade Book Management\n  The system should allow users to add student details to a list and reset the form fields upon submission.\n\n\n  Scenario: [Edge] Add a student with maximum grade\n    Given the \"Student Grade Book\" page is loaded\n    And the \"Student Name\" input field with data-testid \"student-name\" is present\n    And the \"Grade (0-100)\" input field with data-testid \"student-grade\" is present\n    And the \"Add Student\" button with data-testid \"add-student-button\" is present\n    When the user enters \"Alice Johnson\" into the \"Student Name\" input field with data-testid \"student-name\"\n    And the user enters \"100\" into the \"Grade (0-100)\" input field with data-testid \"student-grade\"\n    And the user clicks the \"Add Student\" button with data-testid \"add-student-button\"\n    Then the student list with data-testid \"student-list\" should contain an item with text \"Alice Johnson: 100\"\n    And the \"Student Name\" input field with data-testid \"student-name\" should be empty\n    And the \"Grade (0-100)\" input field with data-testid \"student-grade\" should be empty\n",
+      "requirement_ids": [
+        "e2edev_bench_49-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_49/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_49-R-1-TC-4",
+      "title": "[Error] Attempt to add a student with an invalid grade",
+      "description": "Feature: Student Grade Book Management\n  The system should allow users to add student details to a list and reset the form fields upon submission.\n\n\n  Scenario: [Error] Attempt to add a student with an invalid grade\n    Given the \"Student Grade Book\" page is loaded\n    And the \"Student Name\" input field with data-testid \"student-name\" is present\n    And the \"Grade (0-100)\" input field with data-testid \"student-grade\" is present\n    And the \"Add Student\" button with data-testid \"add-student-button\" is present\n    When the user enters \"Bob Brown\" into the \"Student Name\" input field with data-testid \"student-name\"\n    And the user enters \"105\" into the \"Grade (0-100)\" input field with data-testid \"student-grade\"\n    And the user clicks the \"Add Student\" button with data-testid \"add-student-button\"\n    Then the student list with data-testid \"student-list\" should not contain an item with text \"Bob Brown: 105\"\n    And the \"Student Name\" input field with data-testid \"student-name\" should retain the value \"Bob Brown\"\n    And the \"Grade (0-100)\" input field with data-testid \"student-grade\" should retain the value \"105\"",
+      "requirement_ids": [
+        "e2edev_bench_49-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_49/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_49-R-2-TC-1",
+      "title": "[Normal] Successful form submission with valid inputs",
+      "description": "Feature: Form Submission Validation\n  The system should prevent form submission if the 'Student Name' input field is empty or the 'Grade (0-100)' input field contains a value outside the range of 0 to 100.\n\n\n  Scenario: [Normal] Successful form submission with valid inputs\n    Given the \"Student Grade Book\" page is loaded\n    And the user enters \"John Doe\" into the student name field with data-testid \"student-name\"\n    And the user enters \"85\" into the grade field with data-testid \"student-grade\"\n    When the user clicks the \"Add Student\" button with data-testid \"add-student-button\"\n    Then the student list with data-testid \"student-list\" should contain an item with text \"John Doe: 85\"\n",
+      "requirement_ids": [
+        "e2edev_bench_49-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_49/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_49-R-2-TC-2",
+      "title": "[Edge] Form submission with empty student name",
+      "description": "Feature: Form Submission Validation\n  The system should prevent form submission if the 'Student Name' input field is empty or the 'Grade (0-100)' input field contains a value outside the range of 0 to 100.\n\n\n  Scenario: [Edge] Form submission with empty student name\n    Given the \"Student Grade Book\" page is loaded\n    And the user leaves the student name field with data-testid \"student-name\" empty\n    And the user enters \"75\" into the grade field with data-testid \"student-grade\"\n    When the user clicks the \"Add Student\" button with data-testid \"add-student-button\"\n    Then the student list with data-testid \"student-list\" should not contain any new items\n",
+      "requirement_ids": [
+        "e2edev_bench_49-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_49/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_49-R-2-TC-3",
+      "title": "[Edge] Form submission with grade value at lower boundary",
+      "description": "Feature: Form Submission Validation\n  The system should prevent form submission if the 'Student Name' input field is empty or the 'Grade (0-100)' input field contains a value outside the range of 0 to 100.\n\n\n  Scenario: [Edge] Form submission with grade value at lower boundary\n    Given the \"Student Grade Book\" page is loaded\n    And the user enters \"Jane Doe\" into the student name field with data-testid \"student-name\"\n    And the user enters \"0\" into the grade field with data-testid \"student-grade\"\n    When the user clicks the \"Add Student\" button with data-testid \"add-student-button\"\n    Then the student list with data-testid \"student-list\" should contain an item with text \"Jane Doe: 0\"\n",
+      "requirement_ids": [
+        "e2edev_bench_49-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_49/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_49-R-2-TC-4",
+      "title": "[Edge] Form submission with grade value at upper boundary",
+      "description": "Feature: Form Submission Validation\n  The system should prevent form submission if the 'Student Name' input field is empty or the 'Grade (0-100)' input field contains a value outside the range of 0 to 100.\n\n\n  Scenario: [Edge] Form submission with grade value at upper boundary\n    Given the \"Student Grade Book\" page is loaded\n    And the user enters \"Alice Smith\" into the student name field with data-testid \"student-name\"\n    And the user enters \"100\" into the grade field with data-testid \"student-grade\"\n    When the user clicks the \"Add Student\" button with data-testid \"add-student-button\"\n    Then the student list with data-testid \"student-list\" should contain an item with text \"Alice Smith: 100\"\n",
+      "requirement_ids": [
+        "e2edev_bench_49-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_49/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_49-R-2-TC-5",
+      "title": "[Error] Form submission with grade value below range",
+      "description": "Feature: Form Submission Validation\n  The system should prevent form submission if the 'Student Name' input field is empty or the 'Grade (0-100)' input field contains a value outside the range of 0 to 100.\n\n\n  Scenario: [Error] Form submission with grade value below range\n    Given the \"Student Grade Book\" page is loaded\n    And the user enters \"Bob Brown\" into the student name field with data-testid \"student-name\"\n    And the user enters \"-5\" into the grade field with data-testid \"student-grade\"\n    When the user clicks the \"Add Student\" button with data-testid \"add-student-button\"\n    Then the student list with data-testid \"student-list\" should not contain any new items\n",
+      "requirement_ids": [
+        "e2edev_bench_49-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_49/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/4/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_49-R-2-TC-6",
+      "title": "[Error] Form submission with grade value above range",
+      "description": "Feature: Form Submission Validation\n  The system should prevent form submission if the 'Student Name' input field is empty or the 'Grade (0-100)' input field contains a value outside the range of 0 to 100.\n\n\n  Scenario: [Error] Form submission with grade value above range\n    Given the \"Student Grade Book\" page is loaded\n    And the user enters \"Charlie Green\" into the student name field with data-testid \"student-name\"\n    And the user enters \"105\" into the grade field with data-testid \"student-grade\"\n    When the user clicks the \"Add Student\" button with data-testid \"add-student-button\"\n    Then the student list with data-testid \"student-list\" should not contain any new items",
+      "requirement_ids": [
+        "e2edev_bench_49-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_49/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/5/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_49-R-5-TC-1",
+      "title": "[Normal] Successfully add a student and clear input fields",
+      "description": "Feature: Clear input fields after adding a student\n  The system should clear the input fields in the form after successfully adding a student to the list to prepare for new entries.\n\n\n  Scenario: [Normal] Successfully add a student and clear input fields\n    Given the \"Student Grade Book\" page is loaded\n    And the user enters \"John Doe\" into the student name field with data-testid \"student-name\"\n    And the user enters \"85\" into the student grade field with data-testid \"student-grade\"\n    When the user clicks the \"Add Student\" button with data-testid \"add-student-button\"\n    Then the student list with data-testid \"student-list\" should contain \"John Doe: 85\"\n    And the student name field with data-testid \"student-name\" should be empty\n    And the student grade field with data-testid \"student-grade\" should be empty\n",
+      "requirement_ids": [
+        "e2edev_bench_49-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_49/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_49-R-5-TC-2",
+      "title": "[Edge] Add a student with minimum grade and clear input fields",
+      "description": "Feature: Clear input fields after adding a student\n  The system should clear the input fields in the form after successfully adding a student to the list to prepare for new entries.\n\n\n  Scenario: [Edge] Add a student with minimum grade and clear input fields\n    Given the \"Student Grade Book\" page is loaded\n    And the user enters \"Jane Smith\" into the student name field with data-testid \"student-name\"\n    And the user enters \"0\" into the student grade field with data-testid \"student-grade\"\n    When the user clicks the \"Add Student\" button with data-testid \"add-student-button\"\n    Then the student list with data-testid \"student-list\" should contain \"Jane Smith: 0\"\n    And the student name field with data-testid \"student-name\" should be empty\n    And the student grade field with data-testid \"student-grade\" should be empty\n",
+      "requirement_ids": [
+        "e2edev_bench_49-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_49/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_49-R-5-TC-3",
+      "title": "[Edge] Add a student with maximum grade and clear input fields",
+      "description": "Feature: Clear input fields after adding a student\n  The system should clear the input fields in the form after successfully adding a student to the list to prepare for new entries.\n\n\n  Scenario: [Edge] Add a student with maximum grade and clear input fields\n    Given the \"Student Grade Book\" page is loaded\n    And the user enters \"Alice Johnson\" into the student name field with data-testid \"student-name\"\n    And the user enters \"100\" into the student grade field with data-testid \"student-grade\"\n    When the user clicks the \"Add Student\" button with data-testid \"add-student-button\"\n    Then the student list with data-testid \"student-list\" should contain \"Alice Johnson: 100\"\n    And the student name field with data-testid \"student-name\" should be empty\n    And the student grade field with data-testid \"student-grade\" should be empty\n",
+      "requirement_ids": [
+        "e2edev_bench_49-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_49/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_49-R-5-TC-4",
+      "title": "[Error] Attempt to add a student with invalid grade and verify fields are not cleared",
+      "description": "Feature: Clear input fields after adding a student\n  The system should clear the input fields in the form after successfully adding a student to the list to prepare for new entries.\n\n\n  Scenario: [Error] Attempt to add a student with invalid grade and verify fields are not cleared\n    Given the \"Student Grade Book\" page is loaded\n    And the user enters \"Bob Brown\" into the student name field with data-testid \"student-name\"\n    And the user enters \"105\" into the student grade field with data-testid \"student-grade\"\n    When the user clicks the \"Add Student\" button with data-testid \"add-student-button\"\n    Then the student list with data-testid \"student-list\" should not contain \"Bob Brown: 105\"\n    And the student name field with data-testid \"student-name\" should contain \"Bob Brown\"\n    And the student grade field with data-testid \"student-grade\" should contain \"105\"",
+      "requirement_ids": [
+        "e2edev_bench_49-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_49/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 6,
+    "reference_count": 14,
+    "matches": [
+      {
+        "generated_id": "G-001",
+        "reference_id": "e2edev_bench_49-R-1-TC-1",
+        "similarity": 0.9233581855091083
+      },
+      {
+        "generated_id": "G-002",
+        "reference_id": "e2edev_bench_49-R-2-TC-3",
+        "similarity": 0.9157890589126187
+      },
+      {
+        "generated_id": "G-003",
+        "reference_id": "e2edev_bench_49-R-2-TC-4",
+        "similarity": 0.9162128618975627
+      },
+      {
+        "generated_id": "G-004",
+        "reference_id": "e2edev_bench_49-R-2-TC-5",
+        "similarity": 0.9149051428299811
+      },
+      {
+        "generated_id": "G-005",
+        "reference_id": "e2edev_bench_49-R-2-TC-6",
+        "similarity": 0.91879647249397
+      },
+      {
+        "generated_id": "G-006",
+        "reference_id": "e2edev_bench_49-R-2-TC-2",
+        "similarity": 0.9160814447937332
+      }
+    ],
+    "unmatched_generated_ids": [],
+    "unmatched_reference_ids": [
+      "e2edev_bench_49-R-1-TC-2",
+      "e2edev_bench_49-R-1-TC-3",
+      "e2edev_bench_49-R-1-TC-4",
+      "e2edev_bench_49-R-2-TC-1",
+      "e2edev_bench_49-R-5-TC-1",
+      "e2edev_bench_49-R-5-TC-2",
+      "e2edev_bench_49-R-5-TC-3",
+      "e2edev_bench_49-R-5-TC-4"
+    ],
+    "precision": 1.0,
+    "recall": 0.42857142857142855,
+    "f1": 0.6,
+    "embedding_usage": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "embedding_requests": 2
+  },
+  "generation": {
+    "selected_techniques": [],
+    "technique_rationales": {},
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": 1107,
+      "output_tokens": 762,
+      "details": {
+        "text_prompt_tokens": 1107,
+        "total_tokens": 1869
+      },
+      "status": "available"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "embedding_requests": 2
+  },
+  "links": {
+    "requirements": {
+      "e2edev_bench_49-R-1": "e2edev_bench_49-R-1/requirement.md",
+      "e2edev_bench_49-R-2": "e2edev_bench_49-R-2/requirement.md",
+      "e2edev_bench_49-R-5": "e2edev_bench_49-R-5/requirement.md"
+    },
+    "cases": {
+      "G-001": {
+        "e2edev_bench_49-R-1": "e2edev_bench_49-R-1/test cases/1_Add_student_with_valid_name_and_grade.md",
+        "e2edev_bench_49-R-2": "e2edev_bench_49-R-2/test cases/1_Add_student_with_valid_name_and_grade.md",
+        "e2edev_bench_49-R-5": "e2edev_bench_49-R-5/test cases/1_Add_student_with_valid_name_and_grade.md"
+      },
+      "G-002": {
+        "e2edev_bench_49-R-1": "e2edev_bench_49-R-1/test cases/2_Add_student_with_minimum_boundary_grade_0.md",
+        "e2edev_bench_49-R-2": "e2edev_bench_49-R-2/test cases/2_Add_student_with_minimum_boundary_grade_0.md",
+        "e2edev_bench_49-R-5": "e2edev_bench_49-R-5/test cases/2_Add_student_with_minimum_boundary_grade_0.md"
+      },
+      "G-003": {
+        "e2edev_bench_49-R-1": "e2edev_bench_49-R-1/test cases/3_Add_student_with_maximum_boundary_grade_100.md",
+        "e2edev_bench_49-R-2": "e2edev_bench_49-R-2/test cases/3_Add_student_with_maximum_boundary_grade_100.md",
+        "e2edev_bench_49-R-5": "e2edev_bench_49-R-5/test cases/3_Add_student_with_maximum_boundary_grade_100.md"
+      },
+      "G-004": {
+        "e2edev_bench_49-R-1": "e2edev_bench_49-R-1/test cases/4_Prevent_submission_with_grade_below_0.md",
+        "e2edev_bench_49-R-2": "e2edev_bench_49-R-2/test cases/4_Prevent_submission_with_grade_below_0.md",
+        "e2edev_bench_49-R-5": "e2edev_bench_49-R-5/test cases/4_Prevent_submission_with_grade_below_0.md"
+      },
+      "G-005": {
+        "e2edev_bench_49-R-1": "e2edev_bench_49-R-1/test cases/5_Prevent_submission_with_grade_above_100.md",
+        "e2edev_bench_49-R-2": "e2edev_bench_49-R-2/test cases/5_Prevent_submission_with_grade_above_100.md",
+        "e2edev_bench_49-R-5": "e2edev_bench_49-R-5/test cases/5_Prevent_submission_with_grade_above_100.md"
+      },
+      "G-006": {
+        "e2edev_bench_49-R-1": "e2edev_bench_49-R-1/test cases/6_Prevent_submission_with_empty_student_name.md",
+        "e2edev_bench_49-R-2": "e2edev_bench_49-R-2/test cases/6_Prevent_submission_with_empty_student_name.md",
+        "e2edev_bench_49-R-5": "e2edev_bench_49-R-5/test cases/6_Prevent_submission_with_empty_student_name.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

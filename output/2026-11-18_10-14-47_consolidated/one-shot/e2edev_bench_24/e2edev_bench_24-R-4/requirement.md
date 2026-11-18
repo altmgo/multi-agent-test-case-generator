@@ -1,0 +1,3 @@
+# e2edev\_bench\_24-R-4
+
+The system shall validate and accept a numeric value greater than 0 entered in the 'Number of Times in a Single Year' input field (data-testid='number-of-times-in-year'). The input field shall allow users to type numeric values directly, and the entered value shall be reflected in the field upon submission. The system shall display an alert message ('Please Enter Valid Values!!') if the entered value is invalid (non-numeric, negative, or zero). The validation shall occur both when the user clicks the 'Calculate' button (data-testid='calculate-button') and when the user presses the 'Enter' key. The input field shall support edge cases, including the minimum valid value of '1'.

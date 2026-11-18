@@ -1,0 +1,3 @@
+# e2edev\_bench\_20-R-5
+
+When the user navigates to the 'View All Registrations' tab by clicking the button with data-testid 'view-tab-button', the system should dynamically populate the table with data-testid 'registration-table' with all saved registrations from local storage. The 'View All Registrations' tab content with data-testid 'view-tab-content' should become active, displaying each registration as a row in the table. Each row should include the Owner's Name, Car Model, License Number, and Registration Date. If local storage contains no registrations, the table should contain no rows, and the table body should be empty. The system should ensure that the 'View All Registrations' tab content is visible and the 'Register Car' tab content is hidden upon navigation.

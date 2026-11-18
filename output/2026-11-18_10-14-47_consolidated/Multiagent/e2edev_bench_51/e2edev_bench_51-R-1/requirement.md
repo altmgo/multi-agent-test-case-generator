@@ -1,0 +1,3 @@
+# e2edev\_bench\_51-R-1
+
+The web application must provide a 'Settings' button, identifiable by the attribute data-testid='settings-btn'. When this button is clicked, it should toggle the visibility of the settings form, which is identifiable by the attribute data-testid='settings'. Initially, the settings form should be visible upon page load. The toggle functionality must handle rapid consecutive clicks, ensuring the form's visibility state changes accordingly with each click. The application should maintain a consistent user experience by ensuring the form's visibility state is accurately reflected after each interaction.

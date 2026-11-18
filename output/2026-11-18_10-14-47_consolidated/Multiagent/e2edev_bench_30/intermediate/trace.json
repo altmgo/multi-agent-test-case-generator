@@ -1,0 +1,313 @@
+{
+  "initial": {
+    "assessment": {
+      "candidate_id": "initial",
+      "cases": [
+        {
+          "id": "G-001",
+          "title": "Verify Badge Form Initial Display and Required Fields",
+          "description": "Access the application and verify that the 'badgeForm' is visible with all required input fields ('eventname', 'name', 'designation', 'company'), the select dropdown ('access'), and the 'generate-badge-button' across various screen sizes without horizontal scrolling.",
+          "requirement_ids": [
+            "e2edev_bench_30-R-1"
+          ]
+        },
+        {
+          "id": "G-002",
+          "title": "Form Submission with Missing Fields",
+          "description": "Attempt to click 'generate-badge-button' with one or more empty required fields and verify that the form remains visible while the badge and download button are not displayed.",
+          "requirement_ids": [
+            "e2edev_bench_30-R-2"
+          ]
+        },
+        {
+          "id": "G-003",
+          "title": "Successful Badge Generation and Dynamic Field Update",
+          "description": "Fill out all form fields with valid inputs, including minimum lengths and select an Access Level, then click 'generate-badge-button'. Verify that 'formContainer' is hidden, the badge section is displayed with updated details (Event Name, Person Name, Designation, Company Name prefixed with '@', and Access Level), and the QR code and 'dwnBadge' button are enabled.",
+          "requirement_ids": [
+            "e2edev_bench_30-R-2",
+            "e2edev_bench_30-R-3"
+          ]
+        },
+        {
+          "id": "G-004",
+          "title": "QR Code Content and Unique ID Generation",
+          "description": "Submit the valid badge form and inspect the generated QR code text content to ensure it includes a unique ID and follows the exact specified format including all entered details.",
+          "requirement_ids": [
+            "e2edev_bench_30-R-4"
+          ]
+        },
+        {
+          "id": "G-005",
+          "title": "Badge Download Functionality as PNG Image",
+          "description": "After successfully generating a badge, click the 'dwnBadge' button and verify that the html-to-image library successfully converts the badge HTML element into a PNG image and initiates the download via a data URL link.",
+          "requirement_ids": [
+            "e2edev_bench_30-R-6",
+            "e2edev_bench_30-R-7"
+          ]
+        }
+      ],
+      "opinions": [
+        {
+          "agent": "critic",
+          "feedback": "The proposed high-level test cases cover all requirements clearly, distinct scenarios are well-defined, and there are no blockers or untestable requirements identified.",
+          "request_revision": false,
+          "confirmed_blockers": [],
+          "blocker_assessment_complete": true
+        },
+        {
+          "agent": "validator",
+          "feedback": "All requirements and cases are well-defined, clear, and fully testable based on the provided specifications.",
+          "request_revision": false,
+          "confirmed_blockers": [],
+          "blocker_assessment_complete": true
+        }
+      ],
+      "valid": true,
+      "confirmed_blockers": 0,
+      "covered_requirements": 6,
+      "duplicates": 0,
+      "comparable": true
+    },
+    "analysis": {
+      "analysis": "e2edev_bench_30-R-1: Normal path: Access application and verify visibility of 'badgeForm' containing required fields 'eventname', 'name', 'designation', 'company', 'access', and 'generate-badge-button' without horizontal scrolling across all screen sizes. Boundaries: Small screen responsive layouts. Abnormal path: Missing required fields or improper layout rendering.\n\ne2edev_bench_30-R-2: Normal path: Populate all required fields ('eventname', 'name', 'designation', 'company') and select 'access' ('Attendee' or 'VIP'), click 'generate-badge-button', hide 'formContainer', display 'badge' with details, QR code, and visible 'dwnBadge'. Abnormal path: Leave any field empty; form remains visible, and badge/download button are hidden.\n\ne2edev_bench_30-R-3: Normal path: Input valid details and click 'generate-badge-button' to update 'badgeEvent', 'badgeName', 'badgeDesignation', 'badgecontainer' (Company Name prefixed with '@'), 'badgeAccess', and 'qrcode'. Enable 'dwnBadge'. Boundaries: Minimum input lengths for fields. Abnormal path: Invalid or edge-case string lengths.\n\ne2edev_bench_30-R-4: Normal path: Submit form to generate a unique ID and render QR code matching format 'ID: IDxxxx\\nEvent: [Event Name]\\nName: [Person Name]\\nDesignation: [Designation]\\nCompany: @[Company Name]\\nAccess: [Access Level]'. Hide 'formContainer' and trigger html-to-image conversion via 'dwnBadge'. Abnormal path: Incorrect QR format or generation failure.\n\ne2edev_bench_30-R-6: Normal path: Successfully submit completed form fields to display badge section and make 'dwnBadge' visible. Clicking 'dwnBadge' creates a link element with data URL href and triggers download. Abnormal path: Clicking download without badge generation or missing fields.\n\ne2edev_bench_30-R-7: Normal path: Fill form, generate badge with QR code, and click 'dwnBadge' to download PNG image via html-to-image. Boundaries: Large text content. Abnormal path: Errors during image conversion or faulty download triggers."
+    },
+    "failure": null
+  },
+  "rounds": [],
+  "status": "completed",
+  "failure": null,
+  "accepted_id": "initial",
+  "accepted_assessment": {
+    "candidate_id": "initial",
+    "cases": [
+      {
+        "id": "G-001",
+        "title": "Verify Badge Form Initial Display and Required Fields",
+        "description": "Access the application and verify that the 'badgeForm' is visible with all required input fields ('eventname', 'name', 'designation', 'company'), the select dropdown ('access'), and the 'generate-badge-button' across various screen sizes without horizontal scrolling.",
+        "requirement_ids": [
+          "e2edev_bench_30-R-1"
+        ]
+      },
+      {
+        "id": "G-002",
+        "title": "Form Submission with Missing Fields",
+        "description": "Attempt to click 'generate-badge-button' with one or more empty required fields and verify that the form remains visible while the badge and download button are not displayed.",
+        "requirement_ids": [
+          "e2edev_bench_30-R-2"
+        ]
+      },
+      {
+        "id": "G-003",
+        "title": "Successful Badge Generation and Dynamic Field Update",
+        "description": "Fill out all form fields with valid inputs, including minimum lengths and select an Access Level, then click 'generate-badge-button'. Verify that 'formContainer' is hidden, the badge section is displayed with updated details (Event Name, Person Name, Designation, Company Name prefixed with '@', and Access Level), and the QR code and 'dwnBadge' button are enabled.",
+        "requirement_ids": [
+          "e2edev_bench_30-R-2",
+          "e2edev_bench_30-R-3"
+        ]
+      },
+      {
+        "id": "G-004",
+        "title": "QR Code Content and Unique ID Generation",
+        "description": "Submit the valid badge form and inspect the generated QR code text content to ensure it includes a unique ID and follows the exact specified format including all entered details.",
+        "requirement_ids": [
+          "e2edev_bench_30-R-4"
+        ]
+      },
+      {
+        "id": "G-005",
+        "title": "Badge Download Functionality as PNG Image",
+        "description": "After successfully generating a badge, click the 'dwnBadge' button and verify that the html-to-image library successfully converts the badge HTML element into a PNG image and initiates the download via a data URL link.",
+        "requirement_ids": [
+          "e2edev_bench_30-R-6",
+          "e2edev_bench_30-R-7"
+        ]
+      }
+    ],
+    "opinions": [
+      {
+        "agent": "critic",
+        "feedback": "The proposed high-level test cases cover all requirements clearly, distinct scenarios are well-defined, and there are no blockers or untestable requirements identified.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      {
+        "agent": "validator",
+        "feedback": "All requirements and cases are well-defined, clear, and fully testable based on the provided specifications.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      }
+    ],
+    "valid": true,
+    "confirmed_blockers": 0,
+    "covered_requirements": 6,
+    "duplicates": 0,
+    "comparable": true
+  },
+  "pending": [],
+  "pending_controls": [],
+  "coverage": {
+    "feedback": "The accepted test cases cover all requirements comprehensively (R-1, R-2, R-3, R-4, R-6, and R-7). There are no coverage gaps, excessive test steps, or unnecessary repetitions among the current test cases. Every requirement is mapped clearly to verification checks ranging from initial form display, validation handling, dynamic field rendering, QR code generation with unique IDs, to final PNG image downloading."
+  },
+  "coverage_failure": null,
+  "calls": [
+    {
+      "stage": "analyst",
+      "subject_id": "initial",
+      "output": {
+        "analysis": "e2edev_bench_30-R-1: Normal path: Access application and verify visibility of 'badgeForm' containing required fields 'eventname', 'name', 'designation', 'company', 'access', and 'generate-badge-button' without horizontal scrolling across all screen sizes. Boundaries: Small screen responsive layouts. Abnormal path: Missing required fields or improper layout rendering.\n\ne2edev_bench_30-R-2: Normal path: Populate all required fields ('eventname', 'name', 'designation', 'company') and select 'access' ('Attendee' or 'VIP'), click 'generate-badge-button', hide 'formContainer', display 'badge' with details, QR code, and visible 'dwnBadge'. Abnormal path: Leave any field empty; form remains visible, and badge/download button are hidden.\n\ne2edev_bench_30-R-3: Normal path: Input valid details and click 'generate-badge-button' to update 'badgeEvent', 'badgeName', 'badgeDesignation', 'badgecontainer' (Company Name prefixed with '@'), 'badgeAccess', and 'qrcode'. Enable 'dwnBadge'. Boundaries: Minimum input lengths for fields. Abnormal path: Invalid or edge-case string lengths.\n\ne2edev_bench_30-R-4: Normal path: Submit form to generate a unique ID and render QR code matching format 'ID: IDxxxx\\nEvent: [Event Name]\\nName: [Person Name]\\nDesignation: [Designation]\\nCompany: @[Company Name]\\nAccess: [Access Level]'. Hide 'formContainer' and trigger html-to-image conversion via 'dwnBadge'. Abnormal path: Incorrect QR format or generation failure.\n\ne2edev_bench_30-R-6: Normal path: Successfully submit completed form fields to display badge section and make 'dwnBadge' visible. Clicking 'dwnBadge' creates a link element with data URL href and triggers download. Abnormal path: Clicking download without badge generation or missing fields.\n\ne2edev_bench_30-R-7: Normal path: Fill form, generate badge with QR code, and click 'dwnBadge' to download PNG image via html-to-image. Boundaries: Large text content. Abnormal path: Errors during image conversion or faulty download triggers."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": 1863,
+          "output_tokens": 511,
+          "details": {
+            "total_tokens": 2374,
+            "text_prompt_tokens": 1863
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-30-01",
+            "title": "Verify Badge Form Initial Display and Required Fields",
+            "description": "Access the application and verify that the 'badgeForm' is visible with all required input fields ('eventname', 'name', 'designation', 'company'), the select dropdown ('access'), and the 'generate-badge-button' across various screen sizes without horizontal scrolling.",
+            "requirement_ids": [
+              "e2edev_bench_30-R-1"
+            ]
+          },
+          {
+            "id": "TC-30-02",
+            "title": "Form Submission with Missing Fields",
+            "description": "Attempt to click 'generate-badge-button' with one or more empty required fields and verify that the form remains visible while the badge and download button are not displayed.",
+            "requirement_ids": [
+              "e2edev_bench_30-R-2"
+            ]
+          },
+          {
+            "id": "TC-30-03",
+            "title": "Successful Badge Generation and Dynamic Field Update",
+            "description": "Fill out all form fields with valid inputs, including minimum lengths and select an Access Level, then click 'generate-badge-button'. Verify that 'formContainer' is hidden, the badge section is displayed with updated details (Event Name, Person Name, Designation, Company Name prefixed with '@', and Access Level), and the QR code and 'dwnBadge' button are enabled.",
+            "requirement_ids": [
+              "e2edev_bench_30-R-2",
+              "e2edev_bench_30-R-3"
+            ]
+          },
+          {
+            "id": "TC-30-04",
+            "title": "QR Code Content and Unique ID Generation",
+            "description": "Submit the valid badge form and inspect the generated QR code text content to ensure it includes a unique ID and follows the exact specified format including all entered details.",
+            "requirement_ids": [
+              "e2edev_bench_30-R-4"
+            ]
+          },
+          {
+            "id": "TC-30-05",
+            "title": "Badge Download Functionality as PNG Image",
+            "description": "After successfully generating a badge, click the 'dwnBadge' button and verify that the html-to-image library successfully converts the badge HTML element into a PNG image and initiates the download via a data URL link.",
+            "requirement_ids": [
+              "e2edev_bench_30-R-6",
+              "e2edev_bench_30-R-7"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 2404,
+          "output_tokens": 626,
+          "details": {
+            "total_tokens": 3030,
+            "text_prompt_tokens": 2404
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "critic",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "The proposed high-level test cases cover all requirements clearly, distinct scenarios are well-defined, and there are no blockers or untestable requirements identified.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": 2396,
+          "output_tokens": 68,
+          "details": {
+            "total_tokens": 2464,
+            "text_prompt_tokens": 2396
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "validator",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "All requirements and cases are well-defined, clear, and fully testable based on the provided specifications.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 2393,
+          "output_tokens": 59,
+          "details": {
+            "total_tokens": 2452,
+            "text_prompt_tokens": 2393
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "coverage",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "The accepted test cases cover all requirements comprehensively (R-1, R-2, R-3, R-4, R-6, and R-7). There are no coverage gaps, excessive test steps, or unnecessary repetitions among the current test cases. Every requirement is mapped clearly to verification checks ranging from initial form display, validation handling, dynamic field rendering, QR code generation with unique IDs, to final PNG image downloading."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 2401,
+          "output_tokens": 97,
+          "details": {
+            "total_tokens": 2498,
+            "text_prompt_tokens": 2401
+          },
+          "status": "available"
+        }
+      ]
+    }
+  ],
+  "monotonicity": "confirmed"
+}

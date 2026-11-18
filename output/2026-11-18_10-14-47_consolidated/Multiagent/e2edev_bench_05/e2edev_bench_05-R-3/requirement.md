@@ -1,0 +1,3 @@
+# e2edev\_bench\_05-R-3
+
+The web application must allow users to search for word details. When a user enters a word in the search input field (data-testid 'search-input') and clicks the 'Search' button (data-testid 'search-button'), the system should fetch the word's definition, pronunciation, and example from the dictionary API. A result card (data-testid 'result-card') should then be displayed with the searched word as the title (data-testid 'card-title'), its pronunciation (data-testid 'word-pronunciation'), meaning (data-testid 'word-meaning'), and an example sentence (data-testid 'word-example'). 

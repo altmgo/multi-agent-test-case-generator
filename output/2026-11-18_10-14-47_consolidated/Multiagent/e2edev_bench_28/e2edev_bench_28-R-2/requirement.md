@@ -1,0 +1,3 @@
+# e2edev\_bench\_28-R-2
+
+When a player clicks on an empty tile, the system must display the current player's symbol ('X' or 'O') in the tile and visually indicate the player's move by adding a corresponding CSS class ('playerX' for Player X or 'playerO' for Player O). The system must validate that the tile is empty before allowing the action. If the tile is already occupied, no changes should be made to the tile's content or CSS class, and the current player should remain unchanged. The tiles are identified using the 'data-testid' attribute (e.g., 'tile-1', 'tile-2', etc.). The current player's symbol is displayed in the element with 'data-testid="current-player"', and its CSS class dynamically updates to reflect the active player ('playerX' or 'playerO').

@@ -1,0 +1,3 @@
+# e2edev\_bench\_42-R-3
+
+The system must provide a 'Job' input field with the attribute data-testid='job-input' where users can enter a job title. Upon clicking the 'Calculate Salary' button (data-testid='calculate-button'), the entered job title should be displayed in the 'Salary Overview for' section under the element with data-testid='salary-overview-title' and data-testid='job-title'. If the 'Job' input field is left empty, the default value '______' must be displayed in both the title and job title elements. The system must handle edge cases such as very long job titles and special characters, ensuring they are displayed correctly without truncation or formatting issues.

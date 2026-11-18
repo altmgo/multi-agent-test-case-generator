@@ -1,0 +1,3 @@
+# e2edev\_bench\_15-R-3
+
+When the user interacts with the Volume slider (identified by the attribute data-testid='volume-slider'), the video's audio level should update to match the slider value. The slider allows values ranging from 0 (mute) to 1 (maximum volume) in increments of 0.05. The slider's value should be reflected in the video's 'volume' property, and the slider's UI element must be updated in real-time to reflect the current volume level. The slider is located within the '.player__controls' div and is identified by the 'player__slider' class and the 'data-testid' attribute. Any changes to the slider should trigger the 'handleRangeUpdate' function in the JavaScript code to update the video's volume property.

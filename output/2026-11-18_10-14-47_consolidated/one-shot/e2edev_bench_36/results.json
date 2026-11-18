@@ -1,0 +1,308 @@
+{
+  "schema_version": 1,
+  "solution": "one-shot",
+  "unit_id": "e2edev_bench_36",
+  "parent_id": null,
+  "status": "evaluated",
+  "failure": null,
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "e2edev_bench_36-R-1",
+      "text": "The web application should provide a textarea element with the attribute data-testid='text-input' where users can input text freely without immediate restrictions. Upon entering text, the system should update the word count, character count, and paragraph count displayed in elements with data-testid='word-count', 'char-count', and 'para-count', respectively. The user can input text of any length, including large texts up to 5000 characters, without restrictions. The system should persist the entered text and counts in localStorage using keys 'text', 'words', 'chars', and 'paras'. Additionally, the application should allow users to set a character limit via an input element with data-testid='char-limit', and visually indicate when the character count exceeds this limit by changing the text color to red in the 'char-count' element. The system should also provide functionality to clear the text and counts via a button with data-testid='clear-button', and highlight specific words in the text using a button with id='highlight-button' and an input with id='highlight-word'.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_36/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_36-R-2",
+      "text": "The web application should provide a text input area identified by the attribute data-testid='text-input' where users can enter text. Upon clicking the 'Count' button, identified by data-testid='count-button', the system must calculate and display the number of words, characters, and paragraphs in the text input. The results should be shown in elements with data-testid='word-count', 'char-count', and 'para-count', respectively. The word count should exclude empty strings resulting from spaces or newlines. The character count should include all characters, including spaces and special characters. The paragraph count should consider non-empty lines separated by newlines. The system should handle edge cases such as empty input, input with only spaces or newlines, and input with special characters. Additionally, the application should persist the text input and counts in localStorage using keys 'text', 'words', 'chars', and 'paras', and reload them upon page refresh. If a character limit is set in the input field with data-testid='char-limit', the character count should change color to red if the limit is exceeded, and the text should indicate the excess.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_36/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_36-R-3",
+      "text": "The web application must provide a 'Clear' button, identifiable by the data-testid 'clear-button', which, when clicked by the user, clears the text input field with data-testid 'text-input' and resets the word count (data-testid 'word-count'), character count (data-testid 'char-count'), and paragraph count (data-testid 'para-count') to zero. This functionality should work regardless of the current state of the text input, including when it is already empty. Upon clearing, the text input field should be empty, and the counts should display 'Words: 0', 'Characters: 0', and 'Paragraphs: 0'. The system should ensure that these changes are reflected in the UI immediately after the button is clicked.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_36/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Normal Text Input and Real-time Counting",
+      "description": "Verify that typing text in the textarea updates word, character, and paragraph counts correctly and persists them in localStorage.",
+      "requirement_ids": [
+        "e2edev_bench_36-R-1",
+        "e2edev_bench_36-R-2"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Large Text Input Handling",
+      "description": "Verify that users can input large texts up to 5000 characters without restrictions and counts are accurately updated and persisted.",
+      "requirement_ids": [
+        "e2edev_bench_36-R-1"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Character Limit Exceeded Warning",
+      "description": "Verify that setting a character limit and exceeding it changes the character count text color to red and indicates the excess.",
+      "requirement_ids": [
+        "e2edev_bench_36-R-1",
+        "e2edev_bench_36-R-2"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Clear Button Functionality",
+      "description": "Verify that clicking the clear button resets the text input and all counts to zero, both in the UI and state.",
+      "requirement_ids": [
+        "e2edev_bench_36-R-1",
+        "e2edev_bench_36-R-3"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Abnormal Edge Case - Empty or Whitespace Input",
+      "description": "Verify that handling empty input, spaces, or only newlines calculates counts properly and excludes empty strings from word counts.",
+      "requirement_ids": [
+        "e2edev_bench_36-R-2"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Clear Button on Already Empty State",
+      "description": "Verify that clicking the clear button when the input is already empty functions correctly without errors.",
+      "requirement_ids": [
+        "e2edev_bench_36-R-3"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_36-R-1-TC-1",
+      "title": "[Normal] User enters text into the textarea",
+      "description": "Feature: Text Input Functionality\n  The system should allow the user to input any text into the textarea without immediate restrictions.\n\n\nScenario: [Normal] User enters text into the textarea\n    Given the Word Counter page is loaded\n    And the textarea with data-testid \"text-input\" is empty\n    When the user enters \"Hello World\" into the textarea with data-testid \"text-input\"\n    Then the textarea with data-testid \"text-input\" should contain the text \"Hello World\"",
+      "requirement_ids": [
+        "e2edev_bench_36-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_36/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_36-R-1-TC-2",
+      "title": "[Edge] User enters a large amount of text into the textarea",
+      "description": "Feature: Text Input Functionality\n  The system should allow the user to input any text into the textarea without immediate restrictions.\n\n\nScenario: [Edge] User enters a large amount of text into the textarea\n    Given the Word Counter page is loaded\n    And the textarea with data-testid \"text-input\" is empty\n    When the user enters a text of 5000 characters into the textarea with data-testid \"text-input\"\n    Then the textarea with data-testid \"text-input\" should contain the text of 5000 characters",
+      "requirement_ids": [
+        "e2edev_bench_36-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_36/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_36-R-2-TC-1",
+      "title": "[Normal] Count words, characters, and paragraphs for a typical input",
+      "description": "Feature: Word, Character, and Paragraph Counting\n  The system should calculate and display the number of words, characters, and paragraphs in the text input when the user clicks the 'Count' button.\n\n\n  Scenario: [Normal] Count words, characters, and paragraphs for a typical input\n    Given the webpage is loaded\n    And the user enters \"Hello world! This is a test.\\nThis is a new paragraph.\" into the text area with data-testid \"text-input\"\n    When the user clicks the 'Count' button with data-testid \"count-button\"\n    Then the word count displayed with data-testid \"word-count\" should be \"Words: 11\"\n    And the character count displayed with data-testid \"char-count\" should be \"Characters: 53\"\n    And the paragraph count displayed with data-testid \"para-count\" should be \"Paragraphs: 2\"\n",
+      "requirement_ids": [
+        "e2edev_bench_36-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_36/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_36-R-2-TC-2",
+      "title": "[Edge] Count words, characters, and paragraphs for an empty input",
+      "description": "Feature: Word, Character, and Paragraph Counting\n  The system should calculate and display the number of words, characters, and paragraphs in the text input when the user clicks the 'Count' button.\n\n\n  Scenario: [Edge] Count words, characters, and paragraphs for an empty input\n    Given the webpage is loaded\n    And the text area with data-testid \"text-input\" is empty\n    When the user clicks the 'Count' button with data-testid \"count-button\"\n    Then the word count displayed with data-testid \"word-count\" should be \"Words: 0\"\n    And the character count displayed with data-testid \"char-count\" should be \"Characters: 0\"\n    And the paragraph count displayed with data-testid \"para-count\" should be \"Paragraphs: 0\"\n",
+      "requirement_ids": [
+        "e2edev_bench_36-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_36/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_36-R-2-TC-3",
+      "title": "[Edge] Count words, characters, and paragraphs for input with only spaces and newlines",
+      "description": "Feature: Word, Character, and Paragraph Counting\n  The system should calculate and display the number of words, characters, and paragraphs in the text input when the user clicks the 'Count' button.\n\n\n  Scenario: [Edge] Count words, characters, and paragraphs for input with only spaces and newlines\n    Given the webpage is loaded\n    And the user enters \"   \\n   \\n\" into the text area with data-testid \"text-input\"\n    When the user clicks the 'Count' button with data-testid \"count-button\"\n    Then the word count displayed with data-testid \"word-count\" should be \"Words: 0\"\n    And the character count displayed with data-testid \"char-count\" should be \"Characters: 8\"\n    And the paragraph count displayed with data-testid \"para-count\" should be \"Paragraphs: 0\"\n",
+      "requirement_ids": [
+        "e2edev_bench_36-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_36/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_36-R-2-TC-4",
+      "title": "[Error] Count words, characters, and paragraphs for input with special characters",
+      "description": "Feature: Word, Character, and Paragraph Counting\n  The system should calculate and display the number of words, characters, and paragraphs in the text input when the user clicks the 'Count' button.\n\n\n  Scenario: [Error] Count words, characters, and paragraphs for input with special characters\n    Given the webpage is loaded\n    And the user enters \"!@#$%^&*()_+{}|:<>?\" into the text area with data-testid \"text-input\"\n    When the user clicks the 'Count' button with data-testid \"count-button\"\n    Then the word count displayed with data-testid \"word-count\" should be \"Words: 1\"\n    And the character count displayed with data-testid \"char-count\" should be \"Characters: 19\"\n    And the paragraph count displayed with data-testid \"para-count\" should be \"Paragraphs: 1\"",
+      "requirement_ids": [
+        "e2edev_bench_36-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_36/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_36-R-3-TC-1",
+      "title": "[Normal] Clear text input and reset counts",
+      "description": "Feature: Clear Text Functionality\n  The system should clear the text input and reset the word, character, and paragraph counts to zero when the user clicks the 'Clear' button.\n\n\n  Scenario: [Normal] Clear text input and reset counts\n    Given the webpage is loaded\n    And the user enters \"This is a test.\\nThis is another test.\" into the text area with data-testid \"text-input\"\n    When the user clicks the 'Clear' button with data-testid \"clear-button\"\n    Then the text area with data-testid \"text-input\" should be empty\n    And the word count should display \"Words: 0\"\n    And the character count should display \"Characters: 0\"\n    And the paragraph count should display \"Paragraphs: 0\"\n",
+      "requirement_ids": [
+        "e2edev_bench_36-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_36/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_36-R-3-TC-2",
+      "title": "[Edge] Clear button with empty text input",
+      "description": "Feature: Clear Text Functionality\n  The system should clear the text input and reset the word, character, and paragraph counts to zero when the user clicks the 'Clear' button.\n\n\nScenario: [Edge] Clear button with empty text input\n    Given the webpage is loaded\n    And the text area with data-testid \"text-input\" is empty\n    When the user clicks the 'Clear' button with data-testid \"clear-button\"\n    Then the text area with data-testid \"text-input\" should remain empty\n    And the word count should still display \"Words: 0\"\n    And the character count should still display \"Characters: 0\"\n    And the paragraph count should still display \"Paragraphs: 0\"",
+      "requirement_ids": [
+        "e2edev_bench_36-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_36/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_36-R-3-TC-3",
+      "title": "[Normal] Clear button with text",
+      "description": "Feature: Clear Text Functionality\n  The system should clear the text input and reset the word, character, and paragraph counts to zero when the user clicks the 'Clear' button.\n\n\nScenario: [Normal] Clear button with text\n    Given the webpage is loaded\n    And the user enters \"Invalid state test\" into the text area with data-testid \"text-input\"\n    When the user clicks the 'Clear' button with data-testid \"clear-button\"\n    Then the text area with data-testid \"text-input\" should be empty\n    And the word count should display \"Words: 0\"\n    And the character count should display \"Characters: 0\"\n    And the paragraph count should display \"Paragraphs: 0\"",
+      "requirement_ids": [
+        "e2edev_bench_36-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_36/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 6,
+    "reference_count": 9,
+    "matches": [
+      {
+        "generated_id": "G-001",
+        "reference_id": "e2edev_bench_36-R-1-TC-1",
+        "similarity": 0.893187922112832
+      },
+      {
+        "generated_id": "G-002",
+        "reference_id": "e2edev_bench_36-R-1-TC-2",
+        "similarity": 0.9253921824350811
+      },
+      {
+        "generated_id": "G-003",
+        "reference_id": "e2edev_bench_36-R-2-TC-4",
+        "similarity": 0.8155759547813103
+      },
+      {
+        "generated_id": "G-004",
+        "reference_id": "e2edev_bench_36-R-3-TC-3",
+        "similarity": 0.9167610428953721
+      },
+      {
+        "generated_id": "G-005",
+        "reference_id": "e2edev_bench_36-R-2-TC-3",
+        "similarity": 0.8965926289688829
+      },
+      {
+        "generated_id": "G-006",
+        "reference_id": "e2edev_bench_36-R-3-TC-2",
+        "similarity": 0.8879627081665497
+      }
+    ],
+    "unmatched_generated_ids": [],
+    "unmatched_reference_ids": [
+      "e2edev_bench_36-R-2-TC-1",
+      "e2edev_bench_36-R-2-TC-2",
+      "e2edev_bench_36-R-3-TC-1"
+    ],
+    "precision": 1.0,
+    "recall": 0.6666666666666666,
+    "f1": 0.8,
+    "embedding_usage": {
+      "input_tokens": 1694,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 1694
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
+  "generation": {
+    "selected_techniques": [],
+    "technique_rationales": {},
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": 985,
+      "output_tokens": 586,
+      "details": {
+        "text_prompt_tokens": 985,
+        "total_tokens": 1571
+      },
+      "status": "available"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": 1694,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 1694
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
+  "links": {
+    "requirements": {
+      "e2edev_bench_36-R-1": "e2edev_bench_36-R-1/requirement.md",
+      "e2edev_bench_36-R-2": "e2edev_bench_36-R-2/requirement.md",
+      "e2edev_bench_36-R-3": "e2edev_bench_36-R-3/requirement.md"
+    },
+    "cases": {
+      "G-001": {
+        "e2edev_bench_36-R-1": "e2edev_bench_36-R-1/test cases/1_Normal_Text_Input_and_Real-time_Counting.md",
+        "e2edev_bench_36-R-2": "e2edev_bench_36-R-2/test cases/1_Normal_Text_Input_and_Real-time_Counting.md"
+      },
+      "G-002": {
+        "e2edev_bench_36-R-1": "e2edev_bench_36-R-1/test cases/2_Large_Text_Input_Handling.md"
+      },
+      "G-003": {
+        "e2edev_bench_36-R-1": "e2edev_bench_36-R-1/test cases/3_Character_Limit_Exceeded_Warning.md",
+        "e2edev_bench_36-R-2": "e2edev_bench_36-R-2/test cases/3_Character_Limit_Exceeded_Warning.md"
+      },
+      "G-004": {
+        "e2edev_bench_36-R-1": "e2edev_bench_36-R-1/test cases/4_Clear_Button_Functionality.md",
+        "e2edev_bench_36-R-3": "e2edev_bench_36-R-3/test cases/4_Clear_Button_Functionality.md"
+      },
+      "G-005": {
+        "e2edev_bench_36-R-2": "e2edev_bench_36-R-2/test cases/5_Abnormal_Edge_Case_-_Empty_or_Whitespace_Input.md"
+      },
+      "G-006": {
+        "e2edev_bench_36-R-3": "e2edev_bench_36-R-3/test cases/6_Clear_Button_on_Already_Empty_State.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

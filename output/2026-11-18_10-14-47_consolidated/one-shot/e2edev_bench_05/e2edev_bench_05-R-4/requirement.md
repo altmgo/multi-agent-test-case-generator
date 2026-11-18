@@ -1,0 +1,3 @@
+# e2edev\_bench\_05-R-4
+
+The system must provide a 'Reset' button on the Dictionary page that clears the search input field and hides the result card. When the user clicks the 'Reset' button (data-testid 'reset-button'), the search input field (data-testid 'search-input') should be cleared, and the result card (data-testid 'result-card') should be hidden. This functionality should work whether the search input field is empty or contains text, and regardless of whether a search has been performed. The system should ensure that the result card remains hidden after the reset, providing a consistent user experience.

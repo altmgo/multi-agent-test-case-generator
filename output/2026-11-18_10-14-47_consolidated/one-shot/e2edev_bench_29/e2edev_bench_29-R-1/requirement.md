@@ -1,0 +1,3 @@
+# e2edev\_bench\_29-R-1
+
+Upon loading the Expense Tracker application, the system must initialize and display the financial summary with the current balance, total income, and total expenses all set to $0.00. This initialization should occur when there are no transactions stored in the local storage. The balance should be displayed in the element with data-testid 'balance', the income in the element with data-testid 'income', and the expenses in the element with data-testid 'expense'. The application must ensure these values are accurately retrieved and displayed from the local storage, defaulting to $0.00 if the storage is empty or contains no transactions.

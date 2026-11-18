@@ -1,0 +1,3 @@
+# e2edev\_bench\_26-R-2
+
+When the user interacts with the 查找和替换 functionality, the system must ensure the following behavior: Upon clicking the '展开' button (data-testid: 'expand-list-item'), the list (data-testid: 'lis') becomes visible. If the user clicks the '查找' list item (data-testid: 'search-list-item') within the expanded list, the system must display the '查找' tab (data-testid: 'search') along with its associated input field (data-testid: 'search-input') and button (data-testid: 'search-button'). The system must handle edge cases where the '展开' button is clicked multiple times, ensuring the list remains visible and the '查找' tab is displayed correctly upon selection. All UI elements must update their visibility dynamically without requiring a page reload.

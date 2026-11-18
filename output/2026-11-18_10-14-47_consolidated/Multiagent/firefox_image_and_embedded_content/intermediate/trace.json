@@ -1,0 +1,583 @@
+{
+  "initial": {
+    "assessment": {
+      "candidate_id": "initial",
+      "cases": [
+        {
+          "id": "G-001",
+          "title": "Resize Large Images to Browser Window",
+          "description": "Verify that images larger than the viewport dimensions are automatically resized to fit within the browser window.",
+          "requirement_ids": [
+            "R-085"
+          ]
+        },
+        {
+          "id": "G-002",
+          "title": "Restore Image to Original Size",
+          "description": "Verify that a resized image can be toggled or restored back to its original dimensions.",
+          "requirement_ids": [
+            "R-086"
+          ]
+        },
+        {
+          "id": "G-003",
+          "title": "Save Image via Context Menu",
+          "description": "Verify that right-clicking an image provides an option to save the image to the local drive and completes successfully.",
+          "requirement_ids": [
+            "R-087"
+          ]
+        },
+        {
+          "id": "G-004",
+          "title": "Set Image as Wallpaper",
+          "description": "Verify that an image can be set as the desktop wallpaper through the browser interface.",
+          "requirement_ids": [
+            "R-088"
+          ]
+        },
+        {
+          "id": "G-005",
+          "title": "Print Image Without Modifying Page State",
+          "description": "Verify that triggering a print action for an image prints it successfully without altering the currently loaded page state.",
+          "requirement_ids": [
+            "R-089"
+          ]
+        },
+        {
+          "id": "G-006",
+          "title": "Image Redithering on System Bit-Depth Changes",
+          "description": "Verify that images are properly redithered when the operating system's bit-depth settings are modified.",
+          "requirement_ids": [
+            "R-090"
+          ]
+        },
+        {
+          "id": "G-007",
+          "title": "Display Modified Images on Page Reload",
+          "description": "Verify that reloading a web page correctly fetches and displays images that have been modified on the server since the last load.",
+          "requirement_ids": [
+            "R-091"
+          ]
+        },
+        {
+          "id": "G-008",
+          "title": "Load Images from Networked Server",
+          "description": "Verify that images load directly into the web browser from a remote networked server via standard protocols.",
+          "requirement_ids": [
+            "R-092"
+          ]
+        },
+        {
+          "id": "G-009",
+          "title": "Load Images from Local Hard Drive",
+          "description": "Verify that images load directly into the web browser from a local storage path.",
+          "requirement_ids": [
+            "R-093"
+          ]
+        },
+        {
+          "id": "G-010",
+          "title": "Continuous Animation of GIFs Over Extended Periods",
+          "description": "Verify that animated GIFs continue to animate correctly and do not freeze or leak memory after 24 hours or greater.",
+          "requirement_ids": [
+            "R-094"
+          ]
+        },
+        {
+          "id": "G-011",
+          "title": "Simultaneous Rendering of Multiple Differing Animated GIFs",
+          "description": "Verify that multiple unique animated images displayed on the same page animate concurrently and correctly.",
+          "requirement_ids": [
+            "R-095"
+          ]
+        },
+        {
+          "id": "G-012",
+          "title": "Render GIF 87 Images Across Bit Depths",
+          "description": "Verify that GIF 87 format images are properly displayed across various system bit depths.",
+          "requirement_ids": [
+            "R-096"
+          ]
+        },
+        {
+          "id": "G-013",
+          "title": "Render GIF 89a Images Across Bit Depths",
+          "description": "Verify that GIF 89a format images are properly displayed across various system bit depths.",
+          "requirement_ids": [
+            "R-097"
+          ]
+        },
+        {
+          "id": "G-014",
+          "title": "Graceful Handling of Corrupted or Invalid GIFs",
+          "description": "Verify that the web browser handles unusual, corrupted, or invalid GIF images gracefully without crashing or freezing.",
+          "requirement_ids": [
+            "R-098"
+          ]
+        },
+        {
+          "id": "G-015",
+          "title": "Display X Bitmap (XBM) Format Images",
+          "description": "Verify that X Bitmap (XBM) format images are parsed and displayed correctly.",
+          "requirement_ids": [
+            "R-099"
+          ]
+        },
+        {
+          "id": "G-016",
+          "title": "Execute Applets Within Tag Elements",
+          "description": "Verify that applets are correctly executed when embedded using <applet> and <object> tags.",
+          "requirement_ids": [
+            "R-100"
+          ]
+        },
+        {
+          "id": "G-017",
+          "title": "Manage Applet Lifecycle",
+          "description": "Verify that applets correctly execute lifecycle events such as initialization, starting, stopping, and destruction.",
+          "requirement_ids": [
+            "R-101"
+          ]
+        }
+      ],
+      "opinions": [
+        {
+          "agent": "critic",
+          "feedback": "All high-level test cases are well-structured, distinct, cover the requirements comprehensively, and are actionable. No blockers were found.",
+          "request_revision": false,
+          "confirmed_blockers": [],
+          "blocker_assessment_complete": true
+        },
+        {
+          "agent": "validator",
+          "feedback": "All cases and expected behaviors align with the requirements and are testable.",
+          "request_revision": false,
+          "confirmed_blockers": [],
+          "blocker_assessment_complete": true
+        }
+      ],
+      "valid": true,
+      "confirmed_blockers": 0,
+      "covered_requirements": 17,
+      "duplicates": 0,
+      "comparable": true
+    },
+    "analysis": {
+      "analysis": "R-085: Testable behavior includes shrinking images larger than viewport dimensions to fit the browser window. Boundaries: image dimensions exactly equal to, smaller than, and larger than viewport. Normal path: large image automatically fits window. Abnormal path: image overflows viewport. Ambiguity: definition of 'large image' (dimensions vs file size).\nR-086: Testable behavior includes toggling resized image back to original dimensions. Normal path: click or trigger resize-to-original on a resized image. Abnormal path: attempting resize on non-resizable image. Ambiguity: exact UI mechanism for restoring original size.\nR-087: Testable behavior includes saving image via context menu. Normal path: right-click image, select save option, verify file saved to local drive. Abnormal path: right-click on non-image elements, network interruption during save.\nR-088: Testable behavior includes setting an image as desktop wallpaper. Normal path: select set-as-wallpaper option, verify OS wallpaper updates. Abnormal path: insufficient OS permissions. Ambiguity: supported OS environments.\nR-089: Testable behavior includes printing an image without altering the current page state. Normal path: trigger print, verify page remains unchanged. Abnormal path: print failure. Ambiguity: printing behavior when loaded as standalone image vs embedded image.\nR-090: Testable behavior includes updating image dithering when system bit depth changes. Normal path: change OS bit depth, verify image re-dithers correctly. Abnormal path: unsupported bit depths. Ambiguity: acceptable visual thresholds for proper re-dithering.\nR-091: Testable behavior includes fetching and displaying modified images on page reload. Normal path: modify remote image, reload page, verify updated image displays. Abnormal path: caching prevents update. Ambiguity: cache invalidation mechanism.\nR-092: Testable behavior includes loading images from networked servers. Normal path: load image via http/https. Abnormal path: 404, timeout, network failure.\nR-093: Testable behavior includes loading images from local storage (file://). Normal path: load local file path. Abnormal path: permission denied, non-existent file.\nR-094: Testable behavior includes continuous animation of GIFs over >= 24 hours. Normal path: leave animated GIF running for 24+ hours. Abnormal path: memory leaks or frozen frames.\nR-095: Testable behavior includes simultaneous rendering of multiple unique animated images. Normal path: page with multiple differing animated GIFs. Abnormal path: high CPU usage, frame dropping, one animation freezing another.\nR-096: Testable behavior includes rendering GIF 87 images across various bit depths. Normal path: display GIF 87 at 8-bit, 16-bit, 24-bit, 32-bit.\nR-097: Testable behavior includes rendering GIF 89a images across various bit depths. Normal path: display GIF 89a at 8-bit, 16-bit, 24-bit, 32-bit.\nR-098: Testable behavior includes error handling for corrupted/invalid GIFs. Normal path: load malformed GIF. Abnormal path: browser crash or infinite loop. Ambiguity: definition of 'gracefully deal' (placeholder icon vs blank space vs throwing error).\nR-099: Testable behavior includes parsing and rendering XBM format images. Normal path: load valid XBM file. Abnormal path: malformed XBM syntax.\nR-100: Testable behavior includes executing applets within <applet> and <object> tags. Normal path: render valid applet tags. Abnormal path: missing plugin, malformed tags.\nR-101: Testable behavior includes managing applet lifecycle events (init, start, stop, destroy). Normal path: load, navigate away from, and reload page containing applets. Abnormal path: memory leaks during destroy phase."
+    },
+    "failure": null
+  },
+  "rounds": [],
+  "status": "completed",
+  "failure": null,
+  "accepted_id": "initial",
+  "accepted_assessment": {
+    "candidate_id": "initial",
+    "cases": [
+      {
+        "id": "G-001",
+        "title": "Resize Large Images to Browser Window",
+        "description": "Verify that images larger than the viewport dimensions are automatically resized to fit within the browser window.",
+        "requirement_ids": [
+          "R-085"
+        ]
+      },
+      {
+        "id": "G-002",
+        "title": "Restore Image to Original Size",
+        "description": "Verify that a resized image can be toggled or restored back to its original dimensions.",
+        "requirement_ids": [
+          "R-086"
+        ]
+      },
+      {
+        "id": "G-003",
+        "title": "Save Image via Context Menu",
+        "description": "Verify that right-clicking an image provides an option to save the image to the local drive and completes successfully.",
+        "requirement_ids": [
+          "R-087"
+        ]
+      },
+      {
+        "id": "G-004",
+        "title": "Set Image as Wallpaper",
+        "description": "Verify that an image can be set as the desktop wallpaper through the browser interface.",
+        "requirement_ids": [
+          "R-088"
+        ]
+      },
+      {
+        "id": "G-005",
+        "title": "Print Image Without Modifying Page State",
+        "description": "Verify that triggering a print action for an image prints it successfully without altering the currently loaded page state.",
+        "requirement_ids": [
+          "R-089"
+        ]
+      },
+      {
+        "id": "G-006",
+        "title": "Image Redithering on System Bit-Depth Changes",
+        "description": "Verify that images are properly redithered when the operating system's bit-depth settings are modified.",
+        "requirement_ids": [
+          "R-090"
+        ]
+      },
+      {
+        "id": "G-007",
+        "title": "Display Modified Images on Page Reload",
+        "description": "Verify that reloading a web page correctly fetches and displays images that have been modified on the server since the last load.",
+        "requirement_ids": [
+          "R-091"
+        ]
+      },
+      {
+        "id": "G-008",
+        "title": "Load Images from Networked Server",
+        "description": "Verify that images load directly into the web browser from a remote networked server via standard protocols.",
+        "requirement_ids": [
+          "R-092"
+        ]
+      },
+      {
+        "id": "G-009",
+        "title": "Load Images from Local Hard Drive",
+        "description": "Verify that images load directly into the web browser from a local storage path.",
+        "requirement_ids": [
+          "R-093"
+        ]
+      },
+      {
+        "id": "G-010",
+        "title": "Continuous Animation of GIFs Over Extended Periods",
+        "description": "Verify that animated GIFs continue to animate correctly and do not freeze or leak memory after 24 hours or greater.",
+        "requirement_ids": [
+          "R-094"
+        ]
+      },
+      {
+        "id": "G-011",
+        "title": "Simultaneous Rendering of Multiple Differing Animated GIFs",
+        "description": "Verify that multiple unique animated images displayed on the same page animate concurrently and correctly.",
+        "requirement_ids": [
+          "R-095"
+        ]
+      },
+      {
+        "id": "G-012",
+        "title": "Render GIF 87 Images Across Bit Depths",
+        "description": "Verify that GIF 87 format images are properly displayed across various system bit depths.",
+        "requirement_ids": [
+          "R-096"
+        ]
+      },
+      {
+        "id": "G-013",
+        "title": "Render GIF 89a Images Across Bit Depths",
+        "description": "Verify that GIF 89a format images are properly displayed across various system bit depths.",
+        "requirement_ids": [
+          "R-097"
+        ]
+      },
+      {
+        "id": "G-014",
+        "title": "Graceful Handling of Corrupted or Invalid GIFs",
+        "description": "Verify that the web browser handles unusual, corrupted, or invalid GIF images gracefully without crashing or freezing.",
+        "requirement_ids": [
+          "R-098"
+        ]
+      },
+      {
+        "id": "G-015",
+        "title": "Display X Bitmap (XBM) Format Images",
+        "description": "Verify that X Bitmap (XBM) format images are parsed and displayed correctly.",
+        "requirement_ids": [
+          "R-099"
+        ]
+      },
+      {
+        "id": "G-016",
+        "title": "Execute Applets Within Tag Elements",
+        "description": "Verify that applets are correctly executed when embedded using <applet> and <object> tags.",
+        "requirement_ids": [
+          "R-100"
+        ]
+      },
+      {
+        "id": "G-017",
+        "title": "Manage Applet Lifecycle",
+        "description": "Verify that applets correctly execute lifecycle events such as initialization, starting, stopping, and destruction.",
+        "requirement_ids": [
+          "R-101"
+        ]
+      }
+    ],
+    "opinions": [
+      {
+        "agent": "critic",
+        "feedback": "All high-level test cases are well-structured, distinct, cover the requirements comprehensively, and are actionable. No blockers were found.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      {
+        "agent": "validator",
+        "feedback": "All cases and expected behaviors align with the requirements and are testable.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      }
+    ],
+    "valid": true,
+    "confirmed_blockers": 0,
+    "covered_requirements": 17,
+    "duplicates": 0,
+    "comparable": true
+  },
+  "pending": [],
+  "pending_controls": [],
+  "coverage": {
+    "feedback": "The accepted test cases provide complete, one-to-one coverage for all seventeen requirements (R-085 through R-101) without any coverage gaps, excess test cases, or repetition. Each requirement is mapped to a distinct and well-defined test case."
+  },
+  "coverage_failure": null,
+  "calls": [
+    {
+      "stage": "analyst",
+      "subject_id": "initial",
+      "output": {
+        "analysis": "R-085: Testable behavior includes shrinking images larger than viewport dimensions to fit the browser window. Boundaries: image dimensions exactly equal to, smaller than, and larger than viewport. Normal path: large image automatically fits window. Abnormal path: image overflows viewport. Ambiguity: definition of 'large image' (dimensions vs file size).\nR-086: Testable behavior includes toggling resized image back to original dimensions. Normal path: click or trigger resize-to-original on a resized image. Abnormal path: attempting resize on non-resizable image. Ambiguity: exact UI mechanism for restoring original size.\nR-087: Testable behavior includes saving image via context menu. Normal path: right-click image, select save option, verify file saved to local drive. Abnormal path: right-click on non-image elements, network interruption during save.\nR-088: Testable behavior includes setting an image as desktop wallpaper. Normal path: select set-as-wallpaper option, verify OS wallpaper updates. Abnormal path: insufficient OS permissions. Ambiguity: supported OS environments.\nR-089: Testable behavior includes printing an image without altering the current page state. Normal path: trigger print, verify page remains unchanged. Abnormal path: print failure. Ambiguity: printing behavior when loaded as standalone image vs embedded image.\nR-090: Testable behavior includes updating image dithering when system bit depth changes. Normal path: change OS bit depth, verify image re-dithers correctly. Abnormal path: unsupported bit depths. Ambiguity: acceptable visual thresholds for proper re-dithering.\nR-091: Testable behavior includes fetching and displaying modified images on page reload. Normal path: modify remote image, reload page, verify updated image displays. Abnormal path: caching prevents update. Ambiguity: cache invalidation mechanism.\nR-092: Testable behavior includes loading images from networked servers. Normal path: load image via http/https. Abnormal path: 404, timeout, network failure.\nR-093: Testable behavior includes loading images from local storage (file://). Normal path: load local file path. Abnormal path: permission denied, non-existent file.\nR-094: Testable behavior includes continuous animation of GIFs over >= 24 hours. Normal path: leave animated GIF running for 24+ hours. Abnormal path: memory leaks or frozen frames.\nR-095: Testable behavior includes simultaneous rendering of multiple unique animated images. Normal path: page with multiple differing animated GIFs. Abnormal path: high CPU usage, frame dropping, one animation freezing another.\nR-096: Testable behavior includes rendering GIF 87 images across various bit depths. Normal path: display GIF 87 at 8-bit, 16-bit, 24-bit, 32-bit.\nR-097: Testable behavior includes rendering GIF 89a images across various bit depths. Normal path: display GIF 89a at 8-bit, 16-bit, 24-bit, 32-bit.\nR-098: Testable behavior includes error handling for corrupted/invalid GIFs. Normal path: load malformed GIF. Abnormal path: browser crash or infinite loop. Ambiguity: definition of 'gracefully deal' (placeholder icon vs blank space vs throwing error).\nR-099: Testable behavior includes parsing and rendering XBM format images. Normal path: load valid XBM file. Abnormal path: malformed XBM syntax.\nR-100: Testable behavior includes executing applets within <applet> and <object> tags. Normal path: render valid applet tags. Abnormal path: missing plugin, malformed tags.\nR-101: Testable behavior includes managing applet lifecycle events (init, start, stop, destroy). Normal path: load, navigate away from, and reload page containing applets. Abnormal path: memory leaks during destroy phase."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 995,
+          "output_tokens": 843,
+          "details": {
+            "total_tokens": 1838,
+            "text_prompt_tokens": 995
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-085",
+            "title": "Resize Large Images to Browser Window",
+            "description": "Verify that images larger than the viewport dimensions are automatically resized to fit within the browser window.",
+            "requirement_ids": [
+              "R-085"
+            ]
+          },
+          {
+            "id": "TC-086",
+            "title": "Restore Image to Original Size",
+            "description": "Verify that a resized image can be toggled or restored back to its original dimensions.",
+            "requirement_ids": [
+              "R-086"
+            ]
+          },
+          {
+            "id": "TC-087",
+            "title": "Save Image via Context Menu",
+            "description": "Verify that right-clicking an image provides an option to save the image to the local drive and completes successfully.",
+            "requirement_ids": [
+              "R-087"
+            ]
+          },
+          {
+            "id": "TC-088",
+            "title": "Set Image as Wallpaper",
+            "description": "Verify that an image can be set as the desktop wallpaper through the browser interface.",
+            "requirement_ids": [
+              "R-088"
+            ]
+          },
+          {
+            "id": "TC-089",
+            "title": "Print Image Without Modifying Page State",
+            "description": "Verify that triggering a print action for an image prints it successfully without altering the currently loaded page state.",
+            "requirement_ids": [
+              "R-089"
+            ]
+          },
+          {
+            "id": "TC-090",
+            "title": "Image Redithering on System Bit-Depth Changes",
+            "description": "Verify that images are properly redithered when the operating system's bit-depth settings are modified.",
+            "requirement_ids": [
+              "R-090"
+            ]
+          },
+          {
+            "id": "TC-091",
+            "title": "Display Modified Images on Page Reload",
+            "description": "Verify that reloading a web page correctly fetches and displays images that have been modified on the server since the last load.",
+            "requirement_ids": [
+              "R-091"
+            ]
+          },
+          {
+            "id": "TC-092",
+            "title": "Load Images from Networked Server",
+            "description": "Verify that images load directly into the web browser from a remote networked server via standard protocols.",
+            "requirement_ids": [
+              "R-092"
+            ]
+          },
+          {
+            "id": "TC-093",
+            "title": "Load Images from Local Hard Drive",
+            "description": "Verify that images load directly into the web browser from a local storage path.",
+            "requirement_ids": [
+              "R-093"
+            ]
+          },
+          {
+            "id": "TC-094",
+            "title": "Continuous Animation of GIFs Over Extended Periods",
+            "description": "Verify that animated GIFs continue to animate correctly and do not freeze or leak memory after 24 hours or greater.",
+            "requirement_ids": [
+              "R-094"
+            ]
+          },
+          {
+            "id": "TC-095",
+            "title": "Simultaneous Rendering of Multiple Differing Animated GIFs",
+            "description": "Verify that multiple unique animated images displayed on the same page animate concurrently and correctly.",
+            "requirement_ids": [
+              "R-095"
+            ]
+          },
+          {
+            "id": "TC-096",
+            "title": "Render GIF 87 Images Across Bit Depths",
+            "description": "Verify that GIF 87 format images are properly displayed across various system bit depths.",
+            "requirement_ids": [
+              "R-096"
+            ]
+          },
+          {
+            "id": "TC-097",
+            "title": "Render GIF 89a Images Across Bit Depths",
+            "description": "Verify that GIF 89a format images are properly displayed across various system bit depths.",
+            "requirement_ids": [
+              "R-097"
+            ]
+          },
+          {
+            "id": "TC-098",
+            "title": "Graceful Handling of Corrupted or Invalid GIFs",
+            "description": "Verify that the web browser handles unusual, corrupted, or invalid GIF images gracefully without crashing or freezing.",
+            "requirement_ids": [
+              "R-098"
+            ]
+          },
+          {
+            "id": "TC-099",
+            "title": "Display X Bitmap (XBM) Format Images",
+            "description": "Verify that X Bitmap (XBM) format images are parsed and displayed correctly.",
+            "requirement_ids": [
+              "R-099"
+            ]
+          },
+          {
+            "id": "TC-100",
+            "title": "Execute Applets Within Tag Elements",
+            "description": "Verify that applets are correctly executed when embedded using <applet> and <object> tags.",
+            "requirement_ids": [
+              "R-100"
+            ]
+          },
+          {
+            "id": "TC-101",
+            "title": "Manage Applet Lifecycle",
+            "description": "Verify that applets correctly execute lifecycle events such as initialization, starting, stopping, and destruction.",
+            "requirement_ids": [
+              "R-101"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1868,
+          "output_tokens": 1216,
+          "details": {
+            "total_tokens": 3084,
+            "text_prompt_tokens": 1868
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "critic",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "All high-level test cases are well-structured, distinct, cover the requirements comprehensively, and are actionable. No blockers were found.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1994,
+          "output_tokens": 65,
+          "details": {
+            "total_tokens": 2059,
+            "text_prompt_tokens": 1994
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "validator",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "All cases and expected behaviors align with the requirements and are testable.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1991,
+          "output_tokens": 52,
+          "details": {
+            "total_tokens": 2043,
+            "text_prompt_tokens": 1991
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "coverage",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "The accepted test cases provide complete, one-to-one coverage for all seventeen requirements (R-085 through R-101) without any coverage gaps, excess test cases, or repetition. Each requirement is mapped to a distinct and well-defined test case."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 2095,
+          "output_tokens": 61,
+          "details": {
+            "total_tokens": 2156,
+            "text_prompt_tokens": 2095
+          },
+          "status": "available"
+        }
+      ]
+    }
+  ],
+  "monotonicity": "confirmed"
+}

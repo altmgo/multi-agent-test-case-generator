@@ -1,0 +1,3 @@
+# e2edev\_bench\_07-R-2
+
+The system must allow the user to input a weight value in kilograms into the 'Weight in kg' input field. The input field is located in the DOM with the attribute `data-testid='weight-input'`. The system must ensure that the entered value is stored in memory for subsequent BMI calculations.

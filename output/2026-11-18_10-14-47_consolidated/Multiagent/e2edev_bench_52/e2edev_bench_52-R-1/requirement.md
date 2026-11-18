@@ -1,0 +1,3 @@
+# e2edev\_bench\_52-R-1
+
+Upon initial page load, the Progress Steps web application must display the first progress circle with the data-testid 'progress-circle-1' having the class 'active', indicating its active state. All other progress circles ('progress-circle-2', 'progress-circle-3', 'progress-circle-4') should not have the class 'active'. The progress bar, identified by the data-testid 'progress-bar', must have a width of '0%', reflecting no progress. The 'Prev' button, with data-testid 'prev-button', should be disabled, while the 'Next' button, with data-testid 'next-button', should be enabled, allowing the user to proceed to the next step.

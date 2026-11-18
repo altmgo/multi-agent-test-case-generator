@@ -1,0 +1,3 @@
+# e2edev\_bench\_32-R-4
+
+The SM-Task Manager web application allows users to manage tasks through a user-friendly interface. Each task entry in the task list includes a 'Completed' button, identifiable by the data-id 'complete-btn', which users can click to toggle the task's completion status. Upon clicking the 'Completed' button, the system visually updates the task by adding or removing the 'completed' class to the task's DOM element, providing immediate feedback on the task's status. This functionality supports toggling for individual tasks as well as multiple tasks simultaneously. The task list is dynamically updated to reflect these changes, ensuring users can efficiently manage their task completion statuses.

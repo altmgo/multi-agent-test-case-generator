@@ -1,0 +1,3 @@
+# e2edev\_bench\_64-R-3
+
+When the user enters a guess into the input field with data-testid 'guess-input' and clicks the 'Check!' button with data-testid 'check-button', the system should evaluate the guess against a randomly generated secret number between 1 and 20. If the guess is greater than the secret number, the message '📈 Too high!' should be displayed using the element with data-testid 'game-message'. If the guess is less than the secret number, the message '📉 Too low!' should be displayed. In both scenarios, the score, initially set at 20, should be decreased by 1 and updated in the element with data-testid 'current-score'. This logic should handle all valid guesses, including edge cases such as guessing the number 1 or 20.

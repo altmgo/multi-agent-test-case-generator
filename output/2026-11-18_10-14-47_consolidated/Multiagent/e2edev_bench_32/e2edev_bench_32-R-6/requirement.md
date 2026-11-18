@@ -1,0 +1,3 @@
+# e2edev\_bench\_32-R-6
+
+The SM-Task Manager application allows users to clear all tasks from the task list by interacting with the 'Clear All' button. When the user clicks the 'Clear All' button, identified by the data-testid 'clear-all-btn', the system will remove all tasks from the task list, which is identified by the data-testid 'task-list'. Additionally, the 'Clear All' button will be hidden from view after all tasks are cleared. This functionality is only applicable when there are tasks present in the list. The 'Clear All' button should be visible only when there is at least one task in the list, and it should be hidden when the list is empty, ensuring a clear and intuitive user experience.

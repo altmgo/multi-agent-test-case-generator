@@ -1,0 +1,3 @@
+# e2edev\_bench\_06-R-4
+
+When the user interacts with the 'Show Keys' checkbox (identified by `data-testid='show-keys-checkbox'`), the system must toggle the visibility of key labels on the piano keys (identified by `data-testid` starting with 'piano-key') by adding or removing the 'hide' class. Initially, the labels are visible. When the checkbox is checked, clicking it should hide the labels by adding the 'hide' class to all piano keys. When unchecked, clicking it should restore the labels by removing the 'hide' class. The system must handle rapid toggling, ensuring the final state of the labels is consistent and correct.

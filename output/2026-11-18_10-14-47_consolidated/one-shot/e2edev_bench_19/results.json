@@ -1,0 +1,332 @@
+{
+  "schema_version": 1,
+  "solution": "one-shot",
+  "unit_id": "e2edev_bench_19",
+  "parent_id": null,
+  "status": "evaluated",
+  "failure": null,
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "e2edev_bench_19-R-1",
+      "text": "The web application allows users to add tasks to a todo list. When the user types a task into the input field (data-testid='todo-input') and submits the form (data-testid='todo-form'), the system adds the task to the todo list (data-testid='todo-list'). The input field is cleared after submission. The system trims spaces, accepts special characters, and prevents empty tasks. ",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_19/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_19-R-3",
+      "text": "The web application must allow users to toggle the 'completed' status of a todo item by clicking on it. On page load, todos stored in localStorage under the key 'todos' should be displayed. Each todo is a list item ('li') in the 'todos' list. Clicking a todo toggles its 'completed' class, visually updating its status. The changes must be saved to localStorage to persist across page reloads.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_19/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_19-R-4",
+      "text": "The system must allow users to remove todo items by right-clicking on them, ensuring the default context menu is suppressed. This applies to all items, including completed ones, and works even when there's only one item in the list. After removal, the 'todos' list in localStorage must be updated to reflect the change. The todo items are represented as `<li>` elements within the `<ul>` element with the attribute `data-testid='todo-list'`. The removal process involves updating the `localStorage` variable named 'todos' to reflect the current state of the list after any item is removed.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_19/requirment_with_tests.json#/finegrained_rewith_test/4/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_19-R-5",
+      "text": "Upon loading the todo list page, the system must retrieve the todos from localStorage using the 'todos' key. Each todo item is displayed as a list item (<li>) within the unordered list with data-testid='todo-list'. The completion status is reflected by the presence or absence of the 'completed' class on the list item. If a todo is completed in localStorage, the 'completed' class is applied; otherwise, it is absent. If localStorage is empty, no items are displayed. The data should be parsed as JSON to reconstruct the list.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_19/requirment_with_tests.json#/finegrained_rewith_test/5/requirement/description"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Add valid task successfully",
+      "description": "Type a valid task into the input field and submit the form. Verify the task is added to the list and the input field is cleared.",
+      "requirement_ids": [
+        "e2edev_bench_19-R-1"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Prevent empty task submission",
+      "description": "Attempt to submit an empty or whitespace-only task and verify that no task is added to the todo list.",
+      "requirement_ids": [
+        "e2edev_bench_19-R-1"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Toggle todo completion status",
+      "description": "Click on a todo item to toggle its completed status, check that the 'completed' class is applied or removed, and verify persistence in localStorage.",
+      "requirement_ids": [
+        "e2edev_bench_19-R-3"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Remove todo item via right-click",
+      "description": "Right-click on a todo item to remove it, ensure the default context menu is suppressed, and verify the localStorage is updated.",
+      "requirement_ids": [
+        "e2edev_bench_19-R-4"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Load todos from localStorage on page load",
+      "description": "Preload localStorage with todo items and verify they are correctly displayed as <li> elements within the todo-list on page load.",
+      "requirement_ids": [
+        "e2edev_bench_19-R-5",
+        "e2edev_bench_19-R-3"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_19-R-1-TC-1",
+      "title": "[Normal] Add a task to the todo list",
+      "description": "Feature: Add a task to the todo list\n  The user should be able to add a task to the todo list by typing into the input field and submitting the form.\n\n\n  Scenario: [Normal] Add a task to the todo list\n    Given the \"Todo List\" page is loaded\n    And the input field with data-testid \"todo-input\" is visible\n    When the user enters \"Buy groceries\" into the input field with data-testid \"todo-input\"\n    And the user submits the form with data-testid \"todo-form\"\n    Then a new todo item with text \"Buy groceries\" should be added to the list with data-testid \"todo-list\"\n    And the input field with data-testid \"todo-input\" should be cleared\n",
+      "requirement_ids": [
+        "e2edev_bench_19-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_19/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_19-R-1-TC-2",
+      "title": "[Edge] Add a task with leading and trailing spaces",
+      "description": "Feature: Add a task to the todo list\n  The user should be able to add a task to the todo list by typing into the input field and submitting the form.\n\n\n  Scenario: [Edge] Add a task with leading and trailing spaces\n    Given the \"Todo List\" page is loaded\n    And the input field with data-testid \"todo-input\" is visible\n    When the user enters \"   Walk the dog   \" into the input field with data-testid \"todo-input\"\n    And the user submits the form with data-testid \"todo-form\"\n    Then a new todo item with text \"Walk the dog\" should be added to the list with data-testid \"todo-list\"\n    And the input field with data-testid \"todo-input\" should be cleared\n",
+      "requirement_ids": [
+        "e2edev_bench_19-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_19/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_19-R-1-TC-3",
+      "title": "[Edge] Add a task with special characters",
+      "description": "Feature: Add a task to the todo list\n  The user should be able to add a task to the todo list by typing into the input field and submitting the form.\n\n\n  Scenario: [Edge] Add a task with special characters\n    Given the \"Todo List\" page is loaded\n    And the input field with data-testid \"todo-input\" is visible\n    When the user enters \"!@#$%^&*()_+\" into the input field with data-testid \"todo-input\"\n    And the user submits the form with data-testid \"todo-form\"\n    Then a new todo item with text \"!@#$%^&*()_+\" should be added to the list with data-testid \"todo-list\"\n    And the input field with data-testid \"todo-input\" should be cleared\n",
+      "requirement_ids": [
+        "e2edev_bench_19-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_19/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_19-R-1-TC-4",
+      "title": "[Error] Add an empty task",
+      "description": "Feature: Add a task to the todo list\n  The user should be able to add a task to the todo list by typing into the input field and submitting the form.\n\n\n  Scenario: [Error] Add an empty task\n    Given the \"Todo List\" page is loaded\n    And the input field with data-testid \"todo-input\" is visible\n    When the user enters \"\" into the input field with data-testid \"todo-input\"\n    And the user submits the form with data-testid \"todo-form\"\n    Then no new todo item should be added to the list with data-testid \"todo-list\"\n    And the input field with data-testid \"todo-input\" should remain empty",
+      "requirement_ids": [
+        "e2edev_bench_19-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_19/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_19-R-3-TC-1",
+      "title": "[Normal] Toggle completion status of a single todo item",
+      "description": "Feature: Toggle Todo Completion Status\n  The system should allow users to toggle the \"completed\" status of a todo item by clicking on it, visually indicating its completion.\n\n\n  Scenario: [Normal] Toggle completion status of a single todo item\n    Given the \"Todo List\" page is loaded\n    And a todo item with text \"Buy groceries\" is present in the list\n    When the user clicks on the todo item with text \"Buy groceries\"\n    Then the todo item with text \"Buy groceries\" should have the class \"completed\"\n",
+      "requirement_ids": [
+        "e2edev_bench_19-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_19/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_19-R-3-TC-2",
+      "title": "[Edge] Toggle completion status of multiple todo items",
+      "description": "Feature: Toggle Todo Completion Status\n  The system should allow users to toggle the \"completed\" status of a todo item by clicking on it, visually indicating its completion.\n\n\n  Scenario: [Edge] Toggle completion status of multiple todo items\n    Given the \"Todo List\" page is loaded\n    And todo items with texts \"Buy groceries\" and \"Walk the dog\" are present in the list\n    When the user clicks on the todo item with text \"Buy groceries\"\n    And the user clicks on the todo item with text \"Walk the dog\"\n    Then the todo item with text \"Buy groceries\" should have the class \"completed\"\n    And the todo item with text \"Walk the dog\" should have the class \"completed\"\n",
+      "requirement_ids": [
+        "e2edev_bench_19-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_19/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_19-R-3-TC-3",
+      "title": "[Edge] Toggle completion status back to incomplete",
+      "description": "Feature: Toggle Todo Completion Status\n  The system should allow users to toggle the \"completed\" status of a todo item by clicking on it, visually indicating its completion.\n\n\n  Scenario: [Edge] Toggle completion status back to incomplete\n    Given the \"Todo List\" page is loaded\n    And a todo item with text \"Buy groceries\" is present in the list\n    And the todo item with text \"Buy groceries\" has the class \"completed\"\n    When the user clicks on the todo item with text \"Buy groceries\"\n    Then the todo item with text \"Buy groceries\" should not have the class \"completed\"\n",
+      "requirement_ids": [
+        "e2edev_bench_19-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_19/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_19-R-4-TC-1",
+      "title": "[Normal] Remove a single todo item by right-clicking",
+      "description": "Feature: Remove Todo Item on Right-Click\n  The system should remove a todo item from the list when the user right-clicks on it, preventing the default context menu from appearing.\n\n\n  Scenario: [Normal] Remove a single todo item by right-clicking\n    Given the \"Todo List\" page is loaded\n    And the user has added a todo item with text \"Buy groceries\"\n    When the user right-clicks on the todo item with text \"Buy groceries\" in the list\n    Then the todo item with text \"Buy groceries\" should be removed from the list\n    And the default context menu should not appear\n",
+      "requirement_ids": [
+        "e2edev_bench_19-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_19/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_19-R-4-TC-2",
+      "title": "[Edge] Right-click on a completed todo item",
+      "description": "Feature: Remove Todo Item on Right-Click\n  The system should remove a todo item from the list when the user right-clicks on it, preventing the default context menu from appearing.\n\n\n  Scenario: [Edge] Right-click on a completed todo item\n    Given the \"Todo List\" page is loaded\n    And the user has added a completed todo item with text \"Read book\"\n    When the user right-clicks on the completed todo item with text \"Read book\" in the list\n    Then the completed todo item with text \"Read book\" should be removed from the list\n    And the default context menu should not appear\n",
+      "requirement_ids": [
+        "e2edev_bench_19-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_19/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_19-R-4-TC-3",
+      "title": "[Edge] Right-click on the only todo item in the list",
+      "description": "Feature: Remove Todo Item on Right-Click\n  The system should remove a todo item from the list when the user right-clicks on it, preventing the default context menu from appearing.\n\n\n  Scenario: [Edge] Right-click on the only todo item in the list\n    Given the \"Todo List\" page is loaded\n    And the user has added a single todo item with text \"Walk the dog\"\n    When the user right-clicks on the todo item with text \"Walk the dog\" in the list\n    Then the todo item with text \"Walk the dog\" should be removed from the list\n    And the list should be empty\n    And the default context menu should not appear\n",
+      "requirement_ids": [
+        "e2edev_bench_19-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_19/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_19-R-5-TC-1",
+      "title": "[Normal] Display todos from local storage on page load",
+      "description": "Feature: Display Todos from Local Storage on Page Load\n  The system should retrieve and display the list of todos from local storage, maintaining their completion status when the page is loaded.\n\n\n  Scenario: [Normal] Display todos from local storage on page load\n    Given the local storage contains todos with text \"Buy milk\" and \"Read book\"\n      And the todo \"Buy milk\" is marked as completed\n    When the user loads the todo list page\n    Then the todo list should display \"Buy milk\" with a completed status\n      And the todo list should display \"Read book\" with an incomplete status\n",
+      "requirement_ids": [
+        "e2edev_bench_19-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_19/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_19-R-5-TC-2",
+      "title": "[Edge] Display todos when local storage is empty",
+      "description": "Feature: Display Todos from Local Storage on Page Load\n  The system should retrieve and display the list of todos from local storage, maintaining their completion status when the page is loaded.\n\n\n  Scenario: [Edge] Display todos when local storage is empty\n    Given the local storage is empty\n    When the user loads the todo list page\n    Then the todo list should be empty\n",
+      "requirement_ids": [
+        "e2edev_bench_19-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_19/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 5,
+    "reference_count": 12,
+    "matches": [
+      {
+        "generated_id": "G-001",
+        "reference_id": "e2edev_bench_19-R-1-TC-1",
+        "similarity": 0.8894957930955116
+      },
+      {
+        "generated_id": "G-002",
+        "reference_id": "e2edev_bench_19-R-1-TC-4",
+        "similarity": 0.9211302399455515
+      },
+      {
+        "generated_id": "G-003",
+        "reference_id": "e2edev_bench_19-R-3-TC-1",
+        "similarity": 0.9068027072777041
+      },
+      {
+        "generated_id": "G-004",
+        "reference_id": "e2edev_bench_19-R-4-TC-1",
+        "similarity": 0.9241870990213522
+      },
+      {
+        "generated_id": "G-005",
+        "reference_id": "e2edev_bench_19-R-5-TC-2",
+        "similarity": 0.9101596569765139
+      }
+    ],
+    "unmatched_generated_ids": [],
+    "unmatched_reference_ids": [
+      "e2edev_bench_19-R-1-TC-2",
+      "e2edev_bench_19-R-1-TC-3",
+      "e2edev_bench_19-R-3-TC-2",
+      "e2edev_bench_19-R-3-TC-3",
+      "e2edev_bench_19-R-4-TC-2",
+      "e2edev_bench_19-R-4-TC-3",
+      "e2edev_bench_19-R-5-TC-1"
+    ],
+    "precision": 1.0,
+    "recall": 0.4166666666666667,
+    "f1": 0.5882352941176471,
+    "embedding_usage": {
+      "input_tokens": 1881,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 1881
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
+  "generation": {
+    "selected_techniques": [],
+    "technique_rationales": {},
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": 1881,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 1881
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
+  "links": {
+    "requirements": {
+      "e2edev_bench_19-R-1": "e2edev_bench_19-R-1/requirement.md",
+      "e2edev_bench_19-R-3": "e2edev_bench_19-R-3/requirement.md",
+      "e2edev_bench_19-R-4": "e2edev_bench_19-R-4/requirement.md",
+      "e2edev_bench_19-R-5": "e2edev_bench_19-R-5/requirement.md"
+    },
+    "cases": {
+      "G-001": {
+        "e2edev_bench_19-R-1": "e2edev_bench_19-R-1/test cases/1_Add_valid_task_successfully.md"
+      },
+      "G-002": {
+        "e2edev_bench_19-R-1": "e2edev_bench_19-R-1/test cases/2_Prevent_empty_task_submission.md"
+      },
+      "G-003": {
+        "e2edev_bench_19-R-3": "e2edev_bench_19-R-3/test cases/3_Toggle_todo_completion_status.md"
+      },
+      "G-005": {
+        "e2edev_bench_19-R-3": "e2edev_bench_19-R-3/test cases/5_Load_todos_from_localStorage_on_page_load.md",
+        "e2edev_bench_19-R-5": "e2edev_bench_19-R-5/test cases/5_Load_todos_from_localStorage_on_page_load.md"
+      },
+      "G-004": {
+        "e2edev_bench_19-R-4": "e2edev_bench_19-R-4/test cases/4_Remove_todo_item_via_right-click.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

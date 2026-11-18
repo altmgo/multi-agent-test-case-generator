@@ -1,0 +1,3 @@
+# e2edev\_bench\_22-R-9
+
+Upon clicking the 'Reset' button with data-testid 'reset-button', the system must reset all vote counts to zero, remove the 'hasVoted' flag from localStorage, hide the detailed results section with data-testid 'detailed-results', and display an alert message confirming the reset. This functionality should work regardless of whether the user has voted or not. After resetting, if the user clicks the 'Show Results' button with data-testid 'show-results-button', the detailed results section should become visible, showing zero votes and zero percent for all candidates. The total votes displayed in the element with data-testid 'total-votes' should be updated to '0'.
