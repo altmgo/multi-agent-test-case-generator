@@ -3,11 +3,8 @@
   "solution": "Multiagent",
   "unit_id": "firefox_form_manager",
   "parent_id": null,
-  "status": "failed",
-  "failure": {
-    "stage": "evaluation",
-    "error_type": "EmbeddingError"
-  },
+  "status": "evaluated",
+  "failure": null,
   "embedding_model": "gemini-embedding-2",
   "requirements": [
     {
@@ -223,7 +220,67 @@
       "secondary_domains": []
     }
   ],
-  "evaluation": null,
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 8,
+    "reference_count": 8,
+    "matches": [
+      {
+        "generated_id": "G-001",
+        "reference_id": "TC-038",
+        "similarity": 0.8717191911841489
+      },
+      {
+        "generated_id": "G-002",
+        "reference_id": "TC-039",
+        "similarity": 0.8891968319035537
+      },
+      {
+        "generated_id": "G-003",
+        "reference_id": "TC-040",
+        "similarity": 0.8569932581420246
+      },
+      {
+        "generated_id": "G-004",
+        "reference_id": "TC-041",
+        "similarity": 0.8858142077851092
+      },
+      {
+        "generated_id": "G-005",
+        "reference_id": "TC-042",
+        "similarity": 0.8900797795898585
+      },
+      {
+        "generated_id": "G-006",
+        "reference_id": "TC-043",
+        "similarity": 0.8034537845049755
+      },
+      {
+        "generated_id": "G-007",
+        "reference_id": "TC-044",
+        "similarity": 0.8630472114790287
+      },
+      {
+        "generated_id": "G-008",
+        "reference_id": "TC-045",
+        "similarity": 0.8796332380287623
+      }
+    ],
+    "unmatched_generated_ids": [],
+    "unmatched_reference_ids": [],
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "embedding_usage": {
+      "input_tokens": 297,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 297
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
   "generation": {
     "selected_techniques": [],
     "technique_rationales": {},
@@ -242,10 +299,12 @@
     "generation_attempts": [],
     "generation_calls": [],
     "embedding": {
-      "input_tokens": null,
+      "input_tokens": 297,
       "output_tokens": null,
-      "details": null,
-      "status": "unavailable"
+      "details": {
+        "text_prompt_tokens": 297
+      },
+      "status": "partial"
     },
     "embedding_requests": 1
   },

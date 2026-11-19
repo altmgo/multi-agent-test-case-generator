@@ -3,11 +3,8 @@
   "solution": "Multiagent",
   "unit_id": "e2edev_bench_01",
   "parent_id": null,
-  "status": "failed",
-  "failure": {
-    "stage": "evaluation",
-    "error_type": "EmbeddingError"
-  },
+  "status": "evaluated",
+  "failure": null,
   "embedding_model": "gemini-embedding-2",
   "requirements": [
     {
@@ -201,7 +198,52 @@
       "secondary_domains": []
     }
   ],
-  "evaluation": null,
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 3,
+    "reference_count": 12,
+    "matches": [
+      {
+        "generated_id": "G-001",
+        "reference_id": "e2edev_bench_01-R-1-TC-1",
+        "similarity": 0.9331776599867612
+      },
+      {
+        "generated_id": "G-002",
+        "reference_id": "e2edev_bench_01-R-3-TC-1",
+        "similarity": 0.9062797951325245
+      },
+      {
+        "generated_id": "G-003",
+        "reference_id": "e2edev_bench_01-R-5-TC-2",
+        "similarity": 0.887532382093115
+      }
+    ],
+    "unmatched_generated_ids": [],
+    "unmatched_reference_ids": [
+      "e2edev_bench_01-R-1-TC-2",
+      "e2edev_bench_01-R-1-TC-3",
+      "e2edev_bench_01-R-1-TC-4",
+      "e2edev_bench_01-R-3-TC-2",
+      "e2edev_bench_01-R-3-TC-3",
+      "e2edev_bench_01-R-3-TC-4",
+      "e2edev_bench_01-R-5-TC-1",
+      "e2edev_bench_01-R-5-TC-3",
+      "e2edev_bench_01-R-5-TC-4"
+    ],
+    "precision": 1.0,
+    "recall": 0.25,
+    "f1": 0.4,
+    "embedding_usage": {
+      "input_tokens": 2153,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 2153
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
   "generation": {
     "selected_techniques": [],
     "technique_rationales": {},
@@ -220,10 +262,12 @@
     "generation_attempts": [],
     "generation_calls": [],
     "embedding": {
-      "input_tokens": null,
+      "input_tokens": 2153,
       "output_tokens": null,
-      "details": null,
-      "status": "unavailable"
+      "details": {
+        "text_prompt_tokens": 2153
+      },
+      "status": "partial"
     },
     "embedding_requests": 1
   },

@@ -3,11 +3,8 @@
   "solution": "Multiagent",
   "unit_id": "firefox_browser_history",
   "parent_id": null,
-  "status": "failed",
-  "failure": {
-    "stage": "evaluation",
-    "error_type": "EmbeddingError"
-  },
+  "status": "evaluated",
+  "failure": null,
   "embedding_model": "gemini-embedding-2",
   "requirements": [
     {
@@ -327,7 +324,87 @@
       "secondary_domains": []
     }
   ],
-  "evaluation": null,
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 12,
+    "reference_count": 12,
+    "matches": [
+      {
+        "generated_id": "G-001",
+        "reference_id": "TC-073",
+        "similarity": 0.8569505764470265
+      },
+      {
+        "generated_id": "G-002",
+        "reference_id": "TC-074",
+        "similarity": 0.8379167020109214
+      },
+      {
+        "generated_id": "G-003",
+        "reference_id": "TC-075",
+        "similarity": 0.889825754055253
+      },
+      {
+        "generated_id": "G-004",
+        "reference_id": "TC-076",
+        "similarity": 0.8681832930235455
+      },
+      {
+        "generated_id": "G-005",
+        "reference_id": "TC-077",
+        "similarity": 0.8832585414695674
+      },
+      {
+        "generated_id": "G-006",
+        "reference_id": "TC-078",
+        "similarity": 0.8651413643967716
+      },
+      {
+        "generated_id": "G-007",
+        "reference_id": "TC-079",
+        "similarity": 0.9120177860730605
+      },
+      {
+        "generated_id": "G-008",
+        "reference_id": "TC-080",
+        "similarity": 0.8543545298352478
+      },
+      {
+        "generated_id": "G-009",
+        "reference_id": "TC-081",
+        "similarity": 0.8722240910869166
+      },
+      {
+        "generated_id": "G-010",
+        "reference_id": "TC-082",
+        "similarity": 0.8522718978943824
+      },
+      {
+        "generated_id": "G-011",
+        "reference_id": "TC-083",
+        "similarity": 0.8742880536945093
+      },
+      {
+        "generated_id": "G-012",
+        "reference_id": "TC-084",
+        "similarity": 0.8630652002610545
+      }
+    ],
+    "unmatched_generated_ids": [],
+    "unmatched_reference_ids": [],
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "embedding_usage": {
+      "input_tokens": 2518,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 2518
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 2
+  },
   "generation": {
     "selected_techniques": [],
     "technique_rationales": {},
@@ -343,12 +420,14 @@
     "generation_attempts": [],
     "generation_calls": [],
     "embedding": {
-      "input_tokens": null,
+      "input_tokens": 2518,
       "output_tokens": null,
-      "details": null,
-      "status": "unavailable"
+      "details": {
+        "text_prompt_tokens": 2518
+      },
+      "status": "partial"
     },
-    "embedding_requests": 1
+    "embedding_requests": 2
   },
   "links": {
     "requirements": {

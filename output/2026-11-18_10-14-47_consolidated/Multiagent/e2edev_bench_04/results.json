@@ -3,11 +3,8 @@
   "solution": "Multiagent",
   "unit_id": "e2edev_bench_04",
   "parent_id": null,
-  "status": "failed",
-  "failure": {
-    "stage": "evaluation",
-    "error_type": "EmbeddingError"
-  },
+  "status": "evaluated",
+  "failure": null,
   "embedding_model": "gemini-embedding-2",
   "requirements": [
     {
@@ -280,7 +277,67 @@
       "secondary_domains": []
     }
   ],
-  "evaluation": null,
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 6,
+    "reference_count": 15,
+    "matches": [
+      {
+        "generated_id": "G-001",
+        "reference_id": "e2edev_bench_04-R-1-TC-1",
+        "similarity": 0.9227703812759357
+      },
+      {
+        "generated_id": "G-002",
+        "reference_id": "e2edev_bench_04-R-2-TC-1",
+        "similarity": 0.9314328925772755
+      },
+      {
+        "generated_id": "G-003",
+        "reference_id": "e2edev_bench_04-R-3-TC-1",
+        "similarity": 0.9444863292811141
+      },
+      {
+        "generated_id": "G-004",
+        "reference_id": "e2edev_bench_04-R-4-TC-2",
+        "similarity": 0.9025703866875896
+      },
+      {
+        "generated_id": "G-005",
+        "reference_id": "e2edev_bench_04-R-5-TC-1",
+        "similarity": 0.9164681288776988
+      },
+      {
+        "generated_id": "G-006",
+        "reference_id": "e2edev_bench_04-R-6-TC-2",
+        "similarity": 0.9243978904590228
+      }
+    ],
+    "unmatched_generated_ids": [],
+    "unmatched_reference_ids": [
+      "e2edev_bench_04-R-1-TC-2",
+      "e2edev_bench_04-R-1-TC-3",
+      "e2edev_bench_04-R-4-TC-1",
+      "e2edev_bench_04-R-4-TC-3",
+      "e2edev_bench_04-R-5-TC-2",
+      "e2edev_bench_04-R-5-TC-3",
+      "e2edev_bench_04-R-5-TC-4",
+      "e2edev_bench_04-R-6-TC-1",
+      "e2edev_bench_04-R-6-TC-3"
+    ],
+    "precision": 1.0,
+    "recall": 0.4,
+    "f1": 0.5714285714285714,
+    "embedding_usage": {
+      "input_tokens": 2752,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 2752
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 2
+  },
   "generation": {
     "selected_techniques": [],
     "technique_rationales": {},
@@ -299,12 +356,14 @@
     "generation_attempts": [],
     "generation_calls": [],
     "embedding": {
-      "input_tokens": null,
+      "input_tokens": 2752,
       "output_tokens": null,
-      "details": null,
-      "status": "unavailable"
+      "details": {
+        "text_prompt_tokens": 2752
+      },
+      "status": "partial"
     },
-    "embedding_requests": 1
+    "embedding_requests": 2
   },
   "links": {
     "requirements": {

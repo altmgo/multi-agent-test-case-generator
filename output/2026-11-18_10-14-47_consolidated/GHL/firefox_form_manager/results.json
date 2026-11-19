@@ -3,11 +3,8 @@
   "solution": "GHL",
   "unit_id": "firefox_form_manager",
   "parent_id": null,
-  "status": "failed",
-  "failure": {
-    "stage": "evaluation",
-    "error_type": "EmbeddingError"
-  },
+  "status": "evaluated",
+  "failure": null,
   "embedding_model": "gemini-embedding-2",
   "requirements": [
     {
@@ -458,7 +455,97 @@
       "secondary_domains": []
     }
   ],
-  "evaluation": null,
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 37,
+    "reference_count": 8,
+    "matches": [
+      {
+        "generated_id": "G-002",
+        "reference_id": "TC-039",
+        "similarity": 0.8880811324498215
+      },
+      {
+        "generated_id": "G-004",
+        "reference_id": "TC-040",
+        "similarity": 0.8800608376308178
+      },
+      {
+        "generated_id": "G-005",
+        "reference_id": "TC-042",
+        "similarity": 0.8933373238166061
+      },
+      {
+        "generated_id": "G-008",
+        "reference_id": "TC-045",
+        "similarity": 0.8962758939351199
+      },
+      {
+        "generated_id": "G-012",
+        "reference_id": "TC-041",
+        "similarity": 0.9047132378274556
+      },
+      {
+        "generated_id": "G-017",
+        "reference_id": "TC-043",
+        "similarity": 0.8408928118100761
+      },
+      {
+        "generated_id": "G-024",
+        "reference_id": "TC-038",
+        "similarity": 0.9124573619764195
+      },
+      {
+        "generated_id": "G-028",
+        "reference_id": "TC-044",
+        "similarity": 0.8837745652868504
+      }
+    ],
+    "unmatched_generated_ids": [
+      "G-001",
+      "G-003",
+      "G-006",
+      "G-007",
+      "G-009",
+      "G-010",
+      "G-011",
+      "G-013",
+      "G-014",
+      "G-015",
+      "G-016",
+      "G-018",
+      "G-019",
+      "G-020",
+      "G-021",
+      "G-022",
+      "G-023",
+      "G-025",
+      "G-026",
+      "G-027",
+      "G-029",
+      "G-030",
+      "G-031",
+      "G-032",
+      "G-033",
+      "G-034",
+      "G-035",
+      "G-036",
+      "G-037"
+    ],
+    "unmatched_reference_ids": [],
+    "precision": 0.21621621621621623,
+    "recall": 1.0,
+    "f1": 0.35555555555555557,
+    "embedding_usage": {
+      "input_tokens": 2740,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 2740
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 3
+  },
   "generation": {
     "selected_techniques": [
       "equivalence_partitioning",
@@ -489,12 +576,14 @@
     "generation_attempts": [],
     "generation_calls": [],
     "embedding": {
-      "input_tokens": null,
+      "input_tokens": 2740,
       "output_tokens": null,
-      "details": null,
-      "status": "unavailable"
+      "details": {
+        "text_prompt_tokens": 2740
+      },
+      "status": "partial"
     },
-    "embedding_requests": 1
+    "embedding_requests": 3
   },
   "links": {
     "requirements": {

@@ -3,11 +3,8 @@
   "solution": "GHL",
   "unit_id": "firefox_search",
   "parent_id": null,
-  "status": "failed",
-  "failure": {
-    "stage": "evaluation",
-    "error_type": "EmbeddingError"
-  },
+  "status": "evaluated",
+  "failure": null,
   "embedding_model": "gemini-embedding-2",
   "requirements": [
     {
@@ -205,7 +202,59 @@
       ]
     }
   ],
-  "evaluation": null,
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 11,
+    "reference_count": 5,
+    "matches": [
+      {
+        "generated_id": "G-001",
+        "reference_id": "TC-135",
+        "similarity": 0.9197722975155632
+      },
+      {
+        "generated_id": "G-002",
+        "reference_id": "TC-137",
+        "similarity": 0.8917020946576536
+      },
+      {
+        "generated_id": "G-006",
+        "reference_id": "TC-136",
+        "similarity": 0.9062921653556991
+      },
+      {
+        "generated_id": "G-009",
+        "reference_id": "TC-139",
+        "similarity": 0.8729023377751093
+      },
+      {
+        "generated_id": "G-011",
+        "reference_id": "TC-138",
+        "similarity": 0.8606943035108815
+      }
+    ],
+    "unmatched_generated_ids": [
+      "G-003",
+      "G-004",
+      "G-005",
+      "G-007",
+      "G-008",
+      "G-010"
+    ],
+    "unmatched_reference_ids": [],
+    "precision": 0.45454545454545453,
+    "recall": 1.0,
+    "f1": 0.625,
+    "embedding_usage": {
+      "input_tokens": 1013,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 1013
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
   "generation": {
     "selected_techniques": [
       "equivalence_partitioning",
@@ -229,10 +278,12 @@
     "generation_attempts": [],
     "generation_calls": [],
     "embedding": {
-      "input_tokens": null,
+      "input_tokens": 1013,
       "output_tokens": null,
-      "details": null,
-      "status": "unavailable"
+      "details": {
+        "text_prompt_tokens": 1013
+      },
+      "status": "partial"
     },
     "embedding_requests": 1
   },
