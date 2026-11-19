@@ -1,0 +1,1291 @@
+{
+  "schema_version": 1,
+  "solution": "GHL",
+  "unit_id": "firefox_help",
+  "parent_id": null,
+  "status": "failed",
+  "failure": {
+    "stage": "evaluation",
+    "error_type": "EmbeddingError"
+  },
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "R-046",
+      "text": "There shall be Troubleshooting Help about the problem \"if you can't sign on\".",
+      "language": "en",
+      "source": "R-set.csv#R-046"
+    },
+    {
+      "id": "R-047",
+      "text": "There shall be Troubleshooting Help about the problem \"if you can't see anyone in your buddy list window\".",
+      "language": "en",
+      "source": "R-set.csv#R-047"
+    },
+    {
+      "id": "R-048",
+      "text": "The forward/back buttons shall navigate to the correct page in Help menu.",
+      "language": "en",
+      "source": "R-set.csv#R-048"
+    },
+    {
+      "id": "R-049",
+      "text": "Minimize, maximize and close buttons of the toolbar shall be invoke in Help menu.",
+      "language": "en",
+      "source": "R-set.csv#R-049"
+    },
+    {
+      "id": "R-050",
+      "text": "Page up and page down keys shall be invoked in Help menu.",
+      "language": "en",
+      "source": "R-set.csv#R-050"
+    },
+    {
+      "id": "R-051",
+      "text": "The toolbar shall be hidden in Help, as well as reopen it.",
+      "language": "en",
+      "source": "R-set.csv#R-051"
+    },
+    {
+      "id": "R-052",
+      "text": "Pages shall be moved accordingly with the up and down arrow keys in Help menu.",
+      "language": "en",
+      "source": "R-set.csv#R-052"
+    },
+    {
+      "id": "R-053",
+      "text": "Files shall not be dragged into the Help window.",
+      "language": "en",
+      "source": "R-set.csv#R-053"
+    },
+    {
+      "id": "R-054",
+      "text": "Clicking non clickable regions in help shall trigger no behavior.",
+      "language": "en",
+      "source": "R-set.csv#R-054"
+    },
+    {
+      "id": "R-055",
+      "text": "Help Contents shall be displayed and printed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-055"
+    },
+    {
+      "id": "R-056",
+      "text": "Browsing the web help content shall be displayed and printed.",
+      "language": "en",
+      "source": "R-set.csv#R-056"
+    },
+    {
+      "id": "R-057",
+      "text": "Mail and News help content shall be displayed and printed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-057"
+    },
+    {
+      "id": "R-058",
+      "text": "Instant Messenger help content shall be displayed and printed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-058"
+    },
+    {
+      "id": "R-059",
+      "text": "Customizing Netscape 6 help content shall be displayed and printed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-059"
+    },
+    {
+      "id": "R-060",
+      "text": "Understanding Privacy help content shall be displayed and printed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-060"
+    },
+    {
+      "id": "R-061",
+      "text": "Creating web pages help content shall be displayed and printed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-061"
+    },
+    {
+      "id": "R-062",
+      "text": "What's new in Netscape 6 help content shall be displayed and printed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-062"
+    },
+    {
+      "id": "R-063",
+      "text": "Security and Privacy help content shall be displayed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-063"
+    },
+    {
+      "id": "R-064",
+      "text": "Same time messaging help content shall be displayed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-064"
+    },
+    {
+      "id": "R-065",
+      "text": "Streamlined Interface help content shall be displayed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-065"
+    },
+    {
+      "id": "R-066",
+      "text": "The Best Standards Support help content shall be displayed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-066"
+    },
+    {
+      "id": "R-067",
+      "text": "The New to the net tutorial help content shall be displayed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-067"
+    },
+    {
+      "id": "R-068",
+      "text": "The Netscape Technical Support help content shall be displayed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-068"
+    },
+    {
+      "id": "R-069",
+      "text": "International Users page shall be displayed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-069"
+    },
+    {
+      "id": "R-070",
+      "text": "The Feedback Center page shall be displayed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-070"
+    },
+    {
+      "id": "R-071",
+      "text": "The About Netscape page shall be displayed correctly.",
+      "language": "en",
+      "source": "R-set.csv#R-071"
+    },
+    {
+      "id": "R-072",
+      "text": "All the selections in the Help drop down menu shall be opened using short cut buttons.",
+      "language": "en",
+      "source": "R-set.csv#R-072"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Toolbar Hide and Reopen State Transition",
+      "description": "Verify the state transition of the toolbar from visible to hidden, and then back to visible (reopen) within the Help menu.",
+      "requirement_ids": [
+        "R-051"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Navigation via Forward and Back Buttons State Transition",
+      "description": "Verify that using the forward and back buttons transitions the Help menu view to the correct respective pages.",
+      "requirement_ids": [
+        "R-048"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Forbidden Dragging State Transition",
+      "description": "Verify the forbidden transition where attempting to drag files into the Help window triggers no state change or behavior.",
+      "requirement_ids": [
+        "R-053"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Troubleshooting help for sign on problems",
+      "description": "Verify that troubleshooting help is available when a user cannot sign on.",
+      "requirement_ids": [
+        "R-046"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Troubleshooting help for invisible buddy list window",
+      "description": "Verify that troubleshooting help is available when a user cannot see anyone in their buddy list window.",
+      "requirement_ids": [
+        "R-047"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Forward and back navigation in Help menu",
+      "description": "Verify that the forward and back buttons correctly navigate to the correct page in the Help menu.",
+      "requirement_ids": [
+        "R-048"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Toolbar window controls invocation in Help menu",
+      "description": "Verify that minimize, maximize, and close buttons of the toolbar are successfully invoked in the Help menu.",
+      "requirement_ids": [
+        "R-049"
+      ]
+    },
+    {
+      "id": "G-008",
+      "title": "Page up and page down key navigation",
+      "description": "Verify that page up and page down keys function properly in the Help menu.",
+      "requirement_ids": [
+        "R-050"
+      ]
+    },
+    {
+      "id": "G-009",
+      "title": "Toolbar hide and reopen functionality",
+      "description": "Verify that the toolbar can be hidden in Help and subsequently reopened.",
+      "requirement_ids": [
+        "R-051"
+      ]
+    },
+    {
+      "id": "G-010",
+      "title": "Arrow keys page movement in Help menu",
+      "description": "Verify that pages move accordingly when using the up and down arrow keys in the Help menu.",
+      "requirement_ids": [
+        "R-052"
+      ]
+    },
+    {
+      "id": "G-011",
+      "title": "Invalid file drag action into Help window",
+      "description": "Verify that files cannot be dragged into the Help window (abnormal input class).",
+      "requirement_ids": [
+        "R-053"
+      ]
+    },
+    {
+      "id": "G-012",
+      "title": "Clicking non-clickable regions in Help",
+      "description": "Verify that clicking non-clickable regions in Help triggers no behavior (abnormal interaction class).",
+      "requirement_ids": [
+        "R-054"
+      ]
+    },
+    {
+      "id": "G-013",
+      "title": "Help Contents display and print",
+      "description": "Verify that Help Contents are displayed and printed correctly.",
+      "requirement_ids": [
+        "R-055"
+      ]
+    },
+    {
+      "id": "G-014",
+      "title": "Browsing web help content display and print",
+      "description": "Verify that browsing the web help content is displayed and printed correctly.",
+      "requirement_ids": [
+        "R-056"
+      ]
+    },
+    {
+      "id": "G-015",
+      "title": "Mail and News help content display and print",
+      "description": "Verify that Mail and News help content is displayed and printed correctly.",
+      "requirement_ids": [
+        "R-057"
+      ]
+    },
+    {
+      "id": "G-016",
+      "title": "Instant Messenger help content display and print",
+      "description": "Verify that Instant Messenger help content is displayed and printed correctly.",
+      "requirement_ids": [
+        "R-058"
+      ]
+    },
+    {
+      "id": "G-017",
+      "title": "Customizing Netscape 6 help content display and print",
+      "description": "Verify that Customizing Netscape 6 help content is displayed and printed correctly.",
+      "requirement_ids": [
+        "R-059"
+      ]
+    },
+    {
+      "id": "G-018",
+      "title": "Understanding Privacy help content display and print",
+      "description": "Verify that Understanding Privacy help content is displayed and printed correctly.",
+      "requirement_ids": [
+        "R-060"
+      ]
+    },
+    {
+      "id": "G-019",
+      "title": "Creating web pages help content display and print",
+      "description": "Verify that Creating web pages help content is displayed and printed correctly.",
+      "requirement_ids": [
+        "R-061"
+      ]
+    },
+    {
+      "id": "G-020",
+      "title": "What's new in Netscape 6 help content display and print",
+      "description": "Verify that What's new in Netscape 6 help content is displayed and printed correctly.",
+      "requirement_ids": [
+        "R-062"
+      ]
+    },
+    {
+      "id": "G-021",
+      "title": "Security and Privacy help content display",
+      "description": "Verify that Security and Privacy help content is displayed correctly.",
+      "requirement_ids": [
+        "R-063"
+      ]
+    },
+    {
+      "id": "G-022",
+      "title": "Same time messaging help content display",
+      "description": "Verify that Same time messaging help content is displayed correctly.",
+      "requirement_ids": [
+        "R-064"
+      ]
+    },
+    {
+      "id": "G-023",
+      "title": "Streamlined Interface help content display",
+      "description": "Verify that Streamlined Interface help content is displayed correctly.",
+      "requirement_ids": [
+        "R-065"
+      ]
+    },
+    {
+      "id": "G-024",
+      "title": "The Best Standards Support help content display",
+      "description": "Verify that The Best Standards Support help content is displayed correctly.",
+      "requirement_ids": [
+        "R-066"
+      ]
+    },
+    {
+      "id": "G-025",
+      "title": "New to the net tutorial help content display",
+      "description": "Verify that The New to the net tutorial help content is displayed correctly.",
+      "requirement_ids": [
+        "R-067"
+      ]
+    },
+    {
+      "id": "G-026",
+      "title": "Netscape Technical Support help content display",
+      "description": "Verify that The Netscape Technical Support help content is displayed correctly.",
+      "requirement_ids": [
+        "R-068"
+      ]
+    },
+    {
+      "id": "G-027",
+      "title": "International Users page display",
+      "description": "Verify that the International Users page is displayed correctly.",
+      "requirement_ids": [
+        "R-069"
+      ]
+    },
+    {
+      "id": "G-028",
+      "title": "Feedback Center page display",
+      "description": "Verify that The Feedback Center page is displayed correctly.",
+      "requirement_ids": [
+        "R-070"
+      ]
+    },
+    {
+      "id": "G-029",
+      "title": "About Netscape page display",
+      "description": "Verify that The About Netscape page is displayed correctly.",
+      "requirement_ids": [
+        "R-071"
+      ]
+    },
+    {
+      "id": "G-030",
+      "title": "Help drop down menu selections via shortcut buttons",
+      "description": "Verify that all selections in the Help drop down menu can be opened using shortcut buttons.",
+      "requirement_ids": [
+        "R-072"
+      ]
+    },
+    {
+      "id": "G-031",
+      "title": "Verify Sign-On Troubleshooting Help Accessibility",
+      "description": "Attempt to access Troubleshooting Help specifically for the 'if you can't sign on' problem to ensure it exists and renders correctly under error conditions.",
+      "requirement_ids": [
+        "R-046"
+      ]
+    },
+    {
+      "id": "G-032",
+      "title": "Verify Buddy List Window Troubleshooting Help",
+      "description": "Access the Troubleshooting Help section regarding 'if you can't see anyone in your buddy list window' to verify content presence.",
+      "requirement_ids": [
+        "R-047"
+      ]
+    },
+    {
+      "id": "G-033",
+      "title": "Test Navigation History Out of Bounds",
+      "description": "Click the forward and back buttons excessively when no history exists to ensure they handle navigation limits correctly without crashing the Help menu.",
+      "requirement_ids": [
+        "R-048"
+      ]
+    },
+    {
+      "id": "G-034",
+      "title": "Rapid Toolbar Window State Toggling",
+      "description": "Rapidly click minimize, maximize, and close buttons on the toolbar within the Help menu to test robustness under rapid state changes.",
+      "requirement_ids": [
+        "R-049"
+      ]
+    },
+    {
+      "id": "G-035",
+      "title": "Page Up and Page Down at Document Boundaries",
+      "description": "Press Page Up at the absolute top and Page Down at the absolute bottom of a Help menu document to ensure proper boundary handling.",
+      "requirement_ids": [
+        "R-050"
+      ]
+    },
+    {
+      "id": "G-036",
+      "title": "Repeated Toolbar Hide and Reopen Actions",
+      "description": "Rapidly hide and reopen the toolbar in the Help menu to check for UI glitching or memory leaks.",
+      "requirement_ids": [
+        "R-051"
+      ]
+    },
+    {
+      "id": "G-037",
+      "title": "Arrow Key Navigation at Document Limits",
+      "description": "Press up and down arrow keys continuously when reaching the start and end of Help menu pages to verify correct movement handling.",
+      "requirement_ids": [
+        "R-052"
+      ]
+    },
+    {
+      "id": "G-038",
+      "title": "Drag and Drop External Files into Help Window",
+      "description": "Attempt to drag and drop external files into the Help window to ensure the action is rejected and does not alter the window state.",
+      "requirement_ids": [
+        "R-053"
+      ]
+    },
+    {
+      "id": "G-039",
+      "title": "Clicking Inactive and Non-Clickable Regions",
+      "description": "Click randomly across various non-clickable regions and whitespace in the Help menu to verify that no unintended behaviors or errors are triggered.",
+      "requirement_ids": [
+        "R-054"
+      ]
+    },
+    {
+      "id": "G-040",
+      "title": "Help Contents Display and Print Validation",
+      "description": "Attempt to display and print Help Contents under low resource/memory conditions to verify error-free rendering.",
+      "requirement_ids": [
+        "R-055"
+      ]
+    },
+    {
+      "id": "G-041",
+      "title": "Browsing Web Help Content Display and Print",
+      "description": "Test browsing web help content and sending it to print when network connection is unstable.",
+      "requirement_ids": [
+        "R-056"
+      ]
+    },
+    {
+      "id": "G-042",
+      "title": "Mail and News Help Content Rendering and Printing",
+      "description": "Display and print Mail and News help content while simulating formatting or rendering faults.",
+      "requirement_ids": [
+        "R-057"
+      ]
+    },
+    {
+      "id": "G-043",
+      "title": "Instant Messenger Help Content Display and Print",
+      "description": "Verify that Instant Messenger help content displays and prints correctly without missing assets.",
+      "requirement_ids": [
+        "R-058"
+      ]
+    },
+    {
+      "id": "G-044",
+      "title": "Customizing Netscape 6 Help Content Integrity",
+      "description": "Display and print Customizing Netscape 6 help content under truncated input or missing style sheet scenarios.",
+      "requirement_ids": [
+        "R-059"
+      ]
+    },
+    {
+      "id": "G-045",
+      "title": "Understanding Privacy Help Content Validation",
+      "description": "Verify correct display and printing of Understanding Privacy help content.",
+      "requirement_ids": [
+        "R-060"
+      ]
+    },
+    {
+      "id": "G-046",
+      "title": "Creating Web Pages Help Content Integrity",
+      "description": "Display and print Creating web pages help content ensuring all embedded examples render accurately.",
+      "requirement_ids": [
+        "R-061"
+      ]
+    },
+    {
+      "id": "G-047",
+      "title": "What's New in Netscape 6 Help Content Validation",
+      "description": "Display and print What's new in Netscape 6 help content under rapid navigation.",
+      "requirement_ids": [
+        "R-062"
+      ]
+    },
+    {
+      "id": "G-048",
+      "title": "Security and Privacy Help Content Display Check",
+      "description": "Check that Security and Privacy help content displays correctly without throwing security warnings.",
+      "requirement_ids": [
+        "R-063"
+      ]
+    },
+    {
+      "id": "G-049",
+      "title": "Same Time Messaging Help Content Display Check",
+      "description": "Verify Same time messaging help content displays correctly under slow processing speeds.",
+      "requirement_ids": [
+        "R-064"
+      ]
+    },
+    {
+      "id": "G-050",
+      "title": "Streamlined Interface Help Content Display Check",
+      "description": "Verify Streamlined Interface help content is displayed correctly across varying window dimensions.",
+      "requirement_ids": [
+        "R-065"
+      ]
+    },
+    {
+      "id": "G-051",
+      "title": "Best Standards Support Help Content Display Check",
+      "description": "Verify Best Standards Support help content displays correctly without rendering anomalies.",
+      "requirement_ids": [
+        "R-066"
+      ]
+    },
+    {
+      "id": "G-052",
+      "title": "New to the Net Tutorial Help Content Display Check",
+      "description": "Verify New to the net tutorial help content displays correctly when loaded abruptly.",
+      "requirement_ids": [
+        "R-067"
+      ]
+    },
+    {
+      "id": "G-053",
+      "title": "Netscape Technical Support Help Content Display Check",
+      "description": "Verify Netscape Technical Support help content displays correctly under offline mode attempts.",
+      "requirement_ids": [
+        "R-068"
+      ]
+    },
+    {
+      "id": "G-054",
+      "title": "International Users Page Character Encoding Test",
+      "description": "Display the International Users page using mixed or corrupted character sets to test fallback rendering.",
+      "requirement_ids": [
+        "R-069"
+      ]
+    },
+    {
+      "id": "G-055",
+      "title": "Feedback Center Page Load Failure Recovery",
+      "description": "Verify the Feedback Center page displays correctly when external submission endpoints fail to respond.",
+      "requirement_ids": [
+        "R-070"
+      ]
+    },
+    {
+      "id": "G-056",
+      "title": "About Netscape Page Asset Verification",
+      "description": "Verify the About Netscape page displays correctly even if static graphic resources fail to load.",
+      "requirement_ids": [
+        "R-071"
+      ]
+    },
+    {
+      "id": "G-057",
+      "title": "Help Drop-Down Menu Shortcut Activation Under Load",
+      "description": "Trigger all selections in the Help drop-down menu using shortcut buttons simultaneously or in rapid succession to ensure proper command routing.",
+      "requirement_ids": [
+        "R-072"
+      ]
+    },
+    {
+      "id": "G-058",
+      "title": "End-to-End Help Navigation and Troubleshooting Workflow",
+      "description": "User opens the Help menu, uses shortcut buttons to open selections, accesses troubleshooting help for sign on and buddy list problems, navigates using forward/back and toolbar controls, and tests keyboard navigation and UI interactions.",
+      "requirement_ids": [
+        "R-046",
+        "R-047",
+        "R-048",
+        "R-049",
+        "R-050",
+        "R-051",
+        "R-052",
+        "R-053",
+        "R-054",
+        "R-072"
+      ]
+    },
+    {
+      "id": "G-059",
+      "title": "End-to-End Help Content Display and Printing Workflow",
+      "description": "User browses various help topics including Help Contents, web help, Mail and News, Instant Messenger, Customizing, Understanding Privacy, Creating web pages, What's new, Security and Privacy, Same time messaging, Streamlined Interface, Best Standards Support, New to the net tutorial, Netscape Technical Support, International Users, Feedback Center, and About Netscape to verify correct display and printing.",
+      "requirement_ids": [
+        "R-055",
+        "R-056",
+        "R-057",
+        "R-058",
+        "R-059",
+        "R-060",
+        "R-061",
+        "R-062",
+        "R-063",
+        "R-064",
+        "R-065",
+        "R-066",
+        "R-067",
+        "R-068",
+        "R-069",
+        "R-070",
+        "R-071"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "TC-046",
+      "title": "TC-046",
+      "description": "INITIAL CONDITIONS\nMozilla should be started up\n\nSTEPS/DESCRIPTION\n1. From the Help drop down menu, select Help and Support Center\n2. Open your sidebar if it is not already open (click on the widget to the left hand side of your browser)\n3. Click on the Index tab\n4. Doubleclick on the T in the index\n5. Click the If You Can't sign on link\n\nEXPECTED RESULTS\n1. The Help and Support Center window should open\n3. An alphabetic list should display on the left hand side of the window\n4. The T should expand and you should see Troubleshooting listed\n5. You should be taken to Help information regarding sign on issues",
+      "requirement_ids": [
+        "R-046"
+      ],
+      "source": "T-set.csv#TC-046",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-047",
+      "title": "TC-047",
+      "description": "INITIAL CONDITIONS\nMozilla should be started up\n\nSTEPS/DESCRIPTION\n1. From the Help drop down menu, select Help and Support Center\n2. Open your sidebar if it is not already open (click on the widget to the left hand side of your browser)\n3. Click on the Index tab\n4. Doubleclick on the T in the index\n5. Click the If You Can't See Anyone in you Buddy Window\n\nEXPECTED RESULTS\n1. The Help and Support Center window should open\n3. An alphabetic list should display on the left hand side of the window\n4. The T should expand and you should see Troubleshooting listed\n5. You should be taken to Help information regarding Buddy List Window issues",
+      "requirement_ids": [
+        "R-047"
+      ],
+      "source": "T-set.csv#TC-047",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-048",
+      "title": "TC-048",
+      "description": "INITIAL CONDITIONS\nMozilla should be started up\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select Help Contents\n3. Click Browsing the web link on left hand side of help page\n4. Click on Copying, Saving and Printing link on the left hand side of help page\n5. Click the back button on the help toolbar\n6. Click the forward button on the help toolbar\n7. Try this on other pages to ensure the behavior is consistant through help\n\nEXPECTED RESULTS\n2. You should be taken to the help contents page\n3. You should now be taken to the appropriate page, navigating web pages\n4. You should now be taken to the appropriate page, copying, saving, and printing\n5. You should return to the first page, navigating web pages\n6. You should return to copying, saving, and printing",
+      "requirement_ids": [
+        "R-048"
+      ],
+      "source": "T-set.csv#TC-048",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-049",
+      "title": "TC-049",
+      "description": "INITIAL CONDITIONS\nMozilla should be started up\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select Help Contents\n3. Click the minimize square in the upper right hand corner\n4. Click on the minimized Mozilla in Taskbar\n5. Click on the maximize square in the upper right hand corner\n6. Click on the x square in the upper right hand corner\n\nEXPECTED RESULTS\n2. Help contents should come up with main topics on the left and detailed information on the right\n3. Help should be minimized and show on your taskbar\n4. Help should be restored to the same size it was in the first place\n5. Help should now be expanded to the entire screen\n6. Mozilla should close",
+      "requirement_ids": [
+        "R-049"
+      ],
+      "source": "T-set.csv#TC-049",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-050",
+      "title": "TC-050",
+      "description": "INITIAL CONDITIONS\nNetscape should be started up\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select Technical Support\n3. Push the Page Down Key on your keyboard\n4. Push the Page Up Key on your keyboard\n5. Click a few random links in help and try using these keys again\n\nEXPECTED RESULTS\n2. You should be taken to http://help.netscape.com/\n4. This should move you down the page until the end\n5. This should move you up the page until you reach the top\n6. Page up and Page Down keys should consistantly move you up and down pages",
+      "requirement_ids": [
+        "R-050"
+      ],
+      "source": "T-set.csv#TC-050",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-051",
+      "title": "TC-051",
+      "description": "INITIAL CONDITIONS\nNetscape should be started up\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select Help Contents\n3. Click the arrow on the upper right hand corner\n4. Click on the smaller arrow that now appears on the upper left hand corner\n\nEXPECTED RESULTS\n2. You should be taken to the help contents page\n3. The toolbar should collapse\n5. The toolbar should now appear with buttons for forward, back, refresh and print",
+      "requirement_ids": [
+        "R-051"
+      ],
+      "source": "T-set.csv#TC-051",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": [
+        "firefox_toolbar"
+      ]
+    },
+    {
+      "id": "TC-052",
+      "title": "TC-052",
+      "description": "INITIAL CONDITIONS\nNetscape should be started up\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select Technical Support\n3. Push the down arrow key on your keyboard\n4. Push the up arrow key on your keyboard\n5. Click a few random links in help and try using these keys again\n\nEXPECTED RESULTS\n2. You should be taken to http://help.netscape.com/\n4. This should move you down the page until the end\n5. This should move you up the page until you reach the top\n6. Up arrow and down arrow keys should consistantly move you up and down pages",
+      "requirement_ids": [
+        "R-052"
+      ],
+      "source": "T-set.csv#TC-052",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-053",
+      "title": "TC-053",
+      "description": "INITIAL CONDITIONS\nNetscape should be started up\n\nSTEPS/DESCRIPTION\n1. Save the file below to your desktop\n2. Select the toplevel Help menu.\n3. Select Help Contents\n4. Drag the file from your desktop into the help windowr\n\nEXPECTED RESULTS\n3. You should be taken to the help contents page\n4. You should not be able to do this",
+      "requirement_ids": [
+        "R-053"
+      ],
+      "source": "T-set.csv#TC-053",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": [
+        "firefox_clipboard_and_drag_drop"
+      ]
+    },
+    {
+      "id": "TC-054",
+      "title": "TC-054",
+      "description": "INITIAL CONDITIONS\nNetscape should be started up\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select Help Contents\n3. Click on the greyed out previous button\n4. Click on the greyed out back button\n5. Click on the Netscape logo in uppper right\n\nEXPECTED RESULTS\n2. You should be taken to the help contents page\n3. Nothing should happen\n4. Nothing should happen\n5. Nothing should happen",
+      "requirement_ids": [
+        "R-054"
+      ],
+      "source": "T-set.csv#TC-054",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-055",
+      "title": "TC-055",
+      "description": "INITIAL CONDITIONS\nNetscape should be started and a printer should be installed\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select Help Contents\n3. Select all contents on right, copy and paste into your favorite word processor and run spell check\n4. Click the printer Icon\n\nEXPECTED RESULTS\n2. Help contents should come up with main topics on the left and detailed information on the right\n3. There should be no spelling errors (Besides obvious computer terms and websites)\n4. Help contents should print",
+      "requirement_ids": [
+        "R-055"
+      ],
+      "source": "T-set.csv#TC-055",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": [
+        "firefox_printing"
+      ]
+    },
+    {
+      "id": "TC-056",
+      "title": "TC-056",
+      "description": "INITIAL CONDITIONS\nNetscape should be started and a printer should be installed on the machine you are using\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select Help Contents\n3. Select all contents on right, copy and paste into your favorite word processor and run spell check\n4. Click the printer icon\n\nEXPECTED RESULTS\n2. Help contents should come up with main topics on the left and detailed information on the right\n3. There should be no spelling errors (Besides obvious computer terms and websites)\n4. Browsing the web contents should print",
+      "requirement_ids": [
+        "R-056"
+      ],
+      "source": "T-set.csv#TC-056",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": [
+        "firefox_printing"
+      ]
+    },
+    {
+      "id": "TC-057",
+      "title": "TC-057",
+      "description": "INITIAL CONDITIONS\nNetscape should be started and a printer should be installed on the machine you are using\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select Mail and News\n3. Select all contents on right, copy and paste into your favorite word processor and run spell check\n4. Click the printer icon\n\nEXPECTED RESULTS\n2. Mail and news content should come up with main topics on the left and detailed information on the right\n3. There should be no spelling errors (Besides obvious computer terms and websites)\n4. Mail and News content should print",
+      "requirement_ids": [
+        "R-057"
+      ],
+      "source": "T-set.csv#TC-057",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": [
+        "firefox_printing"
+      ]
+    },
+    {
+      "id": "TC-058",
+      "title": "TC-058",
+      "description": "INITIAL CONDITIONS\nNetscape should be started and a printer should be installed on the machine you are using\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select Instant Messenger\n3. Select all contents on right, copy and paste into your favorite word processor and run spell check\n4. Click the printer icon\n\nEXPECTED RESULTS\n2. Instant Messenger content should come up with main topics on the left and detailed information on the right\n3. There should be no spelling errors (Besides obvious computer terms and websites)\n4. Instant Messenger content should print",
+      "requirement_ids": [
+        "R-058"
+      ],
+      "source": "T-set.csv#TC-058",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": [
+        "firefox_printing"
+      ]
+    },
+    {
+      "id": "TC-059",
+      "title": "TC-059",
+      "description": "INITIAL CONDITIONS\nNetscape should be started and a printer should be installed on the machine you are using\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select Customizing Netscape 6\n3. Select all contents on right, copy and paste into your favorite word processor and run spell check\n4. 4.Click the printer icon\n\nEXPECTED RESULTS\n2. Customizing Netscape 6 help content should come up with main topics on the left and detailed information on the right\n3. There should be no spelling errors (Besides obvious computer terms and websites)\n4. Customizing Netscape 6 help content should print",
+      "requirement_ids": [
+        "R-059"
+      ],
+      "source": "T-set.csv#TC-059",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": [
+        "firefox_printing"
+      ]
+    },
+    {
+      "id": "TC-060",
+      "title": "TC-060",
+      "description": "INITIAL CONDITIONS\nNetscape should be started and a printer should be installed on the machine you are using\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select Help Contents\n3. Click Understanding Privacy from the left panel\n4. Select all contents on right, copy and paste into your favorite word processor and run spell check\n5. Click the printer icon\n\nEXPECTED RESULTS\n3. Understanding privacy content should come up with main topics on the left and detailed information on the right\n4. There should be no spelling errors (Besides obvious computer terms and websites)\n5. Understanding Privacy content should print",
+      "requirement_ids": [
+        "R-060"
+      ],
+      "source": "T-set.csv#TC-060",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": [
+        "firefox_printing"
+      ]
+    },
+    {
+      "id": "TC-061",
+      "title": "TC-061",
+      "description": "INITIAL CONDITIONS\nNetscape should be started and a printer should be installed on the machine you are using\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select Help Contents\n3. Click Creating web pages from the left panel\n4. Select all contents on right, copy and paste into your favorite word processor and run spell check\n5. Click the printer icon\n\nEXPECTED RESULTS\n3. Creating web pages helpcontent should come up with main topics on the left and detailed information on the right\n4. There should be no spelling errors (Besides obvious computer terms and websites)\n5. Creating web pages content should print",
+      "requirement_ids": [
+        "R-061"
+      ],
+      "source": "T-set.csv#TC-061",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": [
+        "firefox_printing"
+      ]
+    },
+    {
+      "id": "TC-062",
+      "title": "TC-062",
+      "description": "INITIAL CONDITIONS\nNetscape should be started and a printer should be installed on the machine you are using\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select What's new in Netscape 6\n3. Click \"My sidebar is yours\"\n4. Close the window created in 3 and click on \"Search from anywhere, anytime\"\n5. Close the window created in 4 and click on \"Convenient Services\"\n6. Close the window created in 5 and click on Start using Netscape\n\nEXPECTED RESULTS\n2. Verify that a screen describing new features in Netscape 6 comes up\n3. Verify that a window describing \"My sidebar\" appears in a new window\n4. Verify that \"Fast and Convenient Search from the Location Bar\" page comes up\n5. Verify that \"A host of Services\" window comes up\n6. Verify that you are taken to http://home.netscape.com/?cp=wn6",
+      "requirement_ids": [
+        "R-062"
+      ],
+      "source": "T-set.csv#TC-062",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-063",
+      "title": "TC-063",
+      "description": "INITIAL CONDITIONS\nNetscape should be started and a printer should be installed on the machine you are using\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select What's new in Netscape six from the submenu\n3. Click Security and Privacy\n4. Select all contents of the page, and right click, select copy and then paste into your favorite word processor and run spell check\n\nEXPECTED RESULTS\n3. A new window should open with Easier Security at the top of the page\n4. There should be no spelling errors (Besides obvious computer terms and websites)",
+      "requirement_ids": [
+        "R-063"
+      ],
+      "source": "T-set.csv#TC-063",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-064",
+      "title": "TC-064",
+      "description": "INITIAL CONDITIONS\nNetscape should be started\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select What's new in Netscape six from the submenu\n3. Click Same time messaging\n4. Select all contents of the page, and right click, select copy and then paste into your favorite word processor and run spell check\n\nEXPECTED RESULTS\n3. A new window should open with \"Multiple Mail Accounts & Identities\" at the top of the page\n4. There should be no spelling errors (Besides obvious computer terms and websites)",
+      "requirement_ids": [
+        "R-064"
+      ],
+      "source": "T-set.csv#TC-064",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-065",
+      "title": "TC-065",
+      "description": "INITIAL CONDITIONS\nNetscape should be started\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select What's new in Netscape six from the submenu\n3. Click Streamlined interface\n4. Select all contents of the page, and right click, select copy and then paste into your favorite word processor and run spell check\n5. There are many links on this page, randomly click several links\n\nEXPECTED RESULTS\n3. A new window should open with \"What's New For Developers?\" at the top of the page\n4. There should be no spelling errors (Besides obvious computer terms and websites)\n5. Verify that you are taken to the appropriate page for links clicked",
+      "requirement_ids": [
+        "R-065"
+      ],
+      "source": "T-set.csv#TC-065",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-066",
+      "title": "TC-066",
+      "description": "INITIAL CONDITIONS\nNetscape should be started and a printer should be installed on the machine you are using\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select What's new in Netscape six from the submenu\n3. Click The Best Standards Support\n4. Select all contents of the page, and right click, select copy and then paste into your favorite word processor and run spell check\n5. There are many links on this page, click on them randomly\n\nEXPECTED RESULTS\n3. A new window should open with \"What's New For Developers?\" at the top of the page\n4. There should be no spelling errors (Besides obvious computer terms and websites)\n5. Verify that you are taken to the appropriate link in a new browser instance",
+      "requirement_ids": [
+        "R-066"
+      ],
+      "source": "T-set.csv#TC-066",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-067",
+      "title": "TC-067",
+      "description": "INITIAL CONDITIONS\nNetscape should be started and a printer should be installed on the machine you are using\n\nSTEPS/DESCRIPTION\n1. Select the toplevel Help menu.\n2. Select \"What's new in Netscape 6\"\n3. Click \"My sidebar is yours\"\n4. Close the window created in 3 and click on \"Search from anywhere, anytime\"\n5. Close the window created in 4 and click on \"Convenient Services\"\n6. Close the window created in 5 and click on Start using Netscape\n\nEXPECTED RESULTS\n2. Verify that a screen describing new features in Netscape 6 comes up\n3. Verify that a window describing \"My sidebar\" appears in a new window\n4. Verify that \"Fast and Convenient Search from the Location Bar\" page comes up\n5. Verify that \"A host of Services\" window comes up\n6. Verify that you are taken to http://home.netscape.com/?cp=wn6",
+      "requirement_ids": [
+        "R-067"
+      ],
+      "source": "T-set.csv#TC-067",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-068",
+      "title": "TC-068",
+      "description": "INITIAL CONDITIONS\nNetscape should be started up\n\nSTEPS/DESCRIPTION\n1. From the Help Drop Down Menu, select Help and Support Center\n2. Click the Assisted Support Options link\n3. Click the Communicator 4.x link\n4. Click on the Netscape link\n5. Click on the Intertional Browsers link\n\nEXPECTED RESULTS\n1. The Help and Support Center page should come up\n2. You should be taken to the Need some help? page\n2. Help number should be listed 1(800)411-0707 (They will help you for low-cost assistance)\n2. There should be links to Communicator 4.x, Netscape 6, International Browsers\n3. You should be taken to a general Help page for Communicator 4.x\n4. You should be taken to a general Help page for Netscape 6\n4. Verify that the browser mentioned on this page is the correct version of the Netscape 6 browser\n5.You should be taken to a general Help page for International Support",
+      "requirement_ids": [
+        "R-068"
+      ],
+      "source": "T-set.csv#TC-068",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-069",
+      "title": "TC-069",
+      "description": "INITIAL CONDITIONS\nNetscape should be started up\n\nSTEPS/DESCRIPTION\n1. From the Help Drop Down Menu, select Help and Support Center\n2. Click on the International Link\n\nEXPECTED RESULTS\n1. The Help and Support Center should come up\n2. You should be taken to an International Users page\n2. This page should Have Current information for International users",
+      "requirement_ids": [
+        "R-069"
+      ],
+      "source": "T-set.csv#TC-069",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-070",
+      "title": "TC-070",
+      "description": "INITIAL CONDITIONS\nNetscape should be started up\n\nSTEPS/DESCRIPTION\n1. From the Help Drop Down Menu, select Feedback Center\n2. Click on the Fill out a problem report link\n3. Click on the Fill out a suggestion form link\n4. Click on the Fill out a survey form link\n\nEXPECTED RESULTS\n1. You should be taken to a page that explains how to send feedback to Netscape about the browser.\n1. You should see links to fill out a problem report, Fill out a suggestion form and Fill out a survey\n2. You should be taken to the Netscape Problem Report Form\n3. You should be taken to the Netscape Suggestion Form\n4. You should be taken to the Netscape Survey",
+      "requirement_ids": [
+        "R-070"
+      ],
+      "source": "T-set.csv#TC-070",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-071",
+      "title": "TC-071",
+      "description": "INITIAL CONDITIONS\nNetscape should be started up\n\nSTEPS/DESCRIPTION\n1. From the help drop down menu, select About Netscape 6\n2. Click on Contributors link\n3. Click on Mozilla Public License and Netscape Public License\n4. Click on the license link\n5. Click on the Java link\n6. Click on the Sun Microsystems link\n7. Click on the Copyright © 1998-2000 Support.com, Inc. link\n8. Click on the Lernout & Hauspie Speech Products N.V. link\n9. Click on the Net2Phone, Inc. Hackensack, NJ USA. link\n\nEXPECTED RESULTS\n1. The About Netscape page should come up\n2. Verify that the Contributors page (Terri Preston should be listed) :-)\n3. Verify that you are taken to http://www.mozilla.org/MPL/\n4. Verify that you are taken to jar:resource:///chrome/en-US.jar!/locale/en-US/global/license.txt\n5. & 6. Verify that you are taken to http://java.sun.com/\n7. Verify that you are taken to http://www.support.com/\n8. Verify that you are taken to the Lernout & Hauspie page (this is currently NS bug 12462)\n9. Verify that you are taken to http://www.net2phone.com/",
+      "requirement_ids": [
+        "R-071"
+      ],
+      "source": "T-set.csv#TC-071",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-072",
+      "title": "TC-072",
+      "description": "INITIAL CONDITIONS\nNetscape should be started up\n\nSTEPS/DESCRIPTION\nClick Alt+H prior to starting each of these steps\n1. Click H\n2. Click W\n3. Click F\n4. Click S\n5. Click P\n6. Click A\n\nEXPECTED RESULTS\n1. Help and Support Center page should open (close the help dialog)\n2. You should be taken to the Welcome page that describes the new features in Netscape\n3. You should be taken to the Feedback page\n4. You should be taken to the Security News page\n5. You should be taken to the Installed plugins page\n6. You should be taken to the About Netscape page",
+      "requirement_ids": [
+        "R-072"
+      ],
+      "source": "T-set.csv#TC-072",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": null,
+  "generation": {
+    "selected_techniques": [
+      "state_transition",
+      "equivalence_partitioning",
+      "error_guessing",
+      "use_case"
+    ],
+    "technique_rationales": {
+      "state_transition": "Required for testing window states such as toolbar hidden/reopened, and navigate forward and back between help pages.",
+      "equivalence_partitioning": "Required to partition valid interactive content areas against non-clickable regions and valid help contents.",
+      "error_guessing": "Required to test plausible failure conditions and misuse such as attempting to drag files into the Help window.",
+      "use_case": "Required to cover user flows through the various help contents, troubleshooting sections, and drop-down menu options."
+    },
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "embedding_requests": 1
+  },
+  "links": {
+    "requirements": {
+      "R-046": "R-046/requirement.md",
+      "R-047": "R-047/requirement.md",
+      "R-048": "R-048/requirement.md",
+      "R-049": "R-049/requirement.md",
+      "R-050": "R-050/requirement.md",
+      "R-051": "R-051/requirement.md",
+      "R-052": "R-052/requirement.md",
+      "R-053": "R-053/requirement.md",
+      "R-054": "R-054/requirement.md",
+      "R-055": "R-055/requirement.md",
+      "R-056": "R-056/requirement.md",
+      "R-057": "R-057/requirement.md",
+      "R-058": "R-058/requirement.md",
+      "R-059": "R-059/requirement.md",
+      "R-060": "R-060/requirement.md",
+      "R-061": "R-061/requirement.md",
+      "R-062": "R-062/requirement.md",
+      "R-063": "R-063/requirement.md",
+      "R-064": "R-064/requirement.md",
+      "R-065": "R-065/requirement.md",
+      "R-066": "R-066/requirement.md",
+      "R-067": "R-067/requirement.md",
+      "R-068": "R-068/requirement.md",
+      "R-069": "R-069/requirement.md",
+      "R-070": "R-070/requirement.md",
+      "R-071": "R-071/requirement.md",
+      "R-072": "R-072/requirement.md"
+    },
+    "cases": {
+      "G-031": {
+        "R-046": "R-046/test cases/31_Verify_Sign-On_Troubleshooting_Help_Accessibilit.md"
+      },
+      "G-004": {
+        "R-046": "R-046/test cases/4_Troubleshooting_help_for_sign_on_problems.md"
+      },
+      "G-058": {
+        "R-046": "R-046/test cases/58_End-to-End_Help_Navigation_and_Troubleshooting_W.md",
+        "R-047": "R-047/test cases/58_End-to-End_Help_Navigation_and_Troubleshooting_W.md",
+        "R-048": "R-048/test cases/58_End-to-End_Help_Navigation_and_Troubleshooting_W.md",
+        "R-049": "R-049/test cases/58_End-to-End_Help_Navigation_and_Troubleshooting_W.md",
+        "R-050": "R-050/test cases/58_End-to-End_Help_Navigation_and_Troubleshooting_W.md",
+        "R-051": "R-051/test cases/58_End-to-End_Help_Navigation_and_Troubleshooting_W.md",
+        "R-052": "R-052/test cases/58_End-to-End_Help_Navigation_and_Troubleshooting_W.md",
+        "R-053": "R-053/test cases/58_End-to-End_Help_Navigation_and_Troubleshooting_W.md",
+        "R-054": "R-054/test cases/58_End-to-End_Help_Navigation_and_Troubleshooting_W.md",
+        "R-072": "R-072/test cases/58_End-to-End_Help_Navigation_and_Troubleshooting_W.md"
+      },
+      "G-032": {
+        "R-047": "R-047/test cases/32_Verify_Buddy_List_Window_Troubleshooting_Help.md"
+      },
+      "G-005": {
+        "R-047": "R-047/test cases/5_Troubleshooting_help_for_invisible_buddy_list_wi.md"
+      },
+      "G-002": {
+        "R-048": "R-048/test cases/2_Navigation_via_Forward_and_Back_Buttons_State_Tr.md"
+      },
+      "G-033": {
+        "R-048": "R-048/test cases/33_Test_Navigation_History_Out_of_Bounds.md"
+      },
+      "G-006": {
+        "R-048": "R-048/test cases/6_Forward_and_back_navigation_in_Help_menu.md"
+      },
+      "G-034": {
+        "R-049": "R-049/test cases/34_Rapid_Toolbar_Window_State_Toggling.md"
+      },
+      "G-007": {
+        "R-049": "R-049/test cases/7_Toolbar_window_controls_invocation_in_Help_menu.md"
+      },
+      "G-035": {
+        "R-050": "R-050/test cases/35_Page_Up_and_Page_Down_at_Document_Boundaries.md"
+      },
+      "G-008": {
+        "R-050": "R-050/test cases/8_Page_up_and_page_down_key_navigation.md"
+      },
+      "G-001": {
+        "R-051": "R-051/test cases/1_Toolbar_Hide_and_Reopen_State_Transition.md"
+      },
+      "G-036": {
+        "R-051": "R-051/test cases/36_Repeated_Toolbar_Hide_and_Reopen_Actions.md"
+      },
+      "G-009": {
+        "R-051": "R-051/test cases/9_Toolbar_hide_and_reopen_functionality.md"
+      },
+      "G-010": {
+        "R-052": "R-052/test cases/10_Arrow_keys_page_movement_in_Help_menu.md"
+      },
+      "G-037": {
+        "R-052": "R-052/test cases/37_Arrow_Key_Navigation_at_Document_Limits.md"
+      },
+      "G-011": {
+        "R-053": "R-053/test cases/11_Invalid_file_drag_action_into_Help_window.md"
+      },
+      "G-038": {
+        "R-053": "R-053/test cases/38_Drag_and_Drop_External_Files_into_Help_Window.md"
+      },
+      "G-003": {
+        "R-053": "R-053/test cases/3_Forbidden_Dragging_State_Transition.md"
+      },
+      "G-012": {
+        "R-054": "R-054/test cases/12_Clicking_non-clickable_regions_in_Help.md"
+      },
+      "G-039": {
+        "R-054": "R-054/test cases/39_Clicking_Inactive_and_Non-Clickable_Regions.md"
+      },
+      "G-013": {
+        "R-055": "R-055/test cases/13_Help_Contents_display_and_print.md"
+      },
+      "G-040": {
+        "R-055": "R-055/test cases/40_Help_Contents_Display_and_Print_Validation.md"
+      },
+      "G-059": {
+        "R-055": "R-055/test cases/59_End-to-End_Help_Content_Display_and_Printing_Wor.md",
+        "R-056": "R-056/test cases/59_End-to-End_Help_Content_Display_and_Printing_Wor.md",
+        "R-057": "R-057/test cases/59_End-to-End_Help_Content_Display_and_Printing_Wor.md",
+        "R-058": "R-058/test cases/59_End-to-End_Help_Content_Display_and_Printing_Wor.md",
+        "R-059": "R-059/test cases/59_End-to-End_Help_Content_Display_and_Printing_Wor.md",
+        "R-060": "R-060/test cases/59_End-to-End_Help_Content_Display_and_Printing_Wor.md",
+        "R-061": "R-061/test cases/59_End-to-End_Help_Content_Display_and_Printing_Wor.md",
+        "R-062": "R-062/test cases/59_End-to-End_Help_Content_Display_and_Printing_Wor.md",
+        "R-063": "R-063/test cases/59_End-to-End_Help_Content_Display_and_Printing_Wor.md",
+        "R-064": "R-064/test cases/59_End-to-End_Help_Content_Display_and_Printing_Wor.md",
+        "R-065": "R-065/test cases/59_End-to-End_Help_Content_Display_and_Printing_Wor.md",
+        "R-066": "R-066/test cases/59_End-to-End_Help_Content_Display_and_Printing_Wor.md",
+        "R-067": "R-067/test cases/59_End-to-End_Help_Content_Display_and_Printing_Wor.md",
+        "R-068": "R-068/test cases/59_End-to-End_Help_Content_Display_and_Printing_Wor.md",
+        "R-069": "R-069/test cases/59_End-to-End_Help_Content_Display_and_Printing_Wor.md",
+        "R-070": "R-070/test cases/59_End-to-End_Help_Content_Display_and_Printing_Wor.md",
+        "R-071": "R-071/test cases/59_End-to-End_Help_Content_Display_and_Printing_Wor.md"
+      },
+      "G-014": {
+        "R-056": "R-056/test cases/14_Browsing_web_help_content_display_and_print.md"
+      },
+      "G-041": {
+        "R-056": "R-056/test cases/41_Browsing_Web_Help_Content_Display_and_Print.md"
+      },
+      "G-015": {
+        "R-057": "R-057/test cases/15_Mail_and_News_help_content_display_and_print.md"
+      },
+      "G-042": {
+        "R-057": "R-057/test cases/42_Mail_and_News_Help_Content_Rendering_and_Printin.md"
+      },
+      "G-016": {
+        "R-058": "R-058/test cases/16_Instant_Messenger_help_content_display_and_print.md"
+      },
+      "G-043": {
+        "R-058": "R-058/test cases/43_Instant_Messenger_Help_Content_Display_and_Print.md"
+      },
+      "G-017": {
+        "R-059": "R-059/test cases/17_Customizing_Netscape_6_help_content_display_and.md"
+      },
+      "G-044": {
+        "R-059": "R-059/test cases/44_Customizing_Netscape_6_Help_Content_Integrity.md"
+      },
+      "G-018": {
+        "R-060": "R-060/test cases/18_Understanding_Privacy_help_content_display_and_p.md"
+      },
+      "G-045": {
+        "R-060": "R-060/test cases/45_Understanding_Privacy_Help_Content_Validation.md"
+      },
+      "G-019": {
+        "R-061": "R-061/test cases/19_Creating_web_pages_help_content_display_and_prin.md"
+      },
+      "G-046": {
+        "R-061": "R-061/test cases/46_Creating_Web_Pages_Help_Content_Integrity.md"
+      },
+      "G-020": {
+        "R-062": "R-062/test cases/20_What_s_new_in_Netscape_6_help_content_display_an.md"
+      },
+      "G-047": {
+        "R-062": "R-062/test cases/47_What_s_New_in_Netscape_6_Help_Content_Validation.md"
+      },
+      "G-021": {
+        "R-063": "R-063/test cases/21_Security_and_Privacy_help_content_display.md"
+      },
+      "G-048": {
+        "R-063": "R-063/test cases/48_Security_and_Privacy_Help_Content_Display_Check.md"
+      },
+      "G-022": {
+        "R-064": "R-064/test cases/22_Same_time_messaging_help_content_display.md"
+      },
+      "G-049": {
+        "R-064": "R-064/test cases/49_Same_Time_Messaging_Help_Content_Display_Check.md"
+      },
+      "G-023": {
+        "R-065": "R-065/test cases/23_Streamlined_Interface_help_content_display.md"
+      },
+      "G-050": {
+        "R-065": "R-065/test cases/50_Streamlined_Interface_Help_Content_Display_Check.md"
+      },
+      "G-024": {
+        "R-066": "R-066/test cases/24_The_Best_Standards_Support_help_content_display.md"
+      },
+      "G-051": {
+        "R-066": "R-066/test cases/51_Best_Standards_Support_Help_Content_Display_Chec.md"
+      },
+      "G-025": {
+        "R-067": "R-067/test cases/25_New_to_the_net_tutorial_help_content_display.md"
+      },
+      "G-052": {
+        "R-067": "R-067/test cases/52_New_to_the_Net_Tutorial_Help_Content_Display_Che.md"
+      },
+      "G-026": {
+        "R-068": "R-068/test cases/26_Netscape_Technical_Support_help_content_display.md"
+      },
+      "G-053": {
+        "R-068": "R-068/test cases/53_Netscape_Technical_Support_Help_Content_Display.md"
+      },
+      "G-027": {
+        "R-069": "R-069/test cases/27_International_Users_page_display.md"
+      },
+      "G-054": {
+        "R-069": "R-069/test cases/54_International_Users_Page_Character_Encoding_Test.md"
+      },
+      "G-028": {
+        "R-070": "R-070/test cases/28_Feedback_Center_page_display.md"
+      },
+      "G-055": {
+        "R-070": "R-070/test cases/55_Feedback_Center_Page_Load_Failure_Recovery.md"
+      },
+      "G-029": {
+        "R-071": "R-071/test cases/29_About_Netscape_page_display.md"
+      },
+      "G-056": {
+        "R-071": "R-071/test cases/56_About_Netscape_Page_Asset_Verification.md"
+      },
+      "G-030": {
+        "R-072": "R-072/test cases/30_Help_drop_down_menu_selections_via_shortcut_butt.md"
+      },
+      "G-057": {
+        "R-072": "R-072/test cases/57_Help_Drop-Down_Menu_Shortcut_Activation_Under_Lo.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

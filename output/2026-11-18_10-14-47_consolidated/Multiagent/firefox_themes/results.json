@@ -1,0 +1,267 @@
+{
+  "schema_version": 1,
+  "solution": "Multiagent",
+  "unit_id": "firefox_themes",
+  "parent_id": null,
+  "status": "failed",
+  "failure": {
+    "stage": "evaluation",
+    "error_type": "EmbeddingError"
+  },
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "R-175",
+      "text": "Both Classic and Modern themes shall exist under the themes preferences.",
+      "language": "en",
+      "source": "R-set.csv#R-175"
+    },
+    {
+      "id": "R-176",
+      "text": "Classic theme shall be displayed as in the given image.",
+      "language": "en",
+      "source": "R-set.csv#R-176"
+    },
+    {
+      "id": "R-177",
+      "text": "Modern theme shall be displayed as in the given image.",
+      "language": "en",
+      "source": "R-set.csv#R-177"
+    },
+    {
+      "id": "R-178",
+      "text": "\"Theme Preferences\" item shall be available under View menu.",
+      "language": "en",
+      "source": "R-set.csv#R-178"
+    },
+    {
+      "id": "R-179",
+      "text": "\"Get New Themes\" item shall be available under View menu.",
+      "language": "en",
+      "source": "R-set.csv#R-179"
+    },
+    {
+      "id": "R-180",
+      "text": "\"Classic\" item shall be available under View menu.",
+      "language": "en",
+      "source": "R-set.csv#R-180"
+    },
+    {
+      "id": "R-181",
+      "text": "\"Modern\" item shall be available under View menu.",
+      "language": "en",
+      "source": "R-set.csv#R-181"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Verify Presence of Classic and Modern Themes",
+      "description": "Navigate to the themes preferences and verify that both Classic and Modern themes exist as options.",
+      "requirement_ids": [
+        "R-175"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Verify Classic Theme Display",
+      "description": "Select the Classic theme and verify that it is displayed correctly as shown in the reference image.",
+      "requirement_ids": [
+        "R-176"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Verify Modern Theme Display",
+      "description": "Select the Modern theme and verify that it is displayed correctly as shown in the reference image.",
+      "requirement_ids": [
+        "R-177"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Verify Theme Preferences Menu Item",
+      "description": "Open the View menu and verify that the 'Theme Preferences' item is present and accessible.",
+      "requirement_ids": [
+        "R-178"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Verify Get New Themes Menu Item",
+      "description": "Open the View menu and verify that the 'Get New Themes' item is present and accessible.",
+      "requirement_ids": [
+        "R-179"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Verify Classic Menu Item under View",
+      "description": "Open the View menu and verify that the 'Classic' item is available directly under the menu.",
+      "requirement_ids": [
+        "R-180"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Verify Modern Menu Item under View",
+      "description": "Open the View menu and verify that the 'Modern' item is available directly under the menu.",
+      "requirement_ids": [
+        "R-181"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "TC-175",
+      "title": "TC-175",
+      "description": "STEPS/DESCRIPTION\nFrom the main menu bar, select Edit > Preferences > Appearance > Themes\n\nEXPECTED RESULTS\nBy default, there should be at least two skins under Themes -- Classic and Modern.",
+      "requirement_ids": [
+        "R-175"
+      ],
+      "source": "T-set.csv#TC-175",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-176",
+      "title": "TC-176",
+      "description": "STEPS/DESCRIPTION\n1. From the main menu bar, select Edit > Preferences > Appearances > Themes.\n2. Select \"Classic\" theme on the right hand side of the dialog.\n3. Click the \"Apply Classic\" button. \n4. Close the Preferences dialog. \n\nEXPECTED RESULTS\nThe following image for the menu bar of the browser should display as follows:",
+      "requirement_ids": [
+        "R-176"
+      ],
+      "source": "T-set.csv#TC-176",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-177",
+      "title": "TC-177",
+      "description": "STEPS/DESCRIPTION\n1. From the main menu bar, select Edit > Preferences > Appearances > Themes.\n2. Select \"Modern\" theme on the right hand side of the dialog.\n3. Click the \"Apply Modern\" button.\n4. Close the Preferences dialog.\n\nEXPECTED RESULTS\nThe folowing image for the menu bar of the browser should display as follows:",
+      "requirement_ids": [
+        "R-177"
+      ],
+      "source": "T-set.csv#TC-177",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-178",
+      "title": "TC-178",
+      "description": "STEPS/DESCRIPTION\n1. From the main menu bar, select View.\n2. Select \"Apply Theme\" and another submenu should pop up.\n3. Select \"Theme Preferences...\"\n\nEXPECTED RESULTS\nThe following Theme preferences dialog should appear:",
+      "requirement_ids": [
+        "R-178"
+      ],
+      "source": "T-set.csv#TC-178",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-179",
+      "title": "TC-179",
+      "description": "STEPS/DESCRIPTION\n1. From the main menu bar, select View. \n2. Select \"Apply Theme\" and another submenu should pop up.\n3. Select \"Get New Themes\" item\n\nEXPECTED RESULTS\nThis should link to http://wp.netscape.com/themes/index.html (netscape browser).\nThis should link to http://mozilla.org/themes/download/",
+      "requirement_ids": [
+        "R-179"
+      ],
+      "source": "T-set.csv#TC-179",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-180",
+      "title": "TC-180",
+      "description": "STEPS/DESCRIPTION\n1. From the main menu bar, select View.\n2. Select \"Apply Theme\" and another submenu should pop up.\n3. Select \"Classic Theme\" item.\n\nEXPECTED RESULTS\nThe Classic Skin should appear to the browser menu bar.",
+      "requirement_ids": [
+        "R-180"
+      ],
+      "source": "T-set.csv#TC-180",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-181",
+      "title": "TC-181",
+      "description": "STEPS/DESCRIPTION\n1. From the main menu bar, select View.\n2. Select \"Apply Theme\" and another submenu should pop up.\n3. Select \"Modern Theme\" item.\n\nEXPECTED RESULTS\nThe Modern skin should appear to the browser menu bar.\n ",
+      "requirement_ids": [
+        "R-181"
+      ],
+      "source": "T-set.csv#TC-181",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": null,
+  "generation": {
+    "selected_techniques": [],
+    "technique_rationales": {},
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": 3893,
+      "output_tokens": 942,
+      "details": {
+        "text_prompt_tokens": 3893,
+        "total_tokens": 4835
+      },
+      "status": "available"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "embedding_requests": 1
+  },
+  "links": {
+    "requirements": {
+      "R-175": "R-175/requirement.md",
+      "R-176": "R-176/requirement.md",
+      "R-177": "R-177/requirement.md",
+      "R-178": "R-178/requirement.md",
+      "R-179": "R-179/requirement.md",
+      "R-180": "R-180/requirement.md",
+      "R-181": "R-181/requirement.md"
+    },
+    "cases": {
+      "G-001": {
+        "R-175": "R-175/test cases/1_Verify_Presence_of_Classic_and_Modern_Themes.md"
+      },
+      "G-002": {
+        "R-176": "R-176/test cases/2_Verify_Classic_Theme_Display.md"
+      },
+      "G-003": {
+        "R-177": "R-177/test cases/3_Verify_Modern_Theme_Display.md"
+      },
+      "G-004": {
+        "R-178": "R-178/test cases/4_Verify_Theme_Preferences_Menu_Item.md"
+      },
+      "G-005": {
+        "R-179": "R-179/test cases/5_Verify_Get_New_Themes_Menu_Item.md"
+      },
+      "G-006": {
+        "R-180": "R-180/test cases/6_Verify_Classic_Menu_Item_under_View.md"
+      },
+      "G-007": {
+        "R-181": "R-181/test cases/7_Verify_Modern_Menu_Item_under_View.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv",
+    "trace": "intermediate/trace.json",
+    "initial": "intermediate/initial.json",
+    "rounds": []
+  }
+}

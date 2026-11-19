@@ -1,0 +1,942 @@
+{
+  "schema_version": 1,
+  "solution": "GHL",
+  "unit_id": "e2edev_bench_29",
+  "parent_id": null,
+  "status": "failed",
+  "failure": {
+    "stage": "evaluation",
+    "error_type": "EmbeddingError"
+  },
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "e2edev_bench_29-R-1",
+      "text": "Upon loading the Expense Tracker application, the system must initialize and display the financial summary with the current balance, total income, and total expenses all set to $0.00. This initialization should occur when there are no transactions stored in the local storage. The balance should be displayed in the element with data-testid 'balance', the income in the element with data-testid 'income', and the expenses in the element with data-testid 'expense'. The application must ensure these values are accurately retrieved and displayed from the local storage, defaulting to $0.00 if the storage is empty or contains no transactions.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_29-R-2",
+      "text": "The user must be able to enter a transaction description in the 'Description' input field with data-testid 'description-input'. The system must accept text input of any length, including very long descriptions, and display it in the transaction history table with data-testid 'transaction-list' upon adding a transaction. If the 'Description' input field is left empty, the system should display an alert with the message 'Please enter valid description and amount.' and prevent the transaction from being added to the transaction history. The user interaction involves entering a description and an amount in their respective input fields, and clicking the 'Add Transaction' button with data-testid 'add-transaction-button'. The transaction history should update to reflect the new transaction, showing the description, amount, and date of the transaction.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_29-R-3",
+      "text": "The user must be able to add transactions to the Expense Tracker by entering a description and a numerical amount in the respective input fields. The 'Description' input field, identified by data-testid 'description-input', must accept any text input. The 'Amount' input field, identified by data-testid 'amount-input', must accept numerical input, where positive values indicate income and negative values indicate expenses. Upon clicking the 'Add Transaction' button, identified by data-testid 'add-transaction-button', the transaction should be added to the transaction list, identified by data-testid 'transaction-list'. The transaction list should display the transaction with the entered description, amount formatted as currency (e.g., '$100.00' for income and '-$50.00' for expenses), and the current date. If the 'Amount' input field is left empty or contains invalid data, an alert should be displayed with the message 'Please enter valid description and amount.' The application must update the balance, income, and expense totals accordingly, reflecting the changes in the respective elements identified by data-testid 'balance', 'income', and 'expense'. All transactions must be stored in localStorage under the key 'transactions', ensuring persistence across sessions.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_29-R-5",
+      "text": "The Expense Tracker web application must allow users to add transactions by entering a description and an amount into designated input fields with data-testid attributes 'description-input' and 'amount-input'. Upon clicking the 'Add Transaction' button with data-testid 'add-transaction-button', the system must validate that both fields are correctly filled: the description must be a non-empty string, and the amount must be a valid number (positive for income, negative for expenses, zero is allowed). If validation passes, the transaction is added to the transaction history table with data-testid 'transaction-list', displaying the date, description, and formatted amount. The system must update the balance (data-testid 'balance'), income (data-testid 'income'), and expense (data-testid 'expense') values accordingly. The balance should reflect the net total of all transactions, income should sum all positive amounts, and expenses should sum all negative amounts (displayed as positive values). After a successful transaction addition, the input fields must be cleared. All transactions must be stored in localStorage under the key 'transactions' to persist data across sessions. If validation fails, an alert must notify the user to enter valid data without adding the transaction.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/5/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_29-R-6",
+      "text": "The system must allow users to add transactions to the transaction history by entering a description and an amount in the respective input fields with data-testid 'description-input' and 'amount-input'. Upon clicking the 'Add Transaction' button with data-testid 'add-transaction-button', the transaction should be appended to the transaction list with data-testid 'transaction-list'. Each transaction entry must display the date (in YYYY-MM-DD format), the description, and the amount formatted as currency (e.g., '$1000.00' for positive amounts and '$-150.00' for negative amounts). Additionally, each transaction entry must include a remove button that allows users to delete the transaction from the list. The system should update the balance, income, and expense totals displayed in elements with data-testid 'balance', 'income', and 'expense', respectively, whenever a transaction is added or removed. All transactions must be stored in localStorage under the key 'transactions' to persist data across sessions.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/6/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_29-R-7",
+      "text": "The Expense Tracker application must allow users to remove transactions from the transaction history by clicking the 'X' button next to a transaction. Upon clicking, the system should remove the transaction from the DOM, update the displayed balance, income, and expense values accordingly, and ensure these changes are reflected in the local storage. Specifically, the transaction list should be updated by removing the corresponding <tr> element, and the balance, income, and expense elements identified by data-testid attributes ('balance', 'income', 'expense') should display the recalculated values. The local storage key 'transactions' must be updated to exclude the removed transaction, ensuring persistence of the current state. This functionality should handle normal scenarios where multiple transactions exist, as well as edge cases where the transaction history contains only one transaction, resulting in an empty transaction list and zeroed financial values.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/7/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_29-R-8",
+      "text": "The Expense Tracker web application must ensure that all transactions are stored in localStorage under the key 'transactions' to maintain data persistence across page reloads. When the page is loaded, the application must retrieve the stored transactions from localStorage and display them in the transaction list, identified by the data-testid 'transaction-list'. Users must be able to add transactions by entering a description in the input field with data-testid 'description-input' and an amount in the input field with data-testid 'amount-input'. Upon clicking the 'Add Transaction' button with data-testid 'add-transaction-button', the transaction should be added to the list and stored in localStorage. The transaction list must accurately reflect the stored transactions, displaying the description, amount formatted as currency, and the date of the transaction. The balance, income, and expense totals must be updated accordingly and displayed using elements with data-testids 'balance', 'income', and 'expense'. The application must handle edge cases, such as negative amounts for expenses, and ensure that transactions are correctly formatted and persisted.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/8/requirement/description"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Initialize application with empty local storage",
+      "description": "Verify that when the application loads with no transactions in local storage, the balance, total income, and total expenses are correctly initialized and displayed as $0.00.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-1"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Add valid positive income transaction",
+      "description": "Verify that entering a valid non-empty description and a positive numerical amount correctly adds an income transaction, updates totals, clears inputs, and stores in localStorage.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-2",
+        "e2edev_bench_29-R-3",
+        "e2edev_bench_29-R-5",
+        "e2edev_bench_29-R-6",
+        "e2edev_bench_29-R-8"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Add valid negative expense transaction",
+      "description": "Verify that entering a valid non-empty description and a negative numerical amount correctly adds an expense transaction, updates totals as negative, and persists data.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-3",
+        "e2edev_bench_29-R-5",
+        "e2edev_bench_29-R-6",
+        "e2edev_bench_29-R-8"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Add valid zero amount transaction",
+      "description": "Verify that entering a valid non-empty description and an amount of zero is accepted and correctly updates the state.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-5"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Add transaction with empty description field",
+      "description": "Verify that leaving the description input empty triggers an alert with the message 'Please enter valid description and amount.' and prevents adding the transaction.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-2",
+        "e2edev_bench_29-R-3",
+        "e2edev_bench_29-R-5"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Add transaction with empty or invalid amount field",
+      "description": "Verify that leaving the amount input empty or entering invalid non-numerical data triggers the required alert and prevents the transaction from being added.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-3",
+        "e2edev_bench_29-R-5"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Remove transaction from history",
+      "description": "Verify that clicking the remove button next to a transaction correctly deletes it from the DOM, recalculates financial totals, and updates local storage.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-6",
+        "e2edev_bench_29-R-7"
+      ]
+    },
+    {
+      "id": "G-008",
+      "title": "Remove the last remaining transaction",
+      "description": "Verify that removing the sole remaining transaction in the history results in an empty transaction list and zeroed-out financial totals.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-7"
+      ]
+    },
+    {
+      "id": "G-009",
+      "title": "Initialization with Empty Local Storage",
+      "description": "Verify that when the application loads with no transactions in local storage, the balance, income, and expenses are all initialized and displayed as $0.00.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-1"
+      ]
+    },
+    {
+      "id": "G-010",
+      "title": "Add Transaction with Zero Amount Boundary",
+      "description": "Verify that a transaction can be added with an amount exactly equal to 0, which is treated as a valid number and properly updates totals and transaction list.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-5"
+      ]
+    },
+    {
+      "id": "G-011",
+      "title": "Add Transaction with Empty Description Validation Failure",
+      "description": "Verify that attempting to add a transaction with an empty description triggers an alert and prevents addition.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-2",
+        "e2edev_bench_29-R-5"
+      ]
+    },
+    {
+      "id": "G-012",
+      "title": "Add Transaction with Empty Amount Validation Failure",
+      "description": "Verify that attempting to add a transaction with an empty amount field triggers an alert and prevents addition.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-3",
+        "e2edev_bench_29-R-5"
+      ]
+    },
+    {
+      "id": "G-013",
+      "title": "Remove Single Transaction Edge Case",
+      "description": "Verify that removing the last remaining transaction from the history results in an empty transaction list and resets financial values to zero.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-7"
+      ]
+    },
+    {
+      "id": "G-014",
+      "title": "Initial Application State with Empty Storage",
+      "description": "Verify that upon loading the Expense Tracker application with no stored transactions, the financial summary displays balance, income, and expenses as $0.00.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-1"
+      ]
+    },
+    {
+      "id": "G-015",
+      "title": "Successful Addition of Income Transaction",
+      "description": "Verify that entering a valid description and a positive numerical amount, then clicking the 'Add Transaction' button successfully adds the transaction, updates summary totals, clears inputs, and updates localStorage.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-3",
+        "e2edev_bench_29-R-5",
+        "e2edev_bench_29-R-6",
+        "e2edev_bench_29-R-8"
+      ]
+    },
+    {
+      "id": "G-016",
+      "title": "Successful Addition of Expense Transaction",
+      "description": "Verify that entering a valid description and a negative numerical amount correctly registers as an expense, updates totals, and persists in localStorage.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-3",
+        "e2edev_bench_29-R-5",
+        "e2edev_bench_29-R-8"
+      ]
+    },
+    {
+      "id": "G-017",
+      "title": "Transaction Addition Failure Due to Empty Description",
+      "description": "Verify that attempting to add a transaction with an empty description field triggers an alert and prevents the transaction from being added.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-2",
+        "e2edev_bench_29-R-5"
+      ]
+    },
+    {
+      "id": "G-018",
+      "title": "Transaction Addition Failure Due to Invalid or Empty Amount",
+      "description": "Verify that attempting to add a transaction with an empty or invalid amount field triggers an alert with the correct message and prevents the transaction from being added.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-3",
+        "e2edev_bench_29-R-5"
+      ]
+    },
+    {
+      "id": "G-019",
+      "title": "Removal of Existing Transaction",
+      "description": "Verify that clicking the remove button ('X') next to a transaction successfully removes it from the UI, updates the financial totals, and updates local storage.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-6",
+        "e2edev_bench_29-R-7"
+      ]
+    },
+    {
+      "id": "G-020",
+      "title": "Removal of Last Remaining Transaction",
+      "description": "Verify edge case where removing the sole transaction results in an empty transaction history list and zeroed financial values ($0.00).",
+      "requirement_ids": [
+        "e2edev_bench_29-R-7"
+      ]
+    },
+    {
+      "id": "G-021",
+      "title": "Initialize with empty local storage",
+      "description": "Load the application when local storage contains no transactions, verifying that balance, income, and expenses default to $0.00.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-1"
+      ]
+    },
+    {
+      "id": "G-022",
+      "title": "Add valid positive transaction (income)",
+      "description": "Enter a valid non-empty description and a positive numerical amount, then click add transaction to update summary, list, and local storage.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-2",
+        "e2edev_bench_29-R-3",
+        "e2edev_bench_29-R-5",
+        "e2edev_bench_29-R-6",
+        "e2edev_bench_29-R-8"
+      ]
+    },
+    {
+      "id": "G-023",
+      "title": "Add valid negative transaction (expense)",
+      "description": "Enter a valid description and a negative numerical amount, then click add transaction to properly register the expense and update totals.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-3",
+        "e2edev_bench_29-R-5",
+        "e2edev_bench_29-R-8"
+      ]
+    },
+    {
+      "id": "G-024",
+      "title": "Fail to add transaction with empty description",
+      "description": "Attempt to add a transaction with an empty description input field and a valid amount, expecting an alert and no change to transaction history.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-2",
+        "e2edev_bench_29-R-5"
+      ]
+    },
+    {
+      "id": "G-025",
+      "title": "Fail to add transaction with invalid amount",
+      "description": "Attempt to add a transaction with a valid description but an empty or invalid amount input, expecting an alert and no addition.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-3",
+        "e2edev_bench_29-R-5"
+      ]
+    },
+    {
+      "id": "G-026",
+      "title": "Remove transaction from history",
+      "description": "Click the remove button on an existing transaction entry in the list to delete it, update financial totals, and update local storage.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-6",
+        "e2edev_bench_29-R-7"
+      ]
+    },
+    {
+      "id": "G-027",
+      "title": "Remove last remaining transaction",
+      "description": "Remove the only transaction present in the history, resulting in an empty transaction list and zeroed-out financial totals.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-7"
+      ]
+    },
+    {
+      "id": "G-028",
+      "title": "Load application with pre-existing transactions in storage",
+      "description": "Load the application when transactions are already stored in local storage, verifying persistence, correct list display, and accurate summary calculation.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-6",
+        "e2edev_bench_29-R-8"
+      ]
+    },
+    {
+      "id": "G-029",
+      "title": "Initial Load with Empty Local Storage",
+      "description": "Load the application with no transactions in local storage and verify that balance, income, and expense display $0.00 in their respective data-testid elements.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-1",
+        "e2edev_bench_29-R-8"
+      ]
+    },
+    {
+      "id": "G-030",
+      "title": "Add Valid Positive Income Transaction",
+      "description": "Enter a valid text description and a positive numerical amount, click add, and verify the transaction list, updated income, balance, and localStorage persistence.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-3",
+        "e2edev_bench_29-R-5",
+        "e2edev_bench_29-R-6",
+        "e2edev_bench_29-R-8"
+      ]
+    },
+    {
+      "id": "G-031",
+      "title": "Add Valid Negative Expense Transaction",
+      "description": "Enter a valid description and a negative numerical amount, click add, and verify that expenses and balance update correctly with currency formatting and localStorage update.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-3",
+        "e2edev_bench_29-R-5",
+        "e2edev_bench_29-R-6",
+        "e2edev_bench_29-R-8"
+      ]
+    },
+    {
+      "id": "G-032",
+      "title": "Validation Failure with Empty Description",
+      "description": "Leave the description input empty while providing an amount, click add, and verify that an alert with 'Please enter valid description and amount.' is shown and no transaction is added.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-2",
+        "e2edev_bench_29-R-5"
+      ]
+    },
+    {
+      "id": "G-033",
+      "title": "Validation Failure with Invalid Amount",
+      "description": "Provide a valid description but leave the amount input empty or invalid, click add, and verify that the validation alert appears and transaction history remains unchanged.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-3",
+        "e2edev_bench_29-R-5"
+      ]
+    },
+    {
+      "id": "G-034",
+      "title": "Remove Transaction from Multi-Transaction History",
+      "description": "With multiple transactions present, click the remove button on one of them and verify that the element is removed from DOM, totals recalculate, and localStorage updates.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-6",
+        "e2edev_bench_29-R-7"
+      ]
+    },
+    {
+      "id": "G-035",
+      "title": "Remove Last Remaining Transaction",
+      "description": "Remove the only transaction present in the history, verifying that the list becomes empty and financial summary values reset to zero.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-7"
+      ]
+    },
+    {
+      "id": "G-036",
+      "title": "Application Initialization with Empty Storage",
+      "description": "Load the Expense Tracker application with no transactions in local storage and verify that the financial summary elements ('balance', 'income', 'expense') all display $0.00.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-1"
+      ]
+    },
+    {
+      "id": "G-037",
+      "title": "Add Valid Income Transaction",
+      "description": "Enter a description and a positive numerical amount, click the 'Add Transaction' button, and verify that the transaction is added to the list, totals are updated, input fields are cleared, and data is persisted in local storage.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-2",
+        "e2edev_bench_29-R-3",
+        "e2edev_bench_29-R-5",
+        "e2edev_bench_29-R-6",
+        "e2edev_bench_29-R-8"
+      ]
+    },
+    {
+      "id": "G-038",
+      "title": "Add Valid Expense Transaction",
+      "description": "Enter a description and a negative numerical amount, click the 'Add Transaction' button, and verify that the expense transaction is correctly formatted, totals and expenses are updated, and the state persists in local storage.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-3",
+        "e2edev_bench_29-R-5",
+        "e2edev_bench_29-R-6",
+        "e2edev_bench_29-R-8"
+      ]
+    },
+    {
+      "id": "G-039",
+      "title": "Transaction Validation Failure with Empty Inputs",
+      "description": "Attempt to add a transaction with empty description or amount input fields, and verify that an alert with the message 'Please enter valid description and amount.' is displayed and no transaction is added.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-2",
+        "e2edev_bench_29-R-3",
+        "e2edev_bench_29-R-5"
+      ]
+    },
+    {
+      "id": "G-040",
+      "title": "Remove Transaction and Update Totals",
+      "description": "Add one or more transactions, click the remove button ('X') next to a transaction, and verify that the transaction is removed from the DOM and local storage while the balance, income, and expense totals are recalculated.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-6",
+        "e2edev_bench_29-R-7"
+      ]
+    },
+    {
+      "id": "G-041",
+      "title": "Data Persistence Across Page Reloads",
+      "description": "Add transactions, reload the page, and verify that the transactions are correctly retrieved from local storage, populated in the transaction list, and that financial summaries remain accurate.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-3",
+        "e2edev_bench_29-R-6",
+        "e2edev_bench_29-R-8"
+      ]
+    },
+    {
+      "id": "G-042",
+      "title": "Add Transaction with Empty Description and Valid Amount",
+      "description": "Attempt to add a transaction leaving the 'description-input' field completely blank while providing a valid amount in 'amount-input'. Verify that an alert with the message 'Please enter valid description and amount.' is shown and no transaction is added.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-2",
+        "e2edev_bench_29-R-5"
+      ]
+    },
+    {
+      "id": "G-043",
+      "title": "Add Transaction with Empty Amount and Valid Description",
+      "description": "Attempt to add a transaction by entering text in 'description-input' but leaving the 'amount-input' field completely blank. Verify that an alert with the message 'Please enter valid description and amount.' is displayed and the transaction is not added.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-3",
+        "e2edev_bench_29-R-5"
+      ]
+    },
+    {
+      "id": "G-044",
+      "title": "Add Transaction with Invalid Non-Numeric Amount Data",
+      "description": "Attempt to input non-numeric text (e.g., 'abc') into the 'amount-input' field alongside a valid description, then click the add button. Verify that the validation fails, displays the error alert, and prevents the transaction from being added.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-3",
+        "e2edev_bench_29-R-5"
+      ]
+    },
+    {
+      "id": "G-045",
+      "title": "Corrupted or Invalid JSON in LocalStorage Initialization",
+      "description": "Manually inject malformed or non-JSON data into the browser's localStorage under the 'transactions' key, then load the application. Verify that the application handles the parsing failure gracefully, defaults to empty values ($0.00), and does not crash.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-1",
+        "e2edev_bench_29-R-8"
+      ]
+    },
+    {
+      "id": "G-046",
+      "title": "Removing the Last Remaining Transaction in History",
+      "description": "Add a single transaction, then immediately click its remove button. Verify that the transaction list becomes completely empty, and the balance, income, and expense summary values reset correctly to $0.00 in localStorage and the DOM.",
+      "requirement_ids": [
+        "e2edev_bench_29-R-1",
+        "e2edev_bench_29-R-7"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_29-R-1-TC-1",
+      "title": "[Normal] Display initial values on application load",
+      "description": "Feature: Display Initial Financial Summary\n  The application should display the current balance, total income, and total expenses initialized to $0.00 when no transactions exist.\n\n\n  Scenario: [Normal] Display initial values on application load\n    Given the user opens the Expense Tracker application\n    When the application is loaded\n    Then the balance displayed with data-testid \"balance\" should be \"$0.00\"\n    And the income displayed with data-testid \"income\" should be \"$0.00\"\n    And the expenses displayed with data-testid \"expense\" should be \"$0.00\"\n",
+      "requirement_ids": [
+        "e2edev_bench_29-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-1-TC-2",
+      "title": "[Edge] Display initial values with empty local storage",
+      "description": "Feature: Display Initial Financial Summary\n  The application should display the current balance, total income, and total expenses initialized to $0.00 when no transactions exist.\n\n\n  Scenario: [Edge] Display initial values with empty local storage\n    Given the user opens the Expense Tracker application\n    And the local storage is empty\n    When the application is loaded\n    Then the balance displayed with data-testid \"balance\" should be \"$0.00\"\n    And the income displayed with data-testid \"income\" should be \"$0.00\"\n    And the expenses displayed with data-testid \"expense\" should be \"$0.00\"\n",
+      "requirement_ids": [
+        "e2edev_bench_29-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-2-TC-1",
+      "title": "[Normal] User enters a valid transaction description",
+      "description": "Feature: Transaction Description Input\n  The user must be able to enter a transaction description in the 'Description' input field. The system must accept text input and display it in the transaction history upon adding a transaction.\n\n\n  Scenario: [Normal] User enters a valid transaction description\n    Given the Expense Tracker page is loaded\n    And the 'Description' input field with data-testid 'description-input' is visible\n    When the user enters \"Grocery Shopping\" into the 'Description' input field with data-testid 'description-input'\n    And the user enters \"50\" into the 'Amount' input field with data-testid 'amount-input'\n    And the user clicks the 'Add Transaction' button with data-testid 'add-transaction-button'\n    Then the transaction history with data-testid 'transaction-list' should display a row with the description \"Grocery Shopping\"\n",
+      "requirement_ids": [
+        "e2edev_bench_29-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-2-TC-2",
+      "title": "[Edge] User enters a very long transaction description",
+      "description": "Feature: Transaction Description Input\n  The user must be able to enter a transaction description in the 'Description' input field. The system must accept text input and display it in the transaction history upon adding a transaction.\n\n\n  Scenario: [Edge] User enters a very long transaction description\n    Given the Expense Tracker page is loaded\n    And the 'Description' input field with data-testid 'description-input' is visible\n    When the user enters a very long description \"A very long description that exceeds typical length expectations for testing purposes\" into the 'Description' input field with data-testid 'description-input'\n    And the user enters \"100\" into the 'Amount' input field with data-testid 'amount-input'\n    And the user clicks the 'Add Transaction' button with data-testid 'add-transaction-button'\n    Then the transaction history with data-testid 'transaction-list' should display a row with the description \"A very long description that exceeds typical length expectations for testing purposes\"\n",
+      "requirement_ids": [
+        "e2edev_bench_29-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-2-TC-3",
+      "title": "[Error] User leaves the transaction description empty",
+      "description": "Feature: Transaction Description Input\n  The user must be able to enter a transaction description in the 'Description' input field. The system must accept text input and display it in the transaction history upon adding a transaction.\n\n\n  Scenario: [Error] User leaves the transaction description empty\n    Given the Expense Tracker page is loaded\n    And the 'Description' input field with data-testid 'description-input' is visible\n    When the user leaves the 'Description' input field with data-testid 'description-input' empty\n    And the user enters \"20\" into the 'Amount' input field with data-testid 'amount-input'\n    And the user clicks the 'Add Transaction' button with data-testid 'add-transaction-button'\n    Then an alert should be displayed with the message \"Please enter valid description and amount.\"\n    And the transaction history with data-testid 'transaction-list' should not display any new row",
+      "requirement_ids": [
+        "e2edev_bench_29-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-3-TC-1",
+      "title": "[Normal] User enters a positive amount as income",
+      "description": "Feature: Transaction Amount Input\n  The user must be able to enter a transaction amount in the 'Amount' input field. The system must accept numerical input, where positive values indicate income and negative values indicate expenses.\n\n\nScenario: [Normal] User enters a positive amount as income\n    Given the Expense Tracker page is loaded\n    And the user enters \"Grocery Shopping\" into the 'Description' input field with data-testid 'description-input'\n    And the 'Amount' input field with data-testid 'amount-input' is visible\n    When the user enters '100' into the 'Amount' input field with data-testid 'amount-input'\n    And the user clicks the 'Add Transaction' button with data-testid 'add-transaction-button'\n    Then the transaction list with data-testid 'transaction-list' should include a transaction with amount '$100.00'",
+      "requirement_ids": [
+        "e2edev_bench_29-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-3-TC-2",
+      "title": "[Normal] User enters a negative amount as expense",
+      "description": "Feature: Transaction Amount Input\n  The user must be able to enter a transaction amount in the 'Amount' input field. The system must accept numerical input, where positive values indicate income and negative values indicate expenses.\n\n\nScenario: [Normal] User enters a negative amount as expense\n    Given the Expense Tracker page is loaded \n    And the user enters \"Grocery Shopping\" into the 'Description' input field with data-testid 'description-input'\n    And the 'Amount' input field with data-testid 'amount-input' is visible\n    When the user enters '-50' into the 'Amount' input field with data-testid 'amount-input'\n    And the user clicks the 'Add Transaction' button with data-testid 'add-transaction-button'\n    Then the transaction list with data-testid 'transaction-list' should include a transaction with amount '-$50.00'",
+      "requirement_ids": [
+        "e2edev_bench_29-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-3-TC-3",
+      "title": "[Error] User leaves the amount field empty",
+      "description": "Feature: Transaction Amount Input\n  The user must be able to enter a transaction amount in the 'Amount' input field. The system must accept numerical input, where positive values indicate income and negative values indicate expenses.\n\n\nScenario: [Error] User leaves the amount field empty\n    Given the Expense Tracker page is loaded\n    And the user enters \"Grocery Shopping\" into the 'Description' input field with data-testid 'description-input'\n    And the 'Amount' input field with data-testid 'amount-input' is visible\n    When the user leaves the 'Amount' input field with data-testid 'amount-input' empty\n    And the user clicks the 'Add Transaction' button with data-testid 'add-transaction-button'\n    Then an alert should be displayed with the message 'Please enter valid description and amount.'",
+      "requirement_ids": [
+        "e2edev_bench_29-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-5-TC-1",
+      "title": "[Normal] Add a valid income transaction",
+      "description": "Feature: Transaction Addition and UI Update\n  The system must add the transaction to the transaction history, update the balance, income, and expense values, and clear the input fields upon successful validation.\n\n\n  Scenario: [Normal] Add a valid income transaction\n    Given the Expense Tracker page is loaded\n    And the description input with data-testid \"description-input\" is empty\n    And the amount input with data-testid \"amount-input\" is empty\n    When the user enters \"Salary\" into the description input with data-testid \"description-input\"\n    And the user enters \"1000\" into the amount input with data-testid \"amount-input\"\n    And the user clicks the add transaction button with data-testid \"add-transaction-button\"\n    Then the transaction list with data-testid \"transaction-list\" should contain a transaction with description \"Salary\" and amount \"$1000.00\"\n    And the balance with data-testid \"balance\" should display \"$1000.00\"\n    And the income with data-testid \"income\" should display \"$1000.00\"\n    And the expense with data-testid \"expense\" should display \"$0.00\"\n    And the description input with data-testid \"description-input\" should be empty\n    And the amount input with data-testid \"amount-input\" should be empty\n",
+      "requirement_ids": [
+        "e2edev_bench_29-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-5-TC-2",
+      "title": "[Normal] Add a valid expense transaction",
+      "description": "Feature: Transaction Addition and UI Update\n  The system must add the transaction to the transaction history, update the balance, income, and expense values, and clear the input fields upon successful validation.\n\n\n  Scenario: [Normal] Add a valid expense transaction\n    Given the Expense Tracker page is loaded\n    And the description input with data-testid \"description-input\" is empty\n    And the amount input with data-testid \"amount-input\" is empty\n    When the user enters \"Groceries\" into the description input with data-testid \"description-input\"\n    And the user enters \"-200\" into the amount input with data-testid \"amount-input\"\n    And the user clicks the add transaction button with data-testid \"add-transaction-button\"\n    Then the transaction list with data-testid \"transaction-list\" should contain a transaction with description \"Groceries\" and amount \"$-200.00\"\n    And the balance with data-testid \"balance\" should display \"$-200.00\"\n    And the income with data-testid \"income\" should display \"$0.00\"\n    And the expense with data-testid \"expense\" should display \"$200.00\"\n    And the description input with data-testid \"description-input\" should be empty\n    And the amount input with data-testid \"amount-input\" should be empty\n",
+      "requirement_ids": [
+        "e2edev_bench_29-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-5-TC-3",
+      "title": "[Edge] Add a transaction with zero amount",
+      "description": "Feature: Transaction Addition and UI Update\n  The system must add the transaction to the transaction history, update the balance, income, and expense values, and clear the input fields upon successful validation.\n\n\nScenario: [Edge] Add a transaction with zero amount\n  Given the Expense Tracker page is loaded\n  And the description input with data-testid \"description-input\" is empty\n  And the amount input with data-testid \"amount-input\" is empty\n  When the user enters \"Salary\" into the description input with data-testid \"description-input\"\n  And the user enters \"1000\" into the amount input with data-testid \"amount-input\"\n  And the user clicks the add transaction button with data-testid \"add-transaction-button\"\n  And the user enters \"Groceries\" into the description input with data-testid \"description-input\"\n  And the user enters \"-200\" into the amount input with data-testid \"amount-input\"\n  And the user clicks the add transaction button with data-testid \"add-transaction-button\"\n  When the user enters \"Gift\" into the description input with data-testid \"description-input\"\n  And the user enters \"0\" into the amount input with data-testid \"amount-input\"\n  And the user clicks the add transaction button with data-testid \"add-transaction-button\"\n  Then the transaction list with data-testid \"transaction-list\" should contain a transaction with description \"Gift\" and amount \"$0.00\"\n  And the balance with data-testid \"balance\" should remain \"$800.00\"\n  And the income with data-testid \"income\" should remain \"$1000.00\"\n  And the expense with data-testid \"expense\" should remain \"$200.00\"\n  And the description input with data-testid \"description-input\" should be empty\n  And the amount input with data-testid \"amount-input\" should be empty",
+      "requirement_ids": [
+        "e2edev_bench_29-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-6-TC-1",
+      "title": "[Normal] Display transaction in history after adding",
+      "description": "Feature: Display Transaction History\n  The system must display each transaction in the transaction history with the date, description, amount, and an option to remove the transaction.\n\n\n  Scenario: [Normal] Display transaction in history after adding\n    Given the Expense Tracker page is loaded\n    And the transaction list is empty\n    When the user enters \"Salary\" into the description field with data-testid \"description-input\"\n    And the user enters \"1000\" into the amount field with data-testid \"amount-input\"\n    And the user clicks the \"Add Transaction\" button with data-testid \"add-transaction-button\"\n    Then the transaction list with data-testid \"transaction-list\" should display a row with date, description \"Salary\", amount \"$1000.00\", and a remove button\n",
+      "requirement_ids": [
+        "e2edev_bench_29-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-6-TC-2",
+      "title": "[Edge] Display transaction with negative amount in history",
+      "description": "Feature: Display Transaction History\n  The system must display each transaction in the transaction history with the date, description, amount, and an option to remove the transaction.\n\n\nScenario: [Edge] Display transaction with negative amount in history\n    Given the Expense Tracker page is loaded\n    And the transaction list is empty\n    When the user enters \"Groceries\" into the description field with data-testid \"description-input\"\n    And the user enters \"-150\" into the amount field with data-testid \"amount-input\"\n    And the user clicks the \"Add Transaction\" button with data-testid \"add-transaction-button\"\n    Then the transaction list with data-testid \"transaction-list\" should display a row with date, description \"Groceries\", amount “$-150.00\", and a remove button",
+      "requirement_ids": [
+        "e2edev_bench_29-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-7-TC-1",
+      "title": "[Normal] Remove a transaction successfully",
+      "description": "Feature: Transaction Removal\n  The system must allow users to remove transactions from the transaction history, update the balance, income, and expense values, and update the local storage accordingly.\n\n\n  Scenario: [Normal] Remove a transaction successfully\n    Given the Expense Tracker page is loaded\n    And a transaction with description \"Lunch\" and amount \"-15.00\" exists in the transaction history\n    When the user clicks the 'X' button next to the transaction with description \"Lunch\"\n    Then the transaction with description \"Lunch\" should be removed from the transaction history\n    And the balance, income, and expense values should be updated correctly\n    And the local storage should not contain the transaction with description \"Lunch\"\n",
+      "requirement_ids": [
+        "e2edev_bench_29-R-7"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/7/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-7-TC-2",
+      "title": "[Edge] Remove the only transaction in the history",
+      "description": "Feature: Transaction Removal\n  The system must allow users to remove transactions from the transaction history, update the balance, income, and expense values, and update the local storage accordingly.\n\n\n  Scenario: [Edge] Remove the only transaction in the history\n    Given the Expense Tracker page is loaded\n    And a single transaction with description \"Salary\" and amount \"1000.00\" exists in the transaction history\n    When the user clicks the 'X' button next to the transaction with description \"Salary\"\n    Then the transaction history should be empty\n    And the balance should be \"$0.00\"\n    And the income should be \"$0.00\"\n    And the expense should be \"$0.00\"\n    And the local storage should be empty\n",
+      "requirement_ids": [
+        "e2edev_bench_29-R-7"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/7/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-8-TC-1",
+      "title": "[Normal] Store and retrieve transactions from local storage after page reload",
+      "description": "Feature: Transaction Persistence in Local Storage\n  The system must store all transactions in local storage to ensure data persistence across page reloads. Upon loading the application, the system must retrieve and display stored transactions.\n\n\nScenario: [Normal] Store and retrieve transactions from local storage after page reload\n  Given the Expense Tracker page is loaded\n  And the user enters \"Salary\" into the description field with data-testid \"description-input\"\n  And the user enters \"1000\" into the amount field with data-testid \"amount-input\"\n  When the user clicks the \"Add Transaction\" button with data-testid \"add-transaction-button\"\n  And the user reloads the page\n  Then the transaction list with data-testid \"transaction-list\" should contain a transaction with description \"Salary\" and amount \"$1000.00\"\n  And the local storage should contain the transaction with description \"Salary\" and amount \"1000\"",
+      "requirement_ids": [
+        "e2edev_bench_29-R-8"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/8/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_29-R-8-TC-2",
+      "title": "[Edge] Reload the page and verify transactions are persisted",
+      "description": "Feature: Transaction Persistence in Local Storage\n  The system must store all transactions in local storage to ensure data persistence across page reloads. Upon loading the application, the system must retrieve and display stored transactions.\n\n\n  Scenario: [Edge] Reload the page and verify transactions are persisted\n    Given the Expense Tracker page is loaded\n    And the local storage contains a transaction with description \"Groceries\" and amount \"-50\"\n    When the page is reloaded\n    Then the transaction list with data-testid \"transaction-list\" should contain a transaction with description \"Groceries\" and amount \"$-50.00\"\n",
+      "requirement_ids": [
+        "e2edev_bench_29-R-8"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_29/requirment_with_tests.json#/finegrained_rewith_test/8/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": null,
+  "generation": {
+    "selected_techniques": [
+      "equivalence_partitioning",
+      "boundary_value_analysis",
+      "state_transition",
+      "decision_table",
+      "combinatorial",
+      "use_case",
+      "error_guessing"
+    ],
+    "technique_rationales": {
+      "equivalence_partitioning": "Used to partition input values into valid categories (positive amounts for income, negative amounts for expenses, zero, non-empty descriptions) and invalid categories (empty description, empty amount, invalid non-numerical amount data).",
+      "boundary_value_analysis": "Used to test inputs at the boundaries of valid data, such as empty fields, very long descriptions, and zero or near-zero amounts.",
+      "state_transition": "Used to cover the lifecycle states of the application starting from empty local storage initialization, moving to populated states upon adding transactions, and returning to empty states or recalculated values upon removing transactions.",
+      "decision_table": "Used to evaluate combinations of validation conditions for the description and amount input fields when the 'Add Transaction' button is clicked and the corresponding success or alert outcomes.",
+      "combinatorial": "Used to test combinations of multiple transaction types (income and expense entries) to verify that balance, income, and expense totals compute correctly.",
+      "use_case": "Used to cover the end-to-end user workflows of loading the application, entering transaction details, adding transactions to the history list, persisting them in localStorage, and removing transactions.",
+      "error_guessing": "Used to target plausible failures like malformed local storage data, missing keys, and invalid submission attempts."
+    },
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "embedding_requests": 1
+  },
+  "links": {
+    "requirements": {
+      "e2edev_bench_29-R-1": "e2edev_bench_29-R-1/requirement.md",
+      "e2edev_bench_29-R-2": "e2edev_bench_29-R-2/requirement.md",
+      "e2edev_bench_29-R-3": "e2edev_bench_29-R-3/requirement.md",
+      "e2edev_bench_29-R-5": "e2edev_bench_29-R-5/requirement.md",
+      "e2edev_bench_29-R-6": "e2edev_bench_29-R-6/requirement.md",
+      "e2edev_bench_29-R-7": "e2edev_bench_29-R-7/requirement.md",
+      "e2edev_bench_29-R-8": "e2edev_bench_29-R-8/requirement.md"
+    },
+    "cases": {
+      "G-014": {
+        "e2edev_bench_29-R-1": "e2edev_bench_29-R-1/test cases/14_Initial_Application_State_with_Empty_Storage.md"
+      },
+      "G-001": {
+        "e2edev_bench_29-R-1": "e2edev_bench_29-R-1/test cases/1_Initialize_application_with_empty_local_storage.md"
+      },
+      "G-021": {
+        "e2edev_bench_29-R-1": "e2edev_bench_29-R-1/test cases/21_Initialize_with_empty_local_storage.md"
+      },
+      "G-029": {
+        "e2edev_bench_29-R-1": "e2edev_bench_29-R-1/test cases/29_Initial_Load_with_Empty_Local_Storage.md",
+        "e2edev_bench_29-R-8": "e2edev_bench_29-R-8/test cases/29_Initial_Load_with_Empty_Local_Storage.md"
+      },
+      "G-036": {
+        "e2edev_bench_29-R-1": "e2edev_bench_29-R-1/test cases/36_Application_Initialization_with_Empty_Storage.md"
+      },
+      "G-045": {
+        "e2edev_bench_29-R-1": "e2edev_bench_29-R-1/test cases/45_Corrupted_or_Invalid_JSON_in_LocalStorage_Initia.md",
+        "e2edev_bench_29-R-8": "e2edev_bench_29-R-8/test cases/45_Corrupted_or_Invalid_JSON_in_LocalStorage_Initia.md"
+      },
+      "G-046": {
+        "e2edev_bench_29-R-1": "e2edev_bench_29-R-1/test cases/46_Removing_the_Last_Remaining_Transaction_in_Histo.md",
+        "e2edev_bench_29-R-7": "e2edev_bench_29-R-7/test cases/46_Removing_the_Last_Remaining_Transaction_in_Histo.md"
+      },
+      "G-009": {
+        "e2edev_bench_29-R-1": "e2edev_bench_29-R-1/test cases/9_Initialization_with_Empty_Local_Storage.md"
+      },
+      "G-011": {
+        "e2edev_bench_29-R-2": "e2edev_bench_29-R-2/test cases/11_Add_Transaction_with_Empty_Description_Validatio.md",
+        "e2edev_bench_29-R-5": "e2edev_bench_29-R-5/test cases/11_Add_Transaction_with_Empty_Description_Validatio.md"
+      },
+      "G-017": {
+        "e2edev_bench_29-R-2": "e2edev_bench_29-R-2/test cases/17_Transaction_Addition_Failure_Due_to_Empty_Descri.md",
+        "e2edev_bench_29-R-5": "e2edev_bench_29-R-5/test cases/17_Transaction_Addition_Failure_Due_to_Empty_Descri.md"
+      },
+      "G-022": {
+        "e2edev_bench_29-R-2": "e2edev_bench_29-R-2/test cases/22_Add_valid_positive_transaction_income.md",
+        "e2edev_bench_29-R-3": "e2edev_bench_29-R-3/test cases/22_Add_valid_positive_transaction_income.md",
+        "e2edev_bench_29-R-5": "e2edev_bench_29-R-5/test cases/22_Add_valid_positive_transaction_income.md",
+        "e2edev_bench_29-R-6": "e2edev_bench_29-R-6/test cases/22_Add_valid_positive_transaction_income.md",
+        "e2edev_bench_29-R-8": "e2edev_bench_29-R-8/test cases/22_Add_valid_positive_transaction_income.md"
+      },
+      "G-024": {
+        "e2edev_bench_29-R-2": "e2edev_bench_29-R-2/test cases/24_Fail_to_add_transaction_with_empty_description.md",
+        "e2edev_bench_29-R-5": "e2edev_bench_29-R-5/test cases/24_Fail_to_add_transaction_with_empty_description.md"
+      },
+      "G-002": {
+        "e2edev_bench_29-R-2": "e2edev_bench_29-R-2/test cases/2_Add_valid_positive_income_transaction.md",
+        "e2edev_bench_29-R-3": "e2edev_bench_29-R-3/test cases/2_Add_valid_positive_income_transaction.md",
+        "e2edev_bench_29-R-5": "e2edev_bench_29-R-5/test cases/2_Add_valid_positive_income_transaction.md",
+        "e2edev_bench_29-R-6": "e2edev_bench_29-R-6/test cases/2_Add_valid_positive_income_transaction.md",
+        "e2edev_bench_29-R-8": "e2edev_bench_29-R-8/test cases/2_Add_valid_positive_income_transaction.md"
+      },
+      "G-032": {
+        "e2edev_bench_29-R-2": "e2edev_bench_29-R-2/test cases/32_Validation_Failure_with_Empty_Description.md",
+        "e2edev_bench_29-R-5": "e2edev_bench_29-R-5/test cases/32_Validation_Failure_with_Empty_Description.md"
+      },
+      "G-037": {
+        "e2edev_bench_29-R-2": "e2edev_bench_29-R-2/test cases/37_Add_Valid_Income_Transaction.md",
+        "e2edev_bench_29-R-3": "e2edev_bench_29-R-3/test cases/37_Add_Valid_Income_Transaction.md",
+        "e2edev_bench_29-R-5": "e2edev_bench_29-R-5/test cases/37_Add_Valid_Income_Transaction.md",
+        "e2edev_bench_29-R-6": "e2edev_bench_29-R-6/test cases/37_Add_Valid_Income_Transaction.md",
+        "e2edev_bench_29-R-8": "e2edev_bench_29-R-8/test cases/37_Add_Valid_Income_Transaction.md"
+      },
+      "G-039": {
+        "e2edev_bench_29-R-2": "e2edev_bench_29-R-2/test cases/39_Transaction_Validation_Failure_with_Empty_Inputs.md",
+        "e2edev_bench_29-R-3": "e2edev_bench_29-R-3/test cases/39_Transaction_Validation_Failure_with_Empty_Inputs.md",
+        "e2edev_bench_29-R-5": "e2edev_bench_29-R-5/test cases/39_Transaction_Validation_Failure_with_Empty_Inputs.md"
+      },
+      "G-042": {
+        "e2edev_bench_29-R-2": "e2edev_bench_29-R-2/test cases/42_Add_Transaction_with_Empty_Description_and_Valid.md",
+        "e2edev_bench_29-R-5": "e2edev_bench_29-R-5/test cases/42_Add_Transaction_with_Empty_Description_and_Valid.md"
+      },
+      "G-005": {
+        "e2edev_bench_29-R-2": "e2edev_bench_29-R-2/test cases/5_Add_transaction_with_empty_description_field.md",
+        "e2edev_bench_29-R-3": "e2edev_bench_29-R-3/test cases/5_Add_transaction_with_empty_description_field.md",
+        "e2edev_bench_29-R-5": "e2edev_bench_29-R-5/test cases/5_Add_transaction_with_empty_description_field.md"
+      },
+      "G-012": {
+        "e2edev_bench_29-R-3": "e2edev_bench_29-R-3/test cases/12_Add_Transaction_with_Empty_Amount_Validation_Fai.md",
+        "e2edev_bench_29-R-5": "e2edev_bench_29-R-5/test cases/12_Add_Transaction_with_Empty_Amount_Validation_Fai.md"
+      },
+      "G-015": {
+        "e2edev_bench_29-R-3": "e2edev_bench_29-R-3/test cases/15_Successful_Addition_of_Income_Transaction.md",
+        "e2edev_bench_29-R-5": "e2edev_bench_29-R-5/test cases/15_Successful_Addition_of_Income_Transaction.md",
+        "e2edev_bench_29-R-6": "e2edev_bench_29-R-6/test cases/15_Successful_Addition_of_Income_Transaction.md",
+        "e2edev_bench_29-R-8": "e2edev_bench_29-R-8/test cases/15_Successful_Addition_of_Income_Transaction.md"
+      },
+      "G-016": {
+        "e2edev_bench_29-R-3": "e2edev_bench_29-R-3/test cases/16_Successful_Addition_of_Expense_Transaction.md",
+        "e2edev_bench_29-R-5": "e2edev_bench_29-R-5/test cases/16_Successful_Addition_of_Expense_Transaction.md",
+        "e2edev_bench_29-R-8": "e2edev_bench_29-R-8/test cases/16_Successful_Addition_of_Expense_Transaction.md"
+      },
+      "G-018": {
+        "e2edev_bench_29-R-3": "e2edev_bench_29-R-3/test cases/18_Transaction_Addition_Failure_Due_to_Invalid_or_E.md",
+        "e2edev_bench_29-R-5": "e2edev_bench_29-R-5/test cases/18_Transaction_Addition_Failure_Due_to_Invalid_or_E.md"
+      },
+      "G-023": {
+        "e2edev_bench_29-R-3": "e2edev_bench_29-R-3/test cases/23_Add_valid_negative_transaction_expense.md",
+        "e2edev_bench_29-R-5": "e2edev_bench_29-R-5/test cases/23_Add_valid_negative_transaction_expense.md",
+        "e2edev_bench_29-R-8": "e2edev_bench_29-R-8/test cases/23_Add_valid_negative_transaction_expense.md"
+      },
+      "G-025": {
+        "e2edev_bench_29-R-3": "e2edev_bench_29-R-3/test cases/25_Fail_to_add_transaction_with_invalid_amount.md",
+        "e2edev_bench_29-R-5": "e2edev_bench_29-R-5/test cases/25_Fail_to_add_transaction_with_invalid_amount.md"
+      },
+      "G-030": {
+        "e2edev_bench_29-R-3": "e2edev_bench_29-R-3/test cases/30_Add_Valid_Positive_Income_Transaction.md",
+        "e2edev_bench_29-R-5": "e2edev_bench_29-R-5/test cases/30_Add_Valid_Positive_Income_Transaction.md",
+        "e2edev_bench_29-R-6": "e2edev_bench_29-R-6/test cases/30_Add_Valid_Positive_Income_Transaction.md",
+        "e2edev_bench_29-R-8": "e2edev_bench_29-R-8/test cases/30_Add_Valid_Positive_Income_Transaction.md"
+      },
+      "G-031": {
+        "e2edev_bench_29-R-3": "e2edev_bench_29-R-3/test cases/31_Add_Valid_Negative_Expense_Transaction.md",
+        "e2edev_bench_29-R-5": "e2edev_bench_29-R-5/test cases/31_Add_Valid_Negative_Expense_Transaction.md",
+        "e2edev_bench_29-R-6": "e2edev_bench_29-R-6/test cases/31_Add_Valid_Negative_Expense_Transaction.md",
+        "e2edev_bench_29-R-8": "e2edev_bench_29-R-8/test cases/31_Add_Valid_Negative_Expense_Transaction.md"
+      },
+      "G-033": {
+        "e2edev_bench_29-R-3": "e2edev_bench_29-R-3/test cases/33_Validation_Failure_with_Invalid_Amount.md",
+        "e2edev_bench_29-R-5": "e2edev_bench_29-R-5/test cases/33_Validation_Failure_with_Invalid_Amount.md"
+      },
+      "G-038": {
+        "e2edev_bench_29-R-3": "e2edev_bench_29-R-3/test cases/38_Add_Valid_Expense_Transaction.md",
+        "e2edev_bench_29-R-5": "e2edev_bench_29-R-5/test cases/38_Add_Valid_Expense_Transaction.md",
+        "e2edev_bench_29-R-6": "e2edev_bench_29-R-6/test cases/38_Add_Valid_Expense_Transaction.md",
+        "e2edev_bench_29-R-8": "e2edev_bench_29-R-8/test cases/38_Add_Valid_Expense_Transaction.md"
+      },
+      "G-003": {
+        "e2edev_bench_29-R-3": "e2edev_bench_29-R-3/test cases/3_Add_valid_negative_expense_transaction.md",
+        "e2edev_bench_29-R-5": "e2edev_bench_29-R-5/test cases/3_Add_valid_negative_expense_transaction.md",
+        "e2edev_bench_29-R-6": "e2edev_bench_29-R-6/test cases/3_Add_valid_negative_expense_transaction.md",
+        "e2edev_bench_29-R-8": "e2edev_bench_29-R-8/test cases/3_Add_valid_negative_expense_transaction.md"
+      },
+      "G-041": {
+        "e2edev_bench_29-R-3": "e2edev_bench_29-R-3/test cases/41_Data_Persistence_Across_Page_Reloads.md",
+        "e2edev_bench_29-R-6": "e2edev_bench_29-R-6/test cases/41_Data_Persistence_Across_Page_Reloads.md",
+        "e2edev_bench_29-R-8": "e2edev_bench_29-R-8/test cases/41_Data_Persistence_Across_Page_Reloads.md"
+      },
+      "G-043": {
+        "e2edev_bench_29-R-3": "e2edev_bench_29-R-3/test cases/43_Add_Transaction_with_Empty_Amount_and_Valid_Desc.md",
+        "e2edev_bench_29-R-5": "e2edev_bench_29-R-5/test cases/43_Add_Transaction_with_Empty_Amount_and_Valid_Desc.md"
+      },
+      "G-044": {
+        "e2edev_bench_29-R-3": "e2edev_bench_29-R-3/test cases/44_Add_Transaction_with_Invalid_Non-Numeric_Amount.md",
+        "e2edev_bench_29-R-5": "e2edev_bench_29-R-5/test cases/44_Add_Transaction_with_Invalid_Non-Numeric_Amount.md"
+      },
+      "G-006": {
+        "e2edev_bench_29-R-3": "e2edev_bench_29-R-3/test cases/6_Add_transaction_with_empty_or_invalid_amount_fie.md",
+        "e2edev_bench_29-R-5": "e2edev_bench_29-R-5/test cases/6_Add_transaction_with_empty_or_invalid_amount_fie.md"
+      },
+      "G-010": {
+        "e2edev_bench_29-R-5": "e2edev_bench_29-R-5/test cases/10_Add_Transaction_with_Zero_Amount_Boundary.md"
+      },
+      "G-004": {
+        "e2edev_bench_29-R-5": "e2edev_bench_29-R-5/test cases/4_Add_valid_zero_amount_transaction.md"
+      },
+      "G-019": {
+        "e2edev_bench_29-R-6": "e2edev_bench_29-R-6/test cases/19_Removal_of_Existing_Transaction.md",
+        "e2edev_bench_29-R-7": "e2edev_bench_29-R-7/test cases/19_Removal_of_Existing_Transaction.md"
+      },
+      "G-026": {
+        "e2edev_bench_29-R-6": "e2edev_bench_29-R-6/test cases/26_Remove_transaction_from_history.md",
+        "e2edev_bench_29-R-7": "e2edev_bench_29-R-7/test cases/26_Remove_transaction_from_history.md"
+      },
+      "G-028": {
+        "e2edev_bench_29-R-6": "e2edev_bench_29-R-6/test cases/28_Load_application_with_pre-existing_transactions.md",
+        "e2edev_bench_29-R-8": "e2edev_bench_29-R-8/test cases/28_Load_application_with_pre-existing_transactions.md"
+      },
+      "G-034": {
+        "e2edev_bench_29-R-6": "e2edev_bench_29-R-6/test cases/34_Remove_Transaction_from_Multi-Transaction_Histor.md",
+        "e2edev_bench_29-R-7": "e2edev_bench_29-R-7/test cases/34_Remove_Transaction_from_Multi-Transaction_Histor.md"
+      },
+      "G-040": {
+        "e2edev_bench_29-R-6": "e2edev_bench_29-R-6/test cases/40_Remove_Transaction_and_Update_Totals.md",
+        "e2edev_bench_29-R-7": "e2edev_bench_29-R-7/test cases/40_Remove_Transaction_and_Update_Totals.md"
+      },
+      "G-007": {
+        "e2edev_bench_29-R-6": "e2edev_bench_29-R-6/test cases/7_Remove_transaction_from_history.md",
+        "e2edev_bench_29-R-7": "e2edev_bench_29-R-7/test cases/7_Remove_transaction_from_history.md"
+      },
+      "G-013": {
+        "e2edev_bench_29-R-7": "e2edev_bench_29-R-7/test cases/13_Remove_Single_Transaction_Edge_Case.md"
+      },
+      "G-020": {
+        "e2edev_bench_29-R-7": "e2edev_bench_29-R-7/test cases/20_Removal_of_Last_Remaining_Transaction.md"
+      },
+      "G-027": {
+        "e2edev_bench_29-R-7": "e2edev_bench_29-R-7/test cases/27_Remove_last_remaining_transaction.md"
+      },
+      "G-035": {
+        "e2edev_bench_29-R-7": "e2edev_bench_29-R-7/test cases/35_Remove_Last_Remaining_Transaction.md"
+      },
+      "G-008": {
+        "e2edev_bench_29-R-7": "e2edev_bench_29-R-7/test cases/8_Remove_the_last_remaining_transaction.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

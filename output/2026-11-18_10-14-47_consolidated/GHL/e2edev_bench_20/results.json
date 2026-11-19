@@ -6,7 +6,7 @@
   "status": "failed",
   "failure": {
     "stage": "evaluation",
-    "error_type": "EmbeddingQuotaStop"
+    "error_type": "EmbeddingError"
   },
   "embedding_model": "gemini-embedding-2",
   "requirements": [
@@ -463,7 +463,7 @@
       "details": null,
       "status": "unavailable"
     },
-    "embedding_requests": 2
+    "embedding_requests": 1
   },
   "links": {
     "requirements": {

@@ -1,0 +1,766 @@
+{
+  "schema_version": 1,
+  "solution": "GHL",
+  "unit_id": "e2edev_bench_64",
+  "parent_id": null,
+  "status": "failed",
+  "failure": {
+    "stage": "evaluation",
+    "error_type": "EmbeddingError"
+  },
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "e2edev_bench_64-R-1",
+      "text": "The 'Guess My Number!' web application should allow users to interact with the game through a user interface consisting of specific elements. The user interface includes an input field with the attribute data-testid 'guess-input' for entering a number between 1 and 20, and a 'Check!' button with the attribute data-testid 'check-button' for submitting the guess. Upon clicking the 'Check!' button, the system should validate the input number. If the input field is empty, the system should display the message '⛔️ No number!' in the element with data-testid 'game-message'. If a number is entered, the system should compare the input against a randomly generated secret number (between 1 and 20) and display a message in the element with data-testid 'game-message' indicating whether the guess is '📈 Too high!', '📉 Too low!', or '🎉 Correct Number!'. The game should also update the score displayed in the element with data-testid 'current-score', decrementing it by 1 for each incorrect guess, and reset it to 0 if the user loses the game. If the user guesses the correct number, the background color of the page should change to '#60b347', and the width of the element with data-testid 'hidden-number' should expand to '30rem'. The highscore should be updated in the element with data-testid 'highscore-value' if the current score exceeds the previous highscore. Additionally, the 'Again!' button with data-testid 'again-button' should reset the game state, including the score, secret number, input field, and UI styles, allowing the user to play again.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_64/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_64-R-2",
+      "text": "When the user correctly guesses the secret number by entering it into the input field with data-testid 'guess-input' and clicking the 'Check!' button with data-testid 'check-button', the system should perform the following actions: display the message '🎉 Correct Number!' in the element with data-testid 'game-message', reveal the secret number in the element with data-testid 'hidden-number', change the background color of the body to '#60b347', and increase the width of the element with data-testid 'hidden-number' to '30rem'. Additionally, if the current score is higher than the highscore, update the highscore displayed in the element with data-testid 'highscore-value'.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_64/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_64-R-3",
+      "text": "When the user enters a guess into the input field with data-testid 'guess-input' and clicks the 'Check!' button with data-testid 'check-button', the system should evaluate the guess against a randomly generated secret number between 1 and 20. If the guess is greater than the secret number, the message '📈 Too high!' should be displayed using the element with data-testid 'game-message'. If the guess is less than the secret number, the message '📉 Too low!' should be displayed. In both scenarios, the score, initially set at 20, should be decreased by 1 and updated in the element with data-testid 'current-score'. This logic should handle all valid guesses, including edge cases such as guessing the number 1 or 20.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_64/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_64-R-4",
+      "text": "When the user interacts with the 'Guess My Number!' web application, if the user's score reaches 0 after clicking the 'Check!' button (identified by data-testid 'check-button'), the system must update the UI to reflect the game loss. Specifically, the message element (identified by data-testid 'game-message') should display the text '💥 You lost the game!', and the score element (identified by data-testid 'current-score') should be updated to show a score of 0. This behavior should occur regardless of the number of attempts made, ensuring that the user is clearly informed of their loss once their score depletes to zero.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_64/requirment_with_tests.json#/finegrained_rewith_test/4/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_64-R-5",
+      "text": "The 'Guess My Number!' web application must display a hint indicating the valid input range '(Between 1 and 20)' near the guess input field. This hint should be visible at all times, regardless of browser window resizing, and should be associated with the element having the attribute data-testid='range-info'. The hint serves to guide users in entering a number within the specified range, ensuring clarity and preventing invalid inputs.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_64/requirment_with_tests.json#/finegrained_rewith_test/5/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_64-R-6",
+      "text": "When the user clicks the 'Again!' button with the data-testid 'again-button', the system should reset the game by performing the following actions: generate a new secret number between 1 and 20, reset the score to 20 and update the score display in the element with data-testid 'current-score', clear the input field with data-testid 'guess-input', set the hidden number display with data-testid 'hidden-number' to '?', change the background color of the body to '#222', and reset the width of the hidden number display to '15rem'. These actions ensure the game is restored to its initial state, ready for a new round of play.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_64/requirment_with_tests.json#/finegrained_rewith_test/6/requirement/description"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Submit empty input field",
+      "description": "Verify that clicking the 'Check!' button with an empty input field displays the message '⛔️ No number!'.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Guess the correct secret number",
+      "description": "Verify that entering the exact secret number and clicking 'Check!' displays '🎉 Correct Number!', reveals the number, changes background color to '#60b347', expands hidden number width to '30rem', and updates highscore if applicable.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-2"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Guess a number higher than the secret number",
+      "description": "Verify that entering a valid guess greater than the secret number displays '📈 Too high!', decrements the score by 1, and updates 'current-score'.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-3"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Guess a number lower than the secret number",
+      "description": "Verify that entering a valid guess less than the secret number displays '📉 Too low!', decrements the score by 1, and updates 'current-score'.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-3"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Edge case valid guesses (1 or 20)",
+      "description": "Verify that valid boundary guesses such as 1 or 20 are correctly evaluated against the secret number, updating the message and score accordingly.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-3"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Game loss when score reaches 0",
+      "description": "Verify that when the current score reaches 0 after an incorrect guess, the game message displays '💥 You lost the game!' and the score remains 0.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-4"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Display range hint",
+      "description": "Verify that the valid input range hint '(Between 1 and 20)' is visible at all times near the guess input field and associated with data-testid='range-info'.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-5"
+      ]
+    },
+    {
+      "id": "G-008",
+      "title": "Reset game via Again button",
+      "description": "Verify that clicking the 'Again!' button resets the secret number, sets score to 20, clears the input field, sets hidden number display to '?', changes background color to '#222', and resets hidden number width to '15rem'.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-6"
+      ]
+    },
+    {
+      "id": "G-009",
+      "title": "Guess Lower Boundary Value",
+      "description": "Enter valid lower boundary number 1 into 'guess-input' and click 'Check!' button.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-3"
+      ]
+    },
+    {
+      "id": "G-010",
+      "title": "Guess Just Within Lower Boundary",
+      "description": "Enter valid number 2 into 'guess-input' and click 'Check!' button.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-3"
+      ]
+    },
+    {
+      "id": "G-011",
+      "title": "Guess Upper Boundary Value",
+      "description": "Enter valid upper boundary number 20 into 'guess-input' and click 'Check!' button.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-3"
+      ]
+    },
+    {
+      "id": "G-012",
+      "title": "Guess Just Within Upper Boundary",
+      "description": "Enter valid number 19 into 'guess-input' and click 'Check!' button.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-3"
+      ]
+    },
+    {
+      "id": "G-013",
+      "title": "Guess Below Lower Boundary Outside Limit",
+      "description": "Enter invalid number 0 below the range into 'guess-input' and click 'Check!' button.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-5"
+      ]
+    },
+    {
+      "id": "G-014",
+      "title": "Guess Above Upper Boundary Outside Limit",
+      "description": "Enter invalid number 21 above the range into 'guess-input' and click 'Check!' button.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-5"
+      ]
+    },
+    {
+      "id": "G-015",
+      "title": "Score Lower Boundary Depletion to Zero",
+      "description": "Reach score limit of 0 after an incorrect guess to trigger the loss state.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-4"
+      ]
+    },
+    {
+      "id": "G-016",
+      "title": "State Transition: Empty Input Validation",
+      "description": "Verify that clicking 'Check!' with an empty input field displays '⛔️ No number!' without changing the score.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1"
+      ]
+    },
+    {
+      "id": "G-017",
+      "title": "State Transition: Guess Too High",
+      "description": "Verify that entering a guess greater than the secret number displays '📈 Too high!' and decrements the score.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-3"
+      ]
+    },
+    {
+      "id": "G-018",
+      "title": "State Transition: Guess Too Low",
+      "description": "Verify that entering a guess less than the secret number displays '📉 Too low!' and decrements the score.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-3"
+      ]
+    },
+    {
+      "id": "G-019",
+      "title": "State Transition: Correct Guess and Win",
+      "description": "Verify that guessing the correct number displays '🎉 Correct Number!', updates highscore if applicable, changes background color, and expands the hidden number width.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-2"
+      ]
+    },
+    {
+      "id": "G-020",
+      "title": "State Transition: Game Loss on Zero Score",
+      "description": "Verify that when the current score reaches 0 after an incorrect guess, the message updates to '💥 You lost the game!' and the score is set to 0.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-4"
+      ]
+    },
+    {
+      "id": "G-021",
+      "title": "State Transition: Reset Game via Again Button",
+      "description": "Verify that clicking the 'Again!' button resets the game state, score, secret number, input field, and UI styles back to initial values.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-6"
+      ]
+    },
+    {
+      "id": "G-022",
+      "title": "Empty Input Validation",
+      "description": "Verify that clicking the check button with an empty input field displays the '⛔️ No number!' message.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1"
+      ]
+    },
+    {
+      "id": "G-023",
+      "title": "Correct Guess Action",
+      "description": "Verify that guessing the correct secret number displays success messages, updates highscore if applicable, changes background color, and expands hidden number width.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-2"
+      ]
+    },
+    {
+      "id": "G-024",
+      "title": "Incorrect Guess Too High",
+      "description": "Verify that guessing a number greater than the secret number displays '📈 Too high!' and decrements the current score.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-3"
+      ]
+    },
+    {
+      "id": "G-025",
+      "title": "Incorrect Guess Too Low",
+      "description": "Verify that guessing a number less than the secret number displays '📉 Too low!' and decrements the current score.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-3"
+      ]
+    },
+    {
+      "id": "G-026",
+      "title": "Game Over Loss Condition",
+      "description": "Verify that when the current score reaches 0 after an incorrect guess, the game displays '💥 You lost the game!' and updates score to 0.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-4"
+      ]
+    },
+    {
+      "id": "G-027",
+      "title": "Reset Game State via Again Button",
+      "description": "Verify that clicking the 'Again!' button resets the secret number, score, input field, hidden number element, and background styling.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-6"
+      ]
+    },
+    {
+      "id": "G-028",
+      "title": "Empty Input Validation",
+      "description": "Verify that clicking the 'Check!' button with an empty input field displays the '⛔️ No number!' message in the game-message element.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1"
+      ]
+    },
+    {
+      "id": "G-029",
+      "title": "Correct Number Guess and UI Updates",
+      "description": "Verify that guessing the correct secret number displays '🎉 Correct Number!', reveals the secret number, changes body background color to '#60b347', expands hidden number width to '30rem', and updates the highscore if applicable.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-2"
+      ]
+    },
+    {
+      "id": "G-030",
+      "title": "Incorrect Guesses (Too High and Too Low)",
+      "description": "Verify that entering a guess higher or lower than the secret number displays '📈 Too high!' or '📉 Too low!' respectively, and decrements the current score by 1.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-3"
+      ]
+    },
+    {
+      "id": "G-031",
+      "title": "Game Loss When Score Reaches Zero",
+      "description": "Verify that when the score reaches 0 after an incorrect guess, the game displays '💥 You lost the game!' and the current score updates to 0.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-4"
+      ]
+    },
+    {
+      "id": "G-032",
+      "title": "Valid Input Range Hint Visibility",
+      "description": "Verify that the valid input range hint '(Between 1 and 20)' is visible at all times near the input field using the data-testid 'range-info' element.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-5"
+      ]
+    },
+    {
+      "id": "G-033",
+      "title": "Reset Game State via Again Button",
+      "description": "Verify that clicking the 'Again!' button resets the secret number, resets the score to 20, clears the input field, resets the hidden number display to '?', changes body background color to '#222', and resets the hidden number width to '15rem'.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-6"
+      ]
+    },
+    {
+      "id": "G-034",
+      "title": "Submit Empty Input Field",
+      "description": "Verify that clicking the 'Check!' button with an empty 'guess-input' field displays the error message '⛔️ No number!' in 'game-message'.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1"
+      ]
+    },
+    {
+      "id": "G-035",
+      "title": "Score Depletion Leading to Loss",
+      "description": "Verify that when the current score reaches 0 after an incorrect guess, the game displays '💥 You lost the game!' in 'game-message' and the score is reset/held at 0.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-4"
+      ]
+    },
+    {
+      "id": "G-036",
+      "title": "Boundary Values for Secret Number Guessing",
+      "description": "Verify correct evaluation and score decrement when guessing boundary valid numbers such as 1 and 20 against the secret number.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-3"
+      ]
+    },
+    {
+      "id": "G-037",
+      "title": "UI Style and Highscore Reset via Again Button",
+      "description": "Verify that clicking the 'Again!' button properly resets body background color, hidden number width to '15rem', input field, score to 20, and generates a new secret number.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-6"
+      ]
+    },
+    {
+      "id": "G-038",
+      "title": "Correct Guess UI Modifications and Highscore Update",
+      "description": "Verify that upon a correct guess, the background color turns '#60b347', hidden number width expands to '30rem', and highscore updates if current score exceeds previous highscore.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1",
+        "e2edev_bench_64-R-2"
+      ]
+    },
+    {
+      "id": "G-039",
+      "title": "Range Information Visibility",
+      "description": "Verify that the valid input range hint '(Between 1 and 20)' is persistently visible and associated with the element having 'data-testid=range-info'.",
+      "requirement_ids": [
+        "e2edev_bench_64-R-5"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_64-R-1-TC-1",
+      "title": "[Normal] User enters a valid number and checks it",
+      "description": "Feature: Validate user input and display appropriate messages in the \"Guess My Number!\" game\n\n\nScenario: [Normal] User enters a valid number and checks it\n    Given the \"Guess My Number!\" page is loaded\n    And the user sees the input field with data-testid \"guess-input\"\n    And the user sees the \"Check!\" button with data-testid \"check-button\"\n    When the user enters the number 10 into the input field with data-testid \"guess-input\"\n    And the user clicks the \"Check!\" button with data-testid \"check-button\"\n    Then the system should display a message in data-testid \"game-message\" indicating whether the guess is too high, too low, or correct",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_64/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_64-R-1-TC-2",
+      "title": "[Normal] User enters a valid number and checks it",
+      "description": "Feature: Validate user input and display appropriate messages in the \"Guess My Number!\" game\n\n\nScenario: [Normal] User enters a valid number and checks it\n    Given the \"Guess My Number!\" page is loaded\n    And the user sees the input field with data-testid \"guess-input\"\n    And the user sees the \"Check!\" button with data-testid \"check-button\"\n    When the user enters the number 1 into the input field with data-testid \"guess-input\"\n    And the user clicks the \"Check!\" button with data-testid \"check-button\"\n    Then the system should display a message in data-testid \"game-message\" indicating whether the guess is too high, too low, or correct",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_64/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_64-R-1-TC-3",
+      "title": "[Normal] User enters a valid number and checks it",
+      "description": "Feature: Validate user input and display appropriate messages in the \"Guess My Number!\" game\n\n\nScenario: [Normal] User enters a valid number and checks it\n    Given the \"Guess My Number!\" page is loaded\n    And the user sees the input field with data-testid \"guess-input\"\n    And the user sees the \"Check!\" button with data-testid \"check-button\"\n    When the user enters the number 20 into the input field with data-testid \"guess-input\"\n    And the user clicks the \"Check!\" button with data-testid \"check-button\"\n    Then the system should display a message in data-testid \"game-message\" indicating whether the guess is too high, too low, or correct",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_64/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_64-R-1-TC-4",
+      "title": "[Error] User does not enter any number and checks it",
+      "description": "Feature: Validate user input and display appropriate messages in the \"Guess My Number!\" game\n\n\n  Scenario: [Error] User does not enter any number and checks it\n    Given the \"Guess My Number!\" page is loaded\n    And the user sees the input field with data-testid \"guess-input\"\n    And the user sees the \"Check!\" button with data-testid \"check-button\"\n    When the user leaves the input field with data-testid \"guess-input\" empty\n    And the user clicks the \"Check!\" button with data-testid \"check-button\"\n    Then the system should display the message \"⛔️ No number!\" in the element with data-testid \"game-message\"",
+      "requirement_ids": [
+        "e2edev_bench_64-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_64/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_64-R-2-TC-1",
+      "title": "[Normal] User correctly guesses the secret number",
+      "description": "Feature: Correct Guess Handling\n  The system should correctly handle the scenario when the user guesses the secret number.\n\n\nScenario: [Normal] User correctly guesses the secret number\n    Given the webpage \"Guess My Number!\" is loaded\n    And the secret number is set to 13\n    And the user enters \"13\" into the input field with data-testid \"guess-input\"\n    When the user clicks the \"Check!\" button with data-testid \"check-button\"\n    Then the message displayed should be \"🎉 Correct Number!\" with data-testid \"game-message\"\n    And the hidden number should be revealed as \"13\" with data-testid \"hidden-number\"\n    And the background color should change to green",
+      "requirement_ids": [
+        "e2edev_bench_64-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_64/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_64-R-2-TC-2",
+      "title": "[Edge] User guesses the secret number on the first attempt",
+      "description": "Feature: Correct Guess Handling\n  The system should correctly handle the scenario when the user guesses the secret number.\n\n\nScenario: [Edge] User guesses the secret number on the first attempt\n    Given the webpage \"Guess My Number!\" is loaded\n    And the secret number is set to 1\n    And the user enters \"1\" into the input field with data-testid \"guess-input\"\n    When the user clicks the \"Check!\" button with data-testid \"check-button\"\n    Then the message displayed should be \"🎉 Correct Number!\" with data-testid \"game-message\"\n    And the hidden number should be revealed as \"1\" with data-testid \"hidden-number\"\n    And the background color should change to green",
+      "requirement_ids": [
+        "e2edev_bench_64-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_64/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_64-R-3-TC-1",
+      "title": "[Normal] User guesses a number greater than the secret number",
+      "description": "Feature: Incorrect Guess Handling\n  The system should provide feedback and adjust the score when the user makes an incorrect guess.\n\n\nScenario: [Normal] User guesses a number greater than the secret number\n    Given the webpage \"Guess My Number!\" is loaded\n    And the current score is 20\n    And the user enters \"15\" into the guess input field with data-testid \"guess-input\"\n    When the user clicks the \"Check!\" button with data-testid \"check-button\"\n    Then the message displayed with data-testid \"game-message\" should be \"📈 Too high!\"\n    And the current score displayed with data-testid \"current-score\" should be 19",
+      "requirement_ids": [
+        "e2edev_bench_64-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_64/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_64-R-3-TC-2",
+      "title": "[Normal] User guesses a number less than the secret number",
+      "description": "Feature: Incorrect Guess Handling\n  The system should provide feedback and adjust the score when the user makes an incorrect guess.\n\n\nScenario: [Normal] User guesses a number less than the secret number\n    Given the webpage \"Guess My Number!\" is loaded\n    And the current score is 20\n    And the user enters \"10\" into the guess input field with data-testid \"guess-input\"\n    When the user clicks the \"Check!\" button with data-testid \"check-button\"\n    Then the message displayed with data-testid \"game-message\" should be \"📉 Too low!\"\n    And the current score displayed with data-testid \"current-score\" should be 19",
+      "requirement_ids": [
+        "e2edev_bench_64-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_64/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_64-R-3-TC-3",
+      "title": "[Edge] User guesses the number 1",
+      "description": "Feature: Incorrect Guess Handling\n  The system should provide feedback and adjust the score when the user makes an incorrect guess.\n\n\nScenario: [Edge] User guesses the number 1\n    Given the webpage \"Guess My Number!\" is loaded\n    And the current score is 20\n    And the user enters \"1\" into the guess input field with data-testid \"guess-input\"\n    When the user clicks the \"Check!\" button with data-testid \"check-button\"\n    Then the message displayed with data-testid \"game-message\" should be \"📉 Too low!\"\n    And the current score displayed with data-testid \"current-score\" should be 19",
+      "requirement_ids": [
+        "e2edev_bench_64-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_64/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_64-R-4-TC-1",
+      "title": "[Normal] User loses the game when score reaches 0",
+      "description": "Feature: Display loss message and set score to 0 when user's score reaches 0\n  The system should inform the user they have lost the game and set the score to 0 when their score reaches 0 after a guess.\n\n\nScenario: [Normal] User loses the game when score reaches 0\n  Given the \"Guess My Number!\" webpage is loaded\n    And the user enters the number 10 into the input field with data-testid \"guess-input\"\n  When the user clicks the \"Check!\" button with data-testid \"check-button\" 20 times quickly\n  Then the message displayed should be \"💥 You lost the game!\" with data-testid \"game-message\"\n    And the score displayed should be 0 with data-testid \"current-score\"",
+      "requirement_ids": [
+        "e2edev_bench_64-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_64/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_64-R-5-TC-1",
+      "title": "[Normal] Display hint for user input range",
+      "description": "Feature: Display hint for user input range on the \"Guess My Number!\" page\n\n\n  Scenario: [Normal] Display hint for user input range\n    Given the \"Guess My Number!\" page is loaded\n    When the user views the page\n    Then the text \"(Between 1 and 20)\" should be displayed near the guess input field with data-testid \"range-info\"\n",
+      "requirement_ids": [
+        "e2edev_bench_64-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_64/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_64-R-5-TC-2",
+      "title": "[Edge] Verify hint visibility when the page is resized",
+      "description": "Feature: Display hint for user input range on the \"Guess My Number!\" page\n\n\n  Scenario: [Edge] Verify hint visibility when the page is resized\n    Given the \"Guess My Number!\" page is loaded\n    When the user resizes the browser window\n    Then the text \"(Between 1 and 20)\" should remain visible near the guess input field with data-testid \"range-info\"\n",
+      "requirement_ids": [
+        "e2edev_bench_64-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_64/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_64-R-6-TC-1",
+      "title": "[Normal] Resetting the game using the 'Again!' button",
+      "description": "Feature: Game Reset Functionality\n  The system should reset the game when the user clicks the 'Again!' button, ensuring all game parameters are restored to their initial state.\n\n\nScenario: [Normal] Resetting the game using the 'Again!' button\n    Given the webpage \"Guess My Number!\" is loaded\n    And the user has made some guesses\n    When the user clicks the 'Again!' button with data-testid 'again-button'\n    Then the score should be reset to 20 and displayed in the element with data-testid 'current-score'\n    And the input field with data-testid 'guess-input' should be cleared\n    And the hidden number display with data-testid 'hidden-number' should show '?'\n    And the background color of the body should be '#222'",
+      "requirement_ids": [
+        "e2edev_bench_64-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_64/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_64-R-6-TC-2",
+      "title": "[Edge] Resetting the game immediately after starting",
+      "description": "Feature: Game Reset Functionality\n  The system should reset the game when the user clicks the 'Again!' button, ensuring all game parameters are restored to their initial state.\n\n\nScenario: [Edge] Resetting the game immediately after starting\n    Given the webpage \"Guess My Number!\" is loaded\n    When the user clicks the 'Again!' button with data-testid 'again-button' without making any guesses\n    Then the score should remain 20 and be displayed in the element with data-testid 'current-score'\n    And the input field with data-testid 'guess-input' should be cleared\n    And the hidden number display with data-testid 'hidden-number' should show '?'\n    And the background color of the body should be '#222'",
+      "requirement_ids": [
+        "e2edev_bench_64-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_64/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": null,
+  "generation": {
+    "selected_techniques": [
+      "equivalence_partitioning",
+      "boundary_value_analysis",
+      "state_transition",
+      "decision_table",
+      "use_case",
+      "error_guessing"
+    ],
+    "technique_rationales": {
+      "equivalence_partitioning": "Partition input values into empty input, correct guess, too high guess, too low guess, and game over condition when score reaches zero.",
+      "boundary_value_analysis": "Test the limits of the secret number and input range between 1 and 20, including boundary values like 1 and 20, and the score limit reaching 0.",
+      "state_transition": "Cover game states such as initial state, playing, winning, losing, and resetting the game via the 'Again!' button.",
+      "decision_table": "Evaluate conditional combinations of user input compared to the secret number, current score levels, and highscore updates.",
+      "use_case": "Cover the end-to-end user flow of entering guesses, viewing feedback, updating scores, and restarting the game.",
+      "error_guessing": "Explore plausible user errors such as submitting an empty input field or out-of-range values."
+    },
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "embedding_requests": 1
+  },
+  "links": {
+    "requirements": {
+      "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/requirement.md",
+      "e2edev_bench_64-R-2": "e2edev_bench_64-R-2/requirement.md",
+      "e2edev_bench_64-R-3": "e2edev_bench_64-R-3/requirement.md",
+      "e2edev_bench_64-R-4": "e2edev_bench_64-R-4/requirement.md",
+      "e2edev_bench_64-R-5": "e2edev_bench_64-R-5/requirement.md",
+      "e2edev_bench_64-R-6": "e2edev_bench_64-R-6/requirement.md"
+    },
+    "cases": {
+      "G-010": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/10_Guess_Just_Within_Lower_Boundary.md",
+        "e2edev_bench_64-R-3": "e2edev_bench_64-R-3/test cases/10_Guess_Just_Within_Lower_Boundary.md"
+      },
+      "G-011": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/11_Guess_Upper_Boundary_Value.md",
+        "e2edev_bench_64-R-3": "e2edev_bench_64-R-3/test cases/11_Guess_Upper_Boundary_Value.md"
+      },
+      "G-012": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/12_Guess_Just_Within_Upper_Boundary.md",
+        "e2edev_bench_64-R-3": "e2edev_bench_64-R-3/test cases/12_Guess_Just_Within_Upper_Boundary.md"
+      },
+      "G-013": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/13_Guess_Below_Lower_Boundary_Outside_Limit.md",
+        "e2edev_bench_64-R-5": "e2edev_bench_64-R-5/test cases/13_Guess_Below_Lower_Boundary_Outside_Limit.md"
+      },
+      "G-014": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/14_Guess_Above_Upper_Boundary_Outside_Limit.md",
+        "e2edev_bench_64-R-5": "e2edev_bench_64-R-5/test cases/14_Guess_Above_Upper_Boundary_Outside_Limit.md"
+      },
+      "G-015": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/15_Score_Lower_Boundary_Depletion_to_Zero.md",
+        "e2edev_bench_64-R-4": "e2edev_bench_64-R-4/test cases/15_Score_Lower_Boundary_Depletion_to_Zero.md"
+      },
+      "G-016": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/16_State_Transition_Empty_Input_Validation.md"
+      },
+      "G-017": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/17_State_Transition_Guess_Too_High.md",
+        "e2edev_bench_64-R-3": "e2edev_bench_64-R-3/test cases/17_State_Transition_Guess_Too_High.md"
+      },
+      "G-018": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/18_State_Transition_Guess_Too_Low.md",
+        "e2edev_bench_64-R-3": "e2edev_bench_64-R-3/test cases/18_State_Transition_Guess_Too_Low.md"
+      },
+      "G-019": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/19_State_Transition_Correct_Guess_and_Win.md",
+        "e2edev_bench_64-R-2": "e2edev_bench_64-R-2/test cases/19_State_Transition_Correct_Guess_and_Win.md"
+      },
+      "G-001": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/1_Submit_empty_input_field.md"
+      },
+      "G-020": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/20_State_Transition_Game_Loss_on_Zero_Score.md",
+        "e2edev_bench_64-R-4": "e2edev_bench_64-R-4/test cases/20_State_Transition_Game_Loss_on_Zero_Score.md"
+      },
+      "G-021": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/21_State_Transition_Reset_Game_via_Again_Button.md",
+        "e2edev_bench_64-R-6": "e2edev_bench_64-R-6/test cases/21_State_Transition_Reset_Game_via_Again_Button.md"
+      },
+      "G-022": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/22_Empty_Input_Validation.md"
+      },
+      "G-023": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/23_Correct_Guess_Action.md",
+        "e2edev_bench_64-R-2": "e2edev_bench_64-R-2/test cases/23_Correct_Guess_Action.md"
+      },
+      "G-024": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/24_Incorrect_Guess_Too_High.md",
+        "e2edev_bench_64-R-3": "e2edev_bench_64-R-3/test cases/24_Incorrect_Guess_Too_High.md"
+      },
+      "G-025": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/25_Incorrect_Guess_Too_Low.md",
+        "e2edev_bench_64-R-3": "e2edev_bench_64-R-3/test cases/25_Incorrect_Guess_Too_Low.md"
+      },
+      "G-026": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/26_Game_Over_Loss_Condition.md",
+        "e2edev_bench_64-R-4": "e2edev_bench_64-R-4/test cases/26_Game_Over_Loss_Condition.md"
+      },
+      "G-027": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/27_Reset_Game_State_via_Again_Button.md",
+        "e2edev_bench_64-R-6": "e2edev_bench_64-R-6/test cases/27_Reset_Game_State_via_Again_Button.md"
+      },
+      "G-028": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/28_Empty_Input_Validation.md"
+      },
+      "G-029": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/29_Correct_Number_Guess_and_UI_Updates.md",
+        "e2edev_bench_64-R-2": "e2edev_bench_64-R-2/test cases/29_Correct_Number_Guess_and_UI_Updates.md"
+      },
+      "G-002": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/2_Guess_the_correct_secret_number.md",
+        "e2edev_bench_64-R-2": "e2edev_bench_64-R-2/test cases/2_Guess_the_correct_secret_number.md"
+      },
+      "G-030": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/30_Incorrect_Guesses_Too_High_and_Too_Low.md",
+        "e2edev_bench_64-R-3": "e2edev_bench_64-R-3/test cases/30_Incorrect_Guesses_Too_High_and_Too_Low.md"
+      },
+      "G-031": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/31_Game_Loss_When_Score_Reaches_Zero.md",
+        "e2edev_bench_64-R-4": "e2edev_bench_64-R-4/test cases/31_Game_Loss_When_Score_Reaches_Zero.md"
+      },
+      "G-033": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/33_Reset_Game_State_via_Again_Button.md",
+        "e2edev_bench_64-R-6": "e2edev_bench_64-R-6/test cases/33_Reset_Game_State_via_Again_Button.md"
+      },
+      "G-034": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/34_Submit_Empty_Input_Field.md"
+      },
+      "G-035": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/35_Score_Depletion_Leading_to_Loss.md",
+        "e2edev_bench_64-R-4": "e2edev_bench_64-R-4/test cases/35_Score_Depletion_Leading_to_Loss.md"
+      },
+      "G-036": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/36_Boundary_Values_for_Secret_Number_Guessing.md",
+        "e2edev_bench_64-R-3": "e2edev_bench_64-R-3/test cases/36_Boundary_Values_for_Secret_Number_Guessing.md"
+      },
+      "G-037": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/37_UI_Style_and_Highscore_Reset_via_Again_Button.md",
+        "e2edev_bench_64-R-6": "e2edev_bench_64-R-6/test cases/37_UI_Style_and_Highscore_Reset_via_Again_Button.md"
+      },
+      "G-038": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/38_Correct_Guess_UI_Modifications_and_Highscore_Upd.md",
+        "e2edev_bench_64-R-2": "e2edev_bench_64-R-2/test cases/38_Correct_Guess_UI_Modifications_and_Highscore_Upd.md"
+      },
+      "G-003": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/3_Guess_a_number_higher_than_the_secret_number.md",
+        "e2edev_bench_64-R-3": "e2edev_bench_64-R-3/test cases/3_Guess_a_number_higher_than_the_secret_number.md"
+      },
+      "G-004": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/4_Guess_a_number_lower_than_the_secret_number.md",
+        "e2edev_bench_64-R-3": "e2edev_bench_64-R-3/test cases/4_Guess_a_number_lower_than_the_secret_number.md"
+      },
+      "G-005": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/5_Edge_case_valid_guesses_1_or_20.md",
+        "e2edev_bench_64-R-3": "e2edev_bench_64-R-3/test cases/5_Edge_case_valid_guesses_1_or_20.md"
+      },
+      "G-006": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/6_Game_loss_when_score_reaches_0.md",
+        "e2edev_bench_64-R-4": "e2edev_bench_64-R-4/test cases/6_Game_loss_when_score_reaches_0.md"
+      },
+      "G-008": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/8_Reset_game_via_Again_button.md",
+        "e2edev_bench_64-R-6": "e2edev_bench_64-R-6/test cases/8_Reset_game_via_Again_button.md"
+      },
+      "G-009": {
+        "e2edev_bench_64-R-1": "e2edev_bench_64-R-1/test cases/9_Guess_Lower_Boundary_Value.md",
+        "e2edev_bench_64-R-3": "e2edev_bench_64-R-3/test cases/9_Guess_Lower_Boundary_Value.md"
+      },
+      "G-032": {
+        "e2edev_bench_64-R-5": "e2edev_bench_64-R-5/test cases/32_Valid_Input_Range_Hint_Visibility.md"
+      },
+      "G-039": {
+        "e2edev_bench_64-R-5": "e2edev_bench_64-R-5/test cases/39_Range_Information_Visibility.md"
+      },
+      "G-007": {
+        "e2edev_bench_64-R-5": "e2edev_bench_64-R-5/test cases/7_Display_range_hint.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

@@ -1,0 +1,889 @@
+{
+  "schema_version": 1,
+  "solution": "GHL",
+  "unit_id": "e2edev_bench_24",
+  "parent_id": null,
+  "status": "failed",
+  "failure": {
+    "stage": "evaluation",
+    "error_type": "EmbeddingError"
+  },
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "e2edev_bench_24-R-1",
+      "text": "The system shall validate the 'Principal' input field (data-testid='principal') to ensure that it accepts only numeric values greater than 0. The input field should display the entered value if it meets the validation criteria. If the user enters a value less than or equal to 0, non-numeric characters, or leaves the field empty, the system shall prevent further calculations and display an alert message stating 'Please Enter Valid Values!!'. The validation should occur both when the user clicks the 'Calculate' button (data-testid='calculate-button') and when the user presses the 'Enter' key. The input field should allow decimal values (e.g., 0.01) as valid input.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_24-R-2",
+      "text": "The system shall validate the 'Interest Rate (%)' input field (data-testid: 'annual-interest-rate') to ensure it accepts only numeric values greater than 0. The input field must display the entered value immediately upon user input. The system shall handle the following scenarios: (1) Normal case: Accept valid numeric values greater than 0 (e.g., 5). (2) Edge case: Accept the smallest valid numeric value (e.g., 0.01). If the user enters an invalid value (e.g., non-numeric or less than or equal to 0), the system shall not allow the input and shall display an appropriate error message or alert. The validation must occur both when the user interacts with the input field directly and when the 'Calculate' button (data-testid: 'calculate-button') is clicked or the Enter key is pressed.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_24-R-3",
+      "text": "The system shall ensure that the 'Number of Years' input field, identified by the attribute data-testid='number-of-year', accepts only numeric values greater than 0. Upon entering a valid value, the input field should reflect the entered value accurately. The validation should occur both when the user clicks the 'Calculate' button (data-testid='calculate-button') and when the user presses the 'Enter' key while focused on any input field. If the entered value is not valid, an alert should be displayed with the message 'Please Enter Valid Values!!'.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_24-R-4",
+      "text": "The system shall validate and accept a numeric value greater than 0 entered in the 'Number of Times in a Single Year' input field (data-testid='number-of-times-in-year'). The input field shall allow users to type numeric values directly, and the entered value shall be reflected in the field upon submission. The system shall display an alert message ('Please Enter Valid Values!!') if the entered value is invalid (non-numeric, negative, or zero). The validation shall occur both when the user clicks the 'Calculate' button (data-testid='calculate-button') and when the user presses the 'Enter' key. The input field shall support edge cases, including the minimum valid value of '1'.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/4/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_24-R-5",
+      "text": "The web application shall provide a Compound Interest Calculator that allows users to input the principal amount, annual interest rate, number of years, and number of times interest is compounded per year. The user can initiate the calculation by either clicking the 'Calculate' button or pressing the 'Enter' key. The system shall validate that all inputs are positive numeric values greater than zero. If any input is invalid, an alert with the message 'Please Enter Valid Values!!' shall be displayed. Upon valid input, the system shall compute the compound interest using the formula: CI = principal * (1 + (interest / (ntime * 100)))^(ntime * nyear), round the result to two decimal places, and update the 'Result' section with data-testid 'result-value' to display the calculated value. The UI elements involved include: 'Principal' input field with data-testid 'principal', 'Interest rate (%)' input field with data-testid 'annual-interest-rate', 'Number of Years' input field with data-testid 'number-of-year', 'Number of Times in a Single Year' input field with data-testid 'number-of-times-in-year', 'Calculate' button with data-testid 'calculate-button', and 'Result' section with data-testid 'result-value'.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/5/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_24-R-6",
+      "text": "When the user presses the Enter key while focused on any input field, the system shall compute the compound interest based on the provided inputs and display the result in the 'Result' section. The system shall validate all inputs to ensure they are positive numeric values greater than zero. If any input is invalid (e.g., empty, non-numeric, or negative), an alert with the message 'Please Enter Valid Values!!' shall be displayed, and the 'Result' section shall remain unchanged, displaying '0'. The calculation shall use the formula: CI = Principal * (1 + (Interest Rate / (Number of Times in Year * 100)))^(Number of Times in Year * Number of Years), rounded to two decimal places. The following UI elements and attributes are involved: \n\n- Input fields:\n  - Principal: [data-testid='principal']\n  - Interest Rate (%): [data-testid='annual-interest-rate']\n  - Number of Years: [data-testid='number-of-year']\n  - Number of Times in a Single Year: [data-testid='number-of-times-in-year']\n\n- Result section:\n  - Result label: [data-testid='result-label']\n  - Result value: [data-testid='result-value']\n\n- Button:\n  - Calculate button: [data-testid='calculate-button']\n\nThe Enter key functionality shall trigger the calculation regardless of which input field is focused, and the result shall be displayed in the 'Result' section with data-testid='result-value'.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/6/requirement/description"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Principal Valid Numeric Value Greater Than Zero",
+      "description": "Verify that entering a valid numeric value greater than zero (e.g., decimal values like 0.01 or standard numbers like 1000) in the Principal input field is accepted and displayed correctly.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-1"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Principal Invalid Input Values",
+      "description": "Verify that entering a value less than or equal to zero, non-numeric characters, or leaving the Principal field empty prevents calculations and displays the alert message 'Please Enter Valid Values!!'.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-1"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Interest Rate Valid Numeric Value Greater Than Zero",
+      "description": "Verify that entering a valid numeric value greater than zero (including the smallest valid value of 0.01 and normal values like 5) in the Interest Rate input field is accepted and displayed immediately.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-2"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Interest Rate Invalid Input Values",
+      "description": "Verify that entering non-numeric characters, zero, or negative numbers in the Interest Rate field is rejected and displays an appropriate error message or alert.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-2"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Number of Years Valid Numeric Value Greater Than Zero",
+      "description": "Verify that entering a valid numeric value greater than zero in the Number of Years input field is accepted and reflected accurately.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-3"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Number of Years Invalid Input Values",
+      "description": "Verify that entering an invalid value (non-numeric, negative, or zero) in the Number of Years field triggers an alert with the message 'Please Enter Valid Values!!'.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-3"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Number of Times in a Single Year Valid Numeric Value",
+      "description": "Verify that entering a valid numeric value greater than or equal to the minimum valid value of '1' in the Number of Times in a Single Year input field is accepted and reflected upon submission.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-4"
+      ]
+    },
+    {
+      "id": "G-008",
+      "title": "Number of Times in a Single Year Invalid Input Values",
+      "description": "Verify that entering an invalid value (non-numeric, negative, or zero) in the Number of Times in a Single Year field triggers the alert message 'Please Enter Valid Values!!'.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-4"
+      ]
+    },
+    {
+      "id": "G-009",
+      "title": "Compound Interest Calculation with Valid Inputs via Calculate Button",
+      "description": "Verify that clicking the 'Calculate' button with all valid positive numeric inputs correctly computes the compound interest using the formula, rounds to two decimal places, and updates the result section.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-5"
+      ]
+    },
+    {
+      "id": "G-010",
+      "title": "Compound Interest Calculation with Invalid Inputs via Calculate Button",
+      "description": "Verify that clicking the 'Calculate' button when any input is invalid (non-positive or non-numeric) displays the alert 'Please Enter Valid Values!!'.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-5"
+      ]
+    },
+    {
+      "id": "G-011",
+      "title": "Compound Interest Calculation with Valid Inputs via Enter Key",
+      "description": "Verify that pressing the Enter key while focused on any input field with all valid positive inputs correctly calculates the compound interest and displays the rounded result in the result section.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-6"
+      ]
+    },
+    {
+      "id": "G-012",
+      "title": "Compound Interest Calculation with Invalid Inputs via Enter Key",
+      "description": "Verify that pressing the Enter key when any input is empty, non-numeric, or negative displays the alert 'Please Enter Valid Values!!' and keeps the result section unchanged at '0'.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-6"
+      ]
+    },
+    {
+      "id": "G-013",
+      "title": "Principal Input Below Minimum (Negative Value)",
+      "description": "Enter a negative value (-0.01) into the Principal input field and trigger calculation to verify error handling.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-1",
+        "e2edev_bench_24-R-5",
+        "e2edev_bench_24-R-6"
+      ]
+    },
+    {
+      "id": "G-014",
+      "title": "Principal Input at Lower Limit (Zero)",
+      "description": "Enter 0 into the Principal input field and trigger calculation to verify that it is rejected with an alert.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-1",
+        "e2edev_bench_24-R-5",
+        "e2edev_bench_24-R-6"
+      ]
+    },
+    {
+      "id": "G-015",
+      "title": "Principal Input Just Above Lower Limit (Minimum Valid Decimal)",
+      "description": "Enter 0.01 into the Principal input field and trigger calculation to verify successful acceptance.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-1",
+        "e2edev_bench_24-R-5",
+        "e2edev_bench_24-R-6"
+      ]
+    },
+    {
+      "id": "G-016",
+      "title": "Interest Rate Input Below Minimum (Negative Value)",
+      "description": "Enter a negative value (-0.01) into the Interest Rate input field and trigger calculation to verify error handling.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-2",
+        "e2edev_bench_24-R-5",
+        "e2edev_bench_24-R-6"
+      ]
+    },
+    {
+      "id": "G-017",
+      "title": "Interest Rate Input at Lower Limit (Zero)",
+      "description": "Enter 0 into the Interest Rate input field and trigger calculation to verify rejection.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-2",
+        "e2edev_bench_24-R-5",
+        "e2edev_bench_24-R-6"
+      ]
+    },
+    {
+      "id": "G-018",
+      "title": "Interest Rate Input Just Above Lower Limit (Minimum Valid Decimal)",
+      "description": "Enter 0.01 into the Interest Rate input field and verify successful acceptance and display.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-2",
+        "e2edev_bench_24-R-5",
+        "e2edev_bench_24-R-6"
+      ]
+    },
+    {
+      "id": "G-019",
+      "title": "Number of Years Input Below Minimum (Zero)",
+      "description": "Enter 0 into the Number of Years input field and trigger calculation to verify validation failure.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-3",
+        "e2edev_bench_24-R-5",
+        "e2edev_bench_24-R-6"
+      ]
+    },
+    {
+      "id": "G-020",
+      "title": "Number of Years Input Just Above Minimum (Minimum Valid Decimal/Integer)",
+      "description": "Enter a valid value greater than zero (e.g., 0.01 or 1) into the Number of Years input field and trigger calculation.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-3",
+        "e2edev_bench_24-R-5",
+        "e2edev_bench_24-R-6"
+      ]
+    },
+    {
+      "id": "G-021",
+      "title": "Number of Times in a Single Year Input at Lower Limit (Zero)",
+      "description": "Enter 0 into the Number of Times in a Single Year input field and trigger calculation to verify that an alert appears.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-4",
+        "e2edev_bench_24-R-5",
+        "e2edev_bench_24-R-6"
+      ]
+    },
+    {
+      "id": "G-022",
+      "title": "Number of Times in a Single Year Input at Minimum Valid Limit",
+      "description": "Enter 1 into the Number of Times in a Single Year input field and trigger calculation to verify successful acceptance.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-4",
+        "e2edev_bench_24-R-5",
+        "e2edev_bench_24-R-6"
+      ]
+    },
+    {
+      "id": "G-023",
+      "title": "All Inputs Valid - Calculate via Button Click",
+      "description": "Enter valid numeric values greater than 0 for Principal, Interest Rate, Number of Years, and Number of Times in Year. Click the 'Calculate' button. Verify that the compound interest is successfully computed, rounded to two decimal places, and displayed in the result section.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-1",
+        "e2edev_bench_24-R-2",
+        "e2edev_bench_24-R-3",
+        "e2edev_bench_24-R-4",
+        "e2edev_bench_24-R-5",
+        "e2edev_bench_24-R-6"
+      ]
+    },
+    {
+      "id": "G-024",
+      "title": "All Inputs Valid - Calculate via Enter Key",
+      "description": "Enter valid numeric values greater than 0 for all input fields. Press the 'Enter' key while focused on any input field. Verify that the compound interest is computed correctly and displayed in the result section.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-1",
+        "e2edev_bench_24-R-3",
+        "e2edev_bench_24-R-4",
+        "e2edev_bench_24-R-5",
+        "e2edev_bench_24-R-6"
+      ]
+    },
+    {
+      "id": "G-025",
+      "title": "Invalid Principal Input (Zero or Negative)",
+      "description": "Enter a value less than or equal to 0 in the 'Principal' field while other fields have valid inputs. Click 'Calculate' or press 'Enter'. Verify that an alert with the message 'Please Enter Valid Values!!' is displayed and calculation is prevented.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-1",
+        "e2edev_bench_24-R-5",
+        "e2edev_bench_24-R-6"
+      ]
+    },
+    {
+      "id": "G-026",
+      "title": "Invalid Interest Rate Input (Non-numeric or <= 0)",
+      "description": "Enter an invalid value (non-numeric or less than/equal to 0) in the 'Interest Rate (%)' field while other fields are valid. Trigger calculation via button or Enter key. Verify that an alert stating 'Please Enter Valid Values!!' is shown.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-2",
+        "e2edev_bench_24-R-5",
+        "e2edev_bench_24-R-6"
+      ]
+    },
+    {
+      "id": "G-027",
+      "title": "Invalid Number of Years Input",
+      "description": "Enter an invalid value (empty, negative, or zero) in the 'Number of Years' field with valid entries in other fields. Attempt to calculate. Verify that the alert 'Please Enter Valid Values!!' is displayed.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-3",
+        "e2edev_bench_24-R-5",
+        "e2edev_bench_24-R-6"
+      ]
+    },
+    {
+      "id": "G-028",
+      "title": "Invalid Number of Times in Year Input",
+      "description": "Enter a zero, negative, or non-numeric value in the 'Number of Times in a Single Year' field while other fields are valid. Trigger calculation. Verify that the alert 'Please Enter Valid Values!!' appears and no calculation occurs.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-4",
+        "e2edev_bench_24-R-5",
+        "e2edev_bench_24-R-6"
+      ]
+    },
+    {
+      "id": "G-029",
+      "title": "Successful Compound Interest Calculation via Calculate Button",
+      "description": "User enters valid positive numeric values into Principal, Interest Rate, Number of Years, and Number of Times in a Single Year fields, then clicks the Calculate button. The system validates all inputs, computes the correct compound interest, rounds it to two decimal places, and displays the output in the result section.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-1",
+        "e2edev_bench_24-R-2",
+        "e2edev_bench_24-R-3",
+        "e2edev_bench_24-R-4",
+        "e2edev_bench_24-R-5"
+      ]
+    },
+    {
+      "id": "G-030",
+      "title": "Successful Compound Interest Calculation via Enter Key",
+      "description": "User enters valid positive numeric values into all input fields and presses the Enter key while focused on any input field. The system validates the inputs, calculates the compound interest, and displays the rounded result in the result section.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-1",
+        "e2edev_bench_24-R-3",
+        "e2edev_bench_24-R-4",
+        "e2edev_bench_24-R-5",
+        "e2edev_bench_24-R-6"
+      ]
+    },
+    {
+      "id": "G-031",
+      "title": "Validation Failure with Invalid Principal Input",
+      "description": "User enters an invalid value (e.g., negative, zero, non-numeric, or empty) in the Principal input field and attempts to calculate via button click or Enter key. The system prevents calculation and displays an alert with the message 'Please Enter Valid Values!!'.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-1",
+        "e2edev_bench_24-R-5",
+        "e2edev_bench_24-R-6"
+      ]
+    },
+    {
+      "id": "G-032",
+      "title": "Validation Failure with Invalid Interest Rate Input",
+      "description": "User enters an invalid value (e.g., negative, zero, or non-numeric) in the Interest Rate field and attempts to calculate. The system prevents calculation, triggers an error alert, and keeps the result section unchanged.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-2",
+        "e2edev_bench_24-R-5",
+        "e2edev_bench_24-R-6"
+      ]
+    },
+    {
+      "id": "G-033",
+      "title": "Validation Failure with Invalid Number of Years Input",
+      "description": "User enters an invalid value in the Number of Years field and triggers calculation. The system displays an alert with the message 'Please Enter Valid Values!!'.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-3",
+        "e2edev_bench_24-R-5",
+        "e2edev_bench_24-R-6"
+      ]
+    },
+    {
+      "id": "G-034",
+      "title": "Validation Failure with Invalid Number of Times in a Single Year Input",
+      "description": "User enters an invalid value (such as zero or negative) in the Number of Times in a Single Year field and attempts to calculate. The system displays the alert 'Please Enter Valid Values!!'.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-4",
+        "e2edev_bench_24-R-5",
+        "e2edev_bench_24-R-6"
+      ]
+    },
+    {
+      "id": "G-035",
+      "title": "Principal Input Negative and Zero Value Error Guessing",
+      "description": "Enter zero or negative numbers in the Principal input field and trigger calculation via the Calculate button to ensure the alert 'Please Enter Valid Values!!' is displayed.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-1",
+        "e2edev_bench_24-R-5"
+      ]
+    },
+    {
+      "id": "G-036",
+      "title": "Interest Rate Special Characters and Alpha Misuse",
+      "description": "Input alphabetical characters or symbols into the Annual Interest Rate field and press Enter to verify that invalid input triggers the error alert and prevents computation.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-2",
+        "e2edev_bench_24-R-6"
+      ]
+    },
+    {
+      "id": "G-037",
+      "title": "Number of Years Empty Field Boundary Error",
+      "description": "Leave the Number of Years field completely blank while filling other fields correctly, then click Calculate to check that the validation fails and alerts the user.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-3",
+        "e2edev_bench_24-R-5"
+      ]
+    },
+    {
+      "id": "G-038",
+      "title": "Compounding Frequency Fractional Input Misuse",
+      "description": "Enter a fractional number like 0.5 into the 'Number of Times in a Single Year' field (expecting integers >= 1) and test whether the system improperly accepts or appropriately restricts/alerts based on requirements.",
+      "requirement_ids": [
+        "e2edev_bench_24-R-4",
+        "e2edev_bench_24-R-5"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_24-R-1-TC-1",
+      "title": "[Normal] User enters a valid principal amount",
+      "description": "Feature: Validate Principal Input Field\n  The system shall accept a numeric value greater than 0 entered in the 'Principal' input field.\n\n\nScenario: [Normal] User enters a valid principal amount\n    Given the Compound Interest Calculator page is loaded\n    And the user sees the input field with data-testid \"principal\"\n    When the user enters \"1000\" into the input field with data-testid \"principal\"\n    Then the principal field with data-testid \"principal\" should have the value \"1000\"",
+      "requirement_ids": [
+        "e2edev_bench_24-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-1-TC-2",
+      "title": "[Edge] User enters the minimum valid principal amount",
+      "description": "Feature: Validate Principal Input Field\n  The system shall accept a numeric value greater than 0 entered in the 'Principal' input field.\n\n\nScenario: [Edge] User enters the minimum valid principal amount\n    Given the Compound Interest Calculator page is loaded\n    And the user sees the input field with data-testid \"principal\"\n    When the user enters \"0.01\" into the input field with data-testid \"principal\"\n    Then the principal field with data-testid \"principal\" should have the value \"0.01\"",
+      "requirement_ids": [
+        "e2edev_bench_24-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-2-TC-1",
+      "title": "[Normal] User enters a valid numeric value greater than 0 in the 'Interest Rate (%)' field",
+      "description": "Feature: Validate the 'Interest Rate (%)' input field to ensure it accepts numeric values greater than 0.\n\n  Background:\n    Given the user is on the \"Compound Interest Calculator\" page\n    And the page displays the title \"Compound Interest Calculator\" with data-testid \"title\"\n    And the input field for \"Interest Rate (%)\" is visible with data-testid \"annual-interest-rate\"\n\n\n  Scenario: [Normal] User enters a valid numeric value greater than 0 in the 'Interest Rate (%)' field\n    Given the \"Interest Rate (%)\" input field with data-testid \"annual-interest-rate\" is empty\n    When the user enters \"5\" into the \"Interest Rate (%)\" input field with data-testid \"annual-interest-rate\"\n    Then the value \"5\" is displayed in the \"Interest Rate (%)\" input field with data-testid \"annual-interest-rate\"\n",
+      "requirement_ids": [
+        "e2edev_bench_24-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-2-TC-2",
+      "title": "[Edge] User enters the smallest valid numeric value (0.01) in the 'Interest Rate (%)' field",
+      "description": "Feature: Validate the 'Interest Rate (%)' input field to ensure it accepts numeric values greater than 0.\n\n  Background:\n    Given the user is on the \"Compound Interest Calculator\" page\n    And the page displays the title \"Compound Interest Calculator\" with data-testid \"title\"\n    And the input field for \"Interest Rate (%)\" is visible with data-testid \"annual-interest-rate\"\n\n\n  Scenario: [Edge] User enters the smallest valid numeric value (0.01) in the 'Interest Rate (%)' field\n    Given the \"Interest Rate (%)\" input field with data-testid \"annual-interest-rate\" is empty\n    When the user enters \"0.01\" into the \"Interest Rate (%)\" input field with data-testid \"annual-interest-rate\"\n    Then the value \"0.01\" is displayed in the \"Interest Rate (%)\" input field with data-testid \"annual-interest-rate\"\n",
+      "requirement_ids": [
+        "e2edev_bench_24-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-3-TC-1",
+      "title": "[Normal] User enters a valid numeric value greater than 0 in 'Number of Years'",
+      "description": "Feature: Validate 'Number of Years' input field for numeric values greater than 0\n\n\nScenario: [Normal] User enters a valid numeric value greater than 0 in 'Number of Years'\n    Given the Compound Interest Calculator page is loaded\n    And the user sees the input field with data-testid \"number-of-year\"\n    When the user enters \"10\" into the input field with data-testid \"number-of-year\"\n    Then the number of years field with data-testid \"number-of-year\" should have the value \"10\"",
+      "requirement_ids": [
+        "e2edev_bench_24-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-3-TC-2",
+      "title": "[Edge] User enters '1' in 'Number of Years' field",
+      "description": "Feature: Validate 'Number of Years' input field for numeric values greater than 0\n\n\nScenario: [Edge] User enters '1' in 'Number of Years' field\n    Given the Compound Interest Calculator page is loaded\n    And the user sees the input field with data-testid \"number-of-year\"\n    When the user enters \"1\" into the input field with data-testid \"number-of-year\"\n    Then the number of years field with data-testid \"number-of-year\" should have the value \"1\"",
+      "requirement_ids": [
+        "e2edev_bench_24-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-4-TC-1",
+      "title": "[Normal] User enters a valid numeric value greater than 0 in 'Number of Times in a Single Year'",
+      "description": "Feature: Validate input for 'Number of Times in a Single Year' field\n  The system shall accept a numeric value greater than 0 entered in the 'Number of Times in a Single Year' input field.\n\n\nScenario: [Normal] User enters a valid numeric value greater than 0 in 'Number of Times in a Single Year'\n    Given the Compound Interest Calculator page is loaded\n    And the user sees the input field with data-testid \"number-of-times-in-year\"\n    When the user enters \"4\" into the input field with data-testid \"number-of-times-in-year\"\n    Then the number of times in a single year field with data-testid \"number-of-times-in-year\" should have the value \"4\"\n",
+      "requirement_ids": [
+        "e2edev_bench_24-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-4-TC-2",
+      "title": "[Edge] User enters the minimum valid numeric value '1' in 'Number of Times in a Single Year'",
+      "description": "Feature: Validate input for 'Number of Times in a Single Year' field\n  The system shall accept a numeric value greater than 0 entered in the 'Number of Times in a Single Year' input field.\n\n\nScenario: [Edge] User enters the minimum valid numeric value '1' in 'Number of Times in a Single Year'\n    Given the Compound Interest Calculator page is loaded\n    And the user sees the input field with data-testid \"number-of-times-in-year\"\n    When the user enters \"1\" into the input field with data-testid \"number-of-times-in-year\"\n    Then the number of times in a single year field with data-testid \"number-of-times-in-year\" should have the value \"1\"",
+      "requirement_ids": [
+        "e2edev_bench_24-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-5-TC-1",
+      "title": "[Normal] Calculate compound interest with valid inputs",
+      "description": "Feature: Compound Interest Calculation\n  The system shall compute the compound interest based on the provided inputs and display the result in the \"Result\" section when the user clicks the \"Calculate\" button.\n\n\n  Scenario: [Normal] Calculate compound interest with valid inputs\n    Given the \"Compound Interest Calculator\" page is loaded\n    And the user enters \"1000\" into the \"Principal\" field with data-testid \"principal\"\n    And the user enters \"5\" into the \"Interest rate (%)\" field with data-testid \"annual-interest-rate\"\n    And the user enters \"10\" into the \"Number of Years\" field with data-testid \"number-of-year\"\n    And the user enters \"4\" into the \"Number of Times in a Single Year\" field with data-testid \"number-of-times-in-year\"\n    When the user clicks the \"Calculate\" button with data-testid \"calculate-button\"\n    Then the \"Result\" section with data-testid \"result-value\" should display \"1643.62\"\n",
+      "requirement_ids": [
+        "e2edev_bench_24-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-5-TC-2",
+      "title": "[Edge] Calculate compound interest with the minimum valid inputs",
+      "description": "Feature: Compound Interest Calculation\n  The system shall compute the compound interest based on the provided inputs and display the result in the \"Result\" section when the user clicks the \"Calculate\" button.\n\n\n  Scenario: [Edge] Calculate compound interest with the minimum valid inputs\n    Given the \"Compound Interest Calculator\" page is loaded\n    And the user enters \"1\" into the \"Principal\" field with data-testid \"principal\"\n    And the user enters \"0.01\" into the \"Interest rate (%)\" field with data-testid \"annual-interest-rate\"\n    And the user enters \"1\" into the \"Number of Years\" field with data-testid \"number-of-year\"\n    And the user enters \"1\" into the \"Number of Times in a Single Year\" field with data-testid \"number-of-times-in-year\"\n    When the user clicks the \"Calculate\" button with data-testid \"calculate-button\"\n    Then the \"Result\" section with data-testid \"result-value\" should display \"1.00\"\n",
+      "requirement_ids": [
+        "e2edev_bench_24-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-5-TC-3",
+      "title": "[Edge] Calculate compound interest with a very large principal amount",
+      "description": "Feature: Compound Interest Calculation\n  The system shall compute the compound interest based on the provided inputs and display the result in the \"Result\" section when the user clicks the \"Calculate\" button.\n\n\n  Scenario: [Edge] Calculate compound interest with a very large principal amount\n    Given the \"Compound Interest Calculator\" page is loaded\n    And the user enters \"1000000000\" into the \"Principal\" field with data-testid \"principal\"\n    And the user enters \"10\" into the \"Interest rate (%)\" field with data-testid \"annual-interest-rate\"\n    And the user enters \"5\" into the \"Number of Years\" field with data-testid \"number-of-year\"\n    And the user enters \"12\" into the \"Number of Times in a Single Year\" field with data-testid \"number-of-times-in-year\"\n    When the user clicks the \"Calculate\" button with data-testid \"calculate-button\"\n    Then the \"Result\" section with data-testid \"result-value\" should display \"1645308934.78\"\n",
+      "requirement_ids": [
+        "e2edev_bench_24-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-5-TC-4",
+      "title": "[Error] Display an error when any input field is empty",
+      "description": "Feature: Compound Interest Calculation\n  The system shall compute the compound interest based on the provided inputs and display the result in the \"Result\" section when the user clicks the \"Calculate\" button.\n\n\n  Scenario: [Error] Display an error when any input field is empty\n    Given the \"Compound Interest Calculator\" page is loaded\n    And the user leaves the \"Principal\" field with data-testid \"principal\" empty\n    And the user enters \"5\" into the \"Interest rate (%)\" field with data-testid \"annual-interest-rate\"\n    And the user enters \"10\" into the \"Number of Years\" field with data-testid \"number-of-year\"\n    And the user enters \"4\" into the \"Number of Times in a Single Year\" field with data-testid \"number-of-times-in-year\"\n    When the user clicks the \"Calculate\" button with data-testid \"calculate-button\"\n    Then an alert should be displayed with the message \"Please Enter Valid Values!!\"\n",
+      "requirement_ids": [
+        "e2edev_bench_24-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-5-TC-5",
+      "title": "[Error] Display an error when any input field contains a negative value",
+      "description": "Feature: Compound Interest Calculation\n  The system shall compute the compound interest based on the provided inputs and display the result in the \"Result\" section when the user clicks the \"Calculate\" button.\n\n\n  Scenario: [Error] Display an error when any input field contains a negative value\n    Given the \"Compound Interest Calculator\" page is loaded\n    And the user enters \"-1000\" into the \"Principal\" field with data-testid \"principal\"\n    And the user enters \"5\" into the \"Interest rate (%)\" field with data-testid \"annual-interest-rate\"\n    And the user enters \"10\" into the \"Number of Years\" field with data-testid \"number-of-year\"\n    And the user enters \"4\" into the \"Number of Times in a Single Year\" field with data-testid \"number-of-times-in-year\"\n    When the user clicks the \"Calculate\" button with data-testid \"calculate-button\"\n    Then an alert should be displayed with the message \"Please Enter Valid Values!!\"\n",
+      "requirement_ids": [
+        "e2edev_bench_24-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/4/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-5-TC-6",
+      "title": "[Error] Display an error when any input field contains a non-numeric value",
+      "description": "Feature: Compound Interest Calculation\n  The system shall compute the compound interest based on the provided inputs and display the result in the \"Result\" section when the user clicks the \"Calculate\" button.\n\n\n  Scenario: [Error] Display an error when any input field contains a non-numeric value\n    Given the \"Compound Interest Calculator\" page is loaded\n    And the user enters \"abc\" into the \"Principal\" field with data-testid \"principal\"\n    And the user enters \"5\" into the \"Interest rate (%)\" field with data-testid \"annual-interest-rate\"\n    And the user enters \"10\" into the \"Number of Years\" field with data-testid \"number-of-year\"\n    And the user enters \"4\" into the \"Number of Times in a Single Year\" field with data-testid \"number-of-times-in-year\"\n    When the user clicks the \"Calculate\" button with data-testid \"calculate-button\"\n    Then an alert should be displayed with the message \"Please Enter Valid Values!!\"\n",
+      "requirement_ids": [
+        "e2edev_bench_24-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/5/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-5-TC-7",
+      "title": "[Normal] Calculate compound interest using the Enter key",
+      "description": "Feature: Compound Interest Calculation\n  The system shall compute the compound interest based on the provided inputs and display the result in the \"Result\" section when the user clicks the \"Calculate\" button.\n\n\n  Scenario: [Normal] Calculate compound interest using the Enter key\n    Given the \"Compound Interest Calculator\" page is loaded\n    And the user enters \"2000\" into the \"Principal\" field with data-testid \"principal\"\n    And the user enters \"3\" into the \"Interest rate (%)\" field with data-testid \"annual-interest-rate\"\n    And the user enters \"15\" into the \"Number of Years\" field with data-testid \"number-of-year\"\n    And the user enters \"2\" into the \"Number of Times in a Single Year\" field with data-testid \"number-of-times-in-year\"\n    When the user presses the \"Enter\" key\n    Then the \"Result\" section with data-testid \"result-value\" should display \"3126.16\"",
+      "requirement_ids": [
+        "e2edev_bench_24-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/6/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-6-TC-1",
+      "title": "[Normal] User presses Enter key with valid inputs in all fields",
+      "description": "Feature: Compute compound interest using the Enter key\n  The system shall compute the compound interest and display the result in the \"Result\" section when the user presses the Enter key while focused on any input field.\n\n\n  Scenario: [Normal] User presses Enter key with valid inputs in all fields\n    Given the \"Compound Interest Calculator\" page is loaded\n    And the user enters \"1000\" into the \"Principal\" field with data-testid \"principal\"\n    And the user enters \"5\" into the \"Interest rate (%)\" field with data-testid \"annual-interest-rate\"\n    And the user enters \"10\" into the \"Number of Years\" field with data-testid \"number-of-year\"\n    And the user enters \"4\" into the \"Number of Times in a Single Year\" field with data-testid \"number-of-times-in-year\"\n    When the user presses the Enter key while focused on the \"Principal\" field with data-testid \"principal\"\n    Then the \"Result\" section with data-testid \"result-value\" should display \"1643.62\"\n",
+      "requirement_ids": [
+        "e2edev_bench_24-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-6-TC-2",
+      "title": "[Edge] User presses Enter key with the minimum valid inputs",
+      "description": "Feature: Compute compound interest using the Enter key\n  The system shall compute the compound interest and display the result in the \"Result\" section when the user presses the Enter key while focused on any input field.\n\n\n  Scenario: [Edge] User presses Enter key with the minimum valid inputs\n    Given the \"Compound Interest Calculator\" page is loaded\n    And the user enters \"1\" into the \"Principal\" field with data-testid \"principal\"\n    And the user enters \"0.01\" into the \"Interest rate (%)\" field with data-testid \"annual-interest-rate\"\n    And the user enters \"1\" into the \"Number of Years\" field with data-testid \"number-of-year\"\n    And the user enters \"1\" into the \"Number of Times in a Single Year\" field with data-testid \"number-of-times-in-year\"\n    When the user presses the Enter key while focused on the \"Interest rate (%)\" field with data-testid \"annual-interest-rate\"\n    Then the \"Result\" section with data-testid \"result-value\" should display \"1.00\"\n",
+      "requirement_ids": [
+        "e2edev_bench_24-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-6-TC-3",
+      "title": "[Edge] User presses Enter key with the maximum valid inputs",
+      "description": "Feature: Compute compound interest using the Enter key\n  The system shall compute the compound interest and display the result in the \"Result\" section when the user presses the Enter key while focused on any input field.\n\n\n  Scenario: [Edge] User presses Enter key with the maximum valid inputs\n    Given the \"Compound Interest Calculator\" page is loaded\n    And the user enters \"1000000\" into the \"Principal\" field with data-testid \"principal\"\n    And the user enters \"100\" into the \"Interest rate (%)\" field with data-testid \"annual-interest-rate\"\n    And the user enters \"50\" into the \"Number of Years\" field with data-testid \"number-of-year\"\n    And the user enters \"365\" into the \"Number of Times in a Single Year\" field with data-testid \"number-of-times-in-year\"\n    When the user presses the Enter key while focused on the \"Number of Years\" field with data-testid \"number-of-year\"\n    Then the \"Result\" section with data-testid \"result-value\" should display a very large number (greater than 0)\n",
+      "requirement_ids": [
+        "e2edev_bench_24-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-6-TC-4",
+      "title": "[Error] User presses Enter key with one or more empty fields",
+      "description": "Feature: Compute compound interest using the Enter key\n  The system shall compute the compound interest and display the result in the \"Result\" section when the user presses the Enter key while focused on any input field.\n\n\n  Scenario: [Error] User presses Enter key with one or more empty fields\n    Given the \"Compound Interest Calculator\" page is loaded\n    And the user enters \"1000\" into the \"Principal\" field with data-testid \"principal\"\n    And the user leaves the \"Interest rate (%)\" field with data-testid \"annual-interest-rate\" empty\n    And the user enters \"10\" into the \"Number of Years\" field with data-testid \"number-of-year\"\n    And the user enters \"4\" into the \"Number of Times in a Single Year\" field with data-testid \"number-of-times-in-year\"\n    When the user presses the Enter key while focused on the \"Number of Times in a Single Year\" field with data-testid \"number-of-times-in-year\"\n    Then an alert should be displayed with the message \"Please Enter Valid Values!!\"\n    And the \"Result\" section with data-testid \"result-value\" should still display \"0\"\n",
+      "requirement_ids": [
+        "e2edev_bench_24-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-6-TC-5",
+      "title": "[Error] User presses Enter key with invalid (non-numeric) inputs",
+      "description": "Feature: Compute compound interest using the Enter key\n  The system shall compute the compound interest and display the result in the \"Result\" section when the user presses the Enter key while focused on any input field.\n\n\n  Scenario: [Error] User presses Enter key with invalid (non-numeric) inputs\n    Given the \"Compound Interest Calculator\" page is loaded\n    And the user enters \"abc\" into the \"Principal\" field with data-testid \"principal\"\n    And the user enters \"5\" into the \"Interest rate (%)\" field with data-testid \"annual-interest-rate\"\n    And the user enters \"10\" into the \"Number of Years\" field with data-testid \"number-of-year\"\n    And the user enters \"4\" into the \"Number of Times in a Single Year\" field with data-testid \"number-of-times-in-year\"\n    When the user presses the Enter key while focused on the \"Principal\" field with data-testid \"principal\"\n    Then an alert should be displayed with the message \"Please Enter Valid Values!!\"\n    And the \"Result\" section with data-testid \"result-value\" should still display \"0\"\n",
+      "requirement_ids": [
+        "e2edev_bench_24-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/4/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_24-R-6-TC-6",
+      "title": "[Error] User presses Enter key with negative inputs",
+      "description": "Feature: Compute compound interest using the Enter key\n  The system shall compute the compound interest and display the result in the \"Result\" section when the user presses the Enter key while focused on any input field.\n\n\n  Scenario: [Error] User presses Enter key with negative inputs\n    Given the \"Compound Interest Calculator\" page is loaded\n    And the user enters \"-1000\" into the \"Principal\" field with data-testid \"principal\"\n    And the user enters \"5\" into the \"Interest rate (%)\" field with data-testid \"annual-interest-rate\"\n    And the user enters \"10\" into the \"Number of Years\" field with data-testid \"number-of-year\"\n    And the user enters \"4\" into the \"Number of Times in a Single Year\" field with data-testid \"number-of-times-in-year\"\n    When the user presses the Enter key while focused on the \"Principal\" field with data-testid \"principal\"\n    Then an alert should be displayed with the message \"Please Enter Valid Values!!\"\n    And the \"Result\" section with data-testid \"result-value\" should still display \"0\"",
+      "requirement_ids": [
+        "e2edev_bench_24-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_24/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/5/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": null,
+  "generation": {
+    "selected_techniques": [
+      "equivalence_partitioning",
+      "boundary_value_analysis",
+      "decision_table",
+      "use_case",
+      "error_guessing"
+    ],
+    "technique_rationales": {
+      "equivalence_partitioning": "Required to test valid positive numerical partitions and invalid partitions like negative numbers, non-numeric strings, and empty fields for all input fields.",
+      "boundary_value_analysis": "Needed to test limits and edges like zero, minimum valid decimal values (e.g., 0.01), and minimum integer values (e.g., 1 for compounding frequency).",
+      "decision_table": "Required to evaluate combinations of validation conditions across multiple input fields simultaneously when triggering the calculate action.",
+      "use_case": "Needed to cover end-to-end flows of interacting with the compound interest calculator, filling out fields, triggering via button click or Enter key, and viewing results.",
+      "error_guessing": "Useful to anticipate plausible failures such as missing inputs, invalid character entry, and handling alert messages correctly."
+    },
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "embedding_requests": 1
+  },
+  "links": {
+    "requirements": {
+      "e2edev_bench_24-R-1": "e2edev_bench_24-R-1/requirement.md",
+      "e2edev_bench_24-R-2": "e2edev_bench_24-R-2/requirement.md",
+      "e2edev_bench_24-R-3": "e2edev_bench_24-R-3/requirement.md",
+      "e2edev_bench_24-R-4": "e2edev_bench_24-R-4/requirement.md",
+      "e2edev_bench_24-R-5": "e2edev_bench_24-R-5/requirement.md",
+      "e2edev_bench_24-R-6": "e2edev_bench_24-R-6/requirement.md"
+    },
+    "cases": {
+      "G-013": {
+        "e2edev_bench_24-R-1": "e2edev_bench_24-R-1/test cases/13_Principal_Input_Below_Minimum_Negative_Value.md",
+        "e2edev_bench_24-R-5": "e2edev_bench_24-R-5/test cases/13_Principal_Input_Below_Minimum_Negative_Value.md",
+        "e2edev_bench_24-R-6": "e2edev_bench_24-R-6/test cases/13_Principal_Input_Below_Minimum_Negative_Value.md"
+      },
+      "G-014": {
+        "e2edev_bench_24-R-1": "e2edev_bench_24-R-1/test cases/14_Principal_Input_at_Lower_Limit_Zero.md",
+        "e2edev_bench_24-R-5": "e2edev_bench_24-R-5/test cases/14_Principal_Input_at_Lower_Limit_Zero.md",
+        "e2edev_bench_24-R-6": "e2edev_bench_24-R-6/test cases/14_Principal_Input_at_Lower_Limit_Zero.md"
+      },
+      "G-015": {
+        "e2edev_bench_24-R-1": "e2edev_bench_24-R-1/test cases/15_Principal_Input_Just_Above_Lower_Limit_Minimum_V.md",
+        "e2edev_bench_24-R-5": "e2edev_bench_24-R-5/test cases/15_Principal_Input_Just_Above_Lower_Limit_Minimum_V.md",
+        "e2edev_bench_24-R-6": "e2edev_bench_24-R-6/test cases/15_Principal_Input_Just_Above_Lower_Limit_Minimum_V.md"
+      },
+      "G-001": {
+        "e2edev_bench_24-R-1": "e2edev_bench_24-R-1/test cases/1_Principal_Valid_Numeric_Value_Greater_Than_Zero.md"
+      },
+      "G-023": {
+        "e2edev_bench_24-R-1": "e2edev_bench_24-R-1/test cases/23_All_Inputs_Valid_-_Calculate_via_Button_Click.md",
+        "e2edev_bench_24-R-2": "e2edev_bench_24-R-2/test cases/23_All_Inputs_Valid_-_Calculate_via_Button_Click.md",
+        "e2edev_bench_24-R-3": "e2edev_bench_24-R-3/test cases/23_All_Inputs_Valid_-_Calculate_via_Button_Click.md",
+        "e2edev_bench_24-R-4": "e2edev_bench_24-R-4/test cases/23_All_Inputs_Valid_-_Calculate_via_Button_Click.md",
+        "e2edev_bench_24-R-5": "e2edev_bench_24-R-5/test cases/23_All_Inputs_Valid_-_Calculate_via_Button_Click.md",
+        "e2edev_bench_24-R-6": "e2edev_bench_24-R-6/test cases/23_All_Inputs_Valid_-_Calculate_via_Button_Click.md"
+      },
+      "G-024": {
+        "e2edev_bench_24-R-1": "e2edev_bench_24-R-1/test cases/24_All_Inputs_Valid_-_Calculate_via_Enter_Key.md",
+        "e2edev_bench_24-R-3": "e2edev_bench_24-R-3/test cases/24_All_Inputs_Valid_-_Calculate_via_Enter_Key.md",
+        "e2edev_bench_24-R-4": "e2edev_bench_24-R-4/test cases/24_All_Inputs_Valid_-_Calculate_via_Enter_Key.md",
+        "e2edev_bench_24-R-5": "e2edev_bench_24-R-5/test cases/24_All_Inputs_Valid_-_Calculate_via_Enter_Key.md",
+        "e2edev_bench_24-R-6": "e2edev_bench_24-R-6/test cases/24_All_Inputs_Valid_-_Calculate_via_Enter_Key.md"
+      },
+      "G-025": {
+        "e2edev_bench_24-R-1": "e2edev_bench_24-R-1/test cases/25_Invalid_Principal_Input_Zero_or_Negative.md",
+        "e2edev_bench_24-R-5": "e2edev_bench_24-R-5/test cases/25_Invalid_Principal_Input_Zero_or_Negative.md",
+        "e2edev_bench_24-R-6": "e2edev_bench_24-R-6/test cases/25_Invalid_Principal_Input_Zero_or_Negative.md"
+      },
+      "G-029": {
+        "e2edev_bench_24-R-1": "e2edev_bench_24-R-1/test cases/29_Successful_Compound_Interest_Calculation_via_Cal.md",
+        "e2edev_bench_24-R-2": "e2edev_bench_24-R-2/test cases/29_Successful_Compound_Interest_Calculation_via_Cal.md",
+        "e2edev_bench_24-R-3": "e2edev_bench_24-R-3/test cases/29_Successful_Compound_Interest_Calculation_via_Cal.md",
+        "e2edev_bench_24-R-4": "e2edev_bench_24-R-4/test cases/29_Successful_Compound_Interest_Calculation_via_Cal.md",
+        "e2edev_bench_24-R-5": "e2edev_bench_24-R-5/test cases/29_Successful_Compound_Interest_Calculation_via_Cal.md"
+      },
+      "G-002": {
+        "e2edev_bench_24-R-1": "e2edev_bench_24-R-1/test cases/2_Principal_Invalid_Input_Values.md"
+      },
+      "G-030": {
+        "e2edev_bench_24-R-1": "e2edev_bench_24-R-1/test cases/30_Successful_Compound_Interest_Calculation_via_Ent.md",
+        "e2edev_bench_24-R-3": "e2edev_bench_24-R-3/test cases/30_Successful_Compound_Interest_Calculation_via_Ent.md",
+        "e2edev_bench_24-R-4": "e2edev_bench_24-R-4/test cases/30_Successful_Compound_Interest_Calculation_via_Ent.md",
+        "e2edev_bench_24-R-5": "e2edev_bench_24-R-5/test cases/30_Successful_Compound_Interest_Calculation_via_Ent.md",
+        "e2edev_bench_24-R-6": "e2edev_bench_24-R-6/test cases/30_Successful_Compound_Interest_Calculation_via_Ent.md"
+      },
+      "G-031": {
+        "e2edev_bench_24-R-1": "e2edev_bench_24-R-1/test cases/31_Validation_Failure_with_Invalid_Principal_Input.md",
+        "e2edev_bench_24-R-5": "e2edev_bench_24-R-5/test cases/31_Validation_Failure_with_Invalid_Principal_Input.md",
+        "e2edev_bench_24-R-6": "e2edev_bench_24-R-6/test cases/31_Validation_Failure_with_Invalid_Principal_Input.md"
+      },
+      "G-035": {
+        "e2edev_bench_24-R-1": "e2edev_bench_24-R-1/test cases/35_Principal_Input_Negative_and_Zero_Value_Error_Gu.md",
+        "e2edev_bench_24-R-5": "e2edev_bench_24-R-5/test cases/35_Principal_Input_Negative_and_Zero_Value_Error_Gu.md"
+      },
+      "G-016": {
+        "e2edev_bench_24-R-2": "e2edev_bench_24-R-2/test cases/16_Interest_Rate_Input_Below_Minimum_Negative_Value.md",
+        "e2edev_bench_24-R-5": "e2edev_bench_24-R-5/test cases/16_Interest_Rate_Input_Below_Minimum_Negative_Value.md",
+        "e2edev_bench_24-R-6": "e2edev_bench_24-R-6/test cases/16_Interest_Rate_Input_Below_Minimum_Negative_Value.md"
+      },
+      "G-017": {
+        "e2edev_bench_24-R-2": "e2edev_bench_24-R-2/test cases/17_Interest_Rate_Input_at_Lower_Limit_Zero.md",
+        "e2edev_bench_24-R-5": "e2edev_bench_24-R-5/test cases/17_Interest_Rate_Input_at_Lower_Limit_Zero.md",
+        "e2edev_bench_24-R-6": "e2edev_bench_24-R-6/test cases/17_Interest_Rate_Input_at_Lower_Limit_Zero.md"
+      },
+      "G-018": {
+        "e2edev_bench_24-R-2": "e2edev_bench_24-R-2/test cases/18_Interest_Rate_Input_Just_Above_Lower_Limit_Minim.md",
+        "e2edev_bench_24-R-5": "e2edev_bench_24-R-5/test cases/18_Interest_Rate_Input_Just_Above_Lower_Limit_Minim.md",
+        "e2edev_bench_24-R-6": "e2edev_bench_24-R-6/test cases/18_Interest_Rate_Input_Just_Above_Lower_Limit_Minim.md"
+      },
+      "G-026": {
+        "e2edev_bench_24-R-2": "e2edev_bench_24-R-2/test cases/26_Invalid_Interest_Rate_Input_Non-numeric_or_0.md",
+        "e2edev_bench_24-R-5": "e2edev_bench_24-R-5/test cases/26_Invalid_Interest_Rate_Input_Non-numeric_or_0.md",
+        "e2edev_bench_24-R-6": "e2edev_bench_24-R-6/test cases/26_Invalid_Interest_Rate_Input_Non-numeric_or_0.md"
+      },
+      "G-032": {
+        "e2edev_bench_24-R-2": "e2edev_bench_24-R-2/test cases/32_Validation_Failure_with_Invalid_Interest_Rate_In.md",
+        "e2edev_bench_24-R-5": "e2edev_bench_24-R-5/test cases/32_Validation_Failure_with_Invalid_Interest_Rate_In.md",
+        "e2edev_bench_24-R-6": "e2edev_bench_24-R-6/test cases/32_Validation_Failure_with_Invalid_Interest_Rate_In.md"
+      },
+      "G-036": {
+        "e2edev_bench_24-R-2": "e2edev_bench_24-R-2/test cases/36_Interest_Rate_Special_Characters_and_Alpha_Misus.md",
+        "e2edev_bench_24-R-6": "e2edev_bench_24-R-6/test cases/36_Interest_Rate_Special_Characters_and_Alpha_Misus.md"
+      },
+      "G-003": {
+        "e2edev_bench_24-R-2": "e2edev_bench_24-R-2/test cases/3_Interest_Rate_Valid_Numeric_Value_Greater_Than_Z.md"
+      },
+      "G-004": {
+        "e2edev_bench_24-R-2": "e2edev_bench_24-R-2/test cases/4_Interest_Rate_Invalid_Input_Values.md"
+      },
+      "G-019": {
+        "e2edev_bench_24-R-3": "e2edev_bench_24-R-3/test cases/19_Number_of_Years_Input_Below_Minimum_Zero.md",
+        "e2edev_bench_24-R-5": "e2edev_bench_24-R-5/test cases/19_Number_of_Years_Input_Below_Minimum_Zero.md",
+        "e2edev_bench_24-R-6": "e2edev_bench_24-R-6/test cases/19_Number_of_Years_Input_Below_Minimum_Zero.md"
+      },
+      "G-020": {
+        "e2edev_bench_24-R-3": "e2edev_bench_24-R-3/test cases/20_Number_of_Years_Input_Just_Above_Minimum_Minimum.md",
+        "e2edev_bench_24-R-5": "e2edev_bench_24-R-5/test cases/20_Number_of_Years_Input_Just_Above_Minimum_Minimum.md",
+        "e2edev_bench_24-R-6": "e2edev_bench_24-R-6/test cases/20_Number_of_Years_Input_Just_Above_Minimum_Minimum.md"
+      },
+      "G-027": {
+        "e2edev_bench_24-R-3": "e2edev_bench_24-R-3/test cases/27_Invalid_Number_of_Years_Input.md",
+        "e2edev_bench_24-R-5": "e2edev_bench_24-R-5/test cases/27_Invalid_Number_of_Years_Input.md",
+        "e2edev_bench_24-R-6": "e2edev_bench_24-R-6/test cases/27_Invalid_Number_of_Years_Input.md"
+      },
+      "G-033": {
+        "e2edev_bench_24-R-3": "e2edev_bench_24-R-3/test cases/33_Validation_Failure_with_Invalid_Number_of_Years.md",
+        "e2edev_bench_24-R-5": "e2edev_bench_24-R-5/test cases/33_Validation_Failure_with_Invalid_Number_of_Years.md",
+        "e2edev_bench_24-R-6": "e2edev_bench_24-R-6/test cases/33_Validation_Failure_with_Invalid_Number_of_Years.md"
+      },
+      "G-037": {
+        "e2edev_bench_24-R-3": "e2edev_bench_24-R-3/test cases/37_Number_of_Years_Empty_Field_Boundary_Error.md",
+        "e2edev_bench_24-R-5": "e2edev_bench_24-R-5/test cases/37_Number_of_Years_Empty_Field_Boundary_Error.md"
+      },
+      "G-005": {
+        "e2edev_bench_24-R-3": "e2edev_bench_24-R-3/test cases/5_Number_of_Years_Valid_Numeric_Value_Greater_Than.md"
+      },
+      "G-006": {
+        "e2edev_bench_24-R-3": "e2edev_bench_24-R-3/test cases/6_Number_of_Years_Invalid_Input_Values.md"
+      },
+      "G-021": {
+        "e2edev_bench_24-R-4": "e2edev_bench_24-R-4/test cases/21_Number_of_Times_in_a_Single_Year_Input_at_Lower.md",
+        "e2edev_bench_24-R-5": "e2edev_bench_24-R-5/test cases/21_Number_of_Times_in_a_Single_Year_Input_at_Lower.md",
+        "e2edev_bench_24-R-6": "e2edev_bench_24-R-6/test cases/21_Number_of_Times_in_a_Single_Year_Input_at_Lower.md"
+      },
+      "G-022": {
+        "e2edev_bench_24-R-4": "e2edev_bench_24-R-4/test cases/22_Number_of_Times_in_a_Single_Year_Input_at_Minimu.md",
+        "e2edev_bench_24-R-5": "e2edev_bench_24-R-5/test cases/22_Number_of_Times_in_a_Single_Year_Input_at_Minimu.md",
+        "e2edev_bench_24-R-6": "e2edev_bench_24-R-6/test cases/22_Number_of_Times_in_a_Single_Year_Input_at_Minimu.md"
+      },
+      "G-028": {
+        "e2edev_bench_24-R-4": "e2edev_bench_24-R-4/test cases/28_Invalid_Number_of_Times_in_Year_Input.md",
+        "e2edev_bench_24-R-5": "e2edev_bench_24-R-5/test cases/28_Invalid_Number_of_Times_in_Year_Input.md",
+        "e2edev_bench_24-R-6": "e2edev_bench_24-R-6/test cases/28_Invalid_Number_of_Times_in_Year_Input.md"
+      },
+      "G-034": {
+        "e2edev_bench_24-R-4": "e2edev_bench_24-R-4/test cases/34_Validation_Failure_with_Invalid_Number_of_Times.md",
+        "e2edev_bench_24-R-5": "e2edev_bench_24-R-5/test cases/34_Validation_Failure_with_Invalid_Number_of_Times.md",
+        "e2edev_bench_24-R-6": "e2edev_bench_24-R-6/test cases/34_Validation_Failure_with_Invalid_Number_of_Times.md"
+      },
+      "G-038": {
+        "e2edev_bench_24-R-4": "e2edev_bench_24-R-4/test cases/38_Compounding_Frequency_Fractional_Input_Misuse.md",
+        "e2edev_bench_24-R-5": "e2edev_bench_24-R-5/test cases/38_Compounding_Frequency_Fractional_Input_Misuse.md"
+      },
+      "G-007": {
+        "e2edev_bench_24-R-4": "e2edev_bench_24-R-4/test cases/7_Number_of_Times_in_a_Single_Year_Valid_Numeric_V.md"
+      },
+      "G-008": {
+        "e2edev_bench_24-R-4": "e2edev_bench_24-R-4/test cases/8_Number_of_Times_in_a_Single_Year_Invalid_Input_V.md"
+      },
+      "G-010": {
+        "e2edev_bench_24-R-5": "e2edev_bench_24-R-5/test cases/10_Compound_Interest_Calculation_with_Invalid_Input.md"
+      },
+      "G-009": {
+        "e2edev_bench_24-R-5": "e2edev_bench_24-R-5/test cases/9_Compound_Interest_Calculation_with_Valid_Inputs.md"
+      },
+      "G-011": {
+        "e2edev_bench_24-R-6": "e2edev_bench_24-R-6/test cases/11_Compound_Interest_Calculation_with_Valid_Inputs.md"
+      },
+      "G-012": {
+        "e2edev_bench_24-R-6": "e2edev_bench_24-R-6/test cases/12_Compound_Interest_Calculation_with_Invalid_Input.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

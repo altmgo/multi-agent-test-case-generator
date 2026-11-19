@@ -1,0 +1,730 @@
+{
+  "schema_version": 1,
+  "solution": "GHL",
+  "unit_id": "e2edev_bench_48",
+  "parent_id": null,
+  "status": "failed",
+  "failure": {
+    "stage": "evaluation",
+    "error_type": "EmbeddingError"
+  },
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "e2edev_bench_48-R-1",
+      "text": "When the user clicks the 'Choose Sedan' button with data-testid 'choose-sedan-button', the system must update the 'Car Type' field with data-testid 'car-type' in the booking form to display 'Sedan'. Additionally, the 'Total Price' field with data-testid 'total-price' should be cleared. This behavior should occur regardless of any previous car selections, ensuring that the 'Car Type' field accurately reflects the latest selection and the 'Total Price' field is reset to an empty state.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_48/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_48-R-2",
+      "text": "When the user interacts with the car selection section on the EasyRent page, specifically by clicking the 'Choose SUV' button identified by the data-testid 'choose-suv-button', the system must update the 'Car Type' input field, identified by the data-testid 'car-type', within the booking form to display 'SUV'. Additionally, the system should clear any existing value in the 'Total Price' input field, identified by the data-testid 'total-price'. This behavior should occur regardless of any prior car selection, ensuring that the 'Total Price' field is reset to an empty state upon each new car selection.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_48/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_48-R-3",
+      "text": "When the user clicks the 'Choose Convertible' button with the attribute data-testid='choose-convertible-button', the system must update the 'Car Type' field, identified by data-testid='car-type', in the booking form to display 'Convertible'. Additionally, the 'Total Price' field, identified by data-testid='total-price', should be cleared and display an empty value. This functionality should work regardless of any previous car selections, ensuring that the 'Car Type' field accurately reflects the latest selection and the 'Total Price' field is reset. The system should handle scenarios where the user selects the Convertible car after previously selecting another car, ensuring the fields are updated correctly.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_48/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_48-R-4",
+      "text": "The system should allow users to calculate the total rental price for a selected car model by interacting with the UI elements on the EasyRent car rental page. Users can select a car model (Sedan, SUV, or Convertible) by clicking the respective button with data-testid attributes 'choose-sedan-button', 'choose-suv-button', or 'choose-convertible-button'. Upon selection, the car type is displayed in the 'Car Type' field with data-testid 'car-type', and the 'Total Price' field with data-testid 'total-price' is cleared. Users must enter a valid number of rental days (minimum 1) in the 'Number of Days' field with data-testid 'rental-days'. When the 'Calculate Total' button with data-testid 'calculate-total-button' is clicked, the system calculates the total price by multiplying the number of days by the selected car's price per day. The calculated total is then displayed in the 'Total Price' field. If no car is selected or the number of days is invalid (e.g., zero or not entered), an alert prompts the user to select a car and enter a valid number of days. The system should handle edge cases, such as maximum integer values for days, and ensure the total price is accurately calculated and displayed.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_48/requirment_with_tests.json#/finegrained_rewith_test/4/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_48-R-6",
+      "text": "The web application must ensure that users can only submit the booking form successfully when both a car is selected and the total price is calculated. The user interface includes a 'Book Now' button with the attribute data-testid='book-now-button' that triggers form submission. The car selection is made via buttons with data-testid attributes such as 'choose-sedan-button', 'choose-suv-button', and 'choose-convertible-button', which update the car type input field (data-testid='car-type') and clear the total price field (data-testid='total-price'). Users must input the number of rental days in the field with data-testid='rental-days', and click the 'Calculate Total' button (data-testid='calculate-total-button') to compute the total price, which is displayed in the total price field. If the user attempts to submit the form without selecting a car or calculating the total price, the system must prevent submission and display an alert with the message 'Please select a car and calculate the total price before booking.' Conversely, if both conditions are met, an alert confirming the booking, such as 'Your [Car Type] rental has been booked!', should be displayed. The form submission is handled by an event listener on the form with data-testid='rental-form'.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_48/requirment_with_tests.json#/finegrained_rewith_test/6/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_48-R-7",
+      "text": "The web application must allow users to book a car rental through a structured process involving car selection, rental duration input, and total price calculation. The user interface should include a section with data-testid 'car-selection' containing buttons for selecting different car types ('Sedan', 'SUV', 'Convertible'), each with a corresponding price per day. Upon selection, the car type should be displayed in a readonly input field with data-testid 'car-type'. Users must input the number of rental days in a field with data-testid 'rental-days', which accepts a minimum value of 1. A button with data-testid 'calculate-total-button' should be available to compute the total rental price, displayed in a readonly field with data-testid 'total-price'. The 'Book Now' button, identified by data-testid 'book-now-button', should submit the form only if a car type is selected and the total price is calculated. Upon successful submission, the system must trigger an alert with a confirmation message, such as 'Your [Car Type] rental has been booked!', ensuring all conditions are met before booking. The booking form should prevent submission if any conditions are unmet, alerting the user to select a car and calculate the total price.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_48/requirment_with_tests.json#/finegrained_rewith_test/7/requirement/description"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Select Sedan Car Type",
+      "description": "Verify that clicking the 'Choose Sedan' button updates the 'Car Type' field to 'Sedan' and clears the 'Total Price' field regardless of previous selections.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-1",
+        "e2edev_bench_48-R-7"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Select SUV Car Type",
+      "description": "Verify that clicking the 'Choose SUV' button updates the 'Car Type' field to 'SUV' and clears the 'Total Price' field regardless of previous selections.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-2",
+        "e2edev_bench_48-R-7"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Select Convertible Car Type",
+      "description": "Verify that clicking the 'Choose Convertible' button updates the 'Car Type' field to 'Convertible' and clears the 'Total Price' field regardless of previous selections.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-3",
+        "e2edev_bench_48-R-7"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Calculate Total Price with Valid Rental Days",
+      "description": "Verify that entering a valid number of rental days (minimum 1) and clicking 'Calculate Total' computes and displays the correct total price.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-4",
+        "e2edev_bench_48-R-7"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Calculate Total Price with Invalid Rental Days",
+      "description": "Verify that attempting to calculate total price with zero, negative, or empty rental days prompts an alert to select a car and enter a valid number of days.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-4",
+        "e2edev_bench_48-R-7"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Successful Form Booking Submission",
+      "description": "Verify that clicking 'Book Now' successfully submits the form and displays a confirmation alert when both a car is selected and the total price has been calculated.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-6",
+        "e2edev_bench_48-R-7"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Unsuccessful Form Booking Submission - Missing Car or Price",
+      "description": "Verify that attempting to submit the booking form without selecting a car or without calculating the total price prevents submission and displays an alert.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-6",
+        "e2edev_bench_48-R-7"
+      ]
+    },
+    {
+      "id": "G-008",
+      "title": "Calculate total price with minimum valid rental days",
+      "description": "Test total price calculation with 'rental-days' set to the minimum boundary value of 1.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-4",
+        "e2edev_bench_48-R-7"
+      ]
+    },
+    {
+      "id": "G-009",
+      "title": "Calculate total price with rental days immediately below minimum limit",
+      "description": "Test total price calculation with 'rental-days' set to 0, which is immediately below the minimum valid limit of 1, expecting an alert.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-4",
+        "e2edev_bench_48-R-7"
+      ]
+    },
+    {
+      "id": "G-010",
+      "title": "Calculate total price with negative rental days",
+      "description": "Test total price calculation with 'rental-days' set to -1, outside the valid lower limit.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-4",
+        "e2edev_bench_48-R-7"
+      ]
+    },
+    {
+      "id": "G-011",
+      "title": "Calculate total price with maximum integer rental days",
+      "description": "Test total price calculation with 'rental-days' set to the maximum integer value supported by the system.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-4"
+      ]
+    },
+    {
+      "id": "G-012",
+      "title": "Transition from Initial State to Car Selected State",
+      "description": "Verify that clicking the 'Choose Sedan', 'Choose SUV', or 'Choose Convertible' button transitions the system from the Initial State to the Car Selected state, updates the 'Car Type' field, and clears the 'Total Price' field.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-1",
+        "e2edev_bench_48-R-2",
+        "e2edev_bench_48-R-3",
+        "e2edev_bench_48-R-7"
+      ]
+    },
+    {
+      "id": "G-013",
+      "title": "Transition from Car Selected State to Price Calculated State",
+      "description": "Verify that entering valid rental days and clicking 'Calculate Total' transitions the system from the Car Selected state to the Price Calculated state, computing and displaying the correct total price.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-4",
+        "e2edev_bench_48-R-7"
+      ]
+    },
+    {
+      "id": "G-014",
+      "title": "Successful Booking Transition from Price Calculated State",
+      "description": "Verify that clicking the 'Book Now' button while in the Price Calculated state successfully submits the form, triggers the confirmation alert, and resets or finalizes the booking.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-6",
+        "e2edev_bench_48-R-7"
+      ]
+    },
+    {
+      "id": "G-015",
+      "title": "Forbidden Transition: Booking without Car Selection or Total Price",
+      "description": "Verify that attempting to click 'Book Now' from the Initial State or Car Selected State without calculating the total price prevents submission and triggers an error alert.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-6",
+        "e2edev_bench_48-R-7"
+      ]
+    },
+    {
+      "id": "G-016",
+      "title": "State Transition on Switching Car Types",
+      "description": "Verify that switching between different car types (e.g., Sedan to SUV or Convertible) resets the 'Total Price' and correctly updates the 'Car Type' field while maintaining a valid state transition.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-1",
+        "e2edev_bench_48-R-2",
+        "e2edev_bench_48-R-3"
+      ]
+    },
+    {
+      "id": "G-017",
+      "title": "Select Sedan and Calculate Total with Valid Days",
+      "description": "User clicks 'Choose Sedan', enters a valid number of days, and calculates total price successfully.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-1",
+        "e2edev_bench_48-R-4",
+        "e2edev_bench_48-R-7"
+      ]
+    },
+    {
+      "id": "G-018",
+      "title": "Select SUV and Calculate Total with Valid Days",
+      "description": "User clicks 'Choose SUV', enters a valid number of days, and calculates total price successfully.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-2",
+        "e2edev_bench_48-R-4",
+        "e2edev_bench_48-R-7"
+      ]
+    },
+    {
+      "id": "G-019",
+      "title": "Select Convertible and Calculate Total with Valid Days",
+      "description": "User clicks 'Choose Convertible', enters a valid number of days, and calculates total price successfully.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-3",
+        "e2edev_bench_48-R-4",
+        "e2edev_bench_48-R-7"
+      ]
+    },
+    {
+      "id": "G-020",
+      "title": "Calculate Total with No Car Selected and Invalid Days",
+      "description": "User attempts to calculate total without selecting a car or entering valid days, triggering an alert.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-4",
+        "e2edev_bench_48-R-7"
+      ]
+    },
+    {
+      "id": "G-021",
+      "title": "Attempt Booking with Car Selected but Total Price Not Calculated",
+      "description": "User attempts to book a car without calculating the total price, resulting in a prevention alert.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-6",
+        "e2edev_bench_48-R-7"
+      ]
+    },
+    {
+      "id": "G-022",
+      "title": "Successful Booking with Car Selected and Total Calculated",
+      "description": "User successfully books a car after selecting a car type, entering valid days, and calculating the total price.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-6",
+        "e2edev_bench_48-R-7"
+      ]
+    },
+    {
+      "id": "G-023",
+      "title": "Select Sedan and Clear Total Price",
+      "description": "User clicks the 'Choose Sedan' button, verifying the 'Car Type' field displays 'Sedan' and the 'Total Price' field is cleared.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-1"
+      ]
+    },
+    {
+      "id": "G-024",
+      "title": "Select SUV and Clear Total Price",
+      "description": "User clicks the 'Choose SUV' button, verifying the 'Car Type' field displays 'SUV' and the 'Total Price' field is cleared.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-2"
+      ]
+    },
+    {
+      "id": "G-025",
+      "title": "Select Convertible and Clear Total Price",
+      "description": "User clicks the 'Choose Convertible' button, verifying the 'Car Type' field displays 'Convertible' and the 'Total Price' field is cleared regardless of previous selections.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-3"
+      ]
+    },
+    {
+      "id": "G-026",
+      "title": "Calculate Total Rental Price Successfully and Handle Errors",
+      "description": "User selects a car, enters valid rental days, and clicks 'Calculate Total' to update the total price field. Tests invalid days or missing car selection edge cases triggering an alert.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-4"
+      ]
+    },
+    {
+      "id": "G-027",
+      "title": "Booking Form Submission Validation and Success",
+      "description": "User attempts to book without complete selections to verify prevention and warning alerts, then completes car selection, calculation, and successful form submission with a confirmation alert.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-6",
+        "e2edev_bench_48-R-7"
+      ]
+    },
+    {
+      "id": "G-028",
+      "title": "Calculate Total with Invalid Rental Days Zero",
+      "description": "Attempt to calculate the total price by entering zero in the 'rental-days' field after selecting a car model to test error handling for invalid input.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-4",
+        "e2edev_bench_48-R-7"
+      ]
+    },
+    {
+      "id": "G-029",
+      "title": "Calculate Total without Car Selection",
+      "description": "Attempt to click the 'calculate-total-button' without selecting any car model first to verify that the system properly alerts the user.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-4",
+        "e2edev_bench_48-R-7"
+      ]
+    },
+    {
+      "id": "G-030",
+      "title": "Book Form Submission Without Calculating Total Price",
+      "description": "Select a car model and enter valid rental days, but attempt to click 'book-now-button' without clicking 'calculate-total-button' first to ensure form submission is prevented.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-6",
+        "e2edev_bench_48-R-7"
+      ]
+    },
+    {
+      "id": "G-031",
+      "title": "Switch Car Selection and Verify Price Clearing",
+      "description": "Select a car, calculate the total price so it is populated, and then click a different car selection button to verify that the 'total-price' field is immediately cleared and reset.",
+      "requirement_ids": [
+        "e2edev_bench_48-R-1",
+        "e2edev_bench_48-R-2",
+        "e2edev_bench_48-R-3"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_48-R-1-TC-1",
+      "title": "[Normal] User selects the Sedan car option",
+      "description": "Feature: Update Car Type and Clear Total Price on Sedan Selection\n  The system should update the 'Car Type' field to 'Sedan' and clear the 'Total Price' field when the user selects the Sedan option.\n\n\n  Scenario: [Normal] User selects the Sedan car option\n    Given the user is on the EasyRent car selection page\n    When the user clicks the \"Choose Sedan\" button with data-testid \"choose-sedan-button\"\n    Then the \"Car Type\" field with data-testid \"car-type\" should display \"Sedan\"\n    And the \"Total Price\" field with data-testid \"total-price\" should be empty\n",
+      "requirement_ids": [
+        "e2edev_bench_48-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_48/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_48-R-1-TC-2",
+      "title": "[Edge] User selects the Sedan car option after selecting another car",
+      "description": "Feature: Update Car Type and Clear Total Price on Sedan Selection\n  The system should update the 'Car Type' field to 'Sedan' and clear the 'Total Price' field when the user selects the Sedan option.\n\n\n  Scenario: [Edge] User selects the Sedan car option after selecting another car\n    Given the user is on the EasyRent car selection page\n    And the user clicks the \"Choose SUV\" button with data-testid \"choose-suv-button\"\n    When the user clicks the \"Choose Sedan\" button with data-testid \"choose-sedan-button\"\n    Then the \"Car Type\" field with data-testid \"car-type\" should display \"Sedan\"\n    And the \"Total Price\" field with data-testid \"total-price\" should be empty\n",
+      "requirement_ids": [
+        "e2edev_bench_48-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_48/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_48-R-2-TC-1",
+      "title": "[Normal] User selects SUV and fields update correctly",
+      "description": "Feature: Update Car Type and Clear Total Price on SUV Selection\n  The system should update the 'Car Type' field to 'SUV' and clear the 'Total Price' field when the user selects the SUV.\n\n\n  Scenario: [Normal] User selects SUV and fields update correctly\n    Given the user is on the EasyRent car selection page\n    When the user clicks the \"Choose SUV\" button with data-testid \"choose-suv-button\"\n    Then the \"Car Type\" field with data-testid \"car-type\" should display \"SUV\"\n    And the \"Total Price\" field with data-testid \"total-price\" should be empty\n",
+      "requirement_ids": [
+        "e2edev_bench_48-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_48/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_48-R-2-TC-2",
+      "title": "[Edge] User selects SUV after selecting another car",
+      "description": "Feature: Update Car Type and Clear Total Price on SUV Selection\n  The system should update the 'Car Type' field to 'SUV' and clear the 'Total Price' field when the user selects the SUV.\n\n\n  Scenario: [Edge] User selects SUV after selecting another car\n    Given the user is on the EasyRent car selection page\n    And the user clicks the \"Choose Sedan\" button with data-testid \"choose-sedan-button\"\n    And the \"Car Type\" field with data-testid \"car-type\" displays \"Sedan\"\n    When the user clicks the \"Choose SUV\" button with data-testid \"choose-suv-button\"\n    Then the \"Car Type\" field with data-testid \"car-type\" should display \"SUV\"\n    And the \"Total Price\" field with data-testid \"total-price\" should be empty\n",
+      "requirement_ids": [
+        "e2edev_bench_48-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_48/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_48-R-2-TC-3",
+      "title": "[Error] User clicks 'Choose SUV' without any prior selection",
+      "description": "Feature: Update Car Type and Clear Total Price on SUV Selection\n  The system should update the 'Car Type' field to 'SUV' and clear the 'Total Price' field when the user selects the SUV.\n\n\n  Scenario: [Error] User clicks 'Choose SUV' without any prior selection\n    Given the user is on the EasyRent car selection page\n    When the user clicks the \"Choose SUV\" button with data-testid \"choose-suv-button\"\n    Then the \"Car Type\" field with data-testid \"car-type\" should display \"SUV\"\n    And the \"Total Price\" field with data-testid \"total-price\" should be empty",
+      "requirement_ids": [
+        "e2edev_bench_48-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_48/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_48-R-3-TC-1",
+      "title": "[Normal] User selects Convertible car",
+      "description": "Feature: Update Car Type and Clear Total Price on Convertible Selection\n  The system should update the 'Car Type' field to 'Convertible' and clear the 'Total Price' field when the user selects the Convertible car.\n\n\n  Scenario: [Normal] User selects Convertible car\n    Given the EasyRent car rental page is loaded\n    When the user clicks the 'Choose Convertible' button with data-testid 'choose-convertible-button'\n    Then the 'Car Type' field with data-testid 'car-type' should display 'Convertible'\n    And the 'Total Price' field with data-testid 'total-price' should be empty\n",
+      "requirement_ids": [
+        "e2edev_bench_48-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_48/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_48-R-3-TC-2",
+      "title": "[Edge] User selects Convertible car after selecting another car",
+      "description": "Feature: Update Car Type and Clear Total Price on Convertible Selection\n  The system should update the 'Car Type' field to 'Convertible' and clear the 'Total Price' field when the user selects the Convertible car.\n\n\n  Scenario: [Edge] User selects Convertible car after selecting another car\n    Given the EasyRent car rental page is loaded\n    And the user clicks the 'Choose Sedan' button with data-testid 'choose-sedan-button'\n    When the user clicks the 'Choose Convertible' button with data-testid 'choose-convertible-button'\n    Then the 'Car Type' field with data-testid 'car-type' should display 'Convertible'\n    And the 'Total Price' field with data-testid 'total-price' should be empty\n",
+      "requirement_ids": [
+        "e2edev_bench_48-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_48/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_48-R-3-TC-3",
+      "title": "[Error] User clicks 'Choose Convertible' without selecting any car first",
+      "description": "Feature: Update Car Type and Clear Total Price on Convertible Selection\n  The system should update the 'Car Type' field to 'Convertible' and clear the 'Total Price' field when the user selects the Convertible car.\n\n\n  Scenario: [Error] User clicks 'Choose Convertible' without selecting any car first\n    Given the EasyRent car rental page is loaded\n    When the user clicks the 'Choose Convertible' button with data-testid 'choose-convertible-button'\n    Then the 'Car Type' field with data-testid 'car-type' should display 'Convertible'\n    And the 'Total Price' field with data-testid 'total-price' should be empty",
+      "requirement_ids": [
+        "e2edev_bench_48-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_48/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_48-R-4-TC-1",
+      "title": "[Normal] Calculate total price for a selected car",
+      "description": "Feature: Calculate Total Rental Price\n  The system should calculate the total price based on the selected car's price per day and update the 'Total Price' field when the user enters a number in the 'Number of Days' field and clicks the 'Calculate Total' button.\n\n\n  Scenario: [Normal] Calculate total price for a selected car\n    Given the user is on the EasyRent car rental page\n    And the user selects \"Sedan\" by clicking the button with data-testid \"choose-sedan-button\"\n    And the user enters \"3\" into the 'Number of Days' field with data-testid \"rental-days\"\n    When the user clicks the 'Calculate Total' button with data-testid \"calculate-total-button\"\n    Then the 'Total Price' field with data-testid \"total-price\" should display \"$150\"\n",
+      "requirement_ids": [
+        "e2edev_bench_48-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_48/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_48-R-4-TC-2",
+      "title": "[Edge] Calculate total price for zero days",
+      "description": "Feature: Calculate Total Rental Price\n  The system should calculate the total price based on the selected car's price per day and update the 'Total Price' field when the user enters a number in the 'Number of Days' field and clicks the 'Calculate Total' button.\n\n\n  Scenario: [Edge] Calculate total price for zero days\n    Given the user is on the EasyRent car rental page\n    And the user selects \"SUV\" by clicking the button with data-testid \"choose-suv-button\"\n    And the user enters \"0\" into the 'Number of Days' field with data-testid \"rental-days\"\n    When the user clicks the 'Calculate Total' button with data-testid \"calculate-total-button\"\n    Then an alert should be displayed with the message \"Please select a car and enter the number of days.\"\n",
+      "requirement_ids": [
+        "e2edev_bench_48-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_48/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_48-R-4-TC-3",
+      "title": "[Edge] Calculate total price for maximum integer days",
+      "description": "Feature: Calculate Total Rental Price\n  The system should calculate the total price based on the selected car's price per day and update the 'Total Price' field when the user enters a number in the 'Number of Days' field and clicks the 'Calculate Total' button.\n\n\n  Scenario: [Edge] Calculate total price for maximum integer days\n    Given the user is on the EasyRent car rental page\n    And the user selects \"Convertible\" by clicking the button with data-testid \"choose-convertible-button\"\n    And the user enters \"2147483647\" into the 'Number of Days' field with data-testid \"rental-days\"\n    When the user clicks the 'Calculate Total' button with data-testid \"calculate-total-button\"\n    Then the 'Total Price' field with data-testid \"total-price\" should display \"$214748364700\"\n",
+      "requirement_ids": [
+        "e2edev_bench_48-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_48/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_48-R-4-TC-4",
+      "title": "[Error] Calculate total price without selecting a car",
+      "description": "Feature: Calculate Total Rental Price\n  The system should calculate the total price based on the selected car's price per day and update the 'Total Price' field when the user enters a number in the 'Number of Days' field and clicks the 'Calculate Total' button.\n\n\n  Scenario: [Error] Calculate total price without selecting a car\n    Given the user is on the EasyRent car rental page\n    And the user enters \"5\" into the 'Number of Days' field with data-testid \"rental-days\"\n    When the user clicks the 'Calculate Total' button with data-testid \"calculate-total-button\"\n    Then an alert should be displayed with the message \"Please select a car and enter the number of days.\"\n",
+      "requirement_ids": [
+        "e2edev_bench_48-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_48/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_48-R-6-TC-1",
+      "title": "[Normal] Successful form submission with car selected and total price calculated",
+      "description": "Feature: Booking Form Submission Validation\n  The system should prevent form submission if no car is selected or if the total price is not calculated, and alert the user to select a car and calculate the total price.\n\n\n  Scenario: [Normal] Successful form submission with car selected and total price calculated\n    Given the user is on the \"Car Rental Site\" page\n    And the user clicks the \"Choose Sedan\" button with data-testid \"choose-sedan-button\"\n    And the user enters \"3\" into the number of days field with data-testid \"rental-days\"\n    And the user clicks the \"Calculate Total\" button with data-testid \"calculate-total-button\"\n    When the user clicks the \"Book Now\" button with data-testid \"book-now-button\"\n    Then an alert should display with the message \"Your Sedan rental has been booked!\"\n",
+      "requirement_ids": [
+        "e2edev_bench_48-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_48/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_48-R-6-TC-2",
+      "title": "[Edge] Attempt to submit form without selecting a car",
+      "description": "Feature: Booking Form Submission Validation\n  The system should prevent form submission if no car is selected or if the total price is not calculated, and alert the user to select a car and calculate the total price.\n\n\n  Scenario: [Edge] Attempt to submit form without selecting a car\n    Given the user is on the \"Car Rental Site\" page\n    And the user enters \"2\" into the number of days field with data-testid \"rental-days\"\n    When the user clicks the \"Book Now\" button with data-testid \"book-now-button\"\n    Then an alert should display with the message \"Please select a car and calculate the total price before booking.\"\n",
+      "requirement_ids": [
+        "e2edev_bench_48-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_48/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_48-R-6-TC-3",
+      "title": "[Edge] Attempt to submit form without calculating total price",
+      "description": "Feature: Booking Form Submission Validation\n  The system should prevent form submission if no car is selected or if the total price is not calculated, and alert the user to select a car and calculate the total price.\n\n\n  Scenario: [Edge] Attempt to submit form without calculating total price\n    Given the user is on the \"Car Rental Site\" page\n    And the user clicks the \"Choose SUV\" button with data-testid \"choose-suv-button\"\n    And the user enters \"5\" into the number of days field with data-testid \"rental-days\"\n    When the user clicks the \"Book Now\" button with data-testid \"book-now-button\"\n    Then an alert should display with the message \"Please select a car and calculate the total price before booking.\"\n",
+      "requirement_ids": [
+        "e2edev_bench_48-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_48/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_48-R-6-TC-4",
+      "title": "[Error] Attempt to submit form with no car selected and no total price calculated",
+      "description": "Feature: Booking Form Submission Validation\n  The system should prevent form submission if no car is selected or if the total price is not calculated, and alert the user to select a car and calculate the total price.\n\n\n  Scenario: [Error] Attempt to submit form with no car selected and no total price calculated\n    Given the user is on the \"Car Rental Site\" page\n    When the user clicks the \"Book Now\" button with data-testid \"book-now-button\"\n    Then an alert should display with the message \"Please select a car and calculate the total price before booking.\"",
+      "requirement_ids": [
+        "e2edev_bench_48-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_48/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_48-R-7-TC-1",
+      "title": "[Normal] User successfully books a car rental",
+      "description": "Feature: Booking Confirmation Alert\n  The system should alert the user with a confirmation message when the booking form is submitted with all conditions met.\n\n\n  Scenario: [Normal] User successfully books a car rental\n    Given the user is on the \"Car Rental Site\" page\n    And the user selects \"SUV\" by clicking the button with data-testid \"choose-suv-button\"\n    And the user enters \"3\" into the number of days field with data-testid \"rental-days\"\n    And the user clicks the button with data-testid \"calculate-total-button\"\n    When the user clicks the \"Book Now\" button with data-testid \"book-now-button\"\n    Then the system should alert \"Your SUV rental has been booked!\"\n",
+      "requirement_ids": [
+        "e2edev_bench_48-R-7"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_48/requirment_with_tests.json#/finegrained_rewith_test/7/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_48-R-7-TC-2",
+      "title": "[Edge] User books a car rental for the minimum number of days",
+      "description": "Feature: Booking Confirmation Alert\n  The system should alert the user with a confirmation message when the booking form is submitted with all conditions met.\n\n\n  Scenario: [Edge] User books a car rental for the minimum number of days\n    Given the user is on the \"Car Rental Site\" page\n    And the user selects \"Sedan\" by clicking the button with data-testid \"choose-sedan-button\"\n    And the user enters \"1\" into the number of days field with data-testid \"rental-days\"\n    And the user clicks the button with data-testid \"calculate-total-button\"\n    When the user clicks the \"Book Now\" button with data-testid \"book-now-button\"\n    Then the system should alert \"Your Sedan rental has been booked!\"\n",
+      "requirement_ids": [
+        "e2edev_bench_48-R-7"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_48/requirment_with_tests.json#/finegrained_rewith_test/7/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": null,
+  "generation": {
+    "selected_techniques": [
+      "equivalence_partitioning",
+      "boundary_value_analysis",
+      "state_transition",
+      "decision_table",
+      "use_case",
+      "error_guessing"
+    ],
+    "technique_rationales": {
+      "equivalence_partitioning": "Valid and invalid partitions for car selection, rental days (e.g. minimum 1), and calculation status are defined across the requirements.",
+      "boundary_value_analysis": "Requirements specify a minimum limit of 1 day for rental days and mention edge cases such as maximum integer values for days.",
+      "state_transition": "The system transitions between different car choices, resetting total prices, calculating totals, and moving to booking states.",
+      "decision_table": "Form submission and calculation behaviors depend on combinations of conditions like car selected, total price calculated, and rental days validity.",
+      "use_case": "The requirements describe an end-to-end car rental user flow from selecting a model, entering days, calculating total, to final booking.",
+      "error_guessing": "Plausible failure scenarios such as submitting without selecting a car, zero or missing days, and submitting without calculating total price must be tested."
+    },
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "embedding_requests": 1
+  },
+  "links": {
+    "requirements": {
+      "e2edev_bench_48-R-1": "e2edev_bench_48-R-1/requirement.md",
+      "e2edev_bench_48-R-2": "e2edev_bench_48-R-2/requirement.md",
+      "e2edev_bench_48-R-3": "e2edev_bench_48-R-3/requirement.md",
+      "e2edev_bench_48-R-4": "e2edev_bench_48-R-4/requirement.md",
+      "e2edev_bench_48-R-6": "e2edev_bench_48-R-6/requirement.md",
+      "e2edev_bench_48-R-7": "e2edev_bench_48-R-7/requirement.md"
+    },
+    "cases": {
+      "G-012": {
+        "e2edev_bench_48-R-1": "e2edev_bench_48-R-1/test cases/12_Transition_from_Initial_State_to_Car_Selected_St.md",
+        "e2edev_bench_48-R-2": "e2edev_bench_48-R-2/test cases/12_Transition_from_Initial_State_to_Car_Selected_St.md",
+        "e2edev_bench_48-R-3": "e2edev_bench_48-R-3/test cases/12_Transition_from_Initial_State_to_Car_Selected_St.md",
+        "e2edev_bench_48-R-7": "e2edev_bench_48-R-7/test cases/12_Transition_from_Initial_State_to_Car_Selected_St.md"
+      },
+      "G-016": {
+        "e2edev_bench_48-R-1": "e2edev_bench_48-R-1/test cases/16_State_Transition_on_Switching_Car_Types.md",
+        "e2edev_bench_48-R-2": "e2edev_bench_48-R-2/test cases/16_State_Transition_on_Switching_Car_Types.md",
+        "e2edev_bench_48-R-3": "e2edev_bench_48-R-3/test cases/16_State_Transition_on_Switching_Car_Types.md"
+      },
+      "G-017": {
+        "e2edev_bench_48-R-1": "e2edev_bench_48-R-1/test cases/17_Select_Sedan_and_Calculate_Total_with_Valid_Days.md",
+        "e2edev_bench_48-R-4": "e2edev_bench_48-R-4/test cases/17_Select_Sedan_and_Calculate_Total_with_Valid_Days.md",
+        "e2edev_bench_48-R-7": "e2edev_bench_48-R-7/test cases/17_Select_Sedan_and_Calculate_Total_with_Valid_Days.md"
+      },
+      "G-001": {
+        "e2edev_bench_48-R-1": "e2edev_bench_48-R-1/test cases/1_Select_Sedan_Car_Type.md",
+        "e2edev_bench_48-R-7": "e2edev_bench_48-R-7/test cases/1_Select_Sedan_Car_Type.md"
+      },
+      "G-023": {
+        "e2edev_bench_48-R-1": "e2edev_bench_48-R-1/test cases/23_Select_Sedan_and_Clear_Total_Price.md"
+      },
+      "G-031": {
+        "e2edev_bench_48-R-1": "e2edev_bench_48-R-1/test cases/31_Switch_Car_Selection_and_Verify_Price_Clearing.md",
+        "e2edev_bench_48-R-2": "e2edev_bench_48-R-2/test cases/31_Switch_Car_Selection_and_Verify_Price_Clearing.md",
+        "e2edev_bench_48-R-3": "e2edev_bench_48-R-3/test cases/31_Switch_Car_Selection_and_Verify_Price_Clearing.md"
+      },
+      "G-018": {
+        "e2edev_bench_48-R-2": "e2edev_bench_48-R-2/test cases/18_Select_SUV_and_Calculate_Total_with_Valid_Days.md",
+        "e2edev_bench_48-R-4": "e2edev_bench_48-R-4/test cases/18_Select_SUV_and_Calculate_Total_with_Valid_Days.md",
+        "e2edev_bench_48-R-7": "e2edev_bench_48-R-7/test cases/18_Select_SUV_and_Calculate_Total_with_Valid_Days.md"
+      },
+      "G-024": {
+        "e2edev_bench_48-R-2": "e2edev_bench_48-R-2/test cases/24_Select_SUV_and_Clear_Total_Price.md"
+      },
+      "G-002": {
+        "e2edev_bench_48-R-2": "e2edev_bench_48-R-2/test cases/2_Select_SUV_Car_Type.md",
+        "e2edev_bench_48-R-7": "e2edev_bench_48-R-7/test cases/2_Select_SUV_Car_Type.md"
+      },
+      "G-019": {
+        "e2edev_bench_48-R-3": "e2edev_bench_48-R-3/test cases/19_Select_Convertible_and_Calculate_Total_with_Vali.md",
+        "e2edev_bench_48-R-4": "e2edev_bench_48-R-4/test cases/19_Select_Convertible_and_Calculate_Total_with_Vali.md",
+        "e2edev_bench_48-R-7": "e2edev_bench_48-R-7/test cases/19_Select_Convertible_and_Calculate_Total_with_Vali.md"
+      },
+      "G-025": {
+        "e2edev_bench_48-R-3": "e2edev_bench_48-R-3/test cases/25_Select_Convertible_and_Clear_Total_Price.md"
+      },
+      "G-003": {
+        "e2edev_bench_48-R-3": "e2edev_bench_48-R-3/test cases/3_Select_Convertible_Car_Type.md",
+        "e2edev_bench_48-R-7": "e2edev_bench_48-R-7/test cases/3_Select_Convertible_Car_Type.md"
+      },
+      "G-010": {
+        "e2edev_bench_48-R-4": "e2edev_bench_48-R-4/test cases/10_Calculate_total_price_with_negative_rental_days.md",
+        "e2edev_bench_48-R-7": "e2edev_bench_48-R-7/test cases/10_Calculate_total_price_with_negative_rental_days.md"
+      },
+      "G-011": {
+        "e2edev_bench_48-R-4": "e2edev_bench_48-R-4/test cases/11_Calculate_total_price_with_maximum_integer_renta.md"
+      },
+      "G-013": {
+        "e2edev_bench_48-R-4": "e2edev_bench_48-R-4/test cases/13_Transition_from_Car_Selected_State_to_Price_Calc.md",
+        "e2edev_bench_48-R-7": "e2edev_bench_48-R-7/test cases/13_Transition_from_Car_Selected_State_to_Price_Calc.md"
+      },
+      "G-020": {
+        "e2edev_bench_48-R-4": "e2edev_bench_48-R-4/test cases/20_Calculate_Total_with_No_Car_Selected_and_Invalid.md",
+        "e2edev_bench_48-R-7": "e2edev_bench_48-R-7/test cases/20_Calculate_Total_with_No_Car_Selected_and_Invalid.md"
+      },
+      "G-026": {
+        "e2edev_bench_48-R-4": "e2edev_bench_48-R-4/test cases/26_Calculate_Total_Rental_Price_Successfully_and_Ha.md"
+      },
+      "G-028": {
+        "e2edev_bench_48-R-4": "e2edev_bench_48-R-4/test cases/28_Calculate_Total_with_Invalid_Rental_Days_Zero.md",
+        "e2edev_bench_48-R-7": "e2edev_bench_48-R-7/test cases/28_Calculate_Total_with_Invalid_Rental_Days_Zero.md"
+      },
+      "G-029": {
+        "e2edev_bench_48-R-4": "e2edev_bench_48-R-4/test cases/29_Calculate_Total_without_Car_Selection.md",
+        "e2edev_bench_48-R-7": "e2edev_bench_48-R-7/test cases/29_Calculate_Total_without_Car_Selection.md"
+      },
+      "G-004": {
+        "e2edev_bench_48-R-4": "e2edev_bench_48-R-4/test cases/4_Calculate_Total_Price_with_Valid_Rental_Days.md",
+        "e2edev_bench_48-R-7": "e2edev_bench_48-R-7/test cases/4_Calculate_Total_Price_with_Valid_Rental_Days.md"
+      },
+      "G-005": {
+        "e2edev_bench_48-R-4": "e2edev_bench_48-R-4/test cases/5_Calculate_Total_Price_with_Invalid_Rental_Days.md",
+        "e2edev_bench_48-R-7": "e2edev_bench_48-R-7/test cases/5_Calculate_Total_Price_with_Invalid_Rental_Days.md"
+      },
+      "G-008": {
+        "e2edev_bench_48-R-4": "e2edev_bench_48-R-4/test cases/8_Calculate_total_price_with_minimum_valid_rental.md",
+        "e2edev_bench_48-R-7": "e2edev_bench_48-R-7/test cases/8_Calculate_total_price_with_minimum_valid_rental.md"
+      },
+      "G-009": {
+        "e2edev_bench_48-R-4": "e2edev_bench_48-R-4/test cases/9_Calculate_total_price_with_rental_days_immediate.md",
+        "e2edev_bench_48-R-7": "e2edev_bench_48-R-7/test cases/9_Calculate_total_price_with_rental_days_immediate.md"
+      },
+      "G-014": {
+        "e2edev_bench_48-R-6": "e2edev_bench_48-R-6/test cases/14_Successful_Booking_Transition_from_Price_Calcula.md",
+        "e2edev_bench_48-R-7": "e2edev_bench_48-R-7/test cases/14_Successful_Booking_Transition_from_Price_Calcula.md"
+      },
+      "G-015": {
+        "e2edev_bench_48-R-6": "e2edev_bench_48-R-6/test cases/15_Forbidden_Transition_Booking_without_Car_Selecti.md",
+        "e2edev_bench_48-R-7": "e2edev_bench_48-R-7/test cases/15_Forbidden_Transition_Booking_without_Car_Selecti.md"
+      },
+      "G-021": {
+        "e2edev_bench_48-R-6": "e2edev_bench_48-R-6/test cases/21_Attempt_Booking_with_Car_Selected_but_Total_Pric.md",
+        "e2edev_bench_48-R-7": "e2edev_bench_48-R-7/test cases/21_Attempt_Booking_with_Car_Selected_but_Total_Pric.md"
+      },
+      "G-022": {
+        "e2edev_bench_48-R-6": "e2edev_bench_48-R-6/test cases/22_Successful_Booking_with_Car_Selected_and_Total_C.md",
+        "e2edev_bench_48-R-7": "e2edev_bench_48-R-7/test cases/22_Successful_Booking_with_Car_Selected_and_Total_C.md"
+      },
+      "G-027": {
+        "e2edev_bench_48-R-6": "e2edev_bench_48-R-6/test cases/27_Booking_Form_Submission_Validation_and_Success.md",
+        "e2edev_bench_48-R-7": "e2edev_bench_48-R-7/test cases/27_Booking_Form_Submission_Validation_and_Success.md"
+      },
+      "G-030": {
+        "e2edev_bench_48-R-6": "e2edev_bench_48-R-6/test cases/30_Book_Form_Submission_Without_Calculating_Total_P.md",
+        "e2edev_bench_48-R-7": "e2edev_bench_48-R-7/test cases/30_Book_Form_Submission_Without_Calculating_Total_P.md"
+      },
+      "G-006": {
+        "e2edev_bench_48-R-6": "e2edev_bench_48-R-6/test cases/6_Successful_Form_Booking_Submission.md",
+        "e2edev_bench_48-R-7": "e2edev_bench_48-R-7/test cases/6_Successful_Form_Booking_Submission.md"
+      },
+      "G-007": {
+        "e2edev_bench_48-R-6": "e2edev_bench_48-R-6/test cases/7_Unsuccessful_Form_Booking_Submission_-_Missing_C.md",
+        "e2edev_bench_48-R-7": "e2edev_bench_48-R-7/test cases/7_Unsuccessful_Form_Booking_Submission_-_Missing_C.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

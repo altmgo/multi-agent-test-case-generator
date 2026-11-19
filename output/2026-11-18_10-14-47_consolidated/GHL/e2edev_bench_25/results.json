@@ -1,0 +1,577 @@
+{
+  "schema_version": 1,
+  "solution": "GHL",
+  "unit_id": "e2edev_bench_25",
+  "parent_id": null,
+  "status": "failed",
+  "failure": {
+    "stage": "evaluation",
+    "error_type": "EmbeddingError"
+  },
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "e2edev_bench_25-R-1",
+      "text": "When the user double-clicks on the image area (div with data-testid 'image-container' and class 'loveMe'), the system should display a heart icon at the exact click location within the image area. The heart icon should be an <i> element with classes 'fas' and 'fa-heart'. The heart icon should be positioned using the click's relative coordinates within the image area, calculated based on the user's click event and the image area's offset. The heart icon should automatically disappear after 1 second. Additionally, the like count displayed in the <span> element with data-testid 'times' should increment by 1 for each successful double-click. The system should handle edge cases such as double-clicks near the boundaries of the image area and rapid consecutive double-clicks, ensuring accurate positioning and proper like count updates. Single clicks or double-clicks outside the image area should not trigger the heart icon display or affect the like count.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_25/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_25-R-3",
+      "text": "When a user double-clicks on the image container (identified by the attribute data-testid='image-container'), a heart icon (an <i> element with classes 'fas' and 'fa-heart') should be dynamically created at the exact location of the double-click within the container. The heart icon should visually appear inside the container and be removed from the DOM exactly 1 second after its creation. If multiple double-clicks occur in rapid succession, multiple heart icons should be created, each at the respective double-click location, and each should be removed from the DOM exactly 1 second after its creation. The double-click detection should account for a maximum interval of 800 milliseconds between two consecutive clicks to qualify as a double-click. This functionality should not interfere with the incrementing of the like count displayed in the element with data-testid='times'.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_25/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_25-R-5",
+      "text": "The application must display an instruction text element with the attribute data-testid='instruction-text' that informs the user to double-click on the image to like it. The text must include the phrase 'Double click on the image' and visually display a heart icon using the Font Awesome 'fas fa-heart' classes for emphasis. This instruction text must be visible immediately upon page load and should not change dynamically during user interactions.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_25/requirment_with_tests.json#/finegrained_rewith_test/5/requirement/description"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Valid double-click inside image area",
+      "description": "Double-click inside the image area (div with data-testid 'image-container' and class 'loveMe') to display a heart icon at the exact click location, increment the like count, and remove the icon after 1 second.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1",
+        "e2edev_bench_25-R-3"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Invalid click action (single click) inside image area",
+      "description": "Perform a single click inside the image area to verify that it does not trigger the heart icon display or affect the like count.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Invalid click action (double-click) outside image area",
+      "description": "Perform a double-click outside the image area to verify that it does not trigger the heart icon display or affect the like count.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Edge case double-click near image area boundaries",
+      "description": "Double-click near the outer boundaries of the image area to ensure accurate positioning of the heart icon and correct like count update.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Rapid consecutive double-clicks within maximum interval",
+      "description": "Perform multiple double-clicks in rapid succession with clicks within 800 milliseconds of each other to verify multiple heart icon creations and independent 1-second removal.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1",
+        "e2edev_bench_25-R-3"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Instruction text visibility and content verification",
+      "description": "Verify that the instruction text element with data-testid='instruction-text' is visible immediately upon page load, contains the phrase 'Double click on the image', and displays the heart icon using 'fas fa-heart'.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-5"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Double-click at the exact top-left inner boundary of the image container",
+      "description": "Test double-clicking at coordinates (0, 0) inside the image container to verify heart icon creation and like count increment.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1",
+        "e2edev_bench_25-R-3"
+      ]
+    },
+    {
+      "id": "G-008",
+      "title": "Double-click just outside the top-left boundary of the image container",
+      "description": "Test double-clicking at coordinates (-1, -1) outside the image container to ensure no heart icon is displayed and like count remains unchanged.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1"
+      ]
+    },
+    {
+      "id": "G-009",
+      "title": "Double-click at the exact bottom-right inner boundary of the image container",
+      "description": "Test double-clicking at the maximum width and height coordinates inside the image container to verify correct positioning and like count increment.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1",
+        "e2edev_bench_25-R-3"
+      ]
+    },
+    {
+      "id": "G-010",
+      "title": "Double-click just outside the bottom-right boundary of the image container",
+      "description": "Test double-clicking at coordinates beyond the maximum width and height of the image container to ensure no action is triggered.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1"
+      ]
+    },
+    {
+      "id": "G-011",
+      "title": "Rapid consecutive clicks exactly at the 800ms double-click time limit",
+      "description": "Test two consecutive clicks with an interval of exactly 800 milliseconds to verify it qualifies as a valid double-click.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-3"
+      ]
+    },
+    {
+      "id": "G-012",
+      "title": "Rapid consecutive clicks just beyond the 800ms double-click time limit",
+      "description": "Test two consecutive clicks with an interval of 801 milliseconds to verify it does not qualify as a double-click.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-3"
+      ]
+    },
+    {
+      "id": "G-013",
+      "title": "Heart icon removal exactly at the 1-second timeout limit",
+      "description": "Verify that the dynamically created heart icon is removed from the DOM exactly 1000 milliseconds after creation.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1",
+        "e2edev_bench_25-R-3"
+      ]
+    },
+    {
+      "id": "G-014",
+      "title": "Normal State Transition - Successful Double-Click on Image Area",
+      "description": "Verify that double-clicking inside the image container creates a heart icon, increments the like count, and removes the heart icon after 1 second.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1",
+        "e2edev_bench_25-R-3"
+      ]
+    },
+    {
+      "id": "G-015",
+      "title": "State Transition - Rapid Consecutive Double-Clicks",
+      "description": "Verify that rapid consecutive double-clicks create multiple heart icons at respective click locations, each independently removed after 1 second, and increment the like count accordingly.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1",
+        "e2edev_bench_25-R-3"
+      ]
+    },
+    {
+      "id": "G-016",
+      "title": "Forbidden Transition - Single Click or Outside Double-Click",
+      "description": "Verify that single clicks or double-clicks outside the image area do not trigger heart icon creation or affect the like count.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1"
+      ]
+    },
+    {
+      "id": "G-017",
+      "title": "Valid double-click inside image area",
+      "description": "User performs a valid double-click within the image container area (data-testid 'image-container'). A heart icon is displayed at the relative click coordinates, disappears after 1 second, and the like count in data-testid 'times' increments by 1.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1",
+        "e2edev_bench_25-R-3"
+      ]
+    },
+    {
+      "id": "G-018",
+      "title": "Double-click outside image area",
+      "description": "User performs a double-click outside the image area. No heart icon is displayed and the like count does not change.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1"
+      ]
+    },
+    {
+      "id": "G-019",
+      "title": "Single click inside image area",
+      "description": "User performs a single click instead of a double-click inside the image area. The heart icon is not triggered and the like count remains unaffected.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1"
+      ]
+    },
+    {
+      "id": "G-020",
+      "title": "Rapid consecutive double-clicks inside image area",
+      "description": "User performs multiple rapid consecutive double-clicks within the image area. Multiple heart icons are created at each click location, each disappears after 1 second, and the like count increments for each successful double-click.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1",
+        "e2edev_bench_25-R-3"
+      ]
+    },
+    {
+      "id": "G-021",
+      "title": "Instruction text display on page load",
+      "description": "Verify that the instruction text element with data-testid 'instruction-text' is visible immediately upon page load, contains the phrase 'Double click on the image', and displays a heart icon.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-5"
+      ]
+    },
+    {
+      "id": "G-022",
+      "title": "Double-click inside image area with valid timing",
+      "description": "Verify that a valid double-click inside the image area ('image-container', 'loveMe') creates a heart icon at the exact click location, increments the like count in 'times', and removes the heart icon after 1 second.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1",
+        "e2edev_bench_25-R-3"
+      ]
+    },
+    {
+      "id": "G-023",
+      "title": "Single click or click outside image area",
+      "description": "Verify that single clicks or double-clicks outside the 'image-container' do not display the heart icon or affect the like count.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1"
+      ]
+    },
+    {
+      "id": "G-024",
+      "title": "Rapid consecutive double-clicks within threshold",
+      "description": "Verify that multiple rapid double-clicks within the 800ms interval create multiple independent heart icons at respective locations, each disappearing after 1 second, and correctly increment the like count.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1",
+        "e2edev_bench_25-R-3"
+      ]
+    },
+    {
+      "id": "G-025",
+      "title": "Double-click near boundaries of the image area",
+      "description": "Verify accurate positioning and like count updates when double-clicking near the extreme boundaries of the image area.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1"
+      ]
+    },
+    {
+      "id": "G-026",
+      "title": "Initial page load instruction text validation",
+      "description": "Verify that the instruction text element with data-testid='instruction-text' is visible immediately upon page load containing the required phrase and heart icon without dynamic changes during interaction.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-5"
+      ]
+    },
+    {
+      "id": "G-027",
+      "title": "Successful Double-Click on Image Area to Display Heart and Increment Likes",
+      "description": "Verify that upon page load the instruction text is visible with data-testid='instruction-text', and when a user double-clicks inside the image container (data-testid='image-container' and class 'loveMe'), a heart icon (<i> with classes 'fas fa-heart') is dynamically displayed at the exact relative click coordinates. Verify that the like count in data-testid='times' increments by 1 and the heart icon automatically disappears after 1 second.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1",
+        "e2edev_bench_25-R-3",
+        "e2edev_bench_25-R-5"
+      ]
+    },
+    {
+      "id": "G-028",
+      "title": "Rapid Consecutive Double-Clicks and Boundary Handling",
+      "description": "Verify that when multiple double-clicks occur in rapid succession within the maximum interval of 800 milliseconds, multiple heart icons are correctly created at their respective click locations (including near the boundaries of the image area) and each is removed from the DOM after exactly 1 second, while the like count updates correctly for each successful double-click.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1",
+        "e2edev_bench_25-R-3"
+      ]
+    },
+    {
+      "id": "G-029",
+      "title": "Invalid Clicks Outside Image Area or Single Clicks",
+      "description": "Verify that single clicks or double-clicks performed outside the image container (data-testid='image-container') do not trigger the display of the heart icon and do not affect or increment the like count displayed in the element with data-testid='times'.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1"
+      ]
+    },
+    {
+      "id": "G-030",
+      "title": "Double-click near image boundaries",
+      "description": "Perform a double-click extremely close to the outer boundaries of the image area to test if coordinate calculation errors cause the heart icon to overflow or misposition.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1"
+      ]
+    },
+    {
+      "id": "G-031",
+      "title": "Rapid consecutive double-clicks overload",
+      "description": "Trigger multiple rapid consecutive double-clicks within the image container to test if DOM removal timers overlap incorrectly or cause incorrect like counts.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1",
+        "e2edev_bench_25-R-3"
+      ]
+    },
+    {
+      "id": "G-032",
+      "title": "Click timing interval boundary test",
+      "description": "Perform two clicks with an interval just above and just below the 800 milliseconds threshold to verify correct double-click detection versus single-click isolation.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-3"
+      ]
+    },
+    {
+      "id": "G-033",
+      "title": "Clicks outside image container",
+      "description": "Execute single clicks and double-clicks immediately outside the bounds of the image container to ensure no heart icons are generated and the like count remains unaffected.",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_25-R-1-TC-1",
+      "title": "[Normal] Display heart icon on double-click",
+      "description": "Feature: Double-click Heart Icon Display\n  The system should display a heart icon at the click location within the image area when the user double-clicks on the image area.\n\n\nScenario: [Normal] Display heart icon on double-click\n    Given the webpage is loaded\n    And the image area with data-testid \"image-container\" is visible\n    When the user double-clicks on the image area with data-testid \"image-container\"\n    Then a heart icon with class \"fas fa-heart\" should appear at the click location within the image area",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_25/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_25-R-1-TC-2",
+      "title": "[Edge] Double-click near the edge of the image area",
+      "description": "Feature: Double-click Heart Icon Display\n  The system should display a heart icon at the click location within the image area when the user double-clicks on the image area.\n\n\nScenario: [Edge] Double-click near the edge of the image area\n    Given the webpage is loaded\n    And the image area with data-testid \"image-container\" is visible\n    When the user double-clicks near the edge of the image area with data-testid \"image-container\"\n    Then a heart icon with class \"fas fa-heart\" should appear at the click location near the edge within the image area",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_25/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_25-R-1-TC-3",
+      "title": "[Edge] Rapid consecutive double-clicks",
+      "description": "Feature: Double-click Heart Icon Display\n  The system should display a heart icon at the click location within the image area when the user double-clicks on the image area.\n\n\n  Scenario: [Edge] Rapid consecutive double-clicks\n    Given the webpage is loaded\n    And the image area with data-testid \"image-container\" is visible\n    When the user performs rapid consecutive double-clicks on the image area with data-testid \"image-container\"\n    Then multiple heart icons with class \"fas fa-heart\" should appear at each click location within the image area\n    And the like count with data-testid \"times\" should increment accordingly\n",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_25/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_25-R-1-TC-4",
+      "title": "[Error] Single click on the image area",
+      "description": "Feature: Double-click Heart Icon Display\n  The system should display a heart icon at the click location within the image area when the user double-clicks on the image area.\n\n\n  Scenario: [Error] Single click on the image area\n    Given the webpage is loaded\n    And the image area with data-testid \"image-container\" is visible\n    When the user single-clicks on the image area with data-testid \"image-container\"\n    Then no heart icon should appear within the image area\n    And the like count with data-testid \"times\" should remain unchanged\n",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_25/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_25-R-1-TC-5",
+      "title": "[Error] Double-click outside the image area",
+      "description": "Feature: Double-click Heart Icon Display\n  The system should display a heart icon at the click location within the image area when the user double-clicks on the image area.\n\n\n  Scenario: [Error] Double-click outside the image area\n    Given the webpage is loaded\n    And the image area with data-testid \"image-container\" is visible\n    When the user double-clicks outside the image area\n    Then no heart icon should appear within the image area\n    And the like count with data-testid \"times\" should remain unchanged",
+      "requirement_ids": [
+        "e2edev_bench_25-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_25/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/4/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_25-R-3-TC-1",
+      "title": "[Normal] Heart icon is removed after 1 second of double-click",
+      "description": "Feature: Heart icon removal after double-click\n  The heart icon created upon a double-click on the image area should be removed automatically after 1 second.\n\n\n  Scenario: [Normal] Heart icon is removed after 1 second of double-click\n    Given the webpage is loaded\n      And the image container with data-testid \"image-container\" is visible\n    When the user double-clicks on the image container\n    Then a heart icon with class \"fa-heart\" should appear inside the image container\n      And the heart icon should be removed from the image container after 1 second\n",
+      "requirement_ids": [
+        "e2edev_bench_25-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_25/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_25-R-3-TC-2",
+      "title": "[Edge] Multiple heart icons are removed after 1 second when double-clicked rapidly",
+      "description": "Feature: Heart icon removal after double-click\n  The heart icon created upon a double-click on the image area should be removed automatically after 1 second.\n\n\n  Scenario: [Edge] Multiple heart icons are removed after 1 second when double-clicked rapidly\n    Given the webpage is loaded\n      And the image container with data-testid \"image-container\" is visible\n    When the user double-clicks on the image container multiple times rapidly\n    Then multiple heart icons with class \"fa-heart\" should appear inside the image container\n      And each heart icon should be removed from the image container exactly 1 second after its creation\n",
+      "requirement_ids": [
+        "e2edev_bench_25-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_25/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_25-R-5-TC-1",
+      "title": "[Normal] Verify the instruction text is displayed correctly",
+      "description": "Feature: Instruction Text for Double-Click to Like\n  The instruction text should inform the user to double-click on the image to like it, with a heart icon displayed for emphasis.\n\n\nScenario: [Normal] Verify the instruction text is displayed correctly\n    Given the webpage is loaded\n    Then the instruction text with data-testid \"instruction-text\" should be visible\n    And the instruction text should include \"Double click on the image\"",
+      "requirement_ids": [
+        "e2edev_bench_25-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_25/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": null,
+  "generation": {
+    "selected_techniques": [
+      "equivalence_partitioning",
+      "boundary_value_analysis",
+      "state_transition",
+      "decision_table",
+      "combinatorial",
+      "use_case",
+      "error_guessing"
+    ],
+    "technique_rationales": {
+      "equivalence_partitioning": "Partition valid double-clicks inside the image container versus invalid single clicks or double-clicks outside the container.",
+      "boundary_value_analysis": "Test double-clicks near the boundaries of the image area and timing limits such as intervals approaching or exceeding 800 milliseconds.",
+      "state_transition": "Cover states of the heart icon appearance, the 1-second timeout removal from the DOM, and increments to the like count.",
+      "decision_table": "Cover combinations of conditions including click counts, click locations (inside vs outside), and timing intervals for double-clicks.",
+      "combinatorial": "Cover combinations of rapid consecutive double-clicks and boundary positions to verify correct multi-icon creation and offset calculations.",
+      "use_case": "Cover the end-to-end user flow of interacting with the image container to display hearts, update like counts, and observe instruction text.",
+      "error_guessing": "Explore plausible failure conditions such as rapid consecutive clicks, overlapping timeouts, and misplaced clicks outside the image container."
+    },
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "embedding_requests": 1
+  },
+  "links": {
+    "requirements": {
+      "e2edev_bench_25-R-1": "e2edev_bench_25-R-1/requirement.md",
+      "e2edev_bench_25-R-3": "e2edev_bench_25-R-3/requirement.md",
+      "e2edev_bench_25-R-5": "e2edev_bench_25-R-5/requirement.md"
+    },
+    "cases": {
+      "G-010": {
+        "e2edev_bench_25-R-1": "e2edev_bench_25-R-1/test cases/10_Double-click_just_outside_the_bottom-right_bound.md"
+      },
+      "G-013": {
+        "e2edev_bench_25-R-1": "e2edev_bench_25-R-1/test cases/13_Heart_icon_removal_exactly_at_the_1-second_timeo.md",
+        "e2edev_bench_25-R-3": "e2edev_bench_25-R-3/test cases/13_Heart_icon_removal_exactly_at_the_1-second_timeo.md"
+      },
+      "G-014": {
+        "e2edev_bench_25-R-1": "e2edev_bench_25-R-1/test cases/14_Normal_State_Transition_-_Successful_Double-Clic.md",
+        "e2edev_bench_25-R-3": "e2edev_bench_25-R-3/test cases/14_Normal_State_Transition_-_Successful_Double-Clic.md"
+      },
+      "G-015": {
+        "e2edev_bench_25-R-1": "e2edev_bench_25-R-1/test cases/15_State_Transition_-_Rapid_Consecutive_Double-Clic.md",
+        "e2edev_bench_25-R-3": "e2edev_bench_25-R-3/test cases/15_State_Transition_-_Rapid_Consecutive_Double-Clic.md"
+      },
+      "G-016": {
+        "e2edev_bench_25-R-1": "e2edev_bench_25-R-1/test cases/16_Forbidden_Transition_-_Single_Click_or_Outside_D.md"
+      },
+      "G-017": {
+        "e2edev_bench_25-R-1": "e2edev_bench_25-R-1/test cases/17_Valid_double-click_inside_image_area.md",
+        "e2edev_bench_25-R-3": "e2edev_bench_25-R-3/test cases/17_Valid_double-click_inside_image_area.md"
+      },
+      "G-018": {
+        "e2edev_bench_25-R-1": "e2edev_bench_25-R-1/test cases/18_Double-click_outside_image_area.md"
+      },
+      "G-019": {
+        "e2edev_bench_25-R-1": "e2edev_bench_25-R-1/test cases/19_Single_click_inside_image_area.md"
+      },
+      "G-001": {
+        "e2edev_bench_25-R-1": "e2edev_bench_25-R-1/test cases/1_Valid_double-click_inside_image_area.md",
+        "e2edev_bench_25-R-3": "e2edev_bench_25-R-3/test cases/1_Valid_double-click_inside_image_area.md"
+      },
+      "G-020": {
+        "e2edev_bench_25-R-1": "e2edev_bench_25-R-1/test cases/20_Rapid_consecutive_double-clicks_inside_image_are.md",
+        "e2edev_bench_25-R-3": "e2edev_bench_25-R-3/test cases/20_Rapid_consecutive_double-clicks_inside_image_are.md"
+      },
+      "G-022": {
+        "e2edev_bench_25-R-1": "e2edev_bench_25-R-1/test cases/22_Double-click_inside_image_area_with_valid_timing.md",
+        "e2edev_bench_25-R-3": "e2edev_bench_25-R-3/test cases/22_Double-click_inside_image_area_with_valid_timing.md"
+      },
+      "G-023": {
+        "e2edev_bench_25-R-1": "e2edev_bench_25-R-1/test cases/23_Single_click_or_click_outside_image_area.md"
+      },
+      "G-024": {
+        "e2edev_bench_25-R-1": "e2edev_bench_25-R-1/test cases/24_Rapid_consecutive_double-clicks_within_threshold.md",
+        "e2edev_bench_25-R-3": "e2edev_bench_25-R-3/test cases/24_Rapid_consecutive_double-clicks_within_threshold.md"
+      },
+      "G-025": {
+        "e2edev_bench_25-R-1": "e2edev_bench_25-R-1/test cases/25_Double-click_near_boundaries_of_the_image_area.md"
+      },
+      "G-027": {
+        "e2edev_bench_25-R-1": "e2edev_bench_25-R-1/test cases/27_Successful_Double-Click_on_Image_Area_to_Display.md",
+        "e2edev_bench_25-R-3": "e2edev_bench_25-R-3/test cases/27_Successful_Double-Click_on_Image_Area_to_Display.md",
+        "e2edev_bench_25-R-5": "e2edev_bench_25-R-5/test cases/27_Successful_Double-Click_on_Image_Area_to_Display.md"
+      },
+      "G-028": {
+        "e2edev_bench_25-R-1": "e2edev_bench_25-R-1/test cases/28_Rapid_Consecutive_Double-Clicks_and_Boundary_Han.md",
+        "e2edev_bench_25-R-3": "e2edev_bench_25-R-3/test cases/28_Rapid_Consecutive_Double-Clicks_and_Boundary_Han.md"
+      },
+      "G-029": {
+        "e2edev_bench_25-R-1": "e2edev_bench_25-R-1/test cases/29_Invalid_Clicks_Outside_Image_Area_or_Single_Clic.md"
+      },
+      "G-002": {
+        "e2edev_bench_25-R-1": "e2edev_bench_25-R-1/test cases/2_Invalid_click_action_single_click_inside_image_a.md"
+      },
+      "G-030": {
+        "e2edev_bench_25-R-1": "e2edev_bench_25-R-1/test cases/30_Double-click_near_image_boundaries.md"
+      },
+      "G-031": {
+        "e2edev_bench_25-R-1": "e2edev_bench_25-R-1/test cases/31_Rapid_consecutive_double-clicks_overload.md",
+        "e2edev_bench_25-R-3": "e2edev_bench_25-R-3/test cases/31_Rapid_consecutive_double-clicks_overload.md"
+      },
+      "G-033": {
+        "e2edev_bench_25-R-1": "e2edev_bench_25-R-1/test cases/33_Clicks_outside_image_container.md"
+      },
+      "G-003": {
+        "e2edev_bench_25-R-1": "e2edev_bench_25-R-1/test cases/3_Invalid_click_action_double-click_outside_image.md"
+      },
+      "G-004": {
+        "e2edev_bench_25-R-1": "e2edev_bench_25-R-1/test cases/4_Edge_case_double-click_near_image_area_boundarie.md"
+      },
+      "G-005": {
+        "e2edev_bench_25-R-1": "e2edev_bench_25-R-1/test cases/5_Rapid_consecutive_double-clicks_within_maximum_i.md",
+        "e2edev_bench_25-R-3": "e2edev_bench_25-R-3/test cases/5_Rapid_consecutive_double-clicks_within_maximum_i.md"
+      },
+      "G-007": {
+        "e2edev_bench_25-R-1": "e2edev_bench_25-R-1/test cases/7_Double-click_at_the_exact_top-left_inner_boundar.md",
+        "e2edev_bench_25-R-3": "e2edev_bench_25-R-3/test cases/7_Double-click_at_the_exact_top-left_inner_boundar.md"
+      },
+      "G-008": {
+        "e2edev_bench_25-R-1": "e2edev_bench_25-R-1/test cases/8_Double-click_just_outside_the_top-left_boundary.md"
+      },
+      "G-009": {
+        "e2edev_bench_25-R-1": "e2edev_bench_25-R-1/test cases/9_Double-click_at_the_exact_bottom-right_inner_bou.md",
+        "e2edev_bench_25-R-3": "e2edev_bench_25-R-3/test cases/9_Double-click_at_the_exact_bottom-right_inner_bou.md"
+      },
+      "G-011": {
+        "e2edev_bench_25-R-3": "e2edev_bench_25-R-3/test cases/11_Rapid_consecutive_clicks_exactly_at_the_800ms_do.md"
+      },
+      "G-012": {
+        "e2edev_bench_25-R-3": "e2edev_bench_25-R-3/test cases/12_Rapid_consecutive_clicks_just_beyond_the_800ms_d.md"
+      },
+      "G-032": {
+        "e2edev_bench_25-R-3": "e2edev_bench_25-R-3/test cases/32_Click_timing_interval_boundary_test.md"
+      },
+      "G-021": {
+        "e2edev_bench_25-R-5": "e2edev_bench_25-R-5/test cases/21_Instruction_text_display_on_page_load.md"
+      },
+      "G-026": {
+        "e2edev_bench_25-R-5": "e2edev_bench_25-R-5/test cases/26_Initial_page_load_instruction_text_validation.md"
+      },
+      "G-006": {
+        "e2edev_bench_25-R-5": "e2edev_bench_25-R-5/test cases/6_Instruction_text_visibility_and_content_verifica.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

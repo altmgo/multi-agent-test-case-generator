@@ -144,7 +144,8 @@
       "e2edev_bench_15",
       "e2edev_bench_18",
       "e2edev_bench_19",
-      "firefox_bookmarks"
+      "firefox_bookmarks",
+      "firefox_browser_history"
     ],
     "Multiagent": []
   },
@@ -178,5 +179,5 @@
   "embedding_model": "gemini-embedding-2",
   "similarity_threshold": 0.7,
   "status": "partial",
-  "stop_reason": "Gemini embeddings (gemini-embedding-2), batch 2: attempt 1 failed (HTTP 429); provider requested 73461s"
+  "stop_reason": null
 }

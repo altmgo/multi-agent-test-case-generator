@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "solution": "GHL",
+  "unit_id": "e2edev_bench_46",
+  "parent_id": null,
+  "status": "failed",
+  "failure": {
+    "stage": "evaluation",
+    "error_type": "EmbeddingError"
+  },
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "e2edev_bench_46-R-1",
+      "text": "Upon loading the web page, the application must automatically determine the current day of the week using the user's local date settings. It should display the name of the day in the span element with the attribute data-testid='weekday'. Additionally, a corresponding quote should be displayed in the span element with the attribute data-testid='phrase'. The application should handle all days from Sunday to Saturday, ensuring the correct day name and quote are shown based on the local date settings. No user interaction is required for this functionality, and the display should update immediately upon page load.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_46/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_46-R-2",
+      "text": "Upon loading the web page, the system must dynamically determine the current day of the week using the local computer's date. It should then display the name of the day in the span element with the data-testid 'weekday' and a predefined quote associated with that day in the span element with the data-testid 'phrase'. The page structure includes a container div with data-testid 'container', a heading with data-testid 'heading', and two span elements for displaying the day and quote. The JavaScript code should execute upon page load, selecting the appropriate elements using their data-testid attributes and updating their innerHTML properties with the correct day name and quote. No user interaction is required for this functionality to execute, and no persistent storage is involved.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_46/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Display weekday and quote on page load for valid local dates",
+      "description": "Verify that when the web page loads, the application automatically determines the current day of the week from the local date settings and displays the correct day name in the span with data-testid='weekday' and the corresponding quote in the span with data-testid='phrase' for all valid days from Sunday to Saturday.",
+      "requirement_ids": [
+        "e2edev_bench_46-R-1",
+        "e2edev_bench_46-R-2"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Display weekday and quote for Sunday",
+      "description": "Verify that on a local date representing Sunday (lower boundary of days of the week), the application automatically displays Sunday in the span with data-testid='weekday' and the corresponding quote in the span with data-testid='phrase' upon page load.",
+      "requirement_ids": [
+        "e2edev_bench_46-R-1",
+        "e2edev_bench_46-R-2"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Display weekday and quote for Saturday",
+      "description": "Verify that on a local date representing Saturday (upper boundary of days of the week), the application automatically displays Saturday in the span with data-testid='weekday' and the corresponding quote in the span with data-testid='phrase' upon page load.",
+      "requirement_ids": [
+        "e2edev_bench_46-R-1",
+        "e2edev_bench_46-R-2"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Handle invalid or out-of-range local date values",
+      "description": "Verify system behavior when the local computer's date returns an out-of-range value outside the standard Sunday-to-Saturday boundaries, ensuring graceful handling without breaking the page structure.",
+      "requirement_ids": [
+        "e2edev_bench_46-R-1",
+        "e2edev_bench_46-R-2"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Automatic Display of Weekday and Quote on Page Load",
+      "description": "Verify that upon loading the web page, the application automatically determines the current day of the week using local date settings, displaying the correct day name in the span with data-testid='weekday' and the corresponding quote in the span with data-testid='phrase' inside the container without requiring user interaction.",
+      "requirement_ids": [
+        "e2edev_bench_46-R-1",
+        "e2edev_bench_46-R-2"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Invalid Local Date Settings Handling",
+      "description": "Test the application behavior when the user's local computer date is modified to an invalid or out-of-bounds date value to verify if it fails gracefully or defaults correctly.",
+      "requirement_ids": [
+        "e2edev_bench_46-R-1",
+        "e2edev_bench_46-R-2"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Missing DOM Elements on Page Load",
+      "description": "Test the JavaScript execution resilience when the span elements with data-testid='weekday' or data-testid='phrase' are missing from the DOM upon page load.",
+      "requirement_ids": [
+        "e2edev_bench_46-R-1",
+        "e2edev_bench_46-R-2"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_46-R-1-TC-1",
+      "title": "[Normal] Display correct day of the week on a Monday",
+      "description": "Feature: Display Current Day of the Week\n  The system must automatically detect the current day of the week using the user's local date settings and display the corresponding day name in the span element with the data-testid 'weekday'.\n\n\n  Scenario: [Normal] Display correct day of the week on a Monday\n    Given the user opens the web page\n    When the system retrieves the local date settings\n    Then the span element with data-testid 'weekday' should display correctly\n",
+      "requirement_ids": [
+        "e2edev_bench_46-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_46/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_46-R-2-TC-1",
+      "title": "[Normal] Display quote for the right day",
+      "description": "Feature: Display Quote Associated with Current Day of the Week\n  The system must display a predefined quote associated with the current day of the week in the span element with the data-testid 'phrase' upon loading the web page.\n\n\nScenario: [Normal] Display quote for the right day\n    Given the user opens the web page\n    When the page loads completely\n    Then the span element with data-testid 'phrase' should display the corresponding quote",
+      "requirement_ids": [
+        "e2edev_bench_46-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_46/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": null,
+  "generation": {
+    "selected_techniques": [
+      "equivalence_partitioning",
+      "boundary_value_analysis",
+      "use_case",
+      "error_guessing"
+    ],
+    "technique_rationales": {
+      "equivalence_partitioning": "Cover the different days of the week from Sunday to Saturday as valid partitions for date settings to ensure correct day name and quote mapping.",
+      "boundary_value_analysis": "Test the boundary days of the week, specifically Sunday and Saturday, to ensure the local date setting edge cases are handled correctly.",
+      "use_case": "Cover the end-to-end page load flow where the application automatically determines the day and updates the designated UI elements without user interaction.",
+      "error_guessing": "Explore plausible failures such as unexpected local date formats or invalid system clock values affecting the automatic determination of the weekday."
+    },
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "embedding_requests": 1
+  },
+  "links": {
+    "requirements": {
+      "e2edev_bench_46-R-1": "e2edev_bench_46-R-1/requirement.md",
+      "e2edev_bench_46-R-2": "e2edev_bench_46-R-2/requirement.md"
+    },
+    "cases": {
+      "G-001": {
+        "e2edev_bench_46-R-1": "e2edev_bench_46-R-1/test cases/1_Display_weekday_and_quote_on_page_load_for_valid.md",
+        "e2edev_bench_46-R-2": "e2edev_bench_46-R-2/test cases/1_Display_weekday_and_quote_on_page_load_for_valid.md"
+      },
+      "G-002": {
+        "e2edev_bench_46-R-1": "e2edev_bench_46-R-1/test cases/2_Display_weekday_and_quote_for_Sunday.md",
+        "e2edev_bench_46-R-2": "e2edev_bench_46-R-2/test cases/2_Display_weekday_and_quote_for_Sunday.md"
+      },
+      "G-003": {
+        "e2edev_bench_46-R-1": "e2edev_bench_46-R-1/test cases/3_Display_weekday_and_quote_for_Saturday.md",
+        "e2edev_bench_46-R-2": "e2edev_bench_46-R-2/test cases/3_Display_weekday_and_quote_for_Saturday.md"
+      },
+      "G-004": {
+        "e2edev_bench_46-R-1": "e2edev_bench_46-R-1/test cases/4_Handle_invalid_or_out-of-range_local_date_values.md",
+        "e2edev_bench_46-R-2": "e2edev_bench_46-R-2/test cases/4_Handle_invalid_or_out-of-range_local_date_values.md"
+      },
+      "G-005": {
+        "e2edev_bench_46-R-1": "e2edev_bench_46-R-1/test cases/5_Automatic_Display_of_Weekday_and_Quote_on_Page_L.md",
+        "e2edev_bench_46-R-2": "e2edev_bench_46-R-2/test cases/5_Automatic_Display_of_Weekday_and_Quote_on_Page_L.md"
+      },
+      "G-006": {
+        "e2edev_bench_46-R-1": "e2edev_bench_46-R-1/test cases/6_Invalid_Local_Date_Settings_Handling.md",
+        "e2edev_bench_46-R-2": "e2edev_bench_46-R-2/test cases/6_Invalid_Local_Date_Settings_Handling.md"
+      },
+      "G-007": {
+        "e2edev_bench_46-R-1": "e2edev_bench_46-R-1/test cases/7_Missing_DOM_Elements_on_Page_Load.md",
+        "e2edev_bench_46-R-2": "e2edev_bench_46-R-2/test cases/7_Missing_DOM_Elements_on_Page_Load.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

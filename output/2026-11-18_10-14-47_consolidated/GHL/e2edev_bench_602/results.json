@@ -1,0 +1,633 @@
+{
+  "schema_version": 1,
+  "solution": "GHL",
+  "unit_id": "e2edev_bench_602",
+  "parent_id": null,
+  "status": "failed",
+  "failure": {
+    "stage": "evaluation",
+    "error_type": "EmbeddingError"
+  },
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "e2edev_bench_602-R-1",
+      "text": "The system must allow the user to enter a numerical value in the 'Min' input field, identified by the data-testid 'min'. This value should be accepted and stored as the minimum range for generating a random number. The input field should handle both positive and negative numerical values. If a non-numerical value is entered, the field should default to '1', which is the placeholder value. The system should ensure that the input field reflects the user's input accurately, and any invalid input should not alter the default value.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_602/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_602-R-2",
+      "text": "The web application should allow users to define the maximum range for generating a random number by entering a numerical value in the 'Max' input field. The 'Max' input field is identified by the attribute data-testid='max'. When a valid numerical value is entered, it should be stored as the maximum range. If a non-numerical value is entered, the field should default to the initial value of '100'. The application should visually display the generated random number within the specified range in the element with data-testid='random-number-display'. The 'Generate Random Number' button, identified by data-testid='generate-random-number-button', should trigger the generation of a random number, which is then displayed with a temporary scaling effect. Additionally, the 'Copy to Clipboard' button, identified by data-testid='copy-to-clipboard-button', should allow users to copy the displayed random number to the clipboard, temporarily changing the button text to 'Copied!' for feedback.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_602/requirment_with_tests.json#/finegrained_rewith_test/2/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_602-R-3",
+      "text": "The web application should allow users to generate a random number by interacting with the UI as follows: The page should load with a title 'Random Number Generator' and contain input fields for 'Min' and 'Max' values, each with data-testid attributes 'min' and 'max', defaulting to '1' and '100' respectively. When the user clicks the 'Generate Random Number' button (data-testid 'generate-random-number-button'), the system should generate a random number between the specified 'Min' and 'Max' values and display it in the 'randomNumber' display element (data-testid 'random-number-display'). If 'Min' and 'Max' are equal, the display should show that value. If 'Min' is greater than 'Max', the system should still generate a number between the two values, treating them as a range. If non-numeric values are entered, the system should default to using '1' and '100' as the range. The displayed number should briefly scale up in size for visual emphasis. Additionally, a 'Copy to Clipboard' button (data-testid 'copy-to-clipboard-button') should allow users to copy the displayed number to the clipboard, temporarily changing the button text to 'Copied!' for user feedback.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_602/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_602-R-6",
+      "text": "The web application must allow users to generate a random number within a specified range using input fields with data-testid 'min' and 'max'. Upon clicking the 'Generate Random Number' button with data-testid 'generate-random-number-button', the system should display the generated number in the element with data-testid 'random-number-display', applying a temporary scale transformation for visual emphasis. Users can copy the displayed random number to the clipboard by clicking the 'Copy to Clipboard' button with data-testid 'copy-to-clipboard-button'. After copying, the button text must change to 'Copied!' for 2000 milliseconds before reverting to 'Copy to Clipboard'. The system should handle edge cases, such as when the random number is zero, ensuring consistent functionality and user feedback.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_602/requirment_with_tests.json#/finegrained_rewith_test/6/requirement/description"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Enter valid positive and negative numerical values in Min input",
+      "description": "Verify that the system accepts and stores valid positive and negative numerical values entered in the 'Min' input field (data-testid 'min').",
+      "requirement_ids": [
+        "e2edev_bench_602-R-1"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Enter non-numerical value in Min input",
+      "description": "Verify that entering a non-numerical value in the 'Min' input field (data-testid 'min') causes the field to default to '1' without altering the default incorrectly.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-1",
+        "e2edev_bench_602-R-3"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Enter valid numerical value in Max input",
+      "description": "Verify that entering a valid numerical value in the 'Max' input field (data-testid 'max') stores it as the maximum range.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-2",
+        "e2edev_bench_602-R-3"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Enter non-numerical value in Max input",
+      "description": "Verify that entering a non-numerical value in the 'Max' input field (data-testid 'max') defaults the field value to '100'.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-2",
+        "e2edev_bench_602-R-3"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Generate random number with default Min and Max values",
+      "description": "Verify that clicking the 'Generate Random Number' button with default values ('1' and '100') generates and displays a random number with a temporary scaling effect.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-2",
+        "e2edev_bench_602-R-3",
+        "e2edev_bench_602-R-6"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Generate random number when Min and Max are equal",
+      "description": "Verify that when 'Min' and 'Max' input values are equal, the display element shows that exact value.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-3"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Generate random number when Min is greater than Max",
+      "description": "Verify that when 'Min' is greater than 'Max', the system treats them as a range and successfully generates a number between the two values.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-3"
+      ]
+    },
+    {
+      "id": "G-008",
+      "title": "Generate random number resulting in zero",
+      "description": "Verify that the system correctly handles edge cases where the generated random number is zero, ensuring consistent functionality and display.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-6"
+      ]
+    },
+    {
+      "id": "G-009",
+      "title": "Copy generated random number to clipboard",
+      "description": "Verify that clicking the 'Copy to Clipboard' button copies the displayed random number and temporarily changes the button text to 'Copied!' for 2000 milliseconds.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-2",
+        "e2edev_bench_602-R-3",
+        "e2edev_bench_602-R-6"
+      ]
+    },
+    {
+      "id": "G-010",
+      "title": "Min input field with valid positive minimum boundary value",
+      "description": "Test entering a valid positive number at the lower accepted boundary in the 'Min' input field (data-testid 'min') and verify it is stored correctly.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-1"
+      ]
+    },
+    {
+      "id": "G-011",
+      "title": "Min input field with non-numerical invalid input",
+      "description": "Test entering a non-numerical value in the 'Min' input field (data-testid 'min') and verify that the field defaults to '1'.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-1",
+        "e2edev_bench_602-R-3"
+      ]
+    },
+    {
+      "id": "G-012",
+      "title": "Max input field with valid numerical value",
+      "description": "Test entering a valid numerical value in the 'Max' input field (data-testid 'max') and verify it is stored as the maximum range.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-2"
+      ]
+    },
+    {
+      "id": "G-013",
+      "title": "Max input field with non-numerical invalid input",
+      "description": "Test entering a non-numerical value in the 'Max' input field (data-testid 'max') and verify that the field defaults to '100'.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-2",
+        "e2edev_bench_602-R-3"
+      ]
+    },
+    {
+      "id": "G-014",
+      "title": "Random number generation when Min and Max are equal",
+      "description": "Test setting 'Min' and 'Max' to the exact same value and generating a random number to verify the display shows that exact value.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-3"
+      ]
+    },
+    {
+      "id": "G-015",
+      "title": "Random number generation when Min is greater than Max",
+      "description": "Test setting 'Min' to a value greater than 'Max' and generating a random number to ensure the system treats them as a range.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-3"
+      ]
+    },
+    {
+      "id": "G-016",
+      "title": "Clipboard feedback duration boundary test",
+      "description": "Test clicking the 'Copy to Clipboard' button and verify that the button text changes to 'Copied!' for precisely the required 2000 milliseconds before reverting.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-6"
+      ]
+    },
+    {
+      "id": "G-017",
+      "title": "Default State to Valid Range Input State",
+      "description": "Verify that the system starts with default 'Min' and 'Max' values ('1' and '100') and accepts valid numerical inputs in both fields.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-1",
+        "e2edev_bench_602-R-2",
+        "e2edev_bench_602-R-3"
+      ]
+    },
+    {
+      "id": "G-018",
+      "title": "Invalid Input State Handling for Min and Max",
+      "description": "Verify that entering non-numerical values into 'Min' and 'Max' fields causes them to default to '1' and '100' respectively.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-1",
+        "e2edev_bench_602-R-2",
+        "e2edev_bench_602-R-3"
+      ]
+    },
+    {
+      "id": "G-019",
+      "title": "Generate Random Number State and Scaling Effect",
+      "description": "Verify that clicking the 'Generate Random Number' button triggers random number generation within the specified range and applies a temporary scaling effect on the display element.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-2",
+        "e2edev_bench_602-R-3",
+        "e2edev_bench_602-R-6"
+      ]
+    },
+    {
+      "id": "G-020",
+      "title": "Copy to Clipboard State and Feedback Transition",
+      "description": "Verify that clicking the 'Copy to Clipboard' button copies the random number and transitions the button text to 'Copied!' temporarily before reverting back.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-2",
+        "e2edev_bench_602-R-3",
+        "e2edev_bench_602-R-6"
+      ]
+    },
+    {
+      "id": "G-021",
+      "title": "Edge Case Transition - Min Greater Than Max and Equal Min Max",
+      "description": "Verify the system handles ranges correctly when 'Min' is greater than 'Max' or when 'Min' and 'Max' are equal.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-3"
+      ]
+    },
+    {
+      "id": "G-022",
+      "title": "Generate Random Number with Default Range",
+      "description": "Verify that the page loads with default 'Min' (1) and 'Max' (100) values, and clicking the generate button displays a random number with scaling effect.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-2",
+        "e2edev_bench_602-R-3",
+        "e2edev_bench_602-R-6"
+      ]
+    },
+    {
+      "id": "G-023",
+      "title": "Generate Random Number with Custom Positive and Negative Range",
+      "description": "Verify that the user can enter positive and negative numerical values into the 'Min' and 'Max' input fields and successfully generate a random number within that range.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-1",
+        "e2edev_bench_602-R-2",
+        "e2edev_bench_602-R-3",
+        "e2edev_bench_602-R-6"
+      ]
+    },
+    {
+      "id": "G-024",
+      "title": "Handle Non-Numerical Input in Min and Max Fields",
+      "description": "Verify that entering non-numerical values into 'Min' and 'Max' fields defaults them to '1' and '100' respectively without altering the default values improperly.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-1",
+        "e2edev_bench_602-R-2",
+        "e2edev_bench_602-R-3"
+      ]
+    },
+    {
+      "id": "G-025",
+      "title": "Handle Edge Cases for Min and Max Ranges",
+      "description": "Verify that when 'Min' and 'Max' are equal, the display shows that value, and when 'Min' is greater than 'Max', the system still generates a number treating them as a range.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-3"
+      ]
+    },
+    {
+      "id": "G-026",
+      "title": "Copy Generated Random Number to Clipboard",
+      "description": "Verify that clicking the 'Copy to Clipboard' button copies the displayed number and temporarily changes the button text to 'Copied!' for 2000 milliseconds before reverting.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-2",
+        "e2edev_bench_602-R-3",
+        "e2edev_bench_602-R-6"
+      ]
+    },
+    {
+      "id": "G-027",
+      "title": "Enter non-numerical value in Min field",
+      "description": "Enter alphabetic or special characters into the 'min' input field and verify that the field defaults to '1' without altering previous valid states improperly.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-1",
+        "e2edev_bench_602-R-3"
+      ]
+    },
+    {
+      "id": "G-028",
+      "title": "Enter non-numerical value in Max field",
+      "description": "Enter alphabetic or special characters into the 'max' input field and verify that the field defaults to '100'.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-2",
+        "e2edev_bench_602-R-3"
+      ]
+    },
+    {
+      "id": "G-029",
+      "title": "Min value greater than Max value range handling",
+      "description": "Set 'Min' to a value greater than 'Max' (e.g., Min=50, Max=10) and trigger random number generation to ensure the system successfully treats them as a range and generates a number.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-3"
+      ]
+    },
+    {
+      "id": "G-030",
+      "title": "Equal Min and Max values generation",
+      "description": "Set 'Min' and 'Max' to the exact same numerical value and verify that the random number display outputs that exact value.",
+      "requirement_ids": [
+        "e2edev_bench_602-R-3"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_602-R-1-TC-1",
+      "title": "[Normal] User enters a valid numerical value in the 'Min' input field",
+      "description": "Feature: REQ-001 - Minimum Range Input for Random Number Generation\n  The system should accept and store a numerical value entered by the user in the 'Min' input field as the minimum range for generating a random number.\n\n\nScenario: [Normal] User enters a valid numerical value in the 'Min' input field\n    Given the Random Number Generator page is loaded\n    And the 'Min' input field with data-testid 'min' is present\n    When the user enters '10' into the 'Min' input field with data-testid 'min'\n    Then the 'Min' input field with data-testid 'min' should have the value '10'",
+      "requirement_ids": [
+        "e2edev_bench_602-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_602/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_602-R-1-TC-2",
+      "title": "[Normal] User enters a valid numerical value in the 'Min' input field",
+      "description": "Feature: REQ-001 - Minimum Range Input for Random Number Generation\n  The system should accept and store a numerical value entered by the user in the 'Min' input field as the minimum range for generating a random number.\n\n\nScenario: [Normal] User enters a valid numerical value in the 'Min' input field\n    Given the Random Number Generator page is loaded\n    And the 'Min' input field with data-testid 'min' is present\n    When the user enters '1' into the 'Min' input field with data-testid 'min'\n    Then the 'Min' input field with data-testid 'min' should have the value '1'",
+      "requirement_ids": [
+        "e2edev_bench_602-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_602/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_602-R-1-TC-3",
+      "title": "[Normal] User enters a valid negative value in the 'Min' input field",
+      "description": "Feature: REQ-001 - Minimum Range Input for Random Number Generation\n  The system should accept and store a numerical value entered by the user in the 'Min' input field as the minimum range for generating a random number.\n\n\nScenario: [Normal] User enters a valid negative value in the 'Min' input field\n    Given the Random Number Generator page is loaded\n    And the 'Min' input field with data-testid 'min' is present\n    When the user enters '-5' into the 'Min' input field with data-testid 'min'\n    Then the 'Min' input field with data-testid 'min' should have the value '-5'",
+      "requirement_ids": [
+        "e2edev_bench_602-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_602/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_602-R-1-TC-4",
+      "title": "[Error] User enters a non-numerical value in the 'Min' input field",
+      "description": "Feature: REQ-001 - Minimum Range Input for Random Number Generation\n  The system should accept and store a numerical value entered by the user in the 'Min' input field as the minimum range for generating a random number.\n\n\nScenario: [Error] User enters a non-numerical value in the 'Min' input field\n    Given the Random Number Generator page is loaded\n    And the 'Min' input field with data-testid 'min' is present\n    When the user enters 'abc' into the 'Min' input field with data-testid 'min'\n    Then the 'Min' input field with data-testid 'min' should remain the value '1'",
+      "requirement_ids": [
+        "e2edev_bench_602-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_602/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_602-R-2-TC-1",
+      "title": "[Normal] User enters a valid numerical value in the 'Max' input field",
+      "description": "Feature: Accept and store user-defined maximum range for random number generation\n\n\nScenario: [Normal] User enters a valid numerical value in the 'Max' input field\n    Given the Random Number Generator page is loaded\n    And the 'Max' input field with data-testid 'max' is visible\n    When the user enters '150' into the 'Max' input field with data-testid 'max'\nThen the 'Max' input field with data-testid 'max' should have the value '150'",
+      "requirement_ids": [
+        "e2edev_bench_602-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_602/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_602-R-2-TC-2",
+      "title": "[Normal] User enters a valid numerical value in the 'Max' input field",
+      "description": "Feature: Accept and store user-defined maximum range for random number generation\n\n\nScenario: [Normal] User enters a valid numerical value in the 'Max' input field\n    Given the Random Number Generator page is loaded\n    And the 'Max' input field with data-testid 'max' is visible\n    When the user enters '50' into the 'Max' input field with data-testid 'max'\nThen the 'Max' input field with data-testid 'max' should have the value '50'",
+      "requirement_ids": [
+        "e2edev_bench_602-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_602/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_602-R-2-TC-3",
+      "title": "[Error] User enters a non-numerical value in the 'Max' input field",
+      "description": "Feature: Accept and store user-defined maximum range for random number generation\n\n\nScenario: [Error] User enters a non-numerical value in the 'Max' input field\n    Given the Random Number Generator page is loaded\n    And the 'Max' input field with data-testid 'max' is present\n    When the user enters 'abc' into the 'Max' input field with data-testid 'max'\nThen the 'Max' input field with data-testid 'max' should remain the value '100'",
+      "requirement_ids": [
+        "e2edev_bench_602-R-2"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_602/requirment_with_tests.json#/finegrained_rewith_test/2/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_602-R-3-TC-1",
+      "title": "[Normal] Generate random number within default range",
+      "description": "Feature: Random Number Generation\n  The system should generate a random number between specified 'Min' and 'Max' values and display it when the user clicks the 'Generate Random Number' button.\n\n\n  Scenario: [Normal] Generate random number within default range\n    Given the webpage is loaded with the title \"Random Number Generator\"\n    And the 'Min' input field with data-testid 'min' has a value of \"1\"\n    And the 'Max' input field with data-testid 'max' has a value of \"100\"\n    When the user clicks the 'Generate Random Number' button with data-testid 'generate-random-number-button'\n    Then the 'randomNumber' display element with data-testid 'random-number-display' should show a number between \"1\" and \"100\"\n",
+      "requirement_ids": [
+        "e2edev_bench_602-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_602/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_602-R-3-TC-2",
+      "title": "[Edge] Generate random number with 'Min' and 'Max' set to the same value",
+      "description": "Feature: Random Number Generation\n  The system should generate a random number between specified 'Min' and 'Max' values and display it when the user clicks the 'Generate Random Number' button.\n\n\n  Scenario: [Edge] Generate random number with 'Min' and 'Max' set to the same value\n    Given the webpage is loaded with the title \"Random Number Generator\"\n    And the user enters \"50\" into the 'Min' input field with data-testid 'min'\n    And the user enters \"50\" into the 'Max' input field with data-testid 'max'\n    When the user clicks the 'Generate Random Number' button with data-testid 'generate-random-number-button'\n    Then the 'randomNumber' display element with data-testid 'random-number-display' should show \"50\"\n",
+      "requirement_ids": [
+        "e2edev_bench_602-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_602/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_602-R-3-TC-3",
+      "title": "[Edge] Generate random number with 'Min' greater than 'Max'",
+      "description": "Feature: Random Number Generation\n  The system should generate a random number between specified 'Min' and 'Max' values and display it when the user clicks the 'Generate Random Number' button.\n\n\n  Scenario: [Edge] Generate random number with 'Min' greater than 'Max'\n    Given the webpage is loaded with the title \"Random Number Generator\"\n    And the user enters \"100\" into the 'Min' input field with data-testid 'min'\n    And the user enters \"1\" into the 'Max' input field with data-testid 'max'\n    When the user clicks the 'Generate Random Number' button with data-testid 'generate-random-number-button'\n    Then the 'randomNumber' display element with data-testid 'random-number-display' should show a number between \"1\" and \"100\"\n",
+      "requirement_ids": [
+        "e2edev_bench_602-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_602/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_602-R-3-TC-4",
+      "title": "[Error] Generate random number with non-numeric 'Min' and 'Max' values",
+      "description": "Feature: Random Number Generation\n  The system should generate a random number between specified 'Min' and 'Max' values and display it when the user clicks the 'Generate Random Number' button.\n\n\n  Scenario: [Error] Generate random number with non-numeric 'Min' and 'Max' values\n    Given the webpage is loaded with the title \"Random Number Generator\"\n    And the user enters \"abc\" into the 'Min' input field with data-testid 'min'\n    And the user enters \"xyz\" into the 'Max' input field with data-testid 'max'\n    When the user clicks the 'Generate Random Number' button with data-testid 'generate-random-number-button'\n    Then the 'randomNumber' display element with data-testid 'random-number-display' should show a number between \"1\" and \"100\"",
+      "requirement_ids": [
+        "e2edev_bench_602-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_602/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_602-R-6-TC-1",
+      "title": "[Normal] Copy random number and verify button text change",
+      "description": "Feature: Copy Random Number to Clipboard and Button Text Change\n  The system should change the 'Copy to Clipboard' button text to 'Copied!' for 2000 milliseconds after copying the random number to the clipboard, and then revert it back to 'Copy to Clipboard'.\n\n\n  Scenario: [Normal] Copy random number and verify button text change\n    Given the Random Number Generator page is loaded\n    And the user sees the \"Copy to Clipboard\" button with text \"Copy to Clipboard\" with data-testid \"copy-to-clipboard-button\"\n    When the user clicks the \"Copy to Clipboard\" button with data-testid \"copy-to-clipboard-button\"\n    Then the button text should change to \"Copied!\" with data-testid \"copy-to-clipboard-button\"\n    And after 2000 milliseconds, the button text should revert back to \"Copy to Clipboard\" with data-testid \"copy-to-clipboard-button\"\n",
+      "requirement_ids": [
+        "e2edev_bench_602-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_602/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_602-R-6-TC-2",
+      "title": "[Edge] Copy random number when the random number is zero",
+      "description": "Feature: Copy Random Number to Clipboard and Button Text Change\n  The system should change the 'Copy to Clipboard' button text to 'Copied!' for 2000 milliseconds after copying the random number to the clipboard, and then revert it back to 'Copy to Clipboard'.\n\n\n  Scenario: [Edge] Copy random number when the random number is zero\n    Given the Random Number Generator page is loaded\n    And the random number displayed is \"0\" with data-testid \"random-number-display\"\n    When the user clicks the \"Copy to Clipboard\" button with data-testid \"copy-to-clipboard-button\"\n    Then the button text should change to \"Copied!\" with data-testid \"copy-to-clipboard-button\"\n    And after 2000 milliseconds, the button text should revert back to \"Copy to Clipboard\" with data-testid \"copy-to-clipboard-button\"\n",
+      "requirement_ids": [
+        "e2edev_bench_602-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_602/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": null,
+  "generation": {
+    "selected_techniques": [
+      "equivalence_partitioning",
+      "boundary_value_analysis",
+      "state_transition",
+      "use_case",
+      "error_guessing"
+    ],
+    "technique_rationales": {
+      "equivalence_partitioning": "Required to test valid positive/negative numerical inputs as well as invalid non-numerical inputs for both 'Min' and 'Max' fields.",
+      "boundary_value_analysis": "Necessary for testing cases where 'Min' equals 'Max', 'Min' is greater than 'Max', and edge cases like zero.",
+      "state_transition": "Applies to testing the copy-to-clipboard button state transition from 'Copy to Clipboard' to 'Copied!' and back after 2000 milliseconds.",
+      "use_case": "Covers the end-to-end user flow of loading the app, setting ranges, clicking generate, observing the scaling display, and copying to the clipboard.",
+      "error_guessing": "Helps target plausible failures such as entering invalid text strings or edge ranges where min and max behave unexpectedly."
+    },
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "embedding_requests": 1
+  },
+  "links": {
+    "requirements": {
+      "e2edev_bench_602-R-1": "e2edev_bench_602-R-1/requirement.md",
+      "e2edev_bench_602-R-2": "e2edev_bench_602-R-2/requirement.md",
+      "e2edev_bench_602-R-3": "e2edev_bench_602-R-3/requirement.md",
+      "e2edev_bench_602-R-6": "e2edev_bench_602-R-6/requirement.md"
+    },
+    "cases": {
+      "G-010": {
+        "e2edev_bench_602-R-1": "e2edev_bench_602-R-1/test cases/10_Min_input_field_with_valid_positive_minimum_boun.md"
+      },
+      "G-011": {
+        "e2edev_bench_602-R-1": "e2edev_bench_602-R-1/test cases/11_Min_input_field_with_non-numerical_invalid_input.md",
+        "e2edev_bench_602-R-3": "e2edev_bench_602-R-3/test cases/11_Min_input_field_with_non-numerical_invalid_input.md"
+      },
+      "G-017": {
+        "e2edev_bench_602-R-1": "e2edev_bench_602-R-1/test cases/17_Default_State_to_Valid_Range_Input_State.md",
+        "e2edev_bench_602-R-2": "e2edev_bench_602-R-2/test cases/17_Default_State_to_Valid_Range_Input_State.md",
+        "e2edev_bench_602-R-3": "e2edev_bench_602-R-3/test cases/17_Default_State_to_Valid_Range_Input_State.md"
+      },
+      "G-018": {
+        "e2edev_bench_602-R-1": "e2edev_bench_602-R-1/test cases/18_Invalid_Input_State_Handling_for_Min_and_Max.md",
+        "e2edev_bench_602-R-2": "e2edev_bench_602-R-2/test cases/18_Invalid_Input_State_Handling_for_Min_and_Max.md",
+        "e2edev_bench_602-R-3": "e2edev_bench_602-R-3/test cases/18_Invalid_Input_State_Handling_for_Min_and_Max.md"
+      },
+      "G-001": {
+        "e2edev_bench_602-R-1": "e2edev_bench_602-R-1/test cases/1_Enter_valid_positive_and_negative_numerical_valu.md"
+      },
+      "G-023": {
+        "e2edev_bench_602-R-1": "e2edev_bench_602-R-1/test cases/23_Generate_Random_Number_with_Custom_Positive_and.md",
+        "e2edev_bench_602-R-2": "e2edev_bench_602-R-2/test cases/23_Generate_Random_Number_with_Custom_Positive_and.md",
+        "e2edev_bench_602-R-3": "e2edev_bench_602-R-3/test cases/23_Generate_Random_Number_with_Custom_Positive_and.md",
+        "e2edev_bench_602-R-6": "e2edev_bench_602-R-6/test cases/23_Generate_Random_Number_with_Custom_Positive_and.md"
+      },
+      "G-024": {
+        "e2edev_bench_602-R-1": "e2edev_bench_602-R-1/test cases/24_Handle_Non-Numerical_Input_in_Min_and_Max_Fields.md",
+        "e2edev_bench_602-R-2": "e2edev_bench_602-R-2/test cases/24_Handle_Non-Numerical_Input_in_Min_and_Max_Fields.md",
+        "e2edev_bench_602-R-3": "e2edev_bench_602-R-3/test cases/24_Handle_Non-Numerical_Input_in_Min_and_Max_Fields.md"
+      },
+      "G-027": {
+        "e2edev_bench_602-R-1": "e2edev_bench_602-R-1/test cases/27_Enter_non-numerical_value_in_Min_field.md",
+        "e2edev_bench_602-R-3": "e2edev_bench_602-R-3/test cases/27_Enter_non-numerical_value_in_Min_field.md"
+      },
+      "G-002": {
+        "e2edev_bench_602-R-1": "e2edev_bench_602-R-1/test cases/2_Enter_non-numerical_value_in_Min_input.md",
+        "e2edev_bench_602-R-3": "e2edev_bench_602-R-3/test cases/2_Enter_non-numerical_value_in_Min_input.md"
+      },
+      "G-012": {
+        "e2edev_bench_602-R-2": "e2edev_bench_602-R-2/test cases/12_Max_input_field_with_valid_numerical_value.md"
+      },
+      "G-013": {
+        "e2edev_bench_602-R-2": "e2edev_bench_602-R-2/test cases/13_Max_input_field_with_non-numerical_invalid_input.md",
+        "e2edev_bench_602-R-3": "e2edev_bench_602-R-3/test cases/13_Max_input_field_with_non-numerical_invalid_input.md"
+      },
+      "G-019": {
+        "e2edev_bench_602-R-2": "e2edev_bench_602-R-2/test cases/19_Generate_Random_Number_State_and_Scaling_Effect.md",
+        "e2edev_bench_602-R-3": "e2edev_bench_602-R-3/test cases/19_Generate_Random_Number_State_and_Scaling_Effect.md",
+        "e2edev_bench_602-R-6": "e2edev_bench_602-R-6/test cases/19_Generate_Random_Number_State_and_Scaling_Effect.md"
+      },
+      "G-020": {
+        "e2edev_bench_602-R-2": "e2edev_bench_602-R-2/test cases/20_Copy_to_Clipboard_State_and_Feedback_Transition.md",
+        "e2edev_bench_602-R-3": "e2edev_bench_602-R-3/test cases/20_Copy_to_Clipboard_State_and_Feedback_Transition.md",
+        "e2edev_bench_602-R-6": "e2edev_bench_602-R-6/test cases/20_Copy_to_Clipboard_State_and_Feedback_Transition.md"
+      },
+      "G-022": {
+        "e2edev_bench_602-R-2": "e2edev_bench_602-R-2/test cases/22_Generate_Random_Number_with_Default_Range.md",
+        "e2edev_bench_602-R-3": "e2edev_bench_602-R-3/test cases/22_Generate_Random_Number_with_Default_Range.md",
+        "e2edev_bench_602-R-6": "e2edev_bench_602-R-6/test cases/22_Generate_Random_Number_with_Default_Range.md"
+      },
+      "G-026": {
+        "e2edev_bench_602-R-2": "e2edev_bench_602-R-2/test cases/26_Copy_Generated_Random_Number_to_Clipboard.md",
+        "e2edev_bench_602-R-3": "e2edev_bench_602-R-3/test cases/26_Copy_Generated_Random_Number_to_Clipboard.md",
+        "e2edev_bench_602-R-6": "e2edev_bench_602-R-6/test cases/26_Copy_Generated_Random_Number_to_Clipboard.md"
+      },
+      "G-028": {
+        "e2edev_bench_602-R-2": "e2edev_bench_602-R-2/test cases/28_Enter_non-numerical_value_in_Max_field.md",
+        "e2edev_bench_602-R-3": "e2edev_bench_602-R-3/test cases/28_Enter_non-numerical_value_in_Max_field.md"
+      },
+      "G-003": {
+        "e2edev_bench_602-R-2": "e2edev_bench_602-R-2/test cases/3_Enter_valid_numerical_value_in_Max_input.md",
+        "e2edev_bench_602-R-3": "e2edev_bench_602-R-3/test cases/3_Enter_valid_numerical_value_in_Max_input.md"
+      },
+      "G-004": {
+        "e2edev_bench_602-R-2": "e2edev_bench_602-R-2/test cases/4_Enter_non-numerical_value_in_Max_input.md",
+        "e2edev_bench_602-R-3": "e2edev_bench_602-R-3/test cases/4_Enter_non-numerical_value_in_Max_input.md"
+      },
+      "G-005": {
+        "e2edev_bench_602-R-2": "e2edev_bench_602-R-2/test cases/5_Generate_random_number_with_default_Min_and_Max.md",
+        "e2edev_bench_602-R-3": "e2edev_bench_602-R-3/test cases/5_Generate_random_number_with_default_Min_and_Max.md",
+        "e2edev_bench_602-R-6": "e2edev_bench_602-R-6/test cases/5_Generate_random_number_with_default_Min_and_Max.md"
+      },
+      "G-009": {
+        "e2edev_bench_602-R-2": "e2edev_bench_602-R-2/test cases/9_Copy_generated_random_number_to_clipboard.md",
+        "e2edev_bench_602-R-3": "e2edev_bench_602-R-3/test cases/9_Copy_generated_random_number_to_clipboard.md",
+        "e2edev_bench_602-R-6": "e2edev_bench_602-R-6/test cases/9_Copy_generated_random_number_to_clipboard.md"
+      },
+      "G-014": {
+        "e2edev_bench_602-R-3": "e2edev_bench_602-R-3/test cases/14_Random_number_generation_when_Min_and_Max_are_eq.md"
+      },
+      "G-015": {
+        "e2edev_bench_602-R-3": "e2edev_bench_602-R-3/test cases/15_Random_number_generation_when_Min_is_greater_tha.md"
+      },
+      "G-021": {
+        "e2edev_bench_602-R-3": "e2edev_bench_602-R-3/test cases/21_Edge_Case_Transition_-_Min_Greater_Than_Max_and.md"
+      },
+      "G-025": {
+        "e2edev_bench_602-R-3": "e2edev_bench_602-R-3/test cases/25_Handle_Edge_Cases_for_Min_and_Max_Ranges.md"
+      },
+      "G-029": {
+        "e2edev_bench_602-R-3": "e2edev_bench_602-R-3/test cases/29_Min_value_greater_than_Max_value_range_handling.md"
+      },
+      "G-030": {
+        "e2edev_bench_602-R-3": "e2edev_bench_602-R-3/test cases/30_Equal_Min_and_Max_values_generation.md"
+      },
+      "G-006": {
+        "e2edev_bench_602-R-3": "e2edev_bench_602-R-3/test cases/6_Generate_random_number_when_Min_and_Max_are_equa.md"
+      },
+      "G-007": {
+        "e2edev_bench_602-R-3": "e2edev_bench_602-R-3/test cases/7_Generate_random_number_when_Min_is_greater_than.md"
+      },
+      "G-016": {
+        "e2edev_bench_602-R-6": "e2edev_bench_602-R-6/test cases/16_Clipboard_feedback_duration_boundary_test.md"
+      },
+      "G-008": {
+        "e2edev_bench_602-R-6": "e2edev_bench_602-R-6/test cases/8_Generate_random_number_resulting_in_zero.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

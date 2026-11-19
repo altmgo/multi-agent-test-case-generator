@@ -1,0 +1,215 @@
+{
+  "schema_version": 1,
+  "solution": "GHL",
+  "unit_id": "firefox_toolbar",
+  "parent_id": null,
+  "status": "failed",
+  "failure": {
+    "stage": "evaluation",
+    "error_type": "EmbeddingError"
+  },
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "R-182",
+      "text": "Browser toolbars shall be collapsed and expanded.",
+      "language": "en",
+      "source": "R-set.csv#R-182"
+    },
+    {
+      "id": "R-183",
+      "text": "Folders shall be added to the personal toolbar and their contents shall still function as links.",
+      "language": "en",
+      "source": "R-set.csv#R-183"
+    },
+    {
+      "id": "R-184",
+      "text": "Browser navigation toolbar buttons shall execute appropriately.",
+      "language": "en",
+      "source": "R-set.csv#R-184"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Collapse and Expand Browser Toolbar",
+      "description": "State transition test to verify the browser toolbar can transition from expanded to collapsed state and vice versa.",
+      "requirement_ids": [
+        "R-182"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Add Folder to Personal Toolbar and Execute Links",
+      "description": "State transition test to verify adding a folder to the personal toolbar and successfully using its contents as functional links.",
+      "requirement_ids": [
+        "R-183"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Execute Navigation Toolbar Buttons",
+      "description": "State transition test to verify that browser navigation toolbar buttons execute appropriately when triggered.",
+      "requirement_ids": [
+        "R-184"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Collapse and Expand Browser Toolbars",
+      "description": "User performs an end-to-end workflow to collapse and expand the browser toolbars to verify visibility and layout changes.",
+      "requirement_ids": [
+        "R-182"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Add Folders to Personal Toolbar and Use Link Contents",
+      "description": "User adds folders to the personal toolbar and interacts with their contents to ensure the links function appropriately.",
+      "requirement_ids": [
+        "R-183"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Execute Navigation Toolbar Buttons",
+      "description": "User interacts with the browser navigation toolbar buttons to ensure each button executes its intended action appropriately.",
+      "requirement_ids": [
+        "R-184"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Collapse and expand browser toolbars",
+      "description": "Verify that browser toolbars can be successfully collapsed and expanded (Valid input class).",
+      "requirement_ids": [
+        "R-182"
+      ]
+    },
+    {
+      "id": "G-008",
+      "title": "Add folders to personal toolbar and verify link functionality",
+      "description": "Verify that folders added to the personal toolbar maintain the correct functioning of their contents as links (Valid input class).",
+      "requirement_ids": [
+        "R-183"
+      ]
+    },
+    {
+      "id": "G-009",
+      "title": "Execute browser navigation toolbar buttons",
+      "description": "Verify that browser navigation toolbar buttons execute appropriately upon interaction (Valid input class).",
+      "requirement_ids": [
+        "R-184"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "TC-182",
+      "title": "TC-182",
+      "description": "INITIAL CONDITIONS\n1. All of the browser's toolbars(3) must be visible.\n2. Make sure they are all visible by selecting the top level 'View' menu and looking at the Toolbars submenu. The Navigation Toolbar, Personal Toolbar, and Taskbar should all have checks next to their names.\n\nSTEPS/DESCRIPTION\n1. Click the small triangle at the far left of the Bookmarks(Personal) Toolbar to collapse it. Click again to expand it.\n2. Click the small triangle at the far left of the Navigation Toolbar to collapse it. Click again to expand it.\n3. Collapse the Bookmarks Toolbar again. Collapse the Navigation Toolbar again.\n4. Expand the Navigation Toolbar once more, expand the Bookmarks Toolbar as well(reverse order).\n\nEXPECTED RESULTS\n1. Each click of the triangle widget should alternately show and hide the corresponding toolbar.\n2. For steps(2 & 3), expanding the toolbars in the reverse order from that in which they were collapsed should not affect their positioning upon expansion.",
+      "requirement_ids": [
+        "R-182"
+      ],
+      "source": "T-set.csv#TC-182",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-183",
+      "title": "TC-183",
+      "description": "INITIAL CONDITIONS\n1. All of the browser's toolbars(3) must be visible.\n2. Make sure they are all visible by selecting the top level \"View\" menu and looking at the Toolbars submenu. The Navigation Toolbar, Personal Toolbar, and Taskbar should all have checks next to their names.\n\nSTEPS/DESCRIPTION\n1. Select Bookmarks|Manage Bookmarks.\n2. Open the \"Personal Toolbar Folder\". Add a new folder to it, File|New Folder.\n3. Open and add a new bookmark, File|New Bookmark to the folder you just created.\n4. Select the new bookmark and edit its properties, Edit|Bookmark Properties, changing the url to http://www.mozilla.org.\n5. Go back to the browser window and click on the New Folder in the personal toolbar. Click the New Bookmark item.\n\nEXPECTED RESULTS\n1. The New Folder should appear in the personal toolbar.\n2. The link within the New Folder on the personal toolbar should function normally.",
+      "requirement_ids": [
+        "R-183"
+      ],
+      "source": "T-set.csv#TC-183",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-184",
+      "title": "TC-184",
+      "description": "INITIAL CONDITIONS\n1. All of the browser's toolbars(3) must be visible.\n2. Make sure they are all visible by selecting the top level \"View\" menu and looking at the Toolbars submenu. The Navigation Toolbar, Personal Toolbar and Taskbar should all have checks next to their names.\n\nSTEPS/DESCRIPTION\n1. Click here to load a page with an animated gif. Wait for it to stop.\n2. Click the \"Back\" button on the Navigation toolbar. It looks like a left-pointing arrow.\n3. Click the \"Forward\" button on the Navigation toolbar. It looks like a right-pointing arrow. Wait for the gif to stop.\n4. Click the \"Reload\" button on the Navigation toolbar. It looks like a curved arrow.\n5. Click the \"Reload\" button again, then quickly click the \"Stop\" button on the Navigation toolbar. It looks like an \"X\"\n\nEXPECTED RESULTS\n1. While the gif is animating the \"Forward\" and \"Reload\" buttons should be inactive and the \"Back\" and \"Stop\" buttons should be active. When the gif stops, the \"Reload\" button should be active and the \"Stop\" button should be inactive.\n2. You should go back to the page you were at before. The \"Forward\" button should become active.\n3. The \"Forward\" button should become inactive again.\n4. The gif should begin to animate again.\n5. The gif should stop mid-animation",
+      "requirement_ids": [
+        "R-184"
+      ],
+      "source": "T-set.csv#TC-184",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": null,
+  "generation": {
+    "selected_techniques": [
+      "state_transition",
+      "use_case",
+      "equivalence_partitioning"
+    ],
+    "technique_rationales": {
+      "state_transition": "Required to cover the collapsing and expanding states of the browser toolbars specified in R-182.",
+      "use_case": "Required to cover user flows such as adding folders to the personal toolbar and interacting with their link contents as specified in R-183.",
+      "equivalence_partitioning": "Required to cover valid and invalid behaviors for executing browser navigation toolbar buttons appropriately as specified in R-184."
+    },
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "embedding_requests": 1
+  },
+  "links": {
+    "requirements": {
+      "R-182": "R-182/requirement.md",
+      "R-183": "R-183/requirement.md",
+      "R-184": "R-184/requirement.md"
+    },
+    "cases": {
+      "G-001": {
+        "R-182": "R-182/test cases/1_Collapse_and_Expand_Browser_Toolbar.md"
+      },
+      "G-004": {
+        "R-182": "R-182/test cases/4_Collapse_and_Expand_Browser_Toolbars.md"
+      },
+      "G-007": {
+        "R-182": "R-182/test cases/7_Collapse_and_expand_browser_toolbars.md"
+      },
+      "G-002": {
+        "R-183": "R-183/test cases/2_Add_Folder_to_Personal_Toolbar_and_Execute_Links.md"
+      },
+      "G-005": {
+        "R-183": "R-183/test cases/5_Add_Folders_to_Personal_Toolbar_and_Use_Link_Con.md"
+      },
+      "G-008": {
+        "R-183": "R-183/test cases/8_Add_folders_to_personal_toolbar_and_verify_link.md"
+      },
+      "G-003": {
+        "R-184": "R-184/test cases/3_Execute_Navigation_Toolbar_Buttons.md"
+      },
+      "G-006": {
+        "R-184": "R-184/test cases/6_Execute_Navigation_Toolbar_Buttons.md"
+      },
+      "G-009": {
+        "R-184": "R-184/test cases/9_Execute_browser_navigation_toolbar_buttons.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}
