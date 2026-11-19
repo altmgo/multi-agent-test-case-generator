@@ -1,0 +1,280 @@
+{
+  "schema_version": 1,
+  "solution": "one-shot",
+  "unit_id": "firefox_search",
+  "parent_id": null,
+  "status": "evaluated",
+  "failure": null,
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "R-135",
+      "text": "Clicking search button shall search the text entered in URLBar.",
+      "language": "en",
+      "source": "R-set.csv#R-135"
+    },
+    {
+      "id": "R-136",
+      "text": "Starting a URL bar search shall display the search results in the sidebar search tab.",
+      "language": "en",
+      "source": "R-set.csv#R-136"
+    },
+    {
+      "id": "R-137",
+      "text": "It shall be possible to start a search from within the sidebar search tab.",
+      "language": "en",
+      "source": "R-set.csv#R-137"
+    },
+    {
+      "id": "R-138",
+      "text": "A user shall be able to change the search engine.",
+      "language": "en",
+      "source": "R-set.csv#R-138"
+    },
+    {
+      "id": "R-139",
+      "text": "A conducted search shall be bookmarked.",
+      "language": "en",
+      "source": "R-set.csv#R-139"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Search via URLBar button (Normal)",
+      "description": "Verify that clicking the search button successfully searches the text entered in the URLBar.",
+      "requirement_ids": [
+        "R-135"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Search via URLBar with empty text (Abnormal)",
+      "description": "Verify the behavior when clicking the search button with no text entered in the URLBar.",
+      "requirement_ids": [
+        "R-135"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Display search results in sidebar (Normal)",
+      "description": "Verify that starting a URL bar search displays the search results in the sidebar search tab.",
+      "requirement_ids": [
+        "R-136"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Start search from sidebar tab (Normal)",
+      "description": "Verify that it is possible to initiate a new search directly from within the sidebar search tab.",
+      "requirement_ids": [
+        "R-137"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Change search engine (Normal)",
+      "description": "Verify that a user is able to successfully change the default search engine.",
+      "requirement_ids": [
+        "R-138"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Change to unsupported search engine (Abnormal)",
+      "description": "Verify the system behavior when attempting to change to an invalid or unsupported search engine.",
+      "requirement_ids": [
+        "R-138"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Bookmark conducted search (Normal)",
+      "description": "Verify that a conducted search can be properly bookmarked.",
+      "requirement_ids": [
+        "R-139"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "TC-135",
+      "title": "TC-135",
+      "description": "INITIAL CONDITIONS\nOpen a new browser window.\n\nSTEPS/DESCRIPTION\n1. Type something into the URL Bar or edit already existing contents.\n2. Click the \"Search\" button to the right of the URL Bar.\n\nEXPECTED RESULTS\n1. Clicking the \"Search\" button with a \"dirty\" URL bar should launch a search on the terms in the URL bar.\n2. You should see a page with search results in the browser content window. *there are MySidebar ramifications with this testcase that are treated elsewhere.",
+      "requirement_ids": [
+        "R-135"
+      ],
+      "source": "T-set.csv#TC-135",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-136",
+      "title": "TC-136",
+      "description": "INITIAL CONDITIONS\n1. Open a new browser window.\n2. All prefs should be set to their defaults (new profile).\n\nSTEPS/DESCRIPTION\n1. Type a multi-word search term in the URL bar. Anything will do, \"Claudius 'CMaximus' Gayle\" for example.\n2. Click the \"Search\" Button.\n\nEXPECTED RESULTS\n1. After search results load in the browser window, the Sidebar should pop open to the Search tab and be populated with search results as well.\n2. The textfield in the sidebar search tab should be populated with your search term exactly as you typed it.",
+      "requirement_ids": [
+        "R-136"
+      ],
+      "source": "T-set.csv#TC-136",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": [
+        "firefox_sidebar",
+        "firefox_web_location"
+      ]
+    },
+    {
+      "id": "TC-137",
+      "title": "TC-137",
+      "description": "INITIAL CONDITIONS\n1. Open a new browser window.\n2. All prefs should be set to their defaults (new profile).\n\nSTEPS/DESCRIPTION\n1. Open the Sidebar to the Search tab.\n2. Type a search term into the textbox. Anything will do, \"CMaximus\" for example.\n3. Click the \"Search\" Button next to the textfield.\n\nEXPECTED RESULTS\n1. Search results from the default search engine should load in the browser window.\n2. Results should load in the Search tab as well.\n3. Search results in the search tab should be prefixed by an icon representing the search engine - for each result.",
+      "requirement_ids": [
+        "R-137"
+      ],
+      "source": "T-set.csv#TC-137",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": [
+        "firefox_sidebar"
+      ]
+    },
+    {
+      "id": "TC-138",
+      "title": "TC-138",
+      "description": "INITIAL CONDITIONS\n1. Open a new browser window.\n2. All prefs should be set to their defaults (new profile).\n\nSTEPS/DESCRIPTION\n1. Run the single-search test first.\n2. In the dropdown box after the word \"using\" select a different search engine.\n3. Click the \"Search\" Button next to the textfield.\n4. Repeat steps 2-3 as desired.\n\nEXPECTED RESULTS\n1. Search results from the chosen search engine should load in the browser window.\n2. Results should load in the Search tab as well.\n3. Search results in the search tab should be prefixed by an icon representing the new search engine - for each result.",
+      "requirement_ids": [
+        "R-138"
+      ],
+      "source": "T-set.csv#TC-138",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-139",
+      "title": "TC-139",
+      "description": "INITIAL CONDITIONS\n1. Open a new browser window.\n2. All prefs should be set to their defaults (new profile).\n\nSTEPS/DESCRIPTION\n1. Run the single-search test first.\n2. Click the \"Bookmark this Search\" button below the search results.\n\nEXPECTED RESULTS\n1. A new bookmark folder titled \"Search:(your query string here)\". Should appear in the 4 Standard locations.\n2. The \"Bookmark this Search\" button should not have become active until search results were generated.",
+      "requirement_ids": [
+        "R-139"
+      ],
+      "source": "T-set.csv#TC-139",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": [
+        "firefox_bookmarks"
+      ]
+    }
+  ],
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 7,
+    "reference_count": 5,
+    "matches": [
+      {
+        "generated_id": "G-001",
+        "reference_id": "TC-135",
+        "similarity": 0.9177776273879072
+      },
+      {
+        "generated_id": "G-003",
+        "reference_id": "TC-136",
+        "similarity": 0.9078565697385814
+      },
+      {
+        "generated_id": "G-004",
+        "reference_id": "TC-137",
+        "similarity": 0.8822295305899964
+      },
+      {
+        "generated_id": "G-005",
+        "reference_id": "TC-138",
+        "similarity": 0.86526249879815
+      },
+      {
+        "generated_id": "G-007",
+        "reference_id": "TC-139",
+        "similarity": 0.8804723663199853
+      }
+    ],
+    "unmatched_generated_ids": [
+      "G-002",
+      "G-006"
+    ],
+    "unmatched_reference_ids": [],
+    "precision": 0.7142857142857143,
+    "recall": 1.0,
+    "f1": 0.8333333333333334,
+    "embedding_usage": {
+      "input_tokens": 865,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 865
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
+  "generation": {
+    "selected_techniques": [],
+    "technique_rationales": {},
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": 384,
+      "output_tokens": 500,
+      "details": {
+        "text_prompt_tokens": 384,
+        "total_tokens": 884
+      },
+      "status": "available"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": 865,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 865
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 1
+  },
+  "links": {
+    "requirements": {
+      "R-135": "R-135/requirement.md",
+      "R-136": "R-136/requirement.md",
+      "R-137": "R-137/requirement.md",
+      "R-138": "R-138/requirement.md",
+      "R-139": "R-139/requirement.md"
+    },
+    "cases": {
+      "G-001": {
+        "R-135": "R-135/test cases/1_Search_via_URLBar_button_Normal.md"
+      },
+      "G-002": {
+        "R-135": "R-135/test cases/2_Search_via_URLBar_with_empty_text_Abnormal.md"
+      },
+      "G-003": {
+        "R-136": "R-136/test cases/3_Display_search_results_in_sidebar_Normal.md"
+      },
+      "G-004": {
+        "R-137": "R-137/test cases/4_Start_search_from_sidebar_tab_Normal.md"
+      },
+      "G-005": {
+        "R-138": "R-138/test cases/5_Change_search_engine_Normal.md"
+      },
+      "G-006": {
+        "R-138": "R-138/test cases/6_Change_to_unsupported_search_engine_Abnormal.md"
+      },
+      "G-007": {
+        "R-139": "R-139/test cases/7_Bookmark_conducted_search_Normal.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

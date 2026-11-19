@@ -1,6 +1,7 @@
 """Evaluate an existing TCG run against normalized reference cases."""
 
 import argparse
+import json
 import sys
 from pathlib import Path
 
@@ -12,6 +13,7 @@ from tcg.schemas import UsageRecord
 from .embeddings import EMBEDDING_MODELS, EmbeddingError, EmbeddingQuotaStop, GeminiEmbedder
 from .matching import SIMILARITY_THRESHOLD
 from .metrics import aggregate, evaluate
+from .models import EvaluationResult
 from .reader import read_config, read_generated_unit
 from .reports import publish_unit
 
@@ -44,6 +46,21 @@ def _run(options: argparse.Namespace) -> int:
             requests = 0
             failure = unit.failure
             if failure is None:
+                previous_results = unit.path / "results.json"
+                if previous_results.is_file():
+                    try:
+                        prev = json.loads(previous_results.read_text(encoding="utf-8"))
+                        if (
+                            prev.get("status") == "evaluated"
+                            and prev.get("embedding_model") == options.embedding_model
+                            and prev.get("evaluation")
+                        ):
+                            evaluation = EvaluationResult.model_validate(prev["evaluation"])
+                            evaluations[unit.solution][unit.dataset.id] = evaluation
+                            print(f"{unit.solution}/{unit.dataset.id}: reusing existing evaluation", file=sys.stderr, flush=True)
+                            continue
+                    except Exception:
+                        pass
                 try:
                     evaluation = evaluate(unit.dataset, unit.cases, embedder)
                 except EmbeddingError as error:

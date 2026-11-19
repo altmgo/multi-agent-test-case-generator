@@ -309,12 +309,14 @@
     "recall": 0.42857142857142855,
     "f1": 0.6,
     "embedding_usage": {
-      "input_tokens": null,
+      "input_tokens": 3216,
       "output_tokens": null,
-      "details": null,
-      "status": "unavailable"
+      "details": {
+        "text_prompt_tokens": 3216
+      },
+      "status": "partial"
     },
-    "embedding_requests": 2
+    "embedding_requests": 1
   },
   "generation": {
     "selected_techniques": [],
@@ -334,12 +336,14 @@
     "generation_attempts": [],
     "generation_calls": [],
     "embedding": {
-      "input_tokens": null,
+      "input_tokens": 3216,
       "output_tokens": null,
-      "details": null,
-      "status": "unavailable"
+      "details": {
+        "text_prompt_tokens": 3216
+      },
+      "status": "partial"
     },
-    "embedding_requests": 2
+    "embedding_requests": 1
   },
   "links": {
     "requirements": {

@@ -1,0 +1,34 @@
+{
+  "status": "evaluated",
+  "embedding_model": "gemini-embedding-2",
+  "similarity_threshold": 0.7,
+  "matches": [
+    {
+      "generated_id": "G-001",
+      "reference_id": "e2edev_bench_12-R-1-TC-1",
+      "similarity": 0.9477047555735114
+    },
+    {
+      "generated_id": "G-002",
+      "reference_id": "e2edev_bench_12-R-3-TC-1",
+      "similarity": 0.9405528632881416
+    },
+    {
+      "generated_id": "G-004",
+      "reference_id": "e2edev_bench_12-R-2-TC-1",
+      "similarity": 0.9319866537524611
+    },
+    {
+      "generated_id": "G-007",
+      "reference_id": "e2edev_bench_12-R-3-TC-2",
+      "similarity": 0.921118833107212
+    }
+  ],
+  "unmatched_generated_ids": [
+    "G-003",
+    "G-005",
+    "G-006",
+    "G-008"
+  ],
+  "unmatched_reference_ids": []
+}

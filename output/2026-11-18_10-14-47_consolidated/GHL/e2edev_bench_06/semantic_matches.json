@@ -1,0 +1,107 @@
+{
+  "status": "evaluated",
+  "embedding_model": "gemini-embedding-2",
+  "similarity_threshold": 0.7,
+  "matches": [
+    {
+      "generated_id": "G-001",
+      "reference_id": "e2edev_bench_06-R-6-TC-1",
+      "similarity": 0.9421065925926638
+    },
+    {
+      "generated_id": "G-002",
+      "reference_id": "e2edev_bench_06-R-6-TC-4",
+      "similarity": 0.9470432543231688
+    },
+    {
+      "generated_id": "G-004",
+      "reference_id": "e2edev_bench_06-R-3-TC-2",
+      "similarity": 0.9309629066388105
+    },
+    {
+      "generated_id": "G-005",
+      "reference_id": "e2edev_bench_06-R-3-TC-3",
+      "similarity": 0.9359145117700567
+    },
+    {
+      "generated_id": "G-006",
+      "reference_id": "e2edev_bench_06-R-4-TC-2",
+      "similarity": 0.9353548582672032
+    },
+    {
+      "generated_id": "G-013",
+      "reference_id": "e2edev_bench_06-R-1-TC-1",
+      "similarity": 0.9054942017207115
+    },
+    {
+      "generated_id": "G-014",
+      "reference_id": "e2edev_bench_06-R-6-TC-6",
+      "similarity": 0.8300433666507538
+    },
+    {
+      "generated_id": "G-017",
+      "reference_id": "e2edev_bench_06-R-1-TC-2",
+      "similarity": 0.9419841556896232
+    },
+    {
+      "generated_id": "G-019",
+      "reference_id": "e2edev_bench_06-R-4-TC-1",
+      "similarity": 0.9516210181717508
+    },
+    {
+      "generated_id": "G-021",
+      "reference_id": "e2edev_bench_06-R-5-TC-1",
+      "similarity": 0.9017780817006773
+    },
+    {
+      "generated_id": "G-022",
+      "reference_id": "e2edev_bench_06-R-6-TC-3",
+      "similarity": 0.9195944835640852
+    },
+    {
+      "generated_id": "G-023",
+      "reference_id": "e2edev_bench_06-R-6-TC-2",
+      "similarity": 0.9281391770016465
+    },
+    {
+      "generated_id": "G-024",
+      "reference_id": "e2edev_bench_06-R-3-TC-1",
+      "similarity": 0.924064985494044
+    },
+    {
+      "generated_id": "G-025",
+      "reference_id": "e2edev_bench_06-R-4-TC-3",
+      "similarity": 0.9458943029842108
+    },
+    {
+      "generated_id": "G-027",
+      "reference_id": "e2edev_bench_06-R-3-TC-4",
+      "similarity": 0.9039238750418621
+    },
+    {
+      "generated_id": "G-028",
+      "reference_id": "e2edev_bench_06-R-1-TC-3",
+      "similarity": 0.89835738835655
+    },
+    {
+      "generated_id": "G-029",
+      "reference_id": "e2edev_bench_06-R-6-TC-5",
+      "similarity": 0.864440257240781
+    }
+  ],
+  "unmatched_generated_ids": [
+    "G-003",
+    "G-007",
+    "G-008",
+    "G-009",
+    "G-010",
+    "G-011",
+    "G-012",
+    "G-015",
+    "G-016",
+    "G-018",
+    "G-020",
+    "G-026"
+  ],
+  "unmatched_reference_ids": []
+}

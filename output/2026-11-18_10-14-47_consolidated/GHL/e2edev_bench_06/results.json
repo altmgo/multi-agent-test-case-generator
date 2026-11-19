@@ -1,0 +1,770 @@
+{
+  "schema_version": 1,
+  "solution": "GHL",
+  "unit_id": "e2edev_bench_06",
+  "parent_id": null,
+  "status": "evaluated",
+  "failure": null,
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "e2edev_bench_06-R-1",
+      "text": "When the user clicks any visible piano key on the webpage, identified by its data-testid (e.g., 'piano-key-a' for the white key 'a' or 'piano-key-w' for the black key 'w'), the system must play the corresponding sound file from the 'tunes' directory (e.g., 'tunes/a.wav' for key 'a'). The clicked key must receive the 'active' class to visually highlight it, and the highlight must be removed after 150ms by removing the 'active' class.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_06/requirment_with_tests.json#/finegrained_rewith_test/1/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_06-R-3",
+      "text": "The system must allow the user to adjust the audio volume using a slider (data-testid='volume-slider') with a range from 0 (mute) to 1 (maximum volume). Interacting with the slider updates the audio volume accordingly, with 0 muting the audio, 1 playing at full volume. The volume change must be reflected immediately upon slider adjustment.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_06/requirment_with_tests.json#/finegrained_rewith_test/3/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_06-R-4",
+      "text": "When the user interacts with the 'Show Keys' checkbox (identified by `data-testid='show-keys-checkbox'`), the system must toggle the visibility of key labels on the piano keys (identified by `data-testid` starting with 'piano-key') by adding or removing the 'hide' class. Initially, the labels are visible. When the checkbox is checked, clicking it should hide the labels by adding the 'hide' class to all piano keys. When unchecked, clicking it should restore the labels by removing the 'hide' class. The system must handle rapid toggling, ensuring the final state of the labels is consistent and correct.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_06/requirment_with_tests.json#/finegrained_rewith_test/4/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_06-R-5",
+      "text": "The system must display all piano keys (white and black) in the UI, each labeled with its corresponding keyboard key. The piano keys must include both white and black keys, with the following labels: 'a', 'w', 's', 'e', 'd', 'f', 't', 'g', 'y', 'h', 'u', 'j', 'k', 'o', 'l', 'p', ';'. Each key must be represented as an HTML <li> element with the class 'key' and either 'white' or 'black', depending on the type of key. The keys must also include a 'data-key' attribute corresponding to their label and a 'data-testid' attribute in the format 'piano-key-{label}' (e.g., 'piano-key-a'). The labels must be displayed as <span> elements nested within the <li> elements. The keys must be contained within a <ul> element with the class 'piano-keys'. The system must ensure that all keys are visible by default when the webpage is loaded, and their labels must be displayed unless the 'Show Keys' checkbox is unchecked. The checkbox must be represented as an HTML <input> element with the type 'checkbox', a 'data-testid' attribute of 'show-keys-checkbox', and must toggle the visibility of the labels when clicked.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_06/requirment_with_tests.json#/finegrained_rewith_test/5/requirement/description"
+    },
+    {
+      "id": "e2edev_bench_06-R-6",
+      "text": "The system must allow users to interact with the piano keys using both mouse clicks and keyboard presses, ensuring consistent functionality across both input methods.",
+      "language": "en",
+      "source": "E2EDev_data/E2ESD_Bench_06/requirment_with_tests.json#/finegrained_rewith_test/6/requirement/description"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Play sound and highlight valid white piano key via mouse click",
+      "description": "Verify that clicking a valid white piano key (e.g., data-testid='piano-key-a') plays the corresponding sound ('tunes/a.wav'), adds the 'active' class, and removes it after 150ms.",
+      "requirement_ids": [
+        "e2edev_bench_06-R-1",
+        "e2edev_bench_06-R-5",
+        "e2edev_bench_06-R-6"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Play sound and highlight valid black piano key via keyboard press",
+      "description": "Verify that pressing the corresponding keyboard key for a valid black piano key (e.g., data-testid='piano-key-w') plays the corresponding sound ('tunes/w.wav'), adds the 'active' class, and removes it after 150ms.",
+      "requirement_ids": [
+        "e2edev_bench_06-R-1",
+        "e2edev_bench_06-R-5",
+        "e2edev_bench_06-R-6"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Adjust audio volume to valid intermediate value",
+      "description": "Verify that adjusting the volume slider (data-testid='volume-slider') to a valid value within the range (0 < value < 1) immediately updates the audio playback volume accordingly.",
+      "requirement_ids": [
+        "e2edev_bench_06-R-3"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Adjust audio volume to mute boundary value",
+      "description": "Verify that setting the volume slider (data-testid='volume-slider') to 0 immediately mutes the audio playback.",
+      "requirement_ids": [
+        "e2edev_bench_06-R-3"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Adjust audio volume to maximum boundary value",
+      "description": "Verify that setting the volume slider (data-testid='volume-slider') to 1 immediately plays audio at full volume.",
+      "requirement_ids": [
+        "e2edev_bench_06-R-3"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Toggle key labels visibility using the Show Keys checkbox",
+      "description": "Verify that interacting with the 'Show Keys' checkbox (data-testid='show-keys-checkbox') correctly toggles the 'hide' class on piano key labels between visible (default) and hidden states, and handles rapid toggling consistently.",
+      "requirement_ids": [
+        "e2edev_bench_06-R-4",
+        "e2edev_bench_06-R-5"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Volume Slider at Lower Boundary (0)",
+      "description": "Set the volume slider (data-testid='volume-slider') to exactly 0 to test mute functionality.",
+      "requirement_ids": [
+        "e2edev_bench_06-R-3"
+      ]
+    },
+    {
+      "id": "G-008",
+      "title": "Volume Slider Immediately Above Lower Boundary (0.01)",
+      "description": "Set the volume slider to 0.01 to test low volume just above mute.",
+      "requirement_ids": [
+        "e2edev_bench_06-R-3"
+      ]
+    },
+    {
+      "id": "G-009",
+      "title": "Volume Slider Immediately Below Upper Boundary (0.99)",
+      "description": "Set the volume slider to 0.99 to test high volume just below maximum.",
+      "requirement_ids": [
+        "e2edev_bench_06-R-3"
+      ]
+    },
+    {
+      "id": "G-010",
+      "title": "Volume Slider at Upper Boundary (1)",
+      "description": "Set the volume slider to exactly 1 to test maximum volume functionality.",
+      "requirement_ids": [
+        "e2edev_bench_06-R-3"
+      ]
+    },
+    {
+      "id": "G-011",
+      "title": "Volume Slider Outside Lower Boundary (-0.1)",
+      "description": "Attempt to set the volume slider below 0 to check system robustness and boundary constraints.",
+      "requirement_ids": [
+        "e2edev_bench_06-R-3"
+      ]
+    },
+    {
+      "id": "G-012",
+      "title": "Volume Slider Outside Upper Boundary (1.1)",
+      "description": "Attempt to set the volume slider above 1 to check system robustness and boundary constraints.",
+      "requirement_ids": [
+        "e2edev_bench_06-R-3"
+      ]
+    },
+    {
+      "id": "G-013",
+      "title": "Piano Key Press State Transition (Idle to Active to Idle)",
+      "description": "Verify that clicking or pressing a piano key transitions its state from idle to active, plays the sound file, and automatically returns to idle after 150ms by removing the active class.",
+      "requirement_ids": [
+        "e2edev_bench_06-R-1",
+        "e2edev_bench_06-R-6"
+      ]
+    },
+    {
+      "id": "G-014",
+      "title": "Show Keys Checkbox Visibility State Toggle",
+      "description": "Verify that interacting with the Show Keys checkbox transitions the key label visibility state between visible (default, no 'hide' class) and hidden ('hide' class added to piano keys).",
+      "requirement_ids": [
+        "e2edev_bench_06-R-4",
+        "e2edev_bench_06-R-5"
+      ]
+    },
+    {
+      "id": "G-015",
+      "title": "Rapid Toggling of Show Keys Checkbox",
+      "description": "Verify that rapid successive toggling of the Show Keys checkbox correctly updates and maintains a consistent final visibility state of the piano key labels.",
+      "requirement_ids": [
+        "e2edev_bench_06-R-4"
+      ]
+    },
+    {
+      "id": "G-016",
+      "title": "Volume Slider Adjustment State Transition",
+      "description": "Verify that moving the volume slider smoothly transitions the audio output state from mute (0) to maximum volume (1) immediately upon adjustment.",
+      "requirement_ids": [
+        "e2edev_bench_06-R-3"
+      ]
+    },
+    {
+      "id": "G-017",
+      "title": "Click Piano Key - Normal Sound and Highlight",
+      "description": "Verify that clicking a visible piano key plays the corresponding sound file, applies the 'active' class for visual highlighting, and removes the 'active' class after 150ms.",
+      "requirement_ids": [
+        "e2edev_bench_06-R-1",
+        "e2edev_bench_06-R-5",
+        "e2edev_bench_06-R-6"
+      ]
+    },
+    {
+      "id": "G-018",
+      "title": "Adjust Volume Slider - Mute to Max",
+      "description": "Verify that interacting with the volume slider updates the audio volume immediately according to values between 0 (mute) and 1 (maximum volume).",
+      "requirement_ids": [
+        "e2edev_bench_06-R-3"
+      ]
+    },
+    {
+      "id": "G-019",
+      "title": "Toggle Show Keys Checkbox - Hide and Show Labels",
+      "description": "Verify that interacting with the 'Show Keys' checkbox toggles the visibility of the key labels by adding or removing the 'hide' class on all piano keys.",
+      "requirement_ids": [
+        "e2edev_bench_06-R-4",
+        "e2edev_bench_06-R-5"
+      ]
+    },
+    {
+      "id": "G-020",
+      "title": "Rapid Toggling of Show Keys Checkbox",
+      "description": "Verify that rapid toggling of the 'Show Keys' checkbox maintains a consistent and correct final visibility state for all piano key labels.",
+      "requirement_ids": [
+        "e2edev_bench_06-R-4"
+      ]
+    },
+    {
+      "id": "G-021",
+      "title": "Default UI Initialization and Visibility",
+      "description": "Verify that all white and black piano keys are displayed on page load within the 'piano-keys' ul element with correct data-testid, data-key, and nested span labels, and that the 'Show Keys' checkbox is present and labels are visible by default.",
+      "requirement_ids": [
+        "e2edev_bench_06-R-5"
+      ]
+    },
+    {
+      "id": "G-022",
+      "title": "Play Piano Key Sound and Visual Highlight via Mouse Click",
+      "description": "Click a visible piano key using its data-testid, verify that the corresponding sound file from the 'tunes' directory is played, the 'active' class is applied for visual highlighting, and the 'active' class is removed after 150ms.",
+      "requirement_ids": [
+        "e2edev_bench_06-R-1",
+        "e2edev_bench_06-R-6"
+      ]
+    },
+    {
+      "id": "G-023",
+      "title": "Play Piano Key Sound and Visual Highlight via Keyboard Press",
+      "description": "Press a keyboard key corresponding to a piano key, verify that the corresponding sound file is played, the 'active' class is applied for visual highlighting, and the highlight is removed after 150ms, confirming consistent functionality with mouse clicks.",
+      "requirement_ids": [
+        "e2edev_bench_06-R-1",
+        "e2edev_bench_06-R-6"
+      ]
+    },
+    {
+      "id": "G-024",
+      "title": "Adjust Audio Volume via Slider",
+      "description": "Interact with the volume slider (data-testid='volume-slider') across its range from 0 to 1, verifying that the audio volume updates immediately and accurately, muting at 0 and playing at full volume at 1.",
+      "requirement_ids": [
+        "e2edev_bench_06-R-3"
+      ]
+    },
+    {
+      "id": "G-025",
+      "title": "Toggle Key Labels Visibility and Handle Rapid Toggling",
+      "description": "Interact with the 'Show Keys' checkbox (data-testid='show-keys-checkbox') to toggle the 'hide' class on piano key labels. Verify normal checking and unchecking behavior as well as consistency under rapid toggling.",
+      "requirement_ids": [
+        "e2edev_bench_06-R-4",
+        "e2edev_bench_06-R-5"
+      ]
+    },
+    {
+      "id": "G-026",
+      "title": "Rapid Toggling of Show Keys Checkbox",
+      "description": "Rapidly click the 'show-keys-checkbox' multiple times in quick succession to test if the final visibility state of the key labels remains consistent and correct.",
+      "requirement_ids": [
+        "e2edev_bench_06-R-4",
+        "e2edev_bench_06-R-5"
+      ]
+    },
+    {
+      "id": "G-027",
+      "title": "Volume Slider Out-of-Bounds Values",
+      "description": "Attempt to set the 'volume-slider' to values below 0 or above 1 via direct DOM manipulation or edge interactions to verify proper clamping and error handling.",
+      "requirement_ids": [
+        "e2edev_bench_06-R-3"
+      ]
+    },
+    {
+      "id": "G-028",
+      "title": "Simultaneous Multi-Key Clicks",
+      "description": "Click multiple piano keys simultaneously or in ultra-rapid succession to test overlapping sound playback and independent 'active' class removal timers.",
+      "requirement_ids": [
+        "e2edev_bench_06-R-1",
+        "e2edev_bench_06-R-6"
+      ]
+    },
+    {
+      "id": "G-029",
+      "title": "Missing Sound File Handling",
+      "description": "Trigger a piano key whose corresponding sound file in the 'tunes' directory is missing or fails to load, verifying system stability.",
+      "requirement_ids": [
+        "e2edev_bench_06-R-1"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "e2edev_bench_06-R-1-TC-1",
+      "title": "[Normal] User clicks on a white piano key",
+      "description": "Feature: Play piano sound and visually highlight the key when clicked\n  The system must play the corresponding piano sound and visually highlight the key when the user clicks on a piano key. The highlight should disappear after 150ms.\n\n\nScenario: [Normal] User clicks on a white piano key\n    Given the webpage is loaded and the piano keys are visible\n    When the user clicks on the white piano key with data-testid \"piano-key-a\"\n    Then the system must play the sound \n    And the key with data-testid \"piano-key-a\" must have the \"active\" class added\n    And the \"active\" class must be removed from the key with data-testid \"piano-key-a\" after 150ms",
+      "requirement_ids": [
+        "e2edev_bench_06-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_06/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_06-R-1-TC-2",
+      "title": "[Normal] User clicks on a black piano key",
+      "description": "Feature: Play piano sound and visually highlight the key when clicked\n  The system must play the corresponding piano sound and visually highlight the key when the user clicks on a piano key. The highlight should disappear after 150ms.\n\n\n  Scenario: [Normal] User clicks on a black piano key\n    Given the webpage is loaded and the piano keys are visible\n    When the user clicks on the black piano key with data-testid \"piano-key-w\"\n    Then the system must play the sound\n    And the key with data-testid \"piano-key-w\" must have the \"active\" class added\n    And the \"active\" class must be removed from the key with data-testid \"piano-key-w\" after 150ms\n",
+      "requirement_ids": [
+        "e2edev_bench_06-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_06/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_06-R-1-TC-3",
+      "title": "[Edge] User clicks multiple piano keys in quick succession",
+      "description": "Feature: Play piano sound and visually highlight the key when clicked\n  The system must play the corresponding piano sound and visually highlight the key when the user clicks on a piano key. The highlight should disappear after 150ms.\n\n\nScenario: [Edge] User clicks multiple piano keys in quick succession\n    Given the webpage is loaded and the piano keys are visible\n    When the user clicks on the white piano key with data-testid \"piano-key-a\"\n    And immediately clicks on the black piano key with data-testid \"piano-key-w\"\n    Then the system must play the sound\n    And the system must play the sound\n    And the key with data-testid \"piano-key-a\" must have the \"active\" class added\n    And the key with data-testid \"piano-key-w\" must have the \"active\" class added\n    And the \"active\" class must be removed from the key with data-testid \"piano-key-a\" after 150ms\n    And the \"active\" class must be removed from the key with data-testid \"piano-key-w\" after 150ms",
+      "requirement_ids": [
+        "e2edev_bench_06-R-1"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_06/requirment_with_tests.json#/finegrained_rewith_test/1/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_06-R-3-TC-1",
+      "title": "[Normal] Adjusting the volume slider updates the audio playback volume",
+      "description": "Feature: Adjusting the volume slider to control audio playback volume\n  The user should be able to adjust the volume slider to control the audio playback volume, with values ranging from 0 (mute) to 1 (maximum volume).\n\n\n  Scenario: [Normal] Adjusting the volume slider updates the audio playback volume\n    Given the piano webpage is loaded\n    And the volume slider with data-testid \"volume-slider\" is visible and set to 0.5\n    When the user moves the volume slider to 0.8\n    Then the audio playback volume should be updated to 0.8\n",
+      "requirement_ids": [
+        "e2edev_bench_06-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_06/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_06-R-3-TC-2",
+      "title": "[Edge] Setting the volume slider to the minimum value (mute)",
+      "description": "Feature: Adjusting the volume slider to control audio playback volume\n  The user should be able to adjust the volume slider to control the audio playback volume, with values ranging from 0 (mute) to 1 (maximum volume).\n\n\n  Scenario: [Edge] Setting the volume slider to the minimum value (mute)\n    Given the piano webpage is loaded\n    And the volume slider with data-testid \"volume-slider\" is visible and set to 0.5\n    When the user moves the volume slider to 0\n    Then the audio playback volume should be updated to 0\n",
+      "requirement_ids": [
+        "e2edev_bench_06-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_06/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_06-R-3-TC-3",
+      "title": "[Edge] Setting the volume slider to the maximum value",
+      "description": "Feature: Adjusting the volume slider to control audio playback volume\n  The user should be able to adjust the volume slider to control the audio playback volume, with values ranging from 0 (mute) to 1 (maximum volume).\n\n\n  Scenario: [Edge] Setting the volume slider to the maximum value\n    Given the piano webpage is loaded\n    And the volume slider with data-testid \"volume-slider\" is visible and set to 0.5\n    When the user moves the volume slider to 1\n    Then the audio playback volume should be updated to 1\n",
+      "requirement_ids": [
+        "e2edev_bench_06-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_06/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_06-R-3-TC-4",
+      "title": "[Error] Providing an invalid value outside the slider range",
+      "description": "Feature: Adjusting the volume slider to control audio playback volume\n  The user should be able to adjust the volume slider to control the audio playback volume, with values ranging from 0 (mute) to 1 (maximum volume).\n\n\n  Scenario: [Error] Providing an invalid value outside the slider range\n    Given the piano webpage is loaded\n    And the volume slider with data-testid \"volume-slider\" is visible and set to 0.5\n    When the user attempts to set the volume slider to -0.5\n    Then the audio playback volume should remain unchanged at 0\n",
+      "requirement_ids": [
+        "e2edev_bench_06-R-3"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_06/requirment_with_tests.json#/finegrained_rewith_test/3/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_06-R-4-TC-1",
+      "title": "[Normal] Toggle key labels visibility on checkbox click",
+      "description": "Feature: Toggle visibility of piano key labels\n  The system must toggle the visibility of the key labels on the piano keys when the user clicks the 'Show Keys' checkbox.\n\n\n  Scenario: [Normal] Toggle key labels visibility on checkbox click\n    Given the Playable Piano page is loaded\n    And the 'Show Keys' checkbox with data-testid 'show-keys-checkbox' is checked\n    When the user clicks the 'Show Keys' checkbox\n    Then each piano key with data-testid starting with 'piano-key' should have the 'hide' class added\n",
+      "requirement_ids": [
+        "e2edev_bench_06-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_06/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_06-R-4-TC-2",
+      "title": "[Normal] Restore key labels visibility on checkbox click",
+      "description": "Feature: Toggle visibility of piano key labels\n  The system must toggle the visibility of the key labels on the piano keys when the user clicks the 'Show Keys' checkbox.\n\n\n  Scenario: [Normal] Restore key labels visibility on checkbox click\n    Given the Playable Piano page is loaded\n    And the 'Show Keys' checkbox with data-testid 'show-keys-checkbox' is unchecked\n    When the user clicks the 'Show Keys' checkbox\n    Then each piano key with data-testid starting with 'piano-key' should have the 'hide' class removed\n",
+      "requirement_ids": [
+        "e2edev_bench_06-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_06/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_06-R-4-TC-3",
+      "title": "[Edge] Rapid toggling of the 'Show Keys' checkbox",
+      "description": "Feature: Toggle visibility of piano key labels\n  The system must toggle the visibility of the key labels on the piano keys when the user clicks the 'Show Keys' checkbox.\n\n\n  Scenario: [Edge] Rapid toggling of the 'Show Keys' checkbox\n    Given the Playable Piano page is loaded\n    And the 'Show Keys' checkbox with data-testid 'show-keys-checkbox' is checked\n    When the user rapidly clicks the 'Show Keys' checkbox five times\n    Then the final state of each piano key with data-testid starting with 'piano-key' should have the 'hide' class\n",
+      "requirement_ids": [
+        "e2edev_bench_06-R-4"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_06/requirment_with_tests.json#/finegrained_rewith_test/4/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_06-R-5-TC-1",
+      "title": "[Normal] Display all piano keys with labels",
+      "description": "Feature: Display of Piano Keys\n  The system must display all piano keys (white and black) in the UI, each labeled with its corresponding keyboard key.\n\n\n  Scenario: [Normal] Display all piano keys with labels\n    Given the Playable Piano webpage is loaded\n    Then all piano keys should be visible\n    And each piano key should display its corresponding keyboard key label\n    And the labels should be 'a', 'w', 's', 'e', 'd', 'f', 't', 'g', 'y', 'h', 'u', 'j', 'k', 'o', 'l', 'p', ';'\n",
+      "requirement_ids": [
+        "e2edev_bench_06-R-5"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_06/requirment_with_tests.json#/finegrained_rewith_test/5/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_06-R-6-TC-1",
+      "title": "[Normal] Playing a piano key using a mouse click",
+      "description": "Feature: Interacting with piano keys using mouse clicks and keyboard presses\n  The system must allow the user to interact with the piano keys using both mouse clicks and keyboard presses, ensuring consistent functionality across both input methods.\n\n\nScenario: [Normal] Playing a piano key using a mouse click\n    Given the webpage is loaded and the piano keys are visible\n    When the user clicks on the white piano key with data-testid \"piano-key-a\"\n    Then the audio should play\n    And the piano key with data-testid \"piano-key-a\" should briefly have the \"active\" class applied\n    And the \"active\" class should be removed after 150 milliseconds",
+      "requirement_ids": [
+        "e2edev_bench_06-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_06/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/0/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_06-R-6-TC-2",
+      "title": "[Normal] Playing a piano key using a keyboard press",
+      "description": "Feature: Interacting with piano keys using mouse clicks and keyboard presses\n  The system must allow the user to interact with the piano keys using both mouse clicks and keyboard presses, ensuring consistent functionality across both input methods.\n\n\nScenario: [Normal] Playing a piano key using a keyboard press\n    Given the webpage is loaded and the piano keys are visible\n    When the user presses the \"a\" key on the keyboard\n    Then the audio should play\n    And the piano key with data-testid \"piano-key-a\" should briefly have the \"active\" class applied\n    And the \"active\" class should be removed after 150 milliseconds",
+      "requirement_ids": [
+        "e2edev_bench_06-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_06/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/1/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_06-R-6-TC-3",
+      "title": "[Edge] Playing a black piano key using a mouse click",
+      "description": "Feature: Interacting with piano keys using mouse clicks and keyboard presses\n  The system must allow the user to interact with the piano keys using both mouse clicks and keyboard presses, ensuring consistent functionality across both input methods.\n\n\n  Scenario: [Edge] Playing a black piano key using a mouse click\n    Given the webpage is loaded and the piano keys are visible\n    When the user clicks on the black piano key with data-testid \"piano-key-w\"\n    Then the audio should play\n    And the piano key with data-testid \"piano-key-w\" should briefly have the \"active\" class applied\n    And the \"active\" class should be removed after 150 milliseconds\n",
+      "requirement_ids": [
+        "e2edev_bench_06-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_06/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/2/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_06-R-6-TC-4",
+      "title": "[Edge] Playing a black piano key using a keyboard press",
+      "description": "Feature: Interacting with piano keys using mouse clicks and keyboard presses\n  The system must allow the user to interact with the piano keys using both mouse clicks and keyboard presses, ensuring consistent functionality across both input methods.\n\n\n  Scenario: [Edge] Playing a black piano key using a keyboard press\n    Given the webpage is loaded and the piano keys are visible\n    When the user presses the \"w\" key on the keyboard\n    Then the audio should play\n    And the piano key with data-testid \"piano-key-w\" should briefly have the \"active\" class applied\n    And the \"active\" class should be removed after 150 milliseconds\n",
+      "requirement_ids": [
+        "e2edev_bench_06-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_06/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/3/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_06-R-6-TC-5",
+      "title": "[Error] Pressing a non-piano key on the keyboard",
+      "description": "Feature: Interacting with piano keys using mouse clicks and keyboard presses\n  The system must allow the user to interact with the piano keys using both mouse clicks and keyboard presses, ensuring consistent functionality across both input methods.\n\n\n  Scenario: [Error] Pressing a non-piano key on the keyboard\n    Given the webpage is loaded and the piano keys are visible\n    When the user presses the \"z\" key on the keyboard\n    Then no audio file should play\n    And no piano key should have the \"active\" class applied\n",
+      "requirement_ids": [
+        "e2edev_bench_06-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_06/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/4/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    },
+    {
+      "id": "e2edev_bench_06-R-6-TC-6",
+      "title": "[Error] Clicking outside the piano keys",
+      "description": "Feature: Interacting with piano keys using mouse clicks and keyboard presses\n  The system must allow the user to interact with the piano keys using both mouse clicks and keyboard presses, ensuring consistent functionality across both input methods.\n\n\n  Scenario: [Error] Clicking outside the piano keys\n    Given the webpage is loaded and the piano keys are visible\n    When the user clicks on an area outside the piano keys\n    Then no audio file should play\n    And no piano key should have the \"active\" class applied",
+      "requirement_ids": [
+        "e2edev_bench_06-R-6"
+      ],
+      "source": "E2EDev_data/E2ESD_Bench_06/requirment_with_tests.json#/finegrained_rewith_test/6/test_cases/5/test_case",
+      "link_method": "explicit_annotation",
+      "link_status": "source_annotated",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 29,
+    "reference_count": 17,
+    "matches": [
+      {
+        "generated_id": "G-001",
+        "reference_id": "e2edev_bench_06-R-6-TC-1",
+        "similarity": 0.9421065925926638
+      },
+      {
+        "generated_id": "G-002",
+        "reference_id": "e2edev_bench_06-R-6-TC-4",
+        "similarity": 0.9470432543231688
+      },
+      {
+        "generated_id": "G-004",
+        "reference_id": "e2edev_bench_06-R-3-TC-2",
+        "similarity": 0.9309629066388105
+      },
+      {
+        "generated_id": "G-005",
+        "reference_id": "e2edev_bench_06-R-3-TC-3",
+        "similarity": 0.9359145117700567
+      },
+      {
+        "generated_id": "G-006",
+        "reference_id": "e2edev_bench_06-R-4-TC-2",
+        "similarity": 0.9353548582672032
+      },
+      {
+        "generated_id": "G-013",
+        "reference_id": "e2edev_bench_06-R-1-TC-1",
+        "similarity": 0.9054942017207115
+      },
+      {
+        "generated_id": "G-014",
+        "reference_id": "e2edev_bench_06-R-6-TC-6",
+        "similarity": 0.8300433666507538
+      },
+      {
+        "generated_id": "G-017",
+        "reference_id": "e2edev_bench_06-R-1-TC-2",
+        "similarity": 0.9419841556896232
+      },
+      {
+        "generated_id": "G-019",
+        "reference_id": "e2edev_bench_06-R-4-TC-1",
+        "similarity": 0.9516210181717508
+      },
+      {
+        "generated_id": "G-021",
+        "reference_id": "e2edev_bench_06-R-5-TC-1",
+        "similarity": 0.9017780817006773
+      },
+      {
+        "generated_id": "G-022",
+        "reference_id": "e2edev_bench_06-R-6-TC-3",
+        "similarity": 0.9195944835640852
+      },
+      {
+        "generated_id": "G-023",
+        "reference_id": "e2edev_bench_06-R-6-TC-2",
+        "similarity": 0.9281391770016465
+      },
+      {
+        "generated_id": "G-024",
+        "reference_id": "e2edev_bench_06-R-3-TC-1",
+        "similarity": 0.924064985494044
+      },
+      {
+        "generated_id": "G-025",
+        "reference_id": "e2edev_bench_06-R-4-TC-3",
+        "similarity": 0.9458943029842108
+      },
+      {
+        "generated_id": "G-027",
+        "reference_id": "e2edev_bench_06-R-3-TC-4",
+        "similarity": 0.9039238750418621
+      },
+      {
+        "generated_id": "G-028",
+        "reference_id": "e2edev_bench_06-R-1-TC-3",
+        "similarity": 0.89835738835655
+      },
+      {
+        "generated_id": "G-029",
+        "reference_id": "e2edev_bench_06-R-6-TC-5",
+        "similarity": 0.864440257240781
+      }
+    ],
+    "unmatched_generated_ids": [
+      "G-003",
+      "G-007",
+      "G-008",
+      "G-009",
+      "G-010",
+      "G-011",
+      "G-012",
+      "G-015",
+      "G-016",
+      "G-018",
+      "G-020",
+      "G-026"
+    ],
+    "unmatched_reference_ids": [],
+    "precision": 0.5862068965517241,
+    "recall": 1.0,
+    "f1": 0.7391304347826086,
+    "embedding_usage": {
+      "input_tokens": 3805,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 3805
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 3
+  },
+  "generation": {
+    "selected_techniques": [
+      "equivalence_partitioning",
+      "boundary_value_analysis",
+      "state_transition",
+      "decision_table",
+      "use_case",
+      "error_guessing"
+    ],
+    "technique_rationales": {
+      "equivalence_partitioning": "Cover important input partitions such as valid piano keys, different key types (white and black), and volume slider inputs.",
+      "boundary_value_analysis": "Exercise stated limits for the volume slider at its boundaries of 0 (mute) and 1 (maximum volume).",
+      "state_transition": "Cover relevant states and transitions such as the 'active' class highlight timing removal after 150ms and checkbox visibility toggles.",
+      "decision_table": "Cover combinations of conditions such as checkbox states, rapid toggling, and corresponding label visibility.",
+      "use_case": "Cover end-to-end user flows including playing piano keys via mouse clicks and keyboard presses, adjusting volume, and toggling key label visibility.",
+      "error_guessing": "Explore plausible failure conditions such as rapid checkbox toggling and handling unexpected or missing sound file paths."
+    },
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": 3805,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 3805
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 3
+  },
+  "links": {
+    "requirements": {
+      "e2edev_bench_06-R-1": "e2edev_bench_06-R-1/requirement.md",
+      "e2edev_bench_06-R-3": "e2edev_bench_06-R-3/requirement.md",
+      "e2edev_bench_06-R-4": "e2edev_bench_06-R-4/requirement.md",
+      "e2edev_bench_06-R-5": "e2edev_bench_06-R-5/requirement.md",
+      "e2edev_bench_06-R-6": "e2edev_bench_06-R-6/requirement.md"
+    },
+    "cases": {
+      "G-013": {
+        "e2edev_bench_06-R-1": "e2edev_bench_06-R-1/test cases/13_Piano_Key_Press_State_Transition_Idle_to_Active.md",
+        "e2edev_bench_06-R-6": "e2edev_bench_06-R-6/test cases/13_Piano_Key_Press_State_Transition_Idle_to_Active.md"
+      },
+      "G-017": {
+        "e2edev_bench_06-R-1": "e2edev_bench_06-R-1/test cases/17_Click_Piano_Key_-_Normal_Sound_and_Highlight.md",
+        "e2edev_bench_06-R-5": "e2edev_bench_06-R-5/test cases/17_Click_Piano_Key_-_Normal_Sound_and_Highlight.md",
+        "e2edev_bench_06-R-6": "e2edev_bench_06-R-6/test cases/17_Click_Piano_Key_-_Normal_Sound_and_Highlight.md"
+      },
+      "G-001": {
+        "e2edev_bench_06-R-1": "e2edev_bench_06-R-1/test cases/1_Play_sound_and_highlight_valid_white_piano_key_v.md",
+        "e2edev_bench_06-R-5": "e2edev_bench_06-R-5/test cases/1_Play_sound_and_highlight_valid_white_piano_key_v.md",
+        "e2edev_bench_06-R-6": "e2edev_bench_06-R-6/test cases/1_Play_sound_and_highlight_valid_white_piano_key_v.md"
+      },
+      "G-022": {
+        "e2edev_bench_06-R-1": "e2edev_bench_06-R-1/test cases/22_Play_Piano_Key_Sound_and_Visual_Highlight_via_Mo.md",
+        "e2edev_bench_06-R-6": "e2edev_bench_06-R-6/test cases/22_Play_Piano_Key_Sound_and_Visual_Highlight_via_Mo.md"
+      },
+      "G-023": {
+        "e2edev_bench_06-R-1": "e2edev_bench_06-R-1/test cases/23_Play_Piano_Key_Sound_and_Visual_Highlight_via_Ke.md",
+        "e2edev_bench_06-R-6": "e2edev_bench_06-R-6/test cases/23_Play_Piano_Key_Sound_and_Visual_Highlight_via_Ke.md"
+      },
+      "G-028": {
+        "e2edev_bench_06-R-1": "e2edev_bench_06-R-1/test cases/28_Simultaneous_Multi-Key_Clicks.md",
+        "e2edev_bench_06-R-6": "e2edev_bench_06-R-6/test cases/28_Simultaneous_Multi-Key_Clicks.md"
+      },
+      "G-029": {
+        "e2edev_bench_06-R-1": "e2edev_bench_06-R-1/test cases/29_Missing_Sound_File_Handling.md"
+      },
+      "G-002": {
+        "e2edev_bench_06-R-1": "e2edev_bench_06-R-1/test cases/2_Play_sound_and_highlight_valid_black_piano_key_v.md",
+        "e2edev_bench_06-R-5": "e2edev_bench_06-R-5/test cases/2_Play_sound_and_highlight_valid_black_piano_key_v.md",
+        "e2edev_bench_06-R-6": "e2edev_bench_06-R-6/test cases/2_Play_sound_and_highlight_valid_black_piano_key_v.md"
+      },
+      "G-010": {
+        "e2edev_bench_06-R-3": "e2edev_bench_06-R-3/test cases/10_Volume_Slider_at_Upper_Boundary_1.md"
+      },
+      "G-011": {
+        "e2edev_bench_06-R-3": "e2edev_bench_06-R-3/test cases/11_Volume_Slider_Outside_Lower_Boundary_-0_1.md"
+      },
+      "G-012": {
+        "e2edev_bench_06-R-3": "e2edev_bench_06-R-3/test cases/12_Volume_Slider_Outside_Upper_Boundary_1_1.md"
+      },
+      "G-016": {
+        "e2edev_bench_06-R-3": "e2edev_bench_06-R-3/test cases/16_Volume_Slider_Adjustment_State_Transition.md"
+      },
+      "G-018": {
+        "e2edev_bench_06-R-3": "e2edev_bench_06-R-3/test cases/18_Adjust_Volume_Slider_-_Mute_to_Max.md"
+      },
+      "G-024": {
+        "e2edev_bench_06-R-3": "e2edev_bench_06-R-3/test cases/24_Adjust_Audio_Volume_via_Slider.md"
+      },
+      "G-027": {
+        "e2edev_bench_06-R-3": "e2edev_bench_06-R-3/test cases/27_Volume_Slider_Out-of-Bounds_Values.md"
+      },
+      "G-003": {
+        "e2edev_bench_06-R-3": "e2edev_bench_06-R-3/test cases/3_Adjust_audio_volume_to_valid_intermediate_value.md"
+      },
+      "G-004": {
+        "e2edev_bench_06-R-3": "e2edev_bench_06-R-3/test cases/4_Adjust_audio_volume_to_mute_boundary_value.md"
+      },
+      "G-005": {
+        "e2edev_bench_06-R-3": "e2edev_bench_06-R-3/test cases/5_Adjust_audio_volume_to_maximum_boundary_value.md"
+      },
+      "G-007": {
+        "e2edev_bench_06-R-3": "e2edev_bench_06-R-3/test cases/7_Volume_Slider_at_Lower_Boundary_0.md"
+      },
+      "G-008": {
+        "e2edev_bench_06-R-3": "e2edev_bench_06-R-3/test cases/8_Volume_Slider_Immediately_Above_Lower_Boundary_0.md"
+      },
+      "G-009": {
+        "e2edev_bench_06-R-3": "e2edev_bench_06-R-3/test cases/9_Volume_Slider_Immediately_Below_Upper_Boundary_0.md"
+      },
+      "G-014": {
+        "e2edev_bench_06-R-4": "e2edev_bench_06-R-4/test cases/14_Show_Keys_Checkbox_Visibility_State_Toggle.md",
+        "e2edev_bench_06-R-5": "e2edev_bench_06-R-5/test cases/14_Show_Keys_Checkbox_Visibility_State_Toggle.md"
+      },
+      "G-015": {
+        "e2edev_bench_06-R-4": "e2edev_bench_06-R-4/test cases/15_Rapid_Toggling_of_Show_Keys_Checkbox.md"
+      },
+      "G-019": {
+        "e2edev_bench_06-R-4": "e2edev_bench_06-R-4/test cases/19_Toggle_Show_Keys_Checkbox_-_Hide_and_Show_Labels.md",
+        "e2edev_bench_06-R-5": "e2edev_bench_06-R-5/test cases/19_Toggle_Show_Keys_Checkbox_-_Hide_and_Show_Labels.md"
+      },
+      "G-020": {
+        "e2edev_bench_06-R-4": "e2edev_bench_06-R-4/test cases/20_Rapid_Toggling_of_Show_Keys_Checkbox.md"
+      },
+      "G-025": {
+        "e2edev_bench_06-R-4": "e2edev_bench_06-R-4/test cases/25_Toggle_Key_Labels_Visibility_and_Handle_Rapid_To.md",
+        "e2edev_bench_06-R-5": "e2edev_bench_06-R-5/test cases/25_Toggle_Key_Labels_Visibility_and_Handle_Rapid_To.md"
+      },
+      "G-026": {
+        "e2edev_bench_06-R-4": "e2edev_bench_06-R-4/test cases/26_Rapid_Toggling_of_Show_Keys_Checkbox.md",
+        "e2edev_bench_06-R-5": "e2edev_bench_06-R-5/test cases/26_Rapid_Toggling_of_Show_Keys_Checkbox.md"
+      },
+      "G-006": {
+        "e2edev_bench_06-R-4": "e2edev_bench_06-R-4/test cases/6_Toggle_key_labels_visibility_using_the_Show_Keys.md",
+        "e2edev_bench_06-R-5": "e2edev_bench_06-R-5/test cases/6_Toggle_key_labels_visibility_using_the_Show_Keys.md"
+      },
+      "G-021": {
+        "e2edev_bench_06-R-5": "e2edev_bench_06-R-5/test cases/21_Default_UI_Initialization_and_Visibility.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

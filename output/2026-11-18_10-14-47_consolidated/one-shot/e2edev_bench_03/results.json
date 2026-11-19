@@ -398,14 +398,12 @@
     "recall": 0.3,
     "f1": 0.46153846153846156,
     "embedding_usage": {
-      "input_tokens": 3643,
+      "input_tokens": null,
       "output_tokens": null,
-      "details": {
-        "text_prompt_tokens": 3643
-      },
-      "status": "partial"
+      "details": null,
+      "status": "unavailable"
     },
-    "embedding_requests": 2
+    "embedding_requests": 3
   },
   "generation": {
     "selected_techniques": [],
@@ -425,14 +423,12 @@
     "generation_attempts": [],
     "generation_calls": [],
     "embedding": {
-      "input_tokens": 3643,
+      "input_tokens": null,
       "output_tokens": null,
-      "details": {
-        "text_prompt_tokens": 3643
-      },
-      "status": "partial"
+      "details": null,
+      "status": "unavailable"
     },
-    "embedding_requests": 2
+    "embedding_requests": 3
   },
   "links": {
     "requirements": {
