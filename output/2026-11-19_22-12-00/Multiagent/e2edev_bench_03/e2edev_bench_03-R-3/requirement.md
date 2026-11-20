@@ -1,0 +1,3 @@
+# e2edev\_bench\_03-R-3
+
+Upon loading the 'Movie Seat Booking' webpage, the system retrieves and applies previously selected seats and the movie selection from local storage. If local storage contains the keys 'selectedSeats' and 'selectedMovieIndex', the system will mark the seats corresponding to the indices in 'selectedSeats' with the 'selected' class. Additionally, the movie dropdown will be set to the option corresponding to 'selectedMovieIndex'. If local storage does not contain these values, no seats will be marked as 'selected', and the dropdown will default to the first movie option, 'The Big Lebowski ($10)'.

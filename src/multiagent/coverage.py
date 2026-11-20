@@ -19,8 +19,11 @@ async def review_coverage(
     return await runner.call(
         "coverage",
         accepted.assessment.candidate_id,
-        "Advise on coverage gaps, excess, and repetition in the accepted cases. Use rejected cases "
-        "as context only. Compare coverage against the supplied requirements. Return feedback only.",
+        "Compare accepted cases against every supplied requirement and identify concrete missing scenarios. "
+        "Classify each gap as normal, edge, abnormal, boundary, or other. Include only behaviors that are "
+        "explicitly supported by the requirement text or a supplied UI identifier. Do not invent actions, "
+        "products, expected values, or error behavior not grounded in the requirements. Also identify excess "
+        "or repetitive cases. Use rejected cases as context only.",
         CoverageReport,
         case_index=index,
     )

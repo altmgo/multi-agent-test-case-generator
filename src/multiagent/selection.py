@@ -41,11 +41,19 @@ def score_assessment(assessment: CandidateAssessment) -> None:
     assessment.confirmed_blockers = len(blockers)
     assessment.covered_requirements = len(covered)
     assessment.duplicates = len(assessment.cases) - len(distinct_cases)
+    assessment.distinct_scenarios = len(distinct_cases)
     assessment.comparable = all(opinion.blocker_assessment_complete for opinion in assessment.opinions)
 
 
-def _score(assessment: CandidateAssessment) -> tuple[int, int, int]:
-    return (-assessment.confirmed_blockers, assessment.covered_requirements, -assessment.duplicates)
+def _score(assessment: CandidateAssessment) -> tuple[int, int, int, int]:
+    # Preserve precision by prioritizing the absence of blockers, then reward
+    # distinct scenario coverage before merely covering more requirement IDs.
+    return (
+        -assessment.confirmed_blockers,
+        assessment.distinct_scenarios,
+        assessment.covered_requirements,
+        -assessment.duplicates,
+    )
 
 
 def _blocker_count_is_complete(assessment: CandidateAssessment) -> bool:

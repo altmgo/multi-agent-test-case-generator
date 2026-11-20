@@ -7,6 +7,9 @@ from tcg.schemas import GeneratedCase, validate_cases
 from .state import Attempt, OutputMode, StageRunner
 
 
+MAX_CASES_PER_REQUIREMENT = 2
+
+
 class CaseBatch(BaseModel):
     cases: list[GeneratedCase]
 
@@ -31,8 +34,13 @@ async def generate(
             "generator",
             assessment.candidate_id,
             "Generate high-level test cases with clear expected behavior and links only to supplied IDs. "
-            "Use the full requirements and any analysis. For revisions, use the accepted cases and "
-            "feedback to generate a complete replacement for the requested scope, keeping sound coverage.",
+            "Use the full requirements and any analysis. Decompose each requirement into distinct normal, "
+            "boundary, edge, and abnormal scenarios when supported by the requirement text or supplied UI "
+            "identifiers. Return at most two focused cases for each targeted requirement. Prefer normal and "
+            "highest-risk supported scenarios over speculative variants. Keep each scenario non-repetitive. "
+            "Do not invent unsupported actions, "
+            "values, or outcomes. For revisions, replace the accepted set with a complete grounded set that "
+            "closes the reported coverage gaps while preserving the precision of existing sound cases.",
             CaseBatch,
             analysis=analysis,
             revision=revision,
@@ -48,5 +56,10 @@ async def generate(
             raise InvalidCaseSet(str(error)) from None
         if target is not None and any(target not in case.requirement_ids for case in answer.cases):
             raise InvalidCaseSet(f"Generated cases must link to their scoped requirement {target!r}")
+        if target is not None and len(answer.cases) > MAX_CASES_PER_REQUIREMENT:
+            raise InvalidCaseSet(
+                f"Generated cases for scoped requirement {target!r} exceed "
+                f"the limit of {MAX_CASES_PER_REQUIREMENT}"
+            )
         if output_mode == "per_case" and len(answer.cases) > 1:
             raise InvalidCaseSet("per_case output returned more than one case for a call")

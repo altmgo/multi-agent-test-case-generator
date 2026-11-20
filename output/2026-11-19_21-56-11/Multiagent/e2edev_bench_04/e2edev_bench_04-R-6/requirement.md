@@ -1,0 +1,3 @@
+# e2edev\_bench\_04-R-6
+
+The system must dynamically generate predefined phrase boxes, located in the main section, based on a data array. Each box contains an image (<img src=...>) and a paragraph (<p class='info'>...</p>) representing a phrase. When a user clicks on a box, the system must read the associated text aloud using the Web Speech API and visually highlight the box by adding the active class for 800 milliseconds. The system must correctly handle normal clicks, sequential clicks across different boxes, and rapid repeated clicks on the same box, ensuring that speech playback and visual feedback are triggered accurately for each interaction.

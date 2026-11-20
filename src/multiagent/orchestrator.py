@@ -119,6 +119,49 @@ async def _orchestrate(
     attempts = [initial]
     stopped_at: dict[Control, str] = {}
 
+    accepted = await _run_control_checkpoints(
+        runner, trace, controls, max_rounds, output_mode,
+        accepted, attempts, analyst_enabled, stopped_at,
+    )
+
+    completed_controls = controls[: len(controls) - len(trace.pending_controls)]
+    for requester, opinion in zip(completed_controls, accepted.assessment.opinions, strict=True):
+        if opinion.request_revision:
+            if len(trace.rounds) == max_rounds:
+                reason = "round_limit"
+            elif stopped_at.get(requester) == trace.accepted_id:
+                reason = "no_improvement"
+            else:
+                reason = "checkpoint_passed"
+            trace.pending.append(
+                PendingRevision(agent=requester, candidate_id=trace.accepted_id, opinion=opinion, reason=reason)
+            )
+
+    if trace.failure is not None:
+        raise MultiagentFailure(trace.failure, trace.result())
+
+    if "coverage" in enabled:
+        accepted = await _revise_for_coverage(runner, trace, controls, max_rounds, output_mode, accepted, attempts, analyst_enabled)
+
+    if trace.failure is not None:
+        raise MultiagentFailure(trace.failure, trace.result())
+
+    if trace.accepted_assessment is None:
+        initial.assessment.valid = False
+        initial.failure = trace.failure
+
+
+async def _run_control_checkpoints(
+    runner: StageRunner,
+    trace: RunTrace,
+    controls: tuple[Control, ...],
+    max_rounds: int,
+    output_mode: OutputMode,
+    accepted: Attempt,
+    attempts: list[Attempt],
+    analyst_enabled: bool,
+    stopped_at: dict[Control, str],
+) -> Attempt:
     for index, requester in enumerate(controls):
         try:
             opinion = await _control(runner, accepted, requester)
@@ -155,25 +198,89 @@ async def _orchestrate(
             trace.accept(accepted)
             opinion = accepted.assessment.opinions[-1]
         trace.pending_controls.pop(0)
+    return accepted
 
-    completed_controls = controls[: len(controls) - len(trace.pending_controls)]
-    for requester, opinion in zip(completed_controls, accepted.assessment.opinions, strict=True):
-        if opinion.request_revision:
-            if len(trace.rounds) == max_rounds:
-                reason = "round_limit"
-            elif stopped_at.get(requester) == trace.accepted_id:
-                reason = "no_improvement"
-            else:
-                reason = "checkpoint_passed"
-            trace.pending.append(
-                PendingRevision(agent=requester, candidate_id=trace.accepted_id, opinion=opinion, reason=reason)
-            )
 
-    if trace.failure is not None:
-        raise MultiagentFailure(trace.failure, trace.result())
-
-    if "coverage" in enabled:
+async def _revise_for_coverage(
+    runner: StageRunner,
+    trace: RunTrace,
+    controls: tuple[Control, ...],
+    max_rounds: int,
+    output_mode: OutputMode,
+    accepted: Attempt,
+    attempts: list[Attempt],
+    analyst_enabled: bool,
+) -> Attempt:
+    while len(trace.rounds) < max_rounds:
         try:
-            trace.coverage = await review_coverage(runner, accepted, attempts)
+            report = await review_coverage(runner, accepted, attempts)
         except STAGE_ERRORS as error:
             trace.coverage_failure = Failure(stage="coverage", error_type=type(error).__name__)
+            break
+        trace.coverage = report
+        if report.excess:
+            break
+        if not report.gaps:
+            break
+
+        number = len(trace.rounds) + 1
+        revision = {
+            "accepted_id": accepted.assessment.candidate_id,
+            "requester": "coverage",
+            "cases": [case.model_dump(mode="json") for case in accepted.assessment.cases],
+            "analysis": accepted.analysis.model_dump(mode="json") if accepted.analysis else None,
+            "feedback": [
+                {"feedback": report.feedback, "confirmed_blockers": [], "request_revision": True},
+                *[gap.model_dump(mode="json") for gap in report.gaps],
+            ],
+        }
+        candidates = []
+        for position in range(1, CANDIDATES_PER_ROUND + 1):
+            candidate = Attempt(
+                assessment=CandidateAssessment(
+                    candidate_id=f"round-{number}-coverage-candidate-{position}", cases=[]
+                )
+            )
+            await _attempt(runner, candidate, analyst_enabled, output_mode, revision, controls)
+            candidates.append(candidate)
+        attempts.extend(candidates)
+
+        selected = _precision_safe_coverage_candidate(candidates)
+        if selected is None:
+            break
+
+        baseline = accepted.assessment
+        if selected.assessment.distinct_scenarios <= baseline.distinct_scenarios:
+            break
+
+        trace.rounds.append(RevisionRound(
+            number=number,
+            requester="coverage",
+            accepted_before=baseline.model_copy(deep=True),
+            candidates=[],
+            selected_id=selected.assessment.candidate_id,
+            decision="objective",
+            monotonicity="confirmed",
+        ))
+        accepted = selected
+        trace.accept(accepted)
+    return accepted
+
+
+def _precision_safe_coverage_candidate(candidates: list[Attempt]) -> Attempt | None:
+    eligible = [
+        candidate for candidate in candidates
+        if candidate.assessment.valid
+        and candidate.assessment.confirmed_blockers == 0
+        and candidate.assessment.duplicates == 0
+    ]
+    if not eligible:
+        return None
+    return max(
+        eligible,
+        key=lambda candidate: (
+            candidate.assessment.distinct_scenarios,
+            candidate.assessment.covered_requirements,
+            -candidate.assessment.duplicates,
+        ),
+    )

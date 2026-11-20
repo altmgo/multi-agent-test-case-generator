@@ -1,0 +1,7 @@
+# Automatic saving of textarea input to local storage
+
+Case ID · G-008
+
+Requirements · e2edev\_bench\_02-R-3
+
+Verify that all changes typed into the note-textarea are automatically saved to local storage, preserving the note's state across sessions.

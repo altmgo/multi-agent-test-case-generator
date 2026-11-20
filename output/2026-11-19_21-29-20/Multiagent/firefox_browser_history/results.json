@@ -1,0 +1,671 @@
+{
+  "schema_version": 1,
+  "solution": "Multiagent",
+  "unit_id": "firefox_browser_history",
+  "parent_id": null,
+  "status": "evaluated",
+  "failure": null,
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "R-073",
+      "text": "Visited links shall be recorded to the Global History.",
+      "language": "en",
+      "source": "R-set.csv#R-073"
+    },
+    {
+      "id": "R-074",
+      "text": "The correct link shall be recorded to the Global History after a server redirect.",
+      "language": "en",
+      "source": "R-set.csv#R-074"
+    },
+    {
+      "id": "R-075",
+      "text": "Clicking on a history link shall cause it to be launched in a browser window.",
+      "language": "en",
+      "source": "R-set.csv#R-075"
+    },
+    {
+      "id": "R-076",
+      "text": "A History entry shall be deleted.",
+      "language": "en",
+      "source": "R-set.csv#R-076"
+    },
+    {
+      "id": "R-077",
+      "text": "Multiple History entries shall be deleted and no longer be displayed.",
+      "language": "en",
+      "source": "R-set.csv#R-077"
+    },
+    {
+      "id": "R-078",
+      "text": "Global History shall be cleared.",
+      "language": "en",
+      "source": "R-set.csv#R-078"
+    },
+    {
+      "id": "R-079",
+      "text": "History items shall be grouped by Day / Site / None.",
+      "language": "en",
+      "source": "R-set.csv#R-079"
+    },
+    {
+      "id": "R-080",
+      "text": "History shall be sorted and reverse-sorted per column.",
+      "language": "en",
+      "source": "R-set.csv#R-080"
+    },
+    {
+      "id": "R-081",
+      "text": "History columns shall be resizable to show/hide more of entries.",
+      "language": "en",
+      "source": "R-set.csv#R-081"
+    },
+    {
+      "id": "R-082",
+      "text": "History colmns shall be shown and hidden.",
+      "language": "en",
+      "source": "R-set.csv#R-082"
+    },
+    {
+      "id": "R-083",
+      "text": "Recently visited sites shall be re-visited via Back and Forward button dropdown menu.",
+      "language": "en",
+      "source": "R-set.csv#R-083"
+    },
+    {
+      "id": "R-084",
+      "text": "A new, empty session history file shall be created for a new browser window or a restart.",
+      "language": "en",
+      "source": "R-set.csv#R-084"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Record standard visited link to Global History",
+      "description": "Verify that visiting a standard URL records the link to the Global History.",
+      "requirement_ids": [
+        "R-073"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Record multiple unique valid URL protocols to Global History",
+      "description": "Verify that links accessed using different unique valid URL protocols are properly recorded to Global History.",
+      "requirement_ids": [
+        "R-073"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Record correct redirected link to Global History",
+      "description": "Verify that after a server redirect, the correct final link is recorded to the Global History.",
+      "requirement_ids": [
+        "R-074"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Record correct link after multiple redirect hops",
+      "description": "Verify that the final target link is correctly recorded to Global History when a page goes through multiple server redirect hops.",
+      "requirement_ids": [
+        "R-074"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Launch History Link in Browser Window",
+      "description": "Verify that clicking on a history link causes the corresponding URL to be launched in a browser window.",
+      "requirement_ids": [
+        "R-075"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Launch History Link from Different Grouping Modes",
+      "description": "Verify that clicking on a history link successfully launches the URL when the history view is grouped by Day, Site, and None modes.",
+      "requirement_ids": [
+        "R-075"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Delete a single history entry",
+      "description": "Verify that a single selected history entry can be successfully deleted from the Global History.",
+      "requirement_ids": [
+        "R-076"
+      ]
+    },
+    {
+      "id": "G-008",
+      "title": "Delete the last remaining history entry",
+      "description": "Verify that deleting the very last remaining entry in the history list properly removes it and leaves an empty history state.",
+      "requirement_ids": [
+        "R-076"
+      ]
+    },
+    {
+      "id": "G-009",
+      "title": "Delete multiple selected history entries",
+      "description": "Verify that selecting multiple history entries and performing a delete action removes all selected entries from the history view.",
+      "requirement_ids": [
+        "R-077"
+      ]
+    },
+    {
+      "id": "G-010",
+      "title": "Delete all history entries simultaneously",
+      "description": "Verify the boundary scenario where all history entries present in the list are selected and deleted simultaneously, ensuring none are displayed afterward.",
+      "requirement_ids": [
+        "R-077"
+      ]
+    },
+    {
+      "id": "G-011",
+      "title": "Delete non-contiguous multiple history entries",
+      "description": "Verify that non-contiguous multiple history entries selected by the user are successfully deleted and no longer displayed in the history list.",
+      "requirement_ids": [
+        "R-077"
+      ]
+    },
+    {
+      "id": "G-012",
+      "title": "Clear Entire Global History",
+      "description": "Verify that executing the clear Global History command removes all recorded history items from the browser history storage and UI.",
+      "requirement_ids": [
+        "R-078"
+      ]
+    },
+    {
+      "id": "G-013",
+      "title": "Group history items by Day",
+      "description": "Verify that history items are correctly grouped by Day in the history view.",
+      "requirement_ids": [
+        "R-079"
+      ]
+    },
+    {
+      "id": "G-014",
+      "title": "Group history items by Site",
+      "description": "Verify that history items are correctly grouped by Site in the history view.",
+      "requirement_ids": [
+        "R-079"
+      ]
+    },
+    {
+      "id": "G-015",
+      "title": "Group history items by None",
+      "description": "Verify that history items are displayed without grouping when the grouping option is set to None.",
+      "requirement_ids": [
+        "R-079"
+      ]
+    },
+    {
+      "id": "G-016",
+      "title": "Group history items with mixed timezone timestamps and special character site names",
+      "description": "Verify that history grouping functions correctly when handling mixed timezone timestamps and site names containing special characters.",
+      "requirement_ids": [
+        "R-079"
+      ]
+    },
+    {
+      "id": "G-017",
+      "title": "Sort and reverse-sort History columns",
+      "description": "Verify that History columns can be sorted in ascending order and reverse-sorted in descending order when clicking column headers.",
+      "requirement_ids": [
+        "R-080"
+      ]
+    },
+    {
+      "id": "G-018",
+      "title": "Sort History columns with identical timestamps or titles",
+      "description": "Verify the stability and deterministic ordering when sorting history columns that contain identical timestamps or titles.",
+      "requirement_ids": [
+        "R-080"
+      ]
+    },
+    {
+      "id": "G-019",
+      "title": "Resize History Columns to Show and Hide Text",
+      "description": "Verify that history columns can be resized using the mouse to show more or hide parts of the entries.",
+      "requirement_ids": [
+        "R-081"
+      ]
+    },
+    {
+      "id": "G-020",
+      "title": "Persist History Column Widths Across UI Reopens",
+      "description": "Verify that custom history column width states persist correctly across UI close and reopen actions.",
+      "requirement_ids": [
+        "R-081"
+      ]
+    },
+    {
+      "id": "G-021",
+      "title": "Show and Hide History Columns via UI Toggles",
+      "description": "Verify that history columns can be successfully shown and hidden using the UI column toggle controls.",
+      "requirement_ids": [
+        "R-082"
+      ]
+    },
+    {
+      "id": "G-022",
+      "title": "Simultaneous Hiding of All Optional History Columns",
+      "description": "Verify the layout integrity and application behavior when all optional history columns are hidden simultaneously via the UI toggles.",
+      "requirement_ids": [
+        "R-082"
+      ]
+    },
+    {
+      "id": "G-023",
+      "title": "Re-visit site via Back button dropdown menu",
+      "description": "Verify that clicking the Back button dropdown menu allows the user to select and re-visit a recently visited site.",
+      "requirement_ids": [
+        "R-083"
+      ]
+    },
+    {
+      "id": "G-024",
+      "title": "Re-visit site via Forward button dropdown menu",
+      "description": "Verify that clicking the Forward button dropdown menu allows the user to select and re-visit a site after navigating backwards.",
+      "requirement_ids": [
+        "R-083"
+      ]
+    },
+    {
+      "id": "G-025",
+      "title": "Create new session history file on new browser window",
+      "description": "Verify that a new, empty session history file is successfully created when a new browser window is opened.",
+      "requirement_ids": [
+        "R-084"
+      ]
+    },
+    {
+      "id": "G-026",
+      "title": "Create new session history file on browser restart",
+      "description": "Verify that a new, empty session history file is successfully created upon restarting the browser.",
+      "requirement_ids": [
+        "R-084"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "TC-073",
+      "title": "TC-073",
+      "description": "INITIAL CONDITIONS\n1. You must have used the installation of the browser you plan to test.\n2. If you have not, browse around some, then come back. Or run the gomenu-list test first.\n\nSTEPS/DESCRIPTION\n1. Select Go|History.\n2. Observe the contents of the Global History Window.\n3. Quit and restart the browser.\n4. Select Go|History.\n\nEXPECTED RESULTS\n1. If you've observed the initial conditions, the History window should be non-empty upon first observation.\n2. After restart, the History window should still be non-empty.\n",
+      "requirement_ids": [
+        "R-073"
+      ],
+      "source": "T-set.csv#TC-073",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-074",
+      "title": "TC-074",
+      "description": "INITIAL CONDITIONS\n1. You must have used the installation of the browser you plan to test.\n2. If you have not, browse around some, then come back. Or run the gomenu-list test first.\n\nSTEPS/DESCRIPTION\n1. Select Go|History.\n2. Click this link.\n\nEXPECTED RESULTS\nYou should have only one new entry in your history. It should be titled Small Business. The url should be http://home.netscape.com/netcenter/smallbusiness/index.html, NOT http://home.netscape.com/taskbar/6_0b1/bus4.html.\n\nLINKS\n1. redirect: http://home.netscape.com/taskbar/6_0b1/bus4.html\n2. target: http://home.netscape.com/netcenter/smallbusiness/index.html\n3. The History Testcase Matrix",
+      "requirement_ids": [
+        "R-074"
+      ],
+      "source": "T-set.csv#TC-074",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-075",
+      "title": "TC-075",
+      "description": "INITIAL CONDITIONS\n1. You must have used the installation of the browser you plan to test.\n2. If you have not, browse around some, then come back. Or run the gomenu-list test first.\n\nSTEPS/DESCRIPTION\n1. Select Go|History.\n2. Double-click any history link in the window.\n\nEXPECTED RESULTS\nThe url for that link should load in your preexisting \"topmost\" browser window, or create a new browser window if none existed.",
+      "requirement_ids": [
+        "R-075"
+      ],
+      "source": "T-set.csv#TC-075",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-076",
+      "title": "TC-076",
+      "description": "INITIAL CONDITIONS\n1. You must have used the installation of the browser you plan to test.\n2. If you have not, browse around some, then come back. Or run the gomenu-list test first.\n\nSTEPS/DESCRIPTION\n1. Select Go|History.\n2. Select (highlight) a history entry, press the delete key, OR\n3. Select (highlight) a history entry, Select Edit|Delete.\n4. Restart the browser.\n\nEXPECTED RESULTS\n1. After step(3) the title of and link to the history entry should now be removed from the history window.\n2. After step(4) it should still be gone.",
+      "requirement_ids": [
+        "R-076"
+      ],
+      "source": "T-set.csv#TC-076",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-077",
+      "title": "TC-077",
+      "description": "INITIAL CONDITIONS\n1. You must have used the installation of the browser you plan to test.\n2. If you have not, browse around some, then come back. Or run the gomenu-list test first.\n\nSTEPS/DESCRIPTION\n1. Select Go|History.\n2. Select any history entry. Shift+click or drag to select more (at least 3).\n3. Select Edit|Delete.\n4. Restart the browser. Select Go|History\n\nEXPECTED RESULTS\n1. After step(3) the titles and links to the history entries should now be removed from the history window.\n2. After step(4) they should still be gone.\n",
+      "requirement_ids": [
+        "R-077"
+      ],
+      "source": "T-set.csv#TC-077",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-078",
+      "title": "TC-078",
+      "description": "INITIAL CONDITIONS\n1. You must have used the installation of the browser you plan to test.\n2. If you have not, browse around some, then come back. Or run the gomenu-list test first.\n\nSTEPS/DESCRIPTION\n1. Select Go|History.\n2. Observe the contents of the Global History Window.\n3. Select Edit|Preferences (from a navigator window)\n4. Browse to the Navigator|History Panel.\n5. Under \"Browsing History\" click the \"Clear History\" button.\n6. Return to observe the contents of the Global History Window.\n\nEXPECTED RESULTS\n1. If you've observed the initial conditions, the History window should be non-empty upon first observation.\n2. After pressing the button, the history window should be empty of individual history items.\n",
+      "requirement_ids": [
+        "R-078"
+      ],
+      "source": "T-set.csv#TC-078",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-079",
+      "title": "TC-079",
+      "description": "INITIAL CONDITIONS\n1. You must have used the installation of the browser you plan to test.\n2. If you have not, browse around some, then come back. Or run the gomenu-list test first.\n\nSTEPS/DESCRIPTION\n1. Select Go|History.\n2. In the Global History window, select View|Group By|Day.\n3. In the Global History window, select View|Group By|Site.\n4. In the Global History window, select View|Group By|None.\n\nEXPECTED RESULTS\n1. After Step(2), history entries should appear grouped into folders labeled \"Today\", \"Yesterday\", \"2 days ago\", ... ,\"6 days ago\", and \"Older than 6 days\".\n2. After Step(3), the history items should appear grouped by domain name (no folders).\n3. After Sep (4), the history items should appear\n",
+      "requirement_ids": [
+        "R-079"
+      ],
+      "source": "T-set.csv#TC-079",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-080",
+      "title": "TC-080",
+      "description": "INITIAL CONDITIONS\n1. You must have used the installation of the browser you plan to test.\n2. If you have not, browse around some, then come back. Or run the gomenu-list test first.\n\nSTEPS/DESCRIPTION\nSelect Go|History. This is most easily tested by using the View|Group By|None setting but not strictly necessary.\n1. Click on the \"Title\" column once.\n2. Click on the \"Title\" column a second time.\n3. Click on the \"Title\" column a third time.\n4. Click on the \"Location\" column once, and a second time.\n5. Click on the \"Last Visited\" column once, and a second time.\n\nEXPECTED RESULTS\nBy step:\n1. The bookmarks should sort into alphabetical order, by Title.\n2. The bookmarks should sort into reverse-alphabetical order, by Title.\n3. The bookmarks should sort into \"natural\" order (the way they were originally sorted).\n4. The bookmarks should sort into order by Location and then the reverse of that order.\n5. The bookmarks should sort into order by Last Visited and then the reverse of that order.\n",
+      "requirement_ids": [
+        "R-080"
+      ],
+      "source": "T-set.csv#TC-080",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-081",
+      "title": "TC-081",
+      "description": "INITIAL CONDITIONS\n1. You must have used the installation of the browser you plan to test.\n2. If you have not, browse around some, then come back. Or run the gomenu-list test first.\n\nSTEPS/DESCRIPTION\n1. Select Go|History.\n2. Mouseover the separator between the \"Name\" and \"URL\" columns.\n3. Click and drag that separator to the left and right.\n4. Repeat this with each of the other column separators.\n\nEXPECTED RESULTS\n1. In step(2) the mouse pointer should change to a double-arrowed icon(platform specific or XP?).\n2. In step(3) the column sizes on either side of the separator should shrink and grow as you drag. The content of the column should move with the column header. Column content that is obscured should be replaced by the ellipsis(?).\n",
+      "requirement_ids": [
+        "R-081"
+      ],
+      "source": "T-set.csv#TC-081",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-082",
+      "title": "TC-082",
+      "description": "INITIAL CONDITIONS\n1. You must have used the installation of the browser you plan to test.\n2. If you have not, browse around some, then come back. Or run the gomenu-list test first.\n\nSTEPS/DESCRIPTION\n1. Select Go|History.\n2. Click the icon on the far right of the column headers.\n3. Uncheck two of the items (columns).\n4. Recheck an item.\n5. Quit and restart the application.\n\nEXPECTED RESULTS\n1. Step(2) a popup menu should appear listing all of the column headers as menuitems.\n2. Step(3), they should all be checked by default and unchecking should cause that column to disappear from the manage bookmarks window.\n3. Step(4), the columns should reappear upon rechecking its name on the list.\n4. Step(5) the columns should appear just as the did after step(4).\n",
+      "requirement_ids": [
+        "R-082"
+      ],
+      "source": "T-set.csv#TC-082",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-083",
+      "title": "TC-083",
+      "description": "INITIAL CONDITIONS\n1. Your session history needs to be empty for this test so restart the browser or open a new window. To check, the Back/Forward buttons should be inactive and the dropdowns should not appear at all when the session history is empty.\n\nSTEPS/DESCRIPTION\n1. Follow this Netscape link.\n2. Follow this Netscape People link.\n3. Wait for the redirect (15sec).\n4. Follow this Mozilla QA link.\n5. Follow this Mozilla link.\n6. From the \"Back\" button dropdown select the 4th item from the top \"Netscape.com\".\n7. From the \"Forward\" button dropdown select the 3rd item from the top \"Mozilla QA Home Page\"\n\nEXPECTED RESULTS\n1. For Step(6), the dropdown menu should be apparent and active, the 4th item should be \"Netscape.com\", the page title, and selecting it should actually load that page\n2. For Step(7), the dropdown menu should be apparent and active, the 3rd item should be \"Mozilla QA Home Page\", the page title, and selecting it should actually load that page.",
+      "requirement_ids": [
+        "R-083"
+      ],
+      "source": "T-set.csv#TC-083",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-084",
+      "title": "TC-084",
+      "description": "INITIAL CONDITIONS\n1. You must have used the installation of the browser you plan to test.\n2. If you have not, browse around some, then come back. Or run the gomenu-list test first.\n\nSTEPS/DESCRIPTION\n1. Select File|New Navigator Window.\n2. Select the Go menu.\n3. Quit and restart the browser.\n4. Select the Go menu.\n\nEXPECTED RESULTS\nAfter steps(2) and (4) the browser go meu should be \"empty\" ie only Back, Forward, and Home should be listed.",
+      "requirement_ids": [
+        "R-084"
+      ],
+      "source": "T-set.csv#TC-084",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 26,
+    "reference_count": 12,
+    "matches": [
+      {
+        "generated_id": "G-005",
+        "reference_id": "TC-075",
+        "similarity": 0.9035139910049749
+      },
+      {
+        "generated_id": "G-006",
+        "reference_id": "TC-074",
+        "similarity": 0.8509998755099336
+      },
+      {
+        "generated_id": "G-009",
+        "reference_id": "TC-077",
+        "similarity": 0.8891429252591851
+      },
+      {
+        "generated_id": "G-011",
+        "reference_id": "TC-076",
+        "similarity": 0.8906217161690339
+      },
+      {
+        "generated_id": "G-012",
+        "reference_id": "TC-078",
+        "similarity": 0.9001168716245139
+      },
+      {
+        "generated_id": "G-013",
+        "reference_id": "TC-079",
+        "similarity": 0.9028809191851779
+      },
+      {
+        "generated_id": "G-017",
+        "reference_id": "TC-080",
+        "similarity": 0.8646275269804365
+      },
+      {
+        "generated_id": "G-019",
+        "reference_id": "TC-081",
+        "similarity": 0.8799961825181908
+      },
+      {
+        "generated_id": "G-021",
+        "reference_id": "TC-082",
+        "similarity": 0.8522712994431046
+      },
+      {
+        "generated_id": "G-024",
+        "reference_id": "TC-083",
+        "similarity": 0.8675910652022846
+      },
+      {
+        "generated_id": "G-025",
+        "reference_id": "TC-084",
+        "similarity": 0.8589534845773147
+      },
+      {
+        "generated_id": "G-026",
+        "reference_id": "TC-073",
+        "similarity": 0.8783564510104328
+      }
+    ],
+    "unmatched_generated_ids": [
+      "G-001",
+      "G-002",
+      "G-003",
+      "G-004",
+      "G-007",
+      "G-008",
+      "G-010",
+      "G-014",
+      "G-015",
+      "G-016",
+      "G-018",
+      "G-020",
+      "G-022",
+      "G-023"
+    ],
+    "unmatched_reference_ids": [],
+    "precision": 0.46153846153846156,
+    "recall": 1.0,
+    "f1": 0.631578947368421,
+    "embedding_usage": {
+      "input_tokens": 2989,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 2989
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 2
+  },
+  "generation": {
+    "selected_techniques": [],
+    "technique_rationales": {},
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": null,
+      "output_tokens": null,
+      "details": null,
+      "status": "unavailable"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": 2989,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 2989
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 2
+  },
+  "links": {
+    "requirements": {
+      "R-073": "R-073/requirement.md",
+      "R-074": "R-074/requirement.md",
+      "R-075": "R-075/requirement.md",
+      "R-076": "R-076/requirement.md",
+      "R-077": "R-077/requirement.md",
+      "R-078": "R-078/requirement.md",
+      "R-079": "R-079/requirement.md",
+      "R-080": "R-080/requirement.md",
+      "R-081": "R-081/requirement.md",
+      "R-082": "R-082/requirement.md",
+      "R-083": "R-083/requirement.md",
+      "R-084": "R-084/requirement.md"
+    },
+    "cases": {
+      "G-001": {
+        "R-073": "R-073/test cases/1_Record_standard_visited_link_to_Global_History.md"
+      },
+      "G-002": {
+        "R-073": "R-073/test cases/2_Record_multiple_unique_valid_URL_protocols_to_Gl.md"
+      },
+      "G-003": {
+        "R-074": "R-074/test cases/3_Record_correct_redirected_link_to_Global_History.md"
+      },
+      "G-004": {
+        "R-074": "R-074/test cases/4_Record_correct_link_after_multiple_redirect_hops.md"
+      },
+      "G-005": {
+        "R-075": "R-075/test cases/5_Launch_History_Link_in_Browser_Window.md"
+      },
+      "G-006": {
+        "R-075": "R-075/test cases/6_Launch_History_Link_from_Different_Grouping_Mode.md"
+      },
+      "G-007": {
+        "R-076": "R-076/test cases/7_Delete_a_single_history_entry.md"
+      },
+      "G-008": {
+        "R-076": "R-076/test cases/8_Delete_the_last_remaining_history_entry.md"
+      },
+      "G-010": {
+        "R-077": "R-077/test cases/10_Delete_all_history_entries_simultaneously.md"
+      },
+      "G-011": {
+        "R-077": "R-077/test cases/11_Delete_non-contiguous_multiple_history_entries.md"
+      },
+      "G-009": {
+        "R-077": "R-077/test cases/9_Delete_multiple_selected_history_entries.md"
+      },
+      "G-012": {
+        "R-078": "R-078/test cases/12_Clear_Entire_Global_History.md"
+      },
+      "G-013": {
+        "R-079": "R-079/test cases/13_Group_history_items_by_Day.md"
+      },
+      "G-014": {
+        "R-079": "R-079/test cases/14_Group_history_items_by_Site.md"
+      },
+      "G-015": {
+        "R-079": "R-079/test cases/15_Group_history_items_by_None.md"
+      },
+      "G-016": {
+        "R-079": "R-079/test cases/16_Group_history_items_with_mixed_timezone_timestam.md"
+      },
+      "G-017": {
+        "R-080": "R-080/test cases/17_Sort_and_reverse-sort_History_columns.md"
+      },
+      "G-018": {
+        "R-080": "R-080/test cases/18_Sort_History_columns_with_identical_timestamps_o.md"
+      },
+      "G-019": {
+        "R-081": "R-081/test cases/19_Resize_History_Columns_to_Show_and_Hide_Text.md"
+      },
+      "G-020": {
+        "R-081": "R-081/test cases/20_Persist_History_Column_Widths_Across_UI_Reopens.md"
+      },
+      "G-021": {
+        "R-082": "R-082/test cases/21_Show_and_Hide_History_Columns_via_UI_Toggles.md"
+      },
+      "G-022": {
+        "R-082": "R-082/test cases/22_Simultaneous_Hiding_of_All_Optional_History_Colu.md"
+      },
+      "G-023": {
+        "R-083": "R-083/test cases/23_Re-visit_site_via_Back_button_dropdown_menu.md"
+      },
+      "G-024": {
+        "R-083": "R-083/test cases/24_Re-visit_site_via_Forward_button_dropdown_menu.md"
+      },
+      "G-025": {
+        "R-084": "R-084/test cases/25_Create_new_session_history_file_on_new_browser_w.md"
+      },
+      "G-026": {
+        "R-084": "R-084/test cases/26_Create_new_session_history_file_on_browser_resta.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv",
+    "trace": "intermediate/trace.json",
+    "initial": "intermediate/initial.json",
+    "rounds": [
+      {
+        "decision": "intermediate/round_001/decision.json",
+        "attempts": [
+          "intermediate/round_001/attempt_1.json",
+          "intermediate/round_001/attempt_2.json",
+          "intermediate/round_001/attempt_3.json"
+        ]
+      }
+    ]
+  }
+}

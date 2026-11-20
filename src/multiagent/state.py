@@ -68,7 +68,7 @@ class QualitativeRanking(BaseModel):
 
 class RevisionRound(BaseModel):
     number: int
-    requester: Control
+    requester: Control | Literal["coverage"]
     accepted_before: CandidateAssessment
     candidates: list[CandidateDecision]
     selected_id: str
@@ -86,7 +86,16 @@ class StageCall(BaseModel):
     usage: list[UsageRecord] = Field(default_factory=list)
 
 
+class CoverageGap(BaseModel):
+    requirement_id: str
+    scenario_type: Literal["normal", "edge", "abnormal", "boundary", "other"]
+    description: str
+    rationale: str
+
+
 class CoverageReport(BaseModel):
+    gaps: list[CoverageGap] = Field(default_factory=list)
+    excess: list[str] = Field(default_factory=list)
     feedback: str
 
 
