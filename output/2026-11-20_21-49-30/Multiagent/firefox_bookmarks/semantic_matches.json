@@ -1,0 +1,104 @@
+{
+  "status": "evaluated",
+  "embedding_model": "gemini-embedding-2",
+  "similarity_threshold": 0.7,
+  "matches": [
+    {
+      "generated_id": "G-001",
+      "reference_id": "TC-001",
+      "similarity": 0.8791078956030531
+    },
+    {
+      "generated_id": "G-003",
+      "reference_id": "TC-003",
+      "similarity": 0.8904569753550888
+    },
+    {
+      "generated_id": "G-004",
+      "reference_id": "TC-002",
+      "similarity": 0.8885971295064876
+    },
+    {
+      "generated_id": "G-005",
+      "reference_id": "TC-004",
+      "similarity": 0.8857359540795128
+    },
+    {
+      "generated_id": "G-006",
+      "reference_id": "TC-005",
+      "similarity": 0.8672524013693309
+    },
+    {
+      "generated_id": "G-007",
+      "reference_id": "TC-006",
+      "similarity": 0.901893348364389
+    },
+    {
+      "generated_id": "G-008",
+      "reference_id": "TC-007",
+      "similarity": 0.8463495407324918
+    },
+    {
+      "generated_id": "G-009",
+      "reference_id": "TC-008",
+      "similarity": 0.8876100144110185
+    },
+    {
+      "generated_id": "G-010",
+      "reference_id": "TC-011",
+      "similarity": 0.8460764545503202
+    },
+    {
+      "generated_id": "G-011",
+      "reference_id": "TC-009",
+      "similarity": 0.9030617155815066
+    },
+    {
+      "generated_id": "G-012",
+      "reference_id": "TC-010",
+      "similarity": 0.8662782530558261
+    },
+    {
+      "generated_id": "G-014",
+      "reference_id": "TC-012",
+      "similarity": 0.8809933994655264
+    },
+    {
+      "generated_id": "G-015",
+      "reference_id": "TC-013",
+      "similarity": 0.8717103102050536
+    },
+    {
+      "generated_id": "G-017",
+      "reference_id": "TC-014",
+      "similarity": 0.8697590383207925
+    },
+    {
+      "generated_id": "G-018",
+      "reference_id": "TC-015",
+      "similarity": 0.8950147086574205
+    },
+    {
+      "generated_id": "G-019",
+      "reference_id": "TC-016",
+      "similarity": 0.8685558302542713
+    },
+    {
+      "generated_id": "G-021",
+      "reference_id": "TC-017",
+      "similarity": 0.8894851095567051
+    },
+    {
+      "generated_id": "G-022",
+      "reference_id": "TC-018",
+      "similarity": 0.8555307170045157
+    }
+  ],
+  "unmatched_generated_ids": [
+    "G-002",
+    "G-013",
+    "G-016",
+    "G-020"
+  ],
+  "unmatched_reference_ids": []
+}
