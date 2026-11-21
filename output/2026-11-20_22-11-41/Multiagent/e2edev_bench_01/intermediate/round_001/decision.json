@@ -1,0 +1,61 @@
+{
+  "number": 1,
+  "requester": "coverage",
+  "accepted_before": {
+    "candidate_id": "initial",
+    "cases": [
+      {
+        "id": "G-001",
+        "title": "Initiate drag event on product item",
+        "description": "Precondition: The product list is rendered with draggable product items containing data-testid attributes such as 'product-item-1', 'product-title-1', and 'product-price-1'. Steps: Drag the product item 'product-item-1'. Expected Behavior: The system initiates a drag event capturing the product's title and price for transfer.",
+        "requirement_ids": [
+          "e2edev_bench_01-R-1"
+        ]
+      },
+      {
+        "id": "G-002",
+        "title": "Drag and drop product into drop area to update cart",
+        "description": "Precondition: Product items and the designated drop area (id='div1', data-testid='drop-area') are present. Steps: Drag and drop a product item into the drop area. Expected Behavior: The cart display automatically updates with the product title appearing in .box2, the unit price in .box3, and the quantity in .box1.",
+        "requirement_ids": [
+          "e2edev_bench_01-R-3"
+        ]
+      },
+      {
+        "id": "G-003",
+        "title": "Calculate and display total price in allMoney element",
+        "description": "Precondition: Products have been added to the cart. Steps: System calculates the total price by summing the prices of all products in the cart. Expected Behavior: The total is formatted to two decimal places with the appropriate currency symbol (e.g., '$80.00') and displayed in the <div id='allMoney'> element.",
+        "requirement_ids": [
+          "e2edev_bench_01-R-5"
+        ]
+      }
+    ],
+    "opinions": [
+      {
+        "agent": "critic",
+        "feedback": "All high-level cases are fully grounded in the requirements, possess clear preconditions and expected behaviors, are distinct, and present no blockers.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      {
+        "agent": "validator",
+        "feedback": "All test cases are fully grounded in their respective requirements, with clear preconditions, actionable steps, and verifiable expected behaviors.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      }
+    ],
+    "valid": true,
+    "confirmed_blockers": 0,
+    "covered_requirements": 3,
+    "duplicates": 0,
+    "distinct_scenarios": 3,
+    "comparable": true
+  },
+  "candidates": [],
+  "selected_id": "round-1-coverage-candidate-1",
+  "decision": "objective",
+  "qualitative": null,
+  "failure": null,
+  "monotonicity": "confirmed"
+}

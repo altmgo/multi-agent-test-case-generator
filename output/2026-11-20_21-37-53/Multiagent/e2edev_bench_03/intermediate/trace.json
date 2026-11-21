@@ -1,0 +1,210 @@
+{
+  "initial": {
+    "assessment": {
+      "candidate_id": "initial",
+      "cases": [
+        {
+          "id": "G-001",
+          "title": "Select Available Seat and Calculate Price",
+          "description": "Preconditions: Webpage is loaded. Action: Click an available seat without the occupied class. Expected behavior: Seat is marked as selected, selected seat count in data-testid='selected-count' updates, and total price in data-testid='total-price' updates correctly.",
+          "requirement_ids": [
+            "e2edev_bench_03-R-1"
+          ]
+        },
+        {
+          "id": "G-002",
+          "title": "Attempt to Select Occupied Seat",
+          "description": "Preconditions: Webpage is loaded. Action: Click a seat marked as occupied. Expected behavior: Occupied seat is not selectable and does not affect the selected count or total price.",
+          "requirement_ids": [
+            "e2edev_bench_03-R-1"
+          ]
+        },
+        {
+          "id": "G-003",
+          "title": "Toggle Seat Selection and Store in LocalStorage",
+          "description": "Preconditions: Webpage is loaded. Action: Click an available seat like data-testid='seat-1-1' to toggle selection. Expected behavior: Seat selection status is toggled, visually marked, stored in localStorage, and counts/prices update dynamically.",
+          "requirement_ids": [
+            "e2edev_bench_03-R-2"
+          ]
+        },
+        {
+          "id": "G-004",
+          "title": "Deselect Previously Selected Seat",
+          "description": "Preconditions: A seat is already selected. Action: Click the selected seat again to deselect it. Expected behavior: Seat loses selection status, UI updates, and localStorage updates accordingly.",
+          "requirement_ids": [
+            "e2edev_bench_03-R-2"
+          ]
+        },
+        {
+          "id": "G-005",
+          "title": "Restore State from LocalStorage",
+          "description": "Preconditions: Local storage contains 'selectedSeats' and 'selectedMovieIndex'. Action: Load the webpage. Expected behavior: Corresponding seats are marked with the 'selected' class and movie dropdown sets to the stored movie index.",
+          "requirement_ids": [
+            "e2edev_bench_03-3-1"
+          ]
+        },
+        {
+          "id": "G-006",
+          "title": "Default State when LocalStorage is Empty",
+          "description": "Preconditions: Local storage does not contain 'selectedSeats' and 'selectedMovieIndex'. Action: Load the webpage. Expected behavior: No seats are marked as selected and the dropdown defaults to the first movie option 'The Big Lebowski ($10)'.",
+          "requirement_ids": [
+            "e2edev_bench_03-3-3"
+          ]
+        },
+        {
+          "id": "G-007",
+          "title": "Dynamic Price Update Upon Changing Movie Selection",
+          "description": "Preconditions: Seats are already selected and a movie is chosen. Action: Change the movie selection from the dropdown with data-testid 'movie-select'. Expected behavior: Total price updates based on the new ticket price while maintaining the count of selected seats.",
+          "requirement_ids": [
+            "e2edev_bench_03-R-4"
+          ]
+        },
+        {
+          "id": "G-008",
+          "title": "Interact with Seats Using Legend Statuses",
+          "description": "Preconditions: Movie Seat Booking page is loaded with legends visible. Action: Click available seats and attempt to click occupied seats. Expected behavior: Available seats toggle selection and update totals, while occupied seats remain non-interactive and unselectable.",
+          "requirement_ids": [
+            "e2edev_bench_03-R-5"
+          ]
+        }
+      ],
+      "opinions": [],
+      "valid": false,
+      "confirmed_blockers": 0,
+      "covered_requirements": 0,
+      "duplicates": 0,
+      "distinct_scenarios": 0,
+      "comparable": true
+    },
+    "analysis": {
+      "analysis": "For e2edev_bench_03-R-1, e2edev_bench_03-R-2, e2edev_bench_03-R-4, and e2edev_bench_03-R-5: Normal scenario: Preconditions - Webpage is loaded with default movie selected. Action - Click an available seat (e.g., data-testid='seat-1-1'). Expected behavior - Seat is marked as selected, data-testid='selected-count' updates to 1, and data-testid='total-price' updates to match the movie price. Boundary scenario: Action - Click all available seats on the map. Expected behavior - Count and total price scale linearly with the number of available seats. Edge scenario: Action - Click a seat marked as occupied. Expected behavior - Seat state does not change, and selected count and total price remain unaffected. Abnormal scenario: Action - Select a movie from data-testid='movie-select' (e.g., 'Fargo ($12)') after selecting seats. Expected behavior - Total price recalculates using the new movie price while maintaining the selected seat count. Recovery scenario: Action - Click a selected seat again to deselect it. Expected behavior - Seat loses selected status, and count and total price decrease accordingly. For e2edev_bench_03-R-3: Normal scenario: Preconditions - localStorage has valid 'selectedSeats' and 'selectedMovieIndex' keys. Action - Load the webpage. Expected behavior - Corresponding seats are marked with the 'selected' class and movie dropdown reflects the stored movie index. Edge scenario: Preconditions - localStorage is empty. Action - Load the webpage. Expected behavior - No seats are marked as selected and the dropdown defaults to 'The Big Lebowski ($10)'."
+    },
+    "failure": {
+      "stage": "generator",
+      "error_type": "InvalidCaseSet",
+      "detail": "Case 'tc-e2edev_bench_03-3-1' links to unknown requirement IDs: e2edev_bench_03-3-1"
+    }
+  },
+  "rounds": [],
+  "status": "failed",
+  "failure": {
+    "stage": "generator",
+    "error_type": "InvalidCaseSet",
+    "detail": "Case 'tc-e2edev_bench_03-3-1' links to unknown requirement IDs: e2edev_bench_03-3-1"
+  },
+  "accepted_id": null,
+  "accepted_assessment": null,
+  "pending": [],
+  "pending_controls": [
+    "critic",
+    "validator"
+  ],
+  "coverage": null,
+  "coverage_failure": null,
+  "calls": [
+    {
+      "stage": "analyst",
+      "subject_id": "initial",
+      "output": {
+        "analysis": "For e2edev_bench_03-R-1, e2edev_bench_03-R-2, e2edev_bench_03-R-4, and e2edev_bench_03-R-5: Normal scenario: Preconditions - Webpage is loaded with default movie selected. Action - Click an available seat (e.g., data-testid='seat-1-1'). Expected behavior - Seat is marked as selected, data-testid='selected-count' updates to 1, and data-testid='total-price' updates to match the movie price. Boundary scenario: Action - Click all available seats on the map. Expected behavior - Count and total price scale linearly with the number of available seats. Edge scenario: Action - Click a seat marked as occupied. Expected behavior - Seat state does not change, and selected count and total price remain unaffected. Abnormal scenario: Action - Select a movie from data-testid='movie-select' (e.g., 'Fargo ($12)') after selecting seats. Expected behavior - Total price recalculates using the new movie price while maintaining the selected seat count. Recovery scenario: Action - Click a selected seat again to deselect it. Expected behavior - Seat loses selected status, and count and total price decrease accordingly. For e2edev_bench_03-R-3: Normal scenario: Preconditions - localStorage has valid 'selectedSeats' and 'selectedMovieIndex' keys. Action - Load the webpage. Expected behavior - Corresponding seats are marked with the 'selected' class and movie dropdown reflects the stored movie index. Edge scenario: Preconditions - localStorage is empty. Action - Load the webpage. Expected behavior - No seats are marked as selected and the dropdown defaults to 'The Big Lebowski ($10)'."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1457,
+          "output_tokens": 388,
+          "details": {
+            "total_tokens": 1845,
+            "text_prompt_tokens": 1457
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "tc-e2edev_bench_03-1-1",
+            "title": "Select Available Seat and Calculate Price",
+            "description": "Preconditions: Webpage is loaded. Action: Click an available seat without the occupied class. Expected behavior: Seat is marked as selected, selected seat count in data-testid='selected-count' updates, and total price in data-testid='total-price' updates correctly.",
+            "requirement_ids": [
+              "e2edev_bench_03-R-1"
+            ]
+          },
+          {
+            "id": "tc-e2edev_bench_03-1-2",
+            "title": "Attempt to Select Occupied Seat",
+            "description": "Preconditions: Webpage is loaded. Action: Click a seat marked as occupied. Expected behavior: Occupied seat is not selectable and does not affect the selected count or total price.",
+            "requirement_ids": [
+              "e2edev_bench_03-R-1"
+            ]
+          },
+          {
+            "id": "tc-e2edev_bench_03-2-1",
+            "title": "Toggle Seat Selection and Store in LocalStorage",
+            "description": "Preconditions: Webpage is loaded. Action: Click an available seat like data-testid='seat-1-1' to toggle selection. Expected behavior: Seat selection status is toggled, visually marked, stored in localStorage, and counts/prices update dynamically.",
+            "requirement_ids": [
+              "e2edev_bench_03-R-2"
+            ]
+          },
+          {
+            "id": "tc-e2edev_bench_03-2-2",
+            "title": "Deselect Previously Selected Seat",
+            "description": "Preconditions: A seat is already selected. Action: Click the selected seat again to deselect it. Expected behavior: Seat loses selection status, UI updates, and localStorage updates accordingly.",
+            "requirement_ids": [
+              "e2edev_bench_03-R-2"
+            ]
+          },
+          {
+            "id": "tc-e2edev_bench_03-3-1",
+            "title": "Restore State from LocalStorage",
+            "description": "Preconditions: Local storage contains 'selectedSeats' and 'selectedMovieIndex'. Action: Load the webpage. Expected behavior: Corresponding seats are marked with the 'selected' class and movie dropdown sets to the stored movie index.",
+            "requirement_ids": [
+              "e2edev_bench_03-3-1"
+            ]
+          },
+          {
+            "id": "tc-e2edev_bench_03-3-2",
+            "title": "Default State when LocalStorage is Empty",
+            "description": "Preconditions: Local storage does not contain 'selectedSeats' and 'selectedMovieIndex'. Action: Load the webpage. Expected behavior: No seats are marked as selected and the dropdown defaults to the first movie option 'The Big Lebowski ($10)'.",
+            "requirement_ids": [
+              "e2edev_bench_03-3-3"
+            ]
+          },
+          {
+            "id": "tc-e2edev_bench_03-4-1",
+            "title": "Dynamic Price Update Upon Changing Movie Selection",
+            "description": "Preconditions: Seats are already selected and a movie is chosen. Action: Change the movie selection from the dropdown with data-testid 'movie-select'. Expected behavior: Total price updates based on the new ticket price while maintaining the count of selected seats.",
+            "requirement_ids": [
+              "e2edev_bench_03-R-4"
+            ]
+          },
+          {
+            "id": "tc-e2edev_bench_03-5-1",
+            "title": "Interact with Seats Using Legend Statuses",
+            "description": "Preconditions: Movie Seat Booking page is loaded with legends visible. Action: Click available seats and attempt to click occupied seats. Expected behavior: Available seats toggle selection and update totals, while occupied seats remain non-interactive and unselectable.",
+            "requirement_ids": [
+              "e2edev_bench_03-R-5"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1868,
+          "output_tokens": 997,
+          "details": {
+            "total_tokens": 2865,
+            "text_prompt_tokens": 1868
+          },
+          "status": "available"
+        }
+      ]
+    }
+  ],
+  "monotonicity": "confirmed"
+}

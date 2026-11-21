@@ -125,11 +125,20 @@ async def _run(
                     interrupted = error
                     failure = type(error).__name__
                     partial = getattr(error, "tcg_partial", None)
+                    if partial is not None:
+                        failure_stage = partial[0]
                     result = partial[1] if partial else GenerationResult(
                         cases=[], usage=sum_usage(runtime.usage_records[usage_start:]),
                     )
                 except Exception as error:
                     failure = type(error).__name__
+                    failure_detail = str(error)
+                    if failure_detail:
+                        print(
+                            f"{solution}/{unit.id}: {failure} during generation "
+                            f"({failure_detail})",
+                            file=sys.stderr,
+                        )
                     result = GenerationResult(cases=[], usage=sum_usage(runtime.usage_records[usage_start:]))
                 status = "interrupted" if interrupted is not None else "failed" if failure else "generated"
                 lines.extend(save_unit(directory, unit, result, status))

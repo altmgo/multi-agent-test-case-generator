@@ -27,6 +27,7 @@ class GeneratedUnit:
     failure: dict[str, str] | None
     links: dict
     intermediate: dict
+    generation_status: str
 
 
 def _text(path: Path) -> str:
@@ -158,9 +159,18 @@ def read_generated_unit(run: Path, data_dir: Path, solution: str, unit_id: str, 
     status = outcome["status"]
     if status not in {"generated", "failed", "interrupted"}:
         raise ValueError(f"Invalid generation status: {status}")
-    failure = None if status == "generated" else {
-        "stage": "generation", "error_type": outcome.get("error_type") or status,
-    }
+    if status == "generated":
+        failure = None
+    elif status == "failed":
+        failure = {
+            "stage": "generation",
+            "error_type": outcome.get("error_type") or status,
+        }
+    else:
+        failure = None if cases else {
+            "stage": outcome.get("error_stage") or "generation",
+            "error_type": outcome.get("error_type") or status,
+        }
     return GeneratedUnit(
         solution=solution, path=directory, dataset=unit, cases=cases,
         usage=UsageRecord.model_validate(outcome.get("usage", {})),
@@ -168,6 +178,14 @@ def read_generated_unit(run: Path, data_dir: Path, solution: str, unit_id: str, 
             "selected_techniques": outcome.get("selected_techniques", []),
             "technique_rationales": outcome.get("technique_rationales", {}),
             "prompt_version": outcome.get("prompt_version"),
+            "status": status,
+            "failure": None if status != "interrupted" else (
+                {
+                    "stage": outcome.get("error_stage") or "generation",
+                    "error_type": outcome.get("error_type") or status,
+                }
+            ),
         },
         failure=failure, links=links, intermediate=_intermediate(directory),
+        generation_status=status,
     )

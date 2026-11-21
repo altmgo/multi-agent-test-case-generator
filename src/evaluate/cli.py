@@ -45,6 +45,7 @@ def _run(options: argparse.Namespace) -> int:
             usage = UsageRecord(input_tokens=0, output_tokens=0)
             requests = 0
             failure = unit.failure
+            generation_status = unit.generation_status
             if failure is None:
                 previous_results = unit.path / "results.json"
                 if previous_results.is_file():
@@ -71,11 +72,19 @@ def _run(options: argparse.Namespace) -> int:
                         stop_reason = str(error)
                 else:
                     evaluations[unit.solution][unit.dataset.id] = evaluation
+            if failure is None and generation_status == "interrupted":
+                failure = unit.generation.get("failure")
             publish_unit(unit, options.embedding_model, evaluation, failure, usage, requests)
-            if failure:
+            if failure and not (generation_status == "interrupted" and evaluation is not None):
                 failed += 1
                 print(f"{unit.solution}/{unit.dataset.id}: {failure['stage']} failed ({failure['error_type']})",
                       file=sys.stderr)
+            elif generation_status == "interrupted" and evaluation is not None:
+                print(
+                    f"{unit.solution}/{unit.dataset.id}: generation interrupted; "
+                    "evaluating the saved partial case set",
+                    file=sys.stderr,
+                )
             if stop_reason is not None:
                 print("Embedding quota prevents continuing; writing partial results.", file=sys.stderr, flush=True)
                 break
@@ -87,7 +96,7 @@ def _run(options: argparse.Namespace) -> int:
         **comparison,
         "embedding_model": options.embedding_model,
         "similarity_threshold": SIMILARITY_THRESHOLD,
-        "status": "partial" if failed else "completed",
+        "status": "partial" if failed or stop_reason or config["status"] in {"interrupted", "partial"} else "completed",
         "stop_reason": stop_reason,
     })
     print(f"Results: {destination}")

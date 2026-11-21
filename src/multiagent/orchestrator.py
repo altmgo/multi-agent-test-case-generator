@@ -22,6 +22,7 @@ from .state import (
     MultiagentFailure,
     OutputMode,
     PendingRevision,
+    RevisionRound,
     RunTrace,
     StageRunner,
 )

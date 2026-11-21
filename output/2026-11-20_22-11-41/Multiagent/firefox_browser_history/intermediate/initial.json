@@ -1,0 +1,129 @@
+{
+  "assessment": {
+    "candidate_id": "initial",
+    "cases": [
+      {
+        "id": "G-001",
+        "title": "Record visited link to Global History",
+        "description": "Precondition: Browser is open and Global History is enabled. Action: User visits a web link. Expected Behavior: The visited link is recorded to the Global History.",
+        "requirement_ids": [
+          "R-073"
+        ]
+      },
+      {
+        "id": "G-002",
+        "title": "Record correct link after server redirect",
+        "description": "Precondition: Browser is open. Action: User navigates to a URL that triggers a server redirect. Expected Behavior: The final correct link is recorded to the Global History.",
+        "requirement_ids": [
+          "R-074"
+        ]
+      },
+      {
+        "id": "G-003",
+        "title": "Launch history link in browser window",
+        "description": "Precondition: History window is open with recorded history links. Action: User clicks on a history link. Expected Behavior: The link is launched in a browser window.",
+        "requirement_ids": [
+          "R-075"
+        ]
+      },
+      {
+        "id": "G-004",
+        "title": "Delete single History entry",
+        "description": "Precondition: History window is open with history entries. Action: User selects a single History entry and deletes it. Expected Behavior: The selected History entry is deleted.",
+        "requirement_ids": [
+          "R-076"
+        ]
+      },
+      {
+        "id": "G-005",
+        "title": "Delete multiple History entries",
+        "description": "Precondition: History window is open with multiple history entries. Action: User selects multiple History entries and deletes them. Expected Behavior: The selected multiple History entries are deleted and no longer displayed.",
+        "requirement_ids": [
+          "R-077"
+        ]
+      },
+      {
+        "id": "G-006",
+        "title": "Clear Global History",
+        "description": "Precondition: History window is open with history entries. Action: User invokes the clear Global History command. Expected Behavior: Global History is completely cleared.",
+        "requirement_ids": [
+          "R-078"
+        ]
+      },
+      {
+        "id": "G-007",
+        "title": "Group History items by Day, Site, or None",
+        "description": "Precondition: History view is open. Action: User changes the grouping option to Day, Site, or None. Expected Behavior: History items are grouped accordingly by Day, Site, or None.",
+        "requirement_ids": [
+          "R-079"
+        ]
+      },
+      {
+        "id": "G-008",
+        "title": "Sort and reverse-sort History columns",
+        "description": "Precondition: History table view is open. Action: User sorts and reverse-sorts each column. Expected Behavior: History is sorted and reverse-sorted per column.",
+        "requirement_ids": [
+          "R-080"
+        ]
+      },
+      {
+        "id": "G-009",
+        "title": "Resize History columns",
+        "description": "Precondition: History table view is open. Action: User resizes history columns. Expected Behavior: History columns are resized to show or hide more of the entries.",
+        "requirement_ids": [
+          "R-081"
+        ]
+      },
+      {
+        "id": "G-010",
+        "title": "Show and hide History columns",
+        "description": "Precondition: History table view is open. Action: User triggers show and hide options for history columns. Expected Behavior: History columns are successfully shown and hidden.",
+        "requirement_ids": [
+          "R-082"
+        ]
+      },
+      {
+        "id": "G-011",
+        "title": "Re-visit sites via Back and Forward button dropdown menu",
+        "description": "Precondition: Browser window has a navigation history. Action: User clicks the dropdown menu on the Back or Forward button. Expected Behavior: Recently visited sites are re-visited via the Back and Forward button dropdown menu.",
+        "requirement_ids": [
+          "R-083"
+        ]
+      },
+      {
+        "id": "G-012",
+        "title": "Create new empty session history file on new window or restart",
+        "description": "Precondition: Browser application is closed or a new browser window is initiated. Action: User starts a new browser window or restarts the browser. Expected Behavior: A new, empty session history file is created.",
+        "requirement_ids": [
+          "R-084"
+        ]
+      }
+    ],
+    "opinions": [
+      {
+        "agent": "critic",
+        "feedback": "",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      {
+        "agent": "validator",
+        "feedback": "All requirements are correctly mapped to well-defined and executable test cases with clear preconditions, actions, and expected behaviors.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      }
+    ],
+    "valid": true,
+    "confirmed_blockers": 0,
+    "covered_requirements": 12,
+    "duplicates": 0,
+    "distinct_scenarios": 12,
+    "comparable": true
+  },
+  "analysis": {
+    "analysis": "Findings for unit firefox_browser_history grouped by requirement ID: R-073: Precondition: Browser is open and Global History is enabled. Action: User visits a web link. Expected Behavior: The visited link is recorded to the Global History. R-074: Precondition: Browser is open. Action: User navigates to a URL that triggers a server redirect. Expected Behavior: The final correct link is recorded to the Global History. R-075: Precondition: History window is open with recorded history links. Action: User clicks on a history link. Expected Behavior: The link is launched in a browser window. R-076: Precondition: History window is open with history entries. Action: User selects a single History entry and deletes it. Expected Behavior: The selected History entry is deleted. R-077: Precondition: History window is open with multiple history entries. Action: User selects multiple History entries and deletes them. Expected Behavior: The selected multiple History entries are deleted and no longer displayed. R-078: Precondition: History window is open with history entries. Action: User invokes the clear Global History command. Expected Behavior: Global History is completely cleared. R-079: Precondition: History view is open. Action: User changes the grouping option to Day, Site, or None. Expected Behavior: History items are grouped accordingly by Day, Site, or None. R-080: Precondition: History table view is open. Action: User sorts and reverse-sorts each column. Expected Behavior: History is sorted and reverse-sorted per column. R-081: Precondition: History table view is open. Action: User resizes history columns. Expected Behavior: History columns are resized to show or hide more of the entries. R-082: Precondition: History table view is open. Action: User triggers show and hide options for history columns. Expected Behavior: History columns are successfully shown and hidden. R-083: Precondition: Browser window has a navigation history. Action: User clicks the dropdown menu on the Back or Forward button. Expected Behavior: Recently visited sites are re-visited via the Back and Forward button dropdown menu. R-084: Precondition: Browser application is closed or a new browser window is initiated. Action: User starts a new browser window or restarts the browser. Expected Behavior: A new, empty session history file is created."
+  },
+  "failure": null
+}

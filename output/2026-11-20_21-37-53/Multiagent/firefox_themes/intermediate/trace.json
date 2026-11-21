@@ -1,0 +1,1928 @@
+{
+  "initial": {
+    "assessment": {
+      "candidate_id": "initial",
+      "cases": [
+        {
+          "id": "G-001",
+          "title": "Verify Classic and Modern themes exist under themes preferences",
+          "description": "Preconditions: Browser is open. Steps: Navigate to themes preferences. Expected: Both Classic and Modern themes shall exist under the themes preferences.",
+          "requirement_ids": [
+            "R-175"
+          ]
+        },
+        {
+          "id": "G-002",
+          "title": "Verify Classic theme display",
+          "description": "Preconditions: Themes preferences is open. Steps: Select Classic theme. Expected: Classic theme shall be displayed as in the given image.",
+          "requirement_ids": [
+            "R-176"
+          ]
+        },
+        {
+          "id": "G-003",
+          "title": "Verify Modern theme display",
+          "description": "Preconditions: Themes preferences is open. Steps: Select Modern theme. Expected: Modern theme shall be displayed as in the given image.",
+          "requirement_ids": [
+            "R-177"
+          ]
+        },
+        {
+          "id": "G-004",
+          "title": "Verify Theme Preferences item under View menu",
+          "description": "Preconditions: Browser is open. Steps: Open View menu. Expected: Theme Preferences item shall be available under View menu.",
+          "requirement_ids": [
+            "R-178"
+          ]
+        },
+        {
+          "id": "G-005",
+          "title": "Verify Get New Themes item under View menu",
+          "description": "Preconditions: Browser is open. Steps: Open View menu. Expected: Get New Themes item shall be available under View menu.",
+          "requirement_ids": [
+            "R-179"
+          ]
+        },
+        {
+          "id": "G-006",
+          "title": "Verify Classic item under View menu",
+          "description": "Preconditions: Browser is open. Steps: Open View menu. Expected: Classic item shall be available under View menu.",
+          "requirement_ids": [
+            "R-180"
+          ]
+        },
+        {
+          "id": "G-007",
+          "title": "Verify Modern item under View menu",
+          "description": "Preconditions: Browser is open. Steps: Open View menu. Expected: Modern item shall be available under View menu.",
+          "requirement_ids": [
+            "R-181"
+          ]
+        }
+      ],
+      "opinions": [
+        {
+          "agent": "critic",
+          "feedback": "All test cases are well-grounded, executable, distinct, and directly map to the supplied requirements without any blockers or contradictions.",
+          "request_revision": false,
+          "confirmed_blockers": [],
+          "blocker_assessment_complete": true
+        },
+        {
+          "agent": "validator",
+          "feedback": "The test cases G-002 and G-003 rely on an external visual reference ('as in the given image') which is not provided, making the expected behavior unverifiable and ambiguous.",
+          "request_revision": true,
+          "confirmed_blockers": [
+            "Requirement R-176 and case G-002 depend on an external image reference that is not supplied, making the expected visual display untestable.",
+            "Requirement R-177 and case G-003 depend on an external image reference that is not supplied, making the expected visual display untestable."
+          ],
+          "blocker_assessment_complete": true
+        }
+      ],
+      "valid": true,
+      "confirmed_blockers": 2,
+      "covered_requirements": 7,
+      "duplicates": 0,
+      "distinct_scenarios": 7,
+      "comparable": true
+    },
+    "analysis": {
+      "analysis": "R-175: Preconditions: Browser is open. Action: Navigate to themes preferences. Expected: Both Classic and Modern themes shall exist under the themes preferences. R-176: Preconditions: Themes preferences is open. Action: Select Classic theme. Expected: Classic theme shall be displayed as in the given image. R-177: Preconditions: Themes preferences is open. Action: Select Modern theme. Expected: Modern theme shall be displayed as in the given image. R-178: Preconditions: Browser is open. Action: Open View menu. Expected: \"Theme Preferences\" item shall be available under View menu. R-179: Preconditions: Browser is open. Action: Open View menu. Expected: \"Get New Themes\" item shall be available under View menu. R-180: Preconditions: Browser is open. Action: Open View menu. Expected: \"Classic\" item shall be available under View menu. R-181: Preconditions: Browser is open. Action: Open View menu. Expected: \"Modern\" item shall be available under View menu."
+    },
+    "failure": null
+  },
+  "rounds": [
+    {
+      "number": 1,
+      "requester": "validator",
+      "accepted_before": {
+        "candidate_id": "initial",
+        "cases": [
+          {
+            "id": "G-001",
+            "title": "Verify Classic and Modern themes exist under themes preferences",
+            "description": "Preconditions: Browser is open. Steps: Navigate to themes preferences. Expected: Both Classic and Modern themes shall exist under the themes preferences.",
+            "requirement_ids": [
+              "R-175"
+            ]
+          },
+          {
+            "id": "G-002",
+            "title": "Verify Classic theme display",
+            "description": "Preconditions: Themes preferences is open. Steps: Select Classic theme. Expected: Classic theme shall be displayed as in the given image.",
+            "requirement_ids": [
+              "R-176"
+            ]
+          },
+          {
+            "id": "G-003",
+            "title": "Verify Modern theme display",
+            "description": "Preconditions: Themes preferences is open. Steps: Select Modern theme. Expected: Modern theme shall be displayed as in the given image.",
+            "requirement_ids": [
+              "R-177"
+            ]
+          },
+          {
+            "id": "G-004",
+            "title": "Verify Theme Preferences item under View menu",
+            "description": "Preconditions: Browser is open. Steps: Open View menu. Expected: Theme Preferences item shall be available under View menu.",
+            "requirement_ids": [
+              "R-178"
+            ]
+          },
+          {
+            "id": "G-005",
+            "title": "Verify Get New Themes item under View menu",
+            "description": "Preconditions: Browser is open. Steps: Open View menu. Expected: Get New Themes item shall be available under View menu.",
+            "requirement_ids": [
+              "R-179"
+            ]
+          },
+          {
+            "id": "G-006",
+            "title": "Verify Classic item under View menu",
+            "description": "Preconditions: Browser is open. Steps: Open View menu. Expected: Classic item shall be available under View menu.",
+            "requirement_ids": [
+              "R-180"
+            ]
+          },
+          {
+            "id": "G-007",
+            "title": "Verify Modern item under View menu",
+            "description": "Preconditions: Browser is open. Steps: Open View menu. Expected: Modern item shall be available under View menu.",
+            "requirement_ids": [
+              "R-181"
+            ]
+          }
+        ],
+        "opinions": [
+          {
+            "agent": "critic",
+            "feedback": "All test cases are well-grounded, executable, distinct, and directly map to the supplied requirements without any blockers or contradictions.",
+            "request_revision": false,
+            "confirmed_blockers": [],
+            "blocker_assessment_complete": true
+          },
+          {
+            "agent": "validator",
+            "feedback": "The test cases G-002 and G-003 rely on an external visual reference ('as in the given image') which is not provided, making the expected behavior unverifiable and ambiguous.",
+            "request_revision": true,
+            "confirmed_blockers": [
+              "Requirement R-176 and case G-002 depend on an external image reference that is not supplied, making the expected visual display untestable.",
+              "Requirement R-177 and case G-003 depend on an external image reference that is not supplied, making the expected visual display untestable."
+            ],
+            "blocker_assessment_complete": true
+          }
+        ],
+        "valid": true,
+        "confirmed_blockers": 2,
+        "covered_requirements": 7,
+        "duplicates": 0,
+        "distinct_scenarios": 7,
+        "comparable": true
+      },
+      "candidates": [
+        {
+          "attempt": {
+            "assessment": {
+              "candidate_id": "round-1-candidate-1",
+              "cases": [
+                {
+                  "id": "G-001",
+                  "title": "Verify Classic and Modern themes existence",
+                  "description": "Preconditions: The application is running. Steps: Access the themes preferences. Expected: Both Classic and Modern themes exist under the themes preferences.",
+                  "requirement_ids": [
+                    "R-175"
+                  ]
+                },
+                {
+                  "id": "G-002",
+                  "title": "Verify Theme Preferences under View menu",
+                  "description": "Preconditions: The application is running. Steps: Open the View menu. Expected: The Theme Preferences item is available under the View menu.",
+                  "requirement_ids": [
+                    "R-178"
+                  ]
+                },
+                {
+                  "id": "G-003",
+                  "title": "Verify Get New Themes under View menu",
+                  "description": "Preconditions: The application is running. Steps: Open the View menu. Expected: The Get New Themes item is available under the View menu.",
+                  "requirement_ids": [
+                    "R-179"
+                  ]
+                },
+                {
+                  "id": "G-004",
+                  "title": "Verify Classic item under View menu",
+                  "description": "Preconditions: The application is running. Steps: Open the View menu. Expected: The Classic item is available under the View menu.",
+                  "requirement_ids": [
+                    "R-180"
+                  ]
+                },
+                {
+                  "id": "G-005",
+                  "title": "Verify Modern item under View menu",
+                  "description": "Preconditions: The application is running. Steps: Open the View menu. Expected: The Modern item is available under the View menu.",
+                  "requirement_ids": [
+                    "R-181"
+                  ]
+                }
+              ],
+              "opinions": [
+                {
+                  "agent": "critic",
+                  "feedback": "Evidence is inconclusive for a blocker assessment as no cases are provided for R-176 and R-177.",
+                  "request_revision": false,
+                  "confirmed_blockers": [],
+                  "blocker_assessment_complete": false
+                },
+                {
+                  "agent": "validator",
+                  "feedback": "Two requirements (R-176 and R-177) regarding theme image displays are not covered by any test cases, and the test cases for visual rendering/images cannot be fully verified without the image assets.",
+                  "request_revision": true,
+                  "confirmed_blockers": [
+                    "R-176 and R-177 lack test cases to verify their display requirements."
+                  ],
+                  "blocker_assessment_complete": true
+                }
+              ],
+              "valid": true,
+              "confirmed_blockers": 1,
+              "covered_requirements": 5,
+              "duplicates": 0,
+              "distinct_scenarios": 5,
+              "comparable": false
+            },
+            "analysis": {
+              "analysis": "Based on the validator feedback, requirements R-176 and R-177 depend on an external image reference that is not supplied, making the expected visual display unverifiable. Consequently, these visual verification scenarios cannot be reliably formulated or tested as structured test cases under the current constraints."
+            },
+            "failure": null
+          },
+          "comparison": "worse"
+        },
+        {
+          "attempt": {
+            "assessment": {
+              "candidate_id": "round-1-candidate-2",
+              "cases": [
+                {
+                  "id": "G-001",
+                  "title": "Verify presence of Classic and Modern themes under themes preferences",
+                  "description": "Preconditions: Browser is open and themes preferences panel is accessible. Steps: Navigate to the themes preferences. Expected: Both Classic and Modern themes exist under the themes preferences.",
+                  "requirement_ids": [
+                    "R-175"
+                  ]
+                },
+                {
+                  "id": "G-002",
+                  "title": "Verify Theme Preferences item under View menu",
+                  "description": "Preconditions: Browser is open and main window is displayed. Steps: Click on the View menu. Expected: Theme Preferences item is available under the View menu.",
+                  "requirement_ids": [
+                    "R-178"
+                  ]
+                },
+                {
+                  "id": "G-003",
+                  "title": "Verify Get New Themes item under View menu",
+                  "description": "Preconditions: Browser is open and main window is displayed. Steps: Click on the View menu. Expected: Get New Themes item is available under the View menu.",
+                  "requirement_ids": [
+                    "R-179"
+                  ]
+                },
+                {
+                  "id": "G-004",
+                  "title": "Verify Classic item under View menu",
+                  "description": "Preconditions: Browser is open and main window is displayed. Steps: Click on the View menu. Expected: Classic item is available under the View menu.",
+                  "requirement_ids": [
+                    "R-180"
+                  ]
+                },
+                {
+                  "id": "G-005",
+                  "title": "Verify Modern item under View menu",
+                  "description": "Preconditions: Browser is open and main window is displayed. Steps: Click on the View menu. Expected: Modern item is available under the View menu.",
+                  "requirement_ids": [
+                    "R-181"
+                  ]
+                }
+              ],
+              "opinions": [
+                {
+                  "agent": "critic",
+                  "feedback": "Evidence is insufficient to confirm any blockers as the supplied cases cover the testable requirements and no concrete contradictions or untestable scenarios are present in the cases G-001 through G-005.",
+                  "request_revision": false,
+                  "confirmed_blockers": [],
+                  "blocker_assessment_complete": true
+                },
+                {
+                  "agent": "validator",
+                  "feedback": "Cases G-001 through G-005 are properly grounded in their respective requirements. However, requirements R-176 and R-177 lack test cases, and no test cases verify the display of themes against images. Blocker assessment is incomplete due to missing coverage.",
+                  "request_revision": true,
+                  "confirmed_blockers": [
+                    "Requirements R-176 and R-177 are missing test cases to verify that Classic and Modern themes are displayed as in the given images."
+                  ],
+                  "blocker_assessment_complete": false
+                }
+              ],
+              "valid": true,
+              "confirmed_blockers": 1,
+              "covered_requirements": 5,
+              "duplicates": 0,
+              "distinct_scenarios": 5,
+              "comparable": false
+            },
+            "analysis": {
+              "analysis": "Based on the validator feedback, requirements R-176 and R-177 depend on an external image reference that is not supplied, making the expected visual display unverifiable. Consequently, scenarios associated with R-176 and R-177 cannot be effectively tested against a concrete visual specification without the missing assets."
+            },
+            "failure": null
+          },
+          "comparison": "worse"
+        },
+        {
+          "attempt": {
+            "assessment": {
+              "candidate_id": "round-1-candidate-3",
+              "cases": [
+                {
+                  "id": "G-001",
+                  "title": "Verify existence of Classic and Modern themes under themes preferences",
+                  "description": "Preconditions: The browser application is running. Steps: Access the themes preferences section. Expected: Both Classic and Modern themes exist under the themes preferences.",
+                  "requirement_ids": [
+                    "R-175"
+                  ]
+                },
+                {
+                  "id": "G-002",
+                  "title": "Verify Theme Preferences menu item availability",
+                  "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Theme Preferences item is available under the View menu.",
+                  "requirement_ids": [
+                    "R-178"
+                  ]
+                },
+                {
+                  "id": "G-003",
+                  "title": "Verify Get New Themes menu item availability",
+                  "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Get New Themes item is available under the View menu.",
+                  "requirement_ids": [
+                    "R-179"
+                  ]
+                },
+                {
+                  "id": "G-004",
+                  "title": "Verify Classic menu item availability",
+                  "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Classic item is available under the View menu.",
+                  "requirement_ids": [
+                    "R-180"
+                  ]
+                },
+                {
+                  "id": "G-005",
+                  "title": "Verify Modern menu item availability",
+                  "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Modern item is available under the View menu.",
+                  "requirement_ids": [
+                    "R-181"
+                  ]
+                }
+              ],
+              "opinions": [
+                {
+                  "agent": "critic",
+                  "feedback": "",
+                  "request_revision": false,
+                  "confirmed_blockers": [],
+                  "blocker_assessment_complete": true
+                },
+                {
+                  "agent": "validator",
+                  "feedback": "The provided cases lack test coverage for R-176 and R-177, which require visual verification of the Classic and Modern themes against given images. Revision is requested to add cases covering R-176 and R-177.",
+                  "request_revision": true,
+                  "confirmed_blockers": [
+                    "Requirements R-176 and R-177 are missing test case coverage."
+                  ],
+                  "blocker_assessment_complete": true
+                }
+              ],
+              "valid": true,
+              "confirmed_blockers": 1,
+              "covered_requirements": 5,
+              "duplicates": 0,
+              "distinct_scenarios": 5,
+              "comparable": true
+            },
+            "analysis": {
+              "analysis": "Based on the validator feedback, requirements R-176 and R-177 depend on an external image reference that is not supplied, making the expected visual display untestable. All other requirements R-175, R-178, R-179, R-180, and R-181 remain valid and testable."
+            },
+            "failure": null
+          },
+          "comparison": "improves"
+        }
+      ],
+      "selected_id": "round-1-candidate-3",
+      "decision": "objective",
+      "qualitative": {
+        "preferred_id": null,
+        "rationale": "The accepted state covers all 7 requirements (R-175 through R-181), whereas all candidates drop test cases for R-176 and R-177, reducing requirement coverage from 7 to 5. Although the accepted state has potential verification notes regarding missing image references, dropping test cases entirely is an objective regression in requirement coverage. Therefore, the accepted state remains preferred over all candidates.",
+        "judgments": [
+          {
+            "candidate_id": "round-1-candidate-3",
+            "comparison": "worse"
+          },
+          {
+            "candidate_id": "round-1-candidate-1",
+            "comparison": "worse"
+          },
+          {
+            "candidate_id": "round-1-candidate-2",
+            "comparison": "worse"
+          }
+        ]
+      },
+      "failure": null,
+      "monotonicity": "confirmed"
+    },
+    {
+      "number": 2,
+      "requester": "validator",
+      "accepted_before": {
+        "candidate_id": "round-1-candidate-3",
+        "cases": [
+          {
+            "id": "G-001",
+            "title": "Verify existence of Classic and Modern themes under themes preferences",
+            "description": "Preconditions: The browser application is running. Steps: Access the themes preferences section. Expected: Both Classic and Modern themes exist under the themes preferences.",
+            "requirement_ids": [
+              "R-175"
+            ]
+          },
+          {
+            "id": "G-002",
+            "title": "Verify Theme Preferences menu item availability",
+            "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Theme Preferences item is available under the View menu.",
+            "requirement_ids": [
+              "R-178"
+            ]
+          },
+          {
+            "id": "G-003",
+            "title": "Verify Get New Themes menu item availability",
+            "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Get New Themes item is available under the View menu.",
+            "requirement_ids": [
+              "R-179"
+            ]
+          },
+          {
+            "id": "G-004",
+            "title": "Verify Classic menu item availability",
+            "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Classic item is available under the View menu.",
+            "requirement_ids": [
+              "R-180"
+            ]
+          },
+          {
+            "id": "G-005",
+            "title": "Verify Modern menu item availability",
+            "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Modern item is available under the View menu.",
+            "requirement_ids": [
+              "R-181"
+            ]
+          }
+        ],
+        "opinions": [
+          {
+            "agent": "critic",
+            "feedback": "",
+            "request_revision": false,
+            "confirmed_blockers": [],
+            "blocker_assessment_complete": true
+          },
+          {
+            "agent": "validator",
+            "feedback": "The provided cases lack test coverage for R-176 and R-177, which require visual verification of the Classic and Modern themes against given images. Revision is requested to add cases covering R-176 and R-177.",
+            "request_revision": true,
+            "confirmed_blockers": [
+              "Requirements R-176 and R-177 are missing test case coverage."
+            ],
+            "blocker_assessment_complete": true
+          }
+        ],
+        "valid": true,
+        "confirmed_blockers": 1,
+        "covered_requirements": 5,
+        "duplicates": 0,
+        "distinct_scenarios": 5,
+        "comparable": true
+      },
+      "candidates": [
+        {
+          "attempt": {
+            "assessment": {
+              "candidate_id": "round-2-candidate-1",
+              "cases": [
+                {
+                  "id": "G-001",
+                  "title": "Verify existence of Classic and Modern themes under themes preferences",
+                  "description": "Preconditions: The browser application is running. Steps: Access the themes preferences section. Expected: Both Classic and Modern themes exist under the themes preferences.",
+                  "requirement_ids": [
+                    "R-175"
+                  ]
+                },
+                {
+                  "id": "G-002",
+                  "title": "Verify Theme Preferences menu item availability",
+                  "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Theme Preferences item is available under the View menu.",
+                  "requirement_ids": [
+                    "R-178"
+                  ]
+                },
+                {
+                  "id": "G-003",
+                  "title": "Verify Get New Themes menu item availability",
+                  "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Get New Themes item is available under the View menu.",
+                  "requirement_ids": [
+                    "R-179"
+                  ]
+                },
+                {
+                  "id": "G-004",
+                  "title": "Verify Classic menu item availability",
+                  "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Classic item is available under the View menu.",
+                  "requirement_ids": [
+                    "R-180"
+                  ]
+                },
+                {
+                  "id": "G-005",
+                  "title": "Verify Modern menu item availability",
+                  "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Modern item is available under the View menu.",
+                  "requirement_ids": [
+                    "R-181"
+                  ]
+                },
+                {
+                  "id": "G-006",
+                  "title": "Verify Classic theme display matches given image",
+                  "description": "Preconditions: The theme preferences are open. Steps: Select the Classic theme. Expected: The Classic theme is displayed as in the given image.",
+                  "requirement_ids": [
+                    "R-176"
+                  ]
+                },
+                {
+                  "id": "G-007",
+                  "title": "Verify Modern theme display matches given image",
+                  "description": "Preconditions: The theme preferences are open. Steps: Select the Modern theme. Expected: The Modern theme is displayed as in the given image.",
+                  "requirement_ids": [
+                    "R-177"
+                  ]
+                }
+              ],
+              "opinions": [
+                {
+                  "agent": "critic",
+                  "feedback": "The provided test cases are fully grounded, executable, and clearly map to all requirements without any blockers.",
+                  "request_revision": false,
+                  "confirmed_blockers": [],
+                  "blocker_assessment_complete": true
+                },
+                {
+                  "agent": "validator",
+                  "feedback": "",
+                  "request_revision": false,
+                  "confirmed_blockers": [],
+                  "blocker_assessment_complete": true
+                }
+              ],
+              "valid": true,
+              "confirmed_blockers": 0,
+              "covered_requirements": 7,
+              "duplicates": 0,
+              "distinct_scenarios": 7,
+              "comparable": true
+            },
+            "analysis": {
+              "analysis": "For requirement R-176, given the theme preferences are open, the user selects the Classic theme, and the expected behavior is that the Classic theme is displayed matching the given image. For requirement R-177, given the theme preferences are open, the user selects the Modern theme, and the expected behavior is that the Modern theme is displayed matching the given image."
+            },
+            "failure": null
+          },
+          "comparison": "improves"
+        },
+        {
+          "attempt": {
+            "assessment": {
+              "candidate_id": "round-2-candidate-2",
+              "cases": [
+                {
+                  "id": "G-001",
+                  "title": "Verify existence of Classic and Modern themes under themes preferences",
+                  "description": "Preconditions: The browser application is running. Steps: Access the themes preferences section. Expected: Both Classic and Modern themes exist under the themes preferences.",
+                  "requirement_ids": [
+                    "R-175"
+                  ]
+                },
+                {
+                  "id": "G-002",
+                  "title": "Verify Theme Preferences menu item availability",
+                  "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Theme Preferences item is available under the View menu.",
+                  "requirement_ids": [
+                    "R-178"
+                  ]
+                },
+                {
+                  "id": "G-003",
+                  "title": "Verify Get New Themes menu item availability",
+                  "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Get New Themes item is available under the View menu.",
+                  "requirement_ids": [
+                    "R-179"
+                  ]
+                },
+                {
+                  "id": "G-004",
+                  "title": "Verify Classic menu item availability",
+                  "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Classic item is available under the View menu.",
+                  "requirement_ids": [
+                    "R-180"
+                  ]
+                },
+                {
+                  "id": "G-005",
+                  "title": "Verify Modern menu item availability",
+                  "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Modern item is available under the View menu.",
+                  "requirement_ids": [
+                    "R-181"
+                  ]
+                },
+                {
+                  "id": "G-006",
+                  "title": "Verify Classic theme display",
+                  "description": "Preconditions: The Firefox application is open and themes are accessible. Steps: Select the Classic theme under theme preferences. Expected: Classic theme shall be displayed as in the given image.",
+                  "requirement_ids": [
+                    "R-176"
+                  ]
+                },
+                {
+                  "id": "G-007",
+                  "title": "Verify Modern theme display",
+                  "description": "Preconditions: The Firefox application is open and themes are accessible. Steps: Select the Modern theme under theme preferences. Expected: Modern theme shall be displayed as in the given image.",
+                  "requirement_ids": [
+                    "R-177"
+                  ]
+                }
+              ],
+              "opinions": [
+                {
+                  "agent": "critic",
+                  "feedback": "",
+                  "request_revision": false,
+                  "confirmed_blockers": [],
+                  "blocker_assessment_complete": true
+                },
+                {
+                  "agent": "validator",
+                  "feedback": "Cases G-006 and G-007 reference 'given image' which is missing or ambiguous, making them untestable. Cases G-004 and G-005 test View menu items for Classic and Modern themes, but the requirements R-180 and R-181 only state that the items shall be available without detailing how to verify them against an external reference, though they are testable as direct menu presence checks. However, G-006 and G-007 are insufficiently specified due to the missing image reference.",
+                  "request_revision": true,
+                  "confirmed_blockers": [
+                    "Case G-006 depends on a 'given image' which is missing, making the expected behavior untestable.",
+                    "Case G-007 depends on a 'given image' which is missing, making the expected behavior untestable."
+                  ],
+                  "blocker_assessment_complete": true
+                }
+              ],
+              "valid": true,
+              "confirmed_blockers": 2,
+              "covered_requirements": 7,
+              "duplicates": 0,
+              "distinct_scenarios": 7,
+              "comparable": true
+            },
+            "analysis": {
+              "analysis": "For R-176: Preconditions: The Firefox application is open and themes are accessible; Action: Select the Classic theme under theme preferences; Expected Behavior: The Classic theme is displayed. For R-177: Preconditions: The Firefox application is open and themes are accessible; Action: Select the Modern theme under theme preferences; Expected Behavior: The Modern theme is displayed."
+            },
+            "failure": null
+          },
+          "comparison": "worse"
+        },
+        {
+          "attempt": {
+            "assessment": {
+              "candidate_id": "round-2-candidate-3",
+              "cases": [
+                {
+                  "id": "G-001",
+                  "title": "Verify existence of Classic and Modern themes under themes preferences",
+                  "description": "Preconditions: The browser application is running. Steps: Access the themes preferences section. Expected: Both Classic and Modern themes exist under the themes preferences.",
+                  "requirement_ids": [
+                    "R-175"
+                  ]
+                },
+                {
+                  "id": "G-002",
+                  "title": "Verify Theme Preferences menu item availability",
+                  "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Theme Preferences item is available under the View menu.",
+                  "requirement_ids": [
+                    "R-178"
+                  ]
+                },
+                {
+                  "id": "G-003",
+                  "title": "Verify Get New Themes menu item availability",
+                  "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Get New Themes item is available under the View menu.",
+                  "requirement_ids": [
+                    "R-179"
+                  ]
+                },
+                {
+                  "id": "G-004",
+                  "title": "Verify Classic menu item availability",
+                  "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Classic item is available under the View menu.",
+                  "requirement_ids": [
+                    "R-180"
+                  ]
+                },
+                {
+                  "id": "G-005",
+                  "title": "Verify Modern menu item availability",
+                  "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Modern item is available under the View menu.",
+                  "requirement_ids": [
+                    "R-181"
+                  ]
+                },
+                {
+                  "id": "G-006",
+                  "title": "Verify Classic theme visual display",
+                  "description": "Preconditions: The Firefox application is open and the Classic theme is selected. Steps: Navigate to the themes preferences and visually compare the Classic theme display against the reference image. Expected: The Classic theme is displayed exactly as specified in the given image.",
+                  "requirement_ids": [
+                    "R-176"
+                  ]
+                },
+                {
+                  "id": "G-007",
+                  "title": "Verify Modern theme visual display",
+                  "description": "Preconditions: The Firefox application is open and the Modern theme is selected. Steps: Navigate to the themes preferences and visually compare the Modern theme display against the reference image. Expected: The Modern theme is displayed exactly as specified in the given image.",
+                  "requirement_ids": [
+                    "R-177"
+                  ]
+                }
+              ],
+              "opinions": [
+                {
+                  "agent": "critic",
+                  "feedback": "",
+                  "request_revision": false,
+                  "confirmed_blockers": [],
+                  "blocker_assessment_complete": true
+                },
+                {
+                  "agent": "validator",
+                  "feedback": "All cases are fully grounded in their respective requirements, with clear preconditions, actions, and expected behaviors. No blockers found.",
+                  "request_revision": false,
+                  "confirmed_blockers": [],
+                  "blocker_assessment_complete": true
+                }
+              ],
+              "valid": true,
+              "confirmed_blockers": 0,
+              "covered_requirements": 7,
+              "duplicates": 0,
+              "distinct_scenarios": 7,
+              "comparable": true
+            },
+            "analysis": {
+              "analysis": "For R-176: Preconditions: The Firefox application is open and the Classic theme is selected. Action: Navigate to the themes preferences and visually compare the Classic theme display against the reference image. Expected Behavior: The Classic theme is displayed exactly as specified in the given image. For R-177: Preconditions: The Firefox application is open and the Modern theme is selected. Action: Navigate to the themes preferences and visually compare the Modern theme display against the reference image. Expected Behavior: The Modern theme is displayed exactly as specified in the given image."
+            },
+            "failure": null
+          },
+          "comparison": "improves"
+        }
+      ],
+      "selected_id": "round-2-candidate-1",
+      "decision": "qualitative",
+      "qualitative": {
+        "preferred_id": "round-2-candidate-1",
+        "rationale": "Candidate round-2-candidate-1 successfully covers all 7 requirements (R-175 through R-181), correcting the missing test coverage for R-176 and R-177 that was present in the accepted state. Both round-2-candidate-1 and round-2-candidate-3 are structurally valid and improve the objective requirement coverage, but round-2-candidate-1 provides cleaner test case descriptions without redundant phrasing.",
+        "judgments": [
+          {
+            "candidate_id": "round-2-candidate-1",
+            "comparison": "improves"
+          },
+          {
+            "candidate_id": "round-2-candidate-3",
+            "comparison": "improves"
+          }
+        ]
+      },
+      "failure": null,
+      "monotonicity": "confirmed"
+    }
+  ],
+  "status": "completed",
+  "failure": null,
+  "accepted_id": "round-2-candidate-1",
+  "accepted_assessment": {
+    "candidate_id": "round-2-candidate-1",
+    "cases": [
+      {
+        "id": "G-001",
+        "title": "Verify existence of Classic and Modern themes under themes preferences",
+        "description": "Preconditions: The browser application is running. Steps: Access the themes preferences section. Expected: Both Classic and Modern themes exist under the themes preferences.",
+        "requirement_ids": [
+          "R-175"
+        ]
+      },
+      {
+        "id": "G-002",
+        "title": "Verify Theme Preferences menu item availability",
+        "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Theme Preferences item is available under the View menu.",
+        "requirement_ids": [
+          "R-178"
+        ]
+      },
+      {
+        "id": "G-003",
+        "title": "Verify Get New Themes menu item availability",
+        "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Get New Themes item is available under the View menu.",
+        "requirement_ids": [
+          "R-179"
+        ]
+      },
+      {
+        "id": "G-004",
+        "title": "Verify Classic menu item availability",
+        "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Classic item is available under the View menu.",
+        "requirement_ids": [
+          "R-180"
+        ]
+      },
+      {
+        "id": "G-005",
+        "title": "Verify Modern menu item availability",
+        "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Modern item is available under the View menu.",
+        "requirement_ids": [
+          "R-181"
+        ]
+      },
+      {
+        "id": "G-006",
+        "title": "Verify Classic theme display matches given image",
+        "description": "Preconditions: The theme preferences are open. Steps: Select the Classic theme. Expected: The Classic theme is displayed as in the given image.",
+        "requirement_ids": [
+          "R-176"
+        ]
+      },
+      {
+        "id": "G-007",
+        "title": "Verify Modern theme display matches given image",
+        "description": "Preconditions: The theme preferences are open. Steps: Select the Modern theme. Expected: The Modern theme is displayed as in the given image.",
+        "requirement_ids": [
+          "R-177"
+        ]
+      }
+    ],
+    "opinions": [
+      {
+        "agent": "critic",
+        "feedback": "The provided test cases are fully grounded, executable, and clearly map to all requirements without any blockers.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      {
+        "agent": "validator",
+        "feedback": "",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      }
+    ],
+    "valid": true,
+    "confirmed_blockers": 0,
+    "covered_requirements": 7,
+    "duplicates": 0,
+    "distinct_scenarios": 7,
+    "comparable": true
+  },
+  "pending": [],
+  "pending_controls": [],
+  "coverage": null,
+  "coverage_failure": null,
+  "calls": [
+    {
+      "stage": "analyst",
+      "subject_id": "initial",
+      "output": {
+        "analysis": "R-175: Preconditions: Browser is open. Action: Navigate to themes preferences. Expected: Both Classic and Modern themes shall exist under the themes preferences. R-176: Preconditions: Themes preferences is open. Action: Select Classic theme. Expected: Classic theme shall be displayed as in the given image. R-177: Preconditions: Themes preferences is open. Action: Select Modern theme. Expected: Modern theme shall be displayed as in the given image. R-178: Preconditions: Browser is open. Action: Open View menu. Expected: \"Theme Preferences\" item shall be available under View menu. R-179: Preconditions: Browser is open. Action: Open View menu. Expected: \"Get New Themes\" item shall be available under View menu. R-180: Preconditions: Browser is open. Action: Open View menu. Expected: \"Classic\" item shall be available under View menu. R-181: Preconditions: Browser is open. Action: Open View menu. Expected: \"Modern\" item shall be available under View menu."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 607,
+          "output_tokens": 240,
+          "details": {
+            "total_tokens": 847,
+            "text_prompt_tokens": 607
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-175",
+            "title": "Verify Classic and Modern themes exist under themes preferences",
+            "description": "Preconditions: Browser is open. Steps: Navigate to themes preferences. Expected: Both Classic and Modern themes shall exist under the themes preferences.",
+            "requirement_ids": [
+              "R-175"
+            ]
+          },
+          {
+            "id": "TC-176",
+            "title": "Verify Classic theme display",
+            "description": "Preconditions: Themes preferences is open. Steps: Select Classic theme. Expected: Classic theme shall be displayed as in the given image.",
+            "requirement_ids": [
+              "R-176"
+            ]
+          },
+          {
+            "id": "TC-177",
+            "title": "Verify Modern theme display",
+            "description": "Preconditions: Themes preferences is open. Steps: Select Modern theme. Expected: Modern theme shall be displayed as in the given image.",
+            "requirement_ids": [
+              "R-177"
+            ]
+          },
+          {
+            "id": "TC-178",
+            "title": "Verify Theme Preferences item under View menu",
+            "description": "Preconditions: Browser is open. Steps: Open View menu. Expected: Theme Preferences item shall be available under View menu.",
+            "requirement_ids": [
+              "R-178"
+            ]
+          },
+          {
+            "id": "TC-179",
+            "title": "Verify Get New Themes item under View menu",
+            "description": "Preconditions: Browser is open. Steps: Open View menu. Expected: Get New Themes item shall be available under View menu.",
+            "requirement_ids": [
+              "R-179"
+            ]
+          },
+          {
+            "id": "TC-180",
+            "title": "Verify Classic item under View menu",
+            "description": "Preconditions: Browser is open. Steps: Open View menu. Expected: Classic item shall be available under View menu.",
+            "requirement_ids": [
+              "R-180"
+            ]
+          },
+          {
+            "id": "TC-181",
+            "title": "Verify Modern item under View menu",
+            "description": "Preconditions: Browser is open. Steps: Open View menu. Expected: Modern item shall be available under View menu.",
+            "requirement_ids": [
+              "R-181"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 871,
+          "output_tokens": 552,
+          "details": {
+            "total_tokens": 1423,
+            "text_prompt_tokens": 871
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "critic",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "All test cases are well-grounded, executable, distinct, and directly map to the supplied requirements without any blockers or contradictions.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1073,
+          "output_tokens": 64,
+          "details": {
+            "total_tokens": 1137,
+            "text_prompt_tokens": 1073
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "validator",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "The test cases G-002 and G-003 rely on an external visual reference ('as in the given image') which is not provided, making the expected behavior unverifiable and ambiguous.",
+        "request_revision": true,
+        "confirmed_blockers": [
+          "Requirement R-176 and case G-002 depend on an external image reference that is not supplied, making the expected visual display untestable.",
+          "Requirement R-177 and case G-003 depend on an external image reference that is not supplied, making the expected visual display untestable."
+        ],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1070,
+          "output_tokens": 152,
+          "details": {
+            "total_tokens": 1222,
+            "text_prompt_tokens": 1070
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "analyst",
+      "subject_id": "round-1-candidate-1",
+      "output": {
+        "analysis": "Based on the validator feedback, requirements R-176 and R-177 depend on an external image reference that is not supplied, making the expected visual display unverifiable. Consequently, these visual verification scenarios cannot be reliably formulated or tested as structured test cases under the current constraints."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1062,
+          "output_tokens": 63,
+          "details": {
+            "total_tokens": 1125,
+            "text_prompt_tokens": 1062
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "round-1-candidate-1",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-175",
+            "title": "Verify Classic and Modern themes existence",
+            "description": "Preconditions: The application is running. Steps: Access the themes preferences. Expected: Both Classic and Modern themes exist under the themes preferences.",
+            "requirement_ids": [
+              "R-175"
+            ]
+          },
+          {
+            "id": "TC-178",
+            "title": "Verify Theme Preferences under View menu",
+            "description": "Preconditions: The application is running. Steps: Open the View menu. Expected: The Theme Preferences item is available under the View menu.",
+            "requirement_ids": [
+              "R-178"
+            ]
+          },
+          {
+            "id": "TC-179",
+            "title": "Verify Get New Themes under View menu",
+            "description": "Preconditions: The application is running. Steps: Open the View menu. Expected: The Get New Themes item is available under the View menu.",
+            "requirement_ids": [
+              "R-179"
+            ]
+          },
+          {
+            "id": "TC-180",
+            "title": "Verify Classic item under View menu",
+            "description": "Preconditions: The application is running. Steps: Open the View menu. Expected: The Classic item is available under the View menu.",
+            "requirement_ids": [
+              "R-180"
+            ]
+          },
+          {
+            "id": "TC-181",
+            "title": "Verify Modern item under View menu",
+            "description": "Preconditions: The application is running. Steps: Open the View menu. Expected: The Modern item is available under the View menu.",
+            "requirement_ids": [
+              "R-181"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1360,
+          "output_tokens": 329,
+          "details": {
+            "total_tokens": 1689,
+            "text_prompt_tokens": 1360
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "critic",
+      "subject_id": "round-1-candidate-1",
+      "output": {
+        "feedback": "Evidence is inconclusive for a blocker assessment as no cases are provided for R-176 and R-177.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": false
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 956,
+          "output_tokens": 63,
+          "details": {
+            "total_tokens": 1019,
+            "text_prompt_tokens": 956
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "validator",
+      "subject_id": "round-1-candidate-1",
+      "output": {
+        "feedback": "Two requirements (R-176 and R-177) regarding theme image displays are not covered by any test cases, and the test cases for visual rendering/images cannot be fully verified without the image assets.",
+        "request_revision": true,
+        "confirmed_blockers": [
+          "R-176 and R-177 lack test cases to verify their display requirements."
+        ],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 953,
+          "output_tokens": 109,
+          "details": {
+            "total_tokens": 1062,
+            "text_prompt_tokens": 953
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "analyst",
+      "subject_id": "round-1-candidate-2",
+      "output": {
+        "analysis": "Based on the validator feedback, requirements R-176 and R-177 depend on an external image reference that is not supplied, making the expected visual display unverifiable. Consequently, scenarios associated with R-176 and R-177 cannot be effectively tested against a concrete visual specification without the missing assets."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1062,
+          "output_tokens": 72,
+          "details": {
+            "total_tokens": 1134,
+            "text_prompt_tokens": 1062
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "round-1-candidate-2",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R175",
+            "title": "Verify presence of Classic and Modern themes under themes preferences",
+            "description": "Preconditions: Browser is open and themes preferences panel is accessible. Steps: Navigate to the themes preferences. Expected: Both Classic and Modern themes exist under the themes preferences.",
+            "requirement_ids": [
+              "R-175"
+            ]
+          },
+          {
+            "id": "TC-R178",
+            "title": "Verify Theme Preferences item under View menu",
+            "description": "Preconditions: Browser is open and main window is displayed. Steps: Click on the View menu. Expected: Theme Preferences item is available under the View menu.",
+            "requirement_ids": [
+              "R-178"
+            ]
+          },
+          {
+            "id": "TC-R179",
+            "title": "Verify Get New Themes item under View menu",
+            "description": "Preconditions: Browser is open and main window is displayed. Steps: Click on the View menu. Expected: Get New Themes item is available under the View menu.",
+            "requirement_ids": [
+              "R-179"
+            ]
+          },
+          {
+            "id": "TC-R180",
+            "title": "Verify Classic item under View menu",
+            "description": "Preconditions: Browser is open and main window is displayed. Steps: Click on the View menu. Expected: Classic item is available under the View menu.",
+            "requirement_ids": [
+              "R-180"
+            ]
+          },
+          {
+            "id": "TC-R181",
+            "title": "Verify Modern item under View menu",
+            "description": "Preconditions: Browser is open and main window is displayed. Steps: Click on the View menu. Expected: Modern item is available under the View menu.",
+            "requirement_ids": [
+              "R-181"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1369,
+          "output_tokens": 470,
+          "details": {
+            "total_tokens": 1839,
+            "text_prompt_tokens": 1369
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "critic",
+      "subject_id": "round-1-candidate-2",
+      "output": {
+        "feedback": "Evidence is insufficient to confirm any blockers as the supplied cases cover the testable requirements and no concrete contradictions or untestable scenarios are present in the cases G-001 through G-005.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": 984,
+          "output_tokens": 79,
+          "details": {
+            "total_tokens": 1063,
+            "text_prompt_tokens": 984
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "validator",
+      "subject_id": "round-1-candidate-2",
+      "output": {
+        "feedback": "Cases G-001 through G-005 are properly grounded in their respective requirements. However, requirements R-176 and R-177 lack test cases, and no test cases verify the display of themes against images. Blocker assessment is incomplete due to missing coverage.",
+        "request_revision": true,
+        "confirmed_blockers": [
+          "Requirements R-176 and R-177 are missing test cases to verify that Classic and Modern themes are displayed as in the given images."
+        ],
+        "blocker_assessment_complete": false
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 981,
+          "output_tokens": 135,
+          "details": {
+            "total_tokens": 1116,
+            "text_prompt_tokens": 981
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "analyst",
+      "subject_id": "round-1-candidate-3",
+      "output": {
+        "analysis": "Based on the validator feedback, requirements R-176 and R-177 depend on an external image reference that is not supplied, making the expected visual display untestable. All other requirements R-175, R-178, R-179, R-180, and R-181 remain valid and testable."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1062,
+          "output_tokens": 81,
+          "details": {
+            "total_tokens": 1143,
+            "text_prompt_tokens": 1062
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "round-1-candidate-3",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-175",
+            "title": "Verify existence of Classic and Modern themes under themes preferences",
+            "description": "Preconditions: The browser application is running. Steps: Access the themes preferences section. Expected: Both Classic and Modern themes exist under the themes preferences.",
+            "requirement_ids": [
+              "R-175"
+            ]
+          },
+          {
+            "id": "TC-178",
+            "title": "Verify Theme Preferences menu item availability",
+            "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Theme Preferences item is available under the View menu.",
+            "requirement_ids": [
+              "R-178"
+            ]
+          },
+          {
+            "id": "TC-179",
+            "title": "Verify Get New Themes menu item availability",
+            "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Get New Themes item is available under the View menu.",
+            "requirement_ids": [
+              "R-179"
+            ]
+          },
+          {
+            "id": "TC-180",
+            "title": "Verify Classic menu item availability",
+            "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Classic item is available under the View menu.",
+            "requirement_ids": [
+              "R-180"
+            ]
+          },
+          {
+            "id": "TC-181",
+            "title": "Verify Modern menu item availability",
+            "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Modern item is available under the View menu.",
+            "requirement_ids": [
+              "R-181"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1378,
+          "output_tokens": 449,
+          "details": {
+            "total_tokens": 1827,
+            "text_prompt_tokens": 1378
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "critic",
+      "subject_id": "round-1-candidate-3",
+      "output": {
+        "feedback": "",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 968,
+          "output_tokens": 38,
+          "details": {
+            "total_tokens": 1006,
+            "text_prompt_tokens": 968
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "validator",
+      "subject_id": "round-1-candidate-3",
+      "output": {
+        "feedback": "The provided cases lack test coverage for R-176 and R-177, which require visual verification of the Classic and Modern themes against given images. Revision is requested to add cases covering R-176 and R-177.",
+        "request_revision": true,
+        "confirmed_blockers": [
+          "Requirements R-176 and R-177 are missing test case coverage."
+        ],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": 965,
+          "output_tokens": 114,
+          "details": {
+            "total_tokens": 1079,
+            "text_prompt_tokens": 965
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "selection",
+      "subject_id": "round-1",
+      "output": {
+        "preferred_id": null,
+        "rationale": "The accepted state covers all 7 requirements (R-175 through R-181), whereas all candidates drop test cases for R-176 and R-177, reducing requirement coverage from 7 to 5. Although the accepted state has potential verification notes regarding missing image references, dropping test cases entirely is an objective regression in requirement coverage. Therefore, the accepted state remains preferred over all candidates.",
+        "judgments": [
+          {
+            "candidate_id": "round-1-candidate-3",
+            "comparison": "worse"
+          },
+          {
+            "candidate_id": "round-1-candidate-1",
+            "comparison": "worse"
+          },
+          {
+            "candidate_id": "round-1-candidate-2",
+            "comparison": "worse"
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 2990,
+          "output_tokens": 208,
+          "details": {
+            "total_tokens": 3198,
+            "text_prompt_tokens": 2990
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "analyst",
+      "subject_id": "round-2-candidate-1",
+      "output": {
+        "analysis": "For requirement R-176, given the theme preferences are open, the user selects the Classic theme, and the expected behavior is that the Classic theme is displayed matching the given image. For requirement R-177, given the theme preferences are open, the user selects the Modern theme, and the expected behavior is that the Modern theme is displayed matching the given image."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 851,
+          "output_tokens": 85,
+          "details": {
+            "total_tokens": 936,
+            "text_prompt_tokens": 851
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "round-2-candidate-1",
+      "output": {
+        "cases": [
+          {
+            "id": "G-001",
+            "title": "Verify existence of Classic and Modern themes under themes preferences",
+            "description": "Preconditions: The browser application is running. Steps: Access the themes preferences section. Expected: Both Classic and Modern themes exist under the themes preferences.",
+            "requirement_ids": [
+              "R-175"
+            ]
+          },
+          {
+            "id": "G-002",
+            "title": "Verify Theme Preferences menu item availability",
+            "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Theme Preferences item is available under the View menu.",
+            "requirement_ids": [
+              "R-178"
+            ]
+          },
+          {
+            "id": "G-003",
+            "title": "Verify Get New Themes menu item availability",
+            "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Get New Themes item is available under the View menu.",
+            "requirement_ids": [
+              "R-179"
+            ]
+          },
+          {
+            "id": "G-004",
+            "title": "Verify Classic menu item availability",
+            "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Classic item is available under the View menu.",
+            "requirement_ids": [
+              "R-180"
+            ]
+          },
+          {
+            "id": "G-005",
+            "title": "Verify Modern menu item availability",
+            "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Modern item is available under the View menu.",
+            "requirement_ids": [
+              "R-181"
+            ]
+          },
+          {
+            "id": "G-006",
+            "title": "Verify Classic theme display matches given image",
+            "description": "Preconditions: The theme preferences are open. Steps: Select the Classic theme. Expected: The Classic theme is displayed as in the given image.",
+            "requirement_ids": [
+              "R-176"
+            ]
+          },
+          {
+            "id": "G-007",
+            "title": "Verify Modern theme display matches given image",
+            "description": "Preconditions: The theme preferences are open. Steps: Select the Modern theme. Expected: The Modern theme is displayed as in the given image.",
+            "requirement_ids": [
+              "R-177"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1217,
+          "output_tokens": 623,
+          "details": {
+            "total_tokens": 1840,
+            "text_prompt_tokens": 1217
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "critic",
+      "subject_id": "round-2-candidate-1",
+      "output": {
+        "feedback": "The provided test cases are fully grounded, executable, and clearly map to all requirements without any blockers.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1102,
+          "output_tokens": 58,
+          "details": {
+            "total_tokens": 1160,
+            "text_prompt_tokens": 1102
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "validator",
+      "subject_id": "round-2-candidate-1",
+      "output": {
+        "feedback": "",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1099,
+          "output_tokens": 38,
+          "details": {
+            "total_tokens": 1137,
+            "text_prompt_tokens": 1099
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "analyst",
+      "subject_id": "round-2-candidate-2",
+      "output": {
+        "analysis": "For R-176: Preconditions: The Firefox application is open and themes are accessible; Action: Select the Classic theme under theme preferences; Expected Behavior: The Classic theme is displayed. For R-177: Preconditions: The Firefox application is open and themes are accessible; Action: Select the Modern theme under theme preferences; Expected Behavior: The Modern theme is displayed."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 851,
+          "output_tokens": 87,
+          "details": {
+            "total_tokens": 938,
+            "text_prompt_tokens": 851
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "round-2-candidate-2",
+      "output": {
+        "cases": [
+          {
+            "id": "G-001",
+            "title": "Verify existence of Classic and Modern themes under themes preferences",
+            "description": "Preconditions: The browser application is running. Steps: Access the themes preferences section. Expected: Both Classic and Modern themes exist under the themes preferences.",
+            "requirement_ids": [
+              "R-175"
+            ]
+          },
+          {
+            "id": "G-002",
+            "title": "Verify Theme Preferences menu item availability",
+            "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Theme Preferences item is available under the View menu.",
+            "requirement_ids": [
+              "R-178"
+            ]
+          },
+          {
+            "id": "G-003",
+            "title": "Verify Get New Themes menu item availability",
+            "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Get New Themes item is available under the View menu.",
+            "requirement_ids": [
+              "R-179"
+            ]
+          },
+          {
+            "id": "G-004",
+            "title": "Verify Classic menu item availability",
+            "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Classic item is available under the View menu.",
+            "requirement_ids": [
+              "R-180"
+            ]
+          },
+          {
+            "id": "G-005",
+            "title": "Verify Modern menu item availability",
+            "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Modern item is available under the View menu.",
+            "requirement_ids": [
+              "R-181"
+            ]
+          },
+          {
+            "id": "G-006",
+            "title": "Verify Classic theme display",
+            "description": "Preconditions: The Firefox application is open and themes are accessible. Steps: Select the Classic theme under theme preferences. Expected: Classic theme shall be displayed as in the given image.",
+            "requirement_ids": [
+              "R-176"
+            ]
+          },
+          {
+            "id": "G-007",
+            "title": "Verify Modern theme display",
+            "description": "Preconditions: The Firefox application is open and themes are accessible. Steps: Select the Modern theme under theme preferences. Expected: Modern theme shall be displayed as in the given image.",
+            "requirement_ids": [
+              "R-177"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1219,
+          "output_tokens": 631,
+          "details": {
+            "total_tokens": 1850,
+            "text_prompt_tokens": 1219
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "critic",
+      "subject_id": "round-2-candidate-2",
+      "output": {
+        "feedback": "",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1110,
+          "output_tokens": 38,
+          "details": {
+            "total_tokens": 1148,
+            "text_prompt_tokens": 1110
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "validator",
+      "subject_id": "round-2-candidate-2",
+      "output": {
+        "feedback": "Cases G-006 and G-007 reference 'given image' which is missing or ambiguous, making them untestable. Cases G-004 and G-005 test View menu items for Classic and Modern themes, but the requirements R-180 and R-181 only state that the items shall be available without detailing how to verify them against an external reference, though they are testable as direct menu presence checks. However, G-006 and G-007 are insufficiently specified due to the missing image reference.",
+        "request_revision": true,
+        "confirmed_blockers": [
+          "Case G-006 depends on a 'given image' which is missing, making the expected behavior untestable.",
+          "Case G-007 depends on a 'given image' which is missing, making the expected behavior untestable."
+        ],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1107,
+          "output_tokens": 213,
+          "details": {
+            "total_tokens": 1320,
+            "text_prompt_tokens": 1107
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "analyst",
+      "subject_id": "round-2-candidate-3",
+      "output": {
+        "analysis": "For R-176: Preconditions: The Firefox application is open and the Classic theme is selected. Action: Navigate to the themes preferences and visually compare the Classic theme display against the reference image. Expected Behavior: The Classic theme is displayed exactly as specified in the given image. For R-177: Preconditions: The Firefox application is open and the Modern theme is selected. Action: Navigate to the themes preferences and visually compare the Modern theme display against the reference image. Expected Behavior: The Modern theme is displayed exactly as specified in the given image."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 851,
+          "output_tokens": 123,
+          "details": {
+            "total_tokens": 974,
+            "text_prompt_tokens": 851
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "round-2-candidate-3",
+      "output": {
+        "cases": [
+          {
+            "id": "G-001",
+            "title": "Verify existence of Classic and Modern themes under themes preferences",
+            "description": "Preconditions: The browser application is running. Steps: Access the themes preferences section. Expected: Both Classic and Modern themes exist under the themes preferences.",
+            "requirement_ids": [
+              "R-175"
+            ]
+          },
+          {
+            "id": "G-002",
+            "title": "Verify Theme Preferences menu item availability",
+            "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Theme Preferences item is available under the View menu.",
+            "requirement_ids": [
+              "R-178"
+            ]
+          },
+          {
+            "id": "G-003",
+            "title": "Verify Get New Themes menu item availability",
+            "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Get New Themes item is available under the View menu.",
+            "requirement_ids": [
+              "R-179"
+            ]
+          },
+          {
+            "id": "G-004",
+            "title": "Verify Classic menu item availability",
+            "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Classic item is available under the View menu.",
+            "requirement_ids": [
+              "R-180"
+            ]
+          },
+          {
+            "id": "G-005",
+            "title": "Verify Modern menu item availability",
+            "description": "Preconditions: The browser application is running. Steps: Click on the View menu. Expected: The Modern item is available under the View menu.",
+            "requirement_ids": [
+              "R-181"
+            ]
+          },
+          {
+            "id": "G-006",
+            "title": "Verify Classic theme visual display",
+            "description": "Preconditions: The Firefox application is open and the Classic theme is selected. Steps: Navigate to the themes preferences and visually compare the Classic theme display against the reference image. Expected: The Classic theme is displayed exactly as specified in the given image.",
+            "requirement_ids": [
+              "R-176"
+            ]
+          },
+          {
+            "id": "G-007",
+            "title": "Verify Modern theme visual display",
+            "description": "Preconditions: The Firefox application is open and the Modern theme is selected. Steps: Navigate to the themes preferences and visually compare the Modern theme display against the reference image. Expected: The Modern theme is displayed exactly as specified in the given image.",
+            "requirement_ids": [
+              "R-177"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1255,
+          "output_tokens": 659,
+          "details": {
+            "total_tokens": 1914,
+            "text_prompt_tokens": 1255
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "critic",
+      "subject_id": "round-2-candidate-3",
+      "output": {
+        "feedback": "",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1138,
+          "output_tokens": 38,
+          "details": {
+            "total_tokens": 1176,
+            "text_prompt_tokens": 1138
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "validator",
+      "subject_id": "round-2-candidate-3",
+      "output": {
+        "feedback": "All cases are fully grounded in their respective requirements, with clear preconditions, actions, and expected behaviors. No blockers found.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": 1135,
+          "output_tokens": 62,
+          "details": {
+            "total_tokens": 1197,
+            "text_prompt_tokens": 1135
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "selection",
+      "subject_id": "round-2",
+      "output": {
+        "preferred_id": "round-2-candidate-1",
+        "rationale": "Candidate round-2-candidate-1 successfully covers all 7 requirements (R-175 through R-181), correcting the missing test coverage for R-176 and R-177 that was present in the accepted state. Both round-2-candidate-1 and round-2-candidate-3 are structurally valid and improve the objective requirement coverage, but round-2-candidate-1 provides cleaner test case descriptions without redundant phrasing.",
+        "judgments": [
+          {
+            "candidate_id": "round-2-candidate-1",
+            "comparison": "improves"
+          },
+          {
+            "candidate_id": "round-2-candidate-3",
+            "comparison": "improves"
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 2411,
+          "output_tokens": 196,
+          "details": {
+            "total_tokens": 2607,
+            "text_prompt_tokens": 2411
+          },
+          "status": "available"
+        }
+      ]
+    }
+  ],
+  "monotonicity": "confirmed"
+}

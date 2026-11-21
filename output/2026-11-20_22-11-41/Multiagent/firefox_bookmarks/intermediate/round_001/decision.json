@@ -1,0 +1,181 @@
+{
+  "number": 1,
+  "requester": "coverage",
+  "accepted_before": {
+    "candidate_id": "initial",
+    "cases": [
+      {
+        "id": "G-001",
+        "title": "Add bookmark to specific location",
+        "description": "Preconditions: Bookmarks hierarchy is open. Steps: Add a new bookmark into a specific location within the hierarchy. Expected behavior: The new bookmark is added to the specified location.",
+        "requirement_ids": [
+          "R-001"
+        ]
+      },
+      {
+        "id": "G-002",
+        "title": "Delete bookmark from file and access points",
+        "description": "Preconditions: A bookmark exists in the bookmarks file and access points. Steps: Delete the bookmark. Expected behavior: The bookmark is properly deleted from the bookmarks file and no longer displayed from all access points.",
+        "requirement_ids": [
+          "R-002"
+        ]
+      },
+      {
+        "id": "G-003",
+        "title": "Add and delete bookmark from personal toolbar",
+        "description": "Preconditions: Personal toolbar is visible. Steps: Add a bookmark to the personal toolbar and then delete it. Expected behavior: The bookmark is successfully added to and deleted from the personal toolbar.",
+        "requirement_ids": [
+          "R-003"
+        ]
+      },
+      {
+        "id": "G-004",
+        "title": "Insert new bookmark folder",
+        "description": "Preconditions: Bookmarks hierarchy is open. Steps: Insert a new bookmark folder into the bookmarks hierarchy. Expected behavior: The new bookmark folder is successfully inserted into the hierarchy.",
+        "requirement_ids": [
+          "R-004"
+        ]
+      },
+      {
+        "id": "G-005",
+        "title": "Launch bookmark in browser window",
+        "description": "Preconditions: A bookmark exists in the browser. Steps: Double-click on the bookmark. Expected behavior: The bookmark is launched in a browser window.",
+        "requirement_ids": [
+          "R-005"
+        ]
+      },
+      {
+        "id": "G-006",
+        "title": "Verify default bookmarks file links",
+        "description": "Preconditions: Browser is packaged with the default bookmarks file. Steps: Check the default bookmarks file links. Expected behavior: Bookmarks within the default bookmarks file are valid links.",
+        "requirement_ids": [
+          "R-006"
+        ]
+      },
+      {
+        "id": "G-007",
+        "title": "Save changes to bookmark item",
+        "description": "Preconditions: A bookmark item exists. Steps: Make changes to the bookmark item and save. Expected behavior: Changes to the bookmark item are saved without loss of item integrity.",
+        "requirement_ids": [
+          "R-007"
+        ]
+      },
+      {
+        "id": "G-008",
+        "title": "Delete bookmarks folder",
+        "description": "Preconditions: A bookmarks folder exists. Steps: Delete the bookmarks folder. Expected behavior: The bookmarks folder is deleted.",
+        "requirement_ids": [
+          "R-008"
+        ]
+      },
+      {
+        "id": "G-009",
+        "title": "Add and delete bookmarks separators",
+        "description": "Preconditions: Bookmarks interface is open. Steps: Add bookmarks separators and then delete them. Expected behavior: Bookmarks separators are added and deleted.",
+        "requirement_ids": [
+          "R-009"
+        ]
+      },
+      {
+        "id": "G-010",
+        "title": "Save bookmark changes over restart or crash",
+        "description": "Preconditions: Bookmarks have been modified. Steps: Restart or simulate crash of the browser. Expected behavior: Bookmarks changes are saved over restart/crash.",
+        "requirement_ids": [
+          "R-010"
+        ]
+      },
+      {
+        "id": "G-011",
+        "title": "Negative view properties execution",
+        "description": "Preconditions: Bookmarks, folders, and separators exist. Steps: Attempt to execute view properties (negative test). Expected behavior: View properties execution behaves according to negative test requirements.",
+        "requirement_ids": [
+          "R-011"
+        ]
+      },
+      {
+        "id": "G-012",
+        "title": "Rename bookmark inline",
+        "description": "Preconditions: A bookmark exists. Steps: Rename the bookmark inline without using the bookmarks properties dialog. Expected behavior: The bookmark is renamed inline.",
+        "requirement_ids": [
+          "R-012"
+        ]
+      },
+      {
+        "id": "G-013",
+        "title": "Find bookmark using custom keyword",
+        "description": "Preconditions: A bookmark is configured with a user-defined custom keyword. Steps: Search for the bookmark using the custom keyword. Expected behavior: The bookmark is found using the user-defined custom keyword.",
+        "requirement_ids": [
+          "R-013"
+        ]
+      },
+      {
+        "id": "G-014",
+        "title": "Sort and reverse-sort bookmarks per column",
+        "description": "Preconditions: Bookmark list with columns is displayed. Steps: Sort and reverse-sort bookmarks per column. Expected behavior: Bookmarks are sorted and reverse-sorted per column.",
+        "requirement_ids": [
+          "R-014"
+        ]
+      },
+      {
+        "id": "G-015",
+        "title": "Resize bookmark columns",
+        "description": "Preconditions: Bookmark columns are displayed. Steps: Resize bookmark columns to show/hide more of entries. Expected behavior: Bookmark columns are resizable to show/hide more of entries.",
+        "requirement_ids": [
+          "R-015"
+        ]
+      },
+      {
+        "id": "G-016",
+        "title": "Show and hide bookmark columns",
+        "description": "Preconditions: Bookmark columns interface is open. Steps: Show and hide bookmark columns. Expected behavior: Bookmark columns are showed and hidden.",
+        "requirement_ids": [
+          "R-016"
+        ]
+      },
+      {
+        "id": "G-017",
+        "title": "Delete several bookmarks at once",
+        "description": "Preconditions: Several bookmarks exist. Steps: Select and delete several bookmarks at one time. Expected behavior: Several bookmarks are deleted at one time.",
+        "requirement_ids": [
+          "R-017"
+        ]
+      },
+      {
+        "id": "G-018",
+        "title": "Prevent invalid bookmark drop targets",
+        "description": "Preconditions: A bookmark item, its immediate parent, and child exist. Steps: Attempt to drop a bookmark item onto itself, its immediate parent, or its immediate child. Expected behavior: It is not possible to drop the bookmark item onto itself or its immediate parent or child.",
+        "requirement_ids": [
+          "R-018"
+        ]
+      }
+    ],
+    "opinions": [
+      {
+        "agent": "critic",
+        "feedback": "",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      {
+        "agent": "validator",
+        "feedback": "All cases are properly grounded in the provided requirements with clear preconditions, steps, and expected behaviors.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      }
+    ],
+    "valid": true,
+    "confirmed_blockers": 0,
+    "covered_requirements": 18,
+    "duplicates": 0,
+    "distinct_scenarios": 18,
+    "comparable": true
+  },
+  "candidates": [],
+  "selected_id": "round-1-coverage-candidate-1",
+  "decision": "objective",
+  "qualitative": null,
+  "failure": null,
+  "monotonicity": "confirmed"
+}
