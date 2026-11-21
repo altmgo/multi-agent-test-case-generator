@@ -12,7 +12,7 @@ from zoneinfo import ZoneInfo
 
 OUTPUT_DIR = Path("output")
 RUN_TIMEZONE = ZoneInfo("America/Recife")
-SOLUTIONS = ("one-shot", "GHL", "Multiagent")
+SOLUTIONS = ("zero-shot", "Multiagent")
 
 def get_run_configs() -> list[tuple[Path, dict]]:
     runs = []

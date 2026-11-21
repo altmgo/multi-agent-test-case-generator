@@ -1,0 +1,967 @@
+{
+  "initial": {
+    "assessment": {
+      "candidate_id": "initial",
+      "cases": [
+        {
+          "id": "G-001",
+          "title": "Verify both Classic and Modern themes exist under preferences (Normal)",
+          "description": "Navigate to the themes preferences and verify that both Classic and Modern themes are present in the list.",
+          "requirement_ids": [
+            "R-175"
+          ]
+        },
+        {
+          "id": "G-002",
+          "title": "Verify theme list is populated exclusively with expected themes (Edge)",
+          "description": "Check the themes preferences to ensure the theme list contains only the expected themes without unexpected additions.",
+          "requirement_ids": [
+            "R-175"
+          ]
+        },
+        {
+          "id": "G-003",
+          "title": "Verify exactly two themes are available under preferences (Boundary)",
+          "description": "Count the total number of available themes under the themes preferences and verify there are exactly two.",
+          "requirement_ids": [
+            "R-175"
+          ]
+        },
+        {
+          "id": "G-004",
+          "title": "Verify system behavior when theme files are missing (Error/Abnormal)",
+          "description": "Simulate missing theme files in the application directory and check that the preferences handle the missing assets gracefully.",
+          "requirement_ids": [
+            "R-175"
+          ]
+        },
+        {
+          "id": "G-005",
+          "title": "Classic theme visual verification",
+          "description": "Verify that the Classic theme is displayed correctly as in the given reference image.",
+          "requirement_ids": [
+            "R-176"
+          ]
+        },
+        {
+          "id": "G-006",
+          "title": "Classic theme at minimum resolution",
+          "description": "Verify that the Classic theme is rendered correctly when displayed on the minimum supported window resolution.",
+          "requirement_ids": [
+            "R-176"
+          ]
+        },
+        {
+          "id": "G-007",
+          "title": "Classic theme with font scaling limits",
+          "description": "Verify that the Classic theme renders correctly at the boundary condition of system font scaling limits.",
+          "requirement_ids": [
+            "R-176"
+          ]
+        },
+        {
+          "id": "G-008",
+          "title": "Classic theme with corrupted asset",
+          "description": "Verify system behavior and error handling when the Classic theme asset is corrupted.",
+          "requirement_ids": [
+            "R-176"
+          ]
+        },
+        {
+          "id": "G-009",
+          "title": "Modern Theme Display Normal",
+          "description": "Verify that the Modern theme is displayed correctly matching the given reference image.",
+          "requirement_ids": [
+            "R-177"
+          ]
+        },
+        {
+          "id": "G-010",
+          "title": "Modern Theme Display Edge",
+          "description": "Verify that the Modern theme is correctly rendered when the application is displayed on maximum window resolution.",
+          "requirement_ids": [
+            "R-177"
+          ]
+        },
+        {
+          "id": "G-011",
+          "title": "Modern Theme Display Boundary",
+          "description": "Verify that the Modern theme renders correctly with high-contrast OS settings enabled.",
+          "requirement_ids": [
+            "R-177"
+          ]
+        },
+        {
+          "id": "G-012",
+          "title": "Modern Theme Display Abnormal",
+          "description": "Verify application behavior and error handling when the image asset for the Modern theme is missing.",
+          "requirement_ids": [
+            "R-177"
+          ]
+        },
+        {
+          "id": "G-013",
+          "title": "Verify Theme Preferences item normal presence in View menu",
+          "description": "Verify that the Theme Preferences item is present and selectable under the View menu during normal usage.",
+          "requirement_ids": [
+            "R-178"
+          ]
+        },
+        {
+          "id": "G-014",
+          "title": "Verify Theme Preferences item via keyboard shortcut",
+          "description": "Verify that the View menu can be opened and Theme Preferences accessed using keyboard shortcuts as an edge case.",
+          "requirement_ids": [
+            "R-178"
+          ]
+        },
+        {
+          "id": "G-015",
+          "title": "Verify Theme Preferences menu boundary position",
+          "description": "Verify the boundary condition where Theme Preferences is positioned as the last item in the View menu list.",
+          "requirement_ids": [
+            "R-178"
+          ]
+        },
+        {
+          "id": "G-016",
+          "title": "Verify View menu abnormal failure to render",
+          "description": "Verify system behavior when the View menu fails to render, ensuring proper handling of the missing Theme Preferences item.",
+          "requirement_ids": [
+            "R-178"
+          ]
+        },
+        {
+          "id": "G-017",
+          "title": "Normal scenario for Get New Themes menu item",
+          "description": "Verify that the Get New Themes item is present and selectable under the View menu.",
+          "requirement_ids": [
+            "R-179"
+          ]
+        },
+        {
+          "id": "G-018",
+          "title": "Edge scenario for Get New Themes menu item",
+          "description": "Verify the behavior when selecting Get New Themes while the system is offline.",
+          "requirement_ids": [
+            "R-179"
+          ]
+        },
+        {
+          "id": "G-019",
+          "title": "Boundary scenario for Get New Themes menu item",
+          "description": "Verify that Get New Themes is positioned directly below Theme Preferences in the View menu list.",
+          "requirement_ids": [
+            "R-179"
+          ]
+        },
+        {
+          "id": "G-020",
+          "title": "Error scenario for Get New Themes menu item",
+          "description": "Verify the system handles network timeouts gracefully when selecting Get New Themes.",
+          "requirement_ids": [
+            "R-179"
+          ]
+        },
+        {
+          "id": "G-021",
+          "title": "Verify Classic item present in View menu (Normal)",
+          "description": "Verify that the Classic item is present in the View menu and can be successfully identified.",
+          "requirement_ids": [
+            "R-180"
+          ]
+        },
+        {
+          "id": "G-022",
+          "title": "Select Classic item while Modern is active (Edge)",
+          "description": "Verify that selecting the Classic item from the View menu while the Modern theme is currently active successfully switches the theme.",
+          "requirement_ids": [
+            "R-180"
+          ]
+        },
+        {
+          "id": "G-023",
+          "title": "Verify Classic item placement in menu (Boundary)",
+          "description": "Verify that the Classic item is placed correctly at the top of the theme submenu or list structure.",
+          "requirement_ids": [
+            "R-180"
+          ]
+        },
+        {
+          "id": "G-024",
+          "title": "Classic item click event unhandled (Error)",
+          "description": "Verify the system behavior when the click event on the Classic item is unhandled or fails to execute.",
+          "requirement_ids": [
+            "R-180"
+          ]
+        },
+        {
+          "id": "G-025",
+          "title": "Verify Modern item is present in View menu",
+          "description": "Ensure that the \"Modern\" item is available as a selectable option under the View menu.",
+          "requirement_ids": [
+            "R-181"
+          ]
+        },
+        {
+          "id": "G-026",
+          "title": "Select Modern item while Classic is active",
+          "description": "Click the \"Modern\" item under the View menu while the Classic theme is currently active and verify the theme switches.",
+          "requirement_ids": [
+            "R-181"
+          ]
+        },
+        {
+          "id": "G-027",
+          "title": "Verify Modern item placement in View menu",
+          "description": "Check that the \"Modern\" item is positioned correctly adjacent to the Classic item within the menu structure.",
+          "requirement_ids": [
+            "R-181"
+          ]
+        },
+        {
+          "id": "G-028",
+          "title": "Handle unhandled click event on Modern item",
+          "description": "Simulate an unhandled click event on the \"Modern\" item under the View menu and verify the application remains stable.",
+          "requirement_ids": [
+            "R-181"
+          ]
+        }
+      ],
+      "opinions": [
+        {
+          "agent": "critic",
+          "feedback": "",
+          "request_revision": false,
+          "confirmed_blockers": [],
+          "blocker_assessment_complete": true
+        },
+        {
+          "agent": "validator",
+          "feedback": "All requirements (R-175 through R-181) have comprehensive test cases covering normal, edge, boundary, and error scenarios. No blockers found.",
+          "request_revision": false,
+          "confirmed_blockers": [],
+          "blocker_assessment_complete": true
+        }
+      ],
+      "valid": true,
+      "confirmed_blockers": 0,
+      "covered_requirements": 7,
+      "duplicates": 0,
+      "comparable": true
+    },
+    "analysis": {
+      "analysis": "Unit ID: firefox_themes. R-175: Normal - Both Classic and Modern themes exist under preferences. Edge - Theme list populated with only expected themes. Boundary - Exactly two themes available. Abnormal - Missing theme files. R-176: Normal - Classic theme matches reference image. Edge - Classic theme rendered on minimum window resolution. Boundary - Classic theme rendering with system font scaling limits. Abnormal - Corrupted theme asset for Classic. R-177: Normal - Modern theme matches reference image. Edge - Modern theme rendered on maximum window resolution. Boundary - Modern theme rendering with high-contrast OS settings. Abnormal - Missing image asset for Modern theme. R-178: Normal - Theme Preferences item present in View menu. Edge - View menu opened with keyboard shortcut. Boundary - Theme Preferences as the last item in View menu list. Abnormal - View menu failing to render. R-179: Normal - Get New Themes item present in View menu. Edge - Click Get New Themes while offline. Boundary - Get New Themes placed directly below Theme Preferences. Abnormal - Network timeout when selecting Get New Themes. R-180: Normal - Classic item present in View menu. Edge - Select Classic item while Modern is active. Boundary - Classic item placed at top of theme submenu. Abnormal - Classic item click event unhandled. R-181: Normal - Modern item present in View menu. Edge - Select Modern item while Classic is active. Boundary - Modern item placed adjacent to Classic item. Abnormal - Modern item click event unhandled."
+    },
+    "failure": null
+  },
+  "rounds": [],
+  "status": "completed",
+  "failure": null,
+  "accepted_id": "initial",
+  "accepted_assessment": {
+    "candidate_id": "initial",
+    "cases": [
+      {
+        "id": "G-001",
+        "title": "Verify both Classic and Modern themes exist under preferences (Normal)",
+        "description": "Navigate to the themes preferences and verify that both Classic and Modern themes are present in the list.",
+        "requirement_ids": [
+          "R-175"
+        ]
+      },
+      {
+        "id": "G-002",
+        "title": "Verify theme list is populated exclusively with expected themes (Edge)",
+        "description": "Check the themes preferences to ensure the theme list contains only the expected themes without unexpected additions.",
+        "requirement_ids": [
+          "R-175"
+        ]
+      },
+      {
+        "id": "G-003",
+        "title": "Verify exactly two themes are available under preferences (Boundary)",
+        "description": "Count the total number of available themes under the themes preferences and verify there are exactly two.",
+        "requirement_ids": [
+          "R-175"
+        ]
+      },
+      {
+        "id": "G-004",
+        "title": "Verify system behavior when theme files are missing (Error/Abnormal)",
+        "description": "Simulate missing theme files in the application directory and check that the preferences handle the missing assets gracefully.",
+        "requirement_ids": [
+          "R-175"
+        ]
+      },
+      {
+        "id": "G-005",
+        "title": "Classic theme visual verification",
+        "description": "Verify that the Classic theme is displayed correctly as in the given reference image.",
+        "requirement_ids": [
+          "R-176"
+        ]
+      },
+      {
+        "id": "G-006",
+        "title": "Classic theme at minimum resolution",
+        "description": "Verify that the Classic theme is rendered correctly when displayed on the minimum supported window resolution.",
+        "requirement_ids": [
+          "R-176"
+        ]
+      },
+      {
+        "id": "G-007",
+        "title": "Classic theme with font scaling limits",
+        "description": "Verify that the Classic theme renders correctly at the boundary condition of system font scaling limits.",
+        "requirement_ids": [
+          "R-176"
+        ]
+      },
+      {
+        "id": "G-008",
+        "title": "Classic theme with corrupted asset",
+        "description": "Verify system behavior and error handling when the Classic theme asset is corrupted.",
+        "requirement_ids": [
+          "R-176"
+        ]
+      },
+      {
+        "id": "G-009",
+        "title": "Modern Theme Display Normal",
+        "description": "Verify that the Modern theme is displayed correctly matching the given reference image.",
+        "requirement_ids": [
+          "R-177"
+        ]
+      },
+      {
+        "id": "G-010",
+        "title": "Modern Theme Display Edge",
+        "description": "Verify that the Modern theme is correctly rendered when the application is displayed on maximum window resolution.",
+        "requirement_ids": [
+          "R-177"
+        ]
+      },
+      {
+        "id": "G-011",
+        "title": "Modern Theme Display Boundary",
+        "description": "Verify that the Modern theme renders correctly with high-contrast OS settings enabled.",
+        "requirement_ids": [
+          "R-177"
+        ]
+      },
+      {
+        "id": "G-012",
+        "title": "Modern Theme Display Abnormal",
+        "description": "Verify application behavior and error handling when the image asset for the Modern theme is missing.",
+        "requirement_ids": [
+          "R-177"
+        ]
+      },
+      {
+        "id": "G-013",
+        "title": "Verify Theme Preferences item normal presence in View menu",
+        "description": "Verify that the Theme Preferences item is present and selectable under the View menu during normal usage.",
+        "requirement_ids": [
+          "R-178"
+        ]
+      },
+      {
+        "id": "G-014",
+        "title": "Verify Theme Preferences item via keyboard shortcut",
+        "description": "Verify that the View menu can be opened and Theme Preferences accessed using keyboard shortcuts as an edge case.",
+        "requirement_ids": [
+          "R-178"
+        ]
+      },
+      {
+        "id": "G-015",
+        "title": "Verify Theme Preferences menu boundary position",
+        "description": "Verify the boundary condition where Theme Preferences is positioned as the last item in the View menu list.",
+        "requirement_ids": [
+          "R-178"
+        ]
+      },
+      {
+        "id": "G-016",
+        "title": "Verify View menu abnormal failure to render",
+        "description": "Verify system behavior when the View menu fails to render, ensuring proper handling of the missing Theme Preferences item.",
+        "requirement_ids": [
+          "R-178"
+        ]
+      },
+      {
+        "id": "G-017",
+        "title": "Normal scenario for Get New Themes menu item",
+        "description": "Verify that the Get New Themes item is present and selectable under the View menu.",
+        "requirement_ids": [
+          "R-179"
+        ]
+      },
+      {
+        "id": "G-018",
+        "title": "Edge scenario for Get New Themes menu item",
+        "description": "Verify the behavior when selecting Get New Themes while the system is offline.",
+        "requirement_ids": [
+          "R-179"
+        ]
+      },
+      {
+        "id": "G-019",
+        "title": "Boundary scenario for Get New Themes menu item",
+        "description": "Verify that Get New Themes is positioned directly below Theme Preferences in the View menu list.",
+        "requirement_ids": [
+          "R-179"
+        ]
+      },
+      {
+        "id": "G-020",
+        "title": "Error scenario for Get New Themes menu item",
+        "description": "Verify the system handles network timeouts gracefully when selecting Get New Themes.",
+        "requirement_ids": [
+          "R-179"
+        ]
+      },
+      {
+        "id": "G-021",
+        "title": "Verify Classic item present in View menu (Normal)",
+        "description": "Verify that the Classic item is present in the View menu and can be successfully identified.",
+        "requirement_ids": [
+          "R-180"
+        ]
+      },
+      {
+        "id": "G-022",
+        "title": "Select Classic item while Modern is active (Edge)",
+        "description": "Verify that selecting the Classic item from the View menu while the Modern theme is currently active successfully switches the theme.",
+        "requirement_ids": [
+          "R-180"
+        ]
+      },
+      {
+        "id": "G-023",
+        "title": "Verify Classic item placement in menu (Boundary)",
+        "description": "Verify that the Classic item is placed correctly at the top of the theme submenu or list structure.",
+        "requirement_ids": [
+          "R-180"
+        ]
+      },
+      {
+        "id": "G-024",
+        "title": "Classic item click event unhandled (Error)",
+        "description": "Verify the system behavior when the click event on the Classic item is unhandled or fails to execute.",
+        "requirement_ids": [
+          "R-180"
+        ]
+      },
+      {
+        "id": "G-025",
+        "title": "Verify Modern item is present in View menu",
+        "description": "Ensure that the \"Modern\" item is available as a selectable option under the View menu.",
+        "requirement_ids": [
+          "R-181"
+        ]
+      },
+      {
+        "id": "G-026",
+        "title": "Select Modern item while Classic is active",
+        "description": "Click the \"Modern\" item under the View menu while the Classic theme is currently active and verify the theme switches.",
+        "requirement_ids": [
+          "R-181"
+        ]
+      },
+      {
+        "id": "G-027",
+        "title": "Verify Modern item placement in View menu",
+        "description": "Check that the \"Modern\" item is positioned correctly adjacent to the Classic item within the menu structure.",
+        "requirement_ids": [
+          "R-181"
+        ]
+      },
+      {
+        "id": "G-028",
+        "title": "Handle unhandled click event on Modern item",
+        "description": "Simulate an unhandled click event on the \"Modern\" item under the View menu and verify the application remains stable.",
+        "requirement_ids": [
+          "R-181"
+        ]
+      }
+    ],
+    "opinions": [
+      {
+        "agent": "critic",
+        "feedback": "",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      {
+        "agent": "validator",
+        "feedback": "All requirements (R-175 through R-181) have comprehensive test cases covering normal, edge, boundary, and error scenarios. No blockers found.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      }
+    ],
+    "valid": true,
+    "confirmed_blockers": 0,
+    "covered_requirements": 7,
+    "duplicates": 0,
+    "comparable": true
+  },
+  "pending": [],
+  "pending_controls": [],
+  "coverage": {
+    "feedback": "All requirements (R-175 through R-181) have comprehensive test coverage across all four required scenario types: Normal, Edge, Boundary, and Error. There are no missing coverage gaps, excess tests, or noticeable repetitions among the accepted cases."
+  },
+  "coverage_failure": null,
+  "calls": [
+    {
+      "stage": "analyst",
+      "subject_id": "initial",
+      "output": {
+        "analysis": "Unit ID: firefox_themes. R-175: Normal - Both Classic and Modern themes exist under preferences. Edge - Theme list populated with only expected themes. Boundary - Exactly two themes available. Abnormal - Missing theme files. R-176: Normal - Classic theme matches reference image. Edge - Classic theme rendered on minimum window resolution. Boundary - Classic theme rendering with system font scaling limits. Abnormal - Corrupted theme asset for Classic. R-177: Normal - Modern theme matches reference image. Edge - Modern theme rendered on maximum window resolution. Boundary - Modern theme rendering with high-contrast OS settings. Abnormal - Missing image asset for Modern theme. R-178: Normal - Theme Preferences item present in View menu. Edge - View menu opened with keyboard shortcut. Boundary - Theme Preferences as the last item in View menu list. Abnormal - View menu failing to render. R-179: Normal - Get New Themes item present in View menu. Edge - Click Get New Themes while offline. Boundary - Get New Themes placed directly below Theme Preferences. Abnormal - Network timeout when selecting Get New Themes. R-180: Normal - Classic item present in View menu. Edge - Select Classic item while Modern is active. Boundary - Classic item placed at top of theme submenu. Abnormal - Classic item click event unhandled. R-181: Normal - Modern item present in View menu. Edge - Select Modern item while Classic is active. Boundary - Modern item placed adjacent to Classic item. Abnormal - Modern item click event unhandled."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 515,
+          "output_tokens": 323,
+          "details": {
+            "total_tokens": 838,
+            "text_prompt_tokens": 515
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-175-01",
+            "title": "Verify both Classic and Modern themes exist under preferences (Normal)",
+            "description": "Navigate to the themes preferences and verify that both Classic and Modern themes are present in the list.",
+            "requirement_ids": [
+              "R-175"
+            ]
+          },
+          {
+            "id": "TC-R-175-02",
+            "title": "Verify theme list is populated exclusively with expected themes (Edge)",
+            "description": "Check the themes preferences to ensure the theme list contains only the expected themes without unexpected additions.",
+            "requirement_ids": [
+              "R-175"
+            ]
+          },
+          {
+            "id": "TC-R-175-03",
+            "title": "Verify exactly two themes are available under preferences (Boundary)",
+            "description": "Count the total number of available themes under the themes preferences and verify there are exactly two.",
+            "requirement_ids": [
+              "R-175"
+            ]
+          },
+          {
+            "id": "TC-R-175-04",
+            "title": "Verify system behavior when theme files are missing (Error/Abnormal)",
+            "description": "Simulate missing theme files in the application directory and check that the preferences handle the missing assets gracefully.",
+            "requirement_ids": [
+              "R-175"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 879,
+          "output_tokens": 356,
+          "details": {
+            "total_tokens": 1235,
+            "text_prompt_tokens": 879
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-176-NORMAL",
+            "title": "Classic theme visual verification",
+            "description": "Verify that the Classic theme is displayed correctly as in the given reference image.",
+            "requirement_ids": [
+              "R-176"
+            ]
+          },
+          {
+            "id": "TC-R-176-EDGE",
+            "title": "Classic theme at minimum resolution",
+            "description": "Verify that the Classic theme is rendered correctly when displayed on the minimum supported window resolution.",
+            "requirement_ids": [
+              "R-176"
+            ]
+          },
+          {
+            "id": "TC-R-176-BOUNDARY",
+            "title": "Classic theme with font scaling limits",
+            "description": "Verify that the Classic theme renders correctly at the boundary condition of system font scaling limits.",
+            "requirement_ids": [
+              "R-176"
+            ]
+          },
+          {
+            "id": "TC-R-176-ERROR",
+            "title": "Classic theme with corrupted asset",
+            "description": "Verify system behavior and error handling when the Classic theme asset is corrupted.",
+            "requirement_ids": [
+              "R-176"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 879,
+          "output_tokens": 315,
+          "details": {
+            "total_tokens": 1194,
+            "text_prompt_tokens": 879
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-177-NORMAL",
+            "title": "Modern Theme Display Normal",
+            "description": "Verify that the Modern theme is displayed correctly matching the given reference image.",
+            "requirement_ids": [
+              "R-177"
+            ]
+          },
+          {
+            "id": "TC-R-177-EDGE",
+            "title": "Modern Theme Display Edge",
+            "description": "Verify that the Modern theme is correctly rendered when the application is displayed on maximum window resolution.",
+            "requirement_ids": [
+              "R-177"
+            ]
+          },
+          {
+            "id": "TC-R-177-BOUNDARY",
+            "title": "Modern Theme Display Boundary",
+            "description": "Verify that the Modern theme renders correctly with high-contrast OS settings enabled.",
+            "requirement_ids": [
+              "R-177"
+            ]
+          },
+          {
+            "id": "TC-R-177-ERROR",
+            "title": "Modern Theme Display Abnormal",
+            "description": "Verify application behavior and error handling when the image asset for the Modern theme is missing.",
+            "requirement_ids": [
+              "R-177"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 879,
+          "output_tokens": 312,
+          "details": {
+            "total_tokens": 1191,
+            "text_prompt_tokens": 879
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-178-01",
+            "title": "Verify Theme Preferences item normal presence in View menu",
+            "description": "Verify that the Theme Preferences item is present and selectable under the View menu during normal usage.",
+            "requirement_ids": [
+              "R-178"
+            ]
+          },
+          {
+            "id": "TC-R-178-02",
+            "title": "Verify Theme Preferences item via keyboard shortcut",
+            "description": "Verify that the View menu can be opened and Theme Preferences accessed using keyboard shortcuts as an edge case.",
+            "requirement_ids": [
+              "R-178"
+            ]
+          },
+          {
+            "id": "TC-R-178-03",
+            "title": "Verify Theme Preferences menu boundary position",
+            "description": "Verify the boundary condition where Theme Preferences is positioned as the last item in the View menu list.",
+            "requirement_ids": [
+              "R-178"
+            ]
+          },
+          {
+            "id": "TC-R-178-04",
+            "title": "Verify View menu abnormal failure to render",
+            "description": "Verify system behavior when the View menu fails to render, ensuring proper handling of the missing Theme Preferences item.",
+            "requirement_ids": [
+              "R-178"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 879,
+          "output_tokens": 319,
+          "details": {
+            "total_tokens": 1198,
+            "text_prompt_tokens": 879
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-179-NORM",
+            "title": "Normal scenario for Get New Themes menu item",
+            "description": "Verify that the Get New Themes item is present and selectable under the View menu.",
+            "requirement_ids": [
+              "R-179"
+            ]
+          },
+          {
+            "id": "TC-R-179-EDGE",
+            "title": "Edge scenario for Get New Themes menu item",
+            "description": "Verify the behavior when selecting Get New Themes while the system is offline.",
+            "requirement_ids": [
+              "R-179"
+            ]
+          },
+          {
+            "id": "TC-R-179-BOUND",
+            "title": "Boundary scenario for Get New Themes menu item",
+            "description": "Verify that Get New Themes is positioned directly below Theme Preferences in the View menu list.",
+            "requirement_ids": [
+              "R-179"
+            ]
+          },
+          {
+            "id": "TC-R-179-ERR",
+            "title": "Error scenario for Get New Themes menu item",
+            "description": "Verify the system handles network timeouts gracefully when selecting Get New Themes.",
+            "requirement_ids": [
+              "R-179"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 879,
+          "output_tokens": 324,
+          "details": {
+            "total_tokens": 1203,
+            "text_prompt_tokens": 879
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-180-NORMAL",
+            "title": "Verify Classic item present in View menu (Normal)",
+            "description": "Verify that the Classic item is present in the View menu and can be successfully identified.",
+            "requirement_ids": [
+              "R-180"
+            ]
+          },
+          {
+            "id": "TC-R-180-EDGE",
+            "title": "Select Classic item while Modern is active (Edge)",
+            "description": "Verify that selecting the Classic item from the View menu while the Modern theme is currently active successfully switches the theme.",
+            "requirement_ids": [
+              "R-180"
+            ]
+          },
+          {
+            "id": "TC-R-180-BOUNDARY",
+            "title": "Verify Classic item placement in menu (Boundary)",
+            "description": "Verify that the Classic item is placed correctly at the top of the theme submenu or list structure.",
+            "requirement_ids": [
+              "R-180"
+            ]
+          },
+          {
+            "id": "TC-R-180-ERROR",
+            "title": "Classic item click event unhandled (Error)",
+            "description": "Verify the system behavior when the click event on the Classic item is unhandled or fails to execute.",
+            "requirement_ids": [
+              "R-180"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 879,
+          "output_tokens": 321,
+          "details": {
+            "total_tokens": 1200,
+            "text_prompt_tokens": 879
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-181-NORM",
+            "title": "Verify Modern item is present in View menu",
+            "description": "Ensure that the \"Modern\" item is available as a selectable option under the View menu.",
+            "requirement_ids": [
+              "R-181"
+            ]
+          },
+          {
+            "id": "TC-R-181-EDGE",
+            "title": "Select Modern item while Classic is active",
+            "description": "Click the \"Modern\" item under the View menu while the Classic theme is currently active and verify the theme switches.",
+            "requirement_ids": [
+              "R-181"
+            ]
+          },
+          {
+            "id": "TC-R-181-BOUND",
+            "title": "Verify Modern item placement in View menu",
+            "description": "Check that the \"Modern\" item is positioned correctly adjacent to the Classic item within the menu structure.",
+            "requirement_ids": [
+              "R-181"
+            ]
+          },
+          {
+            "id": "TC-R-181-ABNORM",
+            "title": "Handle unhandled click event on Modern item",
+            "description": "Simulate an unhandled click event on the \"Modern\" item under the View menu and verify the application remains stable.",
+            "requirement_ids": [
+              "R-181"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 879,
+          "output_tokens": 348,
+          "details": {
+            "total_tokens": 1227,
+            "text_prompt_tokens": 879
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "critic",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 2125,
+          "output_tokens": 38,
+          "details": {
+            "total_tokens": 2163,
+            "text_prompt_tokens": 2125
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "validator",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "All requirements (R-175 through R-181) have comprehensive test cases covering normal, edge, boundary, and error scenarios. No blockers found.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 2122,
+          "output_tokens": 72,
+          "details": {
+            "total_tokens": 2194,
+            "text_prompt_tokens": 2122
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "coverage",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "All requirements (R-175 through R-181) have comprehensive test coverage across all four required scenario types: Normal, Edge, Boundary, and Error. There are no missing coverage gaps, excess tests, or noticeable repetitions among the accepted cases."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 2312,
+          "output_tokens": 58,
+          "details": {
+            "total_tokens": 2370,
+            "text_prompt_tokens": 2312
+          },
+          "status": "available"
+        }
+      ]
+    }
+  ],
+  "monotonicity": "confirmed"
+}

@@ -10,7 +10,7 @@ from tcg.schemas import GeneratedCase, UsageRecord, generation_input, validate_c
 
 from .models import EvaluationUnit
 
-SOLUTIONS = {"one-shot", "GHL", "Multiagent"}
+SOLUTIONS = {"zero-shot", "one-shot", "GHL", "Multiagent"}
 _UNIT_ID = re.compile(r"[A-Za-z0-9][A-Za-z0-9_-]{0,119}")
 _CASE_FILE = re.compile(r"([1-9][0-9]*)_.+\.md")
 _UNESCAPE = re.compile(r"\\([\\\x60*_{}\[\]()<>#+!|])")

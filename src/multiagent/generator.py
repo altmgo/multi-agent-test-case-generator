@@ -30,9 +30,17 @@ async def generate(
         answer = await runner.call(
             "generator",
             assessment.candidate_id,
-            "Generate high-level test cases with clear expected behavior and links only to supplied IDs. "
-            "Use the full requirements and any analysis. For revisions, use the accepted cases and "
-            "feedback to generate a complete replacement for the requested scope, keeping sound coverage.",
+            "Generate concise, high-level test cases with clear expected behavior and links only to supplied IDs. "
+            "Ground every test strictly and directly in the explicit requirement text and any analysis. "
+            "Do NOT invent speculative, hypothetical, or unstated conditions (such as missing files, network errors, "
+            "corrupted assets, window resizing, or boundary placements) unless explicitly mentioned in the requirement text. "
+            "If a requirement is simple (e.g., verifying a menu item, theme existence, or UI element presence), "
+            "generate exactly one focused normal case for it. "
+            "Only generate additional scenario types (Edge, Boundary, Error) if the requirement text explicitly "
+            "defines multiple distinct operations, parameters, ranges, or error conditions. "
+            "Avoid redundant or overlapping test cases. "
+            "For revisions, use the accepted cases and feedback to generate a complete replacement for "
+            "the requested scope, keeping sound coverage.",
             CaseBatch,
             analysis=analysis,
             revision=revision,

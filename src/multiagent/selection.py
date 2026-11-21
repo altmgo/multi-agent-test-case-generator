@@ -18,7 +18,11 @@ REVIEW_RUBRIC = (
     "Report each confirmed blocker as a concise, distinct problem grounded in the requirements. "
     "A blocker prevents executing a case, gives unsupported expected behavior, or makes an essential "
     "requirement untestable. Mark blocker_assessment_complete false when evidence is inconclusive. "
-    "Request revision only for actionable changes and explain them in feedback."
+    "Flag speculative test cases that test unstated behavior, hypothetical errors, or conditions not "
+    "supported by the requirement text, as well as redundant cases. "
+    "Flag when a requirement has only one test case when the requirement text explicitly describes "
+    "multiple distinct operations or error states. Treat unsupported or missing scenario types as a "
+    "revision request, not a blocker. Request revision only for actionable changes and explain them in feedback."
 )
 
 

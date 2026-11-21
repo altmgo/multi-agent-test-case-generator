@@ -577,7 +577,7 @@ class ModelRuntime:
         output_tokens = self.output_tokens
         model_settings: ModelSettings = {}
         if self.is_groq:
-            is_generation = stage == "one_shot" or stage.startswith("ghl_generate_") or stage == "multiagent_generator"
+            is_generation = stage == "zero_shot" or stage.startswith("ghl_generate_") or stage == "multiagent_generator"
             output_tokens = min(output_tokens, _GROQ_GENERATION_TOKENS if is_generation else _GROQ_REVIEW_TOKENS)
             instructions += " Keep descriptions and feedback concise while preserving expected behavior and traceability."
             model_settings = GroqModelSettings(groq_reasoning_effort="low")

@@ -1,0 +1,1517 @@
+{
+  "initial": {
+    "assessment": {
+      "candidate_id": "initial",
+      "cases": [
+        {
+          "id": "G-001",
+          "title": "Add bookmark to specific location (Normal)",
+          "description": "Verify that a new bookmark can be successfully added to a specific valid location within the bookmarks hierarchy.",
+          "requirement_ids": [
+            "R-001"
+          ]
+        },
+        {
+          "id": "G-002",
+          "title": "Add bookmark at hierarchy boundaries (Boundary)",
+          "description": "Verify adding a bookmark at the root level versus a deeply nested location within the bookmarks hierarchy.",
+          "requirement_ids": [
+            "R-001"
+          ]
+        },
+        {
+          "id": "G-003",
+          "title": "Add bookmark to non-existent location (Error)",
+          "description": "Verify that attempting to add a new bookmark to a non-existent location within the bookmarks hierarchy fails appropriately.",
+          "requirement_ids": [
+            "R-001"
+          ]
+        },
+        {
+          "id": "G-004",
+          "title": "Normal Deletion of Bookmark",
+          "description": "Verify that a bookmark is properly deleted from the bookmarks file and is no longer displayed from all access points.",
+          "requirement_ids": [
+            "R-002"
+          ]
+        },
+        {
+          "id": "G-005",
+          "title": "Edge Case Deletion of Non-Existent Bookmark",
+          "description": "Verify the system behavior when attempting to delete a bookmark that has already been deleted or does not exist.",
+          "requirement_ids": [
+            "R-002"
+          ]
+        },
+        {
+          "id": "G-006",
+          "title": "Abnormal Deletion with File Permission Error",
+          "description": "Verify that an appropriate error is handled when a file permission error occurs during the bookmark deletion process.",
+          "requirement_ids": [
+            "R-002"
+          ]
+        },
+        {
+          "id": "G-007",
+          "title": "Add and Delete Bookmark from Personal Toolbar - Normal",
+          "description": "Verify that a bookmark can be successfully added to the personal toolbar and subsequently deleted from it.",
+          "requirement_ids": [
+            "R-003"
+          ]
+        },
+        {
+          "id": "G-008",
+          "title": "Personal Toolbar Capacity Limit - Boundary",
+          "description": "Verify the behavior when adding bookmarks to the personal toolbar up to its maximum capacity limit.",
+          "requirement_ids": [
+            "R-003"
+          ]
+        },
+        {
+          "id": "G-009",
+          "title": "Insert new bookmark folder into hierarchy",
+          "description": "Verify that a new bookmark folder can be successfully inserted into a specific valid location within the bookmarks hierarchy.",
+          "requirement_ids": [
+            "R-004"
+          ]
+        },
+        {
+          "id": "G-010",
+          "title": "Insert bookmark folder at maximum allowed hierarchy depth",
+          "description": "Verify that a new bookmark folder can be inserted at the maximum supported nesting depth of the bookmarks hierarchy.",
+          "requirement_ids": [
+            "R-004"
+          ]
+        },
+        {
+          "id": "G-011",
+          "title": "Insert bookmark folder with invalid name",
+          "description": "Verify that attempting to insert a new bookmark folder with an invalid or prohibited name format is appropriately handled and rejected.",
+          "requirement_ids": [
+            "R-004"
+          ]
+        },
+        {
+          "id": "G-012",
+          "title": "Double-click bookmark normal launch",
+          "description": "Verify that double-clicking on a valid bookmark successfully launches the associated URL in a new or current browser window.",
+          "requirement_ids": [
+            "R-005"
+          ]
+        },
+        {
+          "id": "G-013",
+          "title": "Double-click bookmark with corrupted or invalid URL",
+          "description": "Verify the application behavior when double-clicking on a bookmark containing a corrupted or invalid URL, ensuring appropriate error handling.",
+          "requirement_ids": [
+            "R-005"
+          ]
+        },
+        {
+          "id": "G-014",
+          "title": "Validate links in default bookmarks file",
+          "description": "Verify that bookmarks within the default bookmarks file that is packaged with the browser are valid links under normal operating conditions.",
+          "requirement_ids": [
+            "R-006"
+          ]
+        },
+        {
+          "id": "G-015",
+          "title": "Abnormal handling of broken links in packaged file",
+          "description": "Verify the system behavior when encountering broken or malformed links within the default bookmarks file packaged with the browser.",
+          "requirement_ids": [
+            "R-006"
+          ]
+        },
+        {
+          "id": "G-016",
+          "title": "Normal Change Save Integrity",
+          "description": "Verify that changes made to a bookmark item are successfully saved without loss of item integrity.",
+          "requirement_ids": [
+            "R-007"
+          ]
+        },
+        {
+          "id": "G-017",
+          "title": "Abnormal Data Corruption on Save",
+          "description": "Verify the system handles data corruption or write failures gracefully when attempting to save changes to a bookmark item.",
+          "requirement_ids": [
+            "R-007"
+          ]
+        },
+        {
+          "id": "G-018",
+          "title": "Normal Deletion of Bookmarks Folder",
+          "description": "Verify that an existing bookmarks folder can be successfully deleted from the bookmarks hierarchy.",
+          "requirement_ids": [
+            "R-008"
+          ]
+        },
+        {
+          "id": "G-019",
+          "title": "Edge Case Deletion of Empty versus Non-Empty Folder",
+          "description": "Verify the deletion behavior when deleting an empty bookmarks folder compared to deleting a non-empty bookmarks folder containing subfolders and items.",
+          "requirement_ids": [
+            "R-008"
+          ]
+        },
+        {
+          "id": "G-020",
+          "title": "Add and Delete Bookmarks Separators Normal",
+          "description": "Verify that bookmarks separators can be successfully added to and deleted from the bookmarks hierarchy.",
+          "requirement_ids": [
+            "R-009"
+          ]
+        },
+        {
+          "id": "G-021",
+          "title": "Invalid Separator Placement Abnormal",
+          "description": "Verify the system handles invalid separator placement attempts, such as placing separators in restricted system containers, gracefully.",
+          "requirement_ids": [
+            "R-009"
+          ]
+        },
+        {
+          "id": "G-022",
+          "title": "Save Bookmark Changes Over Normal Restart",
+          "description": "Verify that all changes made to bookmarks are successfully saved and persisted after a normal application restart.",
+          "requirement_ids": [
+            "R-010"
+          ]
+        },
+        {
+          "id": "G-023",
+          "title": "Save Bookmark Changes Over Browser Crash",
+          "description": "Verify that all changes made to bookmarks are successfully preserved and not lost when the browser experiences an unexpected crash.",
+          "requirement_ids": [
+            "R-010"
+          ]
+        },
+        {
+          "id": "G-024",
+          "title": "View properties negative test for bookmarks, folders, and separators",
+          "description": "Verify that view properties execute correctly for bookmarks, folders, and separators as a negative test per requirement R-011.",
+          "requirement_ids": [
+            "R-011"
+          ]
+        },
+        {
+          "id": "G-025",
+          "title": "Accessing restricted properties for bookmarks, folders, and separators",
+          "description": "Verify the abnormal scenario where attempting to access restricted or invalid properties for bookmarks, folders, and separators is handled appropriately.",
+          "requirement_ids": [
+            "R-011"
+          ]
+        },
+        {
+          "id": "G-026",
+          "title": "Normal - Inline Bookmark Rename",
+          "description": "Verify that a bookmark can be renamed inline directly in the UI without opening the bookmarks properties dialog.",
+          "requirement_ids": [
+            "R-012"
+          ]
+        },
+        {
+          "id": "G-027",
+          "title": "Edge - Rename with Special Characters or Empty String",
+          "description": "Verify inline renaming behavior when entering edge-case inputs such as special characters, emojis, or attempting to clear the name completely.",
+          "requirement_ids": [
+            "R-012"
+          ]
+        },
+        {
+          "id": "G-028",
+          "title": "Find Bookmark Using Valid Custom Keyword - Normal",
+          "description": "Verify that a user can successfully find and access a bookmark by entering its assigned custom keyword in the address bar or search.",
+          "requirement_ids": [
+            "R-013"
+          ]
+        },
+        {
+          "id": "G-029",
+          "title": "Find Bookmark With Duplicate Keywords - Edge",
+          "description": "Verify the system behavior when multiple bookmarks are assigned the same custom keyword (edge scenario).",
+          "requirement_ids": [
+            "R-013"
+          ]
+        },
+        {
+          "id": "G-030",
+          "title": "Search With Non-Existent Custom Keyword - Edge",
+          "description": "Verify that searching for a custom keyword that does not exist returns no bookmarks or an appropriate not-found indication.",
+          "requirement_ids": [
+            "R-013"
+          ]
+        },
+        {
+          "id": "G-031",
+          "title": "Sort and Reverse-Sort Bookmark Columns (Normal)",
+          "description": "Verify that bookmarks can be successfully sorted and reverse-sorted per column in ascending and descending order.",
+          "requirement_ids": [
+            "R-014"
+          ]
+        },
+        {
+          "id": "G-032",
+          "title": "Sort Columns with Empty or Special Characters (Edge)",
+          "description": "Verify sorting and reverse-sorting behavior on columns containing empty entries or special characters.",
+          "requirement_ids": [
+            "R-014"
+          ]
+        },
+        {
+          "id": "G-033",
+          "title": "Normal Column Resizing",
+          "description": "Resize bookmark columns to show and hide more of the entries successfully.",
+          "requirement_ids": [
+            "R-015"
+          ]
+        },
+        {
+          "id": "G-034",
+          "title": "Boundary Column Widths",
+          "description": "Resize bookmark columns to their minimum and maximum possible width boundaries.",
+          "requirement_ids": [
+            "R-015"
+          ]
+        },
+        {
+          "id": "G-035",
+          "title": "Show and Hide Bookmark Columns Normal Operation",
+          "description": "Verify that bookmark columns can be successfully shown and hidden using the column configuration interface.",
+          "requirement_ids": [
+            "R-016"
+          ]
+        },
+        {
+          "id": "G-036",
+          "title": "Hide All Bookmark Columns Boundary Condition",
+          "description": "Verify the system behavior when attempting to hide all available bookmark columns to ensure edge case compliance.",
+          "requirement_ids": [
+            "R-016"
+          ]
+        },
+        {
+          "id": "G-037",
+          "title": "Bulk Delete Several Bookmarks Normal",
+          "description": "Verify that multiple selected bookmarks are successfully deleted at one time from the bookmarks list.",
+          "requirement_ids": [
+            "R-017"
+          ]
+        },
+        {
+          "id": "G-038",
+          "title": "Bulk Delete Zero Bookmarks Edge",
+          "description": "Verify the system behavior when a bulk delete action is triggered with zero bookmarks selected.",
+          "requirement_ids": [
+            "R-017"
+          ]
+        },
+        {
+          "id": "G-039",
+          "title": "Drop bookmark onto itself",
+          "description": "Verify that it is not possible to drop a bookmark item onto itself within the bookmarks hierarchy.",
+          "requirement_ids": [
+            "R-018"
+          ]
+        },
+        {
+          "id": "G-040",
+          "title": "Drop bookmark onto its immediate parent",
+          "description": "Verify that it is not possible to drop a bookmark item onto its immediate parent folder.",
+          "requirement_ids": [
+            "R-018"
+          ]
+        },
+        {
+          "id": "G-041",
+          "title": "Drop bookmark onto its immediate child",
+          "description": "Verify that it is not possible to drop a bookmark folder onto its immediate child item.",
+          "requirement_ids": [
+            "R-018"
+          ]
+        }
+      ],
+      "opinions": [
+        {
+          "agent": "critic",
+          "feedback": "The proposed test cases comprehensively cover normal, boundary, and error/edge scenarios for all requirements. No blockers or missing scenarios were found.",
+          "request_revision": false,
+          "confirmed_blockers": [],
+          "blocker_assessment_complete": true
+        },
+        {
+          "agent": "validator",
+          "feedback": "All requirements and test cases have been reviewed. The cases comprehensively cover the specified requirements, including boundaries and error paths.",
+          "request_revision": false,
+          "confirmed_blockers": [],
+          "blocker_assessment_complete": true
+        }
+      ],
+      "valid": true,
+      "confirmed_blockers": 0,
+      "covered_requirements": 18,
+      "duplicates": 0,
+      "comparable": true
+    },
+    "analysis": {
+      "analysis": "R-001: Normal (add bookmark to specific location), Boundary (add to root vs deep nesting), Abnormal (add to non-existent location). R-002: Normal (delete from file and UI), Edge (delete already deleted/non-existent), Abnormal (file permission error during delete). R-003: Normal (add/delete from personal toolbar), Boundary (toolbar capacity limit). R-004: Normal (insert folder), Boundary (max depth), Abnormal (insert folder with invalid name). R-005: Normal (double-click launches window), Abnormal (double-click corrupted/invalid URL). R-006: Normal (default file links valid), Abnormal (broken links in packaged file). R-007: Normal (save modified item integrity), Abnormal (data corruption on save). R-008: Normal (delete folder), Edge (delete non-empty folder vs empty folder). R-009: Normal (add/delete separators), Abnormal (invalid separator placement). R-010: Normal (save changes over restart/crash), Abnormal (crash corrupts storage file). R-011: Normal (view properties negative test), Abnormal (accessing restricted properties). R-012: Normal (rename inline), Edge (rename with empty string or special characters). R-013: Normal (find by custom keyword), Edge (duplicate keywords, non-existent keyword). R-014: Normal (sort and reverse-sort columns), Edge (empty columns, special characters sorting). R-015: Normal (resize columns), Boundary (minimum and maximum column width). R-016: Normal (show and hide columns), Boundary (hide all columns). R-017: Normal (bulk delete several bookmarks), Edge (delete zero bookmarks, delete all bookmarks). R-018: Abnormal (drop bookmark onto itself, immediate parent, or child)."
+    },
+    "failure": null
+  },
+  "rounds": [],
+  "status": "completed",
+  "failure": null,
+  "accepted_id": "initial",
+  "accepted_assessment": {
+    "candidate_id": "initial",
+    "cases": [
+      {
+        "id": "G-001",
+        "title": "Add bookmark to specific location (Normal)",
+        "description": "Verify that a new bookmark can be successfully added to a specific valid location within the bookmarks hierarchy.",
+        "requirement_ids": [
+          "R-001"
+        ]
+      },
+      {
+        "id": "G-002",
+        "title": "Add bookmark at hierarchy boundaries (Boundary)",
+        "description": "Verify adding a bookmark at the root level versus a deeply nested location within the bookmarks hierarchy.",
+        "requirement_ids": [
+          "R-001"
+        ]
+      },
+      {
+        "id": "G-003",
+        "title": "Add bookmark to non-existent location (Error)",
+        "description": "Verify that attempting to add a new bookmark to a non-existent location within the bookmarks hierarchy fails appropriately.",
+        "requirement_ids": [
+          "R-001"
+        ]
+      },
+      {
+        "id": "G-004",
+        "title": "Normal Deletion of Bookmark",
+        "description": "Verify that a bookmark is properly deleted from the bookmarks file and is no longer displayed from all access points.",
+        "requirement_ids": [
+          "R-002"
+        ]
+      },
+      {
+        "id": "G-005",
+        "title": "Edge Case Deletion of Non-Existent Bookmark",
+        "description": "Verify the system behavior when attempting to delete a bookmark that has already been deleted or does not exist.",
+        "requirement_ids": [
+          "R-002"
+        ]
+      },
+      {
+        "id": "G-006",
+        "title": "Abnormal Deletion with File Permission Error",
+        "description": "Verify that an appropriate error is handled when a file permission error occurs during the bookmark deletion process.",
+        "requirement_ids": [
+          "R-002"
+        ]
+      },
+      {
+        "id": "G-007",
+        "title": "Add and Delete Bookmark from Personal Toolbar - Normal",
+        "description": "Verify that a bookmark can be successfully added to the personal toolbar and subsequently deleted from it.",
+        "requirement_ids": [
+          "R-003"
+        ]
+      },
+      {
+        "id": "G-008",
+        "title": "Personal Toolbar Capacity Limit - Boundary",
+        "description": "Verify the behavior when adding bookmarks to the personal toolbar up to its maximum capacity limit.",
+        "requirement_ids": [
+          "R-003"
+        ]
+      },
+      {
+        "id": "G-009",
+        "title": "Insert new bookmark folder into hierarchy",
+        "description": "Verify that a new bookmark folder can be successfully inserted into a specific valid location within the bookmarks hierarchy.",
+        "requirement_ids": [
+          "R-004"
+        ]
+      },
+      {
+        "id": "G-010",
+        "title": "Insert bookmark folder at maximum allowed hierarchy depth",
+        "description": "Verify that a new bookmark folder can be inserted at the maximum supported nesting depth of the bookmarks hierarchy.",
+        "requirement_ids": [
+          "R-004"
+        ]
+      },
+      {
+        "id": "G-011",
+        "title": "Insert bookmark folder with invalid name",
+        "description": "Verify that attempting to insert a new bookmark folder with an invalid or prohibited name format is appropriately handled and rejected.",
+        "requirement_ids": [
+          "R-004"
+        ]
+      },
+      {
+        "id": "G-012",
+        "title": "Double-click bookmark normal launch",
+        "description": "Verify that double-clicking on a valid bookmark successfully launches the associated URL in a new or current browser window.",
+        "requirement_ids": [
+          "R-005"
+        ]
+      },
+      {
+        "id": "G-013",
+        "title": "Double-click bookmark with corrupted or invalid URL",
+        "description": "Verify the application behavior when double-clicking on a bookmark containing a corrupted or invalid URL, ensuring appropriate error handling.",
+        "requirement_ids": [
+          "R-005"
+        ]
+      },
+      {
+        "id": "G-014",
+        "title": "Validate links in default bookmarks file",
+        "description": "Verify that bookmarks within the default bookmarks file that is packaged with the browser are valid links under normal operating conditions.",
+        "requirement_ids": [
+          "R-006"
+        ]
+      },
+      {
+        "id": "G-015",
+        "title": "Abnormal handling of broken links in packaged file",
+        "description": "Verify the system behavior when encountering broken or malformed links within the default bookmarks file packaged with the browser.",
+        "requirement_ids": [
+          "R-006"
+        ]
+      },
+      {
+        "id": "G-016",
+        "title": "Normal Change Save Integrity",
+        "description": "Verify that changes made to a bookmark item are successfully saved without loss of item integrity.",
+        "requirement_ids": [
+          "R-007"
+        ]
+      },
+      {
+        "id": "G-017",
+        "title": "Abnormal Data Corruption on Save",
+        "description": "Verify the system handles data corruption or write failures gracefully when attempting to save changes to a bookmark item.",
+        "requirement_ids": [
+          "R-007"
+        ]
+      },
+      {
+        "id": "G-018",
+        "title": "Normal Deletion of Bookmarks Folder",
+        "description": "Verify that an existing bookmarks folder can be successfully deleted from the bookmarks hierarchy.",
+        "requirement_ids": [
+          "R-008"
+        ]
+      },
+      {
+        "id": "G-019",
+        "title": "Edge Case Deletion of Empty versus Non-Empty Folder",
+        "description": "Verify the deletion behavior when deleting an empty bookmarks folder compared to deleting a non-empty bookmarks folder containing subfolders and items.",
+        "requirement_ids": [
+          "R-008"
+        ]
+      },
+      {
+        "id": "G-020",
+        "title": "Add and Delete Bookmarks Separators Normal",
+        "description": "Verify that bookmarks separators can be successfully added to and deleted from the bookmarks hierarchy.",
+        "requirement_ids": [
+          "R-009"
+        ]
+      },
+      {
+        "id": "G-021",
+        "title": "Invalid Separator Placement Abnormal",
+        "description": "Verify the system handles invalid separator placement attempts, such as placing separators in restricted system containers, gracefully.",
+        "requirement_ids": [
+          "R-009"
+        ]
+      },
+      {
+        "id": "G-022",
+        "title": "Save Bookmark Changes Over Normal Restart",
+        "description": "Verify that all changes made to bookmarks are successfully saved and persisted after a normal application restart.",
+        "requirement_ids": [
+          "R-010"
+        ]
+      },
+      {
+        "id": "G-023",
+        "title": "Save Bookmark Changes Over Browser Crash",
+        "description": "Verify that all changes made to bookmarks are successfully preserved and not lost when the browser experiences an unexpected crash.",
+        "requirement_ids": [
+          "R-010"
+        ]
+      },
+      {
+        "id": "G-024",
+        "title": "View properties negative test for bookmarks, folders, and separators",
+        "description": "Verify that view properties execute correctly for bookmarks, folders, and separators as a negative test per requirement R-011.",
+        "requirement_ids": [
+          "R-011"
+        ]
+      },
+      {
+        "id": "G-025",
+        "title": "Accessing restricted properties for bookmarks, folders, and separators",
+        "description": "Verify the abnormal scenario where attempting to access restricted or invalid properties for bookmarks, folders, and separators is handled appropriately.",
+        "requirement_ids": [
+          "R-011"
+        ]
+      },
+      {
+        "id": "G-026",
+        "title": "Normal - Inline Bookmark Rename",
+        "description": "Verify that a bookmark can be renamed inline directly in the UI without opening the bookmarks properties dialog.",
+        "requirement_ids": [
+          "R-012"
+        ]
+      },
+      {
+        "id": "G-027",
+        "title": "Edge - Rename with Special Characters or Empty String",
+        "description": "Verify inline renaming behavior when entering edge-case inputs such as special characters, emojis, or attempting to clear the name completely.",
+        "requirement_ids": [
+          "R-012"
+        ]
+      },
+      {
+        "id": "G-028",
+        "title": "Find Bookmark Using Valid Custom Keyword - Normal",
+        "description": "Verify that a user can successfully find and access a bookmark by entering its assigned custom keyword in the address bar or search.",
+        "requirement_ids": [
+          "R-013"
+        ]
+      },
+      {
+        "id": "G-029",
+        "title": "Find Bookmark With Duplicate Keywords - Edge",
+        "description": "Verify the system behavior when multiple bookmarks are assigned the same custom keyword (edge scenario).",
+        "requirement_ids": [
+          "R-013"
+        ]
+      },
+      {
+        "id": "G-030",
+        "title": "Search With Non-Existent Custom Keyword - Edge",
+        "description": "Verify that searching for a custom keyword that does not exist returns no bookmarks or an appropriate not-found indication.",
+        "requirement_ids": [
+          "R-013"
+        ]
+      },
+      {
+        "id": "G-031",
+        "title": "Sort and Reverse-Sort Bookmark Columns (Normal)",
+        "description": "Verify that bookmarks can be successfully sorted and reverse-sorted per column in ascending and descending order.",
+        "requirement_ids": [
+          "R-014"
+        ]
+      },
+      {
+        "id": "G-032",
+        "title": "Sort Columns with Empty or Special Characters (Edge)",
+        "description": "Verify sorting and reverse-sorting behavior on columns containing empty entries or special characters.",
+        "requirement_ids": [
+          "R-014"
+        ]
+      },
+      {
+        "id": "G-033",
+        "title": "Normal Column Resizing",
+        "description": "Resize bookmark columns to show and hide more of the entries successfully.",
+        "requirement_ids": [
+          "R-015"
+        ]
+      },
+      {
+        "id": "G-034",
+        "title": "Boundary Column Widths",
+        "description": "Resize bookmark columns to their minimum and maximum possible width boundaries.",
+        "requirement_ids": [
+          "R-015"
+        ]
+      },
+      {
+        "id": "G-035",
+        "title": "Show and Hide Bookmark Columns Normal Operation",
+        "description": "Verify that bookmark columns can be successfully shown and hidden using the column configuration interface.",
+        "requirement_ids": [
+          "R-016"
+        ]
+      },
+      {
+        "id": "G-036",
+        "title": "Hide All Bookmark Columns Boundary Condition",
+        "description": "Verify the system behavior when attempting to hide all available bookmark columns to ensure edge case compliance.",
+        "requirement_ids": [
+          "R-016"
+        ]
+      },
+      {
+        "id": "G-037",
+        "title": "Bulk Delete Several Bookmarks Normal",
+        "description": "Verify that multiple selected bookmarks are successfully deleted at one time from the bookmarks list.",
+        "requirement_ids": [
+          "R-017"
+        ]
+      },
+      {
+        "id": "G-038",
+        "title": "Bulk Delete Zero Bookmarks Edge",
+        "description": "Verify the system behavior when a bulk delete action is triggered with zero bookmarks selected.",
+        "requirement_ids": [
+          "R-017"
+        ]
+      },
+      {
+        "id": "G-039",
+        "title": "Drop bookmark onto itself",
+        "description": "Verify that it is not possible to drop a bookmark item onto itself within the bookmarks hierarchy.",
+        "requirement_ids": [
+          "R-018"
+        ]
+      },
+      {
+        "id": "G-040",
+        "title": "Drop bookmark onto its immediate parent",
+        "description": "Verify that it is not possible to drop a bookmark item onto its immediate parent folder.",
+        "requirement_ids": [
+          "R-018"
+        ]
+      },
+      {
+        "id": "G-041",
+        "title": "Drop bookmark onto its immediate child",
+        "description": "Verify that it is not possible to drop a bookmark folder onto its immediate child item.",
+        "requirement_ids": [
+          "R-018"
+        ]
+      }
+    ],
+    "opinions": [
+      {
+        "agent": "critic",
+        "feedback": "The proposed test cases comprehensively cover normal, boundary, and error/edge scenarios for all requirements. No blockers or missing scenarios were found.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      {
+        "agent": "validator",
+        "feedback": "All requirements and test cases have been reviewed. The cases comprehensively cover the specified requirements, including boundaries and error paths.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      }
+    ],
+    "valid": true,
+    "confirmed_blockers": 0,
+    "covered_requirements": 18,
+    "duplicates": 0,
+    "comparable": true
+  },
+  "pending": [],
+  "pending_controls": [],
+  "coverage": {
+    "feedback": "Coverage analysis reveals the following gaps across requirements based on the required scenario types (Normal, Edge, Boundary, Error): For R-002, Edge and Error are covered, but a Normal test is missing. For R-003, Normal and Boundary are present, but Edge and Error are missing. For R-004, Normal, Boundary, and Error are present, but Edge is missing. For R-005, Normal and Error are present, but Edge and Boundary are missing. For R-006, Normal and Error are covered, while Edge and Boundary are missing. For R-007, Normal and Error are present, but Edge and Boundary are missing. For R-008, Normal and Edge are present, but Boundary and Error are missing. For R-009, Normal and Error are covered, but Edge and Boundary are missing. For R-010, Normal and Error (crash) are covered, but Edge and Boundary are missing. For R-011, Normal and Error are covered, but Edge and Boundary are missing. For R-012, Normal and Edge are covered, but Boundary and Error are missing. For R-013, Normal and Edge are covered, but Boundary and Error are missing. For R-014, Normal and Edge are covered, but Boundary and Error are missing. For R-015, Normal and Boundary are covered, but Edge and Error are missing. For R-016, Normal and Boundary are covered, but Edge and Error are missing. For R-017, Normal and Edge are covered, but Boundary and Error are missing. For R-018, Normal and Edge variations are covered, but Boundary and Error are missing."
+  },
+  "coverage_failure": null,
+  "calls": [
+    {
+      "stage": "analyst",
+      "subject_id": "initial",
+      "output": {
+        "analysis": "R-001: Normal (add bookmark to specific location), Boundary (add to root vs deep nesting), Abnormal (add to non-existent location). R-002: Normal (delete from file and UI), Edge (delete already deleted/non-existent), Abnormal (file permission error during delete). R-003: Normal (add/delete from personal toolbar), Boundary (toolbar capacity limit). R-004: Normal (insert folder), Boundary (max depth), Abnormal (insert folder with invalid name). R-005: Normal (double-click launches window), Abnormal (double-click corrupted/invalid URL). R-006: Normal (default file links valid), Abnormal (broken links in packaged file). R-007: Normal (save modified item integrity), Abnormal (data corruption on save). R-008: Normal (delete folder), Edge (delete non-empty folder vs empty folder). R-009: Normal (add/delete separators), Abnormal (invalid separator placement). R-010: Normal (save changes over restart/crash), Abnormal (crash corrupts storage file). R-011: Normal (view properties negative test), Abnormal (accessing restricted properties). R-012: Normal (rename inline), Edge (rename with empty string or special characters). R-013: Normal (find by custom keyword), Edge (duplicate keywords, non-existent keyword). R-014: Normal (sort and reverse-sort columns), Edge (empty columns, special characters sorting). R-015: Normal (resize columns), Boundary (minimum and maximum column width). R-016: Normal (show and hide columns), Boundary (hide all columns). R-017: Normal (bulk delete several bookmarks), Edge (delete zero bookmarks, delete all bookmarks). R-018: Abnormal (drop bookmark onto itself, immediate parent, or child)."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1069,
+          "output_tokens": 411,
+          "details": {
+            "total_tokens": 1480,
+            "text_prompt_tokens": 1069
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-001-01",
+            "title": "Add bookmark to specific location (Normal)",
+            "description": "Verify that a new bookmark can be successfully added to a specific valid location within the bookmarks hierarchy.",
+            "requirement_ids": [
+              "R-001"
+            ]
+          },
+          {
+            "id": "TC-R-001-02",
+            "title": "Add bookmark at hierarchy boundaries (Boundary)",
+            "description": "Verify adding a bookmark at the root level versus a deeply nested location within the bookmarks hierarchy.",
+            "requirement_ids": [
+              "R-001"
+            ]
+          },
+          {
+            "id": "TC-R-001-03",
+            "title": "Add bookmark to non-existent location (Error)",
+            "description": "Verify that attempting to add a new bookmark to a non-existent location within the bookmarks hierarchy fails appropriately.",
+            "requirement_ids": [
+              "R-001"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": 1522,
+          "output_tokens": 261,
+          "details": {
+            "total_tokens": 1783,
+            "text_prompt_tokens": 1522
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-002-01",
+            "title": "Normal Deletion of Bookmark",
+            "description": "Verify that a bookmark is properly deleted from the bookmarks file and is no longer displayed from all access points.",
+            "requirement_ids": [
+              "R-002"
+            ]
+          },
+          {
+            "id": "TC-R-002-02",
+            "title": "Edge Case Deletion of Non-Existent Bookmark",
+            "description": "Verify the system behavior when attempting to delete a bookmark that has already been deleted or does not exist.",
+            "requirement_ids": [
+              "R-002"
+            ]
+          },
+          {
+            "id": "TC-R-002-03",
+            "title": "Abnormal Deletion with File Permission Error",
+            "description": "Verify that an appropriate error is handled when a file permission error occurs during the bookmark deletion process.",
+            "requirement_ids": [
+              "R-002"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1522,
+          "output_tokens": 263,
+          "details": {
+            "total_tokens": 1785,
+            "text_prompt_tokens": 1522
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-003-01",
+            "title": "Add and Delete Bookmark from Personal Toolbar - Normal",
+            "description": "Verify that a bookmark can be successfully added to the personal toolbar and subsequently deleted from it.",
+            "requirement_ids": [
+              "R-003"
+            ]
+          },
+          {
+            "id": "TC-R-003-02",
+            "title": "Personal Toolbar Capacity Limit - Boundary",
+            "description": "Verify the behavior when adding bookmarks to the personal toolbar up to its maximum capacity limit.",
+            "requirement_ids": [
+              "R-003"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1522,
+          "output_tokens": 174,
+          "details": {
+            "total_tokens": 1696,
+            "text_prompt_tokens": 1522
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-004-Normal",
+            "title": "Insert new bookmark folder into hierarchy",
+            "description": "Verify that a new bookmark folder can be successfully inserted into a specific valid location within the bookmarks hierarchy.",
+            "requirement_ids": [
+              "R-004"
+            ]
+          },
+          {
+            "id": "TC-R-004-Boundary",
+            "title": "Insert bookmark folder at maximum allowed hierarchy depth",
+            "description": "Verify that a new bookmark folder can be inserted at the maximum supported nesting depth of the bookmarks hierarchy.",
+            "requirement_ids": [
+              "R-004"
+            ]
+          },
+          {
+            "id": "TC-R-004-Abnormal",
+            "title": "Insert bookmark folder with invalid name",
+            "description": "Verify that attempting to insert a new bookmark folder with an invalid or prohibited name format is appropriately handled and rejected.",
+            "requirement_ids": [
+              "R-004"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1522,
+          "output_tokens": 260,
+          "details": {
+            "total_tokens": 1782,
+            "text_prompt_tokens": 1522
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-005-01",
+            "title": "Double-click bookmark normal launch",
+            "description": "Verify that double-clicking on a valid bookmark successfully launches the associated URL in a new or current browser window.",
+            "requirement_ids": [
+              "R-005"
+            ]
+          },
+          {
+            "id": "TC-R-005-02",
+            "title": "Double-click bookmark with corrupted or invalid URL",
+            "description": "Verify the application behavior when double-clicking on a bookmark containing a corrupted or invalid URL, ensuring appropriate error handling.",
+            "requirement_ids": [
+              "R-005"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1522,
+          "output_tokens": 184,
+          "details": {
+            "total_tokens": 1706,
+            "text_prompt_tokens": 1522
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-006-01",
+            "title": "Validate links in default bookmarks file",
+            "description": "Verify that bookmarks within the default bookmarks file that is packaged with the browser are valid links under normal operating conditions.",
+            "requirement_ids": [
+              "R-006"
+            ]
+          },
+          {
+            "id": "TC-R-006-02",
+            "title": "Abnormal handling of broken links in packaged file",
+            "description": "Verify the system behavior when encountering broken or malformed links within the default bookmarks file packaged with the browser.",
+            "requirement_ids": [
+              "R-006"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1522,
+          "output_tokens": 182,
+          "details": {
+            "total_tokens": 1704,
+            "text_prompt_tokens": 1522
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-007-01",
+            "title": "Normal Change Save Integrity",
+            "description": "Verify that changes made to a bookmark item are successfully saved without loss of item integrity.",
+            "requirement_ids": [
+              "R-007"
+            ]
+          },
+          {
+            "id": "TC-R-007-02",
+            "title": "Abnormal Data Corruption on Save",
+            "description": "Verify the system handles data corruption or write failures gracefully when attempting to save changes to a bookmark item.",
+            "requirement_ids": [
+              "R-007"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1522,
+          "output_tokens": 171,
+          "details": {
+            "total_tokens": 1693,
+            "text_prompt_tokens": 1522
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-008-01",
+            "title": "Normal Deletion of Bookmarks Folder",
+            "description": "Verify that an existing bookmarks folder can be successfully deleted from the bookmarks hierarchy.",
+            "requirement_ids": [
+              "R-008"
+            ]
+          },
+          {
+            "id": "TC-R-008-02",
+            "title": "Edge Case Deletion of Empty versus Non-Empty Folder",
+            "description": "Verify the deletion behavior when deleting an empty bookmarks folder compared to deleting a non-empty bookmarks folder containing subfolders and items.",
+            "requirement_ids": [
+              "R-008"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1522,
+          "output_tokens": 182,
+          "details": {
+            "total_tokens": 1704,
+            "text_prompt_tokens": 1522
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-009-01",
+            "title": "Add and Delete Bookmarks Separators Normal",
+            "description": "Verify that bookmarks separators can be successfully added to and deleted from the bookmarks hierarchy.",
+            "requirement_ids": [
+              "R-009"
+            ]
+          },
+          {
+            "id": "TC-R-009-02",
+            "title": "Invalid Separator Placement Abnormal",
+            "description": "Verify the system handles invalid separator placement attempts, such as placing separators in restricted system containers, gracefully.",
+            "requirement_ids": [
+              "R-009"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1522,
+          "output_tokens": 173,
+          "details": {
+            "total_tokens": 1695,
+            "text_prompt_tokens": 1522
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-010-001",
+            "title": "Save Bookmark Changes Over Normal Restart",
+            "description": "Verify that all changes made to bookmarks are successfully saved and persisted after a normal application restart.",
+            "requirement_ids": [
+              "R-010"
+            ]
+          },
+          {
+            "id": "TC-R-010-002",
+            "title": "Save Bookmark Changes Over Browser Crash",
+            "description": "Verify that all changes made to bookmarks are successfully preserved and not lost when the browser experiences an unexpected crash.",
+            "requirement_ids": [
+              "R-010"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": 1522,
+          "output_tokens": 177,
+          "details": {
+            "total_tokens": 1699,
+            "text_prompt_tokens": 1522
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-011-01",
+            "title": "View properties negative test for bookmarks, folders, and separators",
+            "description": "Verify that view properties execute correctly for bookmarks, folders, and separators as a negative test per requirement R-011.",
+            "requirement_ids": [
+              "R-011"
+            ]
+          },
+          {
+            "id": "TC-R-011-02",
+            "title": "Accessing restricted properties for bookmarks, folders, and separators",
+            "description": "Verify the abnormal scenario where attempting to access restricted or invalid properties for bookmarks, folders, and separators is handled appropriately.",
+            "requirement_ids": [
+              "R-011"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1522,
+          "output_tokens": 195,
+          "details": {
+            "total_tokens": 1717,
+            "text_prompt_tokens": 1522
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-012-01",
+            "title": "Normal - Inline Bookmark Rename",
+            "description": "Verify that a bookmark can be renamed inline directly in the UI without opening the bookmarks properties dialog.",
+            "requirement_ids": [
+              "R-012"
+            ]
+          },
+          {
+            "id": "TC-R-012-02",
+            "title": "Edge - Rename with Special Characters or Empty String",
+            "description": "Verify inline renaming behavior when entering edge-case inputs such as special characters, emojis, or attempting to clear the name completely.",
+            "requirement_ids": [
+              "R-012"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1522,
+          "output_tokens": 182,
+          "details": {
+            "total_tokens": 1704,
+            "text_prompt_tokens": 1522
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-013-01",
+            "title": "Find Bookmark Using Valid Custom Keyword - Normal",
+            "description": "Verify that a user can successfully find and access a bookmark by entering its assigned custom keyword in the address bar or search.",
+            "requirement_ids": [
+              "R-013"
+            ]
+          },
+          {
+            "id": "TC-R-013-02",
+            "title": "Find Bookmark With Duplicate Keywords - Edge",
+            "description": "Verify the system behavior when multiple bookmarks are assigned the same custom keyword (edge scenario).",
+            "requirement_ids": [
+              "R-013"
+            ]
+          },
+          {
+            "id": "TC-R-013-03",
+            "title": "Search With Non-Existent Custom Keyword - Edge",
+            "description": "Verify that searching for a custom keyword that does not exist returns no bookmarks or an appropriate not-found indication.",
+            "requirement_ids": [
+              "R-013"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1522,
+          "output_tokens": 269,
+          "details": {
+            "total_tokens": 1791,
+            "text_prompt_tokens": 1522
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-014-01",
+            "title": "Sort and Reverse-Sort Bookmark Columns (Normal)",
+            "description": "Verify that bookmarks can be successfully sorted and reverse-sorted per column in ascending and descending order.",
+            "requirement_ids": [
+              "R-014"
+            ]
+          },
+          {
+            "id": "TC-R-014-02",
+            "title": "Sort Columns with Empty or Special Characters (Edge)",
+            "description": "Verify sorting and reverse-sorting behavior on columns containing empty entries or special characters.",
+            "requirement_ids": [
+              "R-014"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1522,
+          "output_tokens": 177,
+          "details": {
+            "total_tokens": 1699,
+            "text_prompt_tokens": 1522
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-015-01",
+            "title": "Normal Column Resizing",
+            "description": "Resize bookmark columns to show and hide more of the entries successfully.",
+            "requirement_ids": [
+              "R-015"
+            ]
+          },
+          {
+            "id": "TC-R-015-02",
+            "title": "Boundary Column Widths",
+            "description": "Resize bookmark columns to their minimum and maximum possible width boundaries.",
+            "requirement_ids": [
+              "R-015"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1522,
+          "output_tokens": 157,
+          "details": {
+            "total_tokens": 1679,
+            "text_prompt_tokens": 1522
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-016-01",
+            "title": "Show and Hide Bookmark Columns Normal Operation",
+            "description": "Verify that bookmark columns can be successfully shown and hidden using the column configuration interface.",
+            "requirement_ids": [
+              "R-016"
+            ]
+          },
+          {
+            "id": "TC-R-016-02",
+            "title": "Hide All Bookmark Columns Boundary Condition",
+            "description": "Verify the system behavior when attempting to hide all available bookmark columns to ensure edge case compliance.",
+            "requirement_ids": [
+              "R-016"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1522,
+          "output_tokens": 171,
+          "details": {
+            "total_tokens": 1693,
+            "text_prompt_tokens": 1522
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-017-01",
+            "title": "Bulk Delete Several Bookmarks Normal",
+            "description": "Verify that multiple selected bookmarks are successfully deleted at one time from the bookmarks list.",
+            "requirement_ids": [
+              "R-017"
+            ]
+          },
+          {
+            "id": "TC-R-017-02",
+            "title": "Bulk Delete Zero Bookmarks Edge",
+            "description": "Verify the system behavior when a bulk delete action is triggered with zero bookmarks selected.",
+            "requirement_ids": [
+              "R-017"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1522,
+          "output_tokens": 156,
+          "details": {
+            "total_tokens": 1678,
+            "text_prompt_tokens": 1522
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-018-01",
+            "title": "Drop bookmark onto itself",
+            "description": "Verify that it is not possible to drop a bookmark item onto itself within the bookmarks hierarchy.",
+            "requirement_ids": [
+              "R-018"
+            ]
+          },
+          {
+            "id": "TC-R-018-02",
+            "title": "Drop bookmark onto its immediate parent",
+            "description": "Verify that it is not possible to drop a bookmark item onto its immediate parent folder.",
+            "requirement_ids": [
+              "R-018"
+            ]
+          },
+          {
+            "id": "TC-R-018-03",
+            "title": "Drop bookmark onto its immediate child",
+            "description": "Verify that it is not possible to drop a bookmark folder onto its immediate child item.",
+            "requirement_ids": [
+              "R-018"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1522,
+          "output_tokens": 248,
+          "details": {
+            "total_tokens": 1770,
+            "text_prompt_tokens": 1522
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "critic",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "The proposed test cases comprehensively cover normal, boundary, and error/edge scenarios for all requirements. No blockers or missing scenarios were found.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 3454,
+          "output_tokens": 65,
+          "details": {
+            "total_tokens": 3519,
+            "text_prompt_tokens": 3454
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "validator",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "All requirements and test cases have been reviewed. The cases comprehensively cover the specified requirements, including boundaries and error paths.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 3451,
+          "output_tokens": 61,
+          "details": {
+            "total_tokens": 3512,
+            "text_prompt_tokens": 3451
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "coverage",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "Coverage analysis reveals the following gaps across requirements based on the required scenario types (Normal, Edge, Boundary, Error): For R-002, Edge and Error are covered, but a Normal test is missing. For R-003, Normal and Boundary are present, but Edge and Error are missing. For R-004, Normal, Boundary, and Error are present, but Edge is missing. For R-005, Normal and Error are present, but Edge and Boundary are missing. For R-006, Normal and Error are covered, while Edge and Boundary are missing. For R-007, Normal and Error are present, but Edge and Boundary are missing. For R-008, Normal and Edge are present, but Boundary and Error are missing. For R-009, Normal and Error are covered, but Edge and Boundary are missing. For R-010, Normal and Error (crash) are covered, but Edge and Boundary are missing. For R-011, Normal and Error are covered, but Edge and Boundary are missing. For R-012, Normal and Edge are covered, but Boundary and Error are missing. For R-013, Normal and Edge are covered, but Boundary and Error are missing. For R-014, Normal and Edge are covered, but Boundary and Error are missing. For R-015, Normal and Boundary are covered, but Edge and Error are missing. For R-016, Normal and Boundary are covered, but Edge and Error are missing. For R-017, Normal and Edge are covered, but Boundary and Error are missing. For R-018, Normal and Edge variations are covered, but Boundary and Error are missing."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 3745,
+          "output_tokens": 377,
+          "details": {
+            "total_tokens": 4122,
+            "text_prompt_tokens": 3745
+          },
+          "status": "available"
+        }
+      ]
+    }
+  ],
+  "monotonicity": "confirmed"
+}

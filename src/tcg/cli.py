@@ -11,7 +11,7 @@ from dotenv import dotenv_values
 
 from ghl import GHLFailure, generate_ghl
 from multiagent import MultiagentFailure, run_multiagent
-from one_shot import generate_one_shot
+from zero_shot import generate_zero_shot
 
 from .data import DATASETS, select_units
 from .output import RUN_TIMEZONE, reserve_run, save_unit, write_text
@@ -21,7 +21,7 @@ from .runtime import (
 )
 from .schemas import GenerationResult, Unit, generation_input
 
-SOLUTIONS = ("one-shot", "GHL", "Multiagent")
+SOLUTIONS = ("zero-shot", "GHL", "Multiagent")
 OPTIONAL_AGENTS = ("analyst", "critic", "validator", "coverage")
 OUTPUT_MODES = ("batch", "per_requirement", "per_case")
 MAX_ROUNDS = 2
@@ -45,7 +45,7 @@ def _parser() -> argparse.ArgumentParser:
     run.add_argument("--agents", choices=OPTIONAL_AGENTS, nargs="*", action="extend",
                      help="Optional Multiagent stages. Pass without names to disable them.")
     run.add_argument("--output-mode", choices=OUTPUT_MODES, default="batch",
-                     help="Output scope for GHL and Multiagent. One-shot uses batch.")
+                     help="Output scope for GHL and Multiagent. Zero-shot uses batch.")
     run.add_argument("--data-dir", type=Path, default=Path("data/normalized"), help="Normalized datasets.")
     run.add_argument("--output-dir", "--results-dir", type=Path, default=Path("output"))
     return parser
@@ -82,7 +82,7 @@ async def _run(
         "solutions": options.solutions,
         "units": [unit.id for unit in units],
         "agents": sorted(agents),
-        "output_modes": {name: "batch" if name == "one-shot" else options.output_mode for name in options.solutions},
+        "output_modes": {name: "batch" if name == "zero-shot" else options.output_mode for name in options.solutions},
         "max_rounds": MAX_ROUNDS,
         "generation_retries": runtime.retries,
         "max_retry_wait_seconds": MAX_RETRY_WAIT_SECONDS,
@@ -107,8 +107,8 @@ async def _run(
                 failure_stage = None
                 interrupted = None
                 try:
-                    if solution == "one-shot":
-                        result = await generate_one_shot(source, runtime)
+                    if solution == "zero-shot":
+                        result = await generate_zero_shot(source, runtime)
                     elif solution == "GHL":
                         result = await generate_ghl(source, runtime, output_mode=options.output_mode)
                     else:

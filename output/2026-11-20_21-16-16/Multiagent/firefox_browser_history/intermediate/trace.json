@@ -1,0 +1,1271 @@
+{
+  "initial": {
+    "assessment": {
+      "candidate_id": "initial",
+      "cases": [
+        {
+          "id": "G-001",
+          "title": "Normal recording of visited links to Global History",
+          "description": "Visit a standard web link and verify that the link is successfully recorded in the Global History.",
+          "requirement_ids": [
+            "R-073"
+          ]
+        },
+        {
+          "id": "G-002",
+          "title": "Edge case for visiting empty URL or malformed link",
+          "description": "Attempt to visit an empty URL or malformed link and verify the Global History handling.",
+          "requirement_ids": [
+            "R-073"
+          ]
+        },
+        {
+          "id": "G-003",
+          "title": "Abnormal history database write failure",
+          "description": "Trigger a scenario where the history database encounters a write failure during link recording and verify error handling.",
+          "requirement_ids": [
+            "R-073"
+          ]
+        },
+        {
+          "id": "G-004",
+          "title": "Record correct link after server redirect (Normal)",
+          "description": "Verify that when a user navigates to a link that triggers a server redirect, the final target URL is correctly recorded to the Global History rather than the intermediate redirect URL.",
+          "requirement_ids": [
+            "R-074"
+          ]
+        },
+        {
+          "id": "G-005",
+          "title": "Record correct link after a chain of multiple redirects (Edge)",
+          "description": "Verify that when a link triggers a chain of multiple consecutive server redirects, the final destination URL is accurately captured and recorded in the Global History.",
+          "requirement_ids": [
+            "R-074"
+          ]
+        },
+        {
+          "id": "G-006",
+          "title": "Handle redirect loop error during history recording (Abnormal)",
+          "description": "Verify the system behavior and error handling when a server redirect results in an infinite redirect loop, ensuring the history recording gracefully handles the termination.",
+          "requirement_ids": [
+            "R-074"
+          ]
+        },
+        {
+          "id": "G-007",
+          "title": "Normal Launch of History Link",
+          "description": "Clicking on a valid history link causes it to be successfully launched in a browser window.",
+          "requirement_ids": [
+            "R-075"
+          ]
+        },
+        {
+          "id": "G-008",
+          "title": "Edge Case Launch While Offline",
+          "description": "Clicking on a history link while the browser is offline attempts to launch it with appropriate offline handling.",
+          "requirement_ids": [
+            "R-075"
+          ]
+        },
+        {
+          "id": "G-009",
+          "title": "Abnormal Invalid URL Schema or Missing Target",
+          "description": "Attempting to launch a history link with an invalid URL schema or missing target gracefully handles the error without crashing.",
+          "requirement_ids": [
+            "R-075"
+          ]
+        },
+        {
+          "id": "G-010",
+          "title": "Delete single history entry - Normal",
+          "description": "Verify that a single History entry is successfully deleted when requested by the user.",
+          "requirement_ids": [
+            "R-076"
+          ]
+        },
+        {
+          "id": "G-011",
+          "title": "Delete already deleted entry - Edge",
+          "description": "Verify the system behavior when attempting to delete an entry that has already been deleted.",
+          "requirement_ids": [
+            "R-076"
+          ]
+        },
+        {
+          "id": "G-012",
+          "title": "Delete operation failure due to locked database - Error",
+          "description": "Verify the error handling when the delete operation fails due to a locked history database.",
+          "requirement_ids": [
+            "R-076"
+          ]
+        },
+        {
+          "id": "G-013",
+          "title": "Delete Multiple History Entries",
+          "description": "Select multiple history entries and delete them simultaneously to verify they are removed from the display.",
+          "requirement_ids": [
+            "R-077"
+          ]
+        },
+        {
+          "id": "G-014",
+          "title": "Delete All History Entries",
+          "description": "Select all history entries across the list and perform a bulk deletion to verify complete removal.",
+          "requirement_ids": [
+            "R-077"
+          ]
+        },
+        {
+          "id": "G-015",
+          "title": "Partial Deletion Failure",
+          "description": "Attempt to delete multiple history entries when a storage or write error occurs mid-operation, and verify error handling.",
+          "requirement_ids": [
+            "R-077"
+          ]
+        },
+        {
+          "id": "G-016",
+          "title": "Clear Global History Normal",
+          "description": "Clear the entire Global History successfully and verify all entries are removed.",
+          "requirement_ids": [
+            "R-078"
+          ]
+        },
+        {
+          "id": "G-017",
+          "title": "Clear Global History Edge",
+          "description": "Attempt to clear the Global History when the history is already completely empty.",
+          "requirement_ids": [
+            "R-078"
+          ]
+        },
+        {
+          "id": "G-018",
+          "title": "Clear Global History Abnormal",
+          "description": "Handle a database or system failure gracefully during the Global History wipe operation.",
+          "requirement_ids": [
+            "R-078"
+          ]
+        },
+        {
+          "id": "G-019",
+          "title": "Group history items by Day, Site, and None",
+          "description": "Verify that history items can be successfully grouped by Day, Site, and None according to user selection.",
+          "requirement_ids": [
+            "R-079"
+          ]
+        },
+        {
+          "id": "G-020",
+          "title": "Group history with empty data set",
+          "description": "Verify the grouping behavior when the history data set is completely empty.",
+          "requirement_ids": [
+            "R-079"
+          ]
+        },
+        {
+          "id": "G-021",
+          "title": "Grouping failure on corrupted entries",
+          "description": "Verify system error handling when attempting to group history items containing corrupted entry metadata.",
+          "requirement_ids": [
+            "R-079"
+          ]
+        },
+        {
+          "id": "G-022",
+          "title": "Sort and reverse-sort history columns normally",
+          "description": "Verify that history items can be sorted and reverse-sorted per column as expected.",
+          "requirement_ids": [
+            "R-080"
+          ]
+        },
+        {
+          "id": "G-023",
+          "title": "Sort empty history table",
+          "description": "Verify sorting behavior when the history table contains no entries.",
+          "requirement_ids": [
+            "R-080"
+          ]
+        },
+        {
+          "id": "G-024",
+          "title": "Sort failure handling on mismatched data types",
+          "description": "Verify the system handles and reports an error or fails gracefully during a sort operation on mismatched data types.",
+          "requirement_ids": [
+            "R-080"
+          ]
+        },
+        {
+          "id": "G-025",
+          "title": "Normal Resize of History Columns",
+          "description": "Resize history columns to show or hide more of the entries and verify correct layout rendering.",
+          "requirement_ids": [
+            "R-081"
+          ]
+        },
+        {
+          "id": "G-026",
+          "title": "Edge Resize of History Columns",
+          "description": "Resize history columns to their minimum or maximum width limits and verify boundary constraints.",
+          "requirement_ids": [
+            "R-081"
+          ]
+        },
+        {
+          "id": "G-027",
+          "title": "Abnormal Resize Layout Handling",
+          "description": "Verify handling when an extreme column resize operation encounters a rendering crash or layout failure.",
+          "requirement_ids": [
+            "R-081"
+          ]
+        },
+        {
+          "id": "G-028",
+          "title": "Show and Hide History Columns Normally",
+          "description": "Verify that history columns can be successfully shown and hidden via the user interface.",
+          "requirement_ids": [
+            "R-082"
+          ]
+        },
+        {
+          "id": "G-029",
+          "title": "Hide All History Columns",
+          "description": "Verify the edge scenario of hiding all available history columns simultaneously.",
+          "requirement_ids": [
+            "R-082"
+          ]
+        },
+        {
+          "id": "G-030",
+          "title": "Failure to Persist Column Visibility State",
+          "description": "Verify system behavior when saving or persisting the column visibility state encounters an abnormal failure.",
+          "requirement_ids": [
+            "R-082"
+          ]
+        },
+        {
+          "id": "G-031",
+          "title": "Revisit recent sites via Back and Forward dropdown menu",
+          "description": "Verify that recently visited sites can be successfully revisited by selecting them from the Back and Forward button dropdown menus under normal navigation conditions.",
+          "requirement_ids": [
+            "R-083"
+          ]
+        },
+        {
+          "id": "G-032",
+          "title": "Back and Forward dropdown menu when no history exists",
+          "description": "Verify the behavior of the Back and Forward button dropdown menus when there is no prior navigation history (edge condition).",
+          "requirement_ids": [
+            "R-083"
+          ]
+        },
+        {
+          "id": "G-033",
+          "title": "Back and Forward dropdown menu failure handling",
+          "description": "Verify system behavior and error handling when attempting to use the Back and Forward dropdown menus while the navigation state is corrupt (abnormal condition).",
+          "requirement_ids": [
+            "R-083"
+          ]
+        },
+        {
+          "id": "G-034",
+          "title": "Create New Empty Session History File Normally",
+          "description": "Verify that a new, empty session history file is successfully created when a new browser window is opened or the browser is restarted.",
+          "requirement_ids": [
+            "R-084"
+          ]
+        },
+        {
+          "id": "G-035",
+          "title": "Create Session History File with Restricted Permissions",
+          "description": "Verify session history file creation behavior when file system permissions are restricted for the directory.",
+          "requirement_ids": [
+            "R-084"
+          ]
+        },
+        {
+          "id": "G-036",
+          "title": "Disk Full Error During Session File Creation",
+          "description": "Verify error handling when a disk full error occurs while attempting to create a new session history file.",
+          "requirement_ids": [
+            "R-084"
+          ]
+        }
+      ],
+      "opinions": [
+        {
+          "agent": "critic",
+          "feedback": "All requirements have been adequately mapped with test cases covering normal, edge, and abnormal scenarios. No blockers found.",
+          "request_revision": false,
+          "confirmed_blockers": [],
+          "blocker_assessment_complete": true
+        },
+        {
+          "agent": "validator",
+          "feedback": "All requirements are comprehensively tested across normal, edge, and abnormal scenarios with well-structured test cases.",
+          "request_revision": false,
+          "confirmed_blockers": [],
+          "blocker_assessment_complete": true
+        }
+      ],
+      "valid": true,
+      "confirmed_blockers": 0,
+      "covered_requirements": 12,
+      "duplicates": 0,
+      "comparable": true
+    },
+    "analysis": {
+      "analysis": "R-073: Normal - visit a standard link and verify Global History recording; Edge - visit an empty URL or malformed link; Abnormal - history database write failure. R-074: Normal - follow a redirected link and verify final target URL in Global History; Edge - chain of multiple redirects; Abnormal - redirect loop error. R-075: Normal - click a history link to launch in a browser window; Edge - click link while browser is offline; Abnormal - invalid URL schema or missing target. R-076: Normal - delete a single history entry; Edge - delete an already deleted entry; Abnormal - delete operation fails due to locked database. R-077: Normal - delete multiple entries simultaneously and verify removal from display; Edge - select all entries and delete; Abnormal - partial deletion failure. R-078: Normal - clear entire Global History; Edge - clear already empty history; Abnormal - failure during history wipe. R-079: Normal - group history items by Day, Site, and None; Edge - group with empty data set; Abnormal - grouping failure on corrupted entries. R-080: Normal - sort and reverse-sort history columns; Edge - sort empty table; Abnormal - sort failure on mismatched data types. R-081: Normal - resize history columns to show/hide content; Edge - resize columns to minimum or maximum width limits; Abnormal - layout rendering crash on extreme resize. R-082: Normal - show and hide history columns; Edge - hide all columns; Abnormal - failure to persist column visibility state. R-083: Normal - revisit recent sites via Back and Forward dropdown menus; Edge - dropdown when no history exists; Abnormal - menu failure when navigation state is corrupt. R-084: Normal - create a new empty session history file on new window or restart; Edge - file creation with restricted filesystem permissions; Abnormal - disk full error when creating session file."
+    },
+    "failure": null
+  },
+  "rounds": [],
+  "status": "completed",
+  "failure": null,
+  "accepted_id": "initial",
+  "accepted_assessment": {
+    "candidate_id": "initial",
+    "cases": [
+      {
+        "id": "G-001",
+        "title": "Normal recording of visited links to Global History",
+        "description": "Visit a standard web link and verify that the link is successfully recorded in the Global History.",
+        "requirement_ids": [
+          "R-073"
+        ]
+      },
+      {
+        "id": "G-002",
+        "title": "Edge case for visiting empty URL or malformed link",
+        "description": "Attempt to visit an empty URL or malformed link and verify the Global History handling.",
+        "requirement_ids": [
+          "R-073"
+        ]
+      },
+      {
+        "id": "G-003",
+        "title": "Abnormal history database write failure",
+        "description": "Trigger a scenario where the history database encounters a write failure during link recording and verify error handling.",
+        "requirement_ids": [
+          "R-073"
+        ]
+      },
+      {
+        "id": "G-004",
+        "title": "Record correct link after server redirect (Normal)",
+        "description": "Verify that when a user navigates to a link that triggers a server redirect, the final target URL is correctly recorded to the Global History rather than the intermediate redirect URL.",
+        "requirement_ids": [
+          "R-074"
+        ]
+      },
+      {
+        "id": "G-005",
+        "title": "Record correct link after a chain of multiple redirects (Edge)",
+        "description": "Verify that when a link triggers a chain of multiple consecutive server redirects, the final destination URL is accurately captured and recorded in the Global History.",
+        "requirement_ids": [
+          "R-074"
+        ]
+      },
+      {
+        "id": "G-006",
+        "title": "Handle redirect loop error during history recording (Abnormal)",
+        "description": "Verify the system behavior and error handling when a server redirect results in an infinite redirect loop, ensuring the history recording gracefully handles the termination.",
+        "requirement_ids": [
+          "R-074"
+        ]
+      },
+      {
+        "id": "G-007",
+        "title": "Normal Launch of History Link",
+        "description": "Clicking on a valid history link causes it to be successfully launched in a browser window.",
+        "requirement_ids": [
+          "R-075"
+        ]
+      },
+      {
+        "id": "G-008",
+        "title": "Edge Case Launch While Offline",
+        "description": "Clicking on a history link while the browser is offline attempts to launch it with appropriate offline handling.",
+        "requirement_ids": [
+          "R-075"
+        ]
+      },
+      {
+        "id": "G-009",
+        "title": "Abnormal Invalid URL Schema or Missing Target",
+        "description": "Attempting to launch a history link with an invalid URL schema or missing target gracefully handles the error without crashing.",
+        "requirement_ids": [
+          "R-075"
+        ]
+      },
+      {
+        "id": "G-010",
+        "title": "Delete single history entry - Normal",
+        "description": "Verify that a single History entry is successfully deleted when requested by the user.",
+        "requirement_ids": [
+          "R-076"
+        ]
+      },
+      {
+        "id": "G-011",
+        "title": "Delete already deleted entry - Edge",
+        "description": "Verify the system behavior when attempting to delete an entry that has already been deleted.",
+        "requirement_ids": [
+          "R-076"
+        ]
+      },
+      {
+        "id": "G-012",
+        "title": "Delete operation failure due to locked database - Error",
+        "description": "Verify the error handling when the delete operation fails due to a locked history database.",
+        "requirement_ids": [
+          "R-076"
+        ]
+      },
+      {
+        "id": "G-013",
+        "title": "Delete Multiple History Entries",
+        "description": "Select multiple history entries and delete them simultaneously to verify they are removed from the display.",
+        "requirement_ids": [
+          "R-077"
+        ]
+      },
+      {
+        "id": "G-014",
+        "title": "Delete All History Entries",
+        "description": "Select all history entries across the list and perform a bulk deletion to verify complete removal.",
+        "requirement_ids": [
+          "R-077"
+        ]
+      },
+      {
+        "id": "G-015",
+        "title": "Partial Deletion Failure",
+        "description": "Attempt to delete multiple history entries when a storage or write error occurs mid-operation, and verify error handling.",
+        "requirement_ids": [
+          "R-077"
+        ]
+      },
+      {
+        "id": "G-016",
+        "title": "Clear Global History Normal",
+        "description": "Clear the entire Global History successfully and verify all entries are removed.",
+        "requirement_ids": [
+          "R-078"
+        ]
+      },
+      {
+        "id": "G-017",
+        "title": "Clear Global History Edge",
+        "description": "Attempt to clear the Global History when the history is already completely empty.",
+        "requirement_ids": [
+          "R-078"
+        ]
+      },
+      {
+        "id": "G-018",
+        "title": "Clear Global History Abnormal",
+        "description": "Handle a database or system failure gracefully during the Global History wipe operation.",
+        "requirement_ids": [
+          "R-078"
+        ]
+      },
+      {
+        "id": "G-019",
+        "title": "Group history items by Day, Site, and None",
+        "description": "Verify that history items can be successfully grouped by Day, Site, and None according to user selection.",
+        "requirement_ids": [
+          "R-079"
+        ]
+      },
+      {
+        "id": "G-020",
+        "title": "Group history with empty data set",
+        "description": "Verify the grouping behavior when the history data set is completely empty.",
+        "requirement_ids": [
+          "R-079"
+        ]
+      },
+      {
+        "id": "G-021",
+        "title": "Grouping failure on corrupted entries",
+        "description": "Verify system error handling when attempting to group history items containing corrupted entry metadata.",
+        "requirement_ids": [
+          "R-079"
+        ]
+      },
+      {
+        "id": "G-022",
+        "title": "Sort and reverse-sort history columns normally",
+        "description": "Verify that history items can be sorted and reverse-sorted per column as expected.",
+        "requirement_ids": [
+          "R-080"
+        ]
+      },
+      {
+        "id": "G-023",
+        "title": "Sort empty history table",
+        "description": "Verify sorting behavior when the history table contains no entries.",
+        "requirement_ids": [
+          "R-080"
+        ]
+      },
+      {
+        "id": "G-024",
+        "title": "Sort failure handling on mismatched data types",
+        "description": "Verify the system handles and reports an error or fails gracefully during a sort operation on mismatched data types.",
+        "requirement_ids": [
+          "R-080"
+        ]
+      },
+      {
+        "id": "G-025",
+        "title": "Normal Resize of History Columns",
+        "description": "Resize history columns to show or hide more of the entries and verify correct layout rendering.",
+        "requirement_ids": [
+          "R-081"
+        ]
+      },
+      {
+        "id": "G-026",
+        "title": "Edge Resize of History Columns",
+        "description": "Resize history columns to their minimum or maximum width limits and verify boundary constraints.",
+        "requirement_ids": [
+          "R-081"
+        ]
+      },
+      {
+        "id": "G-027",
+        "title": "Abnormal Resize Layout Handling",
+        "description": "Verify handling when an extreme column resize operation encounters a rendering crash or layout failure.",
+        "requirement_ids": [
+          "R-081"
+        ]
+      },
+      {
+        "id": "G-028",
+        "title": "Show and Hide History Columns Normally",
+        "description": "Verify that history columns can be successfully shown and hidden via the user interface.",
+        "requirement_ids": [
+          "R-082"
+        ]
+      },
+      {
+        "id": "G-029",
+        "title": "Hide All History Columns",
+        "description": "Verify the edge scenario of hiding all available history columns simultaneously.",
+        "requirement_ids": [
+          "R-082"
+        ]
+      },
+      {
+        "id": "G-030",
+        "title": "Failure to Persist Column Visibility State",
+        "description": "Verify system behavior when saving or persisting the column visibility state encounters an abnormal failure.",
+        "requirement_ids": [
+          "R-082"
+        ]
+      },
+      {
+        "id": "G-031",
+        "title": "Revisit recent sites via Back and Forward dropdown menu",
+        "description": "Verify that recently visited sites can be successfully revisited by selecting them from the Back and Forward button dropdown menus under normal navigation conditions.",
+        "requirement_ids": [
+          "R-083"
+        ]
+      },
+      {
+        "id": "G-032",
+        "title": "Back and Forward dropdown menu when no history exists",
+        "description": "Verify the behavior of the Back and Forward button dropdown menus when there is no prior navigation history (edge condition).",
+        "requirement_ids": [
+          "R-083"
+        ]
+      },
+      {
+        "id": "G-033",
+        "title": "Back and Forward dropdown menu failure handling",
+        "description": "Verify system behavior and error handling when attempting to use the Back and Forward dropdown menus while the navigation state is corrupt (abnormal condition).",
+        "requirement_ids": [
+          "R-083"
+        ]
+      },
+      {
+        "id": "G-034",
+        "title": "Create New Empty Session History File Normally",
+        "description": "Verify that a new, empty session history file is successfully created when a new browser window is opened or the browser is restarted.",
+        "requirement_ids": [
+          "R-084"
+        ]
+      },
+      {
+        "id": "G-035",
+        "title": "Create Session History File with Restricted Permissions",
+        "description": "Verify session history file creation behavior when file system permissions are restricted for the directory.",
+        "requirement_ids": [
+          "R-084"
+        ]
+      },
+      {
+        "id": "G-036",
+        "title": "Disk Full Error During Session File Creation",
+        "description": "Verify error handling when a disk full error occurs while attempting to create a new session history file.",
+        "requirement_ids": [
+          "R-084"
+        ]
+      }
+    ],
+    "opinions": [
+      {
+        "agent": "critic",
+        "feedback": "All requirements have been adequately mapped with test cases covering normal, edge, and abnormal scenarios. No blockers found.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      {
+        "agent": "validator",
+        "feedback": "All requirements are comprehensively tested across normal, edge, and abnormal scenarios with well-structured test cases.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      }
+    ],
+    "valid": true,
+    "confirmed_blockers": 0,
+    "covered_requirements": 12,
+    "duplicates": 0,
+    "comparable": true
+  },
+  "pending": [],
+  "pending_controls": [],
+  "coverage": {
+    "feedback": "All requirements (R-073 through R-084) have comprehensive test coverage across normal, edge, and error/abnormal scenario types. No coverage gaps, excess, or unnecessary repetitions were found in the accepted test cases."
+  },
+  "coverage_failure": null,
+  "calls": [
+    {
+      "stage": "analyst",
+      "subject_id": "initial",
+      "output": {
+        "analysis": "R-073: Normal - visit a standard link and verify Global History recording; Edge - visit an empty URL or malformed link; Abnormal - history database write failure. R-074: Normal - follow a redirected link and verify final target URL in Global History; Edge - chain of multiple redirects; Abnormal - redirect loop error. R-075: Normal - click a history link to launch in a browser window; Edge - click link while browser is offline; Abnormal - invalid URL schema or missing target. R-076: Normal - delete a single history entry; Edge - delete an already deleted entry; Abnormal - delete operation fails due to locked database. R-077: Normal - delete multiple entries simultaneously and verify removal from display; Edge - select all entries and delete; Abnormal - partial deletion failure. R-078: Normal - clear entire Global History; Edge - clear already empty history; Abnormal - failure during history wipe. R-079: Normal - group history items by Day, Site, and None; Edge - group with empty data set; Abnormal - grouping failure on corrupted entries. R-080: Normal - sort and reverse-sort history columns; Edge - sort empty table; Abnormal - sort failure on mismatched data types. R-081: Normal - resize history columns to show/hide content; Edge - resize columns to minimum or maximum width limits; Abnormal - layout rendering crash on extreme resize. R-082: Normal - show and hide history columns; Edge - hide all columns; Abnormal - failure to persist column visibility state. R-083: Normal - revisit recent sites via Back and Forward dropdown menus; Edge - dropdown when no history exists; Abnormal - menu failure when navigation state is corrupt. R-084: Normal - create a new empty session history file on new window or restart; Edge - file creation with restricted filesystem permissions; Abnormal - disk full error when creating session file."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 769,
+          "output_tokens": 411,
+          "details": {
+            "total_tokens": 1180,
+            "text_prompt_tokens": 769
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-073-01",
+            "title": "Normal recording of visited links to Global History",
+            "description": "Visit a standard web link and verify that the link is successfully recorded in the Global History.",
+            "requirement_ids": [
+              "R-073"
+            ]
+          },
+          {
+            "id": "TC-R-073-02",
+            "title": "Edge case for visiting empty URL or malformed link",
+            "description": "Attempt to visit an empty URL or malformed link and verify the Global History handling.",
+            "requirement_ids": [
+              "R-073"
+            ]
+          },
+          {
+            "id": "TC-R-073-03",
+            "title": "Abnormal history database write failure",
+            "description": "Trigger a scenario where the history database encounters a write failure during link recording and verify error handling.",
+            "requirement_ids": [
+              "R-073"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1221,
+          "output_tokens": 258,
+          "details": {
+            "total_tokens": 1479,
+            "text_prompt_tokens": 1221
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-074-001",
+            "title": "Record correct link after server redirect (Normal)",
+            "description": "Verify that when a user navigates to a link that triggers a server redirect, the final target URL is correctly recorded to the Global History rather than the intermediate redirect URL.",
+            "requirement_ids": [
+              "R-074"
+            ]
+          },
+          {
+            "id": "TC-R-074-002",
+            "title": "Record correct link after a chain of multiple redirects (Edge)",
+            "description": "Verify that when a link triggers a chain of multiple consecutive server redirects, the final destination URL is accurately captured and recorded in the Global History.",
+            "requirement_ids": [
+              "R-074"
+            ]
+          },
+          {
+            "id": "TC-R-074-003",
+            "title": "Handle redirect loop error during history recording (Abnormal)",
+            "description": "Verify the system behavior and error handling when a server redirect results in an infinite redirect loop, ensuring the history recording gracefully handles the termination.",
+            "requirement_ids": [
+              "R-074"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1221,
+          "output_tokens": 301,
+          "details": {
+            "total_tokens": 1522,
+            "text_prompt_tokens": 1221
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-075-01",
+            "title": "Normal Launch of History Link",
+            "description": "Clicking on a valid history link causes it to be successfully launched in a browser window.",
+            "requirement_ids": [
+              "R-075"
+            ]
+          },
+          {
+            "id": "TC-R-075-02",
+            "title": "Edge Case Launch While Offline",
+            "description": "Clicking on a history link while the browser is offline attempts to launch it with appropriate offline handling.",
+            "requirement_ids": [
+              "R-075"
+            ]
+          },
+          {
+            "id": "TC-R-075-03",
+            "title": "Abnormal Invalid URL Schema or Missing Target",
+            "description": "Attempting to launch a history link with an invalid URL schema or missing target gracefully handles the error without crashing.",
+            "requirement_ids": [
+              "R-075"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1221,
+          "output_tokens": 240,
+          "details": {
+            "total_tokens": 1461,
+            "text_prompt_tokens": 1221
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-076-01",
+            "title": "Delete single history entry - Normal",
+            "description": "Verify that a single History entry is successfully deleted when requested by the user.",
+            "requirement_ids": [
+              "R-076"
+            ]
+          },
+          {
+            "id": "TC-R-076-02",
+            "title": "Delete already deleted entry - Edge",
+            "description": "Verify the system behavior when attempting to delete an entry that has already been deleted.",
+            "requirement_ids": [
+              "R-076"
+            ]
+          },
+          {
+            "id": "TC-R-076-03",
+            "title": "Delete operation failure due to locked database - Error",
+            "description": "Verify the error handling when the delete operation fails due to a locked history database.",
+            "requirement_ids": [
+              "R-076"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1221,
+          "output_tokens": 248,
+          "details": {
+            "total_tokens": 1469,
+            "text_prompt_tokens": 1221
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-077-NORM",
+            "title": "Delete Multiple History Entries",
+            "description": "Select multiple history entries and delete them simultaneously to verify they are removed from the display.",
+            "requirement_ids": [
+              "R-077"
+            ]
+          },
+          {
+            "id": "TC-R-077-EDGE",
+            "title": "Delete All History Entries",
+            "description": "Select all history entries across the list and perform a bulk deletion to verify complete removal.",
+            "requirement_ids": [
+              "R-077"
+            ]
+          },
+          {
+            "id": "TC-R-077-ERR",
+            "title": "Partial Deletion Failure",
+            "description": "Attempt to delete multiple history entries when a storage or write error occurs mid-operation, and verify error handling.",
+            "requirement_ids": [
+              "R-077"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": 1221,
+          "output_tokens": 227,
+          "details": {
+            "total_tokens": 1448,
+            "text_prompt_tokens": 1221
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-078-01",
+            "title": "Clear Global History Normal",
+            "description": "Clear the entire Global History successfully and verify all entries are removed.",
+            "requirement_ids": [
+              "R-078"
+            ]
+          },
+          {
+            "id": "TC-R-078-02",
+            "title": "Clear Global History Edge",
+            "description": "Attempt to clear the Global History when the history is already completely empty.",
+            "requirement_ids": [
+              "R-078"
+            ]
+          },
+          {
+            "id": "TC-R-078-03",
+            "title": "Clear Global History Abnormal",
+            "description": "Handle a database or system failure gracefully during the Global History wipe operation.",
+            "requirement_ids": [
+              "R-078"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1221,
+          "output_tokens": 233,
+          "details": {
+            "total_tokens": 1454,
+            "text_prompt_tokens": 1221
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-079-01",
+            "title": "Group history items by Day, Site, and None",
+            "description": "Verify that history items can be successfully grouped by Day, Site, and None according to user selection.",
+            "requirement_ids": [
+              "R-079"
+            ]
+          },
+          {
+            "id": "TC-R-079-02",
+            "title": "Group history with empty data set",
+            "description": "Verify the grouping behavior when the history data set is completely empty.",
+            "requirement_ids": [
+              "R-079"
+            ]
+          },
+          {
+            "id": "TC-R-079-03",
+            "title": "Grouping failure on corrupted entries",
+            "description": "Verify system error handling when attempting to group history items containing corrupted entry metadata.",
+            "requirement_ids": [
+              "R-079"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1221,
+          "output_tokens": 249,
+          "details": {
+            "total_tokens": 1470,
+            "text_prompt_tokens": 1221
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-080-01",
+            "title": "Sort and reverse-sort history columns normally",
+            "description": "Verify that history items can be sorted and reverse-sorted per column as expected.",
+            "requirement_ids": [
+              "R-080"
+            ]
+          },
+          {
+            "id": "TC-R-080-02",
+            "title": "Sort empty history table",
+            "description": "Verify sorting behavior when the history table contains no entries.",
+            "requirement_ids": [
+              "R-080"
+            ]
+          },
+          {
+            "id": "TC-R-080-03",
+            "title": "Sort failure handling on mismatched data types",
+            "description": "Verify the system handles and reports an error or fails gracefully during a sort operation on mismatched data types.",
+            "requirement_ids": [
+              "R-080"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1221,
+          "output_tokens": 246,
+          "details": {
+            "total_tokens": 1467,
+            "text_prompt_tokens": 1221
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-081-01",
+            "title": "Normal Resize of History Columns",
+            "description": "Resize history columns to show or hide more of the entries and verify correct layout rendering.",
+            "requirement_ids": [
+              "R-081"
+            ]
+          },
+          {
+            "id": "TC-R-081-02",
+            "title": "Edge Resize of History Columns",
+            "description": "Resize history columns to their minimum or maximum width limits and verify boundary constraints.",
+            "requirement_ids": [
+              "R-081"
+            ]
+          },
+          {
+            "id": "TC-R-081-03",
+            "title": "Abnormal Resize Layout Handling",
+            "description": "Verify handling when an extreme column resize operation encounters a rendering crash or layout failure.",
+            "requirement_ids": [
+              "R-081"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1221,
+          "output_tokens": 243,
+          "details": {
+            "total_tokens": 1464,
+            "text_prompt_tokens": 1221
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-082-01",
+            "title": "Show and Hide History Columns Normally",
+            "description": "Verify that history columns can be successfully shown and hidden via the user interface.",
+            "requirement_ids": [
+              "R-082"
+            ]
+          },
+          {
+            "id": "TC-R-082-02",
+            "title": "Hide All History Columns",
+            "description": "Verify the edge scenario of hiding all available history columns simultaneously.",
+            "requirement_ids": [
+              "R-082"
+            ]
+          },
+          {
+            "id": "TC-R-082-03",
+            "title": "Failure to Persist Column Visibility State",
+            "description": "Verify system behavior when saving or persisting the column visibility state encounters an abnormal failure.",
+            "requirement_ids": [
+              "R-082"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1221,
+          "output_tokens": 222,
+          "details": {
+            "total_tokens": 1443,
+            "text_prompt_tokens": 1221
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-083-01",
+            "title": "Revisit recent sites via Back and Forward dropdown menu",
+            "description": "Verify that recently visited sites can be successfully revisited by selecting them from the Back and Forward button dropdown menus under normal navigation conditions.",
+            "requirement_ids": [
+              "R-083"
+            ]
+          },
+          {
+            "id": "TC-R-083-02",
+            "title": "Back and Forward dropdown menu when no history exists",
+            "description": "Verify the behavior of the Back and Forward button dropdown menus when there is no prior navigation history (edge condition).",
+            "requirement_ids": [
+              "R-083"
+            ]
+          },
+          {
+            "id": "TC-R-083-03",
+            "title": "Back and Forward dropdown menu failure handling",
+            "description": "Verify system behavior and error handling when attempting to use the Back and Forward dropdown menus while the navigation state is corrupt (abnormal condition).",
+            "requirement_ids": [
+              "R-083"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1221,
+          "output_tokens": 282,
+          "details": {
+            "total_tokens": 1503,
+            "text_prompt_tokens": 1221
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-084-01",
+            "title": "Create New Empty Session History File Normally",
+            "description": "Verify that a new, empty session history file is successfully created when a new browser window is opened or the browser is restarted.",
+            "requirement_ids": [
+              "R-084"
+            ]
+          },
+          {
+            "id": "TC-R-084-02",
+            "title": "Create Session History File with Restricted Permissions",
+            "description": "Verify session history file creation behavior when file system permissions are restricted for the directory.",
+            "requirement_ids": [
+              "R-084"
+            ]
+          },
+          {
+            "id": "TC-R-084-03",
+            "title": "Disk Full Error During Session File Creation",
+            "description": "Verify error handling when a disk full error occurs while attempting to create a new session history file.",
+            "requirement_ids": [
+              "R-084"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1221,
+          "output_tokens": 261,
+          "details": {
+            "total_tokens": 1482,
+            "text_prompt_tokens": 1221
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "critic",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "All requirements have been adequately mapped with test cases covering normal, edge, and abnormal scenarios. No blockers found.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 2822,
+          "output_tokens": 60,
+          "details": {
+            "total_tokens": 2882,
+            "text_prompt_tokens": 2822
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "validator",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "All requirements are comprehensively tested across normal, edge, and abnormal scenarios with well-structured test cases.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 2819,
+          "output_tokens": 58,
+          "details": {
+            "total_tokens": 2877,
+            "text_prompt_tokens": 2819
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "coverage",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "All requirements (R-073 through R-084) have comprehensive test coverage across normal, edge, and error/abnormal scenario types. No coverage gaps, excess, or unnecessary repetitions were found in the accepted test cases."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 3073,
+          "output_tokens": 58,
+          "details": {
+            "total_tokens": 3131,
+            "text_prompt_tokens": 3073
+          },
+          "status": "available"
+        }
+      ]
+    }
+  ],
+  "monotonicity": "confirmed"
+}

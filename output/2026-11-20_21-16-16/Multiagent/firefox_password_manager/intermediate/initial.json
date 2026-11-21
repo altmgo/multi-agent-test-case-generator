@@ -1,0 +1,144 @@
+{
+  "assessment": {
+    "candidate_id": "initial",
+    "cases": [
+      {
+        "id": "G-001",
+        "title": "Discard password on Never For This Site",
+        "description": "Verify that the browser discards the password when 'Never For This Site' is selected in the save password dialog box.",
+        "requirement_ids": [
+          "R-102"
+        ]
+      },
+      {
+        "id": "G-002",
+        "title": "Retain password on dialog dismissal",
+        "description": "Verify that the password is not discarded when the save password dialog box is cancelled or dismissed without selecting 'Never For This Site'.",
+        "requirement_ids": [
+          "R-102"
+        ]
+      },
+      {
+        "id": "G-003",
+        "title": "Present multiple saved credentials",
+        "description": "Verify that when multiple usernames and passwords for a website are saved, those same choices are later available to be presented when filling forms.",
+        "requirement_ids": [
+          "R-103"
+        ]
+      },
+      {
+        "id": "G-004",
+        "title": "Presentation behavior with zero or single credential",
+        "description": "Verify the credential presentation behavior when there is zero or only a single username and password saved for a website.",
+        "requirement_ids": [
+          "R-103"
+        ]
+      },
+      {
+        "id": "G-005",
+        "title": "Detect New Password Upon Change",
+        "description": "Verify that when a saved username and password for a website is subsequently changed and submitted, the password manager picks up and updates to the new password.",
+        "requirement_ids": [
+          "R-104"
+        ]
+      },
+      {
+        "id": "G-006",
+        "title": "Form Submission with Unchanged Password",
+        "description": "Verify that submitting a login form with an unchanged password when a password update is expected does not incorrectly overwrite or corrupt stored credential records.",
+        "requirement_ids": [
+          "R-104"
+        ]
+      },
+      {
+        "id": "G-007",
+        "title": "Normal: Password Manager disabled prevents save prompts and prefilling",
+        "description": "Verify that when the password manager is disabled from the preferences panel, the browser no longer asks to save passwords and no longer prefill info on sites.",
+        "requirement_ids": [
+          "R-105"
+        ]
+      },
+      {
+        "id": "G-008",
+        "title": "Boundary: Disabling password manager while a save prompt is active",
+        "description": "Verify that disabling the password manager from preferences while a save password prompt is currently active immediately dismisses or invalidates the prompt and prevents saving.",
+        "requirement_ids": [
+          "R-105"
+        ]
+      },
+      {
+        "id": "G-009",
+        "title": "View saved credentials in preferences",
+        "description": "Verify that when a username and password are saved in the password manager, this information can be successfully viewed in the password manager through the preferences panel.",
+        "requirement_ids": [
+          "R-106"
+        ]
+      },
+      {
+        "id": "G-010",
+        "title": "View preferences list when empty",
+        "description": "Verify that attempting to view saved credentials in the password manager through preferences when no credentials are saved handles the empty list state gracefully.",
+        "requirement_ids": [
+          "R-106"
+        ]
+      },
+      {
+        "id": "G-011",
+        "title": "Remove single site credentials successfully",
+        "description": "Verify that removing a specific username and password for a given site results in the credentials no longer autofilling on that site nor being listed in the password manager.",
+        "requirement_ids": [
+          "R-107"
+        ]
+      },
+      {
+        "id": "G-012",
+        "title": "Remove the last remaining credential",
+        "description": "Verify that removing the absolute last remaining credential from the password manager correctly stops autofill on that site and leaves the manager empty.",
+        "requirement_ids": [
+          "R-107"
+        ]
+      },
+      {
+        "id": "G-013",
+        "title": "Remove all username and password information successfully",
+        "description": "Verify that when the user chooses to remove all stored username and password information, no credentials autofill on any sites and nothing is listed in the password manager preferences.",
+        "requirement_ids": [
+          "R-108"
+        ]
+      },
+      {
+        "id": "G-014",
+        "title": "Clear all credentials when password manager is already empty",
+        "description": "Verify the system behavior when the remove all credentials action is executed while the password manager storage is already empty, ensuring no errors occur and the list remains empty.",
+        "requirement_ids": [
+          "R-108"
+        ]
+      }
+    ],
+    "opinions": [
+      {
+        "agent": "critic",
+        "feedback": "The test cases are comprehensive, well-structured, and appropriately cover both normal and alternative scenarios for all requirements. No blockers or missing scenario types were identified.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      {
+        "agent": "validator",
+        "feedback": "All requirements and their associated test cases are well-structured, clear, and cover both normal and boundary/error scenarios appropriately. No blockers found.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      }
+    ],
+    "valid": true,
+    "confirmed_blockers": 0,
+    "covered_requirements": 7,
+    "duplicates": 0,
+    "comparable": true
+  },
+  "analysis": {
+    "analysis": "R-102: Normal (select Never For This Site, password discarded), Abnormal (cancel dialog, password retained). R-103: Normal (multiple credentials saved and presented later), Edge (zero credentials, single credential). R-104: Normal (password changed, manager picks up new password), Abnormal (form submitted with invalid/unchanged password). R-105: Normal (password manager disabled, no save prompt and no prefill), Boundary (disabling while a save prompt is currently active). R-106: Normal (saved credentials viewable in preferences), Abnormal (viewing when list is empty). R-107: Normal (remove single site credentials, no autofill and not listed), Boundary (removing last remaining credential). R-108: Normal (remove all credentials, no autofill and list empty), Edge (clearing when already empty)."
+  },
+  "failure": null
+}

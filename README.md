@@ -23,7 +23,7 @@ Use `GOOGLE_API_KEY` para os modelos Gemini ou `GROQ_API_KEY` para
 ```bash
 tcg run \
   --model gemini-3.5-flash-lite \
-  --solutions one-shot GHL Multiagent \
+  --solutions zero-shot Multiagent \
   --units firefox_bookmarks.json e2edev_bench_01.json \
   --agents analyst critic validator coverage \
   --output-mode batch
