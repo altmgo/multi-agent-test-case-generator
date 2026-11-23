@@ -10,7 +10,7 @@ from pydantic_ai.exceptions import ModelAPIError, UnexpectedModelBehavior
 from tcg.runtime import Runtime, sum_usage
 from tcg.schemas import AgentOpinion, CandidateAssessment, GenerationInput, GenerationResult, UsageRecord
 
-PROMPT_VERSION = "multiagent-v2"
+PROMPT_VERSION = "multiagent-v3"
 CANDIDATES_PER_ROUND = 3
 STAGE_ERRORS = (ValueError, ModelAPIError, UnexpectedModelBehavior)
 Control = Literal["critic", "validator"]
@@ -29,6 +29,7 @@ class ControlOutput(BaseModel):
     request_revision: bool
     confirmed_blockers: list[str]
     blocker_assessment_complete: bool = True
+    missing_scenario_gaps: list[str] = Field(default_factory=list)
 
 
 class Failure(BaseModel):

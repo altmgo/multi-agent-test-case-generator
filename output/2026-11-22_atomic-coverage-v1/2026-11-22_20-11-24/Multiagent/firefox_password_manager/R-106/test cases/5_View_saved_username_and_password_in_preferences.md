@@ -1,0 +1,7 @@
+# View saved username and password in preferences panel
+
+Case ID · G-005
+
+Requirements · R-106
+
+Verify that when a username and password are saved in the password manager, this information can be viewed in the password manager through the preferences.

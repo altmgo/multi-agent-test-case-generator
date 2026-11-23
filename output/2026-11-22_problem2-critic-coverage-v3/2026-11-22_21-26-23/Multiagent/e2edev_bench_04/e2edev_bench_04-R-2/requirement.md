@@ -1,0 +1,3 @@
+# e2edev\_bench\_04-R-2
+
+The web application should allow users to toggle the visibility of a text box using a 'Toggle Text Box' button and hide the text box using a 'Close' button. The text box is initially hidden. When the user clicks the 'Toggle Text Box' button, located in the DOM with the attribute data-testid='toggle-button', the text box, identified by data-testid='text-box', becomes visible. Within the visible text box, there is a 'Close' button, identified by data-testid='close-button'. When the user clicks this 'Close' button, the text box should be hidden again. The visibility of the text box is controlled by adding or removing the 'show' class from the text box element in the DOM.

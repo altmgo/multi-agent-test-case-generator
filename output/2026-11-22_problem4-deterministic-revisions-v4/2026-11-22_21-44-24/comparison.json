@@ -1,0 +1,49 @@
+{
+  "unit_ids": [
+    "e2edev_bench_01",
+    "e2edev_bench_02",
+    "e2edev_bench_03",
+    "e2edev_bench_04",
+    "firefox_bookmarks",
+    "firefox_browser_history",
+    "firefox_password_manager",
+    "firefox_themes"
+  ],
+  "total_unit_ids": [
+    "e2edev_bench_01",
+    "e2edev_bench_02",
+    "e2edev_bench_03",
+    "e2edev_bench_04",
+    "firefox_bookmarks",
+    "firefox_browser_history",
+    "firefox_password_manager",
+    "firefox_themes"
+  ],
+  "evaluable_unit_ids": {
+    "Multiagent": [
+      "e2edev_bench_01",
+      "e2edev_bench_02",
+      "e2edev_bench_03",
+      "e2edev_bench_04",
+      "firefox_bookmarks",
+      "firefox_browser_history",
+      "firefox_password_manager",
+      "firefox_themes"
+    ]
+  },
+  "coverage": 1.0,
+  "metrics": {
+    "Multiagent": {
+      "generated_count": 115,
+      "reference_count": 104,
+      "match_count": 98,
+      "precision": 0.8521739130434782,
+      "recall": 0.9423076923076923,
+      "f1": 0.8949771689497716
+    }
+  },
+  "embedding_model": "gemini-embedding-2",
+  "similarity_threshold": 0.7,
+  "status": "completed",
+  "stop_reason": null
+}

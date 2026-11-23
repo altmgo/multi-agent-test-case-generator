@@ -1,0 +1,46 @@
+{
+  "status": "evaluated",
+  "embedding_model": "gemini-embedding-2",
+  "similarity_threshold": 0.7,
+  "matches": [
+    {
+      "generated_id": "G-001",
+      "reference_id": "TC-175",
+      "similarity": 0.8783536750502505
+    },
+    {
+      "generated_id": "G-002",
+      "reference_id": "TC-177",
+      "similarity": 0.8825604325887066
+    },
+    {
+      "generated_id": "G-003",
+      "reference_id": "TC-176",
+      "similarity": 0.8502648968594501
+    },
+    {
+      "generated_id": "G-004",
+      "reference_id": "TC-181",
+      "similarity": 0.8730002569396639
+    },
+    {
+      "generated_id": "G-005",
+      "reference_id": "TC-178",
+      "similarity": 0.9173236853451952
+    },
+    {
+      "generated_id": "G-006",
+      "reference_id": "TC-179",
+      "similarity": 0.9087789468771874
+    },
+    {
+      "generated_id": "G-007",
+      "reference_id": "TC-180",
+      "similarity": 0.8832061616399839
+    }
+  ],
+  "unmatched_generated_ids": [
+    "G-008"
+  ],
+  "unmatched_reference_ids": []
+}

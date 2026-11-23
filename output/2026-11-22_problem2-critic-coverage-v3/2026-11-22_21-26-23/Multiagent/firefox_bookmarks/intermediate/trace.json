@@ -1,0 +1,1177 @@
+{
+  "initial": {
+    "assessment": {
+      "candidate_id": "initial",
+      "cases": [
+        {
+          "id": "G-001",
+          "title": "Add new bookmark",
+          "description": "Verify that a new bookmark can be added successfully.",
+          "requirement_ids": [
+            "R-001"
+          ]
+        },
+        {
+          "id": "G-002",
+          "title": "Add bookmark to specific location",
+          "description": "Verify that a new bookmark is added into a specific location within the bookmarks hierarchy.",
+          "requirement_ids": [
+            "R-001"
+          ]
+        },
+        {
+          "id": "G-003",
+          "title": "Delete Bookmark from File",
+          "description": "Verify that a bookmark is properly deleted from the bookmarks file.",
+          "requirement_ids": [
+            "R-002"
+          ]
+        },
+        {
+          "id": "G-004",
+          "title": "Remove Deleted Bookmark Display from All Access Points",
+          "description": "Verify that a deleted bookmark is no longer displayed from all access points.",
+          "requirement_ids": [
+            "R-002"
+          ]
+        },
+        {
+          "id": "G-005",
+          "title": "Add bookmark to personal toolbar",
+          "description": "Verify that a bookmark is successfully added to the personal toolbar.",
+          "requirement_ids": [
+            "R-003"
+          ]
+        },
+        {
+          "id": "G-006",
+          "title": "Delete bookmark from personal toolbar",
+          "description": "Verify that a bookmark is successfully deleted from the personal toolbar.",
+          "requirement_ids": [
+            "R-003"
+          ]
+        },
+        {
+          "id": "G-007",
+          "title": "Insert New Bookmark Folder Into Hierarchy",
+          "description": "Verify that a new bookmark folder is successfully inserted into a specific location within the bookmarks hierarchy.",
+          "requirement_ids": [
+            "R-004"
+          ]
+        },
+        {
+          "id": "G-008",
+          "title": "Launch Bookmark in Browser Window",
+          "description": "Verify that double-clicking on a bookmark causes it to be launched in a browser window.",
+          "requirement_ids": [
+            "R-005"
+          ]
+        },
+        {
+          "id": "G-009",
+          "title": "Verify default bookmarks packaged with browser are valid links",
+          "description": "Verify that all bookmarks within the default bookmarks file packaged with the browser contain valid links.",
+          "requirement_ids": [
+            "R-006"
+          ]
+        },
+        {
+          "id": "G-010",
+          "title": "Verify bookmark item changes are saved without item integrity loss",
+          "description": "Modify a bookmark item and verify that the changes are successfully saved while maintaining full item integrity.",
+          "requirement_ids": [
+            "R-007"
+          ]
+        },
+        {
+          "id": "G-011",
+          "title": "Delete Bookmarks Folder",
+          "description": "Verify that a bookmarks folder is successfully deleted.",
+          "requirement_ids": [
+            "R-008"
+          ]
+        },
+        {
+          "id": "G-012",
+          "title": "Add Bookmarks Separators",
+          "description": "Verify that bookmarks separators are successfully added.",
+          "requirement_ids": [
+            "R-009"
+          ]
+        },
+        {
+          "id": "G-013",
+          "title": "Delete Bookmarks Separators",
+          "description": "Verify that bookmarks separators are successfully deleted.",
+          "requirement_ids": [
+            "R-009"
+          ]
+        },
+        {
+          "id": "G-014",
+          "title": "Verify bookmark changes persistence over browser restart",
+          "description": "Verify that bookmark changes are successfully saved and maintained after restarting the browser.",
+          "requirement_ids": [
+            "R-010"
+          ]
+        },
+        {
+          "id": "G-015",
+          "title": "Verify bookmark changes persistence over browser crash",
+          "description": "Verify that bookmark changes are successfully saved and maintained following a browser crash event.",
+          "requirement_ids": [
+            "R-010"
+          ]
+        },
+        {
+          "id": "G-016",
+          "title": "Verify negative execution of view properties for bookmarks, folders, and separators",
+          "description": "Verify that view properties do not successfully execute or are prevented for bookmarks, folders, and separators.",
+          "requirement_ids": [
+            "R-011"
+          ]
+        },
+        {
+          "id": "G-017",
+          "title": "Rename bookmark inline without properties dialog",
+          "description": "Verify that a bookmark can be renamed directly 'inline' without having to open the bookmarks properties dialog.",
+          "requirement_ids": [
+            "R-012"
+          ]
+        },
+        {
+          "id": "G-018",
+          "title": "Find Bookmark Using User-Defined Custom Keyword",
+          "description": "Verify that a bookmark can be found by using a user-defined custom keyword.",
+          "requirement_ids": [
+            "R-013"
+          ]
+        },
+        {
+          "id": "G-019",
+          "title": "Sort Bookmarks per Column",
+          "description": "Verify that bookmarks are sorted per column.",
+          "requirement_ids": [
+            "R-014"
+          ]
+        },
+        {
+          "id": "G-020",
+          "title": "Reverse-Sort Bookmarks per Column",
+          "description": "Verify that bookmarks are reverse-sorted per column.",
+          "requirement_ids": [
+            "R-014"
+          ]
+        },
+        {
+          "id": "G-021",
+          "title": "Resize Bookmark Columns",
+          "description": "Verify that bookmark columns can be resized to show or hide more of entries.",
+          "requirement_ids": [
+            "R-015"
+          ]
+        },
+        {
+          "id": "G-022",
+          "title": "Show Bookmark Columns",
+          "description": "Verify that bookmark columns can be explicitly showed to display additional entry details.",
+          "requirement_ids": [
+            "R-016"
+          ]
+        },
+        {
+          "id": "G-023",
+          "title": "Hide Bookmark Columns",
+          "description": "Verify that bookmark columns can be explicitly hidden from view.",
+          "requirement_ids": [
+            "R-016"
+          ]
+        },
+        {
+          "id": "G-024",
+          "title": "Delete Several Bookmarks Simultaneously",
+          "description": "Verify that several bookmarks can be selected and deleted at one time.",
+          "requirement_ids": [
+            "R-017"
+          ]
+        },
+        {
+          "id": "G-025",
+          "title": "Prevent dropping a bookmark item onto itself",
+          "description": "Verify that it is not possible to drop a bookmark item onto itself within the bookmarks hierarchy.",
+          "requirement_ids": [
+            "R-018"
+          ]
+        },
+        {
+          "id": "G-026",
+          "title": "Prevent dropping a bookmark item onto its immediate parent",
+          "description": "Verify that it is not possible to drop a bookmark item onto its immediate parent within the bookmarks hierarchy.",
+          "requirement_ids": [
+            "R-018"
+          ]
+        },
+        {
+          "id": "G-027",
+          "title": "Prevent dropping a bookmark item onto its immediate child",
+          "description": "Verify that it is not possible to drop a bookmark item onto its immediate child within the bookmarks hierarchy.",
+          "requirement_ids": [
+            "R-018"
+          ]
+        }
+      ],
+      "opinions": [
+        {
+          "agent": "critic",
+          "feedback": "All requirements and their explicit behaviors have been fully and properly mapped to the proposed test cases with no missing scenarios or confirmed blockers.",
+          "request_revision": false,
+          "confirmed_blockers": [],
+          "blocker_assessment_complete": true
+        },
+        {
+          "agent": "validator",
+          "feedback": "All requirements and their explicit scenarios are properly covered by the test cases with no blockers or missing coverage gaps.",
+          "request_revision": false,
+          "confirmed_blockers": [],
+          "blocker_assessment_complete": true
+        }
+      ],
+      "valid": true,
+      "confirmed_blockers": 0,
+      "covered_requirements": 18,
+      "duplicates": 0,
+      "comparable": true
+    },
+    "analysis": {
+      "analysis": "R-001: Multiple distinct behaviors (addition, location placement). R-002: Multiple distinct behaviors (deletion from file, removal of display from all access points). R-003: Multiple distinct behaviors (addition to personal toolbar, deletion from personal toolbar). R-004: Single straightforward acceptance criterion (Normal scenario only). R-005: Single straightforward acceptance criterion (Normal scenario only). R-006: Single straightforward acceptance criterion (Normal scenario only). R-007: Single straightforward acceptance criterion (Normal scenario only). R-008: Single straightforward acceptance criterion (Normal scenario only). R-009: Multiple distinct behaviors (addition of separators, deletion of separators). R-010: Multiple distinct behaviors (persistence over restart, persistence over crash). R-011: Abnormal/Error scenario explicitly mentioned (negative test for view properties). R-012: Single straightforward acceptance criterion (Normal scenario only). R-013: Single straightforward acceptance criterion (Normal scenario only). R-014: Multiple distinct behaviors (sorting per column, reverse-sorting per column). R-015: Single straightforward acceptance criterion (Normal scenario only). R-016: Multiple distinct behaviors (showing columns, hiding columns). R-017: Single straightforward acceptance criterion (Normal scenario only). R-018: Abnormal/Error scenario explicitly mentioned (restriction on dropping onto itself, immediate parent, or child)."
+    },
+    "failure": null
+  },
+  "rounds": [],
+  "status": "completed",
+  "failure": null,
+  "accepted_id": "initial",
+  "accepted_assessment": {
+    "candidate_id": "initial",
+    "cases": [
+      {
+        "id": "G-001",
+        "title": "Add new bookmark",
+        "description": "Verify that a new bookmark can be added successfully.",
+        "requirement_ids": [
+          "R-001"
+        ]
+      },
+      {
+        "id": "G-002",
+        "title": "Add bookmark to specific location",
+        "description": "Verify that a new bookmark is added into a specific location within the bookmarks hierarchy.",
+        "requirement_ids": [
+          "R-001"
+        ]
+      },
+      {
+        "id": "G-003",
+        "title": "Delete Bookmark from File",
+        "description": "Verify that a bookmark is properly deleted from the bookmarks file.",
+        "requirement_ids": [
+          "R-002"
+        ]
+      },
+      {
+        "id": "G-004",
+        "title": "Remove Deleted Bookmark Display from All Access Points",
+        "description": "Verify that a deleted bookmark is no longer displayed from all access points.",
+        "requirement_ids": [
+          "R-002"
+        ]
+      },
+      {
+        "id": "G-005",
+        "title": "Add bookmark to personal toolbar",
+        "description": "Verify that a bookmark is successfully added to the personal toolbar.",
+        "requirement_ids": [
+          "R-003"
+        ]
+      },
+      {
+        "id": "G-006",
+        "title": "Delete bookmark from personal toolbar",
+        "description": "Verify that a bookmark is successfully deleted from the personal toolbar.",
+        "requirement_ids": [
+          "R-003"
+        ]
+      },
+      {
+        "id": "G-007",
+        "title": "Insert New Bookmark Folder Into Hierarchy",
+        "description": "Verify that a new bookmark folder is successfully inserted into a specific location within the bookmarks hierarchy.",
+        "requirement_ids": [
+          "R-004"
+        ]
+      },
+      {
+        "id": "G-008",
+        "title": "Launch Bookmark in Browser Window",
+        "description": "Verify that double-clicking on a bookmark causes it to be launched in a browser window.",
+        "requirement_ids": [
+          "R-005"
+        ]
+      },
+      {
+        "id": "G-009",
+        "title": "Verify default bookmarks packaged with browser are valid links",
+        "description": "Verify that all bookmarks within the default bookmarks file packaged with the browser contain valid links.",
+        "requirement_ids": [
+          "R-006"
+        ]
+      },
+      {
+        "id": "G-010",
+        "title": "Verify bookmark item changes are saved without item integrity loss",
+        "description": "Modify a bookmark item and verify that the changes are successfully saved while maintaining full item integrity.",
+        "requirement_ids": [
+          "R-007"
+        ]
+      },
+      {
+        "id": "G-011",
+        "title": "Delete Bookmarks Folder",
+        "description": "Verify that a bookmarks folder is successfully deleted.",
+        "requirement_ids": [
+          "R-008"
+        ]
+      },
+      {
+        "id": "G-012",
+        "title": "Add Bookmarks Separators",
+        "description": "Verify that bookmarks separators are successfully added.",
+        "requirement_ids": [
+          "R-009"
+        ]
+      },
+      {
+        "id": "G-013",
+        "title": "Delete Bookmarks Separators",
+        "description": "Verify that bookmarks separators are successfully deleted.",
+        "requirement_ids": [
+          "R-009"
+        ]
+      },
+      {
+        "id": "G-014",
+        "title": "Verify bookmark changes persistence over browser restart",
+        "description": "Verify that bookmark changes are successfully saved and maintained after restarting the browser.",
+        "requirement_ids": [
+          "R-010"
+        ]
+      },
+      {
+        "id": "G-015",
+        "title": "Verify bookmark changes persistence over browser crash",
+        "description": "Verify that bookmark changes are successfully saved and maintained following a browser crash event.",
+        "requirement_ids": [
+          "R-010"
+        ]
+      },
+      {
+        "id": "G-016",
+        "title": "Verify negative execution of view properties for bookmarks, folders, and separators",
+        "description": "Verify that view properties do not successfully execute or are prevented for bookmarks, folders, and separators.",
+        "requirement_ids": [
+          "R-011"
+        ]
+      },
+      {
+        "id": "G-017",
+        "title": "Rename bookmark inline without properties dialog",
+        "description": "Verify that a bookmark can be renamed directly 'inline' without having to open the bookmarks properties dialog.",
+        "requirement_ids": [
+          "R-012"
+        ]
+      },
+      {
+        "id": "G-018",
+        "title": "Find Bookmark Using User-Defined Custom Keyword",
+        "description": "Verify that a bookmark can be found by using a user-defined custom keyword.",
+        "requirement_ids": [
+          "R-013"
+        ]
+      },
+      {
+        "id": "G-019",
+        "title": "Sort Bookmarks per Column",
+        "description": "Verify that bookmarks are sorted per column.",
+        "requirement_ids": [
+          "R-014"
+        ]
+      },
+      {
+        "id": "G-020",
+        "title": "Reverse-Sort Bookmarks per Column",
+        "description": "Verify that bookmarks are reverse-sorted per column.",
+        "requirement_ids": [
+          "R-014"
+        ]
+      },
+      {
+        "id": "G-021",
+        "title": "Resize Bookmark Columns",
+        "description": "Verify that bookmark columns can be resized to show or hide more of entries.",
+        "requirement_ids": [
+          "R-015"
+        ]
+      },
+      {
+        "id": "G-022",
+        "title": "Show Bookmark Columns",
+        "description": "Verify that bookmark columns can be explicitly showed to display additional entry details.",
+        "requirement_ids": [
+          "R-016"
+        ]
+      },
+      {
+        "id": "G-023",
+        "title": "Hide Bookmark Columns",
+        "description": "Verify that bookmark columns can be explicitly hidden from view.",
+        "requirement_ids": [
+          "R-016"
+        ]
+      },
+      {
+        "id": "G-024",
+        "title": "Delete Several Bookmarks Simultaneously",
+        "description": "Verify that several bookmarks can be selected and deleted at one time.",
+        "requirement_ids": [
+          "R-017"
+        ]
+      },
+      {
+        "id": "G-025",
+        "title": "Prevent dropping a bookmark item onto itself",
+        "description": "Verify that it is not possible to drop a bookmark item onto itself within the bookmarks hierarchy.",
+        "requirement_ids": [
+          "R-018"
+        ]
+      },
+      {
+        "id": "G-026",
+        "title": "Prevent dropping a bookmark item onto its immediate parent",
+        "description": "Verify that it is not possible to drop a bookmark item onto its immediate parent within the bookmarks hierarchy.",
+        "requirement_ids": [
+          "R-018"
+        ]
+      },
+      {
+        "id": "G-027",
+        "title": "Prevent dropping a bookmark item onto its immediate child",
+        "description": "Verify that it is not possible to drop a bookmark item onto its immediate child within the bookmarks hierarchy.",
+        "requirement_ids": [
+          "R-018"
+        ]
+      }
+    ],
+    "opinions": [
+      {
+        "agent": "critic",
+        "feedback": "All requirements and their explicit behaviors have been fully and properly mapped to the proposed test cases with no missing scenarios or confirmed blockers.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      {
+        "agent": "validator",
+        "feedback": "All requirements and their explicit scenarios are properly covered by the test cases with no blockers or missing coverage gaps.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      }
+    ],
+    "valid": true,
+    "confirmed_blockers": 0,
+    "covered_requirements": 18,
+    "duplicates": 0,
+    "comparable": true
+  },
+  "pending": [],
+  "pending_controls": [],
+  "coverage": {
+    "feedback": "The accepted test cases align very closely with the specified requirements, providing comprehensive coverage for R-001 through R-018 without introducing redundant or out-of-scope behaviors. No coverage gaps or excess cases were found; each requirement is directly mapped to corresponding valid test scenarios that accurately reflect the explicitly stated functionality."
+  },
+  "coverage_failure": null,
+  "calls": [
+    {
+      "stage": "analyst",
+      "subject_id": "initial",
+      "output": {
+        "analysis": "R-001: Multiple distinct behaviors (addition, location placement). R-002: Multiple distinct behaviors (deletion from file, removal of display from all access points). R-003: Multiple distinct behaviors (addition to personal toolbar, deletion from personal toolbar). R-004: Single straightforward acceptance criterion (Normal scenario only). R-005: Single straightforward acceptance criterion (Normal scenario only). R-006: Single straightforward acceptance criterion (Normal scenario only). R-007: Single straightforward acceptance criterion (Normal scenario only). R-008: Single straightforward acceptance criterion (Normal scenario only). R-009: Multiple distinct behaviors (addition of separators, deletion of separators). R-010: Multiple distinct behaviors (persistence over restart, persistence over crash). R-011: Abnormal/Error scenario explicitly mentioned (negative test for view properties). R-012: Single straightforward acceptance criterion (Normal scenario only). R-013: Single straightforward acceptance criterion (Normal scenario only). R-014: Multiple distinct behaviors (sorting per column, reverse-sorting per column). R-015: Single straightforward acceptance criterion (Normal scenario only). R-016: Multiple distinct behaviors (showing columns, hiding columns). R-017: Single straightforward acceptance criterion (Normal scenario only). R-018: Abnormal/Error scenario explicitly mentioned (restriction on dropping onto itself, immediate parent, or child)."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1198,
+          "output_tokens": 317,
+          "details": {
+            "total_tokens": 1515,
+            "text_prompt_tokens": 1198
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-001-01",
+            "title": "Add new bookmark",
+            "description": "Verify that a new bookmark can be added successfully.",
+            "requirement_ids": [
+              "R-001"
+            ]
+          },
+          {
+            "id": "TC-R-001-02",
+            "title": "Add bookmark to specific location",
+            "description": "Verify that a new bookmark is added into a specific location within the bookmarks hierarchy.",
+            "requirement_ids": [
+              "R-001"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1574,
+          "output_tokens": 158,
+          "details": {
+            "total_tokens": 1732,
+            "text_prompt_tokens": 1574
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-002-01",
+            "title": "Delete Bookmark from File",
+            "description": "Verify that a bookmark is properly deleted from the bookmarks file.",
+            "requirement_ids": [
+              "R-002"
+            ]
+          },
+          {
+            "id": "TC-R-002-02",
+            "title": "Remove Deleted Bookmark Display from All Access Points",
+            "description": "Verify that a deleted bookmark is no longer displayed from all access points.",
+            "requirement_ids": [
+              "R-002"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1574,
+          "output_tokens": 162,
+          "details": {
+            "total_tokens": 1736,
+            "text_prompt_tokens": 1574
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-003-01",
+            "title": "Add bookmark to personal toolbar",
+            "description": "Verify that a bookmark is successfully added to the personal toolbar.",
+            "requirement_ids": [
+              "R-003"
+            ]
+          },
+          {
+            "id": "TC-R-003-02",
+            "title": "Delete bookmark from personal toolbar",
+            "description": "Verify that a bookmark is successfully deleted from the personal toolbar.",
+            "requirement_ids": [
+              "R-003"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1574,
+          "output_tokens": 158,
+          "details": {
+            "total_tokens": 1732,
+            "text_prompt_tokens": 1574
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-004-01",
+            "title": "Insert New Bookmark Folder Into Hierarchy",
+            "description": "Verify that a new bookmark folder is successfully inserted into a specific location within the bookmarks hierarchy.",
+            "requirement_ids": [
+              "R-004"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1574,
+          "output_tokens": 92,
+          "details": {
+            "total_tokens": 1666,
+            "text_prompt_tokens": 1574
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-005-01",
+            "title": "Launch Bookmark in Browser Window",
+            "description": "Verify that double-clicking on a bookmark causes it to be launched in a browser window.",
+            "requirement_ids": [
+              "R-005"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1574,
+          "output_tokens": 91,
+          "details": {
+            "total_tokens": 1665,
+            "text_prompt_tokens": 1574
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-006-01",
+            "title": "Verify default bookmarks packaged with browser are valid links",
+            "description": "Verify that all bookmarks within the default bookmarks file packaged with the browser contain valid links.",
+            "requirement_ids": [
+              "R-006"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1574,
+          "output_tokens": 94,
+          "details": {
+            "total_tokens": 1668,
+            "text_prompt_tokens": 1574
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-007-01",
+            "title": "Verify bookmark item changes are saved without item integrity loss",
+            "description": "Modify a bookmark item and verify that the changes are successfully saved while maintaining full item integrity.",
+            "requirement_ids": [
+              "R-007"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1574,
+          "output_tokens": 97,
+          "details": {
+            "total_tokens": 1671,
+            "text_prompt_tokens": 1574
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-008-01",
+            "title": "Delete Bookmarks Folder",
+            "description": "Verify that a bookmarks folder is successfully deleted.",
+            "requirement_ids": [
+              "R-008"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1574,
+          "output_tokens": 81,
+          "details": {
+            "total_tokens": 1655,
+            "text_prompt_tokens": 1574
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-009-01",
+            "title": "Add Bookmarks Separators",
+            "description": "Verify that bookmarks separators are successfully added.",
+            "requirement_ids": [
+              "R-009"
+            ]
+          },
+          {
+            "id": "TC-R-009-02",
+            "title": "Delete Bookmarks Separators",
+            "description": "Verify that bookmarks separators are successfully deleted.",
+            "requirement_ids": [
+              "R-009"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1574,
+          "output_tokens": 150,
+          "details": {
+            "total_tokens": 1724,
+            "text_prompt_tokens": 1574
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-010-01",
+            "title": "Verify bookmark changes persistence over browser restart",
+            "description": "Verify that bookmark changes are successfully saved and maintained after restarting the browser.",
+            "requirement_ids": [
+              "R-010"
+            ]
+          },
+          {
+            "id": "TC-R-010-02",
+            "title": "Verify bookmark changes persistence over browser crash",
+            "description": "Verify that bookmark changes are successfully saved and maintained following a browser crash event.",
+            "requirement_ids": [
+              "R-010"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1574,
+          "output_tokens": 167,
+          "details": {
+            "total_tokens": 1741,
+            "text_prompt_tokens": 1574
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-011-01",
+            "title": "Verify negative execution of view properties for bookmarks, folders, and separators",
+            "description": "Verify that view properties do not successfully execute or are prevented for bookmarks, folders, and separators.",
+            "requirement_ids": [
+              "R-011"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1574,
+          "output_tokens": 100,
+          "details": {
+            "total_tokens": 1674,
+            "text_prompt_tokens": 1574
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-012-01",
+            "title": "Rename bookmark inline without properties dialog",
+            "description": "Verify that a bookmark can be renamed directly 'inline' without having to open the bookmarks properties dialog.",
+            "requirement_ids": [
+              "R-012"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1574,
+          "output_tokens": 94,
+          "details": {
+            "total_tokens": 1668,
+            "text_prompt_tokens": 1574
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-013-01",
+            "title": "Find Bookmark Using User-Defined Custom Keyword",
+            "description": "Verify that a bookmark can be found by using a user-defined custom keyword.",
+            "requirement_ids": [
+              "R-013"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1574,
+          "output_tokens": 86,
+          "details": {
+            "total_tokens": 1660,
+            "text_prompt_tokens": 1574
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-014-01",
+            "title": "Sort Bookmarks per Column",
+            "description": "Verify that bookmarks are sorted per column.",
+            "requirement_ids": [
+              "R-014"
+            ]
+          },
+          {
+            "id": "TC-R-014-02",
+            "title": "Reverse-Sort Bookmarks per Column",
+            "description": "Verify that bookmarks are reverse-sorted per column.",
+            "requirement_ids": [
+              "R-014"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1574,
+          "output_tokens": 154,
+          "details": {
+            "total_tokens": 1728,
+            "text_prompt_tokens": 1574
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-015-01",
+            "title": "Resize Bookmark Columns",
+            "description": "Verify that bookmark columns can be resized to show or hide more of entries.",
+            "requirement_ids": [
+              "R-015"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": 1574,
+          "output_tokens": 86,
+          "details": {
+            "total_tokens": 1660,
+            "text_prompt_tokens": 1574
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-016-01",
+            "title": "Show Bookmark Columns",
+            "description": "Verify that bookmark columns can be explicitly showed to display additional entry details.",
+            "requirement_ids": [
+              "R-016"
+            ]
+          },
+          {
+            "id": "TC-R-016-02",
+            "title": "Hide Bookmark Columns",
+            "description": "Verify that bookmark columns can be explicitly hidden from view.",
+            "requirement_ids": [
+              "R-016"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1574,
+          "output_tokens": 155,
+          "details": {
+            "total_tokens": 1729,
+            "text_prompt_tokens": 1574
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-017-01",
+            "title": "Delete Several Bookmarks Simultaneously",
+            "description": "Verify that several bookmarks can be selected and deleted at one time.",
+            "requirement_ids": [
+              "R-017"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1574,
+          "output_tokens": 86,
+          "details": {
+            "total_tokens": 1660,
+            "text_prompt_tokens": 1574
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-018-01",
+            "title": "Prevent dropping a bookmark item onto itself",
+            "description": "Verify that it is not possible to drop a bookmark item onto itself within the bookmarks hierarchy.",
+            "requirement_ids": [
+              "R-018"
+            ]
+          },
+          {
+            "id": "TC-R-018-02",
+            "title": "Prevent dropping a bookmark item onto its immediate parent",
+            "description": "Verify that it is not possible to drop a bookmark item onto its immediate parent within the bookmarks hierarchy.",
+            "requirement_ids": [
+              "R-018"
+            ]
+          },
+          {
+            "id": "TC-R-018-03",
+            "title": "Prevent dropping a bookmark item onto its immediate child",
+            "description": "Verify that it is not possible to drop a bookmark item onto its immediate child within the bookmarks hierarchy.",
+            "requirement_ids": [
+              "R-018"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1574,
+          "output_tokens": 263,
+          "details": {
+            "total_tokens": 1837,
+            "text_prompt_tokens": 1574
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "critic",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "All requirements and their explicit behaviors have been fully and properly mapped to the proposed test cases with no missing scenarios or confirmed blockers.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true,
+        "missing_scenario_gaps": []
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 2705,
+          "output_tokens": 75,
+          "details": {
+            "total_tokens": 2780,
+            "text_prompt_tokens": 2705
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "validator",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "All requirements and their explicit scenarios are properly covered by the test cases with no blockers or missing coverage gaps.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true,
+        "missing_scenario_gaps": []
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 2612,
+          "output_tokens": 71,
+          "details": {
+            "total_tokens": 2683,
+            "text_prompt_tokens": 2612
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "coverage",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "The accepted test cases align very closely with the specified requirements, providing comprehensive coverage for R-001 through R-018 without introducing redundant or out-of-scope behaviors. No coverage gaps or excess cases were found; each requirement is directly mapped to corresponding valid test scenarios that accurately reflect the explicitly stated functionality."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 2688,
+          "output_tokens": 74,
+          "details": {
+            "total_tokens": 2762,
+            "text_prompt_tokens": 2688
+          },
+          "status": "available"
+        }
+      ]
+    }
+  ],
+  "monotonicity": "confirmed"
+}

@@ -1,0 +1,88 @@
+{
+  "assessment": {
+    "candidate_id": "initial",
+    "cases": [
+      {
+        "id": "G-001",
+        "title": "Discard password after selecting Never For This Site",
+        "description": "Verify that the browser discards the password after Never For This Site is selected in the save password dialog box.",
+        "requirement_ids": [
+          "R-102"
+        ]
+      },
+      {
+        "id": "G-002",
+        "title": "Available choices for multiple saved usernames and passwords",
+        "description": "Verify that when multiple usernames and passwords for a website are saved, those same choices are later available to be presented.",
+        "requirement_ids": [
+          "R-103"
+        ]
+      },
+      {
+        "id": "G-003",
+        "title": "Update saved password when changed",
+        "description": "Verify that when a username and password for a website are saved and the password is later changed, the password manager picks up the new password.",
+        "requirement_ids": [
+          "R-104"
+        ]
+      },
+      {
+        "id": "G-004",
+        "title": "Verify password manager disabled behavior",
+        "description": "Verify that when password manager from the preferences panel is disabled, the browser no longer asks to save passwords and no longer gets prefilled info on sites.",
+        "requirement_ids": [
+          "R-105"
+        ]
+      },
+      {
+        "id": "G-005",
+        "title": "View saved username and password in preferences panel",
+        "description": "Verify that when a username and password are saved in the password manager, this information can be viewed in the password manager through the preferences.",
+        "requirement_ids": [
+          "R-106"
+        ]
+      },
+      {
+        "id": "G-006",
+        "title": "Remove username and password for a given site",
+        "description": "Verify that when a username and password are removed for a given site, they no longer autofill on that site and are no longer listed in the password manager.",
+        "requirement_ids": [
+          "R-107"
+        ]
+      },
+      {
+        "id": "G-007",
+        "title": "Remove all username and password information",
+        "description": "Verify that removing all username and password information results in no autofill on sites and nothing being listed in the password manager.",
+        "requirement_ids": [
+          "R-108"
+        ]
+      }
+    ],
+    "opinions": [
+      {
+        "agent": "critic",
+        "feedback": "The test cases are well-aligned with the requirements, distinct, and adequately test the specified functionality without speculative or redundant cases.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      {
+        "agent": "validator",
+        "feedback": "All test cases map correctly to the given requirements and thoroughly cover the specified operations without any blockers, speculative behaviors, or redundancies.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      }
+    ],
+    "valid": true,
+    "confirmed_blockers": 0,
+    "covered_requirements": 7,
+    "duplicates": 0,
+    "comparable": true
+  },
+  "analysis": {
+    "analysis": "Requirement R-102: Describes multiple distinct behaviors including discarding the password after selection, warranting a Normal test scenario. Requirement R-103: Describes multiple distinct behaviors including saving multiple usernames/passwords and making them available, warranting a Normal test scenario. Requirement R-104: Describes multiple distinct behaviors including saving credentials and picking up the changed password, warranting a Normal test scenario. Requirement R-105: Describes multiple distinct behaviors including disabling the password manager, suppressing save prompts, and suppressing prefilled info, warranting a Normal test scenario. Requirement R-106: Describes multiple distinct behaviors including saving credentials and viewing them in the preferences panel, warranting a Normal test scenario. Requirement R-107: Describes multiple distinct behaviors including removing specific credentials, stopping autofill for that site, and unlisting them from the password manager, warranting a Normal test scenario. Requirement R-108: Describes multiple distinct behaviors including removing all credentials, stopping all autofill, and clearing the password manager list, warranting a Normal test scenario."
+  },
+  "failure": null
+}

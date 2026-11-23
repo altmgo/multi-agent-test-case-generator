@@ -18,11 +18,18 @@ REVIEW_RUBRIC = (
     "Report each confirmed blocker as a concise, distinct problem grounded in the requirements. "
     "A blocker prevents executing a case, gives unsupported expected behavior, or makes an essential "
     "requirement untestable. Mark blocker_assessment_complete false when evidence is inconclusive. "
+    "Before judging blockers, compare every requirement in the supplied input with the proposed cases "
+    "requirement by requirement. If a requirement explicitly describes more than one distinct operation, "
+    "state transition, parameter, boundary, normal path, or error state, confirm whether there is a "
+    "distinct case covering each explicitly described scenario. A missing explicit scenario is a coverage "
+    "gap, not a blocker: set request_revision true, explain exactly which requirement and scenario is missing, "
+    "and do not request speculative scenarios that are not stated in the requirement. "
+    "For a simple declaration or menu/UI-presence requirement, do not request variants unless the text explicitly "
+    "defines multiple behaviors or states. "
     "Flag speculative test cases that test unstated behavior, hypothetical errors, or conditions not "
     "supported by the requirement text, as well as redundant cases. "
-    "Flag when a requirement has only one test case when the requirement text explicitly describes "
-    "multiple distinct operations or error states. Treat unsupported or missing scenario types as a "
-    "revision request, not a blocker. Request revision only for actionable changes and explain them in feedback."
+    "Request revision only for confirmed blocker fixes, confirmed redundant excess, or actionable explicit "
+    "coverage gaps; explain each requested change in feedback."
 )
 
 
@@ -48,8 +55,17 @@ def score_assessment(assessment: CandidateAssessment) -> None:
     assessment.comparable = all(opinion.blocker_assessment_complete for opinion in assessment.opinions)
 
 
-def _score(assessment: CandidateAssessment) -> tuple[int, int, int]:
-    return (-assessment.confirmed_blockers, assessment.covered_requirements, -assessment.duplicates)
+def _score(assessment: CandidateAssessment) -> tuple[int, int, int, int]:
+    distinct_cases = len({
+        (_normalized(case.title), _normalized(case.description))
+        for case in assessment.cases
+    })
+    return (
+        -assessment.confirmed_blockers,
+        distinct_cases,
+        assessment.covered_requirements,
+        -assessment.duplicates,
+    )
 
 
 def _blocker_count_is_complete(assessment: CandidateAssessment) -> bool:
@@ -128,8 +144,9 @@ async def decide_round(
             "selection",
             f"round-{number}",
             "Apply the same rubric to the accepted state and every supplied candidate. "
-            "Favor fewer confirmed blockers, more requirements covered by valid distinct cases, "
-            "and fewer duplicates, in that order. Where counts leave uncertainty, compare case "
+            "Favor fewer confirmed blockers, more valid distinct cases, more requirements covered, "
+            "and fewer duplicates, in that order. Only count cases that cover explicitly described scenarios. "
+            "Where counts leave uncertainty, compare case "
             "grounding, testability and distinct scenarios. Classify every candidate relative to accepted. "
             "Name the best strict improvement if supported and explain your choice. "
             "Preserve accepted if evidence supports a tie, a regression, or no clear improvement.",

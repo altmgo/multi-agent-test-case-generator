@@ -5,7 +5,7 @@ from asyncio import CancelledError
 from pydantic import JsonValue
 
 from tcg.runtime import Runtime
-from tcg.schemas import AgentOpinion, CandidateAssessment, GenerationInput, GenerationResult
+from tcg.schemas import AgentOpinion, CandidateAssessment, GenerationInput, GeneratedCase, GenerationResult
 
 from .analyst import analyze
 from .coverage import review_coverage
@@ -29,6 +29,68 @@ from .validator import validate
 
 _CONTROLS = {"critic": critique, "validator": validate}
 _OPTIONAL_AGENTS = {*_CONTROLS, "analyst", "coverage"}
+_EXPLICIT_SCENARIO_PAIRS = (
+    ("add", "delete"),
+    ("create", "delete"),
+    ("edit", "view"),
+    ("enable", "disable"),
+    ("open", "close"),
+    ("show", "hide"),
+    ("select", "deselect"),
+    ("save", "delete"),
+    ("valid", "invalid"),
+    ("normal", "error"),
+    ("empty", "restored"),
+    ("single", "multiple"),
+)
+
+
+def _case_text(case: GeneratedCase) -> str:
+    return f"{case.title} {case.description}".casefold()
+
+
+def _explicit_coverage_opinion(
+    runner: StageRunner,
+    assessment: CandidateAssessment,
+) -> AgentOpinion | None:
+    gaps: list[str] = []
+    for requirement in runner.input.requirements:
+        linked = [
+            case
+            for case in assessment.cases
+            if requirement.id in case.requirement_ids
+        ]
+        text = requirement.text.casefold()
+        linked_text = "\n".join(_case_text(case) for case in linked)
+        for left, right in _EXPLICIT_SCENARIO_PAIRS:
+            if left not in text or right not in text:
+                continue
+            missing = [
+                term
+                for term in (left, right)
+                if term not in linked_text
+            ]
+            if missing:
+                gaps.append(
+                    f"{requirement.id}: missing explicit "
+                    + "/".join(missing)
+                    + " scenario coverage"
+                )
+        if not linked:
+            gaps.append(f"{requirement.id}: no test case links this requirement")
+    if not gaps:
+        return None
+    return AgentOpinion(
+        agent="critic",
+        feedback=(
+            "The explicit scenario comparison found actionable coverage gaps. "
+            "Generate focused replacements or additions only for these gaps: "
+            + "; ".join(gaps)
+        ),
+        request_revision=True,
+        confirmed_blockers=[],
+        blocker_assessment_complete=True,
+    )
 
 
 async def _control(runner: StageRunner, attempt: Attempt, name: Control) -> AgentOpinion:
@@ -126,6 +188,11 @@ async def _orchestrate(
             trace.status = "failed"
             trace.failure = Failure(stage=requester, error_type=type(error).__name__)
             break
+        if requester == "critic":
+            if fallback := _explicit_coverage_opinion(runner, accepted.assessment):
+                opinion = fallback
+                accepted.assessment.opinions[-1] = fallback
+                score_assessment(accepted.assessment)
         while opinion.request_revision and len(trace.rounds) < max_rounds:
             number = len(trace.rounds) + 1
             baseline = accepted.assessment
@@ -142,6 +209,11 @@ async def _orchestrate(
                     assessment=CandidateAssessment(candidate_id=f"round-{number}-candidate-{position}", cases=[])
                 )
                 await _attempt(runner, candidate, analyst_enabled, output_mode, revision, controls[: index + 1])
+                if requester == "critic":
+                    if fallback := _explicit_coverage_opinion(runner, candidate.assessment):
+                        if candidate.assessment.opinions:
+                            candidate.assessment.opinions[-1] = fallback
+                        score_assessment(candidate.assessment)
                 candidates.append(candidate)
             attempts.extend(candidates)
             decision = await decide_round(runner, number, requester, accepted, candidates)

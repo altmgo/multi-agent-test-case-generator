@@ -1,0 +1,469 @@
+{
+  "initial": {
+    "assessment": {
+      "candidate_id": "initial",
+      "cases": [
+        {
+          "id": "G-001",
+          "title": "Discard password after selecting Never For This Site",
+          "description": "Verify that the browser discards the password after Never For This Site is selected in the save password dialog box.",
+          "requirement_ids": [
+            "R-102"
+          ]
+        },
+        {
+          "id": "G-002",
+          "title": "Available choices for multiple saved usernames and passwords",
+          "description": "Verify that when multiple usernames and passwords for a website are saved, those same choices are later available to be presented.",
+          "requirement_ids": [
+            "R-103"
+          ]
+        },
+        {
+          "id": "G-003",
+          "title": "Update saved password when changed",
+          "description": "Verify that when a username and password for a website are saved and the password is later changed, the password manager picks up the new password.",
+          "requirement_ids": [
+            "R-104"
+          ]
+        },
+        {
+          "id": "G-004",
+          "title": "Verify password manager disabled behavior",
+          "description": "Verify that when password manager from the preferences panel is disabled, the browser no longer asks to save passwords and no longer gets prefilled info on sites.",
+          "requirement_ids": [
+            "R-105"
+          ]
+        },
+        {
+          "id": "G-005",
+          "title": "View saved username and password in preferences panel",
+          "description": "Verify that when a username and password are saved in the password manager, this information can be viewed in the password manager through the preferences.",
+          "requirement_ids": [
+            "R-106"
+          ]
+        },
+        {
+          "id": "G-006",
+          "title": "Remove username and password for a given site",
+          "description": "Verify that when a username and password are removed for a given site, they no longer autofill on that site and are no longer listed in the password manager.",
+          "requirement_ids": [
+            "R-107"
+          ]
+        },
+        {
+          "id": "G-007",
+          "title": "Remove all username and password information",
+          "description": "Verify that removing all username and password information results in no autofill on sites and nothing being listed in the password manager.",
+          "requirement_ids": [
+            "R-108"
+          ]
+        }
+      ],
+      "opinions": [
+        {
+          "agent": "critic",
+          "feedback": "The test cases are well-aligned with the requirements, distinct, and adequately test the specified functionality without speculative or redundant cases.",
+          "request_revision": false,
+          "confirmed_blockers": [],
+          "blocker_assessment_complete": true
+        },
+        {
+          "agent": "validator",
+          "feedback": "All test cases map correctly to the given requirements and thoroughly cover the specified operations without any blockers, speculative behaviors, or redundancies.",
+          "request_revision": false,
+          "confirmed_blockers": [],
+          "blocker_assessment_complete": true
+        }
+      ],
+      "valid": true,
+      "confirmed_blockers": 0,
+      "covered_requirements": 7,
+      "duplicates": 0,
+      "comparable": true
+    },
+    "analysis": {
+      "analysis": "Requirement R-102: Describes multiple distinct behaviors including discarding the password after selection, warranting a Normal test scenario. Requirement R-103: Describes multiple distinct behaviors including saving multiple usernames/passwords and making them available, warranting a Normal test scenario. Requirement R-104: Describes multiple distinct behaviors including saving credentials and picking up the changed password, warranting a Normal test scenario. Requirement R-105: Describes multiple distinct behaviors including disabling the password manager, suppressing save prompts, and suppressing prefilled info, warranting a Normal test scenario. Requirement R-106: Describes multiple distinct behaviors including saving credentials and viewing them in the preferences panel, warranting a Normal test scenario. Requirement R-107: Describes multiple distinct behaviors including removing specific credentials, stopping autofill for that site, and unlisting them from the password manager, warranting a Normal test scenario. Requirement R-108: Describes multiple distinct behaviors including removing all credentials, stopping all autofill, and clearing the password manager list, warranting a Normal test scenario."
+    },
+    "failure": null
+  },
+  "rounds": [],
+  "status": "completed",
+  "failure": null,
+  "accepted_id": "initial",
+  "accepted_assessment": {
+    "candidate_id": "initial",
+    "cases": [
+      {
+        "id": "G-001",
+        "title": "Discard password after selecting Never For This Site",
+        "description": "Verify that the browser discards the password after Never For This Site is selected in the save password dialog box.",
+        "requirement_ids": [
+          "R-102"
+        ]
+      },
+      {
+        "id": "G-002",
+        "title": "Available choices for multiple saved usernames and passwords",
+        "description": "Verify that when multiple usernames and passwords for a website are saved, those same choices are later available to be presented.",
+        "requirement_ids": [
+          "R-103"
+        ]
+      },
+      {
+        "id": "G-003",
+        "title": "Update saved password when changed",
+        "description": "Verify that when a username and password for a website are saved and the password is later changed, the password manager picks up the new password.",
+        "requirement_ids": [
+          "R-104"
+        ]
+      },
+      {
+        "id": "G-004",
+        "title": "Verify password manager disabled behavior",
+        "description": "Verify that when password manager from the preferences panel is disabled, the browser no longer asks to save passwords and no longer gets prefilled info on sites.",
+        "requirement_ids": [
+          "R-105"
+        ]
+      },
+      {
+        "id": "G-005",
+        "title": "View saved username and password in preferences panel",
+        "description": "Verify that when a username and password are saved in the password manager, this information can be viewed in the password manager through the preferences.",
+        "requirement_ids": [
+          "R-106"
+        ]
+      },
+      {
+        "id": "G-006",
+        "title": "Remove username and password for a given site",
+        "description": "Verify that when a username and password are removed for a given site, they no longer autofill on that site and are no longer listed in the password manager.",
+        "requirement_ids": [
+          "R-107"
+        ]
+      },
+      {
+        "id": "G-007",
+        "title": "Remove all username and password information",
+        "description": "Verify that removing all username and password information results in no autofill on sites and nothing being listed in the password manager.",
+        "requirement_ids": [
+          "R-108"
+        ]
+      }
+    ],
+    "opinions": [
+      {
+        "agent": "critic",
+        "feedback": "The test cases are well-aligned with the requirements, distinct, and adequately test the specified functionality without speculative or redundant cases.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      {
+        "agent": "validator",
+        "feedback": "All test cases map correctly to the given requirements and thoroughly cover the specified operations without any blockers, speculative behaviors, or redundancies.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      }
+    ],
+    "valid": true,
+    "confirmed_blockers": 0,
+    "covered_requirements": 7,
+    "duplicates": 0,
+    "comparable": true
+  },
+  "pending": [],
+  "pending_controls": [],
+  "coverage": {
+    "feedback": "The accepted cases provide a direct and accurate one-to-one mapping to requirements R-102 through R-108 without introducing any overgeneration, repetition, or unstated speculative behaviors. There are no missing requirements or gaps relative to the supplied requirement set."
+  },
+  "coverage_failure": null,
+  "calls": [
+    {
+      "stage": "analyst",
+      "subject_id": "initial",
+      "output": {
+        "analysis": "Requirement R-102: Describes multiple distinct behaviors including discarding the password after selection, warranting a Normal test scenario. Requirement R-103: Describes multiple distinct behaviors including saving multiple usernames/passwords and making them available, warranting a Normal test scenario. Requirement R-104: Describes multiple distinct behaviors including saving credentials and picking up the changed password, warranting a Normal test scenario. Requirement R-105: Describes multiple distinct behaviors including disabling the password manager, suppressing save prompts, and suppressing prefilled info, warranting a Normal test scenario. Requirement R-106: Describes multiple distinct behaviors including saving credentials and viewing them in the preferences panel, warranting a Normal test scenario. Requirement R-107: Describes multiple distinct behaviors including removing specific credentials, stopping autofill for that site, and unlisting them from the password manager, warranting a Normal test scenario. Requirement R-108: Describes multiple distinct behaviors including removing all credentials, stopping all autofill, and clearing the password manager list, warranting a Normal test scenario."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 750,
+          "output_tokens": 229,
+          "details": {
+            "total_tokens": 979,
+            "text_prompt_tokens": 750
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-102-01",
+            "title": "Discard password after selecting Never For This Site",
+            "description": "Verify that the browser discards the password after Never For This Site is selected in the save password dialog box.",
+            "requirement_ids": [
+              "R-102"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1037,
+          "output_tokens": 98,
+          "details": {
+            "total_tokens": 1135,
+            "text_prompt_tokens": 1037
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-103",
+            "title": "Available choices for multiple saved usernames and passwords",
+            "description": "Verify that when multiple usernames and passwords for a website are saved, those same choices are later available to be presented.",
+            "requirement_ids": [
+              "R-103"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1037,
+          "output_tokens": 97,
+          "details": {
+            "total_tokens": 1134,
+            "text_prompt_tokens": 1037
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-104-01",
+            "title": "Update saved password when changed",
+            "description": "Verify that when a username and password for a website are saved and the password is later changed, the password manager picks up the new password.",
+            "requirement_ids": [
+              "R-104"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": 1037,
+          "output_tokens": 102,
+          "details": {
+            "total_tokens": 1139,
+            "text_prompt_tokens": 1037
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-105-01",
+            "title": "Verify password manager disabled behavior",
+            "description": "Verify that when password manager from the preferences panel is disabled, the browser no longer asks to save passwords and no longer gets prefilled info on sites.",
+            "requirement_ids": [
+              "R-105"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1037,
+          "output_tokens": 103,
+          "details": {
+            "total_tokens": 1140,
+            "text_prompt_tokens": 1037
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-106",
+            "title": "View saved username and password in preferences panel",
+            "description": "Verify that when a username and password are saved in the password manager, this information can be viewed in the password manager through the preferences.",
+            "requirement_ids": [
+              "R-106"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1037,
+          "output_tokens": 100,
+          "details": {
+            "total_tokens": 1137,
+            "text_prompt_tokens": 1037
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-107",
+            "title": "Remove username and password for a given site",
+            "description": "Verify that when a username and password are removed for a given site, they no longer autofill on that site and are no longer listed in the password manager.",
+            "requirement_ids": [
+              "R-107"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1037,
+          "output_tokens": 106,
+          "details": {
+            "total_tokens": 1143,
+            "text_prompt_tokens": 1037
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-108-01",
+            "title": "Remove all username and password information",
+            "description": "Verify that removing all username and password information results in no autofill on sites and nothing being listed in the password manager.",
+            "requirement_ids": [
+              "R-108"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1037,
+          "output_tokens": 98,
+          "details": {
+            "total_tokens": 1135,
+            "text_prompt_tokens": 1037
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "critic",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "The test cases are well-aligned with the requirements, distinct, and adequately test the specified functionality without speculative or redundant cases.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1129,
+          "output_tokens": 53,
+          "details": {
+            "total_tokens": 1182,
+            "text_prompt_tokens": 1129
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "validator",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "All test cases map correctly to the given requirements and thoroughly cover the specified operations without any blockers, speculative behaviors, or redundancies.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1126,
+          "output_tokens": 63,
+          "details": {
+            "total_tokens": 1189,
+            "text_prompt_tokens": 1126
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "coverage",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "The accepted cases provide a direct and accurate one-to-one mapping to requirements R-102 through R-108 without introducing any overgeneration, repetition, or unstated speculative behaviors. There are no missing requirements or gaps relative to the supplied requirement set."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1143,
+          "output_tokens": 60,
+          "details": {
+            "total_tokens": 1203,
+            "text_prompt_tokens": 1143
+          },
+          "status": "available"
+        }
+      ]
+    }
+  ],
+  "monotonicity": "confirmed"
+}

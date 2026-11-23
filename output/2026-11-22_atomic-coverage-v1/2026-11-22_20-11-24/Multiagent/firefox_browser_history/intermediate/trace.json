@@ -1,0 +1,767 @@
+{
+  "initial": {
+    "assessment": {
+      "candidate_id": "initial",
+      "cases": [
+        {
+          "id": "G-001",
+          "title": "Record Visited Link to Global History",
+          "description": "Verify that visiting a link correctly records the visit to the Global History.",
+          "requirement_ids": [
+            "R-073"
+          ]
+        },
+        {
+          "id": "G-002",
+          "title": "Record correct link after server redirect",
+          "description": "Verify that the correct link is recorded to the Global History after a server redirect occurs.",
+          "requirement_ids": [
+            "R-074"
+          ]
+        },
+        {
+          "id": "G-003",
+          "title": "Launch history link in browser window",
+          "description": "Verify that clicking on a history link causes it to be launched in a browser window.",
+          "requirement_ids": [
+            "R-075"
+          ]
+        },
+        {
+          "id": "G-004",
+          "title": "Delete single history entry",
+          "description": "Verify that a single History entry is successfully deleted upon performing the deletion action.",
+          "requirement_ids": [
+            "R-076"
+          ]
+        },
+        {
+          "id": "G-005",
+          "title": "Delete Multiple History Entries",
+          "description": "Verify that multiple history entries can be deleted and are no longer displayed.",
+          "requirement_ids": [
+            "R-077"
+          ]
+        },
+        {
+          "id": "G-006",
+          "title": "Clear Global History",
+          "description": "Verify that executing the clear Global History action successfully clears the entire Global History.",
+          "requirement_ids": [
+            "R-078"
+          ]
+        },
+        {
+          "id": "G-007",
+          "title": "Group history items by Day, Site, and None",
+          "description": "Verify that history items can be successfully grouped by Day, Site, or None.",
+          "requirement_ids": [
+            "R-079"
+          ]
+        },
+        {
+          "id": "G-008",
+          "title": "Sort History Column",
+          "description": "Verify that History is sorted per column.",
+          "requirement_ids": [
+            "R-080"
+          ]
+        },
+        {
+          "id": "G-009",
+          "title": "Reverse-Sort History Column",
+          "description": "Verify that History is reverse-sorted per column.",
+          "requirement_ids": [
+            "R-080"
+          ]
+        },
+        {
+          "id": "G-010",
+          "title": "Resize History Columns",
+          "description": "Verify that history columns are resizable to show or hide more of entries.",
+          "requirement_ids": [
+            "R-081"
+          ]
+        },
+        {
+          "id": "G-011",
+          "title": "Show History columns",
+          "description": "Verify that History columns are shown when selected.",
+          "requirement_ids": [
+            "R-082"
+          ]
+        },
+        {
+          "id": "G-012",
+          "title": "Hide History columns",
+          "description": "Verify that History columns are hidden when deselected.",
+          "requirement_ids": [
+            "R-082"
+          ]
+        },
+        {
+          "id": "G-013",
+          "title": "Re-visit recently visited sites via Back and Forward button dropdown menu",
+          "description": "Verify that recently visited sites can be re-visited by interacting with the Back and Forward button dropdown menu.",
+          "requirement_ids": [
+            "R-083"
+          ]
+        },
+        {
+          "id": "G-014",
+          "title": "New Browser Window Session History Creation",
+          "description": "Verify that a new, empty session history file is created when a new browser window is opened.",
+          "requirement_ids": [
+            "R-084"
+          ]
+        },
+        {
+          "id": "G-015",
+          "title": "Browser Restart Session History Creation",
+          "description": "Verify that a new, empty session history file is created upon a browser restart.",
+          "requirement_ids": [
+            "R-084"
+          ]
+        }
+      ],
+      "opinions": [
+        {
+          "agent": "critic",
+          "feedback": "The test cases adequately cover the provided requirements without any blockers or missing scenarios.",
+          "request_revision": false,
+          "confirmed_blockers": [],
+          "blocker_assessment_complete": true
+        },
+        {
+          "agent": "validator",
+          "feedback": "All requirements and their corresponding test cases are well-structured, appropriately mapped, and fully testable. No blockers or redundant test cases found.",
+          "request_revision": false,
+          "confirmed_blockers": [],
+          "blocker_assessment_complete": true
+        }
+      ],
+      "valid": true,
+      "confirmed_blockers": 0,
+      "covered_requirements": 12,
+      "duplicates": 0,
+      "comparable": true
+    },
+    "analysis": {
+      "analysis": "R-073: Single straightforward acceptance criterion. Normal test scenario warranted. Trigger: Visited links. Outcome: Recorded to the Global History. R-074: Single straightforward acceptance criterion. Normal test scenario warranted. Trigger: Server redirect occurs. Outcome: The correct link is recorded to the Global History. R-075: Single straightforward acceptance criterion. Normal test scenario warranted. Trigger: Clicking on a history link. Outcome: Launched in a browser window. R-076: Single straightforward acceptance criterion. Normal test scenario warranted. Trigger: History entry deletion action. Outcome: A History entry is deleted. R-077: Single straightforward acceptance criterion. Normal test scenario warranted. Trigger: Multiple History entries deletion action. Outcome: Multiple History entries are deleted and no longer displayed. R-078: Single straightforward acceptance criterion. Normal test scenario warranted. Trigger: Clear Global History action. Outcome: Global History is cleared. R-079: Single straightforward acceptance criterion. Normal test scenario warranted. Trigger: History items grouping configuration. Outcome: History items are grouped by Day / Site / None. R-080: Multiple distinct behaviors. Normal test scenarios warranted. Behaviors: 1. Trigger: History column sort action. Outcome: History is sorted per column. 2. Trigger: History column reverse-sort action. Outcome: History is reverse-sorted per column. R-081: Single straightforward acceptance criterion. Normal test scenario warranted. Trigger: History column resize action. Outcome: History columns are resizable to show/hide more of entries. R-082: Multiple distinct behaviors. Normal test scenarios warranted. Behaviors: 1. Trigger: History column show action. Outcome: History columns are shown. 2. Trigger: History column hide action. Outcome: History columns are hidden. R-083: Single straightforward acceptance criterion. Normal test scenario warranted. Trigger: Interaction with Back and Forward button dropdown menu. Outcome: Recently visited sites are re-visited. R-084: Multiple distinct behaviors. Normal test scenarios warranted. Behaviors: 1. Trigger: New browser window creation. Outcome: A new, empty session history file is created. 2. Trigger: Browser restart. Outcome: A new, empty session history file is created."
+    },
+    "failure": null
+  },
+  "rounds": [],
+  "status": "completed",
+  "failure": null,
+  "accepted_id": "initial",
+  "accepted_assessment": {
+    "candidate_id": "initial",
+    "cases": [
+      {
+        "id": "G-001",
+        "title": "Record Visited Link to Global History",
+        "description": "Verify that visiting a link correctly records the visit to the Global History.",
+        "requirement_ids": [
+          "R-073"
+        ]
+      },
+      {
+        "id": "G-002",
+        "title": "Record correct link after server redirect",
+        "description": "Verify that the correct link is recorded to the Global History after a server redirect occurs.",
+        "requirement_ids": [
+          "R-074"
+        ]
+      },
+      {
+        "id": "G-003",
+        "title": "Launch history link in browser window",
+        "description": "Verify that clicking on a history link causes it to be launched in a browser window.",
+        "requirement_ids": [
+          "R-075"
+        ]
+      },
+      {
+        "id": "G-004",
+        "title": "Delete single history entry",
+        "description": "Verify that a single History entry is successfully deleted upon performing the deletion action.",
+        "requirement_ids": [
+          "R-076"
+        ]
+      },
+      {
+        "id": "G-005",
+        "title": "Delete Multiple History Entries",
+        "description": "Verify that multiple history entries can be deleted and are no longer displayed.",
+        "requirement_ids": [
+          "R-077"
+        ]
+      },
+      {
+        "id": "G-006",
+        "title": "Clear Global History",
+        "description": "Verify that executing the clear Global History action successfully clears the entire Global History.",
+        "requirement_ids": [
+          "R-078"
+        ]
+      },
+      {
+        "id": "G-007",
+        "title": "Group history items by Day, Site, and None",
+        "description": "Verify that history items can be successfully grouped by Day, Site, or None.",
+        "requirement_ids": [
+          "R-079"
+        ]
+      },
+      {
+        "id": "G-008",
+        "title": "Sort History Column",
+        "description": "Verify that History is sorted per column.",
+        "requirement_ids": [
+          "R-080"
+        ]
+      },
+      {
+        "id": "G-009",
+        "title": "Reverse-Sort History Column",
+        "description": "Verify that History is reverse-sorted per column.",
+        "requirement_ids": [
+          "R-080"
+        ]
+      },
+      {
+        "id": "G-010",
+        "title": "Resize History Columns",
+        "description": "Verify that history columns are resizable to show or hide more of entries.",
+        "requirement_ids": [
+          "R-081"
+        ]
+      },
+      {
+        "id": "G-011",
+        "title": "Show History columns",
+        "description": "Verify that History columns are shown when selected.",
+        "requirement_ids": [
+          "R-082"
+        ]
+      },
+      {
+        "id": "G-012",
+        "title": "Hide History columns",
+        "description": "Verify that History columns are hidden when deselected.",
+        "requirement_ids": [
+          "R-082"
+        ]
+      },
+      {
+        "id": "G-013",
+        "title": "Re-visit recently visited sites via Back and Forward button dropdown menu",
+        "description": "Verify that recently visited sites can be re-visited by interacting with the Back and Forward button dropdown menu.",
+        "requirement_ids": [
+          "R-083"
+        ]
+      },
+      {
+        "id": "G-014",
+        "title": "New Browser Window Session History Creation",
+        "description": "Verify that a new, empty session history file is created when a new browser window is opened.",
+        "requirement_ids": [
+          "R-084"
+        ]
+      },
+      {
+        "id": "G-015",
+        "title": "Browser Restart Session History Creation",
+        "description": "Verify that a new, empty session history file is created upon a browser restart.",
+        "requirement_ids": [
+          "R-084"
+        ]
+      }
+    ],
+    "opinions": [
+      {
+        "agent": "critic",
+        "feedback": "The test cases adequately cover the provided requirements without any blockers or missing scenarios.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      {
+        "agent": "validator",
+        "feedback": "All requirements and their corresponding test cases are well-structured, appropriately mapped, and fully testable. No blockers or redundant test cases found.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      }
+    ],
+    "valid": true,
+    "confirmed_blockers": 0,
+    "covered_requirements": 12,
+    "duplicates": 0,
+    "comparable": true
+  },
+  "pending": [],
+  "pending_controls": [],
+  "coverage": {
+    "feedback": "The accepted test cases provide a solid 1:1 mapping to the requirements, covering each explicit behavior without introducing excess, overgeneration, or repetition. All requirements from R-073 through R-084 are addressed accurately, including the distinction between new window creation and browser restart for R-084, and sorting/reverse-sorting for R-080. There are no gaps or speculative/unstated behaviors flagged in the accepted cases."
+  },
+  "coverage_failure": null,
+  "calls": [
+    {
+      "stage": "analyst",
+      "subject_id": "initial",
+      "output": {
+        "analysis": "R-073: Single straightforward acceptance criterion. Normal test scenario warranted. Trigger: Visited links. Outcome: Recorded to the Global History. R-074: Single straightforward acceptance criterion. Normal test scenario warranted. Trigger: Server redirect occurs. Outcome: The correct link is recorded to the Global History. R-075: Single straightforward acceptance criterion. Normal test scenario warranted. Trigger: Clicking on a history link. Outcome: Launched in a browser window. R-076: Single straightforward acceptance criterion. Normal test scenario warranted. Trigger: History entry deletion action. Outcome: A History entry is deleted. R-077: Single straightforward acceptance criterion. Normal test scenario warranted. Trigger: Multiple History entries deletion action. Outcome: Multiple History entries are deleted and no longer displayed. R-078: Single straightforward acceptance criterion. Normal test scenario warranted. Trigger: Clear Global History action. Outcome: Global History is cleared. R-079: Single straightforward acceptance criterion. Normal test scenario warranted. Trigger: History items grouping configuration. Outcome: History items are grouped by Day / Site / None. R-080: Multiple distinct behaviors. Normal test scenarios warranted. Behaviors: 1. Trigger: History column sort action. Outcome: History is sorted per column. 2. Trigger: History column reverse-sort action. Outcome: History is reverse-sorted per column. R-081: Single straightforward acceptance criterion. Normal test scenario warranted. Trigger: History column resize action. Outcome: History columns are resizable to show/hide more of entries. R-082: Multiple distinct behaviors. Normal test scenarios warranted. Behaviors: 1. Trigger: History column show action. Outcome: History columns are shown. 2. Trigger: History column hide action. Outcome: History columns are hidden. R-083: Single straightforward acceptance criterion. Normal test scenario warranted. Trigger: Interaction with Back and Forward button dropdown menu. Outcome: Recently visited sites are re-visited. R-084: Multiple distinct behaviors. Normal test scenarios warranted. Behaviors: 1. Trigger: New browser window creation. Outcome: A new, empty session history file is created. 2. Trigger: Browser restart. Outcome: A new, empty session history file is created."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 898,
+          "output_tokens": 483,
+          "details": {
+            "total_tokens": 1381,
+            "text_prompt_tokens": 898
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-073-01",
+            "title": "Record Visited Link to Global History",
+            "description": "Verify that visiting a link correctly records the visit to the Global History.",
+            "requirement_ids": [
+              "R-073"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1439,
+          "output_tokens": 89,
+          "details": {
+            "total_tokens": 1528,
+            "text_prompt_tokens": 1439
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-074-01",
+            "title": "Record correct link after server redirect",
+            "description": "Verify that the correct link is recorded to the Global History after a server redirect occurs.",
+            "requirement_ids": [
+              "R-074"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": 1439,
+          "output_tokens": 91,
+          "details": {
+            "total_tokens": 1530,
+            "text_prompt_tokens": 1439
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-075-01",
+            "title": "Launch history link in browser window",
+            "description": "Verify that clicking on a history link causes it to be launched in a browser window.",
+            "requirement_ids": [
+              "R-075"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": 1439,
+          "output_tokens": 91,
+          "details": {
+            "total_tokens": 1530,
+            "text_prompt_tokens": 1439
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-076-01",
+            "title": "Delete single history entry",
+            "description": "Verify that a single History entry is successfully deleted upon performing the deletion action.",
+            "requirement_ids": [
+              "R-076"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1439,
+          "output_tokens": 87,
+          "details": {
+            "total_tokens": 1526,
+            "text_prompt_tokens": 1439
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-077-01",
+            "title": "Delete Multiple History Entries",
+            "description": "Verify that multiple history entries can be deleted and are no longer displayed.",
+            "requirement_ids": [
+              "R-077"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1439,
+          "output_tokens": 86,
+          "details": {
+            "total_tokens": 1525,
+            "text_prompt_tokens": 1439
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-078",
+            "title": "Clear Global History",
+            "description": "Verify that executing the clear Global History action successfully clears the entire Global History.",
+            "requirement_ids": [
+              "R-078"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1439,
+          "output_tokens": 83,
+          "details": {
+            "total_tokens": 1522,
+            "text_prompt_tokens": 1439
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-079-01",
+            "title": "Group history items by Day, Site, and None",
+            "description": "Verify that history items can be successfully grouped by Day, Site, or None.",
+            "requirement_ids": [
+              "R-079"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1439,
+          "output_tokens": 94,
+          "details": {
+            "total_tokens": 1533,
+            "text_prompt_tokens": 1439
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-080-01",
+            "title": "Sort History Column",
+            "description": "Verify that History is sorted per column.",
+            "requirement_ids": [
+              "R-080"
+            ]
+          },
+          {
+            "id": "TC-R-080-02",
+            "title": "Reverse-Sort History Column",
+            "description": "Verify that History is reverse-sorted per column.",
+            "requirement_ids": [
+              "R-080"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1439,
+          "output_tokens": 150,
+          "details": {
+            "total_tokens": 1589,
+            "text_prompt_tokens": 1439
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-081-01",
+            "title": "Resize History Columns",
+            "description": "Verify that history columns are resizable to show or hide more of entries.",
+            "requirement_ids": [
+              "R-081"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1439,
+          "output_tokens": 86,
+          "details": {
+            "total_tokens": 1525,
+            "text_prompt_tokens": 1439
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-082-01",
+            "title": "Show History columns",
+            "description": "Verify that History columns are shown when selected.",
+            "requirement_ids": [
+              "R-082"
+            ]
+          },
+          {
+            "id": "TC-R-082-02",
+            "title": "Hide History columns",
+            "description": "Verify that History columns are hidden when deselected.",
+            "requirement_ids": [
+              "R-082"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1439,
+          "output_tokens": 149,
+          "details": {
+            "total_tokens": 1588,
+            "text_prompt_tokens": 1439
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-083-01",
+            "title": "Re-visit recently visited sites via Back and Forward button dropdown menu",
+            "description": "Verify that recently visited sites can be re-visited by interacting with the Back and Forward button dropdown menu.",
+            "requirement_ids": [
+              "R-083"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1439,
+          "output_tokens": 102,
+          "details": {
+            "total_tokens": 1541,
+            "text_prompt_tokens": 1439
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-084-01",
+            "title": "New Browser Window Session History Creation",
+            "description": "Verify that a new, empty session history file is created when a new browser window is opened.",
+            "requirement_ids": [
+              "R-084"
+            ]
+          },
+          {
+            "id": "TC-R-084-02",
+            "title": "Browser Restart Session History Creation",
+            "description": "Verify that a new, empty session history file is created upon a browser restart.",
+            "requirement_ids": [
+              "R-084"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1439,
+          "output_tokens": 170,
+          "details": {
+            "total_tokens": 1609,
+            "text_prompt_tokens": 1439
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "critic",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "The test cases adequately cover the provided requirements without any blockers or missing scenarios.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1588,
+          "output_tokens": 53,
+          "details": {
+            "total_tokens": 1641,
+            "text_prompt_tokens": 1588
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "validator",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "All requirements and their corresponding test cases are well-structured, appropriately mapped, and fully testable. No blockers or redundant test cases found.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1585,
+          "output_tokens": 66,
+          "details": {
+            "total_tokens": 1651,
+            "text_prompt_tokens": 1585
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "coverage",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "The accepted test cases provide a solid 1:1 mapping to the requirements, covering each explicit behavior without introducing excess, overgeneration, or repetition. All requirements from R-073 through R-084 are addressed accurately, including the distinction between new window creation and browser restart for R-084, and sorting/reverse-sorting for R-080. There are no gaps or speculative/unstated behaviors flagged in the accepted cases."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1666,
+          "output_tokens": 99,
+          "details": {
+            "total_tokens": 1765,
+            "text_prompt_tokens": 1666
+          },
+          "status": "available"
+        }
+      ]
+    }
+  ],
+  "monotonicity": "confirmed"
+}
