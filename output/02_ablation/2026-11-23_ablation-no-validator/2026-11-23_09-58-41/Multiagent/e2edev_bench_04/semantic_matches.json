@@ -1,0 +1,87 @@
+{
+  "status": "evaluated",
+  "embedding_model": "gemini-embedding-2",
+  "similarity_threshold": 0.7,
+  "matches": [
+    {
+      "generated_id": "G-001",
+      "reference_id": "e2edev_bench_04-R-5-TC-4",
+      "similarity": 0.8112501036903381
+    },
+    {
+      "generated_id": "G-002",
+      "reference_id": "e2edev_bench_04-R-1-TC-2",
+      "similarity": 0.9093988535912135
+    },
+    {
+      "generated_id": "G-003",
+      "reference_id": "e2edev_bench_04-R-1-TC-3",
+      "similarity": 0.9066848943912588
+    },
+    {
+      "generated_id": "G-004",
+      "reference_id": "e2edev_bench_04-R-1-TC-1",
+      "similarity": 0.9188416847651022
+    },
+    {
+      "generated_id": "G-005",
+      "reference_id": "e2edev_bench_04-R-2-TC-1",
+      "similarity": 0.9341786179631686
+    },
+    {
+      "generated_id": "G-006",
+      "reference_id": "e2edev_bench_04-R-5-TC-2",
+      "similarity": 0.8471782211698647
+    },
+    {
+      "generated_id": "G-007",
+      "reference_id": "e2edev_bench_04-R-5-TC-3",
+      "similarity": 0.8651544799303796
+    },
+    {
+      "generated_id": "G-008",
+      "reference_id": "e2edev_bench_04-R-4-TC-2",
+      "similarity": 0.8961396859529895
+    },
+    {
+      "generated_id": "G-009",
+      "reference_id": "e2edev_bench_04-R-3-TC-1",
+      "similarity": 0.9453321188439583
+    },
+    {
+      "generated_id": "G-010",
+      "reference_id": "e2edev_bench_04-R-4-TC-1",
+      "similarity": 0.9423498329022777
+    },
+    {
+      "generated_id": "G-011",
+      "reference_id": "e2edev_bench_04-R-4-TC-3",
+      "similarity": 0.8852997288006378
+    },
+    {
+      "generated_id": "G-013",
+      "reference_id": "e2edev_bench_04-R-5-TC-1",
+      "similarity": 0.9381847724682955
+    },
+    {
+      "generated_id": "G-015",
+      "reference_id": "e2edev_bench_04-R-6-TC-1",
+      "similarity": 0.9230484856330343
+    },
+    {
+      "generated_id": "G-016",
+      "reference_id": "e2edev_bench_04-R-6-TC-2",
+      "similarity": 0.9032306508647225
+    },
+    {
+      "generated_id": "G-017",
+      "reference_id": "e2edev_bench_04-R-6-TC-3",
+      "similarity": 0.8842060692321909
+    }
+  ],
+  "unmatched_generated_ids": [
+    "G-012",
+    "G-014"
+  ],
+  "unmatched_reference_ids": []
+}

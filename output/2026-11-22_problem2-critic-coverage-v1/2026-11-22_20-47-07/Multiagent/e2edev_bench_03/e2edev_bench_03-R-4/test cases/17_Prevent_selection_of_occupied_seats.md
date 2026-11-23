@@ -1,7 +1,0 @@
-# Prevent selection of occupied seats
-
-Case ID · G-017
-
-Requirements · e2edev\_bench\_03-R-4
-
-Verify that the system prevents users from selecting seats marked as 'occupied'.

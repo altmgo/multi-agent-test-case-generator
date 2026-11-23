@@ -1,0 +1,748 @@
+{
+  "initial": {
+    "assessment": {
+      "candidate_id": "initial",
+      "cases": [
+        {
+          "id": "G-001",
+          "title": "Select available seat updates selected count and total price",
+          "description": "Clicking on any available seat without the occupied class marks it as selected, and the selected count in the element with data-testid=\"selected-count\" updates accordingly along with the total price.",
+          "requirement_ids": [
+            "e2edev_bench_03-R-1"
+          ]
+        },
+        {
+          "id": "G-002",
+          "title": "Select movie from dropdown sets ticket price and updates total price",
+          "description": "Selecting a movie from the dropdown with data-testid=\"movie-select\" uses the option's value representing the ticket price to calculate the total price in the element with data-testid=\"total-price\".",
+          "requirement_ids": [
+            "e2edev_bench_03-R-1"
+          ]
+        },
+        {
+          "id": "G-003",
+          "title": "Occupied seats are not selectable and do not affect count or price",
+          "description": "Seats marked as occupied must not be selectable and should not affect the selected count or total price calculation.",
+          "requirement_ids": [
+            "e2edev_bench_03-R-1"
+          ]
+        },
+        {
+          "id": "G-004",
+          "title": "Changing selected movie updates total price",
+          "description": "Changing the selected movie at any time dynamically updates the total price based on the new movie's ticket price and the current number of selected seats.",
+          "requirement_ids": [
+            "e2edev_bench_03-R-1"
+          ]
+        },
+        {
+          "id": "G-005",
+          "title": "Select a movie from dropdown menu",
+          "description": "Verify that users can select a movie from the dropdown menu, updating the movie price accordingly.",
+          "requirement_ids": [
+            "e2edev_bench_03-R-2"
+          ]
+        },
+        {
+          "id": "G-006",
+          "title": "Toggle seat selection and store indices",
+          "description": "Verify that clicking an available seat toggles its selection status, visually marks it as selected, and stores its index in localStorage.",
+          "requirement_ids": [
+            "e2edev_bench_03-R-2"
+          ]
+        },
+        {
+          "id": "G-007",
+          "title": "Dynamically update seat count and total price",
+          "description": "Verify that the seat count and total price are dynamically updated based on the number of selected seats and the chosen movie's price.",
+          "requirement_ids": [
+            "e2edev_bench_03-R-2"
+          ]
+        },
+        {
+          "id": "G-008",
+          "title": "Prevent selection of occupied seats",
+          "description": "Verify that seats marked as occupied cannot be selected or included in the calculation.",
+          "requirement_ids": [
+            "e2edev_bench_03-R-2"
+          ]
+        },
+        {
+          "id": "G-009",
+          "title": "Deselect previously selected seats",
+          "description": "Verify that users can deselect previously selected seats by clicking on them again, updating the UI and localStorage accordingly.",
+          "requirement_ids": [
+            "e2edev_bench_03-R-2"
+          ]
+        },
+        {
+          "id": "G-010",
+          "title": "Restore selected seats and movie selection from localStorage on page load",
+          "description": "Verify that when local storage contains 'selectedSeats' and 'selectedMovieIndex', the system marks the corresponding seats with the 'selected' class and sets the movie dropdown to the stored movie index upon page load.",
+          "requirement_ids": [
+            "e2edev_bench_03-R-3"
+          ]
+        },
+        {
+          "id": "G-011",
+          "title": "Default state on page load when localStorage is empty",
+          "description": "Verify that when local storage does not contain 'selectedSeats' and 'selectedMovieIndex', no seats are marked as 'selected' and the movie dropdown defaults to the first movie option ('The Big Lebowski ($10)').",
+          "requirement_ids": [
+            "e2edev_bench_03-R-3"
+          ]
+        },
+        {
+          "id": "G-012",
+          "title": "Select Movie and Update Ticket Price",
+          "description": "Verify that when the user selects a movie from the dropdown menu with data-testid 'movie-select', the ticket price is set according to the selected movie's value.",
+          "requirement_ids": [
+            "e2edev_bench_03-R-4"
+          ]
+        },
+        {
+          "id": "G-013",
+          "title": "Toggle Seat Selection on Available Seat",
+          "description": "Verify that as the user clicks on available seats (those without the 'occupied' class) within the seating area, the system toggles the 'selected' class on the clicked seat.",
+          "requirement_ids": [
+            "e2edev_bench_03-R-4"
+          ]
+        },
+        {
+          "id": "G-014",
+          "title": "Update Selected Seat Count",
+          "description": "Verify that the count of selected seats, displayed with data-testid 'selected-count', updates to reflect the current number of seats with the 'selected' class.",
+          "requirement_ids": [
+            "e2edev_bench_03-R-4"
+          ]
+        },
+        {
+          "id": "G-015",
+          "title": "Calculate Total Price",
+          "description": "Verify that the total price, displayed with data-testid 'total-price', is calculated as the product of the number of selected seats and the current ticket price.",
+          "requirement_ids": [
+            "e2edev_bench_03-R-4"
+          ]
+        },
+        {
+          "id": "G-016",
+          "title": "Decrease Count and Total Price on Deselection",
+          "description": "Verify that if a user deselects a seat by clicking on it again, the count and total price decrease accordingly.",
+          "requirement_ids": [
+            "e2edev_bench_03-R-4"
+          ]
+        },
+        {
+          "id": "G-017",
+          "title": "Update Total Price on Movie Change with Existing Selection",
+          "description": "Verify that if the user changes the movie selection after selecting seats, the total price updates based on the new ticket price while maintaining the count of selected seats.",
+          "requirement_ids": [
+            "e2edev_bench_03-R-4"
+          ]
+        },
+        {
+          "id": "G-018",
+          "title": "Prevent Selection of Occupied Seats",
+          "description": "Verify that the system prevents users from selecting seats marked as 'occupied'.",
+          "requirement_ids": [
+            "e2edev_bench_03-R-4"
+          ]
+        },
+        {
+          "id": "G-019",
+          "title": "Distinguish seat statuses via legends",
+          "description": "Verify that users can distinguish between available, selected, and occupied seats through legends that indicate the status of each seat, with each status having its own corresponding legend (e.g., data-testid = 'seat-select').",
+          "requirement_ids": [
+            "e2edev_bench_03-R-5"
+          ]
+        },
+        {
+          "id": "G-020",
+          "title": "Occupied seats are non-interactive",
+          "description": "Verify that occupied seats are clearly marked and non-interactive to prevent selection.",
+          "requirement_ids": [
+            "e2edev_bench_03-R-5"
+          ]
+        },
+        {
+          "id": "G-021",
+          "title": "Available seats can be clicked to toggle selection",
+          "description": "Verify that available seats can be clicked to toggle their selection status.",
+          "requirement_ids": [
+            "e2edev_bench_03-R-5"
+          ]
+        },
+        {
+          "id": "G-022",
+          "title": "Seat selection and deselection updates count and total price",
+          "description": "Verify that when users select or deselect seats, the count of selected seats and the total price are updated accordingly.",
+          "requirement_ids": [
+            "e2edev_bench_03-R-5"
+          ]
+        }
+      ],
+      "opinions": [
+        {
+          "agent": "critic",
+          "feedback": "All requirements and explicit behaviors have been fully analyzed and matched with the provided test cases. No blockers or missing scenarios were found.",
+          "request_revision": false,
+          "confirmed_blockers": [],
+          "blocker_assessment_complete": true
+        }
+      ],
+      "valid": true,
+      "confirmed_blockers": 0,
+      "covered_requirements": 5,
+      "duplicates": 0,
+      "comparable": true
+    },
+    "analysis": {
+      "analysis": "Requirement e2edev_bench_03-R-1 defines multiple atomic behaviors: interacting with the seat map, updating total price dynamically via movie dropdown, marking available seats (no occupied class) as selected on click, updating selected count in data-testid=\"selected-count\", selecting a movie with a price value from data-testid=\"movie-select\", calculating total price as selected seats multiplied by movie price, preventing selection of occupied seats without affecting count or price, and updating total price when changing the selected movie. Requirement e2edev_bench_03-R-2 outlines behaviors: selecting a movie from a dropdown with specific options and data-testids, updating the movie price, toggling seat selection status on click for available seats (e.g., data-testid=\"seat-1-1\"), visually marking selected seats and storing their indices in localStorage, dynamically updating seat count (data-testid=\"selected-count\") and total price (data-testid=\"total-price\"), preventing selection/calculation of occupied seats, and allowing deselection by clicking again which updates UI and localStorage. Requirement e2edev_bench_03-R-3 specifies: retrieving and applying previously selected seats and movie selection from local storage upon page load, marking seats matching 'selectedSeats' with the 'selected' class and setting dropdown to 'selectedMovieIndex', and defaulting to no selected seats and the first movie option ('The Big Lebowski ($10)') if local storage values are absent. Requirement e2edev_bench_03-R-4 details: dynamically displaying selected seat count and total price, setting ticket price on movie selection via data-testid 'movie-select', toggling 'selected' class on available seat clicks, updating 'selected-count', calculating 'total-price' as the product of selected seats and ticket price, decreasing count and total price on deselection, updating total price while maintaining count when movie changes after seat selection, and preventing selection of occupied seats. Requirement e2edev_bench_03-R-5 defines: distinguishing seat statuses via legends (e.g., data-testid = 'seat-select'), non-interactive occupied seats preventing selection, clickable available seats to toggle selection, and updating selected count and total price upon seat selection/deselection."
+    },
+    "failure": null
+  },
+  "rounds": [],
+  "status": "completed",
+  "failure": null,
+  "accepted_id": "initial",
+  "accepted_assessment": {
+    "candidate_id": "initial",
+    "cases": [
+      {
+        "id": "G-001",
+        "title": "Select available seat updates selected count and total price",
+        "description": "Clicking on any available seat without the occupied class marks it as selected, and the selected count in the element with data-testid=\"selected-count\" updates accordingly along with the total price.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-1"
+        ]
+      },
+      {
+        "id": "G-002",
+        "title": "Select movie from dropdown sets ticket price and updates total price",
+        "description": "Selecting a movie from the dropdown with data-testid=\"movie-select\" uses the option's value representing the ticket price to calculate the total price in the element with data-testid=\"total-price\".",
+        "requirement_ids": [
+          "e2edev_bench_03-R-1"
+        ]
+      },
+      {
+        "id": "G-003",
+        "title": "Occupied seats are not selectable and do not affect count or price",
+        "description": "Seats marked as occupied must not be selectable and should not affect the selected count or total price calculation.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-1"
+        ]
+      },
+      {
+        "id": "G-004",
+        "title": "Changing selected movie updates total price",
+        "description": "Changing the selected movie at any time dynamically updates the total price based on the new movie's ticket price and the current number of selected seats.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-1"
+        ]
+      },
+      {
+        "id": "G-005",
+        "title": "Select a movie from dropdown menu",
+        "description": "Verify that users can select a movie from the dropdown menu, updating the movie price accordingly.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-2"
+        ]
+      },
+      {
+        "id": "G-006",
+        "title": "Toggle seat selection and store indices",
+        "description": "Verify that clicking an available seat toggles its selection status, visually marks it as selected, and stores its index in localStorage.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-2"
+        ]
+      },
+      {
+        "id": "G-007",
+        "title": "Dynamically update seat count and total price",
+        "description": "Verify that the seat count and total price are dynamically updated based on the number of selected seats and the chosen movie's price.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-2"
+        ]
+      },
+      {
+        "id": "G-008",
+        "title": "Prevent selection of occupied seats",
+        "description": "Verify that seats marked as occupied cannot be selected or included in the calculation.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-2"
+        ]
+      },
+      {
+        "id": "G-009",
+        "title": "Deselect previously selected seats",
+        "description": "Verify that users can deselect previously selected seats by clicking on them again, updating the UI and localStorage accordingly.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-2"
+        ]
+      },
+      {
+        "id": "G-010",
+        "title": "Restore selected seats and movie selection from localStorage on page load",
+        "description": "Verify that when local storage contains 'selectedSeats' and 'selectedMovieIndex', the system marks the corresponding seats with the 'selected' class and sets the movie dropdown to the stored movie index upon page load.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-3"
+        ]
+      },
+      {
+        "id": "G-011",
+        "title": "Default state on page load when localStorage is empty",
+        "description": "Verify that when local storage does not contain 'selectedSeats' and 'selectedMovieIndex', no seats are marked as 'selected' and the movie dropdown defaults to the first movie option ('The Big Lebowski ($10)').",
+        "requirement_ids": [
+          "e2edev_bench_03-R-3"
+        ]
+      },
+      {
+        "id": "G-012",
+        "title": "Select Movie and Update Ticket Price",
+        "description": "Verify that when the user selects a movie from the dropdown menu with data-testid 'movie-select', the ticket price is set according to the selected movie's value.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-4"
+        ]
+      },
+      {
+        "id": "G-013",
+        "title": "Toggle Seat Selection on Available Seat",
+        "description": "Verify that as the user clicks on available seats (those without the 'occupied' class) within the seating area, the system toggles the 'selected' class on the clicked seat.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-4"
+        ]
+      },
+      {
+        "id": "G-014",
+        "title": "Update Selected Seat Count",
+        "description": "Verify that the count of selected seats, displayed with data-testid 'selected-count', updates to reflect the current number of seats with the 'selected' class.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-4"
+        ]
+      },
+      {
+        "id": "G-015",
+        "title": "Calculate Total Price",
+        "description": "Verify that the total price, displayed with data-testid 'total-price', is calculated as the product of the number of selected seats and the current ticket price.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-4"
+        ]
+      },
+      {
+        "id": "G-016",
+        "title": "Decrease Count and Total Price on Deselection",
+        "description": "Verify that if a user deselects a seat by clicking on it again, the count and total price decrease accordingly.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-4"
+        ]
+      },
+      {
+        "id": "G-017",
+        "title": "Update Total Price on Movie Change with Existing Selection",
+        "description": "Verify that if the user changes the movie selection after selecting seats, the total price updates based on the new ticket price while maintaining the count of selected seats.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-4"
+        ]
+      },
+      {
+        "id": "G-018",
+        "title": "Prevent Selection of Occupied Seats",
+        "description": "Verify that the system prevents users from selecting seats marked as 'occupied'.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-4"
+        ]
+      },
+      {
+        "id": "G-019",
+        "title": "Distinguish seat statuses via legends",
+        "description": "Verify that users can distinguish between available, selected, and occupied seats through legends that indicate the status of each seat, with each status having its own corresponding legend (e.g., data-testid = 'seat-select').",
+        "requirement_ids": [
+          "e2edev_bench_03-R-5"
+        ]
+      },
+      {
+        "id": "G-020",
+        "title": "Occupied seats are non-interactive",
+        "description": "Verify that occupied seats are clearly marked and non-interactive to prevent selection.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-5"
+        ]
+      },
+      {
+        "id": "G-021",
+        "title": "Available seats can be clicked to toggle selection",
+        "description": "Verify that available seats can be clicked to toggle their selection status.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-5"
+        ]
+      },
+      {
+        "id": "G-022",
+        "title": "Seat selection and deselection updates count and total price",
+        "description": "Verify that when users select or deselect seats, the count of selected seats and the total price are updated accordingly.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-5"
+        ]
+      }
+    ],
+    "opinions": [
+      {
+        "agent": "critic",
+        "feedback": "All requirements and explicit behaviors have been fully analyzed and matched with the provided test cases. No blockers or missing scenarios were found.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      }
+    ],
+    "valid": true,
+    "confirmed_blockers": 0,
+    "covered_requirements": 5,
+    "duplicates": 0,
+    "comparable": true
+  },
+  "pending": [],
+  "pending_controls": [],
+  "coverage": {
+    "feedback": "The accepted cases comprehensively cover all explicit aspects of requirements R-1 through R-5, including seat selection, price calculation, localStorage persistence and restoration, default initialization, movie dropdown interactions, and legend display. There is no evidence of excess, overgeneration, repetition, or testing of speculative or unstated behaviors. All tested scenarios strictly align with the requirement descriptions."
+  },
+  "coverage_failure": null,
+  "calls": [
+    {
+      "stage": "analyst",
+      "subject_id": "initial",
+      "output": {
+        "analysis": "Requirement e2edev_bench_03-R-1 defines multiple atomic behaviors: interacting with the seat map, updating total price dynamically via movie dropdown, marking available seats (no occupied class) as selected on click, updating selected count in data-testid=\"selected-count\", selecting a movie with a price value from data-testid=\"movie-select\", calculating total price as selected seats multiplied by movie price, preventing selection of occupied seats without affecting count or price, and updating total price when changing the selected movie. Requirement e2edev_bench_03-R-2 outlines behaviors: selecting a movie from a dropdown with specific options and data-testids, updating the movie price, toggling seat selection status on click for available seats (e.g., data-testid=\"seat-1-1\"), visually marking selected seats and storing their indices in localStorage, dynamically updating seat count (data-testid=\"selected-count\") and total price (data-testid=\"total-price\"), preventing selection/calculation of occupied seats, and allowing deselection by clicking again which updates UI and localStorage. Requirement e2edev_bench_03-R-3 specifies: retrieving and applying previously selected seats and movie selection from local storage upon page load, marking seats matching 'selectedSeats' with the 'selected' class and setting dropdown to 'selectedMovieIndex', and defaulting to no selected seats and the first movie option ('The Big Lebowski ($10)') if local storage values are absent. Requirement e2edev_bench_03-R-4 details: dynamically displaying selected seat count and total price, setting ticket price on movie selection via data-testid 'movie-select', toggling 'selected' class on available seat clicks, updating 'selected-count', calculating 'total-price' as the product of selected seats and ticket price, decreasing count and total price on deselection, updating total price while maintaining count when movie changes after seat selection, and preventing selection of occupied seats. Requirement e2edev_bench_03-R-5 defines: distinguishing seat statuses via legends (e.g., data-testid = 'seat-select'), non-interactive occupied seats preventing selection, clickable available seats to toggle selection, and updating selected count and total price upon seat selection/deselection."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1494,
+          "output_tokens": 483,
+          "details": {
+            "total_tokens": 1977,
+            "text_prompt_tokens": 1494
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "tc-e2edev_bench_03-r-1-1",
+            "title": "Select available seat updates selected count and total price",
+            "description": "Clicking on any available seat without the occupied class marks it as selected, and the selected count in the element with data-testid=\"selected-count\" updates accordingly along with the total price.",
+            "requirement_ids": [
+              "e2edev_bench_03-R-1"
+            ]
+          },
+          {
+            "id": "tc-e2edev_bench_03-r-1-2",
+            "title": "Select movie from dropdown sets ticket price and updates total price",
+            "description": "Selecting a movie from the dropdown with data-testid=\"movie-select\" uses the option's value representing the ticket price to calculate the total price in the element with data-testid=\"total-price\".",
+            "requirement_ids": [
+              "e2edev_bench_03-R-1"
+            ]
+          },
+          {
+            "id": "tc-e2edev_bench_03-r-1-3",
+            "title": "Occupied seats are not selectable and do not affect count or price",
+            "description": "Seats marked as occupied must not be selectable and should not affect the selected count or total price calculation.",
+            "requirement_ids": [
+              "e2edev_bench_03-R-1"
+            ]
+          },
+          {
+            "id": "tc-e2edev_bench_03-r-1-4",
+            "title": "Changing selected movie updates total price",
+            "description": "Changing the selected movie at any time dynamically updates the total price based on the new movie's ticket price and the current number of selected seats.",
+            "requirement_ids": [
+              "e2edev_bench_03-R-1"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 2043,
+          "output_tokens": 466,
+          "details": {
+            "total_tokens": 2509,
+            "text_prompt_tokens": 2043
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "test_r2_movie_selection",
+            "title": "Select a movie from dropdown menu",
+            "description": "Verify that users can select a movie from the dropdown menu, updating the movie price accordingly.",
+            "requirement_ids": [
+              "e2edev_bench_03-R-2"
+            ]
+          },
+          {
+            "id": "test_r2_seat_selection",
+            "title": "Toggle seat selection and store indices",
+            "description": "Verify that clicking an available seat toggles its selection status, visually marks it as selected, and stores its index in localStorage.",
+            "requirement_ids": [
+              "e2edev_bench_03-R-2"
+            ]
+          },
+          {
+            "id": "test_r2_dynamic_updates",
+            "title": "Dynamically update seat count and total price",
+            "description": "Verify that the seat count and total price are dynamically updated based on the number of selected seats and the chosen movie's price.",
+            "requirement_ids": [
+              "e2edev_bench_03-R-2"
+            ]
+          },
+          {
+            "id": "test_r2_occupied_seats",
+            "title": "Prevent selection of occupied seats",
+            "description": "Verify that seats marked as occupied cannot be selected or included in the calculation.",
+            "requirement_ids": [
+              "e2edev_bench_03-R-2"
+            ]
+          },
+          {
+            "id": "test_r2_seat_deselection",
+            "title": "Deselect previously selected seats",
+            "description": "Verify that users can deselect previously selected seats by clicking on them again, updating the UI and localStorage accordingly.",
+            "requirement_ids": [
+              "e2edev_bench_03-R-2"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 2043,
+          "output_tokens": 460,
+          "details": {
+            "total_tokens": 2503,
+            "text_prompt_tokens": 2043
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R3-01",
+            "title": "Restore selected seats and movie selection from localStorage on page load",
+            "description": "Verify that when local storage contains 'selectedSeats' and 'selectedMovieIndex', the system marks the corresponding seats with the 'selected' class and sets the movie dropdown to the stored movie index upon page load.",
+            "requirement_ids": [
+              "e2edev_bench_03-R-3"
+            ]
+          },
+          {
+            "id": "TC-R3-02",
+            "title": "Default state on page load when localStorage is empty",
+            "description": "Verify that when local storage does not contain 'selectedSeats' and 'selectedMovieIndex', no seats are marked as 'selected' and the movie dropdown defaults to the first movie option ('The Big Lebowski ($10)').",
+            "requirement_ids": [
+              "e2edev_bench_03-R-3"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 2043,
+          "output_tokens": 242,
+          "details": {
+            "total_tokens": 2285,
+            "text_prompt_tokens": 2043
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "tc-e2edev_bench_03-R-4-1",
+            "title": "Select Movie and Update Ticket Price",
+            "description": "Verify that when the user selects a movie from the dropdown menu with data-testid 'movie-select', the ticket price is set according to the selected movie's value.",
+            "requirement_ids": [
+              "e2edev_bench_03-R-4"
+            ]
+          },
+          {
+            "id": "tc-e2edev_bench_03-R-4-2",
+            "title": "Toggle Seat Selection on Available Seat",
+            "description": "Verify that as the user clicks on available seats (those without the 'occupied' class) within the seating area, the system toggles the 'selected' class on the clicked seat.",
+            "requirement_ids": [
+              "e2edev_bench_03-R-4"
+            ]
+          },
+          {
+            "id": "tc-e2edev_bench_03-R-4-3",
+            "title": "Update Selected Seat Count",
+            "description": "Verify that the count of selected seats, displayed with data-testid 'selected-count', updates to reflect the current number of seats with the 'selected' class.",
+            "requirement_ids": [
+              "e2edev_bench_03-R-4"
+            ]
+          },
+          {
+            "id": "tc-e2edev_bench_03-R-4-4",
+            "title": "Calculate Total Price",
+            "description": "Verify that the total price, displayed with data-testid 'total-price', is calculated as the product of the number of selected seats and the current ticket price.",
+            "requirement_ids": [
+              "e2edev_bench_03-R-4"
+            ]
+          },
+          {
+            "id": "tc-e2edev_bench_03-R-4-5",
+            "title": "Decrease Count and Total Price on Deselection",
+            "description": "Verify that if a user deselects a seat by clicking on it again, the count and total price decrease accordingly.",
+            "requirement_ids": [
+              "e2edev_bench_03-R-4"
+            ]
+          },
+          {
+            "id": "tc-e2edev_bench_03-R-4-6",
+            "title": "Update Total Price on Movie Change with Existing Selection",
+            "description": "Verify that if the user changes the movie selection after selecting seats, the total price updates based on the new ticket price while maintaining the count of selected seats.",
+            "requirement_ids": [
+              "e2edev_bench_03-R-4"
+            ]
+          },
+          {
+            "id": "tc-e2edev_bench_03-R-4-7",
+            "title": "Prevent Selection of Occupied Seats",
+            "description": "Verify that the system prevents users from selecting seats marked as 'occupied'.",
+            "requirement_ids": [
+              "e2edev_bench_03-R-4"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 2043,
+          "output_tokens": 759,
+          "details": {
+            "total_tokens": 2802,
+            "text_prompt_tokens": 2043
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "test_seat_legends_and_status_distinction",
+            "title": "Distinguish seat statuses via legends",
+            "description": "Verify that users can distinguish between available, selected, and occupied seats through legends that indicate the status of each seat, with each status having its own corresponding legend (e.g., data-testid = 'seat-select').",
+            "requirement_ids": [
+              "e2edev_bench_03-R-5"
+            ]
+          },
+          {
+            "id": "test_occupied_seats_non_interactive",
+            "title": "Occupied seats are non-interactive",
+            "description": "Verify that occupied seats are clearly marked and non-interactive to prevent selection.",
+            "requirement_ids": [
+              "e2edev_bench_03-R-5"
+            ]
+          },
+          {
+            "id": "test_available_seats_clickable_toggle",
+            "title": "Available seats can be clicked to toggle selection",
+            "description": "Verify that available seats can be clicked to toggle their selection status.",
+            "requirement_ids": [
+              "e2edev_bench_03-R-5"
+            ]
+          },
+          {
+            "id": "test_seat_selection_updates_count_and_price",
+            "title": "Seat selection and deselection updates count and total price",
+            "description": "Verify that when users select or deselect seats, the count of selected seats and the total price are updated accordingly.",
+            "requirement_ids": [
+              "e2edev_bench_03-R-5"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 2043,
+          "output_tokens": 399,
+          "details": {
+            "total_tokens": 2442,
+            "text_prompt_tokens": 2043
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "critic",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "All requirements and explicit behaviors have been fully analyzed and matched with the provided test cases. No blockers or missing scenarios were found.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true,
+        "missing_scenario_gaps": []
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 3264,
+          "output_tokens": 75,
+          "details": {
+            "total_tokens": 3339,
+            "text_prompt_tokens": 3264
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "coverage",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "The accepted cases comprehensively cover all explicit aspects of requirements R-1 through R-5, including seat selection, price calculation, localStorage persistence and restoration, default initialization, movie dropdown interactions, and legend display. There is no evidence of excess, overgeneration, repetition, or testing of speculative or unstated behaviors. All tested scenarios strictly align with the requirement descriptions."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 3207,
+          "output_tokens": 81,
+          "details": {
+            "total_tokens": 3288,
+            "text_prompt_tokens": 3207
+          },
+          "status": "available"
+        }
+      ]
+    }
+  ],
+  "monotonicity": "confirmed"
+}
