@@ -1,0 +1,462 @@
+{
+  "initial": {
+    "assessment": {
+      "candidate_id": "initial",
+      "cases": [
+        {
+          "id": "G-001",
+          "title": "Verify Classic and Modern themes exist under themes preferences",
+          "description": "Check that both Classic and Modern themes exist under the themes preferences.",
+          "requirement_ids": [
+            "R-175"
+          ]
+        },
+        {
+          "id": "G-002",
+          "title": "Verify Classic theme display",
+          "description": "Verify that the Classic theme is displayed as shown in the given image.",
+          "requirement_ids": [
+            "R-176"
+          ]
+        },
+        {
+          "id": "G-003",
+          "title": "Verify Modern theme display matches the reference image",
+          "description": "Verify that the Modern theme is displayed as shown in the given image.",
+          "requirement_ids": [
+            "R-177"
+          ]
+        },
+        {
+          "id": "G-004",
+          "title": "Verify Theme Preferences item under View menu",
+          "description": "Verify that the Theme Preferences item is available under the View menu.",
+          "requirement_ids": [
+            "R-178"
+          ]
+        },
+        {
+          "id": "G-005",
+          "title": "Verify Get New Themes item availability under View menu",
+          "description": "Verify that the Get New Themes item is available under the View menu.",
+          "requirement_ids": [
+            "R-179"
+          ]
+        },
+        {
+          "id": "G-006",
+          "title": "Verify Classic item under View menu",
+          "description": "Verify that the Classic item is available under the View menu.",
+          "requirement_ids": [
+            "R-180"
+          ]
+        },
+        {
+          "id": "G-007",
+          "title": "Verify Modern item availability under View menu",
+          "description": "Verify that the \"Modern\" item is available under the View menu.",
+          "requirement_ids": [
+            "R-181"
+          ]
+        }
+      ],
+      "opinions": [
+        {
+          "agent": "critic",
+          "feedback": "All requirements have explicit matching cases covering their stated behaviors without any gaps or blockers.",
+          "request_revision": false,
+          "confirmed_blockers": [],
+          "blocker_assessment_complete": true
+        },
+        {
+          "agent": "validator",
+          "feedback": "All requirements R-175 through R-181 have corresponding test cases covering their explicit statements without blockers or coverage gaps.",
+          "request_revision": false,
+          "confirmed_blockers": [],
+          "blocker_assessment_complete": true
+        }
+      ],
+      "valid": true,
+      "confirmed_blockers": 0,
+      "covered_requirements": 7,
+      "duplicates": 0,
+      "comparable": true
+    },
+    "analysis": null,
+    "failure": null
+  },
+  "rounds": [],
+  "status": "completed",
+  "failure": null,
+  "accepted_id": "initial",
+  "accepted_assessment": {
+    "candidate_id": "initial",
+    "cases": [
+      {
+        "id": "G-001",
+        "title": "Verify Classic and Modern themes exist under themes preferences",
+        "description": "Check that both Classic and Modern themes exist under the themes preferences.",
+        "requirement_ids": [
+          "R-175"
+        ]
+      },
+      {
+        "id": "G-002",
+        "title": "Verify Classic theme display",
+        "description": "Verify that the Classic theme is displayed as shown in the given image.",
+        "requirement_ids": [
+          "R-176"
+        ]
+      },
+      {
+        "id": "G-003",
+        "title": "Verify Modern theme display matches the reference image",
+        "description": "Verify that the Modern theme is displayed as shown in the given image.",
+        "requirement_ids": [
+          "R-177"
+        ]
+      },
+      {
+        "id": "G-004",
+        "title": "Verify Theme Preferences item under View menu",
+        "description": "Verify that the Theme Preferences item is available under the View menu.",
+        "requirement_ids": [
+          "R-178"
+        ]
+      },
+      {
+        "id": "G-005",
+        "title": "Verify Get New Themes item availability under View menu",
+        "description": "Verify that the Get New Themes item is available under the View menu.",
+        "requirement_ids": [
+          "R-179"
+        ]
+      },
+      {
+        "id": "G-006",
+        "title": "Verify Classic item under View menu",
+        "description": "Verify that the Classic item is available under the View menu.",
+        "requirement_ids": [
+          "R-180"
+        ]
+      },
+      {
+        "id": "G-007",
+        "title": "Verify Modern item availability under View menu",
+        "description": "Verify that the \"Modern\" item is available under the View menu.",
+        "requirement_ids": [
+          "R-181"
+        ]
+      }
+    ],
+    "opinions": [
+      {
+        "agent": "critic",
+        "feedback": "All requirements have explicit matching cases covering their stated behaviors without any gaps or blockers.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      {
+        "agent": "validator",
+        "feedback": "All requirements R-175 through R-181 have corresponding test cases covering their explicit statements without blockers or coverage gaps.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      }
+    ],
+    "valid": true,
+    "confirmed_blockers": 0,
+    "covered_requirements": 7,
+    "duplicates": 0,
+    "comparable": true
+  },
+  "pending": [],
+  "pending_controls": [],
+  "coverage": {
+    "feedback": "The accepted cases cover all requirements (R-175 through R-181) directly and accurately without overgeneration, repetition, or testing unstated behaviors. There are no coverage gaps or excess cases."
+  },
+  "coverage_failure": null,
+  "calls": [
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-175",
+            "title": "Verify Classic and Modern themes exist under themes preferences",
+            "description": "Check that both Classic and Modern themes exist under the themes preferences.",
+            "requirement_ids": [
+              "R-175"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 709,
+          "output_tokens": 87,
+          "details": {
+            "total_tokens": 796,
+            "text_prompt_tokens": 709
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-176-1",
+            "title": "Verify Classic theme display",
+            "description": "Verify that the Classic theme is displayed as shown in the given image.",
+            "requirement_ids": [
+              "R-176"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 709,
+          "output_tokens": 85,
+          "details": {
+            "total_tokens": 794,
+            "text_prompt_tokens": 709
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-177",
+            "title": "Verify Modern theme display matches the reference image",
+            "description": "Verify that the Modern theme is displayed as shown in the given image.",
+            "requirement_ids": [
+              "R-177"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": 709,
+          "output_tokens": 81,
+          "details": {
+            "total_tokens": 790,
+            "text_prompt_tokens": 709
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-178-01",
+            "title": "Verify Theme Preferences item under View menu",
+            "description": "Verify that the Theme Preferences item is available under the View menu.",
+            "requirement_ids": [
+              "R-178"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": 709,
+          "output_tokens": 88,
+          "details": {
+            "total_tokens": 797,
+            "text_prompt_tokens": 709
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-179-1",
+            "title": "Verify Get New Themes item availability under View menu",
+            "description": "Verify that the Get New Themes item is available under the View menu.",
+            "requirement_ids": [
+              "R-179"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 709,
+          "output_tokens": 90,
+          "details": {
+            "total_tokens": 799,
+            "text_prompt_tokens": 709
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-180",
+            "title": "Verify Classic item under View menu",
+            "description": "Verify that the Classic item is available under the View menu.",
+            "requirement_ids": [
+              "R-180"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 709,
+          "output_tokens": 83,
+          "details": {
+            "total_tokens": 792,
+            "text_prompt_tokens": 709
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-181",
+            "title": "Verify Modern item availability under View menu",
+            "description": "Verify that the \"Modern\" item is available under the View menu.",
+            "requirement_ids": [
+              "R-181"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 709,
+          "output_tokens": 86,
+          "details": {
+            "total_tokens": 795,
+            "text_prompt_tokens": 709
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "critic",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "All requirements have explicit matching cases covering their stated behaviors without any gaps or blockers.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true,
+        "missing_scenario_gaps": []
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1124,
+          "output_tokens": 66,
+          "details": {
+            "total_tokens": 1190,
+            "text_prompt_tokens": 1124
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "validator",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "All requirements R-175 through R-181 have corresponding test cases covering their explicit statements without blockers or coverage gaps.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true,
+        "missing_scenario_gaps": []
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": 1031,
+          "output_tokens": 77,
+          "details": {
+            "total_tokens": 1108,
+            "text_prompt_tokens": 1031
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "coverage",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "The accepted cases cover all requirements (R-175 through R-181) directly and accurately without overgeneration, repetition, or testing unstated behaviors. There are no coverage gaps or excess cases."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 947,
+          "output_tokens": 52,
+          "details": {
+            "total_tokens": 999,
+            "text_prompt_tokens": 947
+          },
+          "status": "available"
+        }
+      ]
+    }
+  ],
+  "monotonicity": "confirmed"
+}

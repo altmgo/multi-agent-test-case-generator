@@ -1,0 +1,3 @@
+# e2edev\_bench\_04-R-4
+
+The Speech Text Reader web application must allow users to select a voice from the 'Choose Voice' dropdown, identified by data-testid='voice-select'. Upon selection, the system should set the chosen voice for speech synthesis. The dropdown should be populated with available voices when the page is fully loaded. The system must handle multiple voice selections, ensuring that the last selected voice is set as the active voice for speech synthesis. The application should support voice options that include specific language codes, such as 'CN' for Chinese or 'US' for English, and accurately set the voice containing these codes as the active voice when selected.

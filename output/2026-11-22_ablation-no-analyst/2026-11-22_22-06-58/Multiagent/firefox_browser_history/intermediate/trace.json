@@ -1,0 +1,754 @@
+{
+  "initial": {
+    "assessment": {
+      "candidate_id": "initial",
+      "cases": [
+        {
+          "id": "G-001",
+          "title": "Record Visited Link to Global History",
+          "description": "Verify that when a link is visited, it is recorded to the Global History.",
+          "requirement_ids": [
+            "R-073"
+          ]
+        },
+        {
+          "id": "G-002",
+          "title": "Verify correct link recorded after server redirect",
+          "description": "Ensure that the correct link is recorded to the Global History after a server redirect occurs.",
+          "requirement_ids": [
+            "R-074"
+          ]
+        },
+        {
+          "id": "G-003",
+          "title": "Launch history link in browser window",
+          "description": "Verify that clicking on a history link causes it to be launched in a browser window.",
+          "requirement_ids": [
+            "R-075"
+          ]
+        },
+        {
+          "id": "G-004",
+          "title": "Delete a History entry",
+          "description": "Verify that a selected History entry is deleted successfully.",
+          "requirement_ids": [
+            "R-076"
+          ]
+        },
+        {
+          "id": "G-005",
+          "title": "Delete multiple history entries",
+          "description": "Select multiple History entries and delete them so they are no longer displayed.",
+          "requirement_ids": [
+            "R-077"
+          ]
+        },
+        {
+          "id": "G-006",
+          "title": "Clear Global History",
+          "description": "Verify that the Global History can be cleared successfully.",
+          "requirement_ids": [
+            "R-078"
+          ]
+        },
+        {
+          "id": "G-007",
+          "title": "Group history items by Day",
+          "description": "Verify that history items are grouped by Day.",
+          "requirement_ids": [
+            "R-079"
+          ]
+        },
+        {
+          "id": "G-008",
+          "title": "Group history items by Site",
+          "description": "Verify that history items are grouped by Site.",
+          "requirement_ids": [
+            "R-079"
+          ]
+        },
+        {
+          "id": "G-009",
+          "title": "Group history items by None",
+          "description": "Verify that history items are grouped by None.",
+          "requirement_ids": [
+            "R-079"
+          ]
+        },
+        {
+          "id": "G-010",
+          "title": "Sort and reverse-sort History per column",
+          "description": "Verify that History entries are sorted and reverse-sorted per column.",
+          "requirement_ids": [
+            "R-080"
+          ]
+        },
+        {
+          "id": "G-011",
+          "title": "Resize History Columns",
+          "description": "Verify that history columns are resizable to show or hide more of entries.",
+          "requirement_ids": [
+            "R-081"
+          ]
+        },
+        {
+          "id": "G-012",
+          "title": "Show History columns",
+          "description": "Verify that History columns can be shown.",
+          "requirement_ids": [
+            "R-082"
+          ]
+        },
+        {
+          "id": "G-013",
+          "title": "Hide History columns",
+          "description": "Verify that History columns can be hidden.",
+          "requirement_ids": [
+            "R-082"
+          ]
+        },
+        {
+          "id": "G-014",
+          "title": "Revisit recently visited sites via Back and Forward button dropdown menu",
+          "description": "Verify that recently visited sites can be re-visited using the dropdown menu of the Back and Forward buttons.",
+          "requirement_ids": [
+            "R-083"
+          ]
+        },
+        {
+          "id": "G-015",
+          "title": "Create empty session history file for new browser window or restart",
+          "description": "Verify that a new, empty session history file is created when a new browser window is opened or the browser is restarted.",
+          "requirement_ids": [
+            "R-084"
+          ]
+        }
+      ],
+      "opinions": [
+        {
+          "agent": "critic",
+          "feedback": "All requirements have been thoroughly reviewed against the proposed test cases. Every explicitly described operation, sorting direction, grouping option, and state transition has a corresponding distinct test case covering it. No blockers or missing scenarios were found.",
+          "request_revision": false,
+          "confirmed_blockers": [],
+          "blocker_assessment_complete": true
+        },
+        {
+          "agent": "validator",
+          "feedback": "All requirements have corresponding test cases covering the explicitly described behaviors and states without any missing coverage gaps or blockers.",
+          "request_revision": false,
+          "confirmed_blockers": [],
+          "blocker_assessment_complete": true
+        }
+      ],
+      "valid": true,
+      "confirmed_blockers": 0,
+      "covered_requirements": 12,
+      "duplicates": 0,
+      "comparable": true
+    },
+    "analysis": null,
+    "failure": null
+  },
+  "rounds": [],
+  "status": "completed",
+  "failure": null,
+  "accepted_id": "initial",
+  "accepted_assessment": {
+    "candidate_id": "initial",
+    "cases": [
+      {
+        "id": "G-001",
+        "title": "Record Visited Link to Global History",
+        "description": "Verify that when a link is visited, it is recorded to the Global History.",
+        "requirement_ids": [
+          "R-073"
+        ]
+      },
+      {
+        "id": "G-002",
+        "title": "Verify correct link recorded after server redirect",
+        "description": "Ensure that the correct link is recorded to the Global History after a server redirect occurs.",
+        "requirement_ids": [
+          "R-074"
+        ]
+      },
+      {
+        "id": "G-003",
+        "title": "Launch history link in browser window",
+        "description": "Verify that clicking on a history link causes it to be launched in a browser window.",
+        "requirement_ids": [
+          "R-075"
+        ]
+      },
+      {
+        "id": "G-004",
+        "title": "Delete a History entry",
+        "description": "Verify that a selected History entry is deleted successfully.",
+        "requirement_ids": [
+          "R-076"
+        ]
+      },
+      {
+        "id": "G-005",
+        "title": "Delete multiple history entries",
+        "description": "Select multiple History entries and delete them so they are no longer displayed.",
+        "requirement_ids": [
+          "R-077"
+        ]
+      },
+      {
+        "id": "G-006",
+        "title": "Clear Global History",
+        "description": "Verify that the Global History can be cleared successfully.",
+        "requirement_ids": [
+          "R-078"
+        ]
+      },
+      {
+        "id": "G-007",
+        "title": "Group history items by Day",
+        "description": "Verify that history items are grouped by Day.",
+        "requirement_ids": [
+          "R-079"
+        ]
+      },
+      {
+        "id": "G-008",
+        "title": "Group history items by Site",
+        "description": "Verify that history items are grouped by Site.",
+        "requirement_ids": [
+          "R-079"
+        ]
+      },
+      {
+        "id": "G-009",
+        "title": "Group history items by None",
+        "description": "Verify that history items are grouped by None.",
+        "requirement_ids": [
+          "R-079"
+        ]
+      },
+      {
+        "id": "G-010",
+        "title": "Sort and reverse-sort History per column",
+        "description": "Verify that History entries are sorted and reverse-sorted per column.",
+        "requirement_ids": [
+          "R-080"
+        ]
+      },
+      {
+        "id": "G-011",
+        "title": "Resize History Columns",
+        "description": "Verify that history columns are resizable to show or hide more of entries.",
+        "requirement_ids": [
+          "R-081"
+        ]
+      },
+      {
+        "id": "G-012",
+        "title": "Show History columns",
+        "description": "Verify that History columns can be shown.",
+        "requirement_ids": [
+          "R-082"
+        ]
+      },
+      {
+        "id": "G-013",
+        "title": "Hide History columns",
+        "description": "Verify that History columns can be hidden.",
+        "requirement_ids": [
+          "R-082"
+        ]
+      },
+      {
+        "id": "G-014",
+        "title": "Revisit recently visited sites via Back and Forward button dropdown menu",
+        "description": "Verify that recently visited sites can be re-visited using the dropdown menu of the Back and Forward buttons.",
+        "requirement_ids": [
+          "R-083"
+        ]
+      },
+      {
+        "id": "G-015",
+        "title": "Create empty session history file for new browser window or restart",
+        "description": "Verify that a new, empty session history file is created when a new browser window is opened or the browser is restarted.",
+        "requirement_ids": [
+          "R-084"
+        ]
+      }
+    ],
+    "opinions": [
+      {
+        "agent": "critic",
+        "feedback": "All requirements have been thoroughly reviewed against the proposed test cases. Every explicitly described operation, sorting direction, grouping option, and state transition has a corresponding distinct test case covering it. No blockers or missing scenarios were found.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      {
+        "agent": "validator",
+        "feedback": "All requirements have corresponding test cases covering the explicitly described behaviors and states without any missing coverage gaps or blockers.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      }
+    ],
+    "valid": true,
+    "confirmed_blockers": 0,
+    "covered_requirements": 12,
+    "duplicates": 0,
+    "comparable": true
+  },
+  "pending": [],
+  "pending_controls": [],
+  "coverage": {
+    "feedback": "The accepted cases provide a direct and comprehensive mapping to all requirements (R-073 through R-084) without introducing any overgeneration, repetition, or speculative edge cases. Each requirement is appropriately addressed by corresponding test cases, including all grouping options for R-079 and distinct show/hide cases for R-082. There are no missing requirements or gaps identified in the accepted cases."
+  },
+  "coverage_failure": null,
+  "calls": [
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-073",
+            "title": "Record Visited Link to Global History",
+            "description": "Verify that when a link is visited, it is recorded to the Global History.",
+            "requirement_ids": [
+              "R-073"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 963,
+          "output_tokens": 88,
+          "details": {
+            "total_tokens": 1051,
+            "text_prompt_tokens": 963
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-074",
+            "title": "Verify correct link recorded after server redirect",
+            "description": "Ensure that the correct link is recorded to the Global History after a server redirect occurs.",
+            "requirement_ids": [
+              "R-074"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 963,
+          "output_tokens": 89,
+          "details": {
+            "total_tokens": 1052,
+            "text_prompt_tokens": 963
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-075-01",
+            "title": "Launch history link in browser window",
+            "description": "Verify that clicking on a history link causes it to be launched in a browser window.",
+            "requirement_ids": [
+              "R-075"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 963,
+          "output_tokens": 91,
+          "details": {
+            "total_tokens": 1054,
+            "text_prompt_tokens": 963
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-076",
+            "title": "Delete a History entry",
+            "description": "Verify that a selected History entry is deleted successfully.",
+            "requirement_ids": [
+              "R-076"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 963,
+          "output_tokens": 79,
+          "details": {
+            "total_tokens": 1042,
+            "text_prompt_tokens": 963
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-077-01",
+            "title": "Delete multiple history entries",
+            "description": "Select multiple History entries and delete them so they are no longer displayed.",
+            "requirement_ids": [
+              "R-077"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 963,
+          "output_tokens": 58,
+          "details": {
+            "total_tokens": 1021,
+            "text_prompt_tokens": 963
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-078",
+            "title": "Clear Global History",
+            "description": "Verify that the Global History can be cleared successfully.",
+            "requirement_ids": [
+              "R-078"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 963,
+          "output_tokens": 78,
+          "details": {
+            "total_tokens": 1041,
+            "text_prompt_tokens": 963
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-079-01",
+            "title": "Group history items by Day",
+            "description": "Verify that history items are grouped by Day.",
+            "requirement_ids": [
+              "R-079"
+            ]
+          },
+          {
+            "id": "TC-R-079-02",
+            "title": "Group history items by Site",
+            "description": "Verify that history items are grouped by Site.",
+            "requirement_ids": [
+              "R-079"
+            ]
+          },
+          {
+            "id": "TC-R-079-03",
+            "title": "Group history items by None",
+            "description": "Verify that history items are grouped by None.",
+            "requirement_ids": [
+              "R-079"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 963,
+          "output_tokens": 205,
+          "details": {
+            "total_tokens": 1168,
+            "text_prompt_tokens": 963
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-080-01",
+            "title": "Sort and reverse-sort History per column",
+            "description": "Verify that History entries are sorted and reverse-sorted per column.",
+            "requirement_ids": [
+              "R-080"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 963,
+          "output_tokens": 89,
+          "details": {
+            "total_tokens": 1052,
+            "text_prompt_tokens": 963
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-081-01",
+            "title": "Resize History Columns",
+            "description": "Verify that history columns are resizable to show or hide more of entries.",
+            "requirement_ids": [
+              "R-081"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": 963,
+          "output_tokens": 86,
+          "details": {
+            "total_tokens": 1049,
+            "text_prompt_tokens": 963
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-082-001",
+            "title": "Show History columns",
+            "description": "Verify that History columns can be shown.",
+            "requirement_ids": [
+              "R-082"
+            ]
+          },
+          {
+            "id": "TC-R-082-002",
+            "title": "Hide History columns",
+            "description": "Verify that History columns can be hidden.",
+            "requirement_ids": [
+              "R-082"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 963,
+          "output_tokens": 136,
+          "details": {
+            "total_tokens": 1099,
+            "text_prompt_tokens": 963
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-083",
+            "title": "Revisit recently visited sites via Back and Forward button dropdown menu",
+            "description": "Verify that recently visited sites can be re-visited using the dropdown menu of the Back and Forward buttons.",
+            "requirement_ids": [
+              "R-083"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": 963,
+          "output_tokens": 70,
+          "details": {
+            "total_tokens": 1033,
+            "text_prompt_tokens": 963
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-084-01",
+            "title": "Create empty session history file for new browser window or restart",
+            "description": "Verify that a new, empty session history file is created when a new browser window is opened or the browser is restarted.",
+            "requirement_ids": [
+              "R-084"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": null,
+          "output_tokens": null,
+          "details": null,
+          "status": "unavailable"
+        },
+        {
+          "input_tokens": 963,
+          "output_tokens": 103,
+          "details": {
+            "total_tokens": 1066,
+            "text_prompt_tokens": 963
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "critic",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "All requirements have been thoroughly reviewed against the proposed test cases. Every explicitly described operation, sorting direction, grouping option, and state transition has a corresponding distinct test case covering it. No blockers or missing scenarios were found.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true,
+        "missing_scenario_gaps": []
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1768,
+          "output_tokens": 93,
+          "details": {
+            "total_tokens": 1861,
+            "text_prompt_tokens": 1768
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "validator",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "All requirements have corresponding test cases covering the explicitly described behaviors and states without any missing coverage gaps or blockers.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true,
+        "missing_scenario_gaps": []
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1675,
+          "output_tokens": 71,
+          "details": {
+            "total_tokens": 1746,
+            "text_prompt_tokens": 1675
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "coverage",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "The accepted cases provide a direct and comprehensive mapping to all requirements (R-073 through R-084) without introducing any overgeneration, repetition, or speculative edge cases. Each requirement is appropriately addressed by corresponding test cases, including all grouping options for R-079 and distinct show/hide cases for R-082. There are no missing requirements or gaps identified in the accepted cases."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1655,
+          "output_tokens": 93,
+          "details": {
+            "total_tokens": 1748,
+            "text_prompt_tokens": 1655
+          },
+          "status": "available"
+        }
+      ]
+    }
+  ],
+  "monotonicity": "confirmed"
+}

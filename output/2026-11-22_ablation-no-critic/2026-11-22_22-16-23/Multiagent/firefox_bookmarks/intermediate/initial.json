@@ -1,0 +1,281 @@
+{
+  "assessment": {
+    "candidate_id": "initial",
+    "cases": [
+      {
+        "id": "G-001",
+        "title": "Add new bookmark to hierarchy",
+        "description": "Verify that a new bookmark is successfully added.",
+        "requirement_ids": [
+          "R-001"
+        ]
+      },
+      {
+        "id": "G-002",
+        "title": "Add new bookmark into a specific location",
+        "description": "Verify that a new bookmark is added into a specific location within the bookmarks hierarchy.",
+        "requirement_ids": [
+          "R-001"
+        ]
+      },
+      {
+        "id": "G-003",
+        "title": "Delete Bookmarks from File",
+        "description": "Verify that bookmarks are properly deleted from the bookmarks file.",
+        "requirement_ids": [
+          "R-002"
+        ]
+      },
+      {
+        "id": "G-004",
+        "title": "Remove Deleted Bookmarks from Display",
+        "description": "Verify that deleted bookmarks are no longer displayed from all access points.",
+        "requirement_ids": [
+          "R-002"
+        ]
+      },
+      {
+        "id": "G-005",
+        "title": "Add bookmark to the personal toolbar",
+        "description": "Verify that a bookmark can be successfully added to the personal toolbar.",
+        "requirement_ids": [
+          "R-003"
+        ]
+      },
+      {
+        "id": "G-006",
+        "title": "Delete bookmark from the personal toolbar",
+        "description": "Verify that a bookmark can be successfully deleted from the personal toolbar.",
+        "requirement_ids": [
+          "R-003"
+        ]
+      },
+      {
+        "id": "G-007",
+        "title": "Insert new bookmark folder into bookmarks hierarchy",
+        "description": "Verify that a new bookmark folder can be successfully inserted into a specific location within the bookmarks hierarchy.",
+        "requirement_ids": [
+          "R-004"
+        ]
+      },
+      {
+        "id": "G-008",
+        "title": "Double-click bookmark to launch browser window",
+        "description": "Verify that double-clicking on a bookmark causes it to be launched in a browser window.",
+        "requirement_ids": [
+          "R-005"
+        ]
+      },
+      {
+        "id": "G-009",
+        "title": "Validate Default Bookmarks File Links",
+        "description": "Verify that bookmarks within the default bookmarks file that is packaged with the browser are valid links.",
+        "requirement_ids": [
+          "R-006"
+        ]
+      },
+      {
+        "id": "G-010",
+        "title": "Save changes to a bookmark item",
+        "description": "Verify that changes made to a bookmark item are successfully saved.",
+        "requirement_ids": [
+          "R-007"
+        ]
+      },
+      {
+        "id": "G-011",
+        "title": "Preserve bookmark item integrity",
+        "description": "Verify that changes to a bookmark item are saved without loss of item integrity.",
+        "requirement_ids": [
+          "R-007"
+        ]
+      },
+      {
+        "id": "G-012",
+        "title": "Delete Bookmarks Folder",
+        "description": "Verify that a bookmarks folder is successfully deleted.",
+        "requirement_ids": [
+          "R-008"
+        ]
+      },
+      {
+        "id": "G-013",
+        "title": "Add bookmarks separators",
+        "description": "Verify that bookmarks separators can be successfully added.",
+        "requirement_ids": [
+          "R-009"
+        ]
+      },
+      {
+        "id": "G-014",
+        "title": "Delete bookmarks separators",
+        "description": "Verify that bookmarks separators can be successfully deleted.",
+        "requirement_ids": [
+          "R-009"
+        ]
+      },
+      {
+        "id": "G-015",
+        "title": "Save Bookmarks Changes Over Restart",
+        "description": "Verify that bookmarks changes are successfully saved and retained after an application restart.",
+        "requirement_ids": [
+          "R-010"
+        ]
+      },
+      {
+        "id": "G-016",
+        "title": "Save Bookmarks Changes Over Crash",
+        "description": "Verify that bookmarks changes are successfully saved and retained after an application crash.",
+        "requirement_ids": [
+          "R-010"
+        ]
+      },
+      {
+        "id": "G-017",
+        "title": "Negative view properties execution for bookmarks",
+        "description": "Verify that view properties execution yields negative results or is restricted for bookmarks.",
+        "requirement_ids": [
+          "R-011"
+        ]
+      },
+      {
+        "id": "G-018",
+        "title": "Negative view properties execution for folders",
+        "description": "Verify that view properties execution yields negative results or is restricted for folders.",
+        "requirement_ids": [
+          "R-011"
+        ]
+      },
+      {
+        "id": "G-019",
+        "title": "Negative view properties execution for separators",
+        "description": "Verify that view properties execution yields negative results or is restricted for separators.",
+        "requirement_ids": [
+          "R-011"
+        ]
+      },
+      {
+        "id": "G-020",
+        "title": "Rename bookmark inline",
+        "description": "Verify that a bookmark can be renamed directly inline.",
+        "requirement_ids": [
+          "R-012"
+        ]
+      },
+      {
+        "id": "G-021",
+        "title": "Rename bookmark without properties dialog",
+        "description": "Verify that a bookmark is renamed inline without having to use the bookmarks properties dialog.",
+        "requirement_ids": [
+          "R-012"
+        ]
+      },
+      {
+        "id": "G-022",
+        "title": "Find Bookmark Using User-Defined Custom Keyword",
+        "description": "Verify that bookmarks can be successfully found using a user-defined custom keyword.",
+        "requirement_ids": [
+          "R-013"
+        ]
+      },
+      {
+        "id": "G-023",
+        "title": "Sort bookmarks per column",
+        "description": "Verify that bookmarks are successfully sorted per column.",
+        "requirement_ids": [
+          "R-014"
+        ]
+      },
+      {
+        "id": "G-024",
+        "title": "Reverse-sort bookmarks per column",
+        "description": "Verify that bookmarks are successfully reverse-sorted per column.",
+        "requirement_ids": [
+          "R-014"
+        ]
+      },
+      {
+        "id": "G-025",
+        "title": "Resize bookmark columns",
+        "description": "Verify that bookmark columns can be resized.",
+        "requirement_ids": [
+          "R-015"
+        ]
+      },
+      {
+        "id": "G-026",
+        "title": "Show and hide more entries via column resizing",
+        "description": "Verify that resizing bookmark columns shows or hides more of the entries.",
+        "requirement_ids": [
+          "R-015"
+        ]
+      },
+      {
+        "id": "G-027",
+        "title": "Show Bookmark Columns",
+        "description": "Verify that bookmark columns can be explicitly showed.",
+        "requirement_ids": [
+          "R-016"
+        ]
+      },
+      {
+        "id": "G-028",
+        "title": "Hide Bookmark Columns",
+        "description": "Verify that bookmark columns can be explicitly hidden.",
+        "requirement_ids": [
+          "R-016"
+        ]
+      },
+      {
+        "id": "G-029",
+        "title": "Delete Several Bookmarks at One Time",
+        "description": "Verify that several bookmarks can be selected and deleted simultaneously in a single action.",
+        "requirement_ids": [
+          "R-017"
+        ]
+      },
+      {
+        "id": "G-030",
+        "title": "Prevent dropping a bookmark item onto itself",
+        "description": "Verify that it is not possible to drop a bookmark item onto itself.",
+        "requirement_ids": [
+          "R-018"
+        ]
+      },
+      {
+        "id": "G-031",
+        "title": "Prevent dropping a bookmark item onto its immediate parent",
+        "description": "Verify that it is not possible to drop a bookmark item onto its immediate parent.",
+        "requirement_ids": [
+          "R-018"
+        ]
+      },
+      {
+        "id": "G-032",
+        "title": "Prevent dropping a bookmark item onto its immediate child",
+        "description": "Verify that it is not possible to drop a bookmark item onto its immediate child.",
+        "requirement_ids": [
+          "R-018"
+        ]
+      }
+    ],
+    "opinions": [
+      {
+        "agent": "validator",
+        "feedback": "The test cases successfully cover all the explicit requirements and their operational boundaries without any blockers or coverage gaps.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      }
+    ],
+    "valid": true,
+    "confirmed_blockers": 0,
+    "covered_requirements": 18,
+    "duplicates": 0,
+    "comparable": true
+  },
+  "analysis": {
+    "analysis": "R-001: Multiple behaviors. Atomic behaviors: Add a new bookmark; Place it into a specific location within the bookmarks hierarchy. R-002: Multiple behaviors. Atomic behaviors: Delete bookmarks from bookmarks file; Remove bookmarks from display across all access points. R-003: Multiple behaviors. Atomic behaviors: Add bookmarks from the personal toolbar; Delete bookmarks from the personal toolbar. R-004: Single straightforward acceptance criterion (Normal scenario only). R-005: Single straightforward acceptance criterion (Normal scenario only). R-006: Single straightforward acceptance criterion (Normal scenario only). R-007: Multiple behaviors. Atomic behaviors: Save changes to a bookmark item; Preserve item integrity without loss. R-008: Single straightforward acceptance criterion (Normal scenario only). R-009: Multiple behaviors. Atomic behaviors: Add bookmarks separators; Delete bookmarks separators. R-010: Multiple behaviors. Atomic behaviors: Save bookmarks changes over restart; Save bookmarks changes over crash. R-011: Multiple behaviors with negative condition. Atomic behaviors: Execute view properties for bookmarks (negative); Execute view properties for folders (negative); Execute view properties for separators (negative). R-012: Multiple behaviors. Atomic behaviors: Rename bookmarks inline; Perform rename without using the bookmarks properties dialog. R-013: Single straightforward acceptance criterion (Normal scenario only). R-014: Multiple behaviors. Atomic behaviors: Sort bookmarks per column; Reverse-sort bookmarks per column. R-015: Multiple behaviors. Atomic behaviors: Resize bookmark columns; Show/hide more of entries via resizing. R-016: Multiple behaviors. Atomic behaviors: Show bookmark columns; Hide bookmark columns. R-017: Single straightforward acceptance criterion (Normal scenario only). R-018: Multiple behaviors with boundary/abnormal constraints. Atomic behaviors: Prevent dropping a bookmark item onto itself; Prevent dropping a bookmark item onto its immediate parent; Prevent dropping a bookmark item onto its immediate child."
+  },
+  "failure": null
+}

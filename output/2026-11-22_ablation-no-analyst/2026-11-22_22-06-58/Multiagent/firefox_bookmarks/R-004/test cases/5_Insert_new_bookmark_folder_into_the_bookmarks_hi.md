@@ -1,0 +1,7 @@
+# Insert new bookmark folder into the bookmarks hierarchy
+
+Case ID · G-005
+
+Requirements · R-004
+
+Verify that a new bookmark folder is successfully inserted into a specific location within the bookmarks hierarchy.

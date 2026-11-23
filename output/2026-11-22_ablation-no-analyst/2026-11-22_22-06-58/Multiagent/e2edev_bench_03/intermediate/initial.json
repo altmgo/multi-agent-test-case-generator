@@ -1,0 +1,142 @@
+{
+  "assessment": {
+    "candidate_id": "initial",
+    "cases": [
+      {
+        "id": "G-001",
+        "title": "Dynamic update of total price and seat count upon seat and movie selection",
+        "description": "Verify that clicking an available seat marks it as selected and updates the selected seat count (data-testid=selected-count), and that selecting a movie from the dropdown (data-testid=movie-select) updates the total price (data-testid=total-price) calculated as selected seats multiplied by the movie price, while occupied seats remain non-selectable and changing the movie updates the total price accordingly.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-1"
+        ]
+      },
+      {
+        "id": "G-002",
+        "title": "Select a movie from the dropdown menu",
+        "description": "Verify that users can select a movie from a dropdown menu with options like 'The Big Lebowski ($10)', 'Fargo ($12)', 'O Brother ($8)', and 'No Country for Old Men ($9)', each identified by a specific data-testid, and its price updates accordingly.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-2"
+        ]
+      },
+      {
+        "id": "G-003",
+        "title": "Toggle seat selection status and store in localStorage",
+        "description": "Verify that when users click on an available seat (e.g., identified by data-testid=\"seat-1-1\"), the system toggles the seat's selection status, visually marks it, and stores its indices in localStorage.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-2"
+        ]
+      },
+      {
+        "id": "G-004",
+        "title": "Dynamically update seat count and total price",
+        "description": "Verify that the seat count (data-testid=\"selected-count\") and total price (data-testid=\"total-price\") are dynamically updated based on the number of selected seats and the chosen movie's price.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-2"
+        ]
+      },
+      {
+        "id": "G-005",
+        "title": "Prevent selection of occupied seats",
+        "description": "Verify that seats marked as 'occupied' cannot be selected or included in the calculation.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-2"
+        ]
+      },
+      {
+        "id": "G-006",
+        "title": "Deselect previously selected seats",
+        "description": "Verify that users can deselect previously selected seats by clicking on them again, and the UI, along with localStorage, updates accordingly.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-2"
+        ]
+      },
+      {
+        "id": "G-007",
+        "title": "Restore selected seats and movie selection from local storage on load",
+        "description": "Verify that when local storage contains 'selectedSeats' and 'selectedMovieIndex', the system retrieves them, marks the corresponding seats with the 'selected' class, and sets the movie dropdown to the correct option.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-3"
+        ]
+      },
+      {
+        "id": "G-008",
+        "title": "Default state when local storage is empty",
+        "description": "Verify that if local storage does not contain 'selectedSeats' and 'selectedMovieIndex' keys, no seats are marked as 'selected' and the movie dropdown defaults to the first movie option 'The Big Lebowski ($10)'.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-3"
+        ]
+      },
+      {
+        "id": "G-009",
+        "title": "Select movie and verify ticket price",
+        "description": "Select a movie from the dropdown menu with data-testid 'movie-select' and verify that the ticket price is set according to the selected movie's value.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-4"
+        ]
+      },
+      {
+        "id": "G-010",
+        "title": "Select available seat and update count and total price",
+        "description": "Click on available seats without the 'occupied' class to toggle the 'selected' class, and verify that the count of selected seats in data-testid 'selected-count' and the total price in data-testid 'total-price' update correctly as the product of the number of selected seats and the current ticket price.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-4"
+        ]
+      },
+      {
+        "id": "G-011",
+        "title": "Deselect seat and update count and total price",
+        "description": "Deselect a previously selected seat by clicking on it again, and verify that the selected seat count and total price decrease accordingly.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-4"
+        ]
+      },
+      {
+        "id": "G-012",
+        "title": "Change movie selection with seats selected",
+        "description": "Change the movie selection after selecting seats, and verify that the total price updates based on the new ticket price while maintaining the count of selected seats.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-4"
+        ]
+      },
+      {
+        "id": "G-013",
+        "title": "Prevent selection of occupied seats",
+        "description": "Attempt to click on seats marked as 'occupied', and verify that the system prevents their selection and does not change the seat count or total price.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-4"
+        ]
+      },
+      {
+        "id": "G-014",
+        "title": "Distinguish seat statuses via legends and interact with available, occupied, and selectable seats",
+        "description": "Verify that users can distinguish between available, selected, and occupied seats through legends (such as data-testid = 'seat-select'), that occupied seats are non-interactive and prevent selection, that available seats can be clicked to toggle their selection, and that selecting or deselecting seats updates the count of selected seats and the total price accordingly.",
+        "requirement_ids": [
+          "e2edev_bench_03-R-5"
+        ]
+      }
+    ],
+    "opinions": [
+      {
+        "agent": "critic",
+        "feedback": "",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      {
+        "agent": "validator",
+        "feedback": "",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      }
+    ],
+    "valid": true,
+    "confirmed_blockers": 0,
+    "covered_requirements": 5,
+    "duplicates": 0,
+    "comparable": true
+  },
+  "analysis": null,
+  "failure": null
+}
