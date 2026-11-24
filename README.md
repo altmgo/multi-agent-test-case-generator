@@ -1,7 +1,69 @@
-# Ferramentas de pesquisa
+# Multi-Agent Test Case Generator
 
-As ferramentas usam os JSONs de `data/normalized/` que acompanham o repositório.
-Rode os comandos abaixo a partir da raiz do repositório com Python 3.11 ou superior.
+Gera casos de teste de alto nível a partir de requisitos de software
+normalizados e compara as saídas com casos de referência. O projeto foi criado
+para estudar como diferentes estratégias de geração — incluindo uma esteira
+multiagente — afetam precisão, recall e F1 na geração de testes.
+
+> O gerador produz documentação de casos de teste. Ele não executa testes na
+> aplicação sob teste.
+
+## Visão geral
+
+O fluxo de trabalho tem duas etapas independentes:
+
+```text
+Requisitos normalizados ──> tcg run ──> Casos de teste em Markdown
+                                              │
+Casos de referência ──────────────────────────┘
+                                              │
+                                      evaluate ──> Métricas e pareamentos
+```
+
+O comando `tcg run` gera casos de teste. O comando `evaluate` compara os
+casos gerados com os casos de referência do conjunto de dados usando embeddings
+Gemini e similaridade cosseno.
+
+## Estratégias implementadas
+
+| Estratégia | Nome na CLI | Como funciona |
+| --- | --- | --- |
+| Zero-shot | `zero-shot` | Uma chamada gera casos a partir do conjunto completo de requisitos da unidade. |
+| Grounded High-Level | `GHL` | Seleciona técnicas de teste de uma lista fixa e gera casos por técnica. |
+| Multiagent | `Multiagent` | Gera casos e pode acionar agentes de análise, crítica, validação, cobertura e revisão. |
+
+### Esteira Multiagent
+
+O Multiagent sempre possui um Generator. Os agentes abaixo são opcionais:
+
+| Agente | Responsabilidade |
+| --- | --- |
+| `analyst` | Identifica comportamentos e cenários explicitamente descritos nos requisitos. |
+| `critic` | Revisa cobertura, distinção entre cenários e necessidade de revisão. Também habilita o fallback determinístico de cenários explícitos. |
+| `validator` | Verifica fundamentação, rastreabilidade e problemas bloqueadores nos casos propostos. |
+| `coverage` | Produz um parecer consultivo de lacunas, excesso e repetição após a escolha do candidato aceito. |
+
+Quando Critic ou Validator solicitam uma revisão, a orquestração pode gerar até
+duas rodadas de candidatos e selecionar a melhor alternativa. Os traces dessa
+decisão ficam em `intermediate/` dentro da unidade Multiagent.
+
+## Requisitos
+
+- Python 3.11 ou superior
+- Uma chave de API compatível com o modelo escolhido
+- Acesso de rede ao provedor durante geração e, para avaliação, ao Gemini
+
+Modelos disponíveis atualmente:
+
+| Modelo | Variável no `.env` | Provedor |
+| --- | --- | --- |
+| `gemini-3.5-flash-lite` | `GOOGLE_API_KEY` | Gemini |
+| `gemini-3.8-flash` | `GOOGLE_API_KEY` | Gemini |
+| `openai/gpt-oss-120b` | `GROQ_API_KEY` | Groq |
+
+## Instalação
+
+Execute os comandos na raiz do repositório:
 
 ```bash
 python -m venv .venv
@@ -9,100 +71,263 @@ source .venv/bin/activate
 python -m pip install -e .
 ```
 
-Se o terminal estava com o ambiente ativo antes de mover o projeto,
-abra um terminal novo antes de ativar a `.venv` da raiz.
+Crie um arquivo `.env` na raiz. Para Gemini:
 
-Crie `.env` e defina a chave do provedor escolhido. A CLI lê o arquivo
-no diretório atual e o Git ignora o arquivo.
+```dotenv
+GOOGLE_API_KEY=sua_chave_aqui
+```
 
-## tcg · Test Case Generator
+Para Groq:
 
-Use `GOOGLE_API_KEY` para os modelos Gemini ou `GROQ_API_KEY` para
-`openai/gpt-oss-120b`. A opção `--model` determina o provedor e a chave.
+```dotenv
+GROQ_API_KEY=sua_chave_aqui
+```
+
+O `.env` não deve ser versionado. Se a virtualenv foi ativada antes de mover o
+projeto, abra um novo terminal e ative a `.venv` criada na raiz atual.
+
+## Início rápido
+
+O exemplo abaixo executa as três estratégias em duas unidades. O Zero-shot usa
+modo `batch`; GHL e Multiagent usam `per_requirement`.
 
 ```bash
 tcg run \
   --model gemini-3.5-flash-lite \
-  --solutions zero-shot Multiagent \
-  --units firefox_bookmarks.json e2edev_bench_01.json \
+  --solutions zero-shot GHL Multiagent \
+  --units e2edev_bench_01.json firefox_bookmarks.json \
+  --agents analyst critic validator coverage \
+  --output-mode per_requirement \
+  --output-dir output/quickstart
+```
+
+Ao final, a CLI imprime uma pasta com timestamp, por exemplo:
+
+```text
+Output: output/quickstart/2026-11-23_14-30-00
+```
+
+Avalie essa execução com:
+
+```bash
+evaluate \
+  --results-dir output/quickstart/2026-11-23_14-30-00 \
+  --embedding-model gemini-embedding-2
+```
+
+## Gerando casos de teste
+
+### Comando básico
+
+```bash
+tcg run \
+  --model MODEL \
+  --solutions SOLUTION [SOLUTION ...] \
+  [--units FILE.json [FILE.json ...]] \
+  [--datasets e2edev firefox] \
+  [--agents analyst critic validator coverage] \
+  [--output-mode batch|per_requirement|per_case] \
+  [--data-dir data/normalized] \
+  [--output-dir output]
+```
+
+Execute `tcg run --help` para a lista completa de argumentos.
+
+### Selecionando unidades
+
+`--units` recebe nomes de arquivos de `data/normalized/`, incluindo a extensão
+`.json`:
+
+```bash
+tcg run \
+  --model gemini-3.5-flash-lite \
+  --solutions Multiagent \
+  --units e2edev_bench_03.json firefox_password_manager.json \
+  --agents analyst critic validator coverage \
+  --output-mode per_requirement
+```
+
+Sem `--units`, a CLI processa todas as unidades elegíveis. Os manifestos em
+`data/normalized/manifests/` não são tratados como unidades de geração.
+
+Também é possível filtrar por conjunto:
+
+```bash
+tcg run \
+  --model gemini-3.5-flash-lite \
+  --solutions Multiagent \
+  --datasets firefox \
   --agents analyst critic validator coverage \
   --output-mode batch
 ```
 
-Para executar a mesma geração com Groq, use
-`--model openai/gpt-oss-120b`. Os limites de uso da sua conta Groq se
-aplicam a essa execução.
+### Modos de saída
 
-Para GPT-OSS 120B no Groq, a CLI espaça os envios em pelo menos dois segundos
-e usa uma janela móvel de 60 segundos com orçamento local de 8.000 tokens.
-Antes de enviar, reserva a entrada estimada e o limite de saída da chamada.
-O modelo usa raciocínio baixo e reserva até 4.096 tokens para gerar casos
-ou 1.536 para seleção, análise e pareceres. A CLI registra as esperas
-preventivas. O limite da conta é compartilhado com outros processos.
-Se os requisitos completos e o contexto obrigatório deixarem menos espaço
-que a reserva mínima de saída, a CLI sinaliza a chamada como incompatível.
+| Modo | GHL e Multiagent | Quando usar |
+| --- | --- | --- |
+| `batch` | Uma chamada para o conjunto de requisitos da unidade | Menor número de chamadas e execução mais rápida. |
+| `per_requirement` | Uma chamada por requisito | Maior granularidade e rastreabilidade; indicado para os experimentos comparativos do projeto. |
+| `per_case` | Uma chamada por caso solicitado | Maior granularidade operacional. |
 
-Para Groq e Gemini, cada chamada com erro da API ou resposta rejeitada pelo
-Pydantic AI tem até três retentativas, além da tentativa inicial. O intervalo
-base é de 2, 4 e 8 segundos, ou 15, 30 e 60 segundos se todas as falhas forem
-por limite de taxa. Cada espera automática tem teto de 60 segundos.
-Quando o provedor informa cota esgotada ou devolve limite de taxa com
-`Retry-After` acima desse teto, a execução termina como parcial e preserva
-as saídas já gravadas. A CLI mostra a unidade, a etapa, o erro, o tempo de
-espera e o resultado da retentativa. Retentativas podem consumir tokens.
+O Zero-shot sempre usa `batch`, mesmo quando outro modo é informado na linha de
+comando.
 
-Omita `--units` para gerar a partir de todos os JSONs elegíveis de
-`data/normalized/`. Os manifestos ficam fora da geração. Use o nome da unidade com `.json`,
-como `firefox_bookmarks.json`. A CLI extrai os requisitos de cada arquivo e ignora
-os casos de referência, inclusive na etapa de cobertura do Multiagent.
+### Configurações Multiagent
 
-O GHL usa um catálogo fixo em `src/ghl/__init__.py`, inspirado no fluxo de
-[Masuda et al.](https://arxiv.org/html/2510.03641v1#S3). O modelo escolhe as
-técnicas aplicáveis a partir dos requisitos e do catálogo, depois gera casos
-para cada técnica escolhida. As escolhas e justificativas ficam em `configs.md`.
-
-Use `--output-dir` para escolher outro destino e `--data-dir` para indicar
-outros JSONs normalizados. A pasta de cada execução segue o formato
-`output/AAAA-MM-DD_HH-MM-SS/` no fuso `America/Recife`. Cada solução tem
-`requirements_to_tests.md` e uma pasta por unidade, com `requirement.md`
-e `test cases/*.md` por requisito. A execução registra a configuração em
-`configs.md` e o Multiagent grava suas revisões em `intermediate/`.
-A CLI gera casos com Gemini ou Groq. Não executa os casos, não calcula métricas
-nem cria arquivos de avaliação ou resultados.
-
-## evaluate · Evaluate Results
-
-Depois de gerar os casos, informe o diretório de uma execução do TCG
-(o que contém `configs.md`) e o modelo de embeddings:
+Para ativar todos os agentes opcionais:
 
 ```bash
-evaluate --results-dir output/AAAA-MM-DD_HH-MM-SS \
-  --embedding-model gemini-embedding-2
+--agents analyst critic validator coverage
 ```
 
-O avaliador usa `GOOGLE_API_KEY` do `.env`, inclusive para avaliar casos
-gerados com Groq. O gabarito vem de
-`data/normalized/`, ou do caminho indicado por `--data-dir`. A opção
-`gemini-embedding-2` reproduz o modelo da v1. Também é possível escolher
-`gemini-embedding-001`, com resultados dependentes do modelo.
+Para executar apenas o Generator, passe `--agents` sem nomes:
 
-O avaliador reaproveita embeddings idênticos durante a execução. Envia até
-20 textos por lote, com pelo menos 2 segundos entre envios e um orçamento
-local de 100 textos em uma janela móvel de 60 segundos. Os limites do Gemini
-variam por modelo e projeto. Falhas transitórias têm até três retentativas
-com espera crescente e teto de 60 segundos por espera. A CLI registra as
-esperas e retentativas. Se o provedor informar cota diária esgotada, pedir
-uma espera superior a 60 segundos em um HTTP 429 ou continuar devolvendo 429
-até o fim das retentativas, o avaliador grava uma comparação parcial.
+```bash
+tcg run \
+  --model gemini-3.5-flash-lite \
+  --solutions Multiagent \
+  --units e2edev_bench_01.json \
+  --agents \
+  --output-mode batch
+```
 
-O `evaluate` lê os casos finais do TCG e compara com o gabarito por
-similaridade cosseno, com limiar 0,70 e pareamento um a um. Grava
-`results.json`, `results.csv` e `semantic_matches.json` em cada unidade
-e `comparison.json` na raiz da execução. Os relatórios incluem precisão,
-revocação, F1, pares, casos sem correspondência e uso de tokens quando
-disponível. A comparação usa apenas unidades avaliáveis em comum entre
-as soluções. Unidades com falha na geração ficam registradas sem avaliação.
+Para uma ablação, omita somente o agente investigado. Por exemplo, sem
+Coverage:
 
-Uma nova avaliação substitui os relatórios automáticos da mesma pasta.
-Relatórios com revisão humana são protegidos. Os arquivos Markdown e o
-gabarito original são preservados.
+```bash
+tcg run \
+  --model gemini-3.5-flash-lite \
+  --solutions Multiagent \
+  --units e2edev_bench_01.json \
+  --agents analyst critic validator \
+  --output-mode per_requirement \
+  --output-dir output/02_ablation/no-coverage
+```
+
+## Avaliando resultados
+
+```bash
+evaluate \
+  --results-dir CAMINHO_DA_EXECUCAO \
+  --embedding-model gemini-embedding-2 \
+  [--data-dir data/normalized]
+```
+
+O avaliador usa `GOOGLE_API_KEY`, inclusive quando os casos foram gerados com
+Groq. Modelos de embeddings disponíveis:
+
+- `gemini-embedding-2`
+- `gemini-embedding-001`
+
+Para cada unidade, a avaliação faz pareamento um a um entre casos gerados e de
+referência por similaridade cosseno, usando limiar de 0,70. Os relatórios
+agregados apresentam:
+
+- **Precisão**: fração dos casos gerados que encontrou correspondência.
+- **Recall**: fração dos casos de referência que foi encontrada.
+- **F1**: média harmônica entre precisão e recall.
+- **Cobertura de unidades**: proporção de unidades avaliáveis concluídas.
+
+Uma nova avaliação reutiliza resultados já compatíveis com o mesmo modelo de
+embeddings. Ela substitui relatórios automáticos, mas não substitui arquivos
+com revisão humana.
+
+## Estrutura de entrada e saída
+
+### Dados de entrada
+
+```text
+data/
+├── normalized/              # Unidades usadas pela CLI
+│   ├── e2edev_bench_*.json
+│   ├── firefox_*.json
+│   └── manifests/            # Metadados, não unidades de geração
+└── raw/                     # Fontes originais, quando disponíveis
+```
+
+Cada JSON normalizado contém requisitos, casos de referência e metadados da
+unidade. Durante a geração, somente os requisitos são enviados ao modelo; os
+casos de referência são excluídos do prompt e usados somente no `evaluate`.
+
+### Artefatos de uma execução
+
+```text
+output/<grupo>/<timestamp>/
+├── configs.md               # Modelo, soluções, unidades, agentes e status
+├── <solução>/
+│   ├── requirements_to_tests.md
+│   └── <unidade>/
+│       ├── <requirement-id>/
+│       │   ├── requirement.md
+│       │   └── test cases/*.md
+│       ├── intermediate/    # Apenas Multiagent: tentativas e decisões
+│       ├── results.json     # Criado por evaluate
+│       ├── results.csv      # Criado por evaluate
+│       └── semantic_matches.json
+└── comparison.json          # Criado por evaluate
+```
+
+Uma execução parcial preserva todos os artefatos concluídos e registra falhas
+em `configs.md`. Não compare métricas de uma execução parcial com uma execução
+completa. Quando uma experiência for produzida em várias execuções parciais,
+consolide somente as unidades completas em uma nova pasta antes de avaliar.
+
+## Limites, quotas e falhas transitórias
+
+Uma chamada tem uma tentativa inicial e até três retentativas. Para erros
+gerais, as esperas são 2, 4 e 8 segundos; para limite de taxa, são 15, 30 e
+60 segundos. Uma resposta de quota esgotada ou um `Retry-After` acima de 60
+segundos encerra a execução como parcial e preserva as saídas concluídas.
+
+O Groq aplica ainda uma janela local de 60 segundos com orçamento de 8.000
+tokens e intervalo mínimo de dois segundos entre requisições. O Gemini e o
+Groq podem devolver erros temporários de indisponibilidade; reexecutar apenas
+as unidades falhas em um novo diretório é a forma segura de recuperar o
+experimento.
+
+## Experimentos e resultados existentes
+
+Os resultados do repositório são organizados em três grupos:
+
+| Diretório | Conteúdo |
+| --- | --- |
+| `output/00_baseline-metrics_reference/` | Referência inicial de métricas. |
+| `output/01_model-improvements/` | Cronologia de hipóteses, melhorias retidas e experiências revertidas. Leia `CHRONOLOGY.md`. |
+| `output/02_ablation/` | Remoção de agentes individuais e análise comparativa em `AGENT_ABLATION_ANALYSIS.md`. |
+
+## Implementação
+
+```text
+src/
+├── tcg/          # CLI, modelos de dados, runtime de provedores e persistência
+├── multiagent/   # Orquestração, agentes, seleção e estado de revisão
+├── ghl/          # Seleção de técnicas e geração grounded high-level
+├── zero_shot/    # Geração em uma única chamada
+└── evaluate/     # Embeddings, pareamento, métricas e relatórios
+```
+
+O catálogo de técnicas GHL está em `src/ghl/__init__.py` e foi inspirado no
+fluxo descrito por [Masuda et al.](https://arxiv.org/html/2510.03641v1#S3).
+
+## Desenvolvimento
+
+Depois de alterar o código, valide a importação dos comandos instalados:
+
+```bash
+python -c "import tcg.runtime, evaluate.cli; print('imports OK')"
+tcg run --help
+evaluate --help
+```
+
+Para contribuir, preserve a separação entre geração e avaliação: o gerador não
+deve receber os casos de referência, e o avaliador deve ler somente os casos
+finais publicados na pasta de saída.
+
+## Limitações conhecidas
+
+- A avaliação semântica é uma aproximação baseada em embeddings; ela não
+  substitui revisão humana de qualidade de testes.
+- Os resultados de geração são estocásticos; comparações fortes exigem mais de
+  uma execução por configuração.
+- Quotas e indisponibilidade do provedor podem interromper uma execução.
+- A esteira não executa os casos gerados nem verifica a aplicação real.
