@@ -26,3 +26,9 @@ The agent-removal experiments are stored separately in `../ablation/`.
 For the full chronology, including hypotheses, metric changes, decisions, and
 the distinction between the best F1 run and the ablation reference, read
 [CHRONOLOGY.md](CHRONOLOGY.md).
+
+## Method implementation guides
+
+- [Zero-shot implementation](../03_method-implementations/zero-shot.md)
+- [GHL implementation](../03_method-implementations/ghl.md)
+- [Multiagent implementation](../03_method-implementations/multiagent.md)
