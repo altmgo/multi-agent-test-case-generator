@@ -29,24 +29,32 @@
   "generated_cases": [
     {
       "id": "G-001",
-      "title": "Drag product item and capture data",
-      "description": "Verify that dragging a product item with draggable set to true initiates a drag event capturing the product title and price.",
+      "title": "Drag product item to initiate drag event with title and price",
+      "description": "Verify that dragging a product item with draggable set to true successfully initiates a drag event and captures the correct product title and price.",
       "requirement_ids": [
         "e2edev_bench_01-R-1"
       ]
     },
     {
       "id": "G-002",
-      "title": "Drop product into drop area and update cart display",
-      "description": "Verify that dropping a product item into the designated drop area updates the cart display with product title in .box2, unit price in .box3, and quantity in .box1.",
+      "title": "Drop product item into drop area to add to cart",
+      "description": "Verify that dropping a product item into the designated drop area updates the cart display by showing the product title in .box2, the unit price in .box3, and the quantity in .box1.",
       "requirement_ids": [
         "e2edev_bench_01-R-3"
       ]
     },
     {
       "id": "G-003",
-      "title": "Calculate and display total price",
-      "description": "Verify that the system calculates the total price by summing all products in the cart, formats it to two decimal places with the currency symbol, and displays it in the #allMoney element.",
+      "title": "Add multiple and repeated products to the cart",
+      "description": "Verify that the system supports adding both different and repeated products via drag and drop, updating the quantity and cart details accordingly.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-3"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Calculate and display total price in allMoney element",
+      "description": "Verify that the system sums the prices of all products in the cart, formats the total to two decimal places with the currency symbol, and displays it in the allMoney element.",
       "requirement_ids": [
         "e2edev_bench_01-R-5"
       ]
@@ -200,23 +208,28 @@
   ],
   "evaluation": {
     "status": "evaluated",
-    "generated_count": 3,
+    "generated_count": 4,
     "reference_count": 12,
     "matches": [
       {
         "generated_id": "G-001",
         "reference_id": "e2edev_bench_01-R-1-TC-1",
-        "similarity": 0.9231206157026961
+        "similarity": 0.9272568980692395
       },
       {
         "generated_id": "G-002",
         "reference_id": "e2edev_bench_01-R-3-TC-1",
-        "similarity": 0.8988230146315744
+        "similarity": 0.9028708546737253
       },
       {
         "generated_id": "G-003",
+        "reference_id": "e2edev_bench_01-R-3-TC-3",
+        "similarity": 0.9145723728213467
+      },
+      {
+        "generated_id": "G-004",
         "reference_id": "e2edev_bench_01-R-5-TC-2",
-        "similarity": 0.8926550022171404
+        "similarity": 0.8850256589322084
       }
     ],
     "unmatched_generated_ids": [],
@@ -225,20 +238,19 @@
       "e2edev_bench_01-R-1-TC-3",
       "e2edev_bench_01-R-1-TC-4",
       "e2edev_bench_01-R-3-TC-2",
-      "e2edev_bench_01-R-3-TC-3",
       "e2edev_bench_01-R-3-TC-4",
       "e2edev_bench_01-R-5-TC-1",
       "e2edev_bench_01-R-5-TC-3",
       "e2edev_bench_01-R-5-TC-4"
     ],
     "precision": 1.0,
-    "recall": 0.25,
-    "f1": 0.4,
+    "recall": 0.3333333333333333,
+    "f1": 0.5,
     "embedding_usage": {
-      "input_tokens": 2104,
+      "input_tokens": 2158,
       "output_tokens": null,
       "details": {
-        "text_prompt_tokens": 2104
+        "text_prompt_tokens": 2158
       },
       "status": "partial"
     },
@@ -252,20 +264,20 @@
   "usage": {
     "generation": {
       "input_tokens": 641,
-      "output_tokens": 302,
+      "output_tokens": 411,
       "details": {
         "text_prompt_tokens": 641,
-        "total_tokens": 943
+        "total_tokens": 1052
       },
       "status": "available"
     },
     "generation_attempts": [],
     "generation_calls": [],
     "embedding": {
-      "input_tokens": 2104,
+      "input_tokens": 2158,
       "output_tokens": null,
       "details": {
-        "text_prompt_tokens": 2104
+        "text_prompt_tokens": 2158
       },
       "status": "partial"
     },
@@ -279,13 +291,16 @@
     },
     "cases": {
       "G-001": {
-        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/1_Drag_product_item_and_capture_data.md"
+        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/1_Drag_product_item_to_initiate_drag_event_with_ti.md"
       },
       "G-002": {
-        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/2_Drop_product_into_drop_area_and_update_cart_disp.md"
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/2_Drop_product_item_into_drop_area_to_add_to_cart.md"
       },
       "G-003": {
-        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/3_Calculate_and_display_total_price.md"
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/3_Add_multiple_and_repeated_products_to_the_cart.md"
+      },
+      "G-004": {
+        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/4_Calculate_and_display_total_price_in_allMoney_el.md"
       }
     }
   },

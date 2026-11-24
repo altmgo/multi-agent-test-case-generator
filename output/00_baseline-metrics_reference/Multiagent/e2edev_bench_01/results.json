@@ -29,24 +29,56 @@
   "generated_cases": [
     {
       "id": "G-001",
-      "title": "Initiate Drag Event and Capture Product Data",
-      "description": "Verify that dragging a product item (li element with draggable='true' and data-testid='product-item-1') correctly initiates a drag event and captures the corresponding product title and price.",
+      "title": "Initiate drag event on valid product item and capture title and price",
+      "description": "Verify that dragging a product item (li element with data-testid='product-item-1' and draggable='true') initiates a drag event and successfully captures the product's title and price from its corresponding child elements into the data transfer object.",
       "requirement_ids": [
         "e2edev_bench_01-R-1"
       ]
     },
     {
       "id": "G-002",
-      "title": "Drop Product into Drop Area and Update Cart Display",
-      "description": "Verify that dropping a product item into the designated drop area (id='div1', data-testid='drop-area') successfully adds it to the cart and updates the cart display (.box1 for quantity, .box2 for title, and .box3 for unit price), supporting both new and repeated products.",
+      "title": "Drop single product into drop area",
+      "description": "Verify that dropping a product item (e.g., data-testid='product-item-1') into the designated drop area (id='div1', data-testid='drop-area') successfully adds it to the cart and updates the cart display (.box1 for quantity, .box2 for title, .box3 for unit price).",
       "requirement_ids": [
         "e2edev_bench_01-R-3"
       ]
     },
     {
       "id": "G-003",
-      "title": "Calculate and Display Total Cart Price",
-      "description": "Verify that the system correctly sums the prices of all products in the cart, formats the total to two decimal places with the currency symbol, and displays it in the <div id='allMoney'> element.",
+      "title": "Drop multiple different products into drop area",
+      "description": "Verify that dropping multiple distinct product items into the drop area updates the cart display correctly for each item added.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-3"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Drop repeated products into drop area",
+      "description": "Verify that dropping the same product item multiple times into the drop area correctly supports repeated products and updates the cart display accordingly.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-3"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Drop invalid element into drop area",
+      "description": "Verify that dropping an invalid or non-product element into the drop area does not add any item to the cart or corrupt the cart display.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-3"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Calculate and display total price for single item in cart",
+      "description": "Verify that when a single product with a valid price is added to the cart, the total price in div#allMoney is correctly calculated, formatted to two decimal places, and includes the appropriate currency symbol.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-5"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Calculate and display total price for multiple and repeated items in cart",
+      "description": "Verify that when multiple distinct products and repeated products are added to the cart, the system correctly sums all prices, formats the result to two decimal places with the currency symbol, and updates div#allMoney.",
       "requirement_ids": [
         "e2edev_bench_01-R-5"
       ]
@@ -200,45 +232,61 @@
   ],
   "evaluation": {
     "status": "evaluated",
-    "generated_count": 3,
+    "generated_count": 7,
     "reference_count": 12,
     "matches": [
       {
         "generated_id": "G-001",
         "reference_id": "e2edev_bench_01-R-1-TC-1",
-        "similarity": 0.9331776599867612
+        "similarity": 0.9335316348892299
       },
       {
         "generated_id": "G-002",
         "reference_id": "e2edev_bench_01-R-3-TC-1",
-        "similarity": 0.9062797951325245
+        "similarity": 0.9230502944350609
       },
       {
         "generated_id": "G-003",
-        "reference_id": "e2edev_bench_01-R-5-TC-2",
-        "similarity": 0.887532382093115
+        "reference_id": "e2edev_bench_01-R-3-TC-2",
+        "similarity": 0.8988669443849434
+      },
+      {
+        "generated_id": "G-004",
+        "reference_id": "e2edev_bench_01-R-3-TC-3",
+        "similarity": 0.9078438850297765
+      },
+      {
+        "generated_id": "G-005",
+        "reference_id": "e2edev_bench_01-R-1-TC-4",
+        "similarity": 0.8758138067606239
+      },
+      {
+        "generated_id": "G-006",
+        "reference_id": "e2edev_bench_01-R-5-TC-1",
+        "similarity": 0.9068624009921227
+      },
+      {
+        "generated_id": "G-007",
+        "reference_id": "e2edev_bench_01-R-5-TC-3",
+        "similarity": 0.900328879948298
       }
     ],
     "unmatched_generated_ids": [],
     "unmatched_reference_ids": [
       "e2edev_bench_01-R-1-TC-2",
       "e2edev_bench_01-R-1-TC-3",
-      "e2edev_bench_01-R-1-TC-4",
-      "e2edev_bench_01-R-3-TC-2",
-      "e2edev_bench_01-R-3-TC-3",
       "e2edev_bench_01-R-3-TC-4",
-      "e2edev_bench_01-R-5-TC-1",
-      "e2edev_bench_01-R-5-TC-3",
+      "e2edev_bench_01-R-5-TC-2",
       "e2edev_bench_01-R-5-TC-4"
     ],
     "precision": 1.0,
-    "recall": 0.25,
-    "f1": 0.4,
+    "recall": 0.5833333333333334,
+    "f1": 0.7368421052631579,
     "embedding_usage": {
-      "input_tokens": 2153,
+      "input_tokens": 384,
       "output_tokens": null,
       "details": {
-        "text_prompt_tokens": 2153
+        "text_prompt_tokens": 384
       },
       "status": "partial"
     },
@@ -251,21 +299,21 @@
   },
   "usage": {
     "generation": {
-      "input_tokens": 4505,
-      "output_tokens": 863,
+      "input_tokens": 7575,
+      "output_tokens": 1358,
       "details": {
-        "text_prompt_tokens": 4505,
-        "total_tokens": 5368
+        "text_prompt_tokens": 7575,
+        "total_tokens": 8933
       },
       "status": "available"
     },
     "generation_attempts": [],
     "generation_calls": [],
     "embedding": {
-      "input_tokens": 2153,
+      "input_tokens": 384,
       "output_tokens": null,
       "details": {
-        "text_prompt_tokens": 2153
+        "text_prompt_tokens": 384
       },
       "status": "partial"
     },
@@ -279,13 +327,25 @@
     },
     "cases": {
       "G-001": {
-        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/1_Initiate_Drag_Event_and_Capture_Product_Data.md"
+        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/1_Initiate_drag_event_on_valid_product_item_and_ca.md"
       },
       "G-002": {
-        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/2_Drop_Product_into_Drop_Area_and_Update_Cart_Disp.md"
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/2_Drop_single_product_into_drop_area.md"
       },
       "G-003": {
-        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/3_Calculate_and_Display_Total_Cart_Price.md"
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/3_Drop_multiple_different_products_into_drop_area.md"
+      },
+      "G-004": {
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/4_Drop_repeated_products_into_drop_area.md"
+      },
+      "G-005": {
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/5_Drop_invalid_element_into_drop_area.md"
+      },
+      "G-006": {
+        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/6_Calculate_and_display_total_price_for_single_ite.md"
+      },
+      "G-007": {
+        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/7_Calculate_and_display_total_price_for_multiple_a.md"
       }
     }
   },

@@ -6,8 +6,8 @@
     "e2edev_bench_04",
     "firefox_bookmarks",
     "firefox_browser_history",
-    "firefox_form_manager",
-    "firefox_search"
+    "firefox_password_manager",
+    "firefox_themes"
   ],
   "total_unit_ids": [
     "e2edev_bench_01",
@@ -16,8 +16,8 @@
     "e2edev_bench_04",
     "firefox_bookmarks",
     "firefox_browser_history",
-    "firefox_form_manager",
-    "firefox_search"
+    "firefox_password_manager",
+    "firefox_themes"
   ],
   "evaluable_unit_ids": {
     "one-shot": [
@@ -27,8 +27,8 @@
       "e2edev_bench_04",
       "firefox_bookmarks",
       "firefox_browser_history",
-      "firefox_form_manager",
-      "firefox_search"
+      "firefox_password_manager",
+      "firefox_themes"
     ],
     "GHL": [
       "e2edev_bench_01",
@@ -37,8 +37,8 @@
       "e2edev_bench_04",
       "firefox_bookmarks",
       "firefox_browser_history",
-      "firefox_form_manager",
-      "firefox_search"
+      "firefox_password_manager",
+      "firefox_themes"
     ],
     "Multiagent": [
       "e2edev_bench_01",
@@ -47,35 +47,35 @@
       "e2edev_bench_04",
       "firefox_bookmarks",
       "firefox_browser_history",
-      "firefox_form_manager",
-      "firefox_search"
+      "firefox_password_manager",
+      "firefox_themes"
     ]
   },
   "coverage": 1.0,
   "metrics": {
     "one-shot": {
-      "generated_count": 67,
-      "reference_count": 103,
-      "match_count": 65,
-      "precision": 0.9701492537313433,
-      "recall": 0.6310679611650486,
-      "f1": 0.7647058823529411
+      "generated_count": 71,
+      "reference_count": 104,
+      "match_count": 71,
+      "precision": 1.0,
+      "recall": 0.6826923076923077,
+      "f1": 0.8114285714285714
     },
     "GHL": {
-      "generated_count": 236,
-      "reference_count": 103,
-      "match_count": 97,
-      "precision": 0.4110169491525424,
-      "recall": 0.941747572815534,
-      "f1": 0.5722713864306784
+      "generated_count": 754,
+      "reference_count": 104,
+      "match_count": 104,
+      "precision": 0.13793103448275862,
+      "recall": 1.0,
+      "f1": 0.24242424242424243
     },
     "Multiagent": {
-      "generated_count": 66,
-      "reference_count": 103,
-      "match_count": 66,
-      "precision": 1.0,
-      "recall": 0.6407766990291263,
-      "f1": 0.7810650887573964
+      "generated_count": 140,
+      "reference_count": 104,
+      "match_count": 92,
+      "precision": 0.6571428571428571,
+      "recall": 0.8846153846153846,
+      "f1": 0.7540983606557377
     }
   },
   "embedding_model": "gemini-embedding-2",

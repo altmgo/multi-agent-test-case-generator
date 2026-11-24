@@ -47,348 +47,1096 @@
   "generated_cases": [
     {
       "id": "G-001",
-      "title": "Toggle Text Box Visibility using Toggle and Close Buttons",
-      "description": "Verify that clicking the toggle button makes the initially hidden text box visible by adding the 'show' class, and clicking the close button hides it by removing the 'show' class.",
+      "title": "Toggle text box visibility from hidden to visible",
+      "description": "Click the toggle button (data-testid=\"toggle-button\") when the text box (data-testid=\"text-box\") is initially hidden to verify that the 'show' class is added and the text box appears.",
       "requirement_ids": [
-        "e2edev_bench_04-R-1",
-        "e2edev_bench_04-R-2"
+        "e2edev_bench_04-R-1"
       ]
     },
     {
       "id": "G-002",
-      "title": "Rapid Repeated Clicks on Toggle Button",
-      "description": "Verify that the system handles rapid repeated clicks on the toggle button reliably and ends up with a final state consistent with the last user action.",
+      "title": "Toggle text box visibility from visible to hidden",
+      "description": "Click the toggle button when the text box is currently visible to verify that the 'show' class is removed and the text box disappears.",
       "requirement_ids": [
         "e2edev_bench_04-R-1"
       ]
     },
     {
       "id": "G-003",
-      "title": "Voice Dropdown Population and Selection",
-      "description": "Verify that opening the text box populates the voice dropdown using the Web Speech API, listens for 'voiceschanged' events, and successfully assigns the selected voice (including specific language codes like CN or US) to speech synthesis.",
+      "title": "Rapid repeated clicks on toggle button",
+      "description": "Perform rapid repeated clicks on the toggle button to verify that the system handles boundary conditions reliably and the final visibility state accurately reflects the last user action.",
       "requirement_ids": [
-        "e2edev_bench_04-R-3",
-        "e2edev_bench_04-R-4"
+        "e2edev_bench_04-R-1"
       ]
     },
     {
       "id": "G-004",
-      "title": "Read Entered Text Aloud",
-      "description": "Verify that entering text into the textarea and clicking the 'Read Text' button triggers speech synthesis using the currently selected voice.",
+      "title": "Toggle initial hidden text box to visible",
+      "description": "Verify that clicking the 'Toggle Text Box' button when the text box is initially hidden successfully makes the text box visible by adding the 'show' class.",
       "requirement_ids": [
-        "e2edev_bench_04-R-5"
+        "e2edev_bench_04-R-2"
       ]
     },
     {
       "id": "G-005",
-      "title": "Predefined Phrase Box Interaction and Feedback",
-      "description": "Verify that clicking a dynamically generated predefined phrase box reads the text aloud and applies the 'active' visual highlight class for 800 milliseconds, handling normal clicks, sequential clicks, and rapid repeated clicks accurately.",
+      "title": "Toggle visible text box to hidden",
+      "description": "Verify that clicking the 'Toggle Text Box' button when the text box is currently visible hides the text box by removing the 'show' class.",
       "requirement_ids": [
-        "e2edev_bench_04-R-6"
+        "e2edev_bench_04-R-2"
       ]
     },
     {
       "id": "G-006",
-      "title": "Toggle Text Box Visibility Initial State and Single Click",
-      "description": "Verify that the text box (data-testid='text-box') is initially hidden without the 'show' class, and becomes visible with the 'show' class exactly once after clicking the 'Toggle Text Box' button (data-testid='toggle-button') at the lower boundary of interactions.",
+      "title": "Hide text box using Close button",
+      "description": "Verify that clicking the 'Close' button inside the visible text box successfully hides the text box by removing the 'show' class.",
       "requirement_ids": [
-        "e2edev_bench_04-R-1",
         "e2edev_bench_04-R-2"
       ]
     },
     {
       "id": "G-007",
-      "title": "Rapid Repeated Clicks on Toggle Button",
-      "description": "Test rapid repeated clicks on the 'Toggle Text Box' button to check boundary resilience and ensure the final visibility state accurately reflects the last user action.",
-      "requirement_ids": [
-        "e2edev_bench_04-R-1"
-      ]
-    },
-    {
-      "id": "G-008",
-      "title": "Close Text Box via Close Button",
-      "description": "Verify that clicking the 'Close' button (data-testid='close-button') inside the visible text box successfully removes the 'show' class and hides the text box.",
-      "requirement_ids": [
-        "e2edev_bench_04-R-2"
-      ]
-    },
-    {
-      "id": "G-009",
-      "title": "Dropdown Voice Population and Selection Boundary",
-      "description": "Verify voice population in 'Choose Voice' dropdown (data-testid='voice-select') upon text box opening, and test selecting single, multiple, and language-specific options (like 'CN' or 'US') to ensure the last selected voice is active.",
-      "requirement_ids": [
-        "e2edev_bench_04-R-3",
-        "e2edev_bench_04-R-4"
-      ]
-    },
-    {
-      "id": "G-010",
-      "title": "Text Area Input and Read Text Execution",
-      "description": "Verify entering text into the textarea (data-testid='text-area') and clicking the 'Read Text' button (data-testid='read-button') triggers speech synthesis using the selected voice.",
-      "requirement_ids": [
-        "e2edev_bench_04-R-5"
-      ]
-    },
-    {
-      "id": "G-011",
-      "title": "Predefined Phrase Box Click and 800ms Highlight Boundary",
-      "description": "Test clicking predefined phrase boxes for normal clicks, sequential clicks, and rapid repeated clicks, ensuring speech playback and the 800-millisecond active class visual highlight function correctly at temporal boundaries.",
-      "requirement_ids": [
-        "e2edev_bench_04-R-6"
-      ]
-    },
-    {
-      "id": "G-012",
-      "title": "Transition from Hidden to Visible via Toggle Button",
-      "description": "Verify that clicking the 'Toggle Text Box' button when the text box is initially hidden transitions the text box to a visible state by adding the 'show' class.",
-      "requirement_ids": [
-        "e2edev_bench_04-R-1",
-        "e2edev_bench_04-R-2"
-      ]
-    },
-    {
-      "id": "G-013",
-      "title": "Transition from Visible to Hidden via Close Button",
-      "description": "Verify that clicking the 'Close' button inside the visible text box transitions the text box back to a hidden state by removing the 'show' class.",
-      "requirement_ids": [
-        "e2edev_bench_04-R-2"
-      ]
-    },
-    {
-      "id": "G-014",
-      "title": "Transition from Visible to Hidden via Toggle Button",
-      "description": "Verify that clicking the 'Toggle Text Box' button when the text box is currently visible hides the text box.",
-      "requirement_ids": [
-        "e2edev_bench_04-R-1",
-        "e2edev_bench_04-R-2"
-      ]
-    },
-    {
-      "id": "G-015",
-      "title": "Rapid Repeated Toggles and Boundary Handling",
-      "description": "Verify that rapid repeated clicks on the 'Toggle Text Box' button are handled reliably and the final visibility state accurately reflects the last user action.",
-      "requirement_ids": [
-        "e2edev_bench_04-R-1"
-      ]
-    },
-    {
-      "id": "G-016",
-      "title": "Voice Dropdown Population Upon Opening Text Box",
-      "description": "Verify that opening the text box via the toggle button triggers the population of the 'Choose Voice' dropdown with available Web Speech API voices.",
+      "title": "Populate Voice Dropdown on Text Box Open",
+      "description": "Verify that when the user opens the text box via the toggle button, the 'Choose Voice' dropdown is successfully populated with available voices retrieved from speechSynthesis.getVoices().",
       "requirement_ids": [
         "e2edev_bench_04-R-3"
       ]
     },
     {
-      "id": "G-017",
-      "title": "Voice Selection State Update",
-      "description": "Verify that selecting a voice from the populated dropdown updates the active voice assigned for speech synthesis.",
+      "id": "G-008",
+      "title": "Update Voice Dropdown on voiceschanged Event",
+      "description": "Verify that the system listens for the 'voiceschanged' event and dynamically updates the voice dropdown options if the available voices change after the text box is opened.",
       "requirement_ids": [
-        "e2edev_bench_04-R-3",
+        "e2edev_bench_04-R-3"
+      ]
+    },
+    {
+      "id": "G-009",
+      "title": "Assign Selected Voice to Message Voice",
+      "description": "Verify that when a user selects a specific voice option from the populated dropdown, the corresponding voice is correctly assigned to message.voice for speech synthesis.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-3"
+      ]
+    },
+    {
+      "id": "G-010",
+      "title": "Empty Voices List Handling",
+      "description": "Verify that the system handles cases where speechSynthesis.getVoices() returns an empty list gracefully without throwing errors when the text box is opened.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-3"
+      ]
+    },
+    {
+      "id": "G-011",
+      "title": "Select a single valid voice from dropdown",
+      "description": "Verify that when a user selects a valid voice from the 'voice-select' dropdown, the system successfully sets the chosen voice as active for speech synthesis.",
+      "requirement_ids": [
         "e2edev_bench_04-R-4"
       ]
     },
     {
+      "id": "G-012",
+      "title": "Multiple voice selections ending in a final active voice",
+      "description": "Verify that when a user performs multiple successive voice selections from the 'voice-select' dropdown, the system correctly updates the active voice ensuring the last selected voice is applied.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-4"
+      ]
+    },
+    {
+      "id": "G-013",
+      "title": "Select voice with specific language codes like CN or US",
+      "description": "Verify that the dropdown supports and accurately sets voice options containing specific language codes such as 'CN' or 'US' as the active voice when selected.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-4"
+      ]
+    },
+    {
+      "id": "G-014",
+      "title": "Dropdown population upon full page load",
+      "description": "Verify that the 'voice-select' dropdown is fully populated with available voices when the page is completely loaded.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-4"
+      ]
+    },
+    {
+      "id": "G-015",
+      "title": "Read text aloud with valid text and selected voice",
+      "description": "Verify that when the text box is visible, valid text is entered in the textarea, a voice is selected from the dropdown, and the 'Read Text' button is clicked, the system successfully reads the text aloud using the selected voice.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-5"
+      ]
+    },
+    {
+      "id": "G-016",
+      "title": "Attempt to read text with empty textarea",
+      "description": "Verify that when the textarea is empty and the 'Read Text' button is clicked, the system handles the empty input gracefully without triggering speech synthesis errors.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-5"
+      ]
+    },
+    {
+      "id": "G-017",
+      "title": "Attempt to read text with text box hidden",
+      "description": "Verify that when the text box is hidden (lacks the 'show' class) and the 'Read Text' button is inaccessible or clicked, speech synthesis is not triggered.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-5"
+      ]
+    },
+    {
       "id": "G-018",
-      "title": "Predefined Phrase Box Click and Visual Highlighting State",
-      "description": "Verify that clicking a predefined phrase box triggers speech playback and applies the active class for 800 milliseconds as visual feedback.",
+      "title": "Normal click on a predefined phrase box",
+      "description": "Verify that clicking a predefined phrase box reads the associated text aloud using the Web Speech API and visually highlights the box by adding the active class for 800 milliseconds.",
       "requirement_ids": [
         "e2edev_bench_04-R-6"
       ]
     },
     {
       "id": "G-019",
-      "title": "Forbidden/Abnormal State Transition: Reading Text Without Opening Text Box",
-      "description": "Verify that attempting to trigger the 'Read Text' button while the text box remains hidden does not execute speech synthesis.",
+      "title": "Sequential clicks across different predefined phrase boxes",
+      "description": "Verify that clicking multiple different phrase boxes sequentially correctly triggers speech playback and visual highlighting for each box interacted with.",
       "requirement_ids": [
-        "e2edev_bench_04-R-1",
-        "e2edev_bench_04-R-5"
+        "e2edev_bench_04-R-6"
       ]
     },
     {
       "id": "G-020",
-      "title": "Toggle Text Box Visibility and Close Button",
-      "description": "Verify that clicking the toggle button when the text box is hidden makes it visible, and clicking the close button hides it again.",
+      "title": "Rapid repeated clicks on the same predefined phrase box",
+      "description": "Verify that rapid repeated clicks on the same phrase box are handled correctly, ensuring speech playback and visual feedback are triggered accurately without crashing or inconsistent states.",
       "requirement_ids": [
-        "e2edev_bench_04-R-1",
-        "e2edev_bench_04-R-2"
+        "e2edev_bench_04-R-6"
       ]
     },
     {
       "id": "G-021",
-      "title": "Rapid Repeated Clicks on Toggle Button",
-      "description": "Verify that rapid repeated clicks on the toggle button reliably update the visibility state to reflect the final user action without inconsistency.",
+      "title": "Initial State Visibility Boundary Test",
+      "description": "Verify that upon initial page load, the text box (data-testid='text-box') is hidden and does not contain the 'show' class.",
       "requirement_ids": [
         "e2edev_bench_04-R-1"
       ]
     },
     {
       "id": "G-022",
-      "title": "Voice Dropdown Population on Open and Voices Changed Event",
-      "description": "Verify that opening the text box populates the voice dropdown using getVoices and updates dynamically when the voiceschanged event fires.",
-      "requirement_ids": [
-        "e2edev_bench_04-R-3"
-      ]
-    },
-    {
-      "id": "G-023",
-      "title": "Multiple Voice Selections and Language Specific Codes",
-      "description": "Verify that multiple voice selections update the active voice correctly and support options containing specific language codes like CN or US.",
-      "requirement_ids": [
-        "e2edev_bench_04-R-4"
-      ]
-    },
-    {
-      "id": "G-024",
-      "title": "Enter Text and Read Aloud Using Selected Voice",
-      "description": "Verify that entering text into the textarea and clicking the read button reads the text aloud using the currently selected voice.",
-      "requirement_ids": [
-        "e2edev_bench_04-R-5"
-      ]
-    },
-    {
-      "id": "G-025",
-      "title": "Predefined Phrase Box Interaction and Highlighting",
-      "description": "Verify that clicking a predefined phrase box reads the text aloud and applies the active class for 800 milliseconds, handling sequential and rapid clicks correctly.",
-      "requirement_ids": [
-        "e2edev_bench_04-R-6"
-      ]
-    },
-    {
-      "id": "G-026",
-      "title": "Toggle Text Box Visibility and Close",
-      "description": "Verify that clicking the toggle button shows the text box via the 'show' class, and clicking the close button hides it.",
-      "requirement_ids": [
-        "e2edev_bench_04-R-1",
-        "e2edev_bench_04-R-2"
-      ]
-    },
-    {
-      "id": "G-027",
-      "title": "Rapid Toggling and Voice Population",
-      "description": "Test rapid repeated clicks on the toggle button and ensure the voice dropdown is correctly populated with Web Speech API voices once visible.",
-      "requirement_ids": [
-        "e2edev_bench_04-R-1",
-        "e2edev_bench_04-R-3"
-      ]
-    },
-    {
-      "id": "G-028",
-      "title": "Voice Selection with Specific Language Codes",
-      "description": "Verify that opening the text box populates voices and allows selecting a voice with specific language codes (e.g., CN, US) to set the active speech synthesis voice.",
-      "requirement_ids": [
-        "e2edev_bench_04-R-3",
-        "e2edev_bench_04-R-4"
-      ]
-    },
-    {
-      "id": "G-029",
-      "title": "Read Text Aloud Using Selected Voice",
-      "description": "Test entering text in the textarea, selecting a voice, and clicking the 'Read Text' button to read the text aloud.",
-      "requirement_ids": [
-        "e2edev_bench_04-R-4",
-        "e2edev_bench_04-R-5"
-      ]
-    },
-    {
-      "id": "G-030",
-      "title": "Predefined Phrase Box Interaction and Playback",
-      "description": "Verify clicking predefined phrase boxes triggers speech synthesis and visual highlighting with the 'active' class for 800 milliseconds.",
-      "requirement_ids": [
-        "e2edev_bench_04-R-5",
-        "e2edev_bench_04-R-6"
-      ]
-    },
-    {
-      "id": "G-031",
-      "title": "Comprehensive Workflow with Rapid Interactions",
-      "description": "Test toggling the text box, handling rapid repeated clicks, selecting voices with language codes, reading custom text, and interacting rapidly with predefined phrase boxes.",
-      "requirement_ids": [
-        "e2edev_bench_04-R-1",
-        "e2edev_bench_04-R-4",
-        "e2edev_bench_04-R-6"
-      ]
-    },
-    {
-      "id": "G-032",
-      "title": "Toggle Text Box Visibility and Close",
-      "description": "Verify that clicking the toggle button changes the visibility of the text box using the 'show' class, and that clicking the close button inside the text box hides it again.",
-      "requirement_ids": [
-        "e2edev_bench_04-R-1",
-        "e2edev_bench_04-R-2"
-      ]
-    },
-    {
-      "id": "G-033",
-      "title": "Voice Dropdown Population and Selection Workflow",
-      "description": "Verify that opening the text box populates the voice dropdown via the Web Speech API, listens for 'voiceschanged' updates, and allows selecting a specific voice with language codes for speech synthesis.",
-      "requirement_ids": [
-        "e2edev_bench_04-R-3",
-        "e2edev_bench_04-R-4"
-      ]
-    },
-    {
-      "id": "G-034",
-      "title": "Text Area Input and Read Text Execution",
-      "description": "Verify that after opening the text box and entering text into the textarea, clicking the 'Read Text' button reads the text aloud using the selected voice.",
-      "requirement_ids": [
-        "e2edev_bench_04-R-1",
-        "e2edev_bench_04-R-3",
-        "e2edev_bench_04-R-5"
-      ]
-    },
-    {
-      "id": "G-035",
-      "title": "Predefined Phrase Box Interaction and Highlight",
-      "description": "Verify that clicking on dynamically generated predefined phrase boxes triggers speech playback and visually highlights the active box for 800 milliseconds.",
-      "requirement_ids": [
-        "e2edev_bench_04-R-6"
-      ]
-    },
-    {
-      "id": "G-036",
-      "title": "Rapid Repeated Toggling of Text Box Visibility",
-      "description": "Simulate rapid, consecutive clicks on the 'Toggle Text Box' button to test how the system handles race conditions and state inconsistencies regarding the presence of the 'show' class on data-testid='text-box'.",
+      "title": "Single Click Toggle to Show",
+      "description": "Verify that clicking the 'Toggle Text Box' button (data-testid='toggle-button') once when hidden successfully adds the 'show' class to the text box, making it visible.",
       "requirement_ids": [
         "e2edev_bench_04-R-1"
       ]
     },
     {
-      "id": "G-037",
-      "title": "Immediate Interaction with Close Button and Re-Toggle",
-      "description": "Test the misuse condition where the user immediately clicks the 'Close' button (data-testid='close-button') and rapidly re-opens the text box to verify proper DOM class removal and re-addition without leaving orphaned states.",
+      "id": "G-023",
+      "title": "Single Click Toggle to Hide",
+      "description": "Verify that clicking the 'Toggle Text Box' button once when visible successfully removes the 'show' class from the text box, hiding it.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-1"
+      ]
+    },
+    {
+      "id": "G-024",
+      "title": "Rapid Repeated Clicks Toggle Stress Test",
+      "description": "Verify that rapid repeated clicks on the toggle button handle state transitions reliably and the final visibility state accurately reflects the last user action without inconsistency.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-1"
+      ]
+    },
+    {
+      "id": "G-025",
+      "title": "Initial State of Text Box",
+      "description": "Verify that the text box (data-testid='text-box') is initially hidden and does not have the 'show' class when the page loads before any toggle action occurs.",
       "requirement_ids": [
         "e2edev_bench_04-R-2"
       ]
     },
     {
-      "id": "G-038",
-      "title": "Voice Population Trigger Before Speech Synthesis API Ready",
-      "description": "Guess potential failure conditions where speechSynthesis.getVoices() returns an empty list or delays execution when the text box is first opened, ensuring the 'voiceschanged' event properly recovers and populates the dropdown.",
+      "id": "G-026",
+      "title": "Show Text Box via Toggle Button",
+      "description": "Verify that clicking the 'Toggle Text Box' button (data-testid='toggle-button') once makes the text box visible by adding the 'show' class.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-2"
+      ]
+    },
+    {
+      "id": "G-027",
+      "title": "Hide Text Box via Close Button",
+      "description": "Verify that clicking the 'Close' button (data-testid='close-button') inside the visible text box hides the text box by removing the 'show' class.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-2"
+      ]
+    },
+    {
+      "id": "G-028",
+      "title": "Multiple Toggle and Close Cycles",
+      "description": "Verify boundary condition of repeated toggling by clicking the toggle button and close button consecutively multiple times to ensure the 'show' class is correctly toggled on and off without state corruption.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-2"
+      ]
+    },
+    {
+      "id": "G-029",
+      "title": "Voice Dropdown Population at Initial Opening",
+      "description": "Verify that when the user opens the text box for the first time via the toggle button, getVoices is invoked and the dropdown is populated with available voices.",
       "requirement_ids": [
         "e2edev_bench_04-R-3"
       ]
     },
     {
-      "id": "G-039",
-      "title": "Selecting Non-Existent or Invalid Voice Option",
-      "description": "Inject an invalid or manually altered value into the 'Choose Voice' dropdown (data-testid='voice-select') to test system resilience when handling missing or unsupported voice codes like 'CN' or 'US'.",
+      "id": "G-030",
+      "title": "Voice Dropdown Update on voiceschanged Event",
+      "description": "Verify that when the available voices change and the 'voiceschanged' event fires, the dropdown is dynamically updated to reflect the new list.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-3"
+      ]
+    },
+    {
+      "id": "G-031",
+      "title": "Voice Assignment on Selection",
+      "description": "Verify that when a user selects a voice option from the populated dropdown, the corresponding voice is correctly assigned to message.voice.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-3"
+      ]
+    },
+    {
+      "id": "G-032",
+      "title": "Select Single Voice Option",
+      "description": "Verify that selecting a single voice option from the voice-select dropdown successfully sets it as the active voice for speech synthesis.",
       "requirement_ids": [
         "e2edev_bench_04-R-4"
       ]
     },
     {
-      "id": "G-040",
-      "title": "Read Text Trigger with Empty Textarea and Unselected Voice",
-      "description": "Simulate error handling when the user clicks the 'Read Text' button (data-testid='read-button') while the textarea (data-testid='text-area') is completely empty and no voice has been explicitly chosen from the dropdown.",
+      "id": "G-033",
+      "title": "Multiple Voice Selections",
+      "description": "Verify that performing multiple consecutive voice selections correctly updates the active voice, ensuring the last selected voice is set for speech synthesis.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-4"
+      ]
+    },
+    {
+      "id": "G-034",
+      "title": "Voice Selection with Specific Language Codes",
+      "description": "Verify that selecting voice options containing specific language codes such as 'CN' or 'US' accurately assigns the respective voice as the active voice.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-4"
+      ]
+    },
+    {
+      "id": "G-035",
+      "title": "Read text with empty input and default voice",
+      "description": "Attempt to click the 'Read Text' button with an empty textarea and default voice settings, verifying system behavior at the lower limit of text length.",
       "requirement_ids": [
         "e2edev_bench_04-R-5"
       ]
     },
     {
+      "id": "G-036",
+      "title": "Read text with minimum valid character input",
+      "description": "Enter a single valid character into the textarea, select a voice, and click the 'Read Text' button to verify normal processing at the lower boundary.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-5"
+      ]
+    },
+    {
+      "id": "G-037",
+      "title": "Read text with maximum typical length input",
+      "description": "Enter a maximum expected length string into the textarea, select a voice, and click the 'Read Text' button to verify handling at the upper boundary.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-5"
+      ]
+    },
+    {
+      "id": "G-038",
+      "title": "Read text with extremely long input exceeding normal limits",
+      "description": "Enter a string exceeding the normal maximum expected length into the textarea, select a voice, and click the 'Read Text' button to test abnormal upper boundary conditions.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-5"
+      ]
+    },
+    {
+      "id": "G-039",
+      "title": "Read text with text box toggled closed",
+      "description": "Attempt to trigger the 'Read Text' button while the text box is explicitly hidden via the toggle state boundary condition.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-5"
+      ]
+    },
+    {
+      "id": "G-040",
+      "title": "Highlight Duration Exactly at Lower Boundary",
+      "description": "Verify that when a phrase box is clicked, the active class is applied for exactly 800 milliseconds, representing the precise lower boundary of the visual highlight duration.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-6"
+      ]
+    },
+    {
       "id": "G-041",
-      "title": "Rapid Sequential Clicks on Multiple Predefined Phrase Boxes",
-      "description": "Rapidly click across different predefined phrase boxes in quick succession to verify that speech queues and the 800-millisecond active class visual highlights do not overlap, glitch, or stick permanently.",
+      "title": "Highlight Duration Just Within Lower Boundary",
+      "description": "Verify that the active class remains applied for 801 milliseconds, representing a value immediately within the valid duration limit.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-6"
+      ]
+    },
+    {
+      "id": "G-042",
+      "title": "Highlight Duration Just Below Lower Boundary",
+      "description": "Verify the system behavior when the highlight duration attempts to fall below the limit at 799 milliseconds, representing an abnormal boundary test.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-6"
+      ]
+    },
+    {
+      "id": "G-043",
+      "title": "Rapid Repeated Clicks on the Same Box at Boundary Interval",
+      "description": "Verify that rapid repeated clicks on the same phrase box handle speech playback and visual feedback accurately without state corruption when triggered at the minimum allowable interval boundary.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-6"
+      ]
+    },
+    {
+      "id": "G-044",
+      "title": "Sequential Clicks Across Different Boxes at Zero Interval",
+      "description": "Verify that sequential clicks across different boxes with zero time interval between them correctly transition speech playback and visual feedback.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-6"
+      ]
+    },
+    {
+      "id": "G-045",
+      "title": "Toggle Text Box from Hidden to Visible",
+      "description": "Verify that clicking the toggle button when the text box is initially hidden adds the 'show' class and makes the text box visible.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-1"
+      ]
+    },
+    {
+      "id": "G-046",
+      "title": "Toggle Text Box from Visible to Hidden",
+      "description": "Verify that clicking the toggle button when the text box is currently visible removes the 'show' class and hides the text box.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-1"
+      ]
+    },
+    {
+      "id": "G-047",
+      "title": "Rapid Repeated Clicks on Toggle Button",
+      "description": "Verify that rapid repeated clicks on the toggle button are handled reliably and the final visibility state correctly reflects the last user action.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-1"
+      ]
+    },
+    {
+      "id": "G-048",
+      "title": "Forbidden State Transition Check for Text Box Visibility",
+      "description": "Verify that the text box visibility state does not change without a user interaction event (click on the toggle button).",
+      "requirement_ids": [
+        "e2edev_bench_04-R-1"
+      ]
+    },
+    {
+      "id": "G-049",
+      "title": "Initial State of Text Box",
+      "description": "Verify that when the application loads, the text box (data-testid='text-box') is initially hidden and does not have the 'show' class.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-2"
+      ]
+    },
+    {
+      "id": "G-050",
+      "title": "Transition from Hidden to Visible via Toggle Button",
+      "description": "Verify that clicking the 'Toggle Text Box' button (data-testid='toggle-button') when the text box is hidden causes the 'show' class to be added to the text box, making it visible.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-2"
+      ]
+    },
+    {
+      "id": "G-051",
+      "title": "Transition from Visible to Hidden via Close Button",
+      "description": "Verify that clicking the 'Close' button (data-testid='close-button') inside the visible text box causes the 'show' class to be removed, hiding the text box.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-2"
+      ]
+    },
+    {
+      "id": "G-052",
+      "title": "Forbidden Transition: Close Button when Text Box is Hidden",
+      "description": "Verify that the 'Close' button (data-testid='close-button') cannot be clicked or triggered while the text box is in the hidden state.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-2"
+      ]
+    },
+    {
+      "id": "G-053",
+      "title": "Populate Voices Upon Opening Text Box",
+      "description": "Verify that when the text box is initially hidden and the user clicks the 'Toggle Text Box' button to make it visible, the system invokes getVoices and populates the 'Choose Voice' dropdown with available voices.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-3"
+      ]
+    },
+    {
+      "id": "G-054",
+      "title": "Update Voices on voiceschanged Event",
+      "description": "Verify that while the text box is visible, if the available voices change and the 'voiceschanged' event is triggered, the system updates the 'Choose Voice' dropdown accordingly.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-3"
+      ]
+    },
+    {
+      "id": "G-055",
+      "title": "Assign Selected Voice to Message",
+      "description": "Verify that when a user selects a voice from the populated dropdown, the system assigns the selected voice to message.voice for speech synthesis.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-3"
+      ]
+    },
+    {
+      "id": "G-056",
+      "title": "Forbidden Transition: Voice Selection While Text Box Hidden",
+      "description": "Verify that voice selection and dropdown population cannot occur or process inputs when the text box is in the hidden state.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-3"
+      ]
+    },
+    {
+      "id": "G-057",
+      "title": "Initial Populate on Page Load",
+      "description": "Verify that when the page is fully loaded, the 'Choose Voice' dropdown (data-testid='voice-select') is automatically populated with available voices from the Web Speech API.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-4"
+      ]
+    },
+    {
+      "id": "G-058",
+      "title": "Single Voice Selection",
+      "description": "Verify that selecting a specific voice from the dropdown updates the active voice state for speech synthesis correctly.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-4"
+      ]
+    },
+    {
+      "id": "G-059",
+      "title": "Multiple Voice Selections",
+      "description": "Verify that when multiple voices are selected sequentially, the system correctly updates and ensures the last selected voice becomes the active voice for speech synthesis.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-4"
+      ]
+    },
+    {
+      "id": "G-060",
+      "title": "Language Specific Voice Selection",
+      "description": "Verify that selecting a voice option containing specific language codes (such as 'CN' or 'US') accurately sets that voice containing the code as the active voice.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-4"
+      ]
+    },
+    {
+      "id": "G-061",
+      "title": "Read text aloud using selected voice and entered text",
+      "description": "Verify that when the text box is toggled visible via 'Toggle Text Box' button, text is entered into 'text-area', a voice is chosen from 'voice-select', and 'Read Text' button is clicked, the system reads the entered text aloud using the selected voice.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-5"
+      ]
+    },
+    {
+      "id": "G-062",
+      "title": "Attempt to read text with text box hidden (Forbidden Transition)",
+      "description": "Verify that when the text box is in the hidden state, clicking the 'Read Text' button does not trigger speech synthesis since the button is not accessible.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-5"
+      ]
+    },
+    {
+      "id": "G-063",
+      "title": "Attempt to read text with empty textarea",
+      "description": "Verify the system behavior when the text box is visible and 'Read Text' button is clicked while the textarea ('text-area') remains empty.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-5"
+      ]
+    },
+    {
+      "id": "G-064",
+      "title": "Normal Phrase Box Click State Transition",
+      "description": "Verify that clicking a predefined phrase box triggers speech playback and adds the 'active' class to the box, and that the 'active' class is removed after 800 milliseconds.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-6"
+      ]
+    },
+    {
+      "id": "G-065",
+      "title": "Sequential Clicks Across Different Phrase Boxes",
+      "description": "Verify that clicking one phrase box and then immediately clicking a different phrase box transitions the active state correctly to the new box, updates the speech playback to the new text, and removes the 'active' class from the previous box.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-6"
+      ]
+    },
+    {
+      "id": "G-066",
+      "title": "Rapid Repeated Clicks on the Same Phrase Box",
+      "description": "Verify that rapid repeated clicks on the same phrase box correctly handle the state transitions, re-triggering or queueing speech playback and maintaining the visual highlight accurately without breaking the 800-millisecond timer logic.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-6"
+      ]
+    },
+    {
+      "id": "G-067",
+      "title": "Toggle visibility from hidden to visible via toggle button",
+      "description": "Given the text box is initially hidden without the 'show' class, when the user clicks the toggle button once, then the text box becomes visible and the 'show' class is added.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-1"
+      ]
+    },
+    {
+      "id": "G-068",
+      "title": "Toggle visibility from visible to hidden via toggle button",
+      "description": "Given the text box is currently visible with the 'show' class, when the user clicks the toggle button, then the text box is hidden and the 'show' class is removed.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-1"
+      ]
+    },
+    {
+      "id": "G-069",
+      "title": "Rapid repeated clicks handling on toggle button",
+      "description": "Given the text box is initially hidden, when the user performs rapid repeated clicks on the toggle button, then the final state of the text box reliably reflects the last user action without inconsistency.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-1"
+      ]
+    },
+    {
+      "id": "G-070",
+      "title": "Toggle and Close Text Box Normal Flow",
+      "description": "Verify that when the text box is initially hidden, clicking the Toggle button makes it visible by adding the 'show' class, and subsequently clicking the Close button hides it by removing the 'show' class.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-2"
+      ]
+    },
+    {
+      "id": "G-071",
+      "title": "Toggle Button Click When Already Visible",
+      "description": "Verify the system behavior when the Toggle button is clicked while the text box is already visible, ensuring correct handling of repeated toggle interactions.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-2"
+      ]
+    },
+    {
+      "id": "G-072",
+      "title": "Close Button Click When Already Hidden",
+      "description": "Verify the system behavior when the Close button is clicked while the text box is already hidden, ensuring no erroneous class modifications occur.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-2"
+      ]
+    },
+    {
+      "id": "G-073",
+      "title": "Populate voice dropdown on opening text box",
+      "description": "Verify that when the text box is initially opened using the toggle button, the system invokes getVoices and populates the voice dropdown with available voices containing names and languages.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-3"
+      ]
+    },
+    {
+      "id": "G-074",
+      "title": "Update voice dropdown on voiceschanged event",
+      "description": "Verify that if available voices change after the text box is opened, the system listens for the voiceschanged event and successfully updates the dropdown elements.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-3"
+      ]
+    },
+    {
+      "id": "G-075",
+      "title": "Assign selected voice to speech synthesis message",
+      "description": "Verify that when a user selects a voice from the populated dropdown, the selected voice is correctly assigned to message.voice for speech synthesis.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-3"
+      ]
+    },
+    {
+      "id": "G-076",
+      "title": "Select a standard voice from dropdown when page is loaded",
+      "description": "Verify that when the page is fully loaded and a standard voice is selected from the 'voice-select' dropdown, the system sets the chosen voice as the active voice for speech synthesis.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-4"
+      ]
+    },
+    {
+      "id": "G-077",
+      "title": "Select a voice with specific language code 'CN'",
+      "description": "Verify that when a user selects a voice option containing the specific language code 'CN' (Chinese) from the 'voice-select' dropdown, the system accurately sets it as the active voice.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-4"
+      ]
+    },
+    {
+      "id": "G-078",
+      "title": "Select a voice with specific language code 'US'",
+      "description": "Verify that when a user selects a voice option containing the specific language code 'US' (English) from the 'voice-select' dropdown, the system accurately sets it as the active voice.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-4"
+      ]
+    },
+    {
+      "id": "G-079",
+      "title": "Perform multiple voice selections consecutively",
+      "description": "Verify that when a user makes multiple successive voice selections from the 'voice-select' dropdown, the system handles them correctly and ensures the last selected voice is set as the active voice for speech synthesis.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-4"
+      ]
+    },
+    {
+      "id": "G-080",
+      "title": "Read text aloud with text box toggled open, text entered, and valid voice selected",
+      "description": "Decision table test case where text box is open, text is entered in the textarea, a valid voice is selected from the dropdown, and the 'Read Text' button is clicked, resulting in successful speech synthesis.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-5"
+      ]
+    },
+    {
+      "id": "G-081",
+      "title": "Attempt to read text with text box closed",
+      "description": "Decision table test case where text box is initially hidden/closed, text is present, and 'Read Text' button action is attempted, resulting in abnormal behavior or failure since the controls are not accessible.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-5"
+      ]
+    },
+    {
+      "id": "G-082",
+      "title": "Attempt to read empty text from textarea",
+      "description": "Decision table test case where text box is open, textarea is empty, a valid voice is selected, and 'Read Text' button is clicked, verifying system behavior for empty input.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-5"
+      ]
+    },
+    {
+      "id": "G-083",
+      "title": "Attempt to read text without selecting a voice",
+      "description": "Decision table test case where text box is open, text is entered in the textarea, no specific voice is selected (default fallback), and 'Read Text' button is clicked.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-5"
+      ]
+    },
+    {
+      "id": "G-084",
+      "title": "Normal click on a predefined phrase box",
+      "description": "Verify that when a user clicks on a predefined phrase box, the system reads the associated text aloud using the Web Speech API and visually highlights the box by adding the active class for 800 milliseconds.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-6"
+      ]
+    },
+    {
+      "id": "G-085",
+      "title": "Sequential clicks across different predefined phrase boxes",
+      "description": "Verify that when a user performs sequential clicks across different phrase boxes, the system correctly triggers speech playback and visual feedback for each interacted box.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-6"
+      ]
+    },
+    {
+      "id": "G-086",
+      "title": "Rapid repeated clicks on the same predefined phrase box",
+      "description": "Verify that when a user performs rapid repeated clicks on the same phrase box, the system accurately handles the inputs, triggering speech playback and visual feedback without breaking state.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-6"
+      ]
+    },
+    {
+      "id": "G-087",
+      "title": "Normal Toggle Visibility Show",
+      "description": "Click the toggle button (data-testid='toggle-button') when the text box is initially hidden to show the text box (data-testid='text-box') via the 'show' class.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-1"
+      ]
+    },
+    {
+      "id": "G-088",
+      "title": "Normal Toggle Visibility Hide",
+      "description": "Click the toggle button when the text box is visible to hide the text box by removing the 'show' class.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-1"
+      ]
+    },
+    {
+      "id": "G-089",
+      "title": "Rapid Repeated Clicks Toggle",
+      "description": "Perform rapid repeated clicks on the toggle button to test reliability and ensure the final state accurately reflects the last user action without inconsistency.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-1"
+      ]
+    },
+    {
+      "id": "G-090",
+      "title": "Boundary Condition State Consistency",
+      "description": "Test edge boundary conditions with alternating quick single clicks and double clicks on the toggle button to verify that state consistency is maintained.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-1"
+      ]
+    },
+    {
+      "id": "G-091",
+      "title": "Toggle and Close Text Box Normal Flow",
+      "description": "Verify that clicking the 'Toggle Text Box' button makes the text box visible by adding the 'show' class, and subsequently clicking the 'Close' button hides the text box by removing the 'show' class.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-2"
+      ]
+    },
+    {
+      "id": "G-092",
+      "title": "Initial State Validation",
+      "description": "Verify that upon initial page load, the text box (data-testid='text-box') is hidden and does not possess the 'show' class.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-2"
+      ]
+    },
+    {
+      "id": "G-093",
+      "title": "Repeated Toggle Actions",
+      "description": "Verify that clicking the 'Toggle Text Box' button multiple times consecutively correctly alternates the visibility state of the text box by adding and removing the 'show' class reliably.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-2"
+      ]
+    },
+    {
+      "id": "G-094",
+      "title": "Close Button Absence When Hidden",
+      "description": "Verify abnormal condition where attempting to interact with the 'Close' button while the text box is initially hidden or already closed fails or is inaccessible, ensuring proper containment of controls.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-2"
+      ]
+    },
+    {
+      "id": "G-095",
+      "title": "Populate voice dropdown upon opening text box with available voices",
+      "description": "Verify that after clicking the 'Toggle Text Box' button to make the text box visible, the system invokes getVoices and populates the 'Choose Voice' dropdown with available voice names and languages.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-3"
+      ]
+    },
+    {
+      "id": "G-096",
+      "title": "Update voice dropdown dynamically on voiceschanged event",
+      "description": "Verify that when available voices change after the text box is open, the system listens for the 'voiceschanged' event and successfully updates the dropdown options accordingly.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-3"
+      ]
+    },
+    {
+      "id": "G-097",
+      "title": "Assign selected dropdown voice to message.voice for speech synthesis",
+      "description": "Verify that when a user selects a specific voice from the populated dropdown, the chosen voice is correctly assigned to message.voice for subsequent speech synthesis.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-3"
+      ]
+    },
+    {
+      "id": "G-098",
+      "title": "Initial Population of Voice Dropdown on Page Load",
+      "description": "Verify that the 'Choose Voice' dropdown (data-testid='voice-select') is automatically populated with available voices when the page is fully loaded.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-4"
+      ]
+    },
+    {
+      "id": "G-099",
+      "title": "Single Voice Selection and Active Voice Assignment",
+      "description": "Verify that selecting a specific voice from the dropdown successfully sets it as the active voice for speech synthesis.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-4"
+      ]
+    },
+    {
+      "id": "G-100",
+      "title": "Multiple Voice Selections",
+      "description": "Verify that switching between multiple voices correctly updates the active voice, ensuring the last selected voice is the one set for speech synthesis.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-4"
+      ]
+    },
+    {
+      "id": "G-101",
+      "title": "Voice Selection with Specific Language Codes",
+      "description": "Verify that selecting a voice containing specific language codes (such as 'CN' for Chinese or 'US' for English) accurately assigns that specific voice as the active voice.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-4"
+      ]
+    },
+    {
+      "id": "G-102",
+      "title": "Read text aloud with toggled text box and default voice",
+      "description": "User opens the text box via the toggle button, enters text into the textarea, selects a default voice from the dynamically populated dropdown, and clicks the Read Text button to read the text aloud.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-5"
+      ]
+    },
+    {
+      "id": "G-103",
+      "title": "Read text aloud with specific language voice selection",
+      "description": "User toggles the text box open, enters text, selects a voice with a specific language code (e.g., Chinese or English) from the dropdown, and clicks the Read Text button for speech synthesis.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-5"
+      ]
+    },
+    {
+      "id": "G-104",
+      "title": "Attempt to read text with empty textarea input",
+      "description": "User toggles the text box open, leaves the textarea empty, selects a voice, and clicks the Read Text button to verify system behavior with abnormal empty input.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-5"
+      ]
+    },
+    {
+      "id": "G-105",
+      "title": "Attempt to read text when text box is closed",
+      "description": "User attempts to click the Read Text button while the text box is hidden/closed, verifying that text-to-speech is not triggered incorrectly.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-5"
+      ]
+    },
+    {
+      "id": "G-106",
+      "title": "Normal click on a single predefined phrase box",
+      "description": "Verify that clicking a predefined phrase box reads the associated text aloud using the Web Speech API and visually highlights the box with the active class for exactly 800 milliseconds.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-6"
+      ]
+    },
+    {
+      "id": "G-107",
+      "title": "Sequential clicks across different phrase boxes",
+      "description": "Verify that clicking different phrase boxes sequentially correctly triggers speech playback and visual feedback for each box without conflict.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-6"
+      ]
+    },
+    {
+      "id": "G-108",
+      "title": "Rapid repeated clicks on the same phrase box",
+      "description": "Verify that rapid repeated clicks on the same phrase box are handled correctly, ensuring speech playback and visual feedback are reliably triggered for each interaction.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-6"
+      ]
+    },
+    {
+      "id": "G-109",
+      "title": "Toggle Text Box Visibility Normal Flow",
+      "description": "Verify that clicking the toggle button (data-testid=\"toggle-button\") when the text box is initially hidden makes the text box (data-testid=\"text-box\") visible by adding the 'show' class, and clicking it again hides it by removing the 'show' class.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-1"
+      ]
+    },
+    {
+      "id": "G-110",
+      "title": "Rapid Repeated Clicks on Toggle Button",
+      "description": "Verify that rapidly clicking the toggle button multiple times handles the state changes reliably and the final visibility state of the text box accurately reflects the last user action without inconsistency.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-1"
+      ]
+    },
+    {
+      "id": "G-111",
+      "title": "Toggle Text Box Visibility and Close via Close Button",
+      "description": "Verify that clicking the 'Toggle Text Box' button makes the text box visible by adding the 'show' class, and subsequent clicking of the 'Close' button hides the text box by removing the 'show' class.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-2"
+      ]
+    },
+    {
+      "id": "G-112",
+      "title": "Populate Voice Dropdown on Text Box Open",
+      "description": "Verify that when the user clicks the 'Toggle Text Box' button (data-testid='toggle-button') to make the text box visible, the system invokes getVoices and successfully populates the 'Choose Voice' dropdown (data-testid='voice-select') with available voices showing voice names and languages.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-3"
+      ]
+    },
+    {
+      "id": "G-113",
+      "title": "Handle Dynamic Voice Updates via voiceschanged Event",
+      "description": "Verify that the system listens for the 'voiceschanged' event and dynamically updates the 'Choose Voice' dropdown (data-testid='voice-select') if the available voices change after the text box has been opened.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-3"
+      ]
+    },
+    {
+      "id": "G-114",
+      "title": "Assign Selected Voice to Message for Speech Synthesis",
+      "description": "Verify that when a user selects a specific voice from the populated 'Choose Voice' dropdown (data-testid='voice-select'), that selected voice is correctly assigned to message.voice for speech synthesis.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-3"
+      ]
+    },
+    {
+      "id": "G-115",
+      "title": "Select a Default Voice from Dropdown",
+      "description": "Verify that the user can select a specific voice from the 'Choose Voice' dropdown (data-testid='voice-select') and that the system sets the chosen voice as active for speech synthesis.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-4"
+      ]
+    },
+    {
+      "id": "G-116",
+      "title": "Multiple Voice Selections",
+      "description": "Test multiple successive voice selections from the dropdown to ensure that the last selected voice correctly replaces the previous one and becomes the active voice for speech synthesis.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-4"
+      ]
+    },
+    {
+      "id": "G-117",
+      "title": "Select Voice with Specific Language Code",
+      "description": "Verify that the application accurately supports and sets voice options containing specific language codes, such as 'CN' for Chinese or 'US' for English, as the active voice when selected.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-4"
+      ]
+    },
+    {
+      "id": "G-118",
+      "title": "Read entered text aloud using selected voice and text box controls",
+      "description": "Verify that when the user toggles the text box using the 'Toggle Text Box' button, enters text into the textarea, selects a voice, and clicks the 'Read Text' button, the system reads the entered text aloud using the selected voice.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-5"
+      ]
+    },
+    {
+      "id": "G-119",
+      "title": "Sequential clicks across different phrase boxes",
+      "description": "Verify that when a user performs sequential clicks across different phrase boxes, the system correctly handles each interaction by playing the respective speech and applying the active class visual feedback accurately.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-6"
+      ]
+    },
+    {
+      "id": "G-120",
+      "title": "Rapid repeated clicks on the same phrase box",
+      "description": "Verify that when a user performs rapid repeated clicks on the same phrase box, the system accurately triggers speech playback and visual feedback for each interaction without failure.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-6"
+      ]
+    },
+    {
+      "id": "G-121",
+      "title": "Rapid Repeated Toggling",
+      "description": "Simulate rapid consecutive clicks on the toggle button (data-testid='toggle-button') to verify that the final visibility state of the text box (data-testid='text-box') correctly reflects the last user action and avoids state desynchronization.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-1"
+      ]
+    },
+    {
+      "id": "G-122",
+      "title": "Stale Class Manipulation Check",
+      "description": "Check system resilience when external manipulation attempts to force remove or add the 'show' class directly while interacting with the toggle button, ensuring the 'show' class correctly toggles based on the intended state.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-1"
+      ]
+    },
+    {
+      "id": "G-123",
+      "title": "Close Button Clicked While TextBox Already Hidden",
+      "description": "Attempt to click the close button when the text box is already hidden to ensure no application errors occur and the state remains hidden.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-2"
+      ]
+    },
+    {
+      "id": "G-124",
+      "title": "Rapid Toggling Between Toggle and Close Buttons",
+      "description": "Perform rapid alternating clicks between the toggle button and close button to test state synchronization and DOM class manipulation robustness.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-2"
+      ]
+    },
+    {
+      "id": "G-125",
+      "title": "Missing Show Class Recovery on Close Action",
+      "description": "Manually tamper with the DOM to remove the show class while the text box is active, then click the close button to verify proper handling of unexpected DOM states.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-2"
+      ]
+    },
+    {
+      "id": "G-126",
+      "title": "Dropdown population failure when speech synthesis getVoices returns empty array initially",
+      "description": "Verify the system handles cases where speechSynthesis.getVoices() returns an empty list upon opening the text box, ensuring it correctly falls back or listens for the 'voiceschanged' event without crashing.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-3"
+      ]
+    },
+    {
+      "id": "G-127",
+      "title": "Duplicate voice entries handling during rapid voiceschanged events",
+      "description": "Test the dropdown population when the 'voiceschanged' event fires multiple times in rapid succession, ensuring the voice-select element does not contain duplicate option elements.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-3"
+      ]
+    },
+    {
+      "id": "G-128",
+      "title": "Voice selection persistence across rapid toggle and re-open actions",
+      "description": "Verify that when a user opens the text box, selects a voice, closes the text box, and re-opens it, the previously selected voice assignment and dropdown state are handled correctly without generating null reference errors.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-3"
+      ]
+    },
+    {
+      "id": "G-129",
+      "title": "Select Voice with Malformed or Empty Language Code",
+      "description": "Attempt to select a voice option where the language code is missing, null, or malformed to check if the application handles invalid voice properties gracefully without crashing the speech synthesis setup.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-4"
+      ]
+    },
+    {
+      "id": "G-130",
+      "title": "Rapid Consecutive Voice Selections",
+      "description": "Simulate rapid, successive changes of the voice selection in the dropdown before speech synthesis initializes to verify that only the final selected voice is correctly assigned as the active voice.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-4"
+      ]
+    },
+    {
+      "id": "G-131",
+      "title": "Selection of Non-existent Voice Option",
+      "description": "Programmatically inject an invalid voice option into the dropdown and attempt to select it, ensuring the system fails safely and does not break subsequent valid selections.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-4"
+      ]
+    },
+    {
+      "id": "G-132",
+      "title": "Read Text with Empty Textarea and Selected Voice",
+      "description": "Trigger the 'Read Text' button while the textarea is completely empty to test error handling and system stability when no text is provided for speech synthesis.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-5"
+      ]
+    },
+    {
+      "id": "G-133",
+      "title": "Read Text Without Selecting a Voice",
+      "description": "Attempt to click the 'Read Text' button with text entered in the textarea but without selecting any specific voice from the dropdown, ensuring a default voice or fallback is correctly utilized.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-5"
+      ]
+    },
+    {
+      "id": "G-134",
+      "title": "Rapid Repeated Clicks on Read Text Button",
+      "description": "Perform rapid, multiple consecutive clicks on the 'Read Text' button to test if the system properly handles overlapping speech requests or queueing without crashing.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-5"
+      ]
+    },
+    {
+      "id": "G-135",
+      "title": "Rapid Repeated Clicks on the Same Phrase Box",
+      "description": "Simulate rapid, consecutive clicks on the same predefined phrase box to test how the system handles overlapping speech playback requests and visual active class toggling without breaking the 800-millisecond highlight duration.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-6"
+      ]
+    },
+    {
+      "id": "G-136",
+      "title": "Rapid Sequential Clicks Across Different Phrase Boxes",
+      "description": "Test rapid clicking across multiple different phrase boxes in quick succession to verify that speech playback correctly queues or interrupts and that active visual highlighting transitions accurately between boxes without getting stuck.",
+      "requirement_ids": [
+        "e2edev_bench_04-R-6"
+      ]
+    },
+    {
+      "id": "G-137",
+      "title": "Missing Data Array or Empty Phrase Dataset Handling",
+      "description": "Test the behavior when the underlying data array for predefined phrase boxes is empty, null, or malformed, ensuring the system does not throw uncaught exceptions and handles the absence of boxes gracefully.",
       "requirement_ids": [
         "e2edev_bench_04-R-6"
       ]
@@ -578,126 +1326,222 @@
   ],
   "evaluation": {
     "status": "evaluated",
-    "generated_count": 41,
+    "generated_count": 137,
     "reference_count": 15,
     "matches": [
       {
-        "generated_id": "G-003",
+        "generated_id": "G-011",
         "reference_id": "e2edev_bench_04-R-4-TC-2",
-        "similarity": 0.9110459207000776
+        "similarity": 0.9377318138323535
       },
       {
-        "generated_id": "G-005",
-        "reference_id": "e2edev_bench_04-R-6-TC-2",
-        "similarity": 0.9257914575156291
-      },
-      {
-        "generated_id": "G-008",
-        "reference_id": "e2edev_bench_04-R-2-TC-1",
-        "similarity": 0.9344187694883322
-      },
-      {
-        "generated_id": "G-010",
-        "reference_id": "e2edev_bench_04-R-5-TC-1",
-        "similarity": 0.9190837527368747
-      },
-      {
-        "generated_id": "G-014",
-        "reference_id": "e2edev_bench_04-R-1-TC-2",
-        "similarity": 0.9221931371430618
+        "generated_id": "G-015",
+        "reference_id": "e2edev_bench_04-R-5-TC-2",
+        "similarity": 0.9110359820073917
       },
       {
         "generated_id": "G-016",
-        "reference_id": "e2edev_bench_04-R-3-TC-1",
-        "similarity": 0.9438490354132649
-      },
-      {
-        "generated_id": "G-017",
-        "reference_id": "e2edev_bench_04-R-4-TC-1",
-        "similarity": 0.9100067817275556
-      },
-      {
-        "generated_id": "G-020",
-        "reference_id": "e2edev_bench_04-R-1-TC-1",
-        "similarity": 0.9127699151389199
-      },
-      {
-        "generated_id": "G-024",
-        "reference_id": "e2edev_bench_04-R-5-TC-3",
-        "similarity": 0.9071554791047975
-      },
-      {
-        "generated_id": "G-025",
-        "reference_id": "e2edev_bench_04-R-6-TC-3",
-        "similarity": 0.918636193172951
-      },
-      {
-        "generated_id": "G-028",
-        "reference_id": "e2edev_bench_04-R-4-TC-3",
-        "similarity": 0.8989031262281495
-      },
-      {
-        "generated_id": "G-034",
-        "reference_id": "e2edev_bench_04-R-5-TC-2",
-        "similarity": 0.9110519981910387
-      },
-      {
-        "generated_id": "G-035",
-        "reference_id": "e2edev_bench_04-R-6-TC-1",
-        "similarity": 0.9182187271819551
-      },
-      {
-        "generated_id": "G-036",
-        "reference_id": "e2edev_bench_04-R-1-TC-3",
-        "similarity": 0.9133641288977759
-      },
-      {
-        "generated_id": "G-040",
         "reference_id": "e2edev_bench_04-R-5-TC-4",
-        "similarity": 0.9391746227854332
+        "similarity": 0.9387380171335702
+      },
+      {
+        "generated_id": "G-019",
+        "reference_id": "e2edev_bench_04-R-6-TC-2",
+        "similarity": 0.923332744087216
+      },
+      {
+        "generated_id": "G-027",
+        "reference_id": "e2edev_bench_04-R-2-TC-1",
+        "similarity": 0.9328643082211889
+      },
+      {
+        "generated_id": "G-046",
+        "reference_id": "e2edev_bench_04-R-1-TC-2",
+        "similarity": 0.923627836434132
+      },
+      {
+        "generated_id": "G-057",
+        "reference_id": "e2edev_bench_04-R-3-TC-1",
+        "similarity": 0.9569015607050688
+      },
+      {
+        "generated_id": "G-061",
+        "reference_id": "e2edev_bench_04-R-5-TC-1",
+        "similarity": 0.9368905841192494
+      },
+      {
+        "generated_id": "G-079",
+        "reference_id": "e2edev_bench_04-R-4-TC-3",
+        "similarity": 0.9056346254368774
+      },
+      {
+        "generated_id": "G-084",
+        "reference_id": "e2edev_bench_04-R-6-TC-1",
+        "similarity": 0.9383042926376695
+      },
+      {
+        "generated_id": "G-086",
+        "reference_id": "e2edev_bench_04-R-6-TC-3",
+        "similarity": 0.9017268455341423
+      },
+      {
+        "generated_id": "G-109",
+        "reference_id": "e2edev_bench_04-R-1-TC-1",
+        "similarity": 0.9291959281699637
+      },
+      {
+        "generated_id": "G-115",
+        "reference_id": "e2edev_bench_04-R-4-TC-1",
+        "similarity": 0.9377656340190964
+      },
+      {
+        "generated_id": "G-118",
+        "reference_id": "e2edev_bench_04-R-5-TC-3",
+        "similarity": 0.9200245792791293
+      },
+      {
+        "generated_id": "G-121",
+        "reference_id": "e2edev_bench_04-R-1-TC-3",
+        "similarity": 0.9192774194472023
       }
     ],
     "unmatched_generated_ids": [
       "G-001",
       "G-002",
+      "G-003",
       "G-004",
+      "G-005",
       "G-006",
       "G-007",
+      "G-008",
       "G-009",
-      "G-011",
+      "G-010",
       "G-012",
       "G-013",
-      "G-015",
+      "G-014",
+      "G-017",
       "G-018",
-      "G-019",
+      "G-020",
       "G-021",
       "G-022",
       "G-023",
+      "G-024",
+      "G-025",
       "G-026",
-      "G-027",
+      "G-028",
       "G-029",
       "G-030",
       "G-031",
       "G-032",
       "G-033",
+      "G-034",
+      "G-035",
+      "G-036",
       "G-037",
       "G-038",
       "G-039",
-      "G-041"
+      "G-040",
+      "G-041",
+      "G-042",
+      "G-043",
+      "G-044",
+      "G-045",
+      "G-047",
+      "G-048",
+      "G-049",
+      "G-050",
+      "G-051",
+      "G-052",
+      "G-053",
+      "G-054",
+      "G-055",
+      "G-056",
+      "G-058",
+      "G-059",
+      "G-060",
+      "G-062",
+      "G-063",
+      "G-064",
+      "G-065",
+      "G-066",
+      "G-067",
+      "G-068",
+      "G-069",
+      "G-070",
+      "G-071",
+      "G-072",
+      "G-073",
+      "G-074",
+      "G-075",
+      "G-076",
+      "G-077",
+      "G-078",
+      "G-080",
+      "G-081",
+      "G-082",
+      "G-083",
+      "G-085",
+      "G-087",
+      "G-088",
+      "G-089",
+      "G-090",
+      "G-091",
+      "G-092",
+      "G-093",
+      "G-094",
+      "G-095",
+      "G-096",
+      "G-097",
+      "G-098",
+      "G-099",
+      "G-100",
+      "G-101",
+      "G-102",
+      "G-103",
+      "G-104",
+      "G-105",
+      "G-106",
+      "G-107",
+      "G-108",
+      "G-110",
+      "G-111",
+      "G-112",
+      "G-113",
+      "G-114",
+      "G-116",
+      "G-117",
+      "G-119",
+      "G-120",
+      "G-122",
+      "G-123",
+      "G-124",
+      "G-125",
+      "G-126",
+      "G-127",
+      "G-128",
+      "G-129",
+      "G-130",
+      "G-131",
+      "G-132",
+      "G-133",
+      "G-134",
+      "G-135",
+      "G-136",
+      "G-137"
     ],
     "unmatched_reference_ids": [],
-    "precision": 0.36585365853658536,
+    "precision": 0.10948905109489052,
     "recall": 1.0,
-    "f1": 0.5357142857142857,
+    "f1": 0.19736842105263158,
     "embedding_usage": {
-      "input_tokens": 1929,
+      "input_tokens": 6441,
       "output_tokens": null,
       "details": {
-        "text_prompt_tokens": 1929
+        "text_prompt_tokens": 6441
       },
       "status": "partial"
     },
-    "embedding_requests": 3
+    "embedding_requests": 7
   },
   "generation": {
     "selected_techniques": [
@@ -712,35 +1556,35 @@
     "technique_rationales": {
       "equivalence_partitioning": "Cover important input partitions such as valid voice selections, specific language codes (e.g., 'CN', 'US'), and text entries.",
       "boundary_value_analysis": "Exercise stated limits and boundary conditions such as rapid repeated clicks on toggle and phrase boxes.",
-      "state_transition": "Cover visibility states (hidden vs. 'show' class) of the text box and the active states of phrase boxes.",
-      "decision_table": "Cover condition combinations such as selecting different voices, toggling text box states, and triggering speech synthesis actions.",
-      "combinatorial": "Cover meaningful combinations of multiple requirement factors including voice selection, dynamic loading via 'voiceschanged', and text input.",
-      "use_case": "Cover end-to-end user flows like opening the text box, populating voices, entering text, selecting a voice, and clicking 'Read Text'.",
-      "error_guessing": "Explore plausible failures such as missing voices during initialization or rapid sequential clicks across different phrase boxes."
+      "state_transition": "Cover visibility states of the text box (controlled by the 'show' class) and transitions triggered by toggle and close buttons.",
+      "decision_table": "Cover condition combinations for populating voices, handling the 'voiceschanged' event, and selecting active voices for speech synthesis.",
+      "combinatorial": "Cover meaningful combinations of multiple requirement factors like selecting different voices and entering text simultaneously.",
+      "use_case": "Cover end-to-end user flows including opening the text box, selecting a voice, entering text, clicking 'Read Text', and clicking predefined phrase boxes.",
+      "error_guessing": "Explore plausible failures such as missing voices during initialization or rapid sequential clicks across different phrase and toggle buttons."
     },
     "prompt_version": null
   },
   "usage": {
     "generation": {
-      "input_tokens": 11400,
-      "output_tokens": 4906,
+      "input_tokens": 60774,
+      "output_tokens": 14579,
       "details": {
-        "text_prompt_tokens": 11400,
-        "total_tokens": 16306
+        "text_prompt_tokens": 60774,
+        "total_tokens": 75353
       },
       "status": "available"
     },
     "generation_attempts": [],
     "generation_calls": [],
     "embedding": {
-      "input_tokens": 1929,
+      "input_tokens": 6441,
       "output_tokens": null,
       "details": {
-        "text_prompt_tokens": 1929
+        "text_prompt_tokens": 6441
       },
       "status": "partial"
     },
-    "embedding_requests": 3
+    "embedding_requests": 7
   },
   "links": {
     "requirements": {
@@ -752,148 +1596,416 @@
       "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/requirement.md"
     },
     "cases": {
-      "G-012": {
-        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/12_Transition_from_Hidden_to_Visible_via_Toggle_But.md",
-        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/12_Transition_from_Hidden_to_Visible_via_Toggle_But.md"
+      "G-109": {
+        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/109_Toggle_Text_Box_Visibility_Normal_Flow.md"
       },
-      "G-014": {
-        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/14_Transition_from_Visible_to_Hidden_via_Toggle_But.md",
-        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/14_Transition_from_Visible_to_Hidden_via_Toggle_But.md"
+      "G-110": {
+        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/110_Rapid_Repeated_Clicks_on_Toggle_Button.md"
       },
-      "G-015": {
-        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/15_Rapid_Repeated_Toggles_and_Boundary_Handling.md"
+      "G-121": {
+        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/121_Rapid_Repeated_Toggling.md"
       },
-      "G-019": {
-        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/19_Forbidden_Abnormal_State_Transition_Reading_Text.md",
-        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/19_Forbidden_Abnormal_State_Transition_Reading_Text.md"
+      "G-122": {
+        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/122_Stale_Class_Manipulation_Check.md"
       },
       "G-001": {
-        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/1_Toggle_Text_Box_Visibility_using_Toggle_and_Clos.md",
-        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/1_Toggle_Text_Box_Visibility_using_Toggle_and_Clos.md"
-      },
-      "G-020": {
-        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/20_Toggle_Text_Box_Visibility_and_Close_Button.md",
-        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/20_Toggle_Text_Box_Visibility_and_Close_Button.md"
+        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/1_Toggle_text_box_visibility_from_hidden_to_visibl.md"
       },
       "G-021": {
-        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/21_Rapid_Repeated_Clicks_on_Toggle_Button.md"
-      },
-      "G-026": {
-        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/26_Toggle_Text_Box_Visibility_and_Close.md",
-        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/26_Toggle_Text_Box_Visibility_and_Close.md"
-      },
-      "G-027": {
-        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/27_Rapid_Toggling_and_Voice_Population.md",
-        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/27_Rapid_Toggling_and_Voice_Population.md"
-      },
-      "G-002": {
-        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/2_Rapid_Repeated_Clicks_on_Toggle_Button.md"
-      },
-      "G-031": {
-        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/31_Comprehensive_Workflow_with_Rapid_Interactions.md",
-        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/31_Comprehensive_Workflow_with_Rapid_Interactions.md",
-        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/31_Comprehensive_Workflow_with_Rapid_Interactions.md"
-      },
-      "G-032": {
-        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/32_Toggle_Text_Box_Visibility_and_Close.md",
-        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/32_Toggle_Text_Box_Visibility_and_Close.md"
-      },
-      "G-034": {
-        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/34_Text_Area_Input_and_Read_Text_Execution.md",
-        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/34_Text_Area_Input_and_Read_Text_Execution.md",
-        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/34_Text_Area_Input_and_Read_Text_Execution.md"
-      },
-      "G-036": {
-        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/36_Rapid_Repeated_Toggling_of_Text_Box_Visibility.md"
-      },
-      "G-006": {
-        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/6_Toggle_Text_Box_Visibility_Initial_State_and_Sin.md",
-        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/6_Toggle_Text_Box_Visibility_Initial_State_and_Sin.md"
-      },
-      "G-007": {
-        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/7_Rapid_Repeated_Clicks_on_Toggle_Button.md"
-      },
-      "G-013": {
-        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/13_Transition_from_Visible_to_Hidden_via_Close_Butt.md"
-      },
-      "G-037": {
-        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/37_Immediate_Interaction_with_Close_Button_and_Re-T.md"
-      },
-      "G-008": {
-        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/8_Close_Text_Box_via_Close_Button.md"
-      },
-      "G-016": {
-        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/16_Voice_Dropdown_Population_Upon_Opening_Text_Box.md"
-      },
-      "G-017": {
-        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/17_Voice_Selection_State_Update.md",
-        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/17_Voice_Selection_State_Update.md"
+        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/21_Initial_State_Visibility_Boundary_Test.md"
       },
       "G-022": {
-        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/22_Voice_Dropdown_Population_on_Open_and_Voices_Cha.md"
-      },
-      "G-028": {
-        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/28_Voice_Selection_with_Specific_Language_Codes.md",
-        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/28_Voice_Selection_with_Specific_Language_Codes.md"
-      },
-      "G-033": {
-        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/33_Voice_Dropdown_Population_and_Selection_Workflow.md",
-        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/33_Voice_Dropdown_Population_and_Selection_Workflow.md"
-      },
-      "G-038": {
-        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/38_Voice_Population_Trigger_Before_Speech_Synthesis.md"
-      },
-      "G-003": {
-        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/3_Voice_Dropdown_Population_and_Selection.md",
-        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/3_Voice_Dropdown_Population_and_Selection.md"
-      },
-      "G-009": {
-        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/9_Dropdown_Voice_Population_and_Selection_Boundary.md",
-        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/9_Dropdown_Voice_Population_and_Selection_Boundary.md"
+        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/22_Single_Click_Toggle_to_Show.md"
       },
       "G-023": {
-        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/23_Multiple_Voice_Selections_and_Language_Specific.md"
-      },
-      "G-029": {
-        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/29_Read_Text_Aloud_Using_Selected_Voice.md",
-        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/29_Read_Text_Aloud_Using_Selected_Voice.md"
-      },
-      "G-039": {
-        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/39_Selecting_Non-Existent_or_Invalid_Voice_Option.md"
-      },
-      "G-010": {
-        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/10_Text_Area_Input_and_Read_Text_Execution.md"
+        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/23_Single_Click_Toggle_to_Hide.md"
       },
       "G-024": {
-        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/24_Enter_Text_and_Read_Aloud_Using_Selected_Voice.md"
+        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/24_Rapid_Repeated_Clicks_Toggle_Stress_Test.md"
       },
-      "G-030": {
-        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/30_Predefined_Phrase_Box_Interaction_and_Playback.md",
-        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/30_Predefined_Phrase_Box_Interaction_and_Playback.md"
+      "G-002": {
+        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/2_Toggle_text_box_visibility_from_visible_to_hidde.md"
       },
-      "G-040": {
-        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/40_Read_Text_Trigger_with_Empty_Textarea_and_Unsele.md"
+      "G-003": {
+        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/3_Rapid_repeated_clicks_on_toggle_button.md"
       },
-      "G-004": {
-        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/4_Read_Entered_Text_Aloud.md"
+      "G-045": {
+        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/45_Toggle_Text_Box_from_Hidden_to_Visible.md"
       },
-      "G-011": {
-        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/11_Predefined_Phrase_Box_Click_and_800ms_Highlight.md"
+      "G-046": {
+        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/46_Toggle_Text_Box_from_Visible_to_Hidden.md"
       },
-      "G-018": {
-        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/18_Predefined_Phrase_Box_Click_and_Visual_Highlight.md"
+      "G-047": {
+        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/47_Rapid_Repeated_Clicks_on_Toggle_Button.md"
+      },
+      "G-048": {
+        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/48_Forbidden_State_Transition_Check_for_Text_Box_Vi.md"
+      },
+      "G-067": {
+        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/67_Toggle_visibility_from_hidden_to_visible_via_tog.md"
+      },
+      "G-068": {
+        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/68_Toggle_visibility_from_visible_to_hidden_via_tog.md"
+      },
+      "G-069": {
+        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/69_Rapid_repeated_clicks_handling_on_toggle_button.md"
+      },
+      "G-087": {
+        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/87_Normal_Toggle_Visibility_Show.md"
+      },
+      "G-088": {
+        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/88_Normal_Toggle_Visibility_Hide.md"
+      },
+      "G-089": {
+        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/89_Rapid_Repeated_Clicks_Toggle.md"
+      },
+      "G-090": {
+        "e2edev_bench_04-R-1": "e2edev_bench_04-R-1/test cases/90_Boundary_Condition_State_Consistency.md"
+      },
+      "G-111": {
+        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/111_Toggle_Text_Box_Visibility_and_Close_via_Close_B.md"
+      },
+      "G-123": {
+        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/123_Close_Button_Clicked_While_TextBox_Already_Hidde.md"
+      },
+      "G-124": {
+        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/124_Rapid_Toggling_Between_Toggle_and_Close_Buttons.md"
+      },
+      "G-125": {
+        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/125_Missing_Show_Class_Recovery_on_Close_Action.md"
       },
       "G-025": {
-        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/25_Predefined_Phrase_Box_Interaction_and_Highlighti.md"
+        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/25_Initial_State_of_Text_Box.md"
       },
-      "G-035": {
-        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/35_Predefined_Phrase_Box_Interaction_and_Highlight.md"
+      "G-026": {
+        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/26_Show_Text_Box_via_Toggle_Button.md"
       },
-      "G-041": {
-        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/41_Rapid_Sequential_Clicks_on_Multiple_Predefined_P.md"
+      "G-027": {
+        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/27_Hide_Text_Box_via_Close_Button.md"
+      },
+      "G-028": {
+        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/28_Multiple_Toggle_and_Close_Cycles.md"
+      },
+      "G-049": {
+        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/49_Initial_State_of_Text_Box.md"
+      },
+      "G-004": {
+        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/4_Toggle_initial_hidden_text_box_to_visible.md"
+      },
+      "G-050": {
+        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/50_Transition_from_Hidden_to_Visible_via_Toggle_But.md"
+      },
+      "G-051": {
+        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/51_Transition_from_Visible_to_Hidden_via_Close_Butt.md"
+      },
+      "G-052": {
+        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/52_Forbidden_Transition_Close_Button_when_Text_Box.md"
       },
       "G-005": {
-        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/5_Predefined_Phrase_Box_Interaction_and_Feedback.md"
+        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/5_Toggle_visible_text_box_to_hidden.md"
+      },
+      "G-006": {
+        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/6_Hide_text_box_using_Close_button.md"
+      },
+      "G-070": {
+        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/70_Toggle_and_Close_Text_Box_Normal_Flow.md"
+      },
+      "G-071": {
+        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/71_Toggle_Button_Click_When_Already_Visible.md"
+      },
+      "G-072": {
+        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/72_Close_Button_Click_When_Already_Hidden.md"
+      },
+      "G-091": {
+        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/91_Toggle_and_Close_Text_Box_Normal_Flow.md"
+      },
+      "G-092": {
+        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/92_Initial_State_Validation.md"
+      },
+      "G-093": {
+        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/93_Repeated_Toggle_Actions.md"
+      },
+      "G-094": {
+        "e2edev_bench_04-R-2": "e2edev_bench_04-R-2/test cases/94_Close_Button_Absence_When_Hidden.md"
+      },
+      "G-010": {
+        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/10_Empty_Voices_List_Handling.md"
+      },
+      "G-112": {
+        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/112_Populate_Voice_Dropdown_on_Text_Box_Open.md"
+      },
+      "G-113": {
+        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/113_Handle_Dynamic_Voice_Updates_via_voiceschanged_E.md"
+      },
+      "G-114": {
+        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/114_Assign_Selected_Voice_to_Message_for_Speech_Synt.md"
+      },
+      "G-126": {
+        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/126_Dropdown_population_failure_when_speech_synthesi.md"
+      },
+      "G-127": {
+        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/127_Duplicate_voice_entries_handling_during_rapid_vo.md"
+      },
+      "G-128": {
+        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/128_Voice_selection_persistence_across_rapid_toggle.md"
+      },
+      "G-029": {
+        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/29_Voice_Dropdown_Population_at_Initial_Opening.md"
+      },
+      "G-030": {
+        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/30_Voice_Dropdown_Update_on_voiceschanged_Event.md"
+      },
+      "G-031": {
+        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/31_Voice_Assignment_on_Selection.md"
+      },
+      "G-053": {
+        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/53_Populate_Voices_Upon_Opening_Text_Box.md"
+      },
+      "G-054": {
+        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/54_Update_Voices_on_voiceschanged_Event.md"
+      },
+      "G-055": {
+        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/55_Assign_Selected_Voice_to_Message.md"
+      },
+      "G-056": {
+        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/56_Forbidden_Transition_Voice_Selection_While_Text.md"
+      },
+      "G-073": {
+        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/73_Populate_voice_dropdown_on_opening_text_box.md"
+      },
+      "G-074": {
+        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/74_Update_voice_dropdown_on_voiceschanged_event.md"
+      },
+      "G-075": {
+        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/75_Assign_selected_voice_to_speech_synthesis_messag.md"
+      },
+      "G-007": {
+        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/7_Populate_Voice_Dropdown_on_Text_Box_Open.md"
+      },
+      "G-008": {
+        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/8_Update_Voice_Dropdown_on_voiceschanged_Event.md"
+      },
+      "G-095": {
+        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/95_Populate_voice_dropdown_upon_opening_text_box_wi.md"
+      },
+      "G-096": {
+        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/96_Update_voice_dropdown_dynamically_on_voiceschang.md"
+      },
+      "G-097": {
+        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/97_Assign_selected_dropdown_voice_to_message_voice.md"
+      },
+      "G-009": {
+        "e2edev_bench_04-R-3": "e2edev_bench_04-R-3/test cases/9_Assign_Selected_Voice_to_Message_Voice.md"
+      },
+      "G-100": {
+        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/100_Multiple_Voice_Selections.md"
+      },
+      "G-101": {
+        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/101_Voice_Selection_with_Specific_Language_Codes.md"
+      },
+      "G-115": {
+        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/115_Select_a_Default_Voice_from_Dropdown.md"
+      },
+      "G-116": {
+        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/116_Multiple_Voice_Selections.md"
+      },
+      "G-117": {
+        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/117_Select_Voice_with_Specific_Language_Code.md"
+      },
+      "G-011": {
+        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/11_Select_a_single_valid_voice_from_dropdown.md"
+      },
+      "G-129": {
+        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/129_Select_Voice_with_Malformed_or_Empty_Language_Co.md"
+      },
+      "G-012": {
+        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/12_Multiple_voice_selections_ending_in_a_final_acti.md"
+      },
+      "G-130": {
+        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/130_Rapid_Consecutive_Voice_Selections.md"
+      },
+      "G-131": {
+        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/131_Selection_of_Non-existent_Voice_Option.md"
+      },
+      "G-013": {
+        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/13_Select_voice_with_specific_language_codes_like_C.md"
+      },
+      "G-014": {
+        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/14_Dropdown_population_upon_full_page_load.md"
+      },
+      "G-032": {
+        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/32_Select_Single_Voice_Option.md"
+      },
+      "G-033": {
+        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/33_Multiple_Voice_Selections.md"
+      },
+      "G-034": {
+        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/34_Voice_Selection_with_Specific_Language_Codes.md"
+      },
+      "G-057": {
+        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/57_Initial_Populate_on_Page_Load.md"
+      },
+      "G-058": {
+        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/58_Single_Voice_Selection.md"
+      },
+      "G-059": {
+        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/59_Multiple_Voice_Selections.md"
+      },
+      "G-060": {
+        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/60_Language_Specific_Voice_Selection.md"
+      },
+      "G-076": {
+        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/76_Select_a_standard_voice_from_dropdown_when_page.md"
+      },
+      "G-077": {
+        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/77_Select_a_voice_with_specific_language_code_CN.md"
+      },
+      "G-078": {
+        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/78_Select_a_voice_with_specific_language_code_US.md"
+      },
+      "G-079": {
+        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/79_Perform_multiple_voice_selections_consecutively.md"
+      },
+      "G-098": {
+        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/98_Initial_Population_of_Voice_Dropdown_on_Page_Loa.md"
+      },
+      "G-099": {
+        "e2edev_bench_04-R-4": "e2edev_bench_04-R-4/test cases/99_Single_Voice_Selection_and_Active_Voice_Assignme.md"
+      },
+      "G-102": {
+        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/102_Read_text_aloud_with_toggled_text_box_and_defaul.md"
+      },
+      "G-103": {
+        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/103_Read_text_aloud_with_specific_language_voice_sel.md"
+      },
+      "G-104": {
+        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/104_Attempt_to_read_text_with_empty_textarea_input.md"
+      },
+      "G-105": {
+        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/105_Attempt_to_read_text_when_text_box_is_closed.md"
+      },
+      "G-118": {
+        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/118_Read_entered_text_aloud_using_selected_voice_and.md"
+      },
+      "G-132": {
+        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/132_Read_Text_with_Empty_Textarea_and_Selected_Voice.md"
+      },
+      "G-133": {
+        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/133_Read_Text_Without_Selecting_a_Voice.md"
+      },
+      "G-134": {
+        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/134_Rapid_Repeated_Clicks_on_Read_Text_Button.md"
+      },
+      "G-015": {
+        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/15_Read_text_aloud_with_valid_text_and_selected_voi.md"
+      },
+      "G-016": {
+        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/16_Attempt_to_read_text_with_empty_textarea.md"
+      },
+      "G-017": {
+        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/17_Attempt_to_read_text_with_text_box_hidden.md"
+      },
+      "G-035": {
+        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/35_Read_text_with_empty_input_and_default_voice.md"
+      },
+      "G-036": {
+        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/36_Read_text_with_minimum_valid_character_input.md"
+      },
+      "G-037": {
+        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/37_Read_text_with_maximum_typical_length_input.md"
+      },
+      "G-038": {
+        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/38_Read_text_with_extremely_long_input_exceeding_no.md"
+      },
+      "G-039": {
+        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/39_Read_text_with_text_box_toggled_closed.md"
+      },
+      "G-061": {
+        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/61_Read_text_aloud_using_selected_voice_and_entered.md"
+      },
+      "G-062": {
+        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/62_Attempt_to_read_text_with_text_box_hidden_Forbid.md"
+      },
+      "G-063": {
+        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/63_Attempt_to_read_text_with_empty_textarea.md"
+      },
+      "G-080": {
+        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/80_Read_text_aloud_with_text_box_toggled_open_text.md"
+      },
+      "G-081": {
+        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/81_Attempt_to_read_text_with_text_box_closed.md"
+      },
+      "G-082": {
+        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/82_Attempt_to_read_empty_text_from_textarea.md"
+      },
+      "G-083": {
+        "e2edev_bench_04-R-5": "e2edev_bench_04-R-5/test cases/83_Attempt_to_read_text_without_selecting_a_voice.md"
+      },
+      "G-106": {
+        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/106_Normal_click_on_a_single_predefined_phrase_box.md"
+      },
+      "G-107": {
+        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/107_Sequential_clicks_across_different_phrase_boxes.md"
+      },
+      "G-108": {
+        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/108_Rapid_repeated_clicks_on_the_same_phrase_box.md"
+      },
+      "G-119": {
+        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/119_Sequential_clicks_across_different_phrase_boxes.md"
+      },
+      "G-120": {
+        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/120_Rapid_repeated_clicks_on_the_same_phrase_box.md"
+      },
+      "G-135": {
+        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/135_Rapid_Repeated_Clicks_on_the_Same_Phrase_Box.md"
+      },
+      "G-136": {
+        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/136_Rapid_Sequential_Clicks_Across_Different_Phrase.md"
+      },
+      "G-137": {
+        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/137_Missing_Data_Array_or_Empty_Phrase_Dataset_Handl.md"
+      },
+      "G-018": {
+        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/18_Normal_click_on_a_predefined_phrase_box.md"
+      },
+      "G-019": {
+        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/19_Sequential_clicks_across_different_predefined_ph.md"
+      },
+      "G-020": {
+        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/20_Rapid_repeated_clicks_on_the_same_predefined_phr.md"
+      },
+      "G-040": {
+        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/40_Highlight_Duration_Exactly_at_Lower_Boundary.md"
+      },
+      "G-041": {
+        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/41_Highlight_Duration_Just_Within_Lower_Boundary.md"
+      },
+      "G-042": {
+        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/42_Highlight_Duration_Just_Below_Lower_Boundary.md"
+      },
+      "G-043": {
+        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/43_Rapid_Repeated_Clicks_on_the_Same_Box_at_Boundar.md"
+      },
+      "G-044": {
+        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/44_Sequential_Clicks_Across_Different_Boxes_at_Zero.md"
+      },
+      "G-064": {
+        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/64_Normal_Phrase_Box_Click_State_Transition.md"
+      },
+      "G-065": {
+        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/65_Sequential_Clicks_Across_Different_Phrase_Boxes.md"
+      },
+      "G-066": {
+        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/66_Rapid_Repeated_Clicks_on_the_Same_Phrase_Box.md"
+      },
+      "G-084": {
+        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/84_Normal_click_on_a_predefined_phrase_box.md"
+      },
+      "G-085": {
+        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/85_Sequential_clicks_across_different_predefined_ph.md"
+      },
+      "G-086": {
+        "e2edev_bench_04-R-6": "e2edev_bench_04-R-6/test cases/86_Rapid_repeated_clicks_on_the_same_predefined_phr.md"
       }
     }
   },

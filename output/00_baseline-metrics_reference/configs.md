@@ -1,308 +1,5 @@
 # Experiment configuration
 
-## Rastreabilidade de lotes e histórico de execução
-
-- [2026-11-10_11-54-42] one-shot/firefox_bookmarks: status=generated, cases=36
-- [2026-11-10_11-54-42] one-shot/e2edev_bench_01: status=generated, cases=10
-- [2026-11-10_11-54-42] GHL/firefox_bookmarks: status=generated, cases=101
-- [2026-11-10_11-54-42] GHL/e2edev_bench_01: status=generated, cases=56
-- [2026-11-10_11-54-42] Multiagent/firefox_bookmarks: status=generated, cases=10
-- [2026-11-12_07-57-14] one-shot/firefox_bookmarks: status=generated, cases=18
-- [2026-11-12_07-57-14] one-shot/e2edev_bench_01: status=generated, cases=4
-- [2026-11-12_07-57-14] GHL/firefox_bookmarks: status=generated, cases=60
-- [2026-11-12_07-57-14] GHL/e2edev_bench_01: status=generated, cases=11
-- [2026-11-12_07-57-14] Multiagent/firefox_bookmarks: status=generated, cases=18
-- [2026-11-12_07-57-14] Multiagent/e2edev_bench_01: status=generated, cases=3
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_01: status=generated, cases=4
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_02: status=generated, cases=8
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_03: status=generated, cases=6
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_04: status=generated, cases=6
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_05: status=generated, cases=8
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_06: status=generated, cases=5
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_07: status=generated, cases=6
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_08: status=generated, cases=7
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_09: status=generated, cases=6
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_10: status=generated, cases=7
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_11: status=generated, cases=10
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_12: status=generated, cases=3
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_13: status=generated, cases=6
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_15: status=generated, cases=10
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_18: status=generated, cases=9
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_19: status=generated, cases=5
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_20: status=generated, cases=6
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_21: status=generated, cases=8
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_22: status=generated, cases=10
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_24: status=generated, cases=12
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_25: status=generated, cases=5
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_26: status=generated, cases=8
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_27: status=generated, cases=8
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_28: status=generated, cases=6
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_29: status=generated, cases=8
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_30: status=generated, cases=5
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_32: status=generated, cases=8
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_36: status=generated, cases=6
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_37: status=generated, cases=3
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_40: status=generated, cases=9
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_42: status=generated, cases=6
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_44: status=generated, cases=10
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_46: status=generated, cases=1
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_48: status=generated, cases=7
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_49: status=generated, cases=6
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_51: FALHA em None (ModelUnavailableError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_52: status=generated, cases=4
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_57: status=generated, cases=6
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_59: status=generated, cases=5
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_60: status=generated, cases=8
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_601: status=generated, cases=9
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_602: status=generated, cases=10
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_603: status=generated, cases=6
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_63: status=generated, cases=6
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_64: status=generated, cases=6
-- [2026-11-12_08-16-06] one-shot/e2edev_bench_66: status=generated, cases=5
-- [2026-11-12_08-16-06] one-shot/firefox_bookmarks: status=generated, cases=18
-- [2026-11-12_08-16-06] one-shot/firefox_browser_history: status=generated, cases=12
-- [2026-11-12_08-16-06] one-shot/firefox_clipboard_and_drag_drop: status=generated, cases=19
-- [2026-11-12_08-16-06] one-shot/firefox_form_manager: status=generated, cases=8
-- [2026-11-12_08-16-06] one-shot/firefox_help: status=generated, cases=27
-- [2026-11-12_08-16-06] one-shot/firefox_image_and_embedded_content: status=generated, cases=17
-- [2026-11-12_08-16-06] one-shot/firefox_media_plugins: status=generated, cases=6
-- [2026-11-12_08-16-06] one-shot/firefox_password_manager: status=generated, cases=7
-- [2026-11-12_08-16-06] one-shot/firefox_printing: status=generated, cases=23
-- [2026-11-12_08-16-06] one-shot/firefox_search: status=generated, cases=7
-- [2026-11-12_08-16-06] one-shot/firefox_sidebar: status=generated, cases=22
-- [2026-11-12_08-16-06] one-shot/firefox_text_selection: status=generated, cases=6
-- [2026-11-12_08-16-06] one-shot/firefox_themes: status=generated, cases=7
-- [2026-11-12_08-16-06] one-shot/firefox_toolbar: status=generated, cases=3
-- [2026-11-12_08-16-06] one-shot/firefox_web_location: status=generated, cases=9
-- [2026-11-12_08-16-06] GHL/e2edev_bench_01: status=generated, cases=14
-- [2026-11-12_08-16-06] GHL/e2edev_bench_02: status=generated, cases=24
-- [2026-11-12_08-16-06] GHL/e2edev_bench_03: status=generated, cases=20
-- [2026-11-12_08-16-06] GHL/e2edev_bench_04: status=generated, cases=43
-- [2026-11-12_08-16-06] GHL/e2edev_bench_05: status=generated, cases=33
-- [2026-11-12_08-16-06] GHL/e2edev_bench_06: status=generated, cases=29
-- [2026-11-12_08-16-06] GHL/e2edev_bench_07: status=generated, cases=22
-- [2026-11-12_08-16-06] GHL/e2edev_bench_08: status=generated, cases=41
-- [2026-11-12_08-16-06] GHL/e2edev_bench_09: status=generated, cases=18
-- [2026-11-12_08-16-06] GHL/e2edev_bench_10: status=generated, cases=20
-- [2026-11-12_08-16-06] GHL/e2edev_bench_11: status=generated, cases=40
-- [2026-11-12_08-16-06] GHL/e2edev_bench_12: status=generated, cases=8
-- [2026-11-12_08-16-06] GHL/e2edev_bench_13: status=generated, cases=16
-- [2026-11-12_08-16-06] GHL/e2edev_bench_15: status=generated, cases=42
-- [2026-11-12_08-16-06] GHL/e2edev_bench_18: status=generated, cases=42
-- [2026-11-12_08-16-06] GHL/e2edev_bench_19: status=generated, cases=21
-- [2026-11-12_08-16-06] GHL/e2edev_bench_20: status=generated, cases=31
-- [2026-11-12_08-16-06] GHL/e2edev_bench_21: status=generated, cases=27
-- [2026-11-12_08-16-06] GHL/e2edev_bench_22: status=generated, cases=33
-- [2026-11-12_08-16-06] GHL/e2edev_bench_24: status=generated, cases=38
-- [2026-11-12_08-16-06] GHL/e2edev_bench_25: status=generated, cases=33
-- [2026-11-12_08-16-06] GHL/e2edev_bench_26: status=generated, cases=29
-- [2026-11-12_08-16-06] GHL/e2edev_bench_27: status=generated, cases=33
-- [2026-11-12_08-16-06] GHL/e2edev_bench_28: status=generated, cases=36
-- [2026-11-12_08-16-06] GHL/e2edev_bench_29: status=generated, cases=46
-- [2026-11-12_08-16-06] GHL/e2edev_bench_30: status=generated, cases=23
-- [2026-11-12_08-16-06] GHL/e2edev_bench_32: status=generated, cases=23
-- [2026-11-12_08-16-06] GHL/e2edev_bench_36: status=generated, cases=26
-- [2026-11-12_08-16-06] GHL/e2edev_bench_37: status=generated, cases=19
-- [2026-11-12_08-16-06] GHL/e2edev_bench_40: status=generated, cases=43
-- [2026-11-12_08-16-06] GHL/e2edev_bench_42: status=generated, cases=47
-- [2026-11-12_08-16-06] GHL/e2edev_bench_44: status=generated, cases=32
-- [2026-11-12_08-16-06] GHL/e2edev_bench_46: status=generated, cases=7
-- [2026-11-12_08-16-06] GHL/e2edev_bench_48: status=generated, cases=31
-- [2026-11-12_08-16-06] GHL/e2edev_bench_49: status=generated, cases=18
-- [2026-11-12_08-16-06] GHL/e2edev_bench_51: status=generated, cases=34
-- [2026-11-12_08-16-06] GHL/e2edev_bench_52: status=generated, cases=22
-- [2026-11-12_08-16-06] GHL/e2edev_bench_57: status=generated, cases=28
-- [2026-11-12_08-16-06] GHL/e2edev_bench_59: status=generated, cases=25
-- [2026-11-12_08-16-06] GHL/e2edev_bench_60: status=generated, cases=29
-- [2026-11-12_08-16-06] GHL/e2edev_bench_601: FALHA em ghl_generate_state_transition (ModelUnavailableError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] GHL/e2edev_bench_602: status=generated, cases=30
-- [2026-11-12_08-16-06] GHL/e2edev_bench_603: status=generated, cases=12
-- [2026-11-12_08-16-06] GHL/e2edev_bench_63: status=generated, cases=32
-- [2026-11-12_08-16-06] GHL/e2edev_bench_64: FALHA em ghl_generate_equivalence_partitioning (ModelUnavailableError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] GHL/e2edev_bench_66: status=generated, cases=17
-- [2026-11-12_08-16-06] GHL/firefox_bookmarks: FALHA em ghl_generate_use_case (ModelUnavailableError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] GHL/firefox_browser_history: status=generated, cases=54
-- [2026-11-12_08-16-06] GHL/firefox_clipboard_and_drag_drop: FALHA em ghl_generate_error_guessing (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] GHL/firefox_form_manager: FALHA em None (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] GHL/firefox_help: FALHA em None (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] GHL/firefox_image_and_embedded_content: FALHA em None (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] GHL/firefox_media_plugins: FALHA em None (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] GHL/firefox_password_manager: FALHA em None (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] GHL/firefox_printing: FALHA em None (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] GHL/firefox_search: FALHA em None (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] GHL/firefox_sidebar: FALHA em ghl_generate_use_case (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] GHL/firefox_text_selection: FALHA em ghl_generate_equivalence_partitioning (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] GHL/firefox_themes: FALHA em None (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] GHL/firefox_toolbar: FALHA em None (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] GHL/firefox_web_location: FALHA em None (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_01: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_02: FALHA em critic (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_03: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_04: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_05: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_06: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_07: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_08: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_09: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_10: FALHA em generator (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_11: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_12: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_13: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_15: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_18: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_19: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_20: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_21: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_22: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_24: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_25: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_26: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_27: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_28: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_29: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_30: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_32: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_36: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_37: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_40: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_42: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_44: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_46: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_48: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_49: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_51: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_52: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_57: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_59: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_60: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_601: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_602: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_603: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_63: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_64: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/e2edev_bench_66: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/firefox_bookmarks: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/firefox_browser_history: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/firefox_clipboard_and_drag_drop: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/firefox_form_manager: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/firefox_help: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/firefox_image_and_embedded_content: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/firefox_media_plugins: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/firefox_password_manager: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/firefox_printing: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/firefox_search: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/firefox_sidebar: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/firefox_text_selection: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/firefox_themes: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/firefox_toolbar: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-12_08-16-06] Multiagent/firefox_web_location: FALHA em analyst (ModelRateLimitError) [recuperado posteriormente]
-- [2026-11-15_20-58-34] one-shot/firefox_bookmarks: status=generated, cases=18
-- [2026-11-15_20-58-34] one-shot/e2edev_bench_01: status=generated, cases=4
-- [2026-11-15_20-58-34] GHL/firefox_bookmarks: status=generated, cases=74
-- [2026-11-15_20-58-34] GHL/e2edev_bench_01: status=generated, cases=15
-- [2026-11-15_20-58-34] Multiagent/firefox_bookmarks: status=generated, cases=18
-- [2026-11-15_20-58-34] Multiagent/e2edev_bench_01: status=generated, cases=3
-- [2026-11-15_21-32-38] one-shot/e2edev_bench_01: status=generated, cases=3
-- [2026-11-15_21-32-38] one-shot/e2edev_bench_02: status=generated, cases=8
-- [2026-11-15_21-32-38] one-shot/e2edev_bench_03: status=generated, cases=6
-- [2026-11-15_21-32-38] one-shot/e2edev_bench_04: status=generated, cases=5
-- [2026-11-15_21-32-38] one-shot/firefox_bookmarks: status=generated, cases=18
-- [2026-11-15_21-32-38] one-shot/firefox_browser_history: status=generated, cases=12
-- [2026-11-15_21-32-38] one-shot/firefox_form_manager: status=generated, cases=8
-- [2026-11-15_21-32-38] GHL/e2edev_bench_01: status=generated, cases=11
-- [2026-11-15_21-32-38] GHL/e2edev_bench_02: status=generated, cases=25
-- [2026-11-15_21-32-38] GHL/e2edev_bench_03: status=generated, cases=15
-- [2026-11-15_21-32-38] GHL/e2edev_bench_04: status=generated, cases=41
-- [2026-11-15_21-32-38] GHL/firefox_bookmarks: status=generated, cases=57
-- [2026-11-15_21-32-38] GHL/firefox_browser_history: status=generated, cases=37
-- [2026-11-15_21-32-38] GHL/firefox_form_manager: status=generated, cases=26
-- [2026-11-15_21-32-38] Multiagent/e2edev_bench_01: status=generated, cases=3
-- [2026-11-15_21-32-38] Multiagent/e2edev_bench_02: status=generated, cases=5
-- [2026-11-15_21-32-38] Multiagent/e2edev_bench_03: status=generated, cases=7
-- [2026-11-15_21-32-38] Multiagent/e2edev_bench_04: status=generated, cases=6
-- [2026-11-15_21-32-38] Multiagent/firefox_bookmarks: status=generated, cases=18
-- [2026-11-15_21-32-38] Multiagent/firefox_browser_history: status=generated, cases=12
-- [2026-11-15_21-32-38] Multiagent/firefox_form_manager: status=generated, cases=8
-- [2026-11-18_09-15-01] one-shot/e2edev_bench_51: status=generated, cases=5
-- [2026-11-18_09-15-32] GHL/e2edev_bench_601: status=generated, cases=43
-- [2026-11-18_09-15-32] GHL/e2edev_bench_64: status=generated, cases=39
-- [2026-11-18_09-15-32] GHL/firefox_bookmarks: status=generated, cases=59
-- [2026-11-18_09-15-32] GHL/firefox_clipboard_and_drag_drop: status=generated, cases=54
-- [2026-11-18_09-15-32] GHL/firefox_form_manager: status=generated, cases=37
-- [2026-11-18_09-15-32] GHL/firefox_help: status=generated, cases=59
-- [2026-11-18_09-15-32] GHL/firefox_image_and_embedded_content: status=generated, cases=39
-- [2026-11-18_09-15-32] GHL/firefox_media_plugins: status=generated, cases=9
-- [2026-11-18_09-24-46] GHL/firefox_password_manager: status=generated, cases=21
-- [2026-11-18_09-24-46] GHL/firefox_printing: status=generated, cases=68
-- [2026-11-18_09-24-46] GHL/firefox_search: status=generated, cases=11
-- [2026-11-18_09-24-46] GHL/firefox_sidebar: status=generated, cases=56
-- [2026-11-18_09-24-46] GHL/firefox_text_selection: status=generated, cases=13
-- [2026-11-18_09-24-46] GHL/firefox_themes: status=generated, cases=7
-- [2026-11-18_09-24-46] GHL/firefox_toolbar: status=generated, cases=9
-- [2026-11-18_09-24-46] GHL/firefox_web_location: status=generated, cases=28
-- [2026-11-18_09-35-02] Multiagent/firefox_bookmarks: status=generated, cases=18
-- [2026-11-18_09-35-02] Multiagent/firefox_browser_history: status=generated, cases=12
-- [2026-11-18_09-35-02] Multiagent/firefox_clipboard_and_drag_drop: status=generated, cases=19
-- [2026-11-18_09-35-02] Multiagent/firefox_form_manager: status=generated, cases=8
-- [2026-11-18_09-35-02] Multiagent/firefox_help: status=generated, cases=27
-- [2026-11-18_09-35-02] Multiagent/firefox_image_and_embedded_content: status=generated, cases=17
-- [2026-11-18_09-35-02] Multiagent/firefox_media_plugins: status=generated, cases=6
-- [2026-11-18_09-35-02] Multiagent/firefox_password_manager: status=generated, cases=7
-- [2026-11-18_09-35-02] Multiagent/firefox_printing: status=generated, cases=23
-- [2026-11-18_09-35-02] Multiagent/firefox_search: status=generated, cases=5
-- [2026-11-18_09-35-02] Multiagent/firefox_sidebar: status=generated, cases=22
-- [2026-11-18_09-35-02] Multiagent/firefox_text_selection: status=generated, cases=4
-- [2026-11-18_09-35-02] Multiagent/firefox_themes: status=generated, cases=7
-- [2026-11-18_09-35-02] Multiagent/firefox_toolbar: status=generated, cases=3
-- [2026-11-18_09-35-02] Multiagent/firefox_web_location: status=generated, cases=9
-- [2026-11-18_09-40-54] Multiagent/e2edev_bench_01: status=generated, cases=3
-- [2026-11-18_09-40-54] Multiagent/e2edev_bench_02: status=generated, cases=8
-- [2026-11-18_09-40-54] Multiagent/e2edev_bench_03: status=generated, cases=6
-- [2026-11-18_09-40-54] Multiagent/e2edev_bench_04: status=generated, cases=6
-- [2026-11-18_09-40-54] Multiagent/e2edev_bench_05: status=generated, cases=6
-- [2026-11-18_09-40-54] Multiagent/e2edev_bench_06: status=generated, cases=5
-- [2026-11-18_09-40-54] Multiagent/e2edev_bench_07: status=generated, cases=5
-- [2026-11-18_09-40-54] Multiagent/e2edev_bench_08: status=generated, cases=6
-- [2026-11-18_09-40-54] Multiagent/e2edev_bench_09: status=generated, cases=6
-- [2026-11-18_09-40-54] Multiagent/e2edev_bench_10: status=generated, cases=6
-- [2026-11-18_09-46-49] Multiagent/e2edev_bench_11: status=generated, cases=8
-- [2026-11-18_09-46-49] Multiagent/e2edev_bench_12: status=generated, cases=3
-- [2026-11-18_09-46-49] Multiagent/e2edev_bench_13: status=generated, cases=5
-- [2026-11-18_09-46-49] Multiagent/e2edev_bench_15: status=generated, cases=6
-- [2026-11-18_09-46-49] Multiagent/e2edev_bench_18: status=generated, cases=9
-- [2026-11-18_09-46-49] Multiagent/e2edev_bench_19: status=generated, cases=5
-- [2026-11-18_09-46-49] Multiagent/e2edev_bench_20: status=generated, cases=6
-- [2026-11-18_09-46-49] Multiagent/e2edev_bench_21: status=generated, cases=4
-- [2026-11-18_09-46-49] Multiagent/e2edev_bench_22: status=generated, cases=11
-- [2026-11-18_09-46-49] Multiagent/e2edev_bench_24: status=generated, cases=9
-- [2026-11-18_09-51-35] Multiagent/e2edev_bench_25: status=generated, cases=4
-- [2026-11-18_09-51-35] Multiagent/e2edev_bench_26: status=generated, cases=8
-- [2026-11-18_09-51-35] Multiagent/e2edev_bench_27: status=generated, cases=6
-- [2026-11-18_09-51-35] Multiagent/e2edev_bench_28: status=generated, cases=6
-- [2026-11-18_09-51-35] Multiagent/e2edev_bench_29: status=generated, cases=5
-- [2026-11-18_09-51-35] Multiagent/e2edev_bench_30: status=generated, cases=5
-- [2026-11-18_09-51-35] Multiagent/e2edev_bench_32: status=generated, cases=8
-- [2026-11-18_09-51-35] Multiagent/e2edev_bench_36: status=generated, cases=5
-- [2026-11-18_09-51-35] Multiagent/e2edev_bench_37: status=generated, cases=5
-- [2026-11-18_09-51-35] Multiagent/e2edev_bench_40: status=generated, cases=8
-- [2026-11-18_09-55-39] Multiagent/e2edev_bench_42: status=generated, cases=8
-- [2026-11-18_09-55-39] Multiagent/e2edev_bench_44: status=generated, cases=6
-- [2026-11-18_09-55-39] Multiagent/e2edev_bench_46: status=generated, cases=2
-- [2026-11-18_09-55-39] Multiagent/e2edev_bench_48: status=generated, cases=6
-- [2026-11-18_09-55-39] Multiagent/e2edev_bench_49: status=generated, cases=4
-- [2026-11-18_09-55-39] Multiagent/e2edev_bench_51: status=generated, cases=5
-- [2026-11-18_09-55-39] Multiagent/e2edev_bench_52: status=generated, cases=4
-- [2026-11-18_09-55-39] Multiagent/e2edev_bench_57: status=generated, cases=5
-- [2026-11-18_09-55-39] Multiagent/e2edev_bench_59: status=generated, cases=5
-- [2026-11-18_09-55-39] Multiagent/e2edev_bench_60: status=generated, cases=6
-- [2026-11-18_09-59-35] Multiagent/e2edev_bench_601: status=generated, cases=9
-- [2026-11-18_09-59-35] Multiagent/e2edev_bench_602: status=generated, cases=4
-- [2026-11-18_09-59-35] Multiagent/e2edev_bench_603: status=generated, cases=5
-- [2026-11-18_09-59-35] Multiagent/e2edev_bench_63: FALHA em analyst (ModelUnavailableError) [recuperado posteriormente]
-- [2026-11-18_09-59-35] Multiagent/e2edev_bench_64: status=generated, cases=6
-- [2026-11-18_09-59-35] Multiagent/e2edev_bench_66: status=generated, cases=4
-- [2026-11-18_10-13-50] Multiagent/e2edev_bench_63: status=generated, cases=6
-
 ```json
 {
   "model": "gemini-3.5-flash-lite",
@@ -312,14 +9,14 @@
     "Multiagent"
   ],
   "units": [
+    "firefox_themes",
+    "firefox_browser_history",
+    "firefox_password_manager",
+    "firefox_bookmarks",
     "e2edev_bench_01",
     "e2edev_bench_02",
     "e2edev_bench_03",
-    "e2edev_bench_04",
-    "firefox_bookmarks",
-    "firefox_browser_history",
-    "firefox_form_manager",
-    "firefox_search"
+    "e2edev_bench_04"
   ],
   "agents": [
     "analyst",
@@ -329,8 +26,8 @@
   ],
   "output_modes": {
     "one-shot": "batch",
-    "GHL": "batch",
-    "Multiagent": "batch"
+    "GHL": "per_requirement",
+    "Multiagent": "per_requirement"
   },
   "max_rounds": 2,
   "generation_retries": 3,
@@ -342,83 +39,15 @@
   "status": "completed",
   "outcomes": {
     "one-shot": {
-      "e2edev_bench_01": {
+      "firefox_themes": {
         "status": "generated",
-        "case_count": 3,
+        "case_count": 7,
         "usage": {
-          "input_tokens": 641,
-          "output_tokens": 302,
+          "input_tokens": 470,
+          "output_tokens": 502,
           "details": {
-            "text_prompt_tokens": 641,
-            "total_tokens": 943
-          },
-          "status": "available"
-        },
-        "selected_techniques": [],
-        "technique_rationales": {},
-        "error_type": null,
-        "error_stage": null
-      },
-      "e2edev_bench_02": {
-        "status": "generated",
-        "case_count": 8,
-        "usage": {
-          "input_tokens": 1271,
-          "output_tokens": 724,
-          "details": {
-            "text_prompt_tokens": 1271,
-            "total_tokens": 1995
-          },
-          "status": "available"
-        },
-        "selected_techniques": [],
-        "technique_rationales": {},
-        "error_type": null,
-        "error_stage": null
-      },
-      "e2edev_bench_03": {
-        "status": "generated",
-        "case_count": 6,
-        "usage": {
-          "input_tokens": 1320,
-          "output_tokens": 784,
-          "details": {
-            "text_prompt_tokens": 1320,
-            "total_tokens": 2104
-          },
-          "status": "available"
-        },
-        "selected_techniques": [],
-        "technique_rationales": {},
-        "error_type": null,
-        "error_stage": null
-      },
-      "e2edev_bench_04": {
-        "status": "generated",
-        "case_count": 5,
-        "usage": {
-          "input_tokens": 1360,
-          "output_tokens": 512,
-          "details": {
-            "text_prompt_tokens": 1360,
-            "total_tokens": 1872
-          },
-          "status": "available"
-        },
-        "selected_techniques": [],
-        "technique_rationales": {},
-        "error_type": null,
-        "error_stage": null
-      },
-      "firefox_bookmarks": {
-        "status": "generated",
-        "case_count": 18,
-        "usage": {
-          "input_tokens": 1024,
-          "output_tokens": 1295,
-          "details": {
-            "text_prompt_tokens": 1024,
-            "total_tokens": 2319
+            "text_prompt_tokens": 470,
+            "total_tokens": 972
           },
           "status": "available"
         },
@@ -432,10 +61,10 @@
         "case_count": 12,
         "usage": {
           "input_tokens": 724,
-          "output_tokens": 804,
+          "output_tokens": 793,
           "details": {
             "text_prompt_tokens": 724,
-            "total_tokens": 1528
+            "total_tokens": 1517
           },
           "status": "available"
         },
@@ -444,32 +73,100 @@
         "error_type": null,
         "error_stage": null
       },
-      "firefox_form_manager": {
-        "status": "generated",
-        "case_count": 8,
-        "usage": {
-          "input_tokens": 607,
-          "output_tokens": 696,
-          "details": {
-            "text_prompt_tokens": 607,
-            "total_tokens": 1303
-          },
-          "status": "available"
-        },
-        "selected_techniques": [],
-        "technique_rationales": {},
-        "error_type": null,
-        "error_stage": null
-      },
-      "firefox_search": {
+      "firefox_password_manager": {
         "status": "generated",
         "case_count": 7,
         "usage": {
-          "input_tokens": 384,
-          "output_tokens": 500,
+          "input_tokens": 576,
+          "output_tokens": 430,
           "details": {
-            "text_prompt_tokens": 384,
-            "total_tokens": 884
+            "text_prompt_tokens": 576,
+            "total_tokens": 1006
+          },
+          "status": "available"
+        },
+        "selected_techniques": [],
+        "technique_rationales": {},
+        "error_type": null,
+        "error_stage": null
+      },
+      "firefox_bookmarks": {
+        "status": "generated",
+        "case_count": 18,
+        "usage": {
+          "input_tokens": 1024,
+          "output_tokens": 1287,
+          "details": {
+            "text_prompt_tokens": 1024,
+            "total_tokens": 2311
+          },
+          "status": "available"
+        },
+        "selected_techniques": [],
+        "technique_rationales": {},
+        "error_type": null,
+        "error_stage": null
+      },
+      "e2edev_bench_01": {
+        "status": "generated",
+        "case_count": 4,
+        "usage": {
+          "input_tokens": 641,
+          "output_tokens": 411,
+          "details": {
+            "text_prompt_tokens": 641,
+            "total_tokens": 1052
+          },
+          "status": "available"
+        },
+        "selected_techniques": [],
+        "technique_rationales": {},
+        "error_type": null,
+        "error_stage": null
+      },
+      "e2edev_bench_02": {
+        "status": "generated",
+        "case_count": 9,
+        "usage": {
+          "input_tokens": 1271,
+          "output_tokens": 525,
+          "details": {
+            "text_prompt_tokens": 1271,
+            "total_tokens": 1796
+          },
+          "status": "available"
+        },
+        "selected_techniques": [],
+        "technique_rationales": {},
+        "error_type": null,
+        "error_stage": null
+      },
+      "e2edev_bench_03": {
+        "status": "generated",
+        "case_count": 6,
+        "usage": {
+          "input_tokens": 1320,
+          "output_tokens": 645,
+          "details": {
+            "text_prompt_tokens": 1320,
+            "total_tokens": 1965
+          },
+          "status": "available"
+        },
+        "selected_techniques": [],
+        "technique_rationales": {},
+        "error_type": null,
+        "error_stage": null
+      },
+      "e2edev_bench_04": {
+        "status": "generated",
+        "case_count": 8,
+        "usage": {
+          "input_tokens": 1360,
+          "output_tokens": 719,
+          "details": {
+            "text_prompt_tokens": 1360,
+            "total_tokens": 2079
           },
           "status": "available"
         },
@@ -480,15 +177,69 @@
       }
     },
     "GHL": {
-      "e2edev_bench_01": {
+      "firefox_themes": {
         "status": "generated",
-        "case_count": 11,
+        "case_count": 34,
         "usage": {
-          "input_tokens": 3625,
-          "output_tokens": 1428,
+          "input_tokens": 11508,
+          "output_tokens": 3091,
           "details": {
-            "text_prompt_tokens": 3625,
-            "total_tokens": 5053
+            "text_prompt_tokens": 11508,
+            "total_tokens": 14599
+          },
+          "status": "available"
+        },
+        "selected_techniques": [
+          "equivalence_partitioning",
+          "state_transition",
+          "use_case"
+        ],
+        "technique_rationales": {
+          "equivalence_partitioning": "Partition valid theme choices (Classic and Modern) and menu items available under the View menu.",
+          "state_transition": "Cover the states and transitions associated with switching between themes under theme preferences.",
+          "use_case": "Cover the user flow of navigating the View menu to access theme preferences and selecting themes."
+        },
+        "error_type": null,
+        "error_stage": null
+      },
+      "firefox_browser_history": {
+        "status": "generated",
+        "case_count": 153,
+        "usage": {
+          "input_tokens": 46884,
+          "output_tokens": 14299,
+          "details": {
+            "text_prompt_tokens": 46884,
+            "total_tokens": 61183
+          },
+          "status": "available"
+        },
+        "selected_techniques": [
+          "equivalence_partitioning",
+          "state_transition",
+          "decision_table",
+          "use_case",
+          "error_guessing"
+        ],
+        "technique_rationales": {
+          "equivalence_partitioning": "Required to test normal and abnormal recording of visited links, grouping modes (Day, Site, None), and sorting options.",
+          "state_transition": "Required for tracking history lifecycle events such as recording links, server redirects, deleting single or multiple entries, clearing history, and session history file creation.",
+          "decision_table": "Required to test combinations of column visibility, resizable limits, and grouping/sorting conditions.",
+          "use_case": "Required to test end-to-end user workflows involving navigating via Back and Forward button dropdowns, clicking history items to launch browser windows, and managing history entries.",
+          "error_guessing": "Used to anticipate plausible failures during deletion of multiple history entries, clearing global history, and handling redirects."
+        },
+        "error_type": null,
+        "error_stage": null
+      },
+      "firefox_password_manager": {
+        "status": "generated",
+        "case_count": 54,
+        "usage": {
+          "input_tokens": 18145,
+          "output_tokens": 5667,
+          "details": {
+            "text_prompt_tokens": 18145,
+            "total_tokens": 23812
           },
           "status": "available"
         },
@@ -499,22 +250,85 @@
           "error_guessing"
         ],
         "technique_rationales": {
-          "equivalence_partitioning": "Cover important input partitions such as dragging different product items versus repeated products into the drop area.",
-          "state_transition": "Cover states and transitions involved in dragging a product, dropping it into the designated drop area, and the subsequent cart display updates.",
-          "use_case": "Cover the end-to-end user flow of selecting a product item, dragging and dropping it into the cart area, and verifying the updated cart display and total price calculation.",
-          "error_guessing": "Explore plausible failures and abnormal behaviors like dropping elements outside the designated drop area or handling incorrect data formats during transfer."
+          "equivalence_partitioning": "Required to test important input partitions such as saving passwords, selecting 'Never For This Site', and having multiple credentials.",
+          "state_transition": "Required to handle states such as enabled/disabled preferences, stored credentials, changed passwords, and deleted credentials.",
+          "use_case": "Required to cover end-to-end user flows like prompting to save, changing passwords, viewing preferences, and autofilling.",
+          "error_guessing": "Required to explore plausible failures such as improper removal or handling of disabled password manager states."
+        },
+        "error_type": null,
+        "error_stage": null
+      },
+      "firefox_bookmarks": {
+        "status": "generated",
+        "case_count": 227,
+        "usage": {
+          "input_tokens": 97128,
+          "output_tokens": 21006,
+          "details": {
+            "text_prompt_tokens": 97128,
+            "total_tokens": 118134
+          },
+          "status": "available"
+        },
+        "selected_techniques": [
+          "equivalence_partitioning",
+          "state_transition",
+          "decision_table",
+          "use_case",
+          "error_guessing"
+        ],
+        "technique_rationales": {
+          "equivalence_partitioning": "Partitioning valid and invalid operations such as dropping a bookmark onto itself versus valid locations, and viewing properties for valid versus invalid items.",
+          "state_transition": "Covering the lifecycle states and transitions of bookmarks, folders, and separators being added, modified, renamed, and deleted across restarts and crashes.",
+          "decision_table": "Covering combinations of conditions for column sorting, visibility, resizing, and property actions.",
+          "use_case": "Covering user flows such as launching bookmarks via double-clicking, inline renaming, searching by keywords, and managing items in the personal toolbar.",
+          "error_guessing": "Exploring plausible failure conditions and misuse such as browser crashes during save operations and prohibited drop actions onto immediate parents or children."
+        },
+        "error_type": null,
+        "error_stage": null
+      },
+      "e2edev_bench_01": {
+        "status": "generated",
+        "case_count": 48,
+        "usage": {
+          "input_tokens": 13333,
+          "output_tokens": 5914,
+          "details": {
+            "text_prompt_tokens": 13333,
+            "total_tokens": 19247
+          },
+          "status": "available"
+        },
+        "selected_techniques": [
+          "equivalence_partitioning",
+          "boundary_value_analysis",
+          "state_transition",
+          "decision_table",
+          "use_case",
+          "error_guessing"
+        ],
+        "technique_rationales": {
+          "equivalence_partitioning": "Partition product item inputs and cart contents into valid and invalid classes for adding items and calculating total prices.",
+          "boundary_value_analysis": "Test formatting and quantity limits such as single and repeated product additions, and two decimal place currency rounding limits.",
+          "state_transition": "Cover the states and transitions of product items being dragged, dropped into the drop area, and updating the cart display and total price.",
+          "decision_table": "Combine conditions such as adding different versus repeated products and verify resulting actions on cart quantities, unit prices, and titles.",
+          "use_case": "Cover the end-to-end user flow of dragging a product from the list, dropping it into the designated drop area, and verifying the updated cart display and total price.",
+          "error_guessing": "Explore plausible failures such as dragging non-draggable elements or dropping outside the designated drop area."
         },
         "error_type": null,
         "error_stage": null
       },
       "e2edev_bench_02": {
         "status": "generated",
-        "case_count": 25,
+        "case_count": 52,
         "usage": {
-          "input_tokens": null,
-          "output_tokens": null,
-          "details": null,
-          "status": "unavailable"
+          "input_tokens": 27958,
+          "output_tokens": 5731,
+          "details": {
+            "text_prompt_tokens": 27958,
+            "total_tokens": 33689
+          },
+          "status": "available"
         },
         "selected_techniques": [
           "equivalence_partitioning",
@@ -523,22 +337,25 @@
           "error_guessing"
         ],
         "technique_rationales": {
-          "equivalence_partitioning": "Used to partition input data for Markdown content, distinguishing between valid markdown formatting, complex syntax, empty inputs, and invalid markdown syntax.",
-          "state_transition": "Used to test the states of individual notes (edit mode vs. view mode) and their transitions triggered by clicking the edit or add buttons.",
-          "use_case": "Used to cover the complete end-to-end user workflows of creating notes, editing markdown content, switching modes, refreshing or reloading from local storage, and deleting notes.",
-          "error_guessing": "Used to target plausible failures and edge cases such as handling malformed/invalid Markdown syntax without crashing, and handling empty local storage."
+          "equivalence_partitioning": "Used to partition valid inputs like correct markdown syntax and invalid/malformed markdown inputs.",
+          "state_transition": "Used to cover the note states between view mode and edit mode, and their transitions triggered by the edit button.",
+          "use_case": "Used to cover complete user flows such as creating a note, typing markdown, switching modes, and deleting a note.",
+          "error_guessing": "Used to handle plausible failures like invalid markdown inputs and interactions with empty local storage."
         },
         "error_type": null,
         "error_stage": null
       },
       "e2edev_bench_03": {
         "status": "generated",
-        "case_count": 15,
+        "case_count": 49,
         "usage": {
-          "input_tokens": null,
-          "output_tokens": null,
-          "details": null,
-          "status": "unavailable"
+          "input_tokens": 22152,
+          "output_tokens": 5281,
+          "details": {
+            "text_prompt_tokens": 22152,
+            "total_tokens": 27433
+          },
+          "status": "available"
         },
         "selected_techniques": [
           "equivalence_partitioning",
@@ -546,22 +363,22 @@
           "use_case"
         ],
         "technique_rationales": {
-          "equivalence_partitioning": "Required to test valid partitions for movie prices and seat selection states (available, selected, occupied).",
-          "state_transition": "Required to cover the states of seats (available to selected, selected to available) and forbidden transitions (attempting to select occupied seats).",
-          "use_case": "Required to cover the end-to-end user workflows of loading the webpage, selecting movies, picking/deselecting seats, and persisting data in local storage."
+          "equivalence_partitioning": "Required to test valid and invalid classes for seat selection (available vs occupied) and movie ticket prices.",
+          "state_transition": "Required to test seat status changes between available, selected, and occupied, as well as persistence via local storage states.",
+          "use_case": "Required to cover the end-to-end user workflow of opening the booking page, selecting movies, selecting and deselecting seats, and calculating totals."
         },
         "error_type": null,
         "error_stage": null
       },
       "e2edev_bench_04": {
         "status": "generated",
-        "case_count": 41,
+        "case_count": 137,
         "usage": {
-          "input_tokens": 11400,
-          "output_tokens": 4906,
+          "input_tokens": 60774,
+          "output_tokens": 14579,
           "details": {
-            "text_prompt_tokens": 11400,
-            "total_tokens": 16306
+            "text_prompt_tokens": 60774,
+            "total_tokens": 75353
           },
           "status": "available"
         },
@@ -577,128 +394,94 @@
         "technique_rationales": {
           "equivalence_partitioning": "Cover important input partitions such as valid voice selections, specific language codes (e.g., 'CN', 'US'), and text entries.",
           "boundary_value_analysis": "Exercise stated limits and boundary conditions such as rapid repeated clicks on toggle and phrase boxes.",
-          "state_transition": "Cover visibility states (hidden vs. 'show' class) of the text box and the active states of phrase boxes.",
-          "decision_table": "Cover condition combinations such as selecting different voices, toggling text box states, and triggering speech synthesis actions.",
-          "combinatorial": "Cover meaningful combinations of multiple requirement factors including voice selection, dynamic loading via 'voiceschanged', and text input.",
-          "use_case": "Cover end-to-end user flows like opening the text box, populating voices, entering text, selecting a voice, and clicking 'Read Text'.",
-          "error_guessing": "Explore plausible failures such as missing voices during initialization or rapid sequential clicks across different phrase boxes."
-        },
-        "error_type": null,
-        "error_stage": null
-      },
-      "firefox_bookmarks": {
-        "status": "generated",
-        "case_count": 59,
-        "usage": {
-          "input_tokens": null,
-          "output_tokens": null,
-          "details": null,
-          "status": "unavailable"
-        },
-        "selected_techniques": [
-          "equivalence_partitioning",
-          "state_transition",
-          "use_case",
-          "error_guessing"
-        ],
-        "technique_rationales": {
-          "equivalence_partitioning": "Required to test valid and invalid classes of bookmarks, folders, and separators operations such as adding, deleting, and updating.",
-          "state_transition": "Required to cover hierarchical states and transitions such as inserting, moving, avoiding dropping on self, and deleting folders and bookmarks.",
-          "use_case": "Required to cover end-to-end user flows like launching bookmarks, searching via custom keywords, and inline renaming.",
-          "error_guessing": "Required to test plausible failures like crashes and restarts to ensure bookmarks persistence and handling forbidden drops."
-        },
-        "error_type": null,
-        "error_stage": null
-      },
-      "firefox_browser_history": {
-        "status": "generated",
-        "case_count": 37,
-        "usage": {
-          "input_tokens": 4040,
-          "output_tokens": 2894,
-          "details": {
-            "text_prompt_tokens": 4040,
-            "total_tokens": 6934
-          },
-          "status": "available"
-        },
-        "selected_techniques": [
-          "equivalence_partitioning",
-          "state_transition",
-          "use_case",
-          "error_guessing"
-        ],
-        "technique_rationales": {
-          "equivalence_partitioning": "Cover partitioning of history entries for single vs multiple deletions, and different grouping options like Day, Site, or None.",
-          "state_transition": "Cover states and transitions such as recording visited links, handling server redirects, clearing global history, and creating a new session history file.",
-          "use_case": "Cover end-to-end user workflows such as navigating history via Back and Forward dropdown menus and clicking history links to launch them.",
-          "error_guessing": "Explore plausible failure conditions such as sorting, resizing columns, and handling hidden/shown columns incorrectly."
-        },
-        "error_type": null,
-        "error_stage": null
-      },
-      "firefox_form_manager": {
-        "status": "generated",
-        "case_count": 37,
-        "usage": {
-          "input_tokens": 4094,
-          "output_tokens": 3237,
-          "details": {
-            "text_prompt_tokens": 4094,
-            "total_tokens": 7331
-          },
-          "status": "available"
-        },
-        "selected_techniques": [
-          "equivalence_partitioning",
-          "state_transition",
-          "decision_table",
-          "use_case",
-          "error_guessing"
-        ],
-        "technique_rationales": {
-          "equivalence_partitioning": "Cover important input partitions such as saved form data versus unsaved form data, and different choices from the save dialog box.",
-          "state_transition": "Cover states and transitions related to saving, discarding, never saving for a site, adding, and deleting form data in the Form Manager.",
-          "decision_table": "Cover combinations of conditions such as choosing to save, discard, or select 'never save' from the dialog box and their resulting actions.",
-          "use_case": "Cover end-to-end user flows including accessing a field, interacting with the popup menu, saving data, returning to a site, and managing data via the edit menu.",
-          "error_guessing": "Explore plausible failures such as attempting to delete data in the Form Manager and clicking cancel to ensure data is preserved."
-        },
-        "error_type": null,
-        "error_stage": null
-      },
-      "firefox_search": {
-        "status": "generated",
-        "case_count": 11,
-        "usage": {
-          "input_tokens": null,
-          "output_tokens": null,
-          "details": null,
-          "status": "unavailable"
-        },
-        "selected_techniques": [
-          "equivalence_partitioning",
-          "state_transition",
-          "use_case"
-        ],
-        "technique_rationales": {
-          "equivalence_partitioning": "Partition inputs such as valid and invalid search texts or search engines.",
-          "state_transition": "Cover relevant states and transitions between typing in the URL bar, clicking search, displaying results in the sidebar, and bookmarking.",
-          "use_case": "Cover the end-to-end user workflow from entering text in the URL bar to searching, viewing sidebar results, changing search engines, and bookmarking."
+          "state_transition": "Cover visibility states of the text box (controlled by the 'show' class) and transitions triggered by toggle and close buttons.",
+          "decision_table": "Cover condition combinations for populating voices, handling the 'voiceschanged' event, and selecting active voices for speech synthesis.",
+          "combinatorial": "Cover meaningful combinations of multiple requirement factors like selecting different voices and entering text simultaneously.",
+          "use_case": "Cover end-to-end user flows including opening the text box, selecting a voice, entering text, clicking 'Read Text', and clicking predefined phrase boxes.",
+          "error_guessing": "Explore plausible failures such as missing voices during initialization or rapid sequential clicks across different phrase and toggle buttons."
         },
         "error_type": null,
         "error_stage": null
       }
     },
     "Multiagent": {
+      "firefox_themes": {
+        "status": "generated",
+        "case_count": 7,
+        "usage": {
+          "input_tokens": 50529,
+          "output_tokens": 4314,
+          "details": {
+            "text_prompt_tokens": 50529,
+            "total_tokens": 54843
+          },
+          "status": "available"
+        },
+        "selected_techniques": [],
+        "technique_rationales": {},
+        "error_type": null,
+        "error_stage": null
+      },
+      "firefox_browser_history": {
+        "status": "generated",
+        "case_count": 30,
+        "usage": {
+          "input_tokens": 28179,
+          "output_tokens": 3775,
+          "details": {
+            "text_prompt_tokens": 28179,
+            "total_tokens": 31954
+          },
+          "status": "available"
+        },
+        "selected_techniques": [],
+        "technique_rationales": {},
+        "error_type": null,
+        "error_stage": null
+      },
+      "firefox_password_manager": {
+        "status": "generated",
+        "case_count": 13,
+        "usage": {
+          "input_tokens": 12800,
+          "output_tokens": 1988,
+          "details": {
+            "text_prompt_tokens": 12800,
+            "total_tokens": 14788
+          },
+          "status": "available"
+        },
+        "selected_techniques": [],
+        "technique_rationales": {},
+        "error_type": null,
+        "error_stage": null
+      },
+      "firefox_bookmarks": {
+        "status": "generated",
+        "case_count": 40,
+        "usage": {
+          "input_tokens": 45059,
+          "output_tokens": 4693,
+          "details": {
+            "text_prompt_tokens": 45059,
+            "total_tokens": 49752
+          },
+          "status": "available"
+        },
+        "selected_techniques": [],
+        "technique_rationales": {},
+        "error_type": null,
+        "error_stage": null
+      },
       "e2edev_bench_01": {
         "status": "generated",
-        "case_count": 3,
+        "case_count": 7,
         "usage": {
-          "input_tokens": 4505,
-          "output_tokens": 863,
+          "input_tokens": 7575,
+          "output_tokens": 1358,
           "details": {
-            "text_prompt_tokens": 4505,
-            "total_tokens": 5368
+            "text_prompt_tokens": 7575,
+            "total_tokens": 8933
           },
           "status": "available"
         },
@@ -709,13 +492,13 @@
       },
       "e2edev_bench_02": {
         "status": "generated",
-        "case_count": 8,
+        "case_count": 12,
         "usage": {
-          "input_tokens": 8823,
-          "output_tokens": 1503,
+          "input_tokens": 17427,
+          "output_tokens": 2124,
           "details": {
-            "text_prompt_tokens": 8823,
-            "total_tokens": 10326
+            "text_prompt_tokens": 17427,
+            "total_tokens": 19551
           },
           "status": "available"
         },
@@ -726,13 +509,13 @@
       },
       "e2edev_bench_03": {
         "status": "generated",
-        "case_count": 6,
+        "case_count": 14,
         "usage": {
-          "input_tokens": 9157,
-          "output_tokens": 1472,
+          "input_tokens": 17636,
+          "output_tokens": 2339,
           "details": {
-            "text_prompt_tokens": 9157,
-            "total_tokens": 10629
+            "text_prompt_tokens": 17636,
+            "total_tokens": 19975
           },
           "status": "available"
         },
@@ -743,77 +526,15 @@
       },
       "e2edev_bench_04": {
         "status": "generated",
-        "case_count": 6,
+        "case_count": 17,
         "usage": {
-          "input_tokens": 8864,
-          "output_tokens": 1176,
+          "input_tokens": 21307,
+          "output_tokens": 2629,
           "details": {
-            "text_prompt_tokens": 8864,
-            "total_tokens": 10040
+            "text_prompt_tokens": 21307,
+            "total_tokens": 23936
           },
           "status": "available"
-        },
-        "selected_techniques": [],
-        "technique_rationales": {},
-        "error_type": null,
-        "error_stage": null
-      },
-      "firefox_bookmarks": {
-        "status": "generated",
-        "case_count": 18,
-        "usage": {
-          "input_tokens": 9180,
-          "output_tokens": 2356,
-          "details": {
-            "text_prompt_tokens": 9180,
-            "total_tokens": 11536
-          },
-          "status": "available"
-        },
-        "selected_techniques": [],
-        "technique_rationales": {},
-        "error_type": null,
-        "error_stage": null
-      },
-      "firefox_browser_history": {
-        "status": "generated",
-        "case_count": 12,
-        "usage": {
-          "input_tokens": null,
-          "output_tokens": null,
-          "details": null,
-          "status": "unavailable"
-        },
-        "selected_techniques": [],
-        "technique_rationales": {},
-        "error_type": null,
-        "error_stage": null
-      },
-      "firefox_form_manager": {
-        "status": "generated",
-        "case_count": 8,
-        "usage": {
-          "input_tokens": 5052,
-          "output_tokens": 1213,
-          "details": {
-            "text_prompt_tokens": 5052,
-            "total_tokens": 6265
-          },
-          "status": "available"
-        },
-        "selected_techniques": [],
-        "technique_rationales": {},
-        "error_type": null,
-        "error_stage": null
-      },
-      "firefox_search": {
-        "status": "generated",
-        "case_count": 5,
-        "usage": {
-          "input_tokens": null,
-          "output_tokens": null,
-          "details": null,
-          "status": "unavailable"
         },
         "selected_techniques": [],
         "technique_rationales": {},

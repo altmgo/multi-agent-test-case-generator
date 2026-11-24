@@ -1,0 +1,893 @@
+{
+  "schema_version": 1,
+  "solution": "GHL",
+  "unit_id": "firefox_password_manager",
+  "parent_id": null,
+  "status": "evaluated",
+  "failure": null,
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "R-102",
+      "text": "The browser shall discard the password after Never For This Site is selected in the save password dialog box.",
+      "language": "en",
+      "source": "R-set.csv#R-102"
+    },
+    {
+      "id": "R-103",
+      "text": "When multiple usernames and passwords for a website are saved, those same choices shall later be available to be presented.",
+      "language": "en",
+      "source": "R-set.csv#R-103"
+    },
+    {
+      "id": "R-104",
+      "text": "When a username and password for a website is saved and later the password is changed, that password manager shall pick up the new password.",
+      "language": "en",
+      "source": "R-set.csv#R-104"
+    },
+    {
+      "id": "R-105",
+      "text": "When password manager from the preferences panel is disabled, the browser shall no longer ask to save passwords and no longer get prefilled info on sites.",
+      "language": "en",
+      "source": "R-set.csv#R-105"
+    },
+    {
+      "id": "R-106",
+      "text": "When a username and password in password manager is saved, this information shall be viewed in the password manager through preferences.",
+      "language": "en",
+      "source": "R-set.csv#R-106"
+    },
+    {
+      "id": "R-107",
+      "text": "It shall be possible to remove a username and password for a given site and it shall no longer autofill on that site nor shall it be listed in password manager.",
+      "language": "en",
+      "source": "R-set.csv#R-107"
+    },
+    {
+      "id": "R-108",
+      "text": "It shall be possible to remove all username and password information and it shall no longer autofill nor shall anything be listed in password manager.",
+      "language": "en",
+      "source": "R-set.csv#R-108"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Discard password when Never For This Site is selected",
+      "description": "Verify that when a user triggers the save password dialog box and selects the Never For This Site option, the browser discards the password and does not save it.",
+      "requirement_ids": [
+        "R-102"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Retain password when Remember is selected instead of Never For This Site",
+      "description": "Verify that when the save password dialog box is presented and an option other than Never For This Site (such as Save) is selected, the password is not discarded and is saved properly.",
+      "requirement_ids": [
+        "R-102"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Available choices for multiple saved credentials",
+      "description": "Verify that when multiple usernames and passwords for a single website are saved, those same choices are later available to be presented to the user during login.",
+      "requirement_ids": [
+        "R-103"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Unavailable choices when no multiple credentials are saved",
+      "description": "Verify that when zero or only a single username and password are saved for a website, multiple choice presentation does not incorrectly provide multiple distinct credential options.",
+      "requirement_ids": [
+        "R-103"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Password change for a single saved set of credentials",
+      "description": "Verify that when a username and password are saved and later the password is changed and updated, the password manager picks up the new password.",
+      "requirement_ids": [
+        "R-104"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Password change with multiple credentials existing for the website",
+      "description": "Verify that when multiple usernames and passwords are saved and the password for one of them is changed, the password manager correctly picks up the new password for that specific entry.",
+      "requirement_ids": [
+        "R-104"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Password Manager Disabled Behavior",
+      "description": "Verify that when the password manager is disabled from the preferences panel, the browser no longer asks to save passwords and no longer prefills info on sites.",
+      "requirement_ids": [
+        "R-105"
+      ]
+    },
+    {
+      "id": "G-008",
+      "title": "Password Manager Enabled Behavior",
+      "description": "Verify that when the password manager is enabled in the preferences panel, the browser continues to ask to save passwords and prefills info on sites normally.",
+      "requirement_ids": [
+        "R-105"
+      ]
+    },
+    {
+      "id": "G-009",
+      "title": "View saved single username and password",
+      "description": "Verify that when a single username and password is saved in the password manager, this information can be successfully viewed in the password manager through the preferences panel.",
+      "requirement_ids": [
+        "R-106"
+      ]
+    },
+    {
+      "id": "G-010",
+      "title": "View saved multiple usernames and passwords",
+      "description": "Verify that when multiple usernames and passwords are saved for a website, all saved entries can be successfully viewed in the password manager through the preferences panel.",
+      "requirement_ids": [
+        "R-106"
+      ]
+    },
+    {
+      "id": "G-011",
+      "title": "View password manager when no credentials are saved",
+      "description": "Verify that when no username and password information is saved, checking the password manager through preferences shows an empty list.",
+      "requirement_ids": [
+        "R-106"
+      ]
+    },
+    {
+      "id": "G-012",
+      "title": "Remove Single Saved Credential",
+      "description": "Verify that removing a specific username and password for a given site results in no autofill on that site and removal from the password manager list.",
+      "requirement_ids": [
+        "R-107"
+      ]
+    },
+    {
+      "id": "G-013",
+      "title": "Attempt Removal of Non-Existent Credential",
+      "description": "Verify the system behavior when attempting to remove a username and password for a site that has no saved credentials.",
+      "requirement_ids": [
+        "R-107"
+      ]
+    },
+    {
+      "id": "G-014",
+      "title": "Remove all stored credentials when multiple entries exist",
+      "description": "Verify that executing the remove all username and password information action successfully removes all entries, disables autofill across all sites, and clears the password manager list.",
+      "requirement_ids": [
+        "R-108"
+      ]
+    },
+    {
+      "id": "G-015",
+      "title": "Remove all stored credentials when no entries exist",
+      "description": "Verify that executing the remove all action when the password manager is already empty completes successfully without errors, ensuring no autofill and an empty list.",
+      "requirement_ids": [
+        "R-108"
+      ]
+    },
+    {
+      "id": "G-016",
+      "title": "Discard password on Never For This Site selection",
+      "description": "Transition from save password dialog state to discarded password state when Never For This Site event occurs, verifying compliance with R-102.",
+      "requirement_ids": [
+        "R-102"
+      ]
+    },
+    {
+      "id": "G-017",
+      "title": "Forbidden transition from Never For This Site state to saved password state",
+      "description": "Verify that once Never For This Site is selected and the password is discarded, a forbidden transition back to the saved state without user re-entry does not occur, per R-102.",
+      "requirement_ids": [
+        "R-102"
+      ]
+    },
+    {
+      "id": "G-018",
+      "title": "Available Multiple Credentials Presentation",
+      "description": "Transition from state where multiple usernames and passwords are saved to the presentation state, verifying that all saved choices are available to be presented.",
+      "requirement_ids": [
+        "R-103"
+      ]
+    },
+    {
+      "id": "G-019",
+      "title": "Forbidden Single Credential Presentation for Multiple Saved",
+      "description": "Verify the forbidden transition where only a single credential is presented when multiple usernames and passwords are saved for a website.",
+      "requirement_ids": [
+        "R-103"
+      ]
+    },
+    {
+      "id": "G-020",
+      "title": "Transition from Saved State to Updated Password State",
+      "description": "Verify that when a username and password for a website are saved in the password manager, changing the password results in the password manager picking up and storing the new password.",
+      "requirement_ids": [
+        "R-104"
+      ]
+    },
+    {
+      "id": "G-021",
+      "title": "Abnormal Transition - Password Change Not Detected",
+      "description": "Verify the behavior when a password is changed on a website but the password manager fails to capture the update, ensuring the system handles the discrepancy according to R-104.",
+      "requirement_ids": [
+        "R-104"
+      ]
+    },
+    {
+      "id": "G-022",
+      "title": "Transition from enabled to disabled state via preferences panel",
+      "description": "Verify that when the password manager is enabled, changing the setting to disabled in the preferences panel transitions the browser to a state where it no longer asks to save passwords and no longer autofills prefilled info on sites.",
+      "requirement_ids": [
+        "R-105"
+      ]
+    },
+    {
+      "id": "G-023",
+      "title": "Normal behavior in disabled state regarding save prompts and autofill",
+      "description": "Verify that while the password manager remains in the disabled state, submitting credentials or visiting sites does not trigger save password prompts and does not provide prefilled info.",
+      "requirement_ids": [
+        "R-105"
+      ]
+    },
+    {
+      "id": "G-024",
+      "title": "Transition from disabled back to enabled state",
+      "description": "Verify that transitioning the password manager from the disabled state back to the enabled state restores normal save prompting and prefilling capabilities.",
+      "requirement_ids": [
+        "R-105"
+      ]
+    },
+    {
+      "id": "G-025",
+      "title": "Forbidden transition: attempting to trigger save password dialog while disabled",
+      "description": "Ensure that invalid event triggers, such as attempting to invoke save password dialogs while in the disabled state, do not result in a save prompt or store credentials.",
+      "requirement_ids": [
+        "R-105"
+      ]
+    },
+    {
+      "id": "G-026",
+      "title": "View Saved Credentials in Preferences",
+      "description": "State transition testing case covering the normal transition from unviewed saved credentials state to viewed state in the password manager via preferences, satisfying R-106.",
+      "requirement_ids": [
+        "R-106"
+      ]
+    },
+    {
+      "id": "G-027",
+      "title": "Attempt to View Credentials with No Saved Data",
+      "description": "State transition testing case covering the abnormal/forbidden transition of attempting to view saved credentials in preferences when no data exists, satisfying R-106.",
+      "requirement_ids": [
+        "R-106"
+      ]
+    },
+    {
+      "id": "G-028",
+      "title": "Remove Single Saved Credential",
+      "description": "Verify the state transition when a specific username and password for a given site are removed from the password manager, resulting in the credentials no longer autofilling and not being listed in the password manager.",
+      "requirement_ids": [
+        "R-107"
+      ]
+    },
+    {
+      "id": "G-029",
+      "title": "Attempt to Remove Non-Existent Credential",
+      "description": "Verify the forbidden or invalid transition when attempting to remove a username and password for a site that does not exist or has already been removed in the password manager.",
+      "requirement_ids": [
+        "R-107"
+      ]
+    },
+    {
+      "id": "G-030",
+      "title": "Remove all stored credentials when credentials exist",
+      "description": "Verify that when the password manager contains saved credentials, executing the remove all action transitions the state to empty, ensuring no credentials autofill and nothing is listed.",
+      "requirement_ids": [
+        "R-108"
+      ]
+    },
+    {
+      "id": "G-031",
+      "title": "Remove all stored credentials when already empty",
+      "description": "Verify that executing the remove all action when the password manager is already empty maintains the empty state without errors.",
+      "requirement_ids": [
+        "R-108"
+      ]
+    },
+    {
+      "id": "G-032",
+      "title": "Discard password on Never For This Site selection",
+      "description": "Trigger the save password dialog box by entering credentials on a site, select Never For This Site, and verify that the browser discards the password and does not save it.",
+      "requirement_ids": [
+        "R-102"
+      ]
+    },
+    {
+      "id": "G-033",
+      "title": "Present multiple saved usernames and passwords",
+      "description": "Verify that when multiple usernames and passwords for a website are saved, those same choices are later available to be presented to the user during login.",
+      "requirement_ids": [
+        "R-103"
+      ]
+    },
+    {
+      "id": "G-034",
+      "title": "Update saved password for a website and verify password manager picks up the new password",
+      "description": "Perform an end-to-end user flow where a username and password are saved for a website, the user logs in with a changed password, and verify that the password manager successfully detects and picks up the new password.",
+      "requirement_ids": [
+        "R-104"
+      ]
+    },
+    {
+      "id": "G-035",
+      "title": "Disable Password Manager via Preferences Panel - Normal Flow",
+      "description": "Verify that when the password manager is disabled from the preferences panel, the browser no longer asks to save passwords and no longer prefills info on sites.",
+      "requirement_ids": [
+        "R-105"
+      ]
+    },
+    {
+      "id": "G-036",
+      "title": "View saved credentials in password manager preferences",
+      "description": "Verify that when a username and password are saved in the password manager, this information can be successfully viewed by navigating to the password manager through the browser preferences.",
+      "requirement_ids": [
+        "R-106"
+      ]
+    },
+    {
+      "id": "G-037",
+      "title": "Remove Single Username and Password for a Site",
+      "description": "Verify that a specific saved username and password can be removed via the password manager, ensuring it no longer autofills on the target site and is completely removed from the password manager list.",
+      "requirement_ids": [
+        "R-107"
+      ]
+    },
+    {
+      "id": "G-038",
+      "title": "Remove all saved usernames and passwords successfully",
+      "description": "Execute a workflow to remove all stored username and password information from the password manager, then verify that autofill no longer functions and nothing is listed in the password manager preferences.",
+      "requirement_ids": [
+        "R-108"
+      ]
+    },
+    {
+      "id": "G-039",
+      "title": "Verify password persistence check after selecting Never For This Site and restarting browser",
+      "description": "Attempt to retrieve or autofill the discarded password after restarting the browser to ensure it was not erroneously saved to persistent storage following the Never For This Site selection.",
+      "requirement_ids": [
+        "R-102"
+      ]
+    },
+    {
+      "id": "G-040",
+      "title": "Verify password absence in preferences after Never For This Site selection",
+      "description": "Check the saved passwords list in the preferences panel after selecting Never For This Site to ensure the credentials are completely absent and not partially logged.",
+      "requirement_ids": [
+        "R-102"
+      ]
+    },
+    {
+      "id": "G-041",
+      "title": "Multiple Credentials Availability and Selection",
+      "description": "Verify that when multiple usernames and passwords are saved for a single website, all saved choices are subsequently available to be presented to the user during login, anticipating failure to load one or more stored accounts.",
+      "requirement_ids": [
+        "R-103"
+      ]
+    },
+    {
+      "id": "G-042",
+      "title": "Password update during concurrent form submission",
+      "description": "Guess that rapidly submitting multiple consecutive password change forms might cause the password manager to fail in picking up the latest password.",
+      "requirement_ids": [
+        "R-104"
+      ]
+    },
+    {
+      "id": "G-043",
+      "title": "Password update with whitespace and special control characters",
+      "description": "Guess that updating a password to include leading/trailing whitespaces or control characters might prevent the manager from correctly parsing and picking up the new password.",
+      "requirement_ids": [
+        "R-104"
+      ]
+    },
+    {
+      "id": "G-044",
+      "title": "Password change immediately after browser session crash",
+      "description": "Guess that changing a password and immediately terminating the browser process might cause a synchronization failure where the new password is not persisted.",
+      "requirement_ids": [
+        "R-104"
+      ]
+    },
+    {
+      "id": "G-045",
+      "title": "Save Prompt and Prefill Behavior After Disabling Password Manager in Preferences",
+      "description": "Verify that when the password manager is disabled from the preferences panel, the browser neither prompts to save new passwords nor prefill info on sites, testing the edge case where a user rapidly toggles the setting and immediately visits a login form.",
+      "requirement_ids": [
+        "R-105"
+      ]
+    },
+    {
+      "id": "G-046",
+      "title": "Persistent Prefill Attempt with Corrupted Preference State",
+      "description": "Verify that if the preference state for the password manager becomes corrupted or desynchronized, disabling the password manager still completely prevents any prefilled info on sites and stops asking to save passwords.",
+      "requirement_ids": [
+        "R-105"
+      ]
+    },
+    {
+      "id": "G-047",
+      "title": "Verify password manager preferences view when database is corrupted or empty",
+      "description": "Attempt to view saved username and password information in the password manager preferences when the underlying credential storage file is corrupted, empty, or inaccessible to check for proper error handling and absence of crashing.",
+      "requirement_ids": [
+        "R-106"
+      ]
+    },
+    {
+      "id": "G-048",
+      "title": "Verify password manager preferences view with malformed or injected credential data",
+      "description": "Attempt to view saved credentials in the password manager through preferences when stored entries contain malformed characters, script tags, or extremely long strings to ensure safe rendering and data retrieval.",
+      "requirement_ids": [
+        "R-106"
+      ]
+    },
+    {
+      "id": "G-049",
+      "title": "Verify removal of single credential set prevents autofill and removes from manager",
+      "description": "Test the normal removal of a specific username and password for a given site to ensure it no longer autofills and is removed from the password manager list.",
+      "requirement_ids": [
+        "R-107"
+      ]
+    },
+    {
+      "id": "G-050",
+      "title": "Attempt removal of non-existent credential set",
+      "description": "Error guessing condition where a request is made to remove a username and password that does not exist in the password manager for a given site.",
+      "requirement_ids": [
+        "R-107"
+      ]
+    },
+    {
+      "id": "G-051",
+      "title": "Removal of credential while site autofill is actively occurring",
+      "description": "Error guessing condition where a user deletes a username and password entry concurrently while the browser is attempting to autofill that same site.",
+      "requirement_ids": [
+        "R-107"
+      ]
+    },
+    {
+      "id": "G-052",
+      "title": "Remove All Credentials with Corrupted Database State",
+      "description": "Attempt to trigger the remove all operation when the internal credential storage file is partially locked or corrupted, checking if leftover entries still autofill or appear in the manager.",
+      "requirement_ids": [
+        "R-108"
+      ]
+    },
+    {
+      "id": "G-053",
+      "title": "Remove All Credentials During Concurrent Write Operations",
+      "description": "Execute the remove all command while a background process is actively attempting to save a new password to test race conditions and data leakage.",
+      "requirement_ids": [
+        "R-108"
+      ]
+    },
+    {
+      "id": "G-054",
+      "title": "Multiple Consecutive Remove All Invocations",
+      "description": "Trigger the remove all username and password information action repeatedly in rapid succession to ensure it handles redundant requests without crashing or leaving phantom entries.",
+      "requirement_ids": [
+        "R-108"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "TC-102",
+      "title": "TC-102",
+      "description": "INITIAL CONDITIONS\nClear stored passwords or use a sight that you have not been to before\n\nSTEPS/DESCRIPTION\n1. Go to a sight that requires a password, such as http://www.freeride.com\n2. Enter a username and password and click login\n3. When presented with the save password dialog, click never for this site\n4. Shut down Netscape 6\n5. Open Netscape 6\n6. Return to http://www.freeride.com (or other site, if used)\n7. Enter a username and password and click login\n\nEXPECTED RESULTS\n3. No password should be saved in Password Manager\n6. The username and password should not be prefilled\n7. The password dialog box should not appear again",
+      "requirement_ids": [
+        "R-102"
+      ],
+      "source": "T-set.csv#TC-102",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-103",
+      "title": "TC-103",
+      "description": "STEPS/DESCRIPTION\n1. Go to a sight that requires a password, such as http://mail.yahoo.com\n2. Enter a username and password and click sign in\n3. When presented with the save password dialog, click yes\n4. Shut down Netscape 6\n5. Open Netscape 6\n6. Return to http://mail.yahoo.com (or other site, if used)\n7. Delete the prefilled information and enter the second username and password\n8. Click login\n9. When presented with the save password dialog, click yes\n10. Shut down Netscape 6\n11. Open Netscape 6\n12. Return to http://mail.yahoo.com (or other site, if used)\n13. Select one of these choices and click sign in\n\nEXPECTED RESULTS\n3. The username and password should be saved in Password Manager\n6. The username and password should be prefilled\n8. You should be logged in to the site\n9. The username and password should be saved in Password Manager\n12. You should be presented with a dialog box that offers a choice between the two usernames\n13. You should be signed in to the site",
+      "requirement_ids": [
+        "R-103"
+      ],
+      "source": "T-set.csv#TC-103",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-104",
+      "title": "TC-104",
+      "description": "STEPS/DESCRIPTION\n1. Go to a sight that requires a password, such as http://my.lycos.com\n2. Enter a username and password and click sign in\n3. When presented with the save password dialog, click yes\n4. Shut down Netscape 6\n5. In a different browser, return to the site and change your password\n6. Open Netscape 6\n7. Return to http://my.lycos.com (or other site, if used)\n8. Delete the prefilled password information and enter the new password\n9. Click login\n10. Shut down Netscape 6\n11. Open Netscape 6\n12. Return to http://my.lycos.com (or other site, if used)\n13. The password and username information should be prefilled, click sign in\n\nEXPECTED RESULTS\n3. The username and password should be saved in Password Manager\n9. You should be logged in to the site\n13. You should be logged in to the site\n9. The username and password should be saved in Password Manager\n12. You should be presented with a dialog box that offers a choice between the two usernames\n13. You should be signed in to the site",
+      "requirement_ids": [
+        "R-104"
+      ],
+      "source": "T-set.csv#TC-104",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-105",
+      "title": "TC-105",
+      "description": "INITIAL CONDITIONS\nBrowser should be started and you should have a username and password for a site, such as www.freeride.com\n\nSTEPS/DESCRIPTION\n1. From the Edit drop down list, select preferences\n2. Click the arrow next to advanced\n3. Click passwords\n4. Unclick the box next to remember passwords for sites that require me to log in\n5. Click ok\n6. Go to a sight that requires a password, such as http://www.freeride.com\n7. Enter a username and password and click sign in\n\nEXPECTED RESULTS\n1. The preference panel should be displayed\n2. The advanced options should be displayed\n3. The password panel should be displayed on the right hand side\n5. The preferences panel should close\n7. You should not be presented with a dialog asking if you would like to save your username and password",
+      "requirement_ids": [
+        "R-105"
+      ],
+      "source": "T-set.csv#TC-105",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-106",
+      "title": "TC-106",
+      "description": "INITIAL CONDITIONS\nPassword manager should be enabled, in a different browser create an account at a site that requires a username and password such as http://www.ebay.com\n\nSTEPS/DESCRIPTION\n1. Go to a site that you have not been to before in Netscape 6, such as http://www.ebay.com\n2. Enter your username and password\n3. When a dialog appears asking if you would like to save this information, click yes\n4. From the edit drop down menus, select preference\n5. Click on the arrow next to advanced\n6. Click on passwords\n7. Click View saved passwords\n8. Verify that your saved username and password appear in the list\n\nEXPECTED RESULTS\n4. Preference pane should open\n5. Advanced options should appear\n6. Password manager options should appear on right pane\n7. A list of saved passwords should appear",
+      "requirement_ids": [
+        "R-106"
+      ],
+      "source": "T-set.csv#TC-106",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-107",
+      "title": "TC-107",
+      "description": "INITIAL CONDITIONS\nPassword manager should be enabled, in a different browser create an account at a site that requires a username and password such as http://www.espn.com\n\nSTEPS/DESCRIPTION\n1. Go to a site that you have not been to before in Netscape 6, such as http://www.espn.com\n2. Enter your username and password\n3. When a dialog appears asking if you would like to save this information, click yes\n4. From the edit drop down menus, select preference\n5. Click on the arrow next to advanced\n6. Click on passwords\n7. Click View saved passwords\n8. Highlight this sight and username in the list and click remove\n9. Click cancel\n10. Click View saved passwords\n11. Highlight this sight and username in the list and click remove\n12. Click ok\n13. Click View saved passwords\n\nEXPECTED RESULTS\n3. Your username and password should be saved to the password manager\n4. Preference pane should open\n5. Advanced options should appear\n6. Password manager options should appear on right pane\n7. A list of saved passwords should appear with your saved sight and username appearing in the list\n8. This site's information should no longer appear in the list\n9. Window should close\n10. This site should once again, be in the list of saved passwords\n11. This site and username should no longer appear on the list of saved passwords\n13. This site should be removed from the list",
+      "requirement_ids": [
+        "R-107"
+      ],
+      "source": "T-set.csv#TC-107",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-108",
+      "title": "TC-108",
+      "description": "INITIAL CONDITIONS\nPassword manager should be enabled and you should have saved username and password information for several sites\n\nSTEPS/DESCRIPTION\n1. From the edit drop down menus, select preference\n2. Click on the arrow next to advanced\n3. Click on passwords\n4. Click View stored passwords\n5. Click remove all\n6. Click cancel\n7. Click View saved passwords\n8. Click remove all\n9. Click ok\n10. Click View saved passwords\n\nEXPECTED RESULTS\n1. Preference pane should open\n2. Advanced options should appear\n3. Password manager options should appear on right pane\n4. A list of saved passwords should appear with your saved sights and usernames appearing in the list\n5. All of the saved site and username information should be removed from the list\n7. All of the saved site and username information should again, appear in the list\n8. All of the saved site and username information should be removed from the list\n10. There should be no information listed under the passwords saved tab\n11. This site and username should no longer appear on the list of saved passwords\n13. This site should be removed from the list",
+      "requirement_ids": [
+        "R-108"
+      ],
+      "source": "T-set.csv#TC-108",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 54,
+    "reference_count": 7,
+    "matches": [
+      {
+        "generated_id": "G-010",
+        "reference_id": "TC-103",
+        "similarity": 0.8720120904364718
+      },
+      {
+        "generated_id": "G-028",
+        "reference_id": "TC-107",
+        "similarity": 0.8692468862299082
+      },
+      {
+        "generated_id": "G-032",
+        "reference_id": "TC-102",
+        "similarity": 0.9040921208822894
+      },
+      {
+        "generated_id": "G-034",
+        "reference_id": "TC-104",
+        "similarity": 0.8764256744102479
+      },
+      {
+        "generated_id": "G-035",
+        "reference_id": "TC-105",
+        "similarity": 0.8941409310914004
+      },
+      {
+        "generated_id": "G-036",
+        "reference_id": "TC-106",
+        "similarity": 0.9149758088565018
+      },
+      {
+        "generated_id": "G-038",
+        "reference_id": "TC-108",
+        "similarity": 0.9107734124866492
+      }
+    ],
+    "unmatched_generated_ids": [
+      "G-001",
+      "G-002",
+      "G-003",
+      "G-004",
+      "G-005",
+      "G-006",
+      "G-007",
+      "G-008",
+      "G-009",
+      "G-011",
+      "G-012",
+      "G-013",
+      "G-014",
+      "G-015",
+      "G-016",
+      "G-017",
+      "G-018",
+      "G-019",
+      "G-020",
+      "G-021",
+      "G-022",
+      "G-023",
+      "G-024",
+      "G-025",
+      "G-026",
+      "G-027",
+      "G-029",
+      "G-030",
+      "G-031",
+      "G-033",
+      "G-037",
+      "G-039",
+      "G-040",
+      "G-041",
+      "G-042",
+      "G-043",
+      "G-044",
+      "G-045",
+      "G-046",
+      "G-047",
+      "G-048",
+      "G-049",
+      "G-050",
+      "G-051",
+      "G-052",
+      "G-053",
+      "G-054"
+    ],
+    "unmatched_reference_ids": [],
+    "precision": 0.12962962962962962,
+    "recall": 1.0,
+    "f1": 0.22950819672131148,
+    "embedding_usage": {
+      "input_tokens": 2477,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 2477
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 3
+  },
+  "generation": {
+    "selected_techniques": [
+      "equivalence_partitioning",
+      "state_transition",
+      "use_case",
+      "error_guessing"
+    ],
+    "technique_rationales": {
+      "equivalence_partitioning": "Required to test important input partitions such as saving passwords, selecting 'Never For This Site', and having multiple credentials.",
+      "state_transition": "Required to handle states such as enabled/disabled preferences, stored credentials, changed passwords, and deleted credentials.",
+      "use_case": "Required to cover end-to-end user flows like prompting to save, changing passwords, viewing preferences, and autofilling.",
+      "error_guessing": "Required to explore plausible failures such as improper removal or handling of disabled password manager states."
+    },
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": 18145,
+      "output_tokens": 5667,
+      "details": {
+        "text_prompt_tokens": 18145,
+        "total_tokens": 23812
+      },
+      "status": "available"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": 2477,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 2477
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 3
+  },
+  "links": {
+    "requirements": {
+      "R-102": "R-102/requirement.md",
+      "R-103": "R-103/requirement.md",
+      "R-104": "R-104/requirement.md",
+      "R-105": "R-105/requirement.md",
+      "R-106": "R-106/requirement.md",
+      "R-107": "R-107/requirement.md",
+      "R-108": "R-108/requirement.md"
+    },
+    "cases": {
+      "G-016": {
+        "R-102": "R-102/test cases/16_Discard_password_on_Never_For_This_Site_selectio.md"
+      },
+      "G-017": {
+        "R-102": "R-102/test cases/17_Forbidden_transition_from_Never_For_This_Site_st.md"
+      },
+      "G-001": {
+        "R-102": "R-102/test cases/1_Discard_password_when_Never_For_This_Site_is_sel.md"
+      },
+      "G-002": {
+        "R-102": "R-102/test cases/2_Retain_password_when_Remember_is_selected_instea.md"
+      },
+      "G-032": {
+        "R-102": "R-102/test cases/32_Discard_password_on_Never_For_This_Site_selectio.md"
+      },
+      "G-039": {
+        "R-102": "R-102/test cases/39_Verify_password_persistence_check_after_selectin.md"
+      },
+      "G-040": {
+        "R-102": "R-102/test cases/40_Verify_password_absence_in_preferences_after_Nev.md"
+      },
+      "G-018": {
+        "R-103": "R-103/test cases/18_Available_Multiple_Credentials_Presentation.md"
+      },
+      "G-019": {
+        "R-103": "R-103/test cases/19_Forbidden_Single_Credential_Presentation_for_Mul.md"
+      },
+      "G-033": {
+        "R-103": "R-103/test cases/33_Present_multiple_saved_usernames_and_passwords.md"
+      },
+      "G-003": {
+        "R-103": "R-103/test cases/3_Available_choices_for_multiple_saved_credentials.md"
+      },
+      "G-041": {
+        "R-103": "R-103/test cases/41_Multiple_Credentials_Availability_and_Selection.md"
+      },
+      "G-004": {
+        "R-103": "R-103/test cases/4_Unavailable_choices_when_no_multiple_credentials.md"
+      },
+      "G-020": {
+        "R-104": "R-104/test cases/20_Transition_from_Saved_State_to_Updated_Password.md"
+      },
+      "G-021": {
+        "R-104": "R-104/test cases/21_Abnormal_Transition_-_Password_Change_Not_Detect.md"
+      },
+      "G-034": {
+        "R-104": "R-104/test cases/34_Update_saved_password_for_a_website_and_verify_p.md"
+      },
+      "G-042": {
+        "R-104": "R-104/test cases/42_Password_update_during_concurrent_form_submissio.md"
+      },
+      "G-043": {
+        "R-104": "R-104/test cases/43_Password_update_with_whitespace_and_special_cont.md"
+      },
+      "G-044": {
+        "R-104": "R-104/test cases/44_Password_change_immediately_after_browser_sessio.md"
+      },
+      "G-005": {
+        "R-104": "R-104/test cases/5_Password_change_for_a_single_saved_set_of_creden.md"
+      },
+      "G-006": {
+        "R-104": "R-104/test cases/6_Password_change_with_multiple_credentials_existi.md"
+      },
+      "G-022": {
+        "R-105": "R-105/test cases/22_Transition_from_enabled_to_disabled_state_via_pr.md"
+      },
+      "G-023": {
+        "R-105": "R-105/test cases/23_Normal_behavior_in_disabled_state_regarding_save.md"
+      },
+      "G-024": {
+        "R-105": "R-105/test cases/24_Transition_from_disabled_back_to_enabled_state.md"
+      },
+      "G-025": {
+        "R-105": "R-105/test cases/25_Forbidden_transition_attempting_to_trigger_save.md"
+      },
+      "G-035": {
+        "R-105": "R-105/test cases/35_Disable_Password_Manager_via_Preferences_Panel.md"
+      },
+      "G-045": {
+        "R-105": "R-105/test cases/45_Save_Prompt_and_Prefill_Behavior_After_Disabling.md"
+      },
+      "G-046": {
+        "R-105": "R-105/test cases/46_Persistent_Prefill_Attempt_with_Corrupted_Prefer.md"
+      },
+      "G-007": {
+        "R-105": "R-105/test cases/7_Password_Manager_Disabled_Behavior.md"
+      },
+      "G-008": {
+        "R-105": "R-105/test cases/8_Password_Manager_Enabled_Behavior.md"
+      },
+      "G-010": {
+        "R-106": "R-106/test cases/10_View_saved_multiple_usernames_and_passwords.md"
+      },
+      "G-011": {
+        "R-106": "R-106/test cases/11_View_password_manager_when_no_credentials_are_sa.md"
+      },
+      "G-026": {
+        "R-106": "R-106/test cases/26_View_Saved_Credentials_in_Preferences.md"
+      },
+      "G-027": {
+        "R-106": "R-106/test cases/27_Attempt_to_View_Credentials_with_No_Saved_Data.md"
+      },
+      "G-036": {
+        "R-106": "R-106/test cases/36_View_saved_credentials_in_password_manager_prefe.md"
+      },
+      "G-047": {
+        "R-106": "R-106/test cases/47_Verify_password_manager_preferences_view_when_da.md"
+      },
+      "G-048": {
+        "R-106": "R-106/test cases/48_Verify_password_manager_preferences_view_with_ma.md"
+      },
+      "G-009": {
+        "R-106": "R-106/test cases/9_View_saved_single_username_and_password.md"
+      },
+      "G-012": {
+        "R-107": "R-107/test cases/12_Remove_Single_Saved_Credential.md"
+      },
+      "G-013": {
+        "R-107": "R-107/test cases/13_Attempt_Removal_of_Non-Existent_Credential.md"
+      },
+      "G-028": {
+        "R-107": "R-107/test cases/28_Remove_Single_Saved_Credential.md"
+      },
+      "G-029": {
+        "R-107": "R-107/test cases/29_Attempt_to_Remove_Non-Existent_Credential.md"
+      },
+      "G-037": {
+        "R-107": "R-107/test cases/37_Remove_Single_Username_and_Password_for_a_Site.md"
+      },
+      "G-049": {
+        "R-107": "R-107/test cases/49_Verify_removal_of_single_credential_set_prevents.md"
+      },
+      "G-050": {
+        "R-107": "R-107/test cases/50_Attempt_removal_of_non-existent_credential_set.md"
+      },
+      "G-051": {
+        "R-107": "R-107/test cases/51_Removal_of_credential_while_site_autofill_is_act.md"
+      },
+      "G-014": {
+        "R-108": "R-108/test cases/14_Remove_all_stored_credentials_when_multiple_entr.md"
+      },
+      "G-015": {
+        "R-108": "R-108/test cases/15_Remove_all_stored_credentials_when_no_entries_ex.md"
+      },
+      "G-030": {
+        "R-108": "R-108/test cases/30_Remove_all_stored_credentials_when_credentials_e.md"
+      },
+      "G-031": {
+        "R-108": "R-108/test cases/31_Remove_all_stored_credentials_when_already_empty.md"
+      },
+      "G-038": {
+        "R-108": "R-108/test cases/38_Remove_all_saved_usernames_and_passwords_success.md"
+      },
+      "G-052": {
+        "R-108": "R-108/test cases/52_Remove_All_Credentials_with_Corrupted_Database_S.md"
+      },
+      "G-053": {
+        "R-108": "R-108/test cases/53_Remove_All_Credentials_During_Concurrent_Write_O.md"
+      },
+      "G-054": {
+        "R-108": "R-108/test cases/54_Multiple_Consecutive_Remove_All_Invocations.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

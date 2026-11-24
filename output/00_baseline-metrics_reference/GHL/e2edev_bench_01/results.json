@@ -29,95 +29,390 @@
   "generated_cases": [
     {
       "id": "G-001",
-      "title": "Drag valid product item to initiate drag event",
-      "description": "Verify that dragging a valid product item (li element with draggable=\"true\") successfully captures the product title and price.",
+      "title": "Drag valid draggable product item",
+      "description": "Verify that dragging a product item (li element with draggable='true' and data-testid='product-item-1') successfully initiates a drag event and captures the correct product title and price.",
       "requirement_ids": [
         "e2edev_bench_01-R-1"
       ]
     },
     {
       "id": "G-002",
-      "title": "Drop product item into designated drop area",
-      "description": "Verify that dropping a product item into the drop area (id=\"div1\", data-testid=\"drop-area\") updates the cart display (.box1 for quantity, .box2 for title, .box3 for unit price), supporting both different and repeated products.",
+      "title": "Attempt to drag non-draggable or invalid product element",
+      "description": "Verify that attempting to drag an element without draggable='true' or missing valid product data-testid attributes does not initiate the expected product transfer data event.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-1"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Drop single valid product into drop area",
+      "description": "Verify that dropping a valid product item (e.g., product-item-1) into the designated drop area (id=div1, data-testid=drop-area) successfully adds it to the cart, updating .box1 with quantity, .box2 with the product title, and .box3 with the unit price.",
       "requirement_ids": [
         "e2edev_bench_01-R-3"
       ]
     },
     {
-      "id": "G-003",
-      "title": "Calculate and display total price for cart items",
-      "description": "Verify that the system sums the prices of all products in the cart, formats the total to two decimal places with the currency symbol, and displays it in <div id=\"allMoney\">.",
-      "requirement_ids": [
-        "e2edev_bench_01-R-5"
-      ]
-    },
-    {
       "id": "G-004",
-      "title": "Normal State Transition - Drag Product and Drop into Cart",
-      "description": "Transition from Idle state to Dragging state when user drags a product item with draggable='true', and then to Cart Updated state when dropped into the drop area (id='div1'). Verifies that product title, unit price, quantity, and total price update correctly.",
+      "title": "Drop multiple different products into drop area",
+      "description": "Verify that dropping multiple distinct product items into the designated drop area successfully adds all of them to the cart and updates the display boxes accordingly.",
       "requirement_ids": [
-        "e2edev_bench_01-R-1",
-        "e2edev_bench_01-R-3",
-        "e2edev_bench_01-R-5"
+        "e2edev_bench_01-R-3"
       ]
     },
     {
       "id": "G-005",
-      "title": "Abnormal State Transition - Drop Outside Designated Drop Area",
-      "description": "Transition from Dragging state when a user attempts to drop a product item outside the designated drop area (id='div1'). Verifies that the cart display and total price remain unchanged.",
+      "title": "Drop repeated products into drop area",
+      "description": "Verify that dropping the same product item multiple times into the designated drop area correctly handles repeated products by updating quantities and displaying them appropriately.",
       "requirement_ids": [
-        "e2edev_bench_01-R-1",
         "e2edev_bench_01-R-3"
       ]
     },
     {
       "id": "G-006",
-      "title": "Forbidden Transition - Dragging Non-Draggable Element",
-      "description": "Attempt to initiate a drag event on an element where draggable is not set to 'true'. Verifies that the system ignores the event and does not capture product details for transfer.",
-      "requirement_ids": [
-        "e2edev_bench_01-R-1"
-      ]
-    },
-    {
-      "id": "G-007",
-      "title": "Drag and Drop Product Item to Cart and Verify Cart Display and Total Price",
-      "description": "User drags a product item from the product list and drops it into the designated drop area. The system initiates the drag event capturing title and price, updates the cart display showing quantity, title, and unit price, and calculates the total price displayed in the allMoney element.",
-      "requirement_ids": [
-        "e2edev_bench_01-R-1",
-        "e2edev_bench_01-R-3",
-        "e2edev_bench_01-R-5"
-      ]
-    },
-    {
-      "id": "G-008",
-      "title": "Add Repeated Products to Cart via Drag and Drop and Verify Updated Totals",
-      "description": "User drags and drops the same product item multiple times into the drop area. The system handles repeated products, updates the quantity and cart details, and correctly recalculates the total price formatted to two decimal places with the currency symbol.",
-      "requirement_ids": [
-        "e2edev_bench_01-R-1",
-        "e2edev_bench_01-R-3",
-        "e2edev_bench_01-R-5"
-      ]
-    },
-    {
-      "id": "G-009",
-      "title": "Drag Item Missing Price or Title Attributes",
-      "description": "Attempt to initiate a drag event on a product item where the title or price elements identified by data-testid are missing or contain malformed data to verify the system handles missing payload gracefully.",
-      "requirement_ids": [
-        "e2edev_bench_01-R-1"
-      ]
-    },
-    {
-      "id": "G-010",
-      "title": "Drop Product onto Invalid Drop Area",
-      "description": "Drag a valid product item and drop it outside the designated drop area (id='div1') to ensure the cart and display elements do not update incorrectly.",
+      "title": "Attempt drop outside the designated drop area",
+      "description": "Verify that attempting to drop a product item outside of the designated drop area (id=div1, data-testid=drop-area) does not add the item to the cart or update the cart display.",
       "requirement_ids": [
         "e2edev_bench_01-R-3"
       ]
     },
     {
+      "id": "G-007",
+      "title": "Calculate and display total price for a single cart item with valid formatting",
+      "description": "Partition for valid cart state containing one product item, verifying that the sum is correctly formatted to two decimal places with the currency symbol and displayed in <div id=\"allMoney\">.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-5"
+      ]
+    },
+    {
+      "id": "G-008",
+      "title": "Calculate and display total price for multiple distinct and repeated cart items",
+      "description": "Partition for valid cart state containing multiple products (both different and repeated items), ensuring correct summation and currency formatting in <div id=\"allMoney\">.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-5"
+      ]
+    },
+    {
+      "id": "G-009",
+      "title": "Calculate and display total price when the cart is empty",
+      "description": "Partition for empty cart state, ensuring the total price is correctly calculated as zero and displayed properly with the currency format in <div id=\"allMoney\">.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-5"
+      ]
+    },
+    {
+      "id": "G-010",
+      "title": "Drag minimum valid draggable product item",
+      "description": "Initiate drag event on the first valid product item (product-item-1) containing correct draggable attribute, title, and price to verify data capture at the boundary.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-1"
+      ]
+    },
+    {
       "id": "G-011",
-      "title": "Total Price Calculation with Malformed Currency Inputs",
-      "description": "Inject products with non-numeric price strings into the cart to test error handling and formatting robustness of the total price calculation displayed in the allMoney element.",
+      "title": "Drag non-draggable product element",
+      "description": "Attempt to drag a product item where the draggable attribute is explicitly set to false, verifying that the drag event is not initiated outside the valid boundary.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-1"
+      ]
+    },
+    {
+      "id": "G-012",
+      "title": "Drop Zero Products into Cart",
+      "description": "Test the drop area when no product items have been dropped into the designated drop area (id=\"div1\", data-testid=\"drop-area\"). Verify that the cart display and quantities remain at zero or empty.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-3"
+      ]
+    },
+    {
+      "id": "G-013",
+      "title": "Drop Single Product into Cart",
+      "description": "Test the drop area when exactly one product item (e.g., data-testid=\"product-item-1\") is dropped into the designated drop area (id=\"div1\", data-testid=\"drop-area\"). Verify that the quantity in .box1, title in .box2, and unit price in .box3 update correctly.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-3"
+      ]
+    },
+    {
+      "id": "G-014",
+      "title": "Drop Multiple Different Products into Cart",
+      "description": "Test dropping multiple distinct product items (e.g., data-testid=\"product-item-1\" and data-testid=\"product-item-2\") into the designated drop area (id=\"div1\", data-testid=\"drop-area\"). Verify that the system handles multiple different products and updates cart elements accordingly.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-3"
+      ]
+    },
+    {
+      "id": "G-015",
+      "title": "Drop Repeated Product Items into Cart",
+      "description": "Test dropping the same product item (e.g., data-testid=\"product-item-1\") multiple times consecutively into the designated drop area (id=\"div1\", data-testid=\"drop-area\"). Verify that the system supports repeated products and increments quantities correctly in .box1.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-3"
+      ]
+    },
+    {
+      "id": "G-016",
+      "title": "Calculate total price for empty cart",
+      "description": "Verify the total price displays '$0.00' when there are 0 products in the cart.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-5"
+      ]
+    },
+    {
+      "id": "G-017",
+      "title": "Calculate total price for single product",
+      "description": "Verify the total price displays correctly formatted to two decimal places with the currency symbol when there is 1 product in the cart.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-5"
+      ]
+    },
+    {
+      "id": "G-018",
+      "title": "Calculate total price for multiple products",
+      "description": "Verify the total price is correctly summed and formatted when multiple products are added to the cart.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-5"
+      ]
+    },
+    {
+      "id": "G-019",
+      "title": "Normal State Transition - Initiate Drag Event",
+      "description": "Verify that when a user drags a product item (li element with draggable='true') from the product list, the system transitions from Idle to Dragging state and successfully captures the product's title and price.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-1"
+      ]
+    },
+    {
+      "id": "G-020",
+      "title": "Abnormal State Transition - Attempt to Drag Non-Draggable Item",
+      "description": "Verify that when an attempt is made to drag an element that does not have draggable='true', the system remains in the Idle state and does not initiate a drag event or capture product details.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-1"
+      ]
+    },
+    {
+      "id": "G-021",
+      "title": "Normal State Transition - Drag and Drop Product to Cart",
+      "description": "Verify that dragging a valid product item and dropping it into the designated drop area successfully updates the cart display by adding the product title to .box2, unit price to .box3, and quantity to .box1.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-3"
+      ]
+    },
+    {
+      "id": "G-022",
+      "title": "Abnormal State Transition - Drop Outside Drop Area",
+      "description": "Verify that dropping a dragged product item outside of the designated drop area does not update the cart display (.box1, .box2, and .box3 remain unchanged).",
+      "requirement_ids": [
+        "e2edev_bench_01-R-3"
+      ]
+    },
+    {
+      "id": "G-023",
+      "title": "State Transition - Repeated Products Addition",
+      "description": "Verify that dropping the same product item multiple times into the drop area correctly updates the cart state to support repeated products by incrementing or updating the quantity and display fields accordingly.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-3"
+      ]
+    },
+    {
+      "id": "G-024",
+      "title": "Calculate and Display Total Price for Single Product in Cart",
+      "description": "Verify that when a single product is added to the cart, the system correctly calculates the total price, formats it to two decimal places with the appropriate currency symbol, and displays it in the #allMoney element.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-5"
+      ]
+    },
+    {
+      "id": "G-025",
+      "title": "Calculate and Display Total Price for Multiple Products in Cart",
+      "description": "Verify that when multiple different products are added to the cart, the system correctly sums their prices, formats the result to two decimal places with the currency symbol, and updates the #allMoney element.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-5"
+      ]
+    },
+    {
+      "id": "G-026",
+      "title": "Calculate and Display Total Price for Repeated Products in Cart",
+      "description": "Verify that when repeated products are added to the cart, the system accumulates the sum of all item instances correctly, formats the total to two decimal places with the currency symbol, and displays it in the #allMoney element.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-5"
+      ]
+    },
+    {
+      "id": "G-027",
+      "title": "Initiate drag event on valid draggable product item",
+      "description": "Verify that when a user drags a product item (li element with draggable='true' and data-testid='product-item-1') containing valid title and price elements, the system successfully initiates the drag event and captures both the title and price for transfer.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-1"
+      ]
+    },
+    {
+      "id": "G-028",
+      "title": "Attempt to drag non-draggable product element",
+      "description": "Verify that when a user attempts to drag a product list item where the draggable attribute is not set to true, the system does not initiate the drag event or capture transfer data.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-1"
+      ]
+    },
+    {
+      "id": "G-029",
+      "title": "Attempt to drag product item missing title or price identifiers",
+      "description": "Verify that when a user attempts to drag a product item that lacks the expected data-testid attributes for title or price, the system handles the incomplete data condition without crashing and fails to capture the required transfer data.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-1"
+      ]
+    },
+    {
+      "id": "G-030",
+      "title": "Drop single product into drop area updates cart display",
+      "description": "Verify that dropping a valid product item into the designated drop area successfully updates .box2 with the title, .box3 with the unit price, and .box1 with the quantity.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-3"
+      ]
+    },
+    {
+      "id": "G-031",
+      "title": "Drop repeated product into drop area updates quantity and cart display",
+      "description": "Verify that dropping an already existing product item into the drop area updates the cart by incrementing the quantity in .box1 and updating .box2 and .box3 accordingly.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-3"
+      ]
+    },
+    {
+      "id": "G-032",
+      "title": "Drop different product into drop area adds new entry",
+      "description": "Verify that dropping a different product item into the drop area adds a new distinct entry to the cart displaying its title in .box2, unit price in .box3, and quantity in .box1.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-3"
+      ]
+    },
+    {
+      "id": "G-033",
+      "title": "Calculate total price for single item in cart",
+      "description": "Verify that the system calculates and displays the total price in the div#allMoney element correctly formatted to two decimal places with the currency symbol when a single product is present in the cart.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-5"
+      ]
+    },
+    {
+      "id": "G-034",
+      "title": "Calculate total price for multiple different items in cart",
+      "description": "Verify that the system correctly sums the prices of multiple different products in the cart and displays the formatted total with the currency symbol in the div#allMoney element.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-5"
+      ]
+    },
+    {
+      "id": "G-035",
+      "title": "Calculate total price for repeated items in cart",
+      "description": "Verify that the system correctly sums the prices of repeated products added to the cart and displays the total formatted to two decimal places with the currency symbol in the div#allMoney element.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-5"
+      ]
+    },
+    {
+      "id": "G-036",
+      "title": "Calculate total price with empty cart",
+      "description": "Verify that the system displays a total of $0.00 formatted correctly in the div#allMoney element when the cart contains no products.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-5"
+      ]
+    },
+    {
+      "id": "G-037",
+      "title": "Successful Drag Event Initiation for Product Item",
+      "description": "Verify that when a user drags a product item (li element with draggable='true' and data-testid='product-item-1') from the product list, the system initiates a drag event and successfully captures the product's title (from data-testid='product-title-1') and price (from data-testid='product-price-1') for transfer.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-1"
+      ]
+    },
+    {
+      "id": "G-038",
+      "title": "Successful Drag and Drop of a Single Product to Cart",
+      "description": "Verify that a user can successfully drag a product item (e.g., data-testid='product-item-1') and drop it into the designated drop area (id='div1', data-testid='drop-area'), and the cart display automatically updates with the product title in .box2, unit price in .box3, and quantity in .box1.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-1",
+        "e2edev_bench_01-R-3",
+        "e2edev_bench_01-R-5"
+      ]
+    },
+    {
+      "id": "G-039",
+      "title": "Successful Drag and Drop of Multiple Different Products to Cart",
+      "description": "Verify that a user can drag and drop multiple different product items into the drop area, and the cart display updates correctly for each added item while correctly reflecting quantities and pricing.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-1",
+        "e2edev_bench_01-R-3",
+        "e2edev_bench_01-R-5"
+      ]
+    },
+    {
+      "id": "G-040",
+      "title": "Successful Drag and Drop of Repeated Products to Cart",
+      "description": "Verify that a user can drag and drop the same product item multiple times into the drop area, and the system supports adding repeated products by incrementing the quantity in .box1 and updating totals accordingly.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-1",
+        "e2edev_bench_01-R-3",
+        "e2edev_bench_01-R-5"
+      ]
+    },
+    {
+      "id": "G-041",
+      "title": "Calculate and display total price for a single product in cart",
+      "description": "Drag a product item to the drop area and verify that the total price is correctly calculated, formatted to two decimal places with the currency symbol, and displayed in the id='allMoney' element based on requirement e2edev_bench_01-R-5.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-5"
+      ]
+    },
+    {
+      "id": "G-042",
+      "title": "Calculate and display total price for multiple and repeated products in cart",
+      "description": "Drag multiple distinct and repeated product items into the drop area, and verify that the system correctly sums all product prices, formats the total to two decimal places with the currency symbol, and displays it in the id='allMoney' element according to requirement e2edev_bench_01-R-5.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-5"
+      ]
+    },
+    {
+      "id": "G-043",
+      "title": "Drag non-draggable product item element",
+      "description": "Attempt to initiate a drag event on a product item where the draggable attribute is incorrectly set to false or omitted, verifying that the system fails to capture the product data.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-1"
+      ]
+    },
+    {
+      "id": "G-044",
+      "title": "Drag product item missing child elements",
+      "description": "Initiate a drag event on a product item that lacks either the product-title or product-price data-testid elements, testing the system's robustness against incomplete DOM structures.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-1"
+      ]
+    },
+    {
+      "id": "G-045",
+      "title": "Drop product into an invalid drop zone",
+      "description": "Verify that dropping a product item onto an element other than the designated drop area (id='div1', data-testid='drop-area') fails to update the cart display (.box1, .box2, .box3).",
+      "requirement_ids": [
+        "e2edev_bench_01-R-3"
+      ]
+    },
+    {
+      "id": "G-046",
+      "title": "Drop element without valid product data payload",
+      "description": "Verify the system behavior when a generic draggable element missing product data-testid attributes is dropped into the designated drop area (id='div1', data-testid='drop-area').",
+      "requirement_ids": [
+        "e2edev_bench_01-R-3"
+      ]
+    },
+    {
+      "id": "G-047",
+      "title": "Calculate Total Price with Floating Point Precision Errors",
+      "description": "Test the total price calculation in <div id=\"allMoney\"> when cart items have prices with multiple decimal places that could result in floating-point rounding inaccuracies (e.g., 10.10 + 20.20 + 30.30), ensuring the output is correctly formatted to exactly two decimal places.",
+      "requirement_ids": [
+        "e2edev_bench_01-R-5"
+      ]
+    },
+    {
+      "id": "G-048",
+      "title": "Calculate Total Price with Unformatted or Malformed Price Strings",
+      "description": "Test the system's resilience when products with malformed price strings (e.g., missing currency symbols or containing unexpected characters) are added to the cart, verifying that summation still computes correctly and formats to two decimal places with the appropriate currency symbol in <div id=\"allMoney\">.",
       "requirement_ids": [
         "e2edev_bench_01-R-5"
       ]
@@ -271,118 +566,162 @@
   ],
   "evaluation": {
     "status": "evaluated",
-    "generated_count": 11,
+    "generated_count": 48,
     "reference_count": 12,
     "matches": [
       {
-        "generated_id": "G-001",
-        "reference_id": "e2edev_bench_01-R-1-TC-1",
-        "similarity": 0.9231304913604033
-      },
-      {
-        "generated_id": "G-002",
-        "reference_id": "e2edev_bench_01-R-3-TC-3",
-        "similarity": 0.9033426850875934
-      },
-      {
         "generated_id": "G-003",
-        "reference_id": "e2edev_bench_01-R-5-TC-4",
-        "similarity": 0.8792265446512734
-      },
-      {
-        "generated_id": "G-004",
-        "reference_id": "e2edev_bench_01-R-3-TC-1",
-        "similarity": 0.9070238505132566
-      },
-      {
-        "generated_id": "G-005",
-        "reference_id": "e2edev_bench_01-R-3-TC-2",
-        "similarity": 0.846348166395287
-      },
-      {
-        "generated_id": "G-006",
-        "reference_id": "e2edev_bench_01-R-1-TC-4",
-        "similarity": 0.9132204437291771
-      },
-      {
-        "generated_id": "G-007",
-        "reference_id": "e2edev_bench_01-R-5-TC-1",
-        "similarity": 0.9131208021316131
-      },
-      {
-        "generated_id": "G-008",
-        "reference_id": "e2edev_bench_01-R-5-TC-3",
-        "similarity": 0.9280779818659298
-      },
-      {
-        "generated_id": "G-009",
-        "reference_id": "e2edev_bench_01-R-1-TC-3",
-        "similarity": 0.8779212876038232
-      },
-      {
-        "generated_id": "G-010",
         "reference_id": "e2edev_bench_01-R-3-TC-4",
-        "similarity": 0.8410732978020239
+        "similarity": 0.8924518028093394
       },
       {
-        "generated_id": "G-011",
+        "generated_id": "G-014",
+        "reference_id": "e2edev_bench_01-R-3-TC-2",
+        "similarity": 0.9185114421358281
+      },
+      {
+        "generated_id": "G-019",
+        "reference_id": "e2edev_bench_01-R-1-TC-1",
+        "similarity": 0.9382462984243619
+      },
+      {
+        "generated_id": "G-025",
         "reference_id": "e2edev_bench_01-R-5-TC-2",
-        "similarity": 0.8568226074715135
+        "similarity": 0.9155656680398366
+      },
+      {
+        "generated_id": "G-027",
+        "reference_id": "e2edev_bench_01-R-1-TC-2",
+        "similarity": 0.9112857876497529
+      },
+      {
+        "generated_id": "G-028",
+        "reference_id": "e2edev_bench_01-R-1-TC-4",
+        "similarity": 0.9373708379474036
+      },
+      {
+        "generated_id": "G-035",
+        "reference_id": "e2edev_bench_01-R-5-TC-3",
+        "similarity": 0.9102952266646791
+      },
+      {
+        "generated_id": "G-037",
+        "reference_id": "e2edev_bench_01-R-1-TC-3",
+        "similarity": 0.9082732424378284
+      },
+      {
+        "generated_id": "G-038",
+        "reference_id": "e2edev_bench_01-R-3-TC-1",
+        "similarity": 0.9241082652444156
+      },
+      {
+        "generated_id": "G-040",
+        "reference_id": "e2edev_bench_01-R-3-TC-3",
+        "similarity": 0.923452391987431
+      },
+      {
+        "generated_id": "G-041",
+        "reference_id": "e2edev_bench_01-R-5-TC-1",
+        "similarity": 0.9172521444630228
+      },
+      {
+        "generated_id": "G-042",
+        "reference_id": "e2edev_bench_01-R-5-TC-4",
+        "similarity": 0.9077292689672599
       }
     ],
-    "unmatched_generated_ids": [],
-    "unmatched_reference_ids": [
-      "e2edev_bench_01-R-1-TC-2"
+    "unmatched_generated_ids": [
+      "G-001",
+      "G-002",
+      "G-004",
+      "G-005",
+      "G-006",
+      "G-007",
+      "G-008",
+      "G-009",
+      "G-010",
+      "G-011",
+      "G-012",
+      "G-013",
+      "G-015",
+      "G-016",
+      "G-017",
+      "G-018",
+      "G-020",
+      "G-021",
+      "G-022",
+      "G-023",
+      "G-024",
+      "G-026",
+      "G-029",
+      "G-030",
+      "G-031",
+      "G-032",
+      "G-033",
+      "G-034",
+      "G-036",
+      "G-039",
+      "G-043",
+      "G-044",
+      "G-045",
+      "G-046",
+      "G-047",
+      "G-048"
     ],
-    "precision": 1.0,
-    "recall": 0.9166666666666666,
-    "f1": 0.9565217391304348,
+    "unmatched_reference_ids": [],
+    "precision": 0.25,
+    "recall": 1.0,
+    "f1": 0.4,
     "embedding_usage": {
-      "input_tokens": 618,
+      "input_tokens": 2746,
       "output_tokens": null,
       "details": {
-        "text_prompt_tokens": 618
+        "text_prompt_tokens": 2746
       },
       "status": "partial"
     },
-    "embedding_requests": 1
+    "embedding_requests": 3
   },
   "generation": {
     "selected_techniques": [
       "equivalence_partitioning",
+      "boundary_value_analysis",
       "state_transition",
+      "decision_table",
       "use_case",
       "error_guessing"
     ],
     "technique_rationales": {
-      "equivalence_partitioning": "Cover important input partitions such as dragging different product items versus repeated products into the drop area.",
-      "state_transition": "Cover states and transitions involved in dragging a product, dropping it into the designated drop area, and the subsequent cart display updates.",
-      "use_case": "Cover the end-to-end user flow of selecting a product item, dragging and dropping it into the cart area, and verifying the updated cart display and total price calculation.",
-      "error_guessing": "Explore plausible failures and abnormal behaviors like dropping elements outside the designated drop area or handling incorrect data formats during transfer."
+      "equivalence_partitioning": "Partition product item inputs and cart contents into valid and invalid classes for adding items and calculating total prices.",
+      "boundary_value_analysis": "Test formatting and quantity limits such as single and repeated product additions, and two decimal place currency rounding limits.",
+      "state_transition": "Cover the states and transitions of product items being dragged, dropped into the drop area, and updating the cart display and total price.",
+      "decision_table": "Combine conditions such as adding different versus repeated products and verify resulting actions on cart quantities, unit prices, and titles.",
+      "use_case": "Cover the end-to-end user flow of dragging a product from the list, dropping it into the designated drop area, and verifying the updated cart display and total price.",
+      "error_guessing": "Explore plausible failures such as dragging non-draggable elements or dropping outside the designated drop area."
     },
     "prompt_version": null
   },
   "usage": {
     "generation": {
-      "input_tokens": 3625,
-      "output_tokens": 1428,
+      "input_tokens": 13333,
+      "output_tokens": 5914,
       "details": {
-        "text_prompt_tokens": 3625,
-        "total_tokens": 5053
+        "text_prompt_tokens": 13333,
+        "total_tokens": 19247
       },
       "status": "available"
     },
     "generation_attempts": [],
     "generation_calls": [],
     "embedding": {
-      "input_tokens": 618,
+      "input_tokens": 2746,
       "output_tokens": null,
       "details": {
-        "text_prompt_tokens": 618
+        "text_prompt_tokens": 2746
       },
       "status": "partial"
     },
-    "embedding_requests": 1
+    "embedding_requests": 3
   },
   "links": {
     "requirements": {
@@ -391,45 +730,155 @@
       "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/requirement.md"
     },
     "cases": {
-      "G-001": {
-        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/1_Drag_valid_product_item_to_initiate_drag_event.md"
-      },
-      "G-004": {
-        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/4_Normal_State_Transition_-_Drag_Product_and_Drop.md",
-        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/4_Normal_State_Transition_-_Drag_Product_and_Drop.md",
-        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/4_Normal_State_Transition_-_Drag_Product_and_Drop.md"
-      },
-      "G-005": {
-        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/5_Abnormal_State_Transition_-_Drop_Outside_Designa.md",
-        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/5_Abnormal_State_Transition_-_Drop_Outside_Designa.md"
-      },
-      "G-006": {
-        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/6_Forbidden_Transition_-_Dragging_Non-Draggable_El.md"
-      },
-      "G-007": {
-        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/7_Drag_and_Drop_Product_Item_to_Cart_and_Verify_Ca.md",
-        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/7_Drag_and_Drop_Product_Item_to_Cart_and_Verify_Ca.md",
-        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/7_Drag_and_Drop_Product_Item_to_Cart_and_Verify_Ca.md"
-      },
-      "G-008": {
-        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/8_Add_Repeated_Products_to_Cart_via_Drag_and_Drop.md",
-        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/8_Add_Repeated_Products_to_Cart_via_Drag_and_Drop.md",
-        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/8_Add_Repeated_Products_to_Cart_via_Drag_and_Drop.md"
-      },
-      "G-009": {
-        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/9_Drag_Item_Missing_Price_or_Title_Attributes.md"
-      },
       "G-010": {
-        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/10_Drop_Product_onto_Invalid_Drop_Area.md"
-      },
-      "G-002": {
-        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/2_Drop_product_item_into_designated_drop_area.md"
+        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/10_Drag_minimum_valid_draggable_product_item.md"
       },
       "G-011": {
-        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/11_Total_Price_Calculation_with_Malformed_Currency.md"
+        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/11_Drag_non-draggable_product_element.md"
+      },
+      "G-019": {
+        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/19_Normal_State_Transition_-_Initiate_Drag_Event.md"
+      },
+      "G-001": {
+        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/1_Drag_valid_draggable_product_item.md"
+      },
+      "G-020": {
+        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/20_Abnormal_State_Transition_-_Attempt_to_Drag_Non.md"
+      },
+      "G-027": {
+        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/27_Initiate_drag_event_on_valid_draggable_product_i.md"
+      },
+      "G-028": {
+        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/28_Attempt_to_drag_non-draggable_product_element.md"
+      },
+      "G-029": {
+        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/29_Attempt_to_drag_product_item_missing_title_or_pr.md"
+      },
+      "G-002": {
+        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/2_Attempt_to_drag_non-draggable_or_invalid_product.md"
+      },
+      "G-037": {
+        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/37_Successful_Drag_Event_Initiation_for_Product_Ite.md"
+      },
+      "G-038": {
+        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/38_Successful_Drag_and_Drop_of_a_Single_Product_to.md",
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/38_Successful_Drag_and_Drop_of_a_Single_Product_to.md",
+        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/38_Successful_Drag_and_Drop_of_a_Single_Product_to.md"
+      },
+      "G-039": {
+        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/39_Successful_Drag_and_Drop_of_Multiple_Different_P.md",
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/39_Successful_Drag_and_Drop_of_Multiple_Different_P.md",
+        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/39_Successful_Drag_and_Drop_of_Multiple_Different_P.md"
+      },
+      "G-040": {
+        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/40_Successful_Drag_and_Drop_of_Repeated_Products_to.md",
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/40_Successful_Drag_and_Drop_of_Repeated_Products_to.md",
+        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/40_Successful_Drag_and_Drop_of_Repeated_Products_to.md"
+      },
+      "G-043": {
+        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/43_Drag_non-draggable_product_item_element.md"
+      },
+      "G-044": {
+        "e2edev_bench_01-R-1": "e2edev_bench_01-R-1/test cases/44_Drag_product_item_missing_child_elements.md"
+      },
+      "G-012": {
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/12_Drop_Zero_Products_into_Cart.md"
+      },
+      "G-013": {
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/13_Drop_Single_Product_into_Cart.md"
+      },
+      "G-014": {
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/14_Drop_Multiple_Different_Products_into_Cart.md"
+      },
+      "G-015": {
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/15_Drop_Repeated_Product_Items_into_Cart.md"
+      },
+      "G-021": {
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/21_Normal_State_Transition_-_Drag_and_Drop_Product.md"
+      },
+      "G-022": {
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/22_Abnormal_State_Transition_-_Drop_Outside_Drop_Ar.md"
+      },
+      "G-023": {
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/23_State_Transition_-_Repeated_Products_Addition.md"
+      },
+      "G-030": {
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/30_Drop_single_product_into_drop_area_updates_cart.md"
+      },
+      "G-031": {
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/31_Drop_repeated_product_into_drop_area_updates_qua.md"
+      },
+      "G-032": {
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/32_Drop_different_product_into_drop_area_adds_new_e.md"
       },
       "G-003": {
-        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/3_Calculate_and_display_total_price_for_cart_items.md"
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/3_Drop_single_valid_product_into_drop_area.md"
+      },
+      "G-045": {
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/45_Drop_product_into_an_invalid_drop_zone.md"
+      },
+      "G-046": {
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/46_Drop_element_without_valid_product_data_payload.md"
+      },
+      "G-004": {
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/4_Drop_multiple_different_products_into_drop_area.md"
+      },
+      "G-005": {
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/5_Drop_repeated_products_into_drop_area.md"
+      },
+      "G-006": {
+        "e2edev_bench_01-R-3": "e2edev_bench_01-R-3/test cases/6_Attempt_drop_outside_the_designated_drop_area.md"
+      },
+      "G-016": {
+        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/16_Calculate_total_price_for_empty_cart.md"
+      },
+      "G-017": {
+        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/17_Calculate_total_price_for_single_product.md"
+      },
+      "G-018": {
+        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/18_Calculate_total_price_for_multiple_products.md"
+      },
+      "G-024": {
+        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/24_Calculate_and_Display_Total_Price_for_Single_Pro.md"
+      },
+      "G-025": {
+        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/25_Calculate_and_Display_Total_Price_for_Multiple_P.md"
+      },
+      "G-026": {
+        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/26_Calculate_and_Display_Total_Price_for_Repeated_P.md"
+      },
+      "G-033": {
+        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/33_Calculate_total_price_for_single_item_in_cart.md"
+      },
+      "G-034": {
+        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/34_Calculate_total_price_for_multiple_different_ite.md"
+      },
+      "G-035": {
+        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/35_Calculate_total_price_for_repeated_items_in_cart.md"
+      },
+      "G-036": {
+        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/36_Calculate_total_price_with_empty_cart.md"
+      },
+      "G-041": {
+        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/41_Calculate_and_display_total_price_for_a_single_p.md"
+      },
+      "G-042": {
+        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/42_Calculate_and_display_total_price_for_multiple_a.md"
+      },
+      "G-047": {
+        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/47_Calculate_Total_Price_with_Floating_Point_Precis.md"
+      },
+      "G-048": {
+        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/48_Calculate_Total_Price_with_Unformatted_or_Malfor.md"
+      },
+      "G-007": {
+        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/7_Calculate_and_display_total_price_for_a_single_c.md"
+      },
+      "G-008": {
+        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/8_Calculate_and_display_total_price_for_multiple_d.md"
+      },
+      "G-009": {
+        "e2edev_bench_01-R-5": "e2edev_bench_01-R-5/test cases/9_Calculate_and_display_total_price_when_the_cart.md"
       }
     }
   },

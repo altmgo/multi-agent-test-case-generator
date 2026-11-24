@@ -4,4 +4,4 @@ Case ID · G-001
 
 Requirements · R-073
 
-Verify that a visited link is correctly recorded in the Global History.
+Verify that a visited link is correctly recorded to the Global History.

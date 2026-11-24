@@ -128,15 +128,15 @@
     {
       "id": "G-002",
       "title": "Delete single bookmark",
-      "description": "Verify that a bookmark is properly deleted from the bookmarks file and is no longer displayed from any access points.",
+      "description": "Verify that a bookmark is properly deleted from the bookmarks file and no longer displayed from all access points.",
       "requirement_ids": [
         "R-002"
       ]
     },
     {
       "id": "G-003",
-      "title": "Add and delete bookmarks on personal toolbar",
-      "description": "Verify that bookmarks can be both added and deleted directly from the personal toolbar.",
+      "title": "Manage bookmarks on personal toolbar",
+      "description": "Verify that bookmarks can be both added and deleted from the personal toolbar.",
       "requirement_ids": [
         "R-003"
       ]
@@ -159,15 +159,15 @@
     },
     {
       "id": "G-006",
-      "title": "Validate default bookmarks",
-      "description": "Verify that bookmarks within the default bookmarks file packaged with the browser are valid links.",
+      "title": "Verify default packaged bookmarks",
+      "description": "Verify that bookmarks within the default bookmarks file packaged with the browser contain valid links.",
       "requirement_ids": [
         "R-006"
       ]
     },
     {
       "id": "G-007",
-      "title": "Save changes to bookmark item",
+      "title": "Save bookmark changes with integrity",
       "description": "Verify that changes to a bookmark item are saved without loss of item integrity.",
       "requirement_ids": [
         "R-007"
@@ -176,15 +176,15 @@
     {
       "id": "G-008",
       "title": "Delete bookmarks folder",
-      "description": "Verify that a bookmarks folder is successfully deleted.",
+      "description": "Verify that a bookmarks folder can be deleted successfully.",
       "requirement_ids": [
         "R-008"
       ]
     },
     {
       "id": "G-009",
-      "title": "Add and delete bookmarks separators",
-      "description": "Verify that bookmarks separators can be successfully added and deleted.",
+      "title": "Add and delete bookmark separators",
+      "description": "Verify that bookmarks separators can be added and deleted successfully.",
       "requirement_ids": [
         "R-009"
       ]
@@ -192,15 +192,15 @@
     {
       "id": "G-010",
       "title": "Persist bookmark changes over restart or crash",
-      "description": "Verify that bookmarks changes are saved and persist over a browser restart or crash.",
+      "description": "Verify that bookmark changes are successfully saved over a browser restart or crash.",
       "requirement_ids": [
         "R-010"
       ]
     },
     {
       "id": "G-011",
-      "title": "View properties execution negative case",
-      "description": "Verify view properties execution behavior for bookmarks, folders, and separators according to negative specifications.",
+      "title": "View properties negative test",
+      "description": "Verify that view properties execute correctly for bookmarks, folders, and separators in a negative test context.",
       "requirement_ids": [
         "R-011"
       ]
@@ -208,14 +208,14 @@
     {
       "id": "G-012",
       "title": "Inline bookmark renaming",
-      "description": "Verify that bookmarks can be renamed inline without having to use the bookmarks properties dialog.",
+      "description": "Verify that bookmarks can be renamed inline without needing to use the bookmarks properties dialog.",
       "requirement_ids": [
         "R-012"
       ]
     },
     {
       "id": "G-013",
-      "title": "Find bookmarks using custom keyword",
+      "title": "Find bookmark using custom keyword",
       "description": "Verify that bookmarks can be found using a user-defined custom keyword.",
       "requirement_ids": [
         "R-013"
@@ -223,8 +223,8 @@
     },
     {
       "id": "G-014",
-      "title": "Sort and reverse-sort bookmarks per column",
-      "description": "Verify that bookmarks are sorted and reverse-sorted per column correctly.",
+      "title": "Sort and reverse-sort columns",
+      "description": "Verify that bookmarks are sorted and reverse-sorted per column.",
       "requirement_ids": [
         "R-014"
       ]
@@ -240,14 +240,14 @@
     {
       "id": "G-016",
       "title": "Show and hide bookmark columns",
-      "description": "Verify that bookmark columns can be explicitly shown and hidden.",
+      "description": "Verify that bookmark columns can be shown and hidden.",
       "requirement_ids": [
         "R-016"
       ]
     },
     {
       "id": "G-017",
-      "title": "Delete multiple bookmarks at once",
+      "title": "Batch delete multiple bookmarks",
       "description": "Verify that several bookmarks can be deleted at one time.",
       "requirement_ids": [
         "R-017"
@@ -255,8 +255,8 @@
     },
     {
       "id": "G-018",
-      "title": "Prevent dropping bookmark onto itself or immediate parent/child (Abnormal)",
-      "description": "Verify that it is not possible to drop a bookmark item onto itself or its immediate parent or child.",
+      "title": "Abnormal drag and drop restriction on self and immediate relations",
+      "description": "Verify that it is not possible to drop a bookmark item onto itself or onto its immediate parent or child.",
       "requirement_ids": [
         "R-018"
       ]
@@ -497,12 +497,12 @@
       {
         "generated_id": "G-002",
         "reference_id": "TC-002",
-        "similarity": 0.8811123121341
+        "similarity": 0.8824285658187918
       },
       {
         "generated_id": "G-003",
         "reference_id": "TC-003",
-        "similarity": 0.874477617187541
+        "similarity": 0.8750727472651236
       },
       {
         "generated_id": "G-004",
@@ -517,47 +517,47 @@
       {
         "generated_id": "G-006",
         "reference_id": "TC-006",
-        "similarity": 0.8931537086704652
+        "similarity": 0.8946234934101817
       },
       {
         "generated_id": "G-007",
         "reference_id": "TC-007",
-        "similarity": 0.8357264194687098
+        "similarity": 0.8290807022065689
       },
       {
         "generated_id": "G-008",
         "reference_id": "TC-008",
-        "similarity": 0.8823055535761425
+        "similarity": 0.8934707003378815
       },
       {
         "generated_id": "G-009",
         "reference_id": "TC-009",
-        "similarity": 0.898685591627965
+        "similarity": 0.9011273019840365
       },
       {
         "generated_id": "G-010",
         "reference_id": "TC-010",
-        "similarity": 0.8633026434256968
+        "similarity": 0.8640172471430125
       },
       {
         "generated_id": "G-011",
         "reference_id": "TC-011",
-        "similarity": 0.820066166105018
+        "similarity": 0.8294853842401091
       },
       {
         "generated_id": "G-012",
         "reference_id": "TC-012",
-        "similarity": 0.8731454708972768
+        "similarity": 0.8718663626776104
       },
       {
         "generated_id": "G-013",
         "reference_id": "TC-013",
-        "similarity": 0.8753088105018416
+        "similarity": 0.87329835564811
       },
       {
         "generated_id": "G-014",
         "reference_id": "TC-014",
-        "similarity": 0.8873201082191321
+        "similarity": 0.8776095199975962
       },
       {
         "generated_id": "G-015",
@@ -567,17 +567,17 @@
       {
         "generated_id": "G-016",
         "reference_id": "TC-016",
-        "similarity": 0.8749149380356571
+        "similarity": 0.8795886938260807
       },
       {
         "generated_id": "G-017",
         "reference_id": "TC-017",
-        "similarity": 0.8764839105283064
+        "similarity": 0.8801235144107213
       },
       {
         "generated_id": "G-018",
         "reference_id": "TC-018",
-        "similarity": 0.8570073939904729
+        "similarity": 0.8680784780712463
       }
     ],
     "unmatched_generated_ids": [],
@@ -586,10 +586,10 @@
     "recall": 1.0,
     "f1": 1.0,
     "embedding_usage": {
-      "input_tokens": 5110,
+      "input_tokens": 5101,
       "output_tokens": null,
       "details": {
-        "text_prompt_tokens": 5110
+        "text_prompt_tokens": 5101
       },
       "status": "partial"
     },
@@ -603,20 +603,20 @@
   "usage": {
     "generation": {
       "input_tokens": 1024,
-      "output_tokens": 1295,
+      "output_tokens": 1287,
       "details": {
         "text_prompt_tokens": 1024,
-        "total_tokens": 2319
+        "total_tokens": 2311
       },
       "status": "available"
     },
     "generation_attempts": [],
     "generation_calls": [],
     "embedding": {
-      "input_tokens": 5110,
+      "input_tokens": 5101,
       "output_tokens": null,
       "details": {
-        "text_prompt_tokens": 5110
+        "text_prompt_tokens": 5101
       },
       "status": "partial"
     },
@@ -651,7 +651,7 @@
         "R-002": "R-002/test cases/2_Delete_single_bookmark.md"
       },
       "G-003": {
-        "R-003": "R-003/test cases/3_Add_and_delete_bookmarks_on_personal_toolbar.md"
+        "R-003": "R-003/test cases/3_Manage_bookmarks_on_personal_toolbar.md"
       },
       "G-004": {
         "R-004": "R-004/test cases/4_Insert_new_bookmark_folder.md"
@@ -660,31 +660,31 @@
         "R-005": "R-005/test cases/5_Launch_bookmark_via_double-click.md"
       },
       "G-006": {
-        "R-006": "R-006/test cases/6_Validate_default_bookmarks.md"
+        "R-006": "R-006/test cases/6_Verify_default_packaged_bookmarks.md"
       },
       "G-007": {
-        "R-007": "R-007/test cases/7_Save_changes_to_bookmark_item.md"
+        "R-007": "R-007/test cases/7_Save_bookmark_changes_with_integrity.md"
       },
       "G-008": {
         "R-008": "R-008/test cases/8_Delete_bookmarks_folder.md"
       },
       "G-009": {
-        "R-009": "R-009/test cases/9_Add_and_delete_bookmarks_separators.md"
+        "R-009": "R-009/test cases/9_Add_and_delete_bookmark_separators.md"
       },
       "G-010": {
         "R-010": "R-010/test cases/10_Persist_bookmark_changes_over_restart_or_crash.md"
       },
       "G-011": {
-        "R-011": "R-011/test cases/11_View_properties_execution_negative_case.md"
+        "R-011": "R-011/test cases/11_View_properties_negative_test.md"
       },
       "G-012": {
         "R-012": "R-012/test cases/12_Inline_bookmark_renaming.md"
       },
       "G-013": {
-        "R-013": "R-013/test cases/13_Find_bookmarks_using_custom_keyword.md"
+        "R-013": "R-013/test cases/13_Find_bookmark_using_custom_keyword.md"
       },
       "G-014": {
-        "R-014": "R-014/test cases/14_Sort_and_reverse-sort_bookmarks_per_column.md"
+        "R-014": "R-014/test cases/14_Sort_and_reverse-sort_columns.md"
       },
       "G-015": {
         "R-015": "R-015/test cases/15_Resize_bookmark_columns.md"
@@ -693,10 +693,10 @@
         "R-016": "R-016/test cases/16_Show_and_hide_bookmark_columns.md"
       },
       "G-017": {
-        "R-017": "R-017/test cases/17_Delete_multiple_bookmarks_at_once.md"
+        "R-017": "R-017/test cases/17_Batch_delete_multiple_bookmarks.md"
       },
       "G-018": {
-        "R-018": "R-018/test cases/18_Prevent_dropping_bookmark_onto_itself_or_immedia.md"
+        "R-018": "R-018/test cases/18_Abnormal_drag_and_drop_restriction_on_self_and_i.md"
       }
     }
   },

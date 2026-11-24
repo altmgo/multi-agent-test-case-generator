@@ -4,73 +4,79 @@
   "similarity_threshold": 0.7,
   "matches": [
     {
-      "generated_id": "G-003",
-      "reference_id": "TC-075",
-      "similarity": 0.89594983080805
-    },
-    {
-      "generated_id": "G-004",
-      "reference_id": "TC-076",
-      "similarity": 0.889333888054984
-    },
-    {
-      "generated_id": "G-006",
-      "reference_id": "TC-078",
-      "similarity": 0.8850027226629307
-    },
-    {
-      "generated_id": "G-007",
-      "reference_id": "TC-079",
-      "similarity": 0.9006292725782056
-    },
-    {
       "generated_id": "G-010",
-      "reference_id": "TC-080",
-      "similarity": 0.8672112536652309
-    },
-    {
-      "generated_id": "G-011",
-      "reference_id": "TC-081",
-      "similarity": 0.8759516867155722
-    },
-    {
-      "generated_id": "G-012",
-      "reference_id": "TC-082",
-      "similarity": 0.84820689291581
-    },
-    {
-      "generated_id": "G-014",
-      "reference_id": "TC-084",
-      "similarity": 0.8779987051787395
-    },
-    {
-      "generated_id": "G-027",
-      "reference_id": "TC-074",
-      "similarity": 0.8526546531563286
-    },
-    {
-      "generated_id": "G-028",
-      "reference_id": "TC-083",
-      "similarity": 0.9041068051630619
-    },
-    {
-      "generated_id": "G-030",
       "reference_id": "TC-077",
-      "similarity": 0.8980751082999122
+      "similarity": 0.8912800856914596
     },
     {
-      "generated_id": "G-032",
+      "generated_id": "G-013",
+      "reference_id": "TC-078",
+      "similarity": 0.8895329680059412
+    },
+    {
+      "generated_id": "G-040",
+      "reference_id": "TC-074",
+      "similarity": 0.8693146158357558
+    },
+    {
+      "generated_id": "G-042",
+      "reference_id": "TC-076",
+      "similarity": 0.8838233903786084
+    },
+    {
+      "generated_id": "G-067",
+      "reference_id": "TC-084",
+      "similarity": 0.8757191159993132
+    },
+    {
+      "generated_id": "G-068",
       "reference_id": "TC-073",
-      "similarity": 0.8660513653958244
+      "similarity": 0.8751659714278965
+    },
+    {
+      "generated_id": "G-090",
+      "reference_id": "TC-082",
+      "similarity": 0.858360879966559
+    },
+    {
+      "generated_id": "G-103",
+      "reference_id": "TC-075",
+      "similarity": 0.8997840944700954
+    },
+    {
+      "generated_id": "G-110",
+      "reference_id": "TC-079",
+      "similarity": 0.9077573648761799
+    },
+    {
+      "generated_id": "G-113",
+      "reference_id": "TC-080",
+      "similarity": 0.8750074550327293
+    },
+    {
+      "generated_id": "G-120",
+      "reference_id": "TC-083",
+      "similarity": 0.8883642160779791
+    },
+    {
+      "generated_id": "G-144",
+      "reference_id": "TC-081",
+      "similarity": 0.8982460486837949
     }
   ],
   "unmatched_generated_ids": [
     "G-001",
     "G-002",
+    "G-003",
+    "G-004",
     "G-005",
+    "G-006",
+    "G-007",
     "G-008",
     "G-009",
-    "G-013",
+    "G-011",
+    "G-012",
+    "G-014",
     "G-015",
     "G-016",
     "G-017",
@@ -83,13 +89,123 @@
     "G-024",
     "G-025",
     "G-026",
+    "G-027",
+    "G-028",
     "G-029",
+    "G-030",
     "G-031",
+    "G-032",
     "G-033",
     "G-034",
     "G-035",
     "G-036",
-    "G-037"
+    "G-037",
+    "G-038",
+    "G-039",
+    "G-041",
+    "G-043",
+    "G-044",
+    "G-045",
+    "G-046",
+    "G-047",
+    "G-048",
+    "G-049",
+    "G-050",
+    "G-051",
+    "G-052",
+    "G-053",
+    "G-054",
+    "G-055",
+    "G-056",
+    "G-057",
+    "G-058",
+    "G-059",
+    "G-060",
+    "G-061",
+    "G-062",
+    "G-063",
+    "G-064",
+    "G-065",
+    "G-066",
+    "G-069",
+    "G-070",
+    "G-071",
+    "G-072",
+    "G-073",
+    "G-074",
+    "G-075",
+    "G-076",
+    "G-077",
+    "G-078",
+    "G-079",
+    "G-080",
+    "G-081",
+    "G-082",
+    "G-083",
+    "G-084",
+    "G-085",
+    "G-086",
+    "G-087",
+    "G-088",
+    "G-089",
+    "G-091",
+    "G-092",
+    "G-093",
+    "G-094",
+    "G-095",
+    "G-096",
+    "G-097",
+    "G-098",
+    "G-099",
+    "G-100",
+    "G-101",
+    "G-102",
+    "G-104",
+    "G-105",
+    "G-106",
+    "G-107",
+    "G-108",
+    "G-109",
+    "G-111",
+    "G-112",
+    "G-114",
+    "G-115",
+    "G-116",
+    "G-117",
+    "G-118",
+    "G-119",
+    "G-121",
+    "G-122",
+    "G-123",
+    "G-124",
+    "G-125",
+    "G-126",
+    "G-127",
+    "G-128",
+    "G-129",
+    "G-130",
+    "G-131",
+    "G-132",
+    "G-133",
+    "G-134",
+    "G-135",
+    "G-136",
+    "G-137",
+    "G-138",
+    "G-139",
+    "G-140",
+    "G-141",
+    "G-142",
+    "G-143",
+    "G-145",
+    "G-146",
+    "G-147",
+    "G-148",
+    "G-149",
+    "G-150",
+    "G-151",
+    "G-152",
+    "G-153"
   ],
   "unmatched_reference_ids": []
 }

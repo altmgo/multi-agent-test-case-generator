@@ -1,7 +1,0 @@
-# Delete Bookmark Completely
-
-Case ID · G-002
-
-Requirements · R-002
-
-Verify that bookmarks are properly deleted from the bookmarks file and are no longer displayed from any UI access point.

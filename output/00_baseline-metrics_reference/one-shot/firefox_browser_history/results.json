@@ -84,7 +84,7 @@
     {
       "id": "G-001",
       "title": "Record visited link to Global History",
-      "description": "Verify that a visited link is correctly recorded in the Global History.",
+      "description": "Verify that a visited link is correctly recorded to the Global History.",
       "requirement_ids": [
         "R-073"
       ]
@@ -92,7 +92,7 @@
     {
       "id": "G-002",
       "title": "Record correct link after server redirect",
-      "description": "Verify that the final target link, not the intermediate redirect URL, is recorded in the Global History after a server redirect.",
+      "description": "Verify that the final correct link is recorded in the Global History after a server redirect occurs.",
       "requirement_ids": [
         "R-074"
       ]
@@ -100,15 +100,15 @@
     {
       "id": "G-003",
       "title": "Launch history link in browser window",
-      "description": "Verify that clicking on a link in the history causes it to be launched in a browser window.",
+      "description": "Verify that clicking on an entry in the history launches the link in a browser window.",
       "requirement_ids": [
         "R-075"
       ]
     },
     {
       "id": "G-004",
-      "title": "Delete a single history entry",
-      "description": "Verify that a specific history entry is successfully deleted.",
+      "title": "Delete single history entry",
+      "description": "Verify that a selected History entry is successfully deleted.",
       "requirement_ids": [
         "R-076"
       ]
@@ -116,22 +116,22 @@
     {
       "id": "G-005",
       "title": "Delete multiple history entries",
-      "description": "Verify that multiple selected history entries are deleted and no longer displayed.",
+      "description": "Verify that multiple selected History entries are deleted and no longer displayed.",
       "requirement_ids": [
         "R-077"
       ]
     },
     {
       "id": "G-006",
-      "title": "Clear entire Global History",
-      "description": "Verify that the entire Global History can be cleared completely.",
+      "title": "Clear Global History",
+      "description": "Verify that the entire Global History is cleared successfully.",
       "requirement_ids": [
         "R-078"
       ]
     },
     {
       "id": "G-007",
-      "title": "Group history items by criteria",
+      "title": "Group history items",
       "description": "Verify that history items can be properly grouped by Day, Site, or None.",
       "requirement_ids": [
         "R-079"
@@ -140,7 +140,7 @@
     {
       "id": "G-008",
       "title": "Sort and reverse-sort history columns",
-      "description": "Verify that history columns can be sorted and reverse-sorted correctly.",
+      "description": "Verify that history is correctly sorted and reverse-sorted per column.",
       "requirement_ids": [
         "R-080"
       ]
@@ -156,7 +156,7 @@
     {
       "id": "G-010",
       "title": "Show and hide history columns",
-      "description": "Verify that history columns can be explicitly shown and hidden.",
+      "description": "Verify that history columns can be dynamically shown and hidden.",
       "requirement_ids": [
         "R-082"
       ]
@@ -164,7 +164,7 @@
     {
       "id": "G-011",
       "title": "Re-visit sites via Back and Forward button dropdown",
-      "description": "Verify that recently visited sites can be re-visited using the Back and Forward button dropdown menus.",
+      "description": "Verify that recently visited sites can be re-visited using the Back and Forward button dropdown menu.",
       "requirement_ids": [
         "R-083"
       ]
@@ -172,7 +172,7 @@
     {
       "id": "G-012",
       "title": "Create new empty session history file",
-      "description": "Verify that a new, empty session history file is created for a new browser window or application restart.",
+      "description": "Verify that a new, empty session history file is created when opening a new browser window or performing a restart.",
       "requirement_ids": [
         "R-084"
       ]
@@ -332,42 +332,42 @@
       {
         "generated_id": "G-001",
         "reference_id": "TC-073",
-        "similarity": 0.8432016819928
+        "similarity": 0.8445119189309642
       },
       {
         "generated_id": "G-002",
         "reference_id": "TC-074",
-        "similarity": 0.8354291986276077
+        "similarity": 0.8385579528954723
       },
       {
         "generated_id": "G-003",
         "reference_id": "TC-075",
-        "similarity": 0.8990603105284067
+        "similarity": 0.8985069947205553
       },
       {
         "generated_id": "G-004",
         "reference_id": "TC-076",
-        "similarity": 0.8735766320328101
+        "similarity": 0.8914481392366622
       },
       {
         "generated_id": "G-005",
         "reference_id": "TC-077",
-        "similarity": 0.8916845593418757
+        "similarity": 0.8903322361190192
       },
       {
         "generated_id": "G-006",
         "reference_id": "TC-078",
-        "similarity": 0.8801721600012611
+        "similarity": 0.8769509879107854
       },
       {
         "generated_id": "G-007",
         "reference_id": "TC-079",
-        "similarity": 0.9126535565247859
+        "similarity": 0.9174770765785019
       },
       {
         "generated_id": "G-008",
         "reference_id": "TC-080",
-        "similarity": 0.8599109501658384
+        "similarity": 0.8566699664427757
       },
       {
         "generated_id": "G-009",
@@ -377,17 +377,17 @@
       {
         "generated_id": "G-010",
         "reference_id": "TC-082",
-        "similarity": 0.8508696416591168
+        "similarity": 0.8450096287473557
       },
       {
         "generated_id": "G-011",
         "reference_id": "TC-083",
-        "similarity": 0.8691024603271226
+        "similarity": 0.8660548397868115
       },
       {
         "generated_id": "G-012",
         "reference_id": "TC-084",
-        "similarity": 0.8636968037985571
+        "similarity": 0.8716709541968128
       }
     ],
     "unmatched_generated_ids": [],
@@ -396,10 +396,10 @@
     "recall": 1.0,
     "f1": 1.0,
     "embedding_usage": {
-      "input_tokens": 2456,
+      "input_tokens": 2445,
       "output_tokens": null,
       "details": {
-        "text_prompt_tokens": 2456
+        "text_prompt_tokens": 2445
       },
       "status": "partial"
     },
@@ -413,20 +413,20 @@
   "usage": {
     "generation": {
       "input_tokens": 724,
-      "output_tokens": 804,
+      "output_tokens": 793,
       "details": {
         "text_prompt_tokens": 724,
-        "total_tokens": 1528
+        "total_tokens": 1517
       },
       "status": "available"
     },
     "generation_attempts": [],
     "generation_calls": [],
     "embedding": {
-      "input_tokens": 2456,
+      "input_tokens": 2445,
       "output_tokens": null,
       "details": {
-        "text_prompt_tokens": 2456
+        "text_prompt_tokens": 2445
       },
       "status": "partial"
     },
@@ -458,16 +458,16 @@
         "R-075": "R-075/test cases/3_Launch_history_link_in_browser_window.md"
       },
       "G-004": {
-        "R-076": "R-076/test cases/4_Delete_a_single_history_entry.md"
+        "R-076": "R-076/test cases/4_Delete_single_history_entry.md"
       },
       "G-005": {
         "R-077": "R-077/test cases/5_Delete_multiple_history_entries.md"
       },
       "G-006": {
-        "R-078": "R-078/test cases/6_Clear_entire_Global_History.md"
+        "R-078": "R-078/test cases/6_Clear_Global_History.md"
       },
       "G-007": {
-        "R-079": "R-079/test cases/7_Group_history_items_by_criteria.md"
+        "R-079": "R-079/test cases/7_Group_history_items.md"
       },
       "G-008": {
         "R-080": "R-080/test cases/8_Sort_and_reverse-sort_history_columns.md"
