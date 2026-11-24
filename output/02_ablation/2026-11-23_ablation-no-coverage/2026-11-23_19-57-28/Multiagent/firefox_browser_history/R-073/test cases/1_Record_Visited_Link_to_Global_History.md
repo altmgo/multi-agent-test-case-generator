@@ -1,0 +1,7 @@
+# Record Visited Link to Global History
+
+Case ID · G-001
+
+Requirements · R-073
+
+Verify that visited links are recorded to the Global History.
