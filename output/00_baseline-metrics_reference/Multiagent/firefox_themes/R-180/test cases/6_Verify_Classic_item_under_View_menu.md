@@ -1,0 +1,7 @@
+# Verify Classic item under View menu
+
+Case ID · G-006
+
+Requirements · R-180
+
+Navigate to the View menu and verify that the 'Classic' item is present and available for selection.

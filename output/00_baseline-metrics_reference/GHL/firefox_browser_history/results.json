@@ -84,310 +84,1225 @@
     {
       "id": "G-001",
       "title": "Record Visited Link to Global History",
-      "description": "Verify that visiting a standard web link successfully records the link to the Global History.",
+      "description": "Verify that when a user navigates to a valid link, the visited link is successfully recorded to the Global History.",
       "requirement_ids": [
         "R-073"
       ]
     },
     {
       "id": "G-002",
-      "title": "Record Correct Link After Server Redirect",
-      "description": "Verify that when a server redirect occurs, the final target link is correctly recorded in the Global History instead of the initial redirect URL.",
-      "requirement_ids": [
-        "R-074"
-      ]
-    },
-    {
-      "id": "G-003",
-      "title": "Launch History Link in Browser Window",
-      "description": "Verify that clicking on an existing link within the Global History causes it to be successfully launched in a browser window.",
-      "requirement_ids": [
-        "R-075"
-      ]
-    },
-    {
-      "id": "G-004",
-      "title": "Delete Single History Entry",
-      "description": "Verify that a single selected History entry can be deleted successfully.",
-      "requirement_ids": [
-        "R-076"
-      ]
-    },
-    {
-      "id": "G-005",
-      "title": "Delete Multiple History Entries",
-      "description": "Verify that multiple selected History entries can be deleted simultaneously and are no longer displayed in the history view.",
-      "requirement_ids": [
-        "R-077"
-      ]
-    },
-    {
-      "id": "G-006",
-      "title": "Clear Global History",
-      "description": "Verify that the entire Global History can be cleared completely.",
-      "requirement_ids": [
-        "R-078"
-      ]
-    },
-    {
-      "id": "G-007",
-      "title": "Group History Items by Day",
-      "description": "Verify that history items can be successfully grouped by Day.",
-      "requirement_ids": [
-        "R-079"
-      ]
-    },
-    {
-      "id": "G-008",
-      "title": "Group History Items by Site",
-      "description": "Verify that history items can be successfully grouped by Site.",
-      "requirement_ids": [
-        "R-079"
-      ]
-    },
-    {
-      "id": "G-009",
-      "title": "Group History Items by None",
-      "description": "Verify that history items can be displayed without any grouping (None).",
-      "requirement_ids": [
-        "R-079"
-      ]
-    },
-    {
-      "id": "G-010",
-      "title": "Sort History Columns Normal and Reverse",
-      "description": "Verify that history items can be sorted and reverse-sorted per column.",
-      "requirement_ids": [
-        "R-080"
-      ]
-    },
-    {
-      "id": "G-011",
-      "title": "Resize History Columns",
-      "description": "Verify that history columns can be resized to show or hide more of the entries.",
-      "requirement_ids": [
-        "R-081"
-      ]
-    },
-    {
-      "id": "G-012",
-      "title": "Show and Hide History Columns",
-      "description": "Verify that individual history columns can be explicitly shown and hidden.",
-      "requirement_ids": [
-        "R-082"
-      ]
-    },
-    {
-      "id": "G-013",
-      "title": "Re-visit Sites via Back and Forward Dropdown Menu",
-      "description": "Verify that recently visited sites can be re-visited by using the Back and Forward button dropdown menus.",
-      "requirement_ids": [
-        "R-083"
-      ]
-    },
-    {
-      "id": "G-014",
-      "title": "Create New Empty Session History File for New Window or Restart",
-      "description": "Verify that a new, empty session history file is created when opening a new browser window or performing a browser restart.",
-      "requirement_ids": [
-        "R-084"
-      ]
-    },
-    {
-      "id": "G-015",
-      "title": "Record Visited Link to Global History",
-      "description": "Transition from unvisited state to recorded history state when a link is visited.",
+      "title": "Fail to Record Unvisited or Invalid Links",
+      "description": "Verify that links which are not actually visited or invalid connection attempts are not recorded to the Global History.",
       "requirement_ids": [
         "R-073"
       ]
     },
     {
-      "id": "G-016",
-      "title": "Record Redirected Link to Global History",
-      "description": "Transition to record the correct final link after a server redirect occurs.",
+      "id": "G-003",
+      "title": "Record Final Redirected URL",
+      "description": "Verify that the final target URL is correctly recorded in the Global History after a server redirect occurs.",
       "requirement_ids": [
         "R-074"
       ]
     },
     {
-      "id": "G-017",
+      "id": "G-004",
+      "title": "Record Multiple Redirects URL",
+      "description": "Verify that the correct final destination URL is recorded in the Global History after a chain of multiple server redirects.",
+      "requirement_ids": [
+        "R-074"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Invalid or Failed Redirect Handling",
+      "description": "Verify that when a server redirect fails or encounters an error status, the appropriate original or attempted link is handled correctly without corrupting Global History.",
+      "requirement_ids": [
+        "R-074"
+      ]
+    },
+    {
+      "id": "G-006",
       "title": "Launch History Link in Browser Window",
-      "description": "Transition from history list state to active browser window state by clicking a history link.",
+      "description": "Verify that clicking on a valid history link correctly launches the target URL in a browser window.",
       "requirement_ids": [
         "R-075"
       ]
     },
     {
-      "id": "G-018",
-      "title": "Delete Single History Entry",
-      "description": "Transition from existing history entry state to deleted state.",
+      "id": "G-007",
+      "title": "Attempt to Launch Invalid or Corrupted History Link",
+      "description": "Verify that clicking on an invalid, malformed, or missing history link does not crash the browser and handles the error gracefully.",
+      "requirement_ids": [
+        "R-075"
+      ]
+    },
+    {
+      "id": "G-008",
+      "title": "Delete Single History Entry Successfully",
+      "description": "Partition for valid deletion of a single history entry, verifying the entry is successfully removed.",
       "requirement_ids": [
         "R-076"
       ]
     },
     {
-      "id": "G-019",
+      "id": "G-009",
+      "title": "Attempt to Delete Non-Existent History Entry",
+      "description": "Partition for invalid/abnormal deletion attempt on a history entry that does not exist or has already been removed.",
+      "requirement_ids": [
+        "R-076"
+      ]
+    },
+    {
+      "id": "G-010",
       "title": "Delete Multiple History Entries",
-      "description": "Transition from multiple history entries state to removed state where they are no longer displayed.",
+      "description": "Select multiple history entries and delete them to verify they are removed and no longer displayed.",
       "requirement_ids": [
         "R-077"
       ]
     },
     {
-      "id": "G-020",
-      "title": "Clear Global History",
-      "description": "Transition from populated global history state to completely cleared history state.",
+      "id": "G-011",
+      "title": "Delete Single History Entry",
+      "description": "Attempt to delete a single history entry to verify behavior when failing to meet the multiple entries requirement condition.",
+      "requirement_ids": [
+        "R-077"
+      ]
+    },
+    {
+      "id": "G-012",
+      "title": "Delete Zero History Entries",
+      "description": "Attempt to trigger the deletion action with no history entries selected.",
+      "requirement_ids": [
+        "R-077"
+      ]
+    },
+    {
+      "id": "G-013",
+      "title": "Clear Global History when history is populated",
+      "description": "Verify that executing the clear global history action successfully removes all recorded history entries when the history contains multiple valid items.",
       "requirement_ids": [
         "R-078"
       ]
     },
     {
-      "id": "G-021",
-      "title": "Group History Items",
-      "description": "Transition history items display state into grouped configurations by Day, Site, or None.",
+      "id": "G-014",
+      "title": "Clear Global History when history is already empty",
+      "description": "Verify that executing the clear global history action when the history list is already empty completes successfully without errors or adverse behavior.",
+      "requirement_ids": [
+        "R-078"
+      ]
+    },
+    {
+      "id": "G-015",
+      "title": "Group History items by Day",
+      "description": "Verify that history items are correctly grouped by Day partition.",
       "requirement_ids": [
         "R-079"
       ]
     },
     {
-      "id": "G-022",
-      "title": "Sort and Reverse-Sort History Columns",
-      "description": "Transition history list sorting state between normal and reverse-sort per column.",
+      "id": "G-016",
+      "title": "Group History items by Site",
+      "description": "Verify that history items are correctly grouped by Site partition.",
+      "requirement_ids": [
+        "R-079"
+      ]
+    },
+    {
+      "id": "G-017",
+      "title": "Group History items by None",
+      "description": "Verify that history items are displayed without any grouping when 'None' partition is selected.",
+      "requirement_ids": [
+        "R-079"
+      ]
+    },
+    {
+      "id": "G-018",
+      "title": "Invalid grouping option handling",
+      "description": "Verify the system behavior when an invalid grouping partition option is provided.",
+      "requirement_ids": [
+        "R-079"
+      ]
+    },
+    {
+      "id": "G-019",
+      "title": "Sort History by Column in Ascending Order",
+      "description": "Verify that history items are correctly sorted in ascending order when a column header is clicked once.",
       "requirement_ids": [
         "R-080"
       ]
     },
     {
+      "id": "G-020",
+      "title": "Sort History by Column in Reverse (Descending) Order",
+      "description": "Verify that history items are correctly sorted in descending (reverse) order when a column header is clicked twice or the reverse sort option is selected.",
+      "requirement_ids": [
+        "R-080"
+      ]
+    },
+    {
+      "id": "G-021",
+      "title": "Invalid Sort Action on Non-existent Column",
+      "description": "Verify the system behavior (no sorting change or error handling) when attempting to sort history by an invalid or non-existent column identifier.",
+      "requirement_ids": [
+        "R-080"
+      ]
+    },
+    {
+      "id": "G-022",
+      "title": "Resize history column to show more entries",
+      "description": "Partition for valid increase of history column width to show more content using equivalence partitioning.",
+      "requirement_ids": [
+        "R-081"
+      ]
+    },
+    {
       "id": "G-023",
-      "title": "Resize History Columns",
-      "description": "Transition history column width state to show or hide more entry details.",
+      "title": "Resize history column to hide entries",
+      "description": "Partition for valid decrease of history column width to hide more content using equivalence partitioning.",
       "requirement_ids": [
         "R-081"
       ]
     },
     {
       "id": "G-024",
-      "title": "Show and Hide History Columns",
-      "description": "Transition history column visibility state between shown and hidden.",
+      "title": "Attempt to resize history column beyond maximum limit",
+      "description": "Partition for invalid boundary condition where history column width is resized beyond the maximum allowed limit.",
       "requirement_ids": [
-        "R-082"
+        "R-081"
       ]
     },
     {
       "id": "G-025",
-      "title": "Re-visit Sites via Back and Forward Dropdown Menu",
-      "description": "Transition browser navigation state by re-visiting recently visited sites via the Back and Forward button dropdown menu.",
+      "title": "Attempt to resize history column beyond minimum limit",
+      "description": "Partition for invalid boundary condition where history column width is resized below the minimum allowed limit.",
       "requirement_ids": [
-        "R-083"
+        "R-081"
       ]
     },
     {
       "id": "G-026",
-      "title": "Create New Session History File",
-      "description": "Transition to a new, empty session history file state upon opening a new browser window or performing a restart.",
+      "title": "Show Hidden History Column",
+      "description": "Verify that a hidden history column can be selected and correctly shown in the history interface.",
       "requirement_ids": [
-        "R-084"
+        "R-082"
       ]
     },
     {
       "id": "G-027",
-      "title": "Record visited links and server redirects in Global History",
-      "description": "Verify that normal visited links and redirected links are correctly recorded in the Global History.",
+      "title": "Hide Visible History Column",
+      "description": "Verify that a visible history column can be selected and correctly hidden from the history interface.",
       "requirement_ids": [
-        "R-073",
-        "R-074"
-      ]
-    },
-    {
-      "id": "G-028",
-      "title": "Session initialization and re-visiting via navigation dropdowns",
-      "description": "Verify that a new session history file is created upon browser restart and recent sites can be re-visited using Back and Forward dropdown menus.",
-      "requirement_ids": [
-        "R-084",
-        "R-083"
-      ]
-    },
-    {
-      "id": "G-029",
-      "title": "History organization by grouping, sorting, and column management",
-      "description": "Verify that history items can be grouped, sorted/reverse-sorted per column, and that history columns can be resized, shown, and hidden.",
-      "requirement_ids": [
-        "R-079",
-        "R-080",
-        "R-081",
         "R-082"
       ]
     },
     {
-      "id": "G-030",
-      "title": "Interacting with and deleting history entries",
-      "description": "Verify that clicking a history link launches it in a browser window, single and multiple history entries can be deleted, and the global history can be cleared entirely.",
+      "id": "G-028",
+      "title": "Invalid Column Toggle Operation",
+      "description": "Verify the system behavior when attempting to show or hide a non-existent or invalid history column identifier.",
       "requirement_ids": [
-        "R-075",
-        "R-076",
-        "R-077",
-        "R-078"
+        "R-082"
+      ]
+    },
+    {
+      "id": "G-029",
+      "title": "Re-visit site via Back button dropdown menu",
+      "description": "Verify that a recently visited site can be successfully re-visited by selecting it from the Back button dropdown menu.",
+      "requirement_ids": [
+        "R-083"
+      ]
+    },
+    {
+      "id": "G-030",
+      "title": "Re-visit site via Forward button dropdown menu",
+      "description": "Verify that a recently visited site can be successfully re-visited by selecting it from the Forward button dropdown menu.",
+      "requirement_ids": [
+        "R-083"
       ]
     },
     {
       "id": "G-031",
-      "title": "Recording Redirect Links Incorrectly",
-      "description": "Attempt to verify whether a server redirect incorrectly logs the intermediate redirect URL instead of the final target link into the Global History.",
+      "title": "Access Back button dropdown menu with empty history",
+      "description": "Verify that the Back button dropdown menu is empty or disabled when no previous history exists.",
       "requirement_ids": [
-        "R-073",
-        "R-074"
+        "R-083"
       ]
     },
     {
       "id": "G-032",
-      "title": "Corrupted Session History on Restart",
-      "description": "Test the creation of a new session history file when restarting the browser with locked or corrupted profile file permissions to ensure a valid empty file is created.",
+      "title": "Access Forward button dropdown menu with empty forward history",
+      "description": "Verify that the Forward button dropdown menu is empty or disabled when no forward history exists.",
+      "requirement_ids": [
+        "R-083"
+      ]
+    },
+    {
+      "id": "G-033",
+      "title": "Create new empty session history file for a new browser window",
+      "description": "Partition for a normal valid case where launching a new browser window results in the creation of a new, empty session history file.",
       "requirement_ids": [
         "R-084"
       ]
     },
     {
-      "id": "G-033",
-      "title": "Deleting Non-Existent or Already Deleted History Entries",
-      "description": "Attempt to delete a single history entry and multiple history entries that have already been removed or corrupted in the database to verify error handling and display synchronization.",
+      "id": "G-034",
+      "title": "Create new empty session history file upon browser restart",
+      "description": "Partition for a normal valid case where restarting the browser creates a new, empty session history file.",
       "requirement_ids": [
-        "R-076",
+        "R-084"
+      ]
+    },
+    {
+      "id": "G-035",
+      "title": "Failure to create session history file on new window or restart",
+      "description": "Partition for an abnormal invalid case where system errors prevent the creation of a new session history file during a new window launch or browser restart.",
+      "requirement_ids": [
+        "R-084"
+      ]
+    },
+    {
+      "id": "G-036",
+      "title": "Transition from Unvisited to Visited State",
+      "description": "Verify that when a user clicks an unvisited link, the state transitions to Visited and the link is recorded to the Global History.",
+      "requirement_ids": [
+        "R-073"
+      ]
+    },
+    {
+      "id": "G-037",
+      "title": "Abnormal Transition - Attempt to Record Duplicate Active State",
+      "description": "Verify that visiting an already recorded link does not create redundant duplicate baseline records in Global History.",
+      "requirement_ids": [
+        "R-073"
+      ]
+    },
+    {
+      "id": "G-038",
+      "title": "Normal State Transition - Server Redirect Records Correct Final Link",
+      "description": "Verify that when a user navigates to a URL that triggers a server redirect, the final target link is correctly recorded in the Global History instead of the intermediate redirect URL.",
+      "requirement_ids": [
+        "R-074"
+      ]
+    },
+    {
+      "id": "G-039",
+      "title": "Abnormal State Transition - Failed Redirect Handling",
+      "description": "Verify that if a server redirect fails or aborts midway, the Global History does not record an incorrect destination link.",
+      "requirement_ids": [
+        "R-074"
+      ]
+    },
+    {
+      "id": "G-040",
+      "title": "Launch History Link in Browser Window",
+      "description": "Verify that when a history entry is in the Recorded state, clicking on the link transitions it to the Launched state where the link is opened in a browser window.",
+      "requirement_ids": [
+        "R-075"
+      ]
+    },
+    {
+      "id": "G-041",
+      "title": "Forbidden Transition - Click on Non-Recorded History Item",
+      "description": "Verify that attempting to launch a history link from a non-existent or cleared history state is a forbidden transition and does not open any browser window.",
+      "requirement_ids": [
+        "R-075"
+      ]
+    },
+    {
+      "id": "G-042",
+      "title": "Delete single history entry - Normal transition",
+      "description": "Verify that selecting an existing history entry in the 'Present' state and triggering a delete action successfully transitions the entry to the 'Deleted' state and removes it from the display.",
+      "requirement_ids": [
+        "R-076"
+      ]
+    },
+    {
+      "id": "G-043",
+      "title": "Delete non-existent history entry - Forbidden transition / Abnormal",
+      "description": "Verify that attempting to delete a history entry that is already in the 'Deleted' or 'Non-existent' state results in no change and maintains the correct system state without errors.",
+      "requirement_ids": [
+        "R-076"
+      ]
+    },
+    {
+      "id": "G-044",
+      "title": "Delete multiple selected history entries successfully",
+      "description": "Verify state transition from 'Entries Displayed' to 'Entries Deleted' when multiple history entries are selected and the delete action is executed, ensuring they are no longer displayed.",
+      "requirement_ids": [
         "R-077"
       ]
     },
     {
-      "id": "G-034",
-      "title": "Clearing Partially Locked Global History",
-      "description": "Trigger the Global History clear operation while a history database lock or write error is artificially introduced to verify robust failure handling.",
+      "id": "G-045",
+      "title": "Attempt to delete multiple entries when no entries are selected",
+      "description": "Verify the forbidden transition or no-op state where the delete action is triggered with no multiple history entries selected, ensuring the state remains unchanged and no entries are removed.",
+      "requirement_ids": [
+        "R-077"
+      ]
+    },
+    {
+      "id": "G-046",
+      "title": "Clear Global History from Populated State",
+      "description": "Perform state transition from Populated Global History state to Cleared state by triggering the clear action, verifying that all history entries are removed.",
       "requirement_ids": [
         "R-078"
       ]
     },
     {
-      "id": "G-035",
-      "title": "Invalid Column Grouping and Sorting States",
-      "description": "Apply malformed or unsupported grouping parameters (Day/Site/None) and extreme column sizing values to verify that history sorting and column visibility do not break the UI.",
+      "id": "G-047",
+      "title": "Clear Global History when Already Empty",
+      "description": "Attempt to trigger the clear action when Global History is already in the Cleared/Empty state, verifying that the state remains valid and empty.",
       "requirement_ids": [
-        "R-079",
-        "R-080",
-        "R-081",
+        "R-078"
+      ]
+    },
+    {
+      "id": "G-048",
+      "title": "Forbidden Transition: Access Cleared History Entries",
+      "description": "Attempt to access or launch an entry after the Global History has transitioned to the Cleared state, verifying that no entries exist to be accessed (forbidden/abnormal transition test).",
+      "requirement_ids": [
+        "R-078"
+      ]
+    },
+    {
+      "id": "G-049",
+      "title": "Group history items by Day",
+      "description": "State transition test to group history items by Day state, verifying correct organization.",
+      "requirement_ids": [
+        "R-079"
+      ]
+    },
+    {
+      "id": "G-050",
+      "title": "Group history items by Site",
+      "description": "State transition test to transition from Day grouping to Site grouping state.",
+      "requirement_ids": [
+        "R-079"
+      ]
+    },
+    {
+      "id": "G-051",
+      "title": "Group history items by None",
+      "description": "State transition test to transition history grouping to None state, removing active groupings.",
+      "requirement_ids": [
+        "R-079"
+      ]
+    },
+    {
+      "id": "G-052",
+      "title": "Forbidden transition to invalid grouping state",
+      "description": "Abnormal state transition test attempting to switch to an unsupported grouping state.",
+      "requirement_ids": [
+        "R-079"
+      ]
+    },
+    {
+      "id": "G-053",
+      "title": "Sort History by Column in Ascending Order",
+      "description": "Verify that clicking a history column header transitions the history view state from Unsorted to Sorted (ascending order) per that column.",
+      "requirement_ids": [
+        "R-080"
+      ]
+    },
+    {
+      "id": "G-054",
+      "title": "Reverse-Sort History by Column",
+      "description": "Verify that clicking the same history column header again transitions the view state from Sorted (ascending) to Reverse-Sorted (descending order).",
+      "requirement_ids": [
+        "R-080"
+      ]
+    },
+    {
+      "id": "G-055",
+      "title": "Switch Sort Column and Reset to Ascending",
+      "description": "Verify that clicking a different history column header transitions the state from sorted on the previous column to sorted (ascending) on the new column.",
+      "requirement_ids": [
+        "R-080"
+      ]
+    },
+    {
+      "id": "G-056",
+      "title": "Forbidden Transition: Invalid Sort Parameter on Non-Sortable State",
+      "description": "Verify that attempting to sort an uninitialized or disabled history table state does not result in a sorted state.",
+      "requirement_ids": [
+        "R-080"
+      ]
+    },
+    {
+      "id": "G-057",
+      "title": "Resize History column to wider state to show more entry details",
+      "description": "Verify the state transition from default column width to resized wider column state successfully shows more of the history entries.",
+      "requirement_ids": [
+        "R-081"
+      ]
+    },
+    {
+      "id": "G-058",
+      "title": "Resize History column to narrower state to hide entry details",
+      "description": "Verify the state transition from default column width to resized narrower column state successfully hides parts of the history entries.",
+      "requirement_ids": [
+        "R-081"
+      ]
+    },
+    {
+      "id": "G-059",
+      "title": "Forbidden resize transition beyond minimum width limit",
+      "description": "Verify that attempting to resize the history column below the allowed minimum width results in a forbidden transition and remains at the minimum state.",
+      "requirement_ids": [
+        "R-081"
+      ]
+    },
+    {
+      "id": "G-060",
+      "title": "Show History Column State Transition",
+      "description": "Verify the transition from Hidden state to Shown state for a history column when the show action is triggered.",
+      "requirement_ids": [
         "R-082"
       ]
     },
     {
-      "id": "G-036",
-      "title": "Dropdown Menu Navigation with Empty History",
-      "description": "Attempt to access the Back and Forward button dropdown menus for recently visited sites when the session history is completely empty or corrupted.",
+      "id": "G-061",
+      "title": "Hide History Column State Transition",
+      "description": "Verify the transition from Shown state to Hidden state for a history column when the hide action is triggered.",
+      "requirement_ids": [
+        "R-082"
+      ]
+    },
+    {
+      "id": "G-062",
+      "title": "Forbidden Transition - Show Already Shown Column",
+      "description": "Verify that attempting to show an already shown history column does not cause an invalid state change or error.",
+      "requirement_ids": [
+        "R-082"
+      ]
+    },
+    {
+      "id": "G-063",
+      "title": "Forbidden Transition - Hide Already Hidden Column",
+      "description": "Verify that attempting to hide an already hidden history column does not cause an invalid state change or error.",
+      "requirement_ids": [
+        "R-082"
+      ]
+    },
+    {
+      "id": "G-064",
+      "title": "Re-visit site via Back button dropdown menu",
+      "description": "Verify transition from current page state to a recently visited site state by selecting an item from the Back button dropdown menu.",
       "requirement_ids": [
         "R-083"
       ]
     },
     {
-      "id": "G-037",
-      "title": "Launching Broken or Malformed History Links",
-      "description": "Click on a history link that points to an invalid protocol or malformed URI to test browser window launching error resilience.",
+      "id": "G-065",
+      "title": "Re-visit site via Forward button dropdown menu",
+      "description": "Verify transition from current page state to a previously left site state by selecting an item from the Forward button dropdown menu.",
+      "requirement_ids": [
+        "R-083"
+      ]
+    },
+    {
+      "id": "G-066",
+      "title": "Attempt to open Back dropdown menu with empty history stack",
+      "description": "Verify forbidden or inactive state transition when attempting to access the Back button dropdown menu when no previous history exists.",
+      "requirement_ids": [
+        "R-083"
+      ]
+    },
+    {
+      "id": "G-067",
+      "title": "Create Empty Session History File on New Browser Window",
+      "description": "Verify that a new, empty session history file is successfully created when a new browser window is opened from the initial closed state.",
+      "requirement_ids": [
+        "R-084"
+      ]
+    },
+    {
+      "id": "G-068",
+      "title": "Create Empty Session History File on Browser Restart",
+      "description": "Verify that an existing session history is cleared and a new, empty session history file is created upon a browser restart state transition.",
+      "requirement_ids": [
+        "R-084"
+      ]
+    },
+    {
+      "id": "G-069",
+      "title": "Forbidden Transition - Retain Previous History on Restart",
+      "description": "Verify that the browser does not retain the old session history file as non-empty upon a restart transition, ensuring a new empty file is enforced.",
+      "requirement_ids": [
+        "R-084"
+      ]
+    },
+    {
+      "id": "G-070",
+      "title": "Record visited link to Global History under normal conditions",
+      "description": "Verify that when a valid link is visited, it is successfully recorded to the Global History.",
+      "requirement_ids": [
+        "R-073"
+      ]
+    },
+    {
+      "id": "G-071",
+      "title": "Do not record visited link when history recording is disabled",
+      "description": "Verify that when a link is visited while history recording is disabled, it is not recorded to the Global History.",
+      "requirement_ids": [
+        "R-073"
+      ]
+    },
+    {
+      "id": "G-072",
+      "title": "Server redirect with correct final destination recording",
+      "description": "Verify that when a server redirect occurs, the correct final target link is successfully recorded to the Global History.",
+      "requirement_ids": [
+        "R-074"
+      ]
+    },
+    {
+      "id": "G-073",
+      "title": "Server redirect without recording intermediate link",
+      "description": "Verify that when a server redirect occurs, only the final redirected link is recorded and the intermediate redirection source is not erroneously stored as the visited destination.",
+      "requirement_ids": [
+        "R-074"
+      ]
+    },
+    {
+      "id": "G-074",
+      "title": "Launch valid history link in browser window",
+      "description": "Verify that clicking on a valid history link causes it to be successfully launched in a browser window.",
       "requirement_ids": [
         "R-075"
+      ]
+    },
+    {
+      "id": "G-075",
+      "title": "Attempt to launch invalid or broken history link",
+      "description": "Verify that clicking on an invalid or broken history link is handled correctly without crashing the browser window.",
+      "requirement_ids": [
+        "R-075"
+      ]
+    },
+    {
+      "id": "G-076",
+      "title": "Delete Single History Entry Successfully",
+      "description": "Verify that a single history entry is successfully deleted when the delete action is executed on a valid existing entry.",
+      "requirement_ids": [
+        "R-076"
+      ]
+    },
+    {
+      "id": "G-077",
+      "title": "Attempt to Delete Non-Existent History Entry",
+      "description": "Verify the system behavior when a delete action is invoked on a history entry that does not exist or is already deleted.",
+      "requirement_ids": [
+        "R-076"
+      ]
+    },
+    {
+      "id": "G-078",
+      "title": "Delete multiple selected history entries successfully",
+      "description": "Verify that when multiple history entries are selected and the delete action is executed, all selected entries are deleted and no longer displayed.",
+      "requirement_ids": [
+        "R-077"
+      ]
+    },
+    {
+      "id": "G-079",
+      "title": "Attempt to delete multiple history entries with none selected",
+      "description": "Verify that when no history entries are selected and the delete action is executed, no entries are deleted and the display remains unchanged.",
+      "requirement_ids": [
+        "R-077"
+      ]
+    },
+    {
+      "id": "G-080",
+      "title": "Clear Global History when history is populated",
+      "description": "Verify that Global History is successfully cleared when history contains entries and the clear action is triggered using decision table testing.",
+      "requirement_ids": [
+        "R-078"
+      ]
+    },
+    {
+      "id": "G-081",
+      "title": "Clear Global History when history is already empty",
+      "description": "Verify that attempting to clear Global History when no entries exist results in a valid no-op state using decision table testing.",
+      "requirement_ids": [
+        "R-078"
+      ]
+    },
+    {
+      "id": "G-082",
+      "title": "Group history items by Day",
+      "description": "Verify that history items are correctly grouped by Day based on the grouping decision condition.",
+      "requirement_ids": [
+        "R-079"
+      ]
+    },
+    {
+      "id": "G-083",
+      "title": "Group history items by Site",
+      "description": "Verify that history items are correctly grouped by Site based on the grouping decision condition.",
+      "requirement_ids": [
+        "R-079"
+      ]
+    },
+    {
+      "id": "G-084",
+      "title": "Group history items by None",
+      "description": "Verify that history items are displayed with no grouping applied based on the decision condition.",
+      "requirement_ids": [
+        "R-079"
+      ]
+    },
+    {
+      "id": "G-085",
+      "title": "Sort History by Column in Ascending Order",
+      "description": "Verify that history items are correctly sorted per the selected column in ascending order based on decision table combination for normal sorting.",
+      "requirement_ids": [
+        "R-080"
+      ]
+    },
+    {
+      "id": "G-086",
+      "title": "Reverse-Sort History by Column in Descending Order",
+      "description": "Verify that history items are correctly reverse-sorted per the selected column in descending order based on decision table combination for reverse sorting.",
+      "requirement_ids": [
+        "R-080"
+      ]
+    },
+    {
+      "id": "G-087",
+      "title": "Invalid Column Sort Handling",
+      "description": "Verify the system behavior when an invalid or non-existent column is selected for sorting or reverse-sorting, ensuring abnormal cases are properly handled.",
+      "requirement_ids": [
+        "R-080"
+      ]
+    },
+    {
+      "id": "G-088",
+      "title": "Resize history column to show more entries",
+      "description": "Test case covering decision table condition where column width is increased to show more of history entries.",
+      "requirement_ids": [
+        "R-081"
+      ]
+    },
+    {
+      "id": "G-089",
+      "title": "Resize history column to hide more entries",
+      "description": "Test case covering decision table condition where column width is decreased to hide more of history entries.",
+      "requirement_ids": [
+        "R-081"
+      ]
+    },
+    {
+      "id": "G-090",
+      "title": "Show History Column",
+      "description": "Verify that a hidden history column is successfully shown when selected.",
+      "requirement_ids": [
+        "R-082"
+      ]
+    },
+    {
+      "id": "G-091",
+      "title": "Hide History Column",
+      "description": "Verify that a visible history column is successfully hidden when deselected.",
+      "requirement_ids": [
+        "R-082"
+      ]
+    },
+    {
+      "id": "G-092",
+      "title": "Maintain Column State",
+      "description": "Verify that the visibility state of history columns remains unchanged when no action is taken.",
+      "requirement_ids": [
+        "R-082"
+      ]
+    },
+    {
+      "id": "G-093",
+      "title": "Revisit site using Back button dropdown menu",
+      "description": "Verify that a recently visited site can be successfully re-visited by selecting it from the Back button dropdown menu.",
+      "requirement_ids": [
+        "R-083"
+      ]
+    },
+    {
+      "id": "G-094",
+      "title": "Revisit site using Forward button dropdown menu",
+      "description": "Verify that a recently visited site can be successfully re-visited by selecting it from the Forward button dropdown menu.",
+      "requirement_ids": [
+        "R-083"
+      ]
+    },
+    {
+      "id": "G-095",
+      "title": "Attempt to use Back dropdown menu when no history exists",
+      "description": "Verify that the Back button dropdown menu is empty or inactive when no previous history entries exist for the session.",
+      "requirement_ids": [
+        "R-083"
+      ]
+    },
+    {
+      "id": "G-096",
+      "title": "Attempt to use Forward dropdown menu when no forward history exists",
+      "description": "Verify that the Forward button dropdown menu is empty or inactive when no forward history entries exist for the session.",
+      "requirement_ids": [
+        "R-083"
+      ]
+    },
+    {
+      "id": "G-097",
+      "title": "Create empty session history file for new browser window",
+      "description": "Verify that a new, empty session history file is created when a new browser window is opened.",
+      "requirement_ids": [
+        "R-084"
+      ]
+    },
+    {
+      "id": "G-098",
+      "title": "Create empty session history file for browser restart",
+      "description": "Verify that a new, empty session history file is created when the browser is restarted.",
+      "requirement_ids": [
+        "R-084"
+      ]
+    },
+    {
+      "id": "G-099",
+      "title": "Record Visited Link to Global History",
+      "description": "Verify that when a user navigates to a webpage, the visited link is successfully recorded to the Global History.",
+      "requirement_ids": [
+        "R-073"
+      ]
+    },
+    {
+      "id": "G-100",
+      "title": "Record Multiple Visited Links to Global History",
+      "description": "Verify that navigating through multiple distinct webpages sequentially records all visited links correctly in the Global History.",
+      "requirement_ids": [
+        "R-073"
+      ]
+    },
+    {
+      "id": "G-101",
+      "title": "Record correct link after server redirect normal flow",
+      "description": "Perform an end-to-end user workflow where a user navigates to a URL that triggers a server redirect, and verify that the final destination URL rather than the intermediary URL is correctly recorded in the Global History.",
+      "requirement_ids": [
+        "R-074"
+      ]
+    },
+    {
+      "id": "G-102",
+      "title": "Record correct link after multi-step server redirect",
+      "description": "Execute a workflow where a user navigates to a page triggering multiple consecutive server redirects, and verify that the final resulting URL is the one successfully recorded in the Global History.",
+      "requirement_ids": [
+        "R-074"
+      ]
+    },
+    {
+      "id": "G-103",
+      "title": "Launch History Link in Browser Window",
+      "description": "Verify that clicking on a valid history link successfully causes the corresponding URL to be launched in a browser window.",
+      "requirement_ids": [
+        "R-075"
+      ]
+    },
+    {
+      "id": "G-104",
+      "title": "Delete a single History entry successfully",
+      "description": "Perform an end-to-end user workflow where a user navigates to the history view, selects a specific history entry, executes the delete action, and verifies that the entry is successfully removed.",
+      "requirement_ids": [
+        "R-076"
+      ]
+    },
+    {
+      "id": "G-105",
+      "title": "Attempt to delete a non-existent or already deleted History entry",
+      "description": "Perform an abnormal workflow where a user attempts to delete a history entry that does not exist or has already been removed, and verify that the system handles the request gracefully without errors.",
+      "requirement_ids": [
+        "R-076"
+      ]
+    },
+    {
+      "id": "G-106",
+      "title": "Delete Multiple History Entries Successfully",
+      "description": "Perform an end-to-end user workflow where multiple history entries are selected from the Global History list, the delete action is executed, and verify that all selected entries are successfully deleted and no longer displayed in the history view.",
+      "requirement_ids": [
+        "R-077"
+      ]
+    },
+    {
+      "id": "G-107",
+      "title": "Attempt to Delete Multiple History Entries with Empty Selection",
+      "description": "Perform a user workflow where the delete action for multiple entries is triggered without selecting any history items, and verify that no entries are removed and the history display remains unchanged.",
+      "requirement_ids": [
+        "R-077"
+      ]
+    },
+    {
+      "id": "G-108",
+      "title": "Clear Global History Successfully",
+      "description": "Perform an end-to-end user workflow to clear the entire Global History and verify that all previously recorded history items are removed.",
+      "requirement_ids": [
+        "R-078"
+      ]
+    },
+    {
+      "id": "G-109",
+      "title": "Attempt to Clear Global History When Already Empty",
+      "description": "Perform an end-to-end user workflow to clear the Global History when no history items exist, verifying that the system handles the action gracefully without errors.",
+      "requirement_ids": [
+        "R-078"
+      ]
+    },
+    {
+      "id": "G-110",
+      "title": "Group History items by Day",
+      "description": "Perform an end-to-end user flow where visited history items are viewed and grouped by Day.",
+      "requirement_ids": [
+        "R-079"
+      ]
+    },
+    {
+      "id": "G-111",
+      "title": "Group History items by Site",
+      "description": "Perform an end-to-end user flow where visited history items are viewed and grouped by Site.",
+      "requirement_ids": [
+        "R-079"
+      ]
+    },
+    {
+      "id": "G-112",
+      "title": "Group History items with None grouping",
+      "description": "Perform an end-to-end user flow where visited history items are displayed with grouping set to None (abnormal or alternative view).",
+      "requirement_ids": [
+        "R-079"
+      ]
+    },
+    {
+      "id": "G-113",
+      "title": "Sort and reverse-sort History columns",
+      "description": "Perform an end-to-end user workflow where the user opens the history panel, selects a column header to sort the history entries in ascending order, and then selects the same column header again to reverse-sort the entries, verifying correct ordering in both states.",
+      "requirement_ids": [
+        "R-080"
+      ]
+    },
+    {
+      "id": "G-114",
+      "title": "Resize History Columns to Show More Entry Details",
+      "description": "Perform an end-to-end user flow where the user opens the history panel, clicks and drags a history column border to increase its width, and verifies that more of the entry text/details become visible.",
+      "requirement_ids": [
+        "R-081"
+      ]
+    },
+    {
+      "id": "G-115",
+      "title": "Resize History Columns to Hide Entry Details",
+      "description": "Perform an end-to-end user flow where the user opens the history panel, clicks and drags a history column border to decrease its width, and verifies that more entry details are hidden.",
+      "requirement_ids": [
+        "R-081"
+      ]
+    },
+    {
+      "id": "G-116",
+      "title": "Show and Hide History Columns Successfully",
+      "description": "Verify that individual history columns can be explicitly shown and hidden through the UI interface according to user preferences.",
+      "requirement_ids": [
+        "R-082"
+      ]
+    },
+    {
+      "id": "G-117",
+      "title": "Attempt to Hide All History Columns",
+      "description": "Verify the abnormal or edge-case behavior when a user attempts to hide all available history columns to ensure proper UI handling.",
+      "requirement_ids": [
+        "R-082"
+      ]
+    },
+    {
+      "id": "G-118",
+      "title": "Re-visit site via Back button dropdown menu",
+      "description": "Perform normal navigation to multiple pages, open the Back button dropdown menu, and select a recently visited site to successfully re-visit it.",
+      "requirement_ids": [
+        "R-083"
+      ]
+    },
+    {
+      "id": "G-119",
+      "title": "Re-visit site via Forward button dropdown menu",
+      "description": "Navigate backward through history, open the Forward button dropdown menu, and select a recently visited site to successfully re-visit it.",
+      "requirement_ids": [
+        "R-083"
+      ]
+    },
+    {
+      "id": "G-120",
+      "title": "Attempt to access Back or Forward dropdown menu with empty history",
+      "description": "Verify that when no previous or subsequent pages exist in the session, the Back and Forward button dropdown menus are either disabled or empty, preventing navigation.",
+      "requirement_ids": [
+        "R-083"
+      ]
+    },
+    {
+      "id": "G-121",
+      "title": "Create Empty Session History File on New Browser Window",
+      "description": "Verify that a new, empty session history file is successfully created when a brand new browser window is opened.",
+      "requirement_ids": [
+        "R-084"
+      ]
+    },
+    {
+      "id": "G-122",
+      "title": "Create Empty Session History File on Browser Restart",
+      "description": "Verify that a new, empty session history file is created when the browser application is restarted.",
+      "requirement_ids": [
+        "R-084"
+      ]
+    },
+    {
+      "id": "G-123",
+      "title": "Record visited link to Global History under normal conditions",
+      "description": "Verify that a standard URL visit is correctly recorded in the Global History.",
+      "requirement_ids": [
+        "R-073"
+      ]
+    },
+    {
+      "id": "G-124",
+      "title": "Attempt to record link visit during private browsing or restricted mode",
+      "description": "Verify that visited links are not incorrectly logged to the Global History when the browser is in a mode that suppresses history tracking.",
+      "requirement_ids": [
+        "R-073"
+      ]
+    },
+    {
+      "id": "G-125",
+      "title": "Record visited link with malformed or extremely long URL",
+      "description": "Verify the system's robustness when attempting to record a link with special characters, extremely long query strings, or malformed URIs into the Global History.",
+      "requirement_ids": [
+        "R-073"
+      ]
+    },
+    {
+      "id": "G-126",
+      "title": "Verify redirection with multiple intermediate redirects",
+      "description": "Test error guessing by checking if the Global History correctly records the final destination URL rather than any of the intermediate server redirects (e.g., 301, 302, 307 chain) when a link goes through a complex redirect sequence.",
+      "requirement_ids": [
+        "R-074"
+      ]
+    },
+    {
+      "id": "G-127",
+      "title": "Verify history recording upon redirect failure or timeout",
+      "description": "Test the failure condition where a server redirect fails midway or times out, ensuring that an incorrect or incomplete redirect link is not improperly recorded as the final destination in the Global History.",
+      "requirement_ids": [
+        "R-074"
+      ]
+    },
+    {
+      "id": "G-128",
+      "title": "Launch Corrupted or Malformed History Link",
+      "description": "Attempt to click and launch a history entry that contains a malformed or corrupted URL to verify system error handling and prevent crashes.",
+      "requirement_ids": [
+        "R-075"
+      ]
+    },
+    {
+      "id": "G-129",
+      "title": "Launch History Link with Missing Target Resource",
+      "description": "Click on a history link whose target resource has been permanently removed or is unreachable (404/500 error) to ensure proper failure handling.",
+      "requirement_ids": [
+        "R-075"
+      ]
+    },
+    {
+      "id": "G-130",
+      "title": "Rapid Successive Clicks on History Link",
+      "description": "Rapidly click multiple times on a single history link to verify that duplicate browser windows or unintended multi-launches are prevented.",
+      "requirement_ids": [
+        "R-075"
+      ]
+    },
+    {
+      "id": "G-131",
+      "title": "Delete History Entry with Malformed or Corrupted ID",
+      "description": "Attempt to delete a history entry using a malformed, empty, or non-existent entry ID to test error handling and prevent crashes.",
+      "requirement_ids": [
+        "R-076"
+      ]
+    },
+    {
+      "id": "G-132",
+      "title": "Concurrent Deletion of the Same History Entry",
+      "description": "Simulate simultaneous deletion requests for the exact same history entry from multiple threads or actions to test race condition handling.",
+      "requirement_ids": [
+        "R-076"
+      ]
+    },
+    {
+      "id": "G-133",
+      "title": "Delete Multiple History Entries with Intermittent Invalid Selection",
+      "description": "Attempt to delete multiple history entries where one of the selected items has already been concurrently deleted by another process, verifying that valid entries are deleted and no longer displayed while handling the missing entry gracefully.",
+      "requirement_ids": [
+        "R-077"
+      ]
+    },
+    {
+      "id": "G-134",
+      "title": "Delete Empty Selection of Multiple History Entries",
+      "description": "Trigger the multiple deletion action while zero history entries are selected to ensure the system handles the empty input gracefully without throwing exceptions or corrupting the view.",
+      "requirement_ids": [
+        "R-077"
+      ]
+    },
+    {
+      "id": "G-135",
+      "title": "Massive Volume Multiple History Entries Deletion",
+      "description": "Select and delete the maximum allowable limit plus one history entries simultaneously to test performance boundaries, memory leaks, and ensure all targeted items are no longer displayed.",
+      "requirement_ids": [
+        "R-077"
+      ]
+    },
+    {
+      "id": "G-136",
+      "title": "Clear Global History During Active Write Operation",
+      "description": "Trigger the clear global history command while a background process is actively writing a newly visited link to the history database to check for race conditions or unhandled locks.",
+      "requirement_ids": [
+        "R-078"
+      ]
+    },
+    {
+      "id": "G-137",
+      "title": "Clear Global History When Database File Is Corrupted or Read-Only",
+      "description": "Attempt to clear the global history when the underlying storage file permissions are set to read-only or the file is corrupted to ensure the system fails gracefully without crashing.",
+      "requirement_ids": [
+        "R-078"
+      ]
+    },
+    {
+      "id": "G-138",
+      "title": "Group history items by invalid grouping criteria",
+      "description": "Attempt to apply an unsupported grouping criterion other than Day, Site, or None to verify the system safely ignores or defaults the grouping.",
+      "requirement_ids": [
+        "R-079"
+      ]
+    },
+    {
+      "id": "G-139",
+      "title": "Group history items with corrupted date metadata",
+      "description": "Verify history item grouping by Day when entries contain malformed or missing timestamps to check robustness against corrupted records.",
+      "requirement_ids": [
+        "R-079"
+      ]
+    },
+    {
+      "id": "G-140",
+      "title": "Group history items with malformed URLs",
+      "description": "Verify history item grouping by Site when entries contain invalid URLs, IP addresses, or missing domains.",
+      "requirement_ids": [
+        "R-079"
+      ]
+    },
+    {
+      "id": "G-141",
+      "title": "History sorting with special characters and mixed case",
+      "description": "Verify history sorting and reverse-sorting behaves predictably when column values contain mixed-case strings, numbers, and special characters prone to collation errors.",
+      "requirement_ids": [
+        "R-080"
+      ]
+    },
+    {
+      "id": "G-142",
+      "title": "History sorting with null and extremely long column values",
+      "description": "Verify sorting and reverse-sorting stability when history entries contain null, empty, or excessively long strings that could cause truncation or sorting exceptions.",
+      "requirement_ids": [
+        "R-080"
+      ]
+    },
+    {
+      "id": "G-143",
+      "title": "Resize History Column Beyond Minimum Boundary",
+      "description": "Attempt to drag a history column separator past the defined minimum width limit to verify error handling or UI clamping behavior.",
+      "requirement_ids": [
+        "R-081"
+      ]
+    },
+    {
+      "id": "G-144",
+      "title": "Resize History Column Beyond Maximum Window Boundary",
+      "description": "Attempt to drag a history column separator beyond the maximum width of the browser window to check layout overflow and truncation handling.",
+      "requirement_ids": [
+        "R-081"
+      ]
+    },
+    {
+      "id": "G-145",
+      "title": "Rapid Successive Double-Clicks on Column Resizer",
+      "description": "Perform rapid double-clicks on the history column resizer boundary to test for race conditions or state corruption during auto-fit calculations.",
+      "requirement_ids": [
+        "R-081"
+      ]
+    },
+    {
+      "id": "G-146",
+      "title": "Hide and Show Invalid Column Name",
+      "description": "Attempt to show or hide a non-existent or corrupted history column identifier to verify error handling and prevent UI crashes.",
+      "requirement_ids": [
+        "R-082"
+      ]
+    },
+    {
+      "id": "G-147",
+      "title": "Hide All Essential History Columns Simultaneously",
+      "description": "Attempt to hide all available history columns to test misuse conditions where the user is left with a completely blank or broken history interface.",
+      "requirement_ids": [
+        "R-082"
+      ]
+    },
+    {
+      "id": "G-148",
+      "title": "Rapid Toggling of Column Visibility States",
+      "description": "Rapidly click the show and hide toggles for history columns multiple times to check for race conditions, UI freezing, or out-of-sync state flags.",
+      "requirement_ids": [
+        "R-082"
+      ]
+    },
+    {
+      "id": "G-149",
+      "title": "Dropdown Menu Navigation with Empty Stack",
+      "description": "Attempt to open the Back or Forward button dropdown menu when no history exists for the current session to ensure failure conditions are handled gracefully.",
+      "requirement_ids": [
+        "R-083"
+      ]
+    },
+    {
+      "id": "G-150",
+      "title": "Dropdown Menu Access After Rapid Navigation",
+      "description": "Rapidly click the Back button multiple times before pages fully load to check if the dropdown menu correctly populates without state corruption.",
+      "requirement_ids": [
+        "R-083"
+      ]
+    },
+    {
+      "id": "G-151",
+      "title": "New Browser Window Session History File Creation",
+      "description": "Verify that a new, empty session history file is correctly created when a brand new browser window is opened.",
+      "requirement_ids": [
+        "R-084"
+      ]
+    },
+    {
+      "id": "G-152",
+      "title": "Browser Restart Session History File Reset",
+      "description": "Verify that a new, empty session history file is created upon restarting the browser, overwriting or clearing any previous session artifacts improperly held.",
+      "requirement_ids": [
+        "R-084"
+      ]
+    },
+    {
+      "id": "G-153",
+      "title": "Session History File Corruption Handling on Restart",
+      "description": "Error guessing condition where an existing session history file is corrupted or locked during a browser restart, ensuring a new empty session history file is successfully created without crashing the application.",
+      "requirement_ids": [
+        "R-084"
       ]
     }
   ],
@@ -539,77 +1454,83 @@
   ],
   "evaluation": {
     "status": "evaluated",
-    "generated_count": 37,
+    "generated_count": 153,
     "reference_count": 12,
     "matches": [
       {
-        "generated_id": "G-003",
-        "reference_id": "TC-075",
-        "similarity": 0.89594983080805
-      },
-      {
-        "generated_id": "G-004",
-        "reference_id": "TC-076",
-        "similarity": 0.889333888054984
-      },
-      {
-        "generated_id": "G-006",
-        "reference_id": "TC-078",
-        "similarity": 0.8850027226629307
-      },
-      {
-        "generated_id": "G-007",
-        "reference_id": "TC-079",
-        "similarity": 0.9006292725782056
-      },
-      {
         "generated_id": "G-010",
-        "reference_id": "TC-080",
-        "similarity": 0.8672112536652309
-      },
-      {
-        "generated_id": "G-011",
-        "reference_id": "TC-081",
-        "similarity": 0.8759516867155722
-      },
-      {
-        "generated_id": "G-012",
-        "reference_id": "TC-082",
-        "similarity": 0.84820689291581
-      },
-      {
-        "generated_id": "G-014",
-        "reference_id": "TC-084",
-        "similarity": 0.8779987051787395
-      },
-      {
-        "generated_id": "G-027",
-        "reference_id": "TC-074",
-        "similarity": 0.8526546531563286
-      },
-      {
-        "generated_id": "G-028",
-        "reference_id": "TC-083",
-        "similarity": 0.9041068051630619
-      },
-      {
-        "generated_id": "G-030",
         "reference_id": "TC-077",
-        "similarity": 0.8980751082999122
+        "similarity": 0.8912800856914596
       },
       {
-        "generated_id": "G-032",
+        "generated_id": "G-013",
+        "reference_id": "TC-078",
+        "similarity": 0.8895329680059412
+      },
+      {
+        "generated_id": "G-040",
+        "reference_id": "TC-074",
+        "similarity": 0.8693146158357558
+      },
+      {
+        "generated_id": "G-042",
+        "reference_id": "TC-076",
+        "similarity": 0.8838233903786084
+      },
+      {
+        "generated_id": "G-067",
+        "reference_id": "TC-084",
+        "similarity": 0.8757191159993132
+      },
+      {
+        "generated_id": "G-068",
         "reference_id": "TC-073",
-        "similarity": 0.8660513653958244
+        "similarity": 0.8751659714278965
+      },
+      {
+        "generated_id": "G-090",
+        "reference_id": "TC-082",
+        "similarity": 0.858360879966559
+      },
+      {
+        "generated_id": "G-103",
+        "reference_id": "TC-075",
+        "similarity": 0.8997840944700954
+      },
+      {
+        "generated_id": "G-110",
+        "reference_id": "TC-079",
+        "similarity": 0.9077573648761799
+      },
+      {
+        "generated_id": "G-113",
+        "reference_id": "TC-080",
+        "similarity": 0.8750074550327293
+      },
+      {
+        "generated_id": "G-120",
+        "reference_id": "TC-083",
+        "similarity": 0.8883642160779791
+      },
+      {
+        "generated_id": "G-144",
+        "reference_id": "TC-081",
+        "similarity": 0.8982460486837949
       }
     ],
     "unmatched_generated_ids": [
       "G-001",
       "G-002",
+      "G-003",
+      "G-004",
       "G-005",
+      "G-006",
+      "G-007",
       "G-008",
       "G-009",
-      "G-013",
+      "G-011",
+      "G-012",
+      "G-014",
       "G-015",
       "G-016",
       "G-017",
@@ -622,64 +1543,176 @@
       "G-024",
       "G-025",
       "G-026",
+      "G-027",
+      "G-028",
       "G-029",
+      "G-030",
       "G-031",
+      "G-032",
       "G-033",
       "G-034",
       "G-035",
       "G-036",
-      "G-037"
+      "G-037",
+      "G-038",
+      "G-039",
+      "G-041",
+      "G-043",
+      "G-044",
+      "G-045",
+      "G-046",
+      "G-047",
+      "G-048",
+      "G-049",
+      "G-050",
+      "G-051",
+      "G-052",
+      "G-053",
+      "G-054",
+      "G-055",
+      "G-056",
+      "G-057",
+      "G-058",
+      "G-059",
+      "G-060",
+      "G-061",
+      "G-062",
+      "G-063",
+      "G-064",
+      "G-065",
+      "G-066",
+      "G-069",
+      "G-070",
+      "G-071",
+      "G-072",
+      "G-073",
+      "G-074",
+      "G-075",
+      "G-076",
+      "G-077",
+      "G-078",
+      "G-079",
+      "G-080",
+      "G-081",
+      "G-082",
+      "G-083",
+      "G-084",
+      "G-085",
+      "G-086",
+      "G-087",
+      "G-088",
+      "G-089",
+      "G-091",
+      "G-092",
+      "G-093",
+      "G-094",
+      "G-095",
+      "G-096",
+      "G-097",
+      "G-098",
+      "G-099",
+      "G-100",
+      "G-101",
+      "G-102",
+      "G-104",
+      "G-105",
+      "G-106",
+      "G-107",
+      "G-108",
+      "G-109",
+      "G-111",
+      "G-112",
+      "G-114",
+      "G-115",
+      "G-116",
+      "G-117",
+      "G-118",
+      "G-119",
+      "G-121",
+      "G-122",
+      "G-123",
+      "G-124",
+      "G-125",
+      "G-126",
+      "G-127",
+      "G-128",
+      "G-129",
+      "G-130",
+      "G-131",
+      "G-132",
+      "G-133",
+      "G-134",
+      "G-135",
+      "G-136",
+      "G-137",
+      "G-138",
+      "G-139",
+      "G-140",
+      "G-141",
+      "G-142",
+      "G-143",
+      "G-145",
+      "G-146",
+      "G-147",
+      "G-148",
+      "G-149",
+      "G-150",
+      "G-151",
+      "G-152",
+      "G-153"
     ],
     "unmatched_reference_ids": [],
-    "precision": 0.32432432432432434,
+    "precision": 0.0784313725490196,
     "recall": 1.0,
-    "f1": 0.4897959183673469,
+    "f1": 0.14545454545454545,
     "embedding_usage": {
-      "input_tokens": 1173,
+      "input_tokens": 5866,
       "output_tokens": null,
       "details": {
-        "text_prompt_tokens": 1173
+        "text_prompt_tokens": 5866
       },
       "status": "partial"
     },
-    "embedding_requests": 2
+    "embedding_requests": 8
   },
   "generation": {
     "selected_techniques": [
       "equivalence_partitioning",
       "state_transition",
+      "decision_table",
       "use_case",
       "error_guessing"
     ],
     "technique_rationales": {
-      "equivalence_partitioning": "Cover partitioning of history entries for single vs multiple deletions, and different grouping options like Day, Site, or None.",
-      "state_transition": "Cover states and transitions such as recording visited links, handling server redirects, clearing global history, and creating a new session history file.",
-      "use_case": "Cover end-to-end user workflows such as navigating history via Back and Forward dropdown menus and clicking history links to launch them.",
-      "error_guessing": "Explore plausible failure conditions such as sorting, resizing columns, and handling hidden/shown columns incorrectly."
+      "equivalence_partitioning": "Required to test normal and abnormal recording of visited links, grouping modes (Day, Site, None), and sorting options.",
+      "state_transition": "Required for tracking history lifecycle events such as recording links, server redirects, deleting single or multiple entries, clearing history, and session history file creation.",
+      "decision_table": "Required to test combinations of column visibility, resizable limits, and grouping/sorting conditions.",
+      "use_case": "Required to test end-to-end user workflows involving navigating via Back and Forward button dropdowns, clicking history items to launch browser windows, and managing history entries.",
+      "error_guessing": "Used to anticipate plausible failures during deletion of multiple history entries, clearing global history, and handling redirects."
     },
     "prompt_version": null
   },
   "usage": {
     "generation": {
-      "input_tokens": 4040,
-      "output_tokens": 2894,
+      "input_tokens": 46884,
+      "output_tokens": 14299,
       "details": {
-        "text_prompt_tokens": 4040,
-        "total_tokens": 6934
+        "text_prompt_tokens": 46884,
+        "total_tokens": 61183
       },
       "status": "available"
     },
     "generation_attempts": [],
     "generation_calls": [],
     "embedding": {
-      "input_tokens": 1173,
+      "input_tokens": 5866,
       "output_tokens": null,
       "details": {
-        "text_prompt_tokens": 1173
+        "text_prompt_tokens": 5866
       },
       "status": "partial"
     },
-    "embedding_requests": 2
+    "embedding_requests": 8
   },
   "links": {
     "requirements": {
@@ -697,129 +1730,464 @@
       "R-084": "R-084/requirement.md"
     },
     "cases": {
-      "G-015": {
-        "R-073": "R-073/test cases/15_Record_Visited_Link_to_Global_History.md"
+      "G-100": {
+        "R-073": "R-073/test cases/100_Record_Multiple_Visited_Links_to_Global_History.md"
+      },
+      "G-123": {
+        "R-073": "R-073/test cases/123_Record_visited_link_to_Global_History_under_norm.md"
+      },
+      "G-124": {
+        "R-073": "R-073/test cases/124_Attempt_to_record_link_visit_during_private_brow.md"
+      },
+      "G-125": {
+        "R-073": "R-073/test cases/125_Record_visited_link_with_malformed_or_extremely.md"
       },
       "G-001": {
         "R-073": "R-073/test cases/1_Record_Visited_Link_to_Global_History.md"
       },
-      "G-027": {
-        "R-073": "R-073/test cases/27_Record_visited_links_and_server_redirects_in_Glo.md",
-        "R-074": "R-074/test cases/27_Record_visited_links_and_server_redirects_in_Glo.md"
-      },
-      "G-031": {
-        "R-073": "R-073/test cases/31_Recording_Redirect_Links_Incorrectly.md",
-        "R-074": "R-074/test cases/31_Recording_Redirect_Links_Incorrectly.md"
-      },
-      "G-016": {
-        "R-074": "R-074/test cases/16_Record_Redirected_Link_to_Global_History.md"
-      },
       "G-002": {
-        "R-074": "R-074/test cases/2_Record_Correct_Link_After_Server_Redirect.md"
-      },
-      "G-017": {
-        "R-075": "R-075/test cases/17_Launch_History_Link_in_Browser_Window.md"
-      },
-      "G-030": {
-        "R-075": "R-075/test cases/30_Interacting_with_and_deleting_history_entries.md",
-        "R-076": "R-076/test cases/30_Interacting_with_and_deleting_history_entries.md",
-        "R-077": "R-077/test cases/30_Interacting_with_and_deleting_history_entries.md",
-        "R-078": "R-078/test cases/30_Interacting_with_and_deleting_history_entries.md"
-      },
-      "G-037": {
-        "R-075": "R-075/test cases/37_Launching_Broken_or_Malformed_History_Links.md"
-      },
-      "G-003": {
-        "R-075": "R-075/test cases/3_Launch_History_Link_in_Browser_Window.md"
-      },
-      "G-018": {
-        "R-076": "R-076/test cases/18_Delete_Single_History_Entry.md"
-      },
-      "G-033": {
-        "R-076": "R-076/test cases/33_Deleting_Non-Existent_or_Already_Deleted_History.md",
-        "R-077": "R-077/test cases/33_Deleting_Non-Existent_or_Already_Deleted_History.md"
-      },
-      "G-004": {
-        "R-076": "R-076/test cases/4_Delete_Single_History_Entry.md"
-      },
-      "G-019": {
-        "R-077": "R-077/test cases/19_Delete_Multiple_History_Entries.md"
-      },
-      "G-005": {
-        "R-077": "R-077/test cases/5_Delete_Multiple_History_Entries.md"
-      },
-      "G-020": {
-        "R-078": "R-078/test cases/20_Clear_Global_History.md"
-      },
-      "G-034": {
-        "R-078": "R-078/test cases/34_Clearing_Partially_Locked_Global_History.md"
-      },
-      "G-006": {
-        "R-078": "R-078/test cases/6_Clear_Global_History.md"
-      },
-      "G-021": {
-        "R-079": "R-079/test cases/21_Group_History_Items.md"
-      },
-      "G-029": {
-        "R-079": "R-079/test cases/29_History_organization_by_grouping_sorting_and_col.md",
-        "R-080": "R-080/test cases/29_History_organization_by_grouping_sorting_and_col.md",
-        "R-081": "R-081/test cases/29_History_organization_by_grouping_sorting_and_col.md",
-        "R-082": "R-082/test cases/29_History_organization_by_grouping_sorting_and_col.md"
-      },
-      "G-035": {
-        "R-079": "R-079/test cases/35_Invalid_Column_Grouping_and_Sorting_States.md",
-        "R-080": "R-080/test cases/35_Invalid_Column_Grouping_and_Sorting_States.md",
-        "R-081": "R-081/test cases/35_Invalid_Column_Grouping_and_Sorting_States.md",
-        "R-082": "R-082/test cases/35_Invalid_Column_Grouping_and_Sorting_States.md"
-      },
-      "G-007": {
-        "R-079": "R-079/test cases/7_Group_History_Items_by_Day.md"
-      },
-      "G-008": {
-        "R-079": "R-079/test cases/8_Group_History_Items_by_Site.md"
-      },
-      "G-009": {
-        "R-079": "R-079/test cases/9_Group_History_Items_by_None.md"
-      },
-      "G-010": {
-        "R-080": "R-080/test cases/10_Sort_History_Columns_Normal_and_Reverse.md"
-      },
-      "G-022": {
-        "R-080": "R-080/test cases/22_Sort_and_Reverse-Sort_History_Columns.md"
-      },
-      "G-011": {
-        "R-081": "R-081/test cases/11_Resize_History_Columns.md"
-      },
-      "G-023": {
-        "R-081": "R-081/test cases/23_Resize_History_Columns.md"
-      },
-      "G-012": {
-        "R-082": "R-082/test cases/12_Show_and_Hide_History_Columns.md"
-      },
-      "G-024": {
-        "R-082": "R-082/test cases/24_Show_and_Hide_History_Columns.md"
-      },
-      "G-013": {
-        "R-083": "R-083/test cases/13_Re-visit_Sites_via_Back_and_Forward_Dropdown_Men.md"
-      },
-      "G-025": {
-        "R-083": "R-083/test cases/25_Re-visit_Sites_via_Back_and_Forward_Dropdown_Men.md"
-      },
-      "G-028": {
-        "R-083": "R-083/test cases/28_Session_initialization_and_re-visiting_via_navig.md",
-        "R-084": "R-084/test cases/28_Session_initialization_and_re-visiting_via_navig.md"
+        "R-073": "R-073/test cases/2_Fail_to_Record_Unvisited_or_Invalid_Links.md"
       },
       "G-036": {
-        "R-083": "R-083/test cases/36_Dropdown_Menu_Navigation_with_Empty_History.md"
+        "R-073": "R-073/test cases/36_Transition_from_Unvisited_to_Visited_State.md"
+      },
+      "G-037": {
+        "R-073": "R-073/test cases/37_Abnormal_Transition_-_Attempt_to_Record_Duplicat.md"
+      },
+      "G-070": {
+        "R-073": "R-073/test cases/70_Record_visited_link_to_Global_History_under_norm.md"
+      },
+      "G-071": {
+        "R-073": "R-073/test cases/71_Do_not_record_visited_link_when_history_recordin.md"
+      },
+      "G-099": {
+        "R-073": "R-073/test cases/99_Record_Visited_Link_to_Global_History.md"
+      },
+      "G-101": {
+        "R-074": "R-074/test cases/101_Record_correct_link_after_server_redirect_normal.md"
+      },
+      "G-102": {
+        "R-074": "R-074/test cases/102_Record_correct_link_after_multi-step_server_redi.md"
+      },
+      "G-126": {
+        "R-074": "R-074/test cases/126_Verify_redirection_with_multiple_intermediate_re.md"
+      },
+      "G-127": {
+        "R-074": "R-074/test cases/127_Verify_history_recording_upon_redirect_failure_o.md"
+      },
+      "G-038": {
+        "R-074": "R-074/test cases/38_Normal_State_Transition_-_Server_Redirect_Record.md"
+      },
+      "G-039": {
+        "R-074": "R-074/test cases/39_Abnormal_State_Transition_-_Failed_Redirect_Hand.md"
+      },
+      "G-003": {
+        "R-074": "R-074/test cases/3_Record_Final_Redirected_URL.md"
+      },
+      "G-004": {
+        "R-074": "R-074/test cases/4_Record_Multiple_Redirects_URL.md"
+      },
+      "G-005": {
+        "R-074": "R-074/test cases/5_Invalid_or_Failed_Redirect_Handling.md"
+      },
+      "G-072": {
+        "R-074": "R-074/test cases/72_Server_redirect_with_correct_final_destination_r.md"
+      },
+      "G-073": {
+        "R-074": "R-074/test cases/73_Server_redirect_without_recording_intermediate_l.md"
+      },
+      "G-103": {
+        "R-075": "R-075/test cases/103_Launch_History_Link_in_Browser_Window.md"
+      },
+      "G-128": {
+        "R-075": "R-075/test cases/128_Launch_Corrupted_or_Malformed_History_Link.md"
+      },
+      "G-129": {
+        "R-075": "R-075/test cases/129_Launch_History_Link_with_Missing_Target_Resource.md"
+      },
+      "G-130": {
+        "R-075": "R-075/test cases/130_Rapid_Successive_Clicks_on_History_Link.md"
+      },
+      "G-040": {
+        "R-075": "R-075/test cases/40_Launch_History_Link_in_Browser_Window.md"
+      },
+      "G-041": {
+        "R-075": "R-075/test cases/41_Forbidden_Transition_-_Click_on_Non-Recorded_His.md"
+      },
+      "G-006": {
+        "R-075": "R-075/test cases/6_Launch_History_Link_in_Browser_Window.md"
+      },
+      "G-074": {
+        "R-075": "R-075/test cases/74_Launch_valid_history_link_in_browser_window.md"
+      },
+      "G-075": {
+        "R-075": "R-075/test cases/75_Attempt_to_launch_invalid_or_broken_history_link.md"
+      },
+      "G-007": {
+        "R-075": "R-075/test cases/7_Attempt_to_Launch_Invalid_or_Corrupted_History_L.md"
+      },
+      "G-104": {
+        "R-076": "R-076/test cases/104_Delete_a_single_History_entry_successfully.md"
+      },
+      "G-105": {
+        "R-076": "R-076/test cases/105_Attempt_to_delete_a_non-existent_or_already_dele.md"
+      },
+      "G-131": {
+        "R-076": "R-076/test cases/131_Delete_History_Entry_with_Malformed_or_Corrupted.md"
+      },
+      "G-132": {
+        "R-076": "R-076/test cases/132_Concurrent_Deletion_of_the_Same_History_Entry.md"
+      },
+      "G-042": {
+        "R-076": "R-076/test cases/42_Delete_single_history_entry_-_Normal_transition.md"
+      },
+      "G-043": {
+        "R-076": "R-076/test cases/43_Delete_non-existent_history_entry_-_Forbidden_tr.md"
+      },
+      "G-076": {
+        "R-076": "R-076/test cases/76_Delete_Single_History_Entry_Successfully.md"
+      },
+      "G-077": {
+        "R-076": "R-076/test cases/77_Attempt_to_Delete_Non-Existent_History_Entry.md"
+      },
+      "G-008": {
+        "R-076": "R-076/test cases/8_Delete_Single_History_Entry_Successfully.md"
+      },
+      "G-009": {
+        "R-076": "R-076/test cases/9_Attempt_to_Delete_Non-Existent_History_Entry.md"
+      },
+      "G-106": {
+        "R-077": "R-077/test cases/106_Delete_Multiple_History_Entries_Successfully.md"
+      },
+      "G-107": {
+        "R-077": "R-077/test cases/107_Attempt_to_Delete_Multiple_History_Entries_with.md"
+      },
+      "G-010": {
+        "R-077": "R-077/test cases/10_Delete_Multiple_History_Entries.md"
+      },
+      "G-011": {
+        "R-077": "R-077/test cases/11_Delete_Single_History_Entry.md"
+      },
+      "G-012": {
+        "R-077": "R-077/test cases/12_Delete_Zero_History_Entries.md"
+      },
+      "G-133": {
+        "R-077": "R-077/test cases/133_Delete_Multiple_History_Entries_with_Intermitten.md"
+      },
+      "G-134": {
+        "R-077": "R-077/test cases/134_Delete_Empty_Selection_of_Multiple_History_Entri.md"
+      },
+      "G-135": {
+        "R-077": "R-077/test cases/135_Massive_Volume_Multiple_History_Entries_Deletion.md"
+      },
+      "G-044": {
+        "R-077": "R-077/test cases/44_Delete_multiple_selected_history_entries_success.md"
+      },
+      "G-045": {
+        "R-077": "R-077/test cases/45_Attempt_to_delete_multiple_entries_when_no_entri.md"
+      },
+      "G-078": {
+        "R-077": "R-077/test cases/78_Delete_multiple_selected_history_entries_success.md"
+      },
+      "G-079": {
+        "R-077": "R-077/test cases/79_Attempt_to_delete_multiple_history_entries_with.md"
+      },
+      "G-108": {
+        "R-078": "R-078/test cases/108_Clear_Global_History_Successfully.md"
+      },
+      "G-109": {
+        "R-078": "R-078/test cases/109_Attempt_to_Clear_Global_History_When_Already_Emp.md"
+      },
+      "G-136": {
+        "R-078": "R-078/test cases/136_Clear_Global_History_During_Active_Write_Operati.md"
+      },
+      "G-137": {
+        "R-078": "R-078/test cases/137_Clear_Global_History_When_Database_File_Is_Corru.md"
+      },
+      "G-013": {
+        "R-078": "R-078/test cases/13_Clear_Global_History_when_history_is_populated.md"
       },
       "G-014": {
-        "R-084": "R-084/test cases/14_Create_New_Empty_Session_History_File_for_New_Wi.md"
+        "R-078": "R-078/test cases/14_Clear_Global_History_when_history_is_already_emp.md"
+      },
+      "G-046": {
+        "R-078": "R-078/test cases/46_Clear_Global_History_from_Populated_State.md"
+      },
+      "G-047": {
+        "R-078": "R-078/test cases/47_Clear_Global_History_when_Already_Empty.md"
+      },
+      "G-048": {
+        "R-078": "R-078/test cases/48_Forbidden_Transition_Access_Cleared_History_Entr.md"
+      },
+      "G-080": {
+        "R-078": "R-078/test cases/80_Clear_Global_History_when_history_is_populated.md"
+      },
+      "G-081": {
+        "R-078": "R-078/test cases/81_Clear_Global_History_when_history_is_already_emp.md"
+      },
+      "G-110": {
+        "R-079": "R-079/test cases/110_Group_History_items_by_Day.md"
+      },
+      "G-111": {
+        "R-079": "R-079/test cases/111_Group_History_items_by_Site.md"
+      },
+      "G-112": {
+        "R-079": "R-079/test cases/112_Group_History_items_with_None_grouping.md"
+      },
+      "G-138": {
+        "R-079": "R-079/test cases/138_Group_history_items_by_invalid_grouping_criteria.md"
+      },
+      "G-139": {
+        "R-079": "R-079/test cases/139_Group_history_items_with_corrupted_date_metadata.md"
+      },
+      "G-140": {
+        "R-079": "R-079/test cases/140_Group_history_items_with_malformed_URLs.md"
+      },
+      "G-015": {
+        "R-079": "R-079/test cases/15_Group_History_items_by_Day.md"
+      },
+      "G-016": {
+        "R-079": "R-079/test cases/16_Group_History_items_by_Site.md"
+      },
+      "G-017": {
+        "R-079": "R-079/test cases/17_Group_History_items_by_None.md"
+      },
+      "G-018": {
+        "R-079": "R-079/test cases/18_Invalid_grouping_option_handling.md"
+      },
+      "G-049": {
+        "R-079": "R-079/test cases/49_Group_history_items_by_Day.md"
+      },
+      "G-050": {
+        "R-079": "R-079/test cases/50_Group_history_items_by_Site.md"
+      },
+      "G-051": {
+        "R-079": "R-079/test cases/51_Group_history_items_by_None.md"
+      },
+      "G-052": {
+        "R-079": "R-079/test cases/52_Forbidden_transition_to_invalid_grouping_state.md"
+      },
+      "G-082": {
+        "R-079": "R-079/test cases/82_Group_history_items_by_Day.md"
+      },
+      "G-083": {
+        "R-079": "R-079/test cases/83_Group_history_items_by_Site.md"
+      },
+      "G-084": {
+        "R-079": "R-079/test cases/84_Group_history_items_by_None.md"
+      },
+      "G-113": {
+        "R-080": "R-080/test cases/113_Sort_and_reverse-sort_History_columns.md"
+      },
+      "G-141": {
+        "R-080": "R-080/test cases/141_History_sorting_with_special_characters_and_mixe.md"
+      },
+      "G-142": {
+        "R-080": "R-080/test cases/142_History_sorting_with_null_and_extremely_long_col.md"
+      },
+      "G-019": {
+        "R-080": "R-080/test cases/19_Sort_History_by_Column_in_Ascending_Order.md"
+      },
+      "G-020": {
+        "R-080": "R-080/test cases/20_Sort_History_by_Column_in_Reverse_Descending_Ord.md"
+      },
+      "G-021": {
+        "R-080": "R-080/test cases/21_Invalid_Sort_Action_on_Non-existent_Column.md"
+      },
+      "G-053": {
+        "R-080": "R-080/test cases/53_Sort_History_by_Column_in_Ascending_Order.md"
+      },
+      "G-054": {
+        "R-080": "R-080/test cases/54_Reverse-Sort_History_by_Column.md"
+      },
+      "G-055": {
+        "R-080": "R-080/test cases/55_Switch_Sort_Column_and_Reset_to_Ascending.md"
+      },
+      "G-056": {
+        "R-080": "R-080/test cases/56_Forbidden_Transition_Invalid_Sort_Parameter_on_N.md"
+      },
+      "G-085": {
+        "R-080": "R-080/test cases/85_Sort_History_by_Column_in_Ascending_Order.md"
+      },
+      "G-086": {
+        "R-080": "R-080/test cases/86_Reverse-Sort_History_by_Column_in_Descending_Ord.md"
+      },
+      "G-087": {
+        "R-080": "R-080/test cases/87_Invalid_Column_Sort_Handling.md"
+      },
+      "G-114": {
+        "R-081": "R-081/test cases/114_Resize_History_Columns_to_Show_More_Entry_Detail.md"
+      },
+      "G-115": {
+        "R-081": "R-081/test cases/115_Resize_History_Columns_to_Hide_Entry_Details.md"
+      },
+      "G-143": {
+        "R-081": "R-081/test cases/143_Resize_History_Column_Beyond_Minimum_Boundary.md"
+      },
+      "G-144": {
+        "R-081": "R-081/test cases/144_Resize_History_Column_Beyond_Maximum_Window_Boun.md"
+      },
+      "G-145": {
+        "R-081": "R-081/test cases/145_Rapid_Successive_Double-Clicks_on_Column_Resizer.md"
+      },
+      "G-022": {
+        "R-081": "R-081/test cases/22_Resize_history_column_to_show_more_entries.md"
+      },
+      "G-023": {
+        "R-081": "R-081/test cases/23_Resize_history_column_to_hide_entries.md"
+      },
+      "G-024": {
+        "R-081": "R-081/test cases/24_Attempt_to_resize_history_column_beyond_maximum.md"
+      },
+      "G-025": {
+        "R-081": "R-081/test cases/25_Attempt_to_resize_history_column_beyond_minimum.md"
+      },
+      "G-057": {
+        "R-081": "R-081/test cases/57_Resize_History_column_to_wider_state_to_show_mor.md"
+      },
+      "G-058": {
+        "R-081": "R-081/test cases/58_Resize_History_column_to_narrower_state_to_hide.md"
+      },
+      "G-059": {
+        "R-081": "R-081/test cases/59_Forbidden_resize_transition_beyond_minimum_width.md"
+      },
+      "G-088": {
+        "R-081": "R-081/test cases/88_Resize_history_column_to_show_more_entries.md"
+      },
+      "G-089": {
+        "R-081": "R-081/test cases/89_Resize_history_column_to_hide_more_entries.md"
+      },
+      "G-116": {
+        "R-082": "R-082/test cases/116_Show_and_Hide_History_Columns_Successfully.md"
+      },
+      "G-117": {
+        "R-082": "R-082/test cases/117_Attempt_to_Hide_All_History_Columns.md"
+      },
+      "G-146": {
+        "R-082": "R-082/test cases/146_Hide_and_Show_Invalid_Column_Name.md"
+      },
+      "G-147": {
+        "R-082": "R-082/test cases/147_Hide_All_Essential_History_Columns_Simultaneousl.md"
+      },
+      "G-148": {
+        "R-082": "R-082/test cases/148_Rapid_Toggling_of_Column_Visibility_States.md"
       },
       "G-026": {
-        "R-084": "R-084/test cases/26_Create_New_Session_History_File.md"
+        "R-082": "R-082/test cases/26_Show_Hidden_History_Column.md"
+      },
+      "G-027": {
+        "R-082": "R-082/test cases/27_Hide_Visible_History_Column.md"
+      },
+      "G-028": {
+        "R-082": "R-082/test cases/28_Invalid_Column_Toggle_Operation.md"
+      },
+      "G-060": {
+        "R-082": "R-082/test cases/60_Show_History_Column_State_Transition.md"
+      },
+      "G-061": {
+        "R-082": "R-082/test cases/61_Hide_History_Column_State_Transition.md"
+      },
+      "G-062": {
+        "R-082": "R-082/test cases/62_Forbidden_Transition_-_Show_Already_Shown_Column.md"
+      },
+      "G-063": {
+        "R-082": "R-082/test cases/63_Forbidden_Transition_-_Hide_Already_Hidden_Colum.md"
+      },
+      "G-090": {
+        "R-082": "R-082/test cases/90_Show_History_Column.md"
+      },
+      "G-091": {
+        "R-082": "R-082/test cases/91_Hide_History_Column.md"
+      },
+      "G-092": {
+        "R-082": "R-082/test cases/92_Maintain_Column_State.md"
+      },
+      "G-118": {
+        "R-083": "R-083/test cases/118_Re-visit_site_via_Back_button_dropdown_menu.md"
+      },
+      "G-119": {
+        "R-083": "R-083/test cases/119_Re-visit_site_via_Forward_button_dropdown_menu.md"
+      },
+      "G-120": {
+        "R-083": "R-083/test cases/120_Attempt_to_access_Back_or_Forward_dropdown_menu.md"
+      },
+      "G-149": {
+        "R-083": "R-083/test cases/149_Dropdown_Menu_Navigation_with_Empty_Stack.md"
+      },
+      "G-150": {
+        "R-083": "R-083/test cases/150_Dropdown_Menu_Access_After_Rapid_Navigation.md"
+      },
+      "G-029": {
+        "R-083": "R-083/test cases/29_Re-visit_site_via_Back_button_dropdown_menu.md"
+      },
+      "G-030": {
+        "R-083": "R-083/test cases/30_Re-visit_site_via_Forward_button_dropdown_menu.md"
+      },
+      "G-031": {
+        "R-083": "R-083/test cases/31_Access_Back_button_dropdown_menu_with_empty_hist.md"
       },
       "G-032": {
-        "R-084": "R-084/test cases/32_Corrupted_Session_History_on_Restart.md"
+        "R-083": "R-083/test cases/32_Access_Forward_button_dropdown_menu_with_empty_f.md"
+      },
+      "G-064": {
+        "R-083": "R-083/test cases/64_Re-visit_site_via_Back_button_dropdown_menu.md"
+      },
+      "G-065": {
+        "R-083": "R-083/test cases/65_Re-visit_site_via_Forward_button_dropdown_menu.md"
+      },
+      "G-066": {
+        "R-083": "R-083/test cases/66_Attempt_to_open_Back_dropdown_menu_with_empty_hi.md"
+      },
+      "G-093": {
+        "R-083": "R-083/test cases/93_Revisit_site_using_Back_button_dropdown_menu.md"
+      },
+      "G-094": {
+        "R-083": "R-083/test cases/94_Revisit_site_using_Forward_button_dropdown_menu.md"
+      },
+      "G-095": {
+        "R-083": "R-083/test cases/95_Attempt_to_use_Back_dropdown_menu_when_no_histor.md"
+      },
+      "G-096": {
+        "R-083": "R-083/test cases/96_Attempt_to_use_Forward_dropdown_menu_when_no_for.md"
+      },
+      "G-121": {
+        "R-084": "R-084/test cases/121_Create_Empty_Session_History_File_on_New_Browser.md"
+      },
+      "G-122": {
+        "R-084": "R-084/test cases/122_Create_Empty_Session_History_File_on_Browser_Res.md"
+      },
+      "G-151": {
+        "R-084": "R-084/test cases/151_New_Browser_Window_Session_History_File_Creation.md"
+      },
+      "G-152": {
+        "R-084": "R-084/test cases/152_Browser_Restart_Session_History_File_Reset.md"
+      },
+      "G-153": {
+        "R-084": "R-084/test cases/153_Session_History_File_Corruption_Handling_on_Rest.md"
+      },
+      "G-033": {
+        "R-084": "R-084/test cases/33_Create_new_empty_session_history_file_for_a_new.md"
+      },
+      "G-034": {
+        "R-084": "R-084/test cases/34_Create_new_empty_session_history_file_upon_brows.md"
+      },
+      "G-035": {
+        "R-084": "R-084/test cases/35_Failure_to_create_session_history_file_on_new_wi.md"
+      },
+      "G-067": {
+        "R-084": "R-084/test cases/67_Create_Empty_Session_History_File_on_New_Browser.md"
+      },
+      "G-068": {
+        "R-084": "R-084/test cases/68_Create_Empty_Session_History_File_on_Browser_Res.md"
+      },
+      "G-069": {
+        "R-084": "R-084/test cases/69_Forbidden_Transition_-_Retain_Previous_History_o.md"
+      },
+      "G-097": {
+        "R-084": "R-084/test cases/97_Create_empty_session_history_file_for_new_browse.md"
+      },
+      "G-098": {
+        "R-084": "R-084/test cases/98_Create_empty_session_history_file_for_browser_re.md"
       }
     }
   },

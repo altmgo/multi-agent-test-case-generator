@@ -1,0 +1,661 @@
+{
+  "schema_version": 1,
+  "solution": "GHL",
+  "unit_id": "firefox_themes",
+  "parent_id": null,
+  "status": "evaluated",
+  "failure": null,
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "R-175",
+      "text": "Both Classic and Modern themes shall exist under the themes preferences.",
+      "language": "en",
+      "source": "R-set.csv#R-175"
+    },
+    {
+      "id": "R-176",
+      "text": "Classic theme shall be displayed as in the given image.",
+      "language": "en",
+      "source": "R-set.csv#R-176"
+    },
+    {
+      "id": "R-177",
+      "text": "Modern theme shall be displayed as in the given image.",
+      "language": "en",
+      "source": "R-set.csv#R-177"
+    },
+    {
+      "id": "R-178",
+      "text": "\"Theme Preferences\" item shall be available under View menu.",
+      "language": "en",
+      "source": "R-set.csv#R-178"
+    },
+    {
+      "id": "R-179",
+      "text": "\"Get New Themes\" item shall be available under View menu.",
+      "language": "en",
+      "source": "R-set.csv#R-179"
+    },
+    {
+      "id": "R-180",
+      "text": "\"Classic\" item shall be available under View menu.",
+      "language": "en",
+      "source": "R-set.csv#R-180"
+    },
+    {
+      "id": "R-181",
+      "text": "\"Modern\" item shall be available under View menu.",
+      "language": "en",
+      "source": "R-set.csv#R-181"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Verify existence of both Classic and Modern themes under preferences",
+      "description": "Verify that navigating to themes preferences displays both the Classic theme and Modern theme as valid options.",
+      "requirement_ids": [
+        "R-175"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Verify behavior when themes preferences lack Classic or Modern theme",
+      "description": "Verify the system behavior when either the Classic or Modern theme is missing from the themes preferences, representing an invalid state.",
+      "requirement_ids": [
+        "R-175"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Classic theme correct visual display",
+      "description": "Verify that selecting the Classic theme displays the theme layout and appearance matching the given reference image.",
+      "requirement_ids": [
+        "R-176"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Classic theme incorrect visual display",
+      "description": "Verify the system behavior when the Classic theme display does not match the layout and appearance of the given reference image.",
+      "requirement_ids": [
+        "R-176"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Modern theme display matches the reference image",
+      "description": "Verify that when the Modern theme is selected and displayed, its visual elements match the given reference image.",
+      "requirement_ids": [
+        "R-177"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Modern theme display does not match the reference image",
+      "description": "Verify the system behavior when the Modern theme visual layout deviates from the given reference image.",
+      "requirement_ids": [
+        "R-177"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Verify Theme Preferences item exists under View menu",
+      "description": "Valid partition case where the user navigates to the View menu and confirms the presence of the \"Theme Preferences\" item.",
+      "requirement_ids": [
+        "R-178"
+      ]
+    },
+    {
+      "id": "G-008",
+      "title": "Verify Theme Preferences item is missing from invalid locations",
+      "description": "Invalid partition case where the user checks menus other than the View menu (e.g., File, Edit) and ensures the \"Theme Preferences\" item is not present.",
+      "requirement_ids": [
+        "R-178"
+      ]
+    },
+    {
+      "id": "G-009",
+      "title": "Verify Get New Themes item availability under View menu",
+      "description": "Partition for valid behavior where the Get New Themes item is present under the View menu.",
+      "requirement_ids": [
+        "R-179"
+      ]
+    },
+    {
+      "id": "G-010",
+      "title": "Verify Get New Themes item absence under View menu",
+      "description": "Partition for abnormal/invalid behavior where the Get New Themes item is missing from the View menu.",
+      "requirement_ids": [
+        "R-179"
+      ]
+    },
+    {
+      "id": "G-011",
+      "title": "Classic item availability under View menu",
+      "description": "Verify that the Classic item is available under the View menu.",
+      "requirement_ids": [
+        "R-180"
+      ]
+    },
+    {
+      "id": "G-012",
+      "title": "Classic item absence under View menu",
+      "description": "Verify the system behavior when the Classic item is missing from the View menu.",
+      "requirement_ids": [
+        "R-180"
+      ]
+    },
+    {
+      "id": "G-013",
+      "title": "Verify presence of Modern item under View menu",
+      "description": "Test the valid equivalence partition where the \"Modern\" item is available and visible under the View menu.",
+      "requirement_ids": [
+        "R-181"
+      ]
+    },
+    {
+      "id": "G-014",
+      "title": "Verify absence or incorrect state of Modern item under View menu",
+      "description": "Test the invalid equivalence partition where the \"Modern\" item is missing or unavailable under the View menu.",
+      "requirement_ids": [
+        "R-181"
+      ]
+    },
+    {
+      "id": "G-015",
+      "title": "State Transition for Classic and Modern Themes Existence",
+      "description": "Verify the presence and availability of both Classic and Modern themes under the themes preferences state using state transition testing.",
+      "requirement_ids": [
+        "R-175"
+      ]
+    },
+    {
+      "id": "G-016",
+      "title": "Transition to Classic Theme State",
+      "description": "Verify that when the user selects the Classic theme from preferences, the application transitions to the Classic theme state and correctly displays the Classic theme as specified in the given image.",
+      "requirement_ids": [
+        "R-175",
+        "R-176"
+      ]
+    },
+    {
+      "id": "G-017",
+      "title": "Forbidden Transition from Classic to Incorrect Theme Display",
+      "description": "Verify that the Classic theme state does not display the Modern theme or any corrupted rendering layout contrary to the given image.",
+      "requirement_ids": [
+        "R-176",
+        "R-177"
+      ]
+    },
+    {
+      "id": "G-018",
+      "title": "Transition to Modern Theme State",
+      "description": "Verify that selecting the Modern theme transitions the UI state to display the Modern theme as specified in the reference image.",
+      "requirement_ids": [
+        "R-177"
+      ]
+    },
+    {
+      "id": "G-019",
+      "title": "Abnormal Transition to Modern Theme State",
+      "description": "Verify that attempting to load the Modern theme with corrupted image assets fails to display the correct Modern theme state.",
+      "requirement_ids": [
+        "R-177"
+      ]
+    },
+    {
+      "id": "G-020",
+      "title": "Access Theme Preferences from View Menu",
+      "description": "Verify that the Theme Preferences item is available and accessible under the View menu state.",
+      "requirement_ids": [
+        "R-178"
+      ]
+    },
+    {
+      "id": "G-021",
+      "title": "Theme Preferences Missing in Closed View Menu State",
+      "description": "Verify that the Theme Preferences item is not accessible when the View menu state is closed.",
+      "requirement_ids": [
+        "R-178"
+      ]
+    },
+    {
+      "id": "G-022",
+      "title": "Transition from View Menu to Get New Themes",
+      "description": "Verify the state transition when the user selects 'Get New Themes' from the View menu.",
+      "requirement_ids": [
+        "R-179"
+      ]
+    },
+    {
+      "id": "G-023",
+      "title": "Forbidden Transition from Invalid State for Get New Themes",
+      "description": "Verify that 'Get New Themes' cannot be accessed or triggered when the View menu is not open or available.",
+      "requirement_ids": [
+        "R-179"
+      ]
+    },
+    {
+      "id": "G-024",
+      "title": "Transition from Default to Classic Item Available State",
+      "description": "Verify that the Classic item becomes available under the View menu in the normal operational state.",
+      "requirement_ids": [
+        "R-180"
+      ]
+    },
+    {
+      "id": "G-025",
+      "title": "Forbidden Transition when View Menu is Disabled",
+      "description": "Verify that the Classic item cannot be accessed or selected under the View menu when the menu itself is in a disabled state.",
+      "requirement_ids": [
+        "R-180"
+      ]
+    },
+    {
+      "id": "G-026",
+      "title": "Select Modern item from View menu",
+      "description": "Verify that selecting the Modern item from the View menu transitions the theme state to Modern.",
+      "requirement_ids": [
+        "R-181"
+      ]
+    },
+    {
+      "id": "G-027",
+      "title": "Forbidden transition to Modern when View menu is disabled",
+      "description": "Verify that selecting the Modern item from the View menu is forbidden when the View menu is in a disabled state.",
+      "requirement_ids": [
+        "R-181"
+      ]
+    },
+    {
+      "id": "G-028",
+      "title": "Verify presence of both Classic and Modern themes under theme preferences",
+      "description": "Navigate to the theme preferences and verify that both Classic and Modern themes exist.",
+      "requirement_ids": [
+        "R-175"
+      ]
+    },
+    {
+      "id": "G-029",
+      "title": "Verify Classic theme display accuracy",
+      "description": "Navigate to themes preferences, select the Classic theme, and verify that the Classic theme is displayed correctly as specified in the given reference image.",
+      "requirement_ids": [
+        "R-175",
+        "R-176"
+      ]
+    },
+    {
+      "id": "G-030",
+      "title": "Verify Modern theme display according to reference image",
+      "description": "Execute an end-to-end user workflow to navigate to themes preferences, select the Modern theme, and verify that it is displayed correctly as specified in the given reference image.",
+      "requirement_ids": [
+        "R-175",
+        "R-177",
+        "R-178"
+      ]
+    },
+    {
+      "id": "G-031",
+      "title": "Verify Theme Preferences item availability under View menu",
+      "description": "Navigate to the View menu and verify that the Theme Preferences item is available.",
+      "requirement_ids": [
+        "R-178"
+      ]
+    },
+    {
+      "id": "G-032",
+      "title": "Verify Get New Themes item availability",
+      "description": "Navigate to the View menu and verify that the Get New Themes item is available.",
+      "requirement_ids": [
+        "R-179"
+      ]
+    },
+    {
+      "id": "G-033",
+      "title": "Verify Classic item is available under View menu",
+      "description": "Navigate to the View menu in the browser and verify that the 'Classic' item is present in the menu options.",
+      "requirement_ids": [
+        "R-180"
+      ]
+    },
+    {
+      "id": "G-034",
+      "title": "Verify Modern item is available under View menu",
+      "description": "Navigate to the View menu and verify that the Modern theme selection item is present.",
+      "requirement_ids": [
+        "R-181"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "TC-175",
+      "title": "TC-175",
+      "description": "STEPS/DESCRIPTION\nFrom the main menu bar, select Edit > Preferences > Appearance > Themes\n\nEXPECTED RESULTS\nBy default, there should be at least two skins under Themes -- Classic and Modern.",
+      "requirement_ids": [
+        "R-175"
+      ],
+      "source": "T-set.csv#TC-175",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-176",
+      "title": "TC-176",
+      "description": "STEPS/DESCRIPTION\n1. From the main menu bar, select Edit > Preferences > Appearances > Themes.\n2. Select \"Classic\" theme on the right hand side of the dialog.\n3. Click the \"Apply Classic\" button. \n4. Close the Preferences dialog. \n\nEXPECTED RESULTS\nThe following image for the menu bar of the browser should display as follows:",
+      "requirement_ids": [
+        "R-176"
+      ],
+      "source": "T-set.csv#TC-176",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-177",
+      "title": "TC-177",
+      "description": "STEPS/DESCRIPTION\n1. From the main menu bar, select Edit > Preferences > Appearances > Themes.\n2. Select \"Modern\" theme on the right hand side of the dialog.\n3. Click the \"Apply Modern\" button.\n4. Close the Preferences dialog.\n\nEXPECTED RESULTS\nThe folowing image for the menu bar of the browser should display as follows:",
+      "requirement_ids": [
+        "R-177"
+      ],
+      "source": "T-set.csv#TC-177",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-178",
+      "title": "TC-178",
+      "description": "STEPS/DESCRIPTION\n1. From the main menu bar, select View.\n2. Select \"Apply Theme\" and another submenu should pop up.\n3. Select \"Theme Preferences...\"\n\nEXPECTED RESULTS\nThe following Theme preferences dialog should appear:",
+      "requirement_ids": [
+        "R-178"
+      ],
+      "source": "T-set.csv#TC-178",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-179",
+      "title": "TC-179",
+      "description": "STEPS/DESCRIPTION\n1. From the main menu bar, select View. \n2. Select \"Apply Theme\" and another submenu should pop up.\n3. Select \"Get New Themes\" item\n\nEXPECTED RESULTS\nThis should link to http://wp.netscape.com/themes/index.html (netscape browser).\nThis should link to http://mozilla.org/themes/download/",
+      "requirement_ids": [
+        "R-179"
+      ],
+      "source": "T-set.csv#TC-179",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-180",
+      "title": "TC-180",
+      "description": "STEPS/DESCRIPTION\n1. From the main menu bar, select View.\n2. Select \"Apply Theme\" and another submenu should pop up.\n3. Select \"Classic Theme\" item.\n\nEXPECTED RESULTS\nThe Classic Skin should appear to the browser menu bar.",
+      "requirement_ids": [
+        "R-180"
+      ],
+      "source": "T-set.csv#TC-180",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-181",
+      "title": "TC-181",
+      "description": "STEPS/DESCRIPTION\n1. From the main menu bar, select View.\n2. Select \"Apply Theme\" and another submenu should pop up.\n3. Select \"Modern Theme\" item.\n\nEXPECTED RESULTS\nThe Modern skin should appear to the browser menu bar.\n ",
+      "requirement_ids": [
+        "R-181"
+      ],
+      "source": "T-set.csv#TC-181",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    }
+  ],
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 34,
+    "reference_count": 7,
+    "matches": [
+      {
+        "generated_id": "G-026",
+        "reference_id": "TC-181",
+        "similarity": 0.919359078030883
+      },
+      {
+        "generated_id": "G-028",
+        "reference_id": "TC-175",
+        "similarity": 0.8895225736844623
+      },
+      {
+        "generated_id": "G-029",
+        "reference_id": "TC-176",
+        "similarity": 0.8892623084092192
+      },
+      {
+        "generated_id": "G-030",
+        "reference_id": "TC-177",
+        "similarity": 0.8835220770294984
+      },
+      {
+        "generated_id": "G-031",
+        "reference_id": "TC-178",
+        "similarity": 0.9204780539979953
+      },
+      {
+        "generated_id": "G-032",
+        "reference_id": "TC-179",
+        "similarity": 0.8987964389585981
+      },
+      {
+        "generated_id": "G-033",
+        "reference_id": "TC-180",
+        "similarity": 0.889250869696241
+      }
+    ],
+    "unmatched_generated_ids": [
+      "G-001",
+      "G-002",
+      "G-003",
+      "G-004",
+      "G-005",
+      "G-006",
+      "G-007",
+      "G-008",
+      "G-009",
+      "G-010",
+      "G-011",
+      "G-012",
+      "G-013",
+      "G-014",
+      "G-015",
+      "G-016",
+      "G-017",
+      "G-018",
+      "G-019",
+      "G-020",
+      "G-021",
+      "G-022",
+      "G-023",
+      "G-024",
+      "G-025",
+      "G-027",
+      "G-034"
+    ],
+    "unmatched_reference_ids": [],
+    "precision": 0.20588235294117646,
+    "recall": 1.0,
+    "f1": 0.34146341463414637,
+    "embedding_usage": {
+      "input_tokens": 1197,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 1197
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 2
+  },
+  "generation": {
+    "selected_techniques": [
+      "equivalence_partitioning",
+      "state_transition",
+      "use_case"
+    ],
+    "technique_rationales": {
+      "equivalence_partitioning": "Partition valid theme choices (Classic and Modern) and menu items available under the View menu.",
+      "state_transition": "Cover the states and transitions associated with switching between themes under theme preferences.",
+      "use_case": "Cover the user flow of navigating the View menu to access theme preferences and selecting themes."
+    },
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": 11508,
+      "output_tokens": 3091,
+      "details": {
+        "text_prompt_tokens": 11508,
+        "total_tokens": 14599
+      },
+      "status": "available"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": 1197,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 1197
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 2
+  },
+  "links": {
+    "requirements": {
+      "R-175": "R-175/requirement.md",
+      "R-176": "R-176/requirement.md",
+      "R-177": "R-177/requirement.md",
+      "R-178": "R-178/requirement.md",
+      "R-179": "R-179/requirement.md",
+      "R-180": "R-180/requirement.md",
+      "R-181": "R-181/requirement.md"
+    },
+    "cases": {
+      "G-015": {
+        "R-175": "R-175/test cases/15_State_Transition_for_Classic_and_Modern_Themes_E.md"
+      },
+      "G-016": {
+        "R-175": "R-175/test cases/16_Transition_to_Classic_Theme_State.md",
+        "R-176": "R-176/test cases/16_Transition_to_Classic_Theme_State.md"
+      },
+      "G-001": {
+        "R-175": "R-175/test cases/1_Verify_existence_of_both_Classic_and_Modern_them.md"
+      },
+      "G-028": {
+        "R-175": "R-175/test cases/28_Verify_presence_of_both_Classic_and_Modern_theme.md"
+      },
+      "G-029": {
+        "R-175": "R-175/test cases/29_Verify_Classic_theme_display_accuracy.md",
+        "R-176": "R-176/test cases/29_Verify_Classic_theme_display_accuracy.md"
+      },
+      "G-002": {
+        "R-175": "R-175/test cases/2_Verify_behavior_when_themes_preferences_lack_Cla.md"
+      },
+      "G-030": {
+        "R-175": "R-175/test cases/30_Verify_Modern_theme_display_according_to_referen.md",
+        "R-177": "R-177/test cases/30_Verify_Modern_theme_display_according_to_referen.md",
+        "R-178": "R-178/test cases/30_Verify_Modern_theme_display_according_to_referen.md"
+      },
+      "G-017": {
+        "R-176": "R-176/test cases/17_Forbidden_Transition_from_Classic_to_Incorrect_T.md",
+        "R-177": "R-177/test cases/17_Forbidden_Transition_from_Classic_to_Incorrect_T.md"
+      },
+      "G-003": {
+        "R-176": "R-176/test cases/3_Classic_theme_correct_visual_display.md"
+      },
+      "G-004": {
+        "R-176": "R-176/test cases/4_Classic_theme_incorrect_visual_display.md"
+      },
+      "G-018": {
+        "R-177": "R-177/test cases/18_Transition_to_Modern_Theme_State.md"
+      },
+      "G-019": {
+        "R-177": "R-177/test cases/19_Abnormal_Transition_to_Modern_Theme_State.md"
+      },
+      "G-005": {
+        "R-177": "R-177/test cases/5_Modern_theme_display_matches_the_reference_image.md"
+      },
+      "G-006": {
+        "R-177": "R-177/test cases/6_Modern_theme_display_does_not_match_the_referenc.md"
+      },
+      "G-020": {
+        "R-178": "R-178/test cases/20_Access_Theme_Preferences_from_View_Menu.md"
+      },
+      "G-021": {
+        "R-178": "R-178/test cases/21_Theme_Preferences_Missing_in_Closed_View_Menu_St.md"
+      },
+      "G-031": {
+        "R-178": "R-178/test cases/31_Verify_Theme_Preferences_item_availability_under.md"
+      },
+      "G-007": {
+        "R-178": "R-178/test cases/7_Verify_Theme_Preferences_item_exists_under_View.md"
+      },
+      "G-008": {
+        "R-178": "R-178/test cases/8_Verify_Theme_Preferences_item_is_missing_from_in.md"
+      },
+      "G-010": {
+        "R-179": "R-179/test cases/10_Verify_Get_New_Themes_item_absence_under_View_me.md"
+      },
+      "G-022": {
+        "R-179": "R-179/test cases/22_Transition_from_View_Menu_to_Get_New_Themes.md"
+      },
+      "G-023": {
+        "R-179": "R-179/test cases/23_Forbidden_Transition_from_Invalid_State_for_Get.md"
+      },
+      "G-032": {
+        "R-179": "R-179/test cases/32_Verify_Get_New_Themes_item_availability.md"
+      },
+      "G-009": {
+        "R-179": "R-179/test cases/9_Verify_Get_New_Themes_item_availability_under_Vi.md"
+      },
+      "G-011": {
+        "R-180": "R-180/test cases/11_Classic_item_availability_under_View_menu.md"
+      },
+      "G-012": {
+        "R-180": "R-180/test cases/12_Classic_item_absence_under_View_menu.md"
+      },
+      "G-024": {
+        "R-180": "R-180/test cases/24_Transition_from_Default_to_Classic_Item_Availabl.md"
+      },
+      "G-025": {
+        "R-180": "R-180/test cases/25_Forbidden_Transition_when_View_Menu_is_Disabled.md"
+      },
+      "G-033": {
+        "R-180": "R-180/test cases/33_Verify_Classic_item_is_available_under_View_menu.md"
+      },
+      "G-013": {
+        "R-181": "R-181/test cases/13_Verify_presence_of_Modern_item_under_View_menu.md"
+      },
+      "G-014": {
+        "R-181": "R-181/test cases/14_Verify_absence_or_incorrect_state_of_Modern_item.md"
+      },
+      "G-026": {
+        "R-181": "R-181/test cases/26_Select_Modern_item_from_View_menu.md"
+      },
+      "G-027": {
+        "R-181": "R-181/test cases/27_Forbidden_transition_to_Modern_when_View_menu_is.md"
+      },
+      "G-034": {
+        "R-181": "R-181/test cases/34_Verify_Modern_item_is_available_under_View_menu.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

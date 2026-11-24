@@ -4,24 +4,56 @@
     "cases": [
       {
         "id": "G-001",
-        "title": "Initiate Drag Event and Capture Product Data",
-        "description": "Verify that dragging a product item (li element with draggable='true' and data-testid='product-item-1') correctly initiates a drag event and captures the corresponding product title and price.",
+        "title": "Initiate drag event on valid product item and capture title and price",
+        "description": "Verify that dragging a product item (li element with data-testid='product-item-1' and draggable='true') initiates a drag event and successfully captures the product's title and price from its corresponding child elements into the data transfer object.",
         "requirement_ids": [
           "e2edev_bench_01-R-1"
         ]
       },
       {
         "id": "G-002",
-        "title": "Drop Product into Drop Area and Update Cart Display",
-        "description": "Verify that dropping a product item into the designated drop area (id='div1', data-testid='drop-area') successfully adds it to the cart and updates the cart display (.box1 for quantity, .box2 for title, and .box3 for unit price), supporting both new and repeated products.",
+        "title": "Drop single product into drop area",
+        "description": "Verify that dropping a product item (e.g., data-testid='product-item-1') into the designated drop area (id='div1', data-testid='drop-area') successfully adds it to the cart and updates the cart display (.box1 for quantity, .box2 for title, .box3 for unit price).",
         "requirement_ids": [
           "e2edev_bench_01-R-3"
         ]
       },
       {
         "id": "G-003",
-        "title": "Calculate and Display Total Cart Price",
-        "description": "Verify that the system correctly sums the prices of all products in the cart, formats the total to two decimal places with the currency symbol, and displays it in the <div id='allMoney'> element.",
+        "title": "Drop multiple different products into drop area",
+        "description": "Verify that dropping multiple distinct product items into the drop area updates the cart display correctly for each item added.",
+        "requirement_ids": [
+          "e2edev_bench_01-R-3"
+        ]
+      },
+      {
+        "id": "G-004",
+        "title": "Drop repeated products into drop area",
+        "description": "Verify that dropping the same product item multiple times into the drop area correctly supports repeated products and updates the cart display accordingly.",
+        "requirement_ids": [
+          "e2edev_bench_01-R-3"
+        ]
+      },
+      {
+        "id": "G-005",
+        "title": "Drop invalid element into drop area",
+        "description": "Verify that dropping an invalid or non-product element into the drop area does not add any item to the cart or corrupt the cart display.",
+        "requirement_ids": [
+          "e2edev_bench_01-R-3"
+        ]
+      },
+      {
+        "id": "G-006",
+        "title": "Calculate and display total price for single item in cart",
+        "description": "Verify that when a single product with a valid price is added to the cart, the total price in div#allMoney is correctly calculated, formatted to two decimal places, and includes the appropriate currency symbol.",
+        "requirement_ids": [
+          "e2edev_bench_01-R-5"
+        ]
+      },
+      {
+        "id": "G-007",
+        "title": "Calculate and display total price for multiple and repeated items in cart",
+        "description": "Verify that when multiple distinct products and repeated products are added to the cart, the system correctly sums all prices, formats the result to two decimal places with the currency symbol, and updates div#allMoney.",
         "requirement_ids": [
           "e2edev_bench_01-R-5"
         ]
@@ -30,14 +62,14 @@
     "opinions": [
       {
         "agent": "critic",
-        "feedback": "The proposed high-level test cases are well-structured, distinct, and directly cover all provided requirements without any identified blockers or gaps.",
+        "feedback": "All proposed cases are clear, distinct, cover the requirements thoroughly, and are fully testable without any blockers.",
         "request_revision": false,
         "confirmed_blockers": [],
         "blocker_assessment_complete": true
       },
       {
         "agent": "validator",
-        "feedback": "All cases accurately test the stated requirements, follow valid identifiers, and correctly align with the provided specifications. No blockers found.",
+        "feedback": "All test cases map correctly to the requirements and are fully testable as specified.",
         "request_revision": false,
         "confirmed_blockers": [],
         "blocker_assessment_complete": true
@@ -50,7 +82,7 @@
     "comparable": true
   },
   "analysis": {
-    "analysis": "Requirement e2edev_bench_01-R-1: Testable behaviors include initiating a drag event on draggable li elements, capturing product title and price. Boundaries are set by data-testid attributes (product-item-N, product-title-N, product-price-N). Normal paths involve dragging valid product items. Abnormal paths include dragging non-draggable elements or items missing title/price attributes. Ambiguities include the specific data transfer format (e.g., text/plain or JSON). Requirement e2edev_bench_01-R-3: Testable behaviors include dropping items into drop-area (id='div1', data-testid='drop-area'), updating cart display (.box1 for quantity, .box2 for title, .box3 for unit price), and handling repeated products. Boundaries involve valid drop targets vs. outside areas. Normal paths are dropping single or multiple distinct/repeated products. Abnormal paths include dropping invalid elements or dropping outside the designated drop area. Ambiguities include how quantities increment for repeated products. Requirement e2edev_bench_01-R-5: Testable behaviors include summing all cart item prices, formatting to two decimal places with currency symbol, and displaying in #allMoney. Boundaries include empty cart (should display $0.00 or equivalent) and large sums. Normal paths involve accurate summation of mixed prices. Abnormal paths include corrupted price strings. Ambiguities include whether currency symbol handling is dynamic or hardcoded to '$'."
+    "analysis": "Requirement e2edev_bench_01-R-1: Testable behaviors include initiating a drag event on draggable 'li' elements with data-testid='product-item-*', verifying data transfer captures title (from 'product-title-*') and price (from 'product-price-*'). Boundaries and normal path: dragging valid product items correctly populates the data transfer object. Abnormal path: attempting to drag non-draggable elements or items missing required attributes. Ambiguities: exact data transfer format (e.g., JSON vs plain text) not explicitly specified. Requirement e2edev_bench_01-R-3: Testable behaviors include dropping product items into drop area id='div1' (data-testid='drop-area'), and updating cart display elements (.box1 for quantity, .box2 for title, .box3 for unit price). Normal path: dropping single, multiple different, and repeated products updates the cart correctly. Abnormal path: dropping invalid elements into the drop area. Ambiguities: handling of duplicate items in the UI (whether they merge quantities in a single row or create new entries). Requirement e2edev_bench_01-R-5: Testable behaviors include summing all cart product prices and formatting to two decimal places with a currency symbol in div#allMoney. Normal path: cart with single or multiple items displays the correct calculated total. Abnormal path: empty cart total display, malformed price strings in products. Ambiguities: exact currency symbol to use if products have varied or unspecified currency formats."
   },
   "failure": null
 }

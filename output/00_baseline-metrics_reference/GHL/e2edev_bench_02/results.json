@@ -41,40 +41,40 @@
   "generated_cases": [
     {
       "id": "G-001",
-      "title": "Add single note with valid click",
-      "description": "Verify that clicking the 'Add note' button once creates a new note div with a visible empty textarea and appends it to the document body.",
+      "title": "Single Click on Add Note Button",
+      "description": "Verify that clicking the 'Add note' button once creates a single new note appended to the document body as a div with class 'note', containing a visible, empty textarea with data-testid='note-textarea'.",
       "requirement_ids": [
         "e2edev_bench_02-R-1"
       ]
     },
     {
       "id": "G-002",
-      "title": "Add multiple notes with rapid clicks",
-      "description": "Verify that multiple rapid clicks on the 'Add note' button successfully create separate notes, each containing its own textarea.",
+      "title": "Multiple Rapid Clicks on Add Note Button",
+      "description": "Verify that performing multiple rapid clicks on the 'Add note' button creates a separate note for each click, each correctly appended to the document body and containing its own independent empty textarea.",
       "requirement_ids": [
         "e2edev_bench_02-R-1"
       ]
     },
     {
       "id": "G-003",
-      "title": "Edit note with valid Markdown input",
-      "description": "Verify that typing valid Markdown (e.g., headings, bold, italic, links) in the textarea dynamically and correctly renders HTML formatting in the main display area and updates local storage.",
+      "title": "Valid Markdown rendering for standard syntax",
+      "description": "Verify that inputting valid Markdown (such as # Heading, **bold**, _italic_, and [link](...)) in the textarea (data-testid=\"note-textarea\") correctly and dynamically renders as proper HTML formatting in the main display area (data-testid=\"note-main\"), and changes are saved to local storage.",
       "requirement_ids": [
         "e2edev_bench_02-R-2"
       ]
     },
     {
       "id": "G-004",
-      "title": "Edit note with invalid Markdown input",
-      "description": "Verify that typing invalid Markdown (e.g., unmatched **) does not cause crashes or errors and displays raw input correctly upon exiting edit mode.",
+      "title": "Invalid Markdown handling without application crash",
+      "description": "Verify that inputting invalid or malformed Markdown (such as unmatched **) does not cause application crashes or errors, and correctly displays the raw input when exiting the edit mode via the \"Edit\" button (data-testid=\"edit-note-button\").",
       "requirement_ids": [
         "e2edev_bench_02-R-2"
       ]
     },
     {
       "id": "G-005",
-      "title": "Default edit mode upon creating new note",
-      "description": "Verify that a newly created note immediately enters edit mode where the textarea is visible and the main content area remains hidden.",
+      "title": "Create note and verify initial edit mode state",
+      "description": "Verify that clicking the add note button upon page load creates a new note in edit mode where the textarea is visible and the main content area remains hidden.",
       "requirement_ids": [
         "e2edev_bench_02-R-3"
       ]
@@ -82,166 +82,377 @@
     {
       "id": "G-006",
       "title": "Toggle between edit and view modes",
-      "description": "Verify that clicking the 'Edit' button switches the note between edit mode (textarea visible, main area hidden) and view mode (main area visible displaying formatted content, textarea hidden).",
+      "description": "Verify that clicking the Edit button switches the note between edit mode (textarea visible, main hidden) and view mode (main visible, textarea hidden).",
       "requirement_ids": [
         "e2edev_bench_02-R-3"
       ]
     },
     {
       "id": "G-007",
-      "title": "Delete note successfully",
-      "description": "Verify that clicking the 'Delete' button associated with a note immediately removes the note from the DOM and from localStorage.",
+      "title": "Automatic saving to local storage",
+      "description": "Verify that all changes typed into the textarea are automatically saved to local storage to preserve the note state across sessions.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-3"
+      ]
+    },
+    {
+      "id": "G-008",
+      "title": "Delete existing note successfully",
+      "description": "Verify that clicking the delete button (data-testid=\"delete-note-button\") on an existing note removes the note element from the DOM and removes the corresponding entry from localStorage.",
       "requirement_ids": [
         "e2edev_bench_02-R-4"
       ]
     },
     {
-      "id": "G-008",
-      "title": "Load notes from localStorage with content",
-      "description": "Verify that on page load, stored notes with content are retrieved, rendered with their formatted content in the main div, and the textarea is hidden by default.",
-      "requirement_ids": [
-        "e2edev_bench_02-R-5"
-      ]
-    },
-    {
       "id": "G-009",
-      "title": "Load notes from localStorage without content",
-      "description": "Verify that on page load, stored notes with no content show the textarea and hide the main div for immediate editing.",
+      "title": "Delete a specific note among multiple notes",
+      "description": "Verify that clicking the delete button on one specific note among multiple existing notes removes only that targeted note from the DOM and localStorage while leaving other notes intact.",
       "requirement_ids": [
-        "e2edev_bench_02-R-5"
+        "e2edev_bench_02-R-4"
       ]
     },
     {
       "id": "G-010",
-      "title": "Load notes when localStorage is empty",
-      "description": "Verify that when the page loads and localStorage is empty, no notes are displayed on the page.",
+      "title": "Load notes when localStorage contains saved notes with content",
+      "description": "Verify that when the webpage loads and localStorage contains saved notes with valid content, the app dynamically creates note divs, renders the content inside the main div (data-testid=\"note-main\"), and keeps the textarea hidden by default.",
       "requirement_ids": [
         "e2edev_bench_02-R-5"
       ]
     },
     {
       "id": "G-011",
-      "title": "State Transition: App Load with Empty Storage",
-      "description": "Verify that when the app loads with empty localStorage, no notes are displayed and the initial state contains zero notes.",
+      "title": "Load notes when localStorage contains saved notes with no content",
+      "description": "Verify that when the webpage loads and localStorage contains saved notes with empty or no content, the app shows the textarea (data-testid=\"note-textarea\") and hides the main div for immediate editing.",
       "requirement_ids": [
         "e2edev_bench_02-R-5"
       ]
     },
     {
       "id": "G-012",
-      "title": "State Transition: App Load with Stored Notes",
-      "description": "Verify that when the app loads with saved notes in localStorage, notes are retrieved and rendered with main view visible and textarea hidden if content exists, or textarea visible if content is empty.",
+      "title": "Load notes when localStorage is empty",
+      "description": "Verify that when the webpage loads and localStorage is empty, no notes are shown on the page.",
       "requirement_ids": [
         "e2edev_bench_02-R-5"
       ]
     },
     {
       "id": "G-013",
-      "title": "State Transition: Create Note Event",
-      "description": "Verify that clicking the 'Add note' button creates a new note in edit mode where the textarea is visible and the main content area is hidden, and persists to local storage.",
-      "requirement_ids": [
-        "e2edev_bench_02-R-1",
-        "e2edev_bench_02-R-3"
-      ]
-    },
-    {
-      "id": "G-014",
-      "title": "State Transition: Switch Between Edit and View Modes",
-      "description": "Verify that clicking the 'Edit' button toggles the note state between edit mode (textarea visible, main hidden) and view mode (main visible, textarea hidden).",
-      "requirement_ids": [
-        "e2edev_bench_02-R-2",
-        "e2edev_bench_02-R-3"
-      ]
-    },
-    {
-      "id": "G-015",
-      "title": "State Transition: Delete Note Event",
-      "description": "Verify that clicking the 'Delete' button transitions a note from active state to removed state, eliminating it from the DOM and localStorage.",
-      "requirement_ids": [
-        "e2edev_bench_02-R-4"
-      ]
-    },
-    {
-      "id": "G-016",
-      "title": "Forbidden Transition: Invalid Mode Switch or Action on Deleted Note",
-      "description": "Verify that attempting to perform edit or view mode transitions on a note that has been deleted is blocked since the note no longer exists in the DOM or localStorage.",
-      "requirement_ids": [
-        "e2edev_bench_02-R-4"
-      ]
-    },
-    {
-      "id": "G-017",
-      "title": "Add Multiple Notes and Verify Initial State",
-      "description": "Verify that clicking the Add note button multiple times rapidly creates separate note elements containing visible textareas that immediately enter edit mode.",
-      "requirement_ids": [
-        "e2edev_bench_02-R-1",
-        "e2edev_bench_02-R-3"
-      ]
-    },
-    {
-      "id": "G-018",
-      "title": "Markdown Editing, Real-time Rendering, and Mode Switching",
-      "description": "Verify that typing Markdown in the textarea dynamically renders formatted content in the main display area, and clicking the Edit button toggles between view and edit modes while saving state to local storage.",
-      "requirement_ids": [
-        "e2edev_bench_02-R-2",
-        "e2edev_bench_02-R-3"
-      ]
-    },
-    {
-      "id": "G-019",
-      "title": "Invalid Markdown Handling and Persistence",
-      "description": "Verify that invalid Markdown does not cause crashes and correctly displays raw input when exiting edit mode, with all changes persisting to local storage.",
-      "requirement_ids": [
-        "e2edev_bench_02-R-2",
-        "e2edev_bench_02-R-3"
-      ]
-    },
-    {
-      "id": "G-020",
-      "title": "Delete Note from DOM and Local Storage",
-      "description": "Verify that clicking the Delete button associated with a note removes the targeted note from the DOM and its corresponding entry from localStorage.",
-      "requirement_ids": [
-        "e2edev_bench_02-R-4"
-      ]
-    },
-    {
-      "id": "G-021",
-      "title": "Load and Retrieve Saved Notes from Local Storage",
-      "description": "Verify that upon page load, saved notes are retrieved from localStorage and rendered with correct visibility states based on whether they contain content.",
+      "title": "Verify structure of dynamically created notes from localStorage",
+      "description": "Verify that each note retrieved from localStorage correctly renders a div with class note, a tools div containing an \"Edit\" button (data-testid=\"edit-note-button\") and a \"Delete\" button (data-testid=\"delete-note-button\"), a main div (data-testid=\"note-main\"), and a textarea (data-testid=\"note-textarea\").",
       "requirement_ids": [
         "e2edev_bench_02-R-5"
       ]
     },
     {
-      "id": "G-022",
-      "title": "Rapid Consecutive Clicks on Add Note Button",
-      "description": "Perform multiple rapid clicks on the \"Add note\" button to verify that the application handles stress without dropping notes or failing to create distinct textareas.",
+      "id": "G-014",
+      "title": "Transition from Initial State to Note Created State via Add Note Click",
+      "description": "Verify that clicking the \"Add note\" button from the initial state creates a new note div with class \"note\" and a visible empty textarea with data-testid=\"note-textarea\" appended to the document body.",
       "requirement_ids": [
         "e2edev_bench_02-R-1"
       ]
     },
     {
-      "id": "G-023",
-      "title": "Invalid Markdown Handling and Exit Edit Mode",
-      "description": "Input malformed Markdown (e.g., unmatched asterisks like **unmatched) into the textarea and exit edit mode by clicking the \"Edit\" button to ensure the application does not crash and correctly displays the raw input.",
+      "id": "G-015",
+      "title": "Transition for Multiple Rapid Clicks on Add Note Button",
+      "description": "Verify that multiple rapid clicks on the \"Add note\" button successfully create multiple separate notes, each containing its own textarea.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-1"
+      ]
+    },
+    {
+      "id": "G-016",
+      "title": "Forbidden Transition: Invalid Interaction Without Add Note Click",
+      "description": "Verify that no new note is created or appended to the document body spontaneously without an explicit click event on the \"Add note\" button.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-1"
+      ]
+    },
+    {
+      "id": "G-017",
+      "title": "State Transition - Edit Mode to View Mode with Valid Markdown",
+      "description": "Verify the transition from edit mode to view mode when clicking the edit button with valid Markdown content in the textarea, ensuring real-time rendering and proper HTML formatting in the main display area.",
       "requirement_ids": [
         "e2edev_bench_02-R-2"
       ]
     },
     {
+      "id": "G-018",
+      "title": "State Transition - Edit Mode with Invalid Markdown to View Mode",
+      "description": "Verify that entering invalid Markdown (e.g., unmatched **) and exiting the edit mode by clicking the edit button does not crash the app, and instead displays the raw input in the main display area.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-2"
+      ]
+    },
+    {
+      "id": "G-019",
+      "title": "State Transition - Forbidden/Abnormal Transition during Edit State",
+      "description": "Verify that typing and modifying Markdown content in the textarea correctly persists changes immediately to local storage without causing application errors or corrupting the current note state.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-2"
+      ]
+    },
+    {
+      "id": "G-020",
+      "title": "Initial note creation state transition",
+      "description": "Verify that when a user clicks the Add note button, the note transitions to edit mode where the textarea is visible and the main content area remains hidden.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-3"
+      ]
+    },
+    {
+      "id": "G-021",
+      "title": "Transition from edit mode to view mode",
+      "description": "Verify that clicking the Edit button while in edit mode transitions the note to view mode, hiding the textarea and displaying the formatted content in the main area.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-3"
+      ]
+    },
+    {
+      "id": "G-022",
+      "title": "Transition from view mode to edit mode",
+      "description": "Verify that clicking the Edit button while in view mode transitions the note back to edit mode, showing the textarea and hiding the main content area.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-3"
+      ]
+    },
+    {
+      "id": "G-023",
+      "title": "Automatic saving during state transitions and editing",
+      "description": "Verify that all changes typed into the textarea are automatically saved to local storage, preserving the note state across sessions.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-3"
+      ]
+    },
+    {
       "id": "G-024",
-      "title": "Corrupted or Invalid JSON in LocalStorage on Page Load",
-      "description": "Inject malformed JSON string into localStorage under the 'notes' key and reload the page to verify that the application fails gracefully instead of crashing.",
+      "title": "Transition from Existing Note State to Deleted State via Delete Button",
+      "description": "Verify that clicking the delete button (data-testid=\"delete-note-button\") on an existing note successfully transitions the note from the active DOM/localStorage state to the deleted state, removing it entirely.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-4"
+      ]
+    },
+    {
+      "id": "G-025",
+      "title": "Forbidden Transition: Interaction with Deleted Note",
+      "description": "Verify that once a note has transitioned to the deleted state, further interactions (such as editing or trying to delete again) are not possible because the note element is removed from the DOM and localStorage.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-4"
+      ]
+    },
+    {
+      "id": "G-026",
+      "title": "Load Page with Empty LocalStorage",
+      "description": "Verify that when the webpage loads and localStorage is empty, no notes are displayed on the page.",
       "requirement_ids": [
         "e2edev_bench_02-R-5"
       ]
     },
     {
-      "id": "G-025",
-      "title": "Delete Non-Existent or Simultaneously Deleted Note",
-      "description": "Simulate a scenario where a delete button is triggered for a note that has already been removed or is missing from localStorage to verify robust state management.",
+      "id": "G-027",
+      "title": "Load Page with Stored Notes Containing Content",
+      "description": "Verify that when the webpage loads with stored notes containing content, each note displays its content in the main div, and the textarea is hidden by default.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-5"
+      ]
+    },
+    {
+      "id": "G-028",
+      "title": "Load Page with Stored Notes Having No Content",
+      "description": "Verify that when the webpage loads with stored notes having no content, the textarea is shown and the main div is hidden to allow immediate editing.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-5"
+      ]
+    },
+    {
+      "id": "G-029",
+      "title": "Forbidden Transition: Invalid LocalStorage Data Parsing Failure Handling",
+      "description": "Verify the application behavior when localStorage contains malformed or unparseable data, ensuring it does not crash and correctly handles internal retrieval via JSON.parse.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-5"
+      ]
+    },
+    {
+      "id": "G-030",
+      "title": "Add a single note successfully",
+      "description": "Verify that clicking the Add note button creates a new note appended to the document body as a div with the class note, containing a visible and empty textarea with data-testid=\"note-textarea\".",
+      "requirement_ids": [
+        "e2edev_bench_02-R-1"
+      ]
+    },
+    {
+      "id": "G-031",
+      "title": "Add multiple notes via rapid clicks",
+      "description": "Verify that performing multiple rapid clicks on the Add note button successfully creates multiple separate notes, each containing its own textarea.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-1"
+      ]
+    },
+    {
+      "id": "G-032",
+      "title": "Dynamic Markdown Rendering and Persistence",
+      "description": "Verify that typing Markdown content into the note textarea dynamically renders formatted HTML in the main display area in real-time, handles complex syntax, and immediately saves changes to local storage.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-2"
+      ]
+    },
+    {
+      "id": "G-033",
+      "title": "Invalid Markdown Handling and Mode Exit",
+      "description": "Verify that entering invalid Markdown does not cause crashes or errors and displays raw input correctly when exiting the edit mode by clicking the Edit button.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-2"
+      ]
+    },
+    {
+      "id": "G-034",
+      "title": "Create note and verify default edit mode state",
+      "description": "Verify that upon page load, clicking the \"Add note\" button creates a new note that immediately enters edit mode where the textarea is visible and the main content area remains hidden.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-3"
+      ]
+    },
+    {
+      "id": "G-035",
+      "title": "Toggle between edit and view modes",
+      "description": "Verify that users can switch between edit and view modes by clicking the \"Edit\" button. In view mode, the main content area is visible and the textarea is hidden, while in edit mode this behavior is reversed.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-3"
+      ]
+    },
+    {
+      "id": "G-036",
+      "title": "Automatic saving of textarea changes to local storage",
+      "description": "Verify that all changes typed into the textarea are automatically saved to local storage, preserving the note's state across sessions.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-3"
+      ]
+    },
+    {
+      "id": "G-037",
+      "title": "Delete note removes it from DOM and localStorage",
+      "description": "User clicks the delete button (data-testid=\"delete-note-button\") on an existing note, verifying that the note element is immediately removed from the document body and its entry is deleted from localStorage.",
       "requirement_ids": [
         "e2edev_bench_02-R-4"
+      ]
+    },
+    {
+      "id": "G-038",
+      "title": "Load stored notes with content from localStorage",
+      "description": "Verify that when the webpage loads, notes with existing content retrieved from localStorage are dynamically rendered with the main display div visible and the textarea hidden.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-5"
+      ]
+    },
+    {
+      "id": "G-039",
+      "title": "Load stored notes with no content from localStorage",
+      "description": "Verify that when the webpage loads, stored notes with empty content show the textarea and hide the main content div for immediate editing.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-5"
+      ]
+    },
+    {
+      "id": "G-040",
+      "title": "Handle empty localStorage on page load",
+      "description": "Verify that when the webpage loads and localStorage is empty, no notes are displayed on the page.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-5"
+      ]
+    },
+    {
+      "id": "G-041",
+      "title": "Rapid Multiple Clicks Stress Test on Add Note Button",
+      "description": "Trigger rapid consecutive clicks on the \"Add note\" button to verify that the application correctly handles multiple rapid events without dropping notes or causing DOM race conditions.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-1"
+      ]
+    },
+    {
+      "id": "G-042",
+      "title": "Add Note with Malformed Selector Environment",
+      "description": "Attempt to click the \"Add note\" button when external scripts or modifications alter the expected DOM attributes, ensuring the application gracefully handles missing or modified id, class, or data-testid attributes.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-1"
+      ]
+    },
+    {
+      "id": "G-043",
+      "title": "Handle Invalid Markdown Syntax Without Crashing",
+      "description": "Verify that inputting malformed or invalid Markdown syntax (such as unmatched double asterisks '**') does not cause runtime errors or crashes, and correctly displays the raw input when exiting edit mode.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-2"
+      ]
+    },
+    {
+      "id": "G-044",
+      "title": "Immediate Local Storage Persistence on Malformed Input",
+      "description": "Verify that as the user types edge-case or broken Markdown strings into the note textarea, state changes are instantly and successfully persisted in local storage without data corruption.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-2"
+      ]
+    },
+    {
+      "id": "G-045",
+      "title": "State Persistence Failure on Rapid Mode Switching",
+      "description": "Test rapid toggling between view and edit modes using the edit button to ensure local storage updates correctly and does not lose state during concurrent events.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-3"
+      ]
+    },
+    {
+      "id": "G-046",
+      "title": "Corrupted Local Storage Handling on Initial Load Mode Determination",
+      "description": "Test application behavior when local storage contains malformed or null values for note states, verifying that default visibility rules between textarea and note-main still apply safely.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-3"
+      ]
+    },
+    {
+      "id": "G-047",
+      "title": "Delete Non-Existent Note ID from LocalStorage",
+      "description": "Verify error handling and DOM stability when attempting to delete a note whose ID or element is missing or mismatched in localStorage during the deletion action.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-4"
+      ]
+    },
+    {
+      "id": "G-048",
+      "title": "Rapid Repeated Clicks on Delete Button",
+      "description": "Test the application's resilience against multiple rapid consecutive clicks on the delete-note-button for a single note, ensuring no race conditions occur in DOM removal or localStorage synchronization.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-4"
+      ]
+    },
+    {
+      "id": "G-049",
+      "title": "Handle Corrupted JSON in LocalStorage",
+      "description": "Test application behavior when localStorage contains malformed JSON data (e.g., incomplete brackets or invalid syntax) for the 'notes' key to ensure it does not crash during JSON.parse retrieval.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-5"
+      ]
+    },
+    {
+      "id": "G-050",
+      "title": "Handle Non-Array Data in LocalStorage",
+      "description": "Test application behavior when the 'notes' key in localStorage stores a primitive value (like a string or number) or an object instead of an expected array, preventing runtime mapping errors.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-5"
+      ]
+    },
+    {
+      "id": "G-051",
+      "title": "Handle Null or Undefined Note Content on Load",
+      "description": "Test rendering when a retrieved note object contains null, undefined, or missing content properties, verifying that the application correctly defaults to showing the textarea and hiding the main div.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-5"
+      ]
+    },
+    {
+      "id": "G-052",
+      "title": "Handle Extremely Large Stored Notes",
+      "description": "Test loading performance and DOM creation when localStorage contains an excessively large number of saved notes or notes with massive text payloads.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-5"
       ]
     }
   ],
@@ -405,102 +616,129 @@
   ],
   "evaluation": {
     "status": "evaluated",
-    "generated_count": 25,
+    "generated_count": 52,
     "reference_count": 13,
     "matches": [
       {
-        "generated_id": "G-001",
-        "reference_id": "e2edev_bench_02-R-1-TC-1",
-        "similarity": 0.918654579133784
-      },
-      {
         "generated_id": "G-002",
         "reference_id": "e2edev_bench_02-R-1-TC-2",
-        "similarity": 0.9460484386596372
+        "similarity": 0.9454985095370518
       },
       {
         "generated_id": "G-003",
-        "reference_id": "e2edev_bench_02-R-2-TC-2",
-        "similarity": 0.9155216807777307
+        "reference_id": "e2edev_bench_02-R-2-TC-1",
+        "similarity": 0.9189439247128173
       },
       {
         "generated_id": "G-004",
         "reference_id": "e2edev_bench_02-R-2-TC-3",
-        "similarity": 0.9259071696798571
+        "similarity": 0.9268838316484729
       },
       {
         "generated_id": "G-005",
         "reference_id": "e2edev_bench_02-R-3-TC-4",
-        "similarity": 0.9213150690429227
+        "similarity": 0.9383964646060744
       },
       {
         "generated_id": "G-006",
-        "reference_id": "e2edev_bench_02-R-3-TC-2",
-        "similarity": 0.93699749947443
+        "reference_id": "e2edev_bench_02-R-3-TC-3",
+        "similarity": 0.9362386435575548
       },
       {
-        "generated_id": "G-007",
+        "generated_id": "G-008",
         "reference_id": "e2edev_bench_02-R-4-TC-1",
-        "similarity": 0.9335303885017294
+        "similarity": 0.9347234351788155
+      },
+      {
+        "generated_id": "G-009",
+        "reference_id": "e2edev_bench_02-R-4-TC-2",
+        "similarity": 0.9186126505329743
       },
       {
         "generated_id": "G-010",
-        "reference_id": "e2edev_bench_02-R-5-TC-2",
-        "similarity": 0.9514405604682623
-      },
-      {
-        "generated_id": "G-013",
-        "reference_id": "e2edev_bench_02-R-3-TC-1",
-        "similarity": 0.913058499637034
-      },
-      {
-        "generated_id": "G-014",
-        "reference_id": "e2edev_bench_02-R-3-TC-3",
-        "similarity": 0.9267943671373517
-      },
-      {
-        "generated_id": "G-018",
-        "reference_id": "e2edev_bench_02-R-2-TC-1",
-        "similarity": 0.8861359285018864
-      },
-      {
-        "generated_id": "G-020",
-        "reference_id": "e2edev_bench_02-R-4-TC-2",
-        "similarity": 0.902023699009191
+        "reference_id": "e2edev_bench_02-R-5-TC-1",
+        "similarity": 0.9219530742432646
       },
       {
         "generated_id": "G-021",
-        "reference_id": "e2edev_bench_02-R-5-TC-1",
-        "similarity": 0.9167197623859752
+        "reference_id": "e2edev_bench_02-R-3-TC-2",
+        "similarity": 0.9377297071634642
+      },
+      {
+        "generated_id": "G-030",
+        "reference_id": "e2edev_bench_02-R-1-TC-1",
+        "similarity": 0.9321256842311811
+      },
+      {
+        "generated_id": "G-032",
+        "reference_id": "e2edev_bench_02-R-2-TC-2",
+        "similarity": 0.8955365507023021
+      },
+      {
+        "generated_id": "G-034",
+        "reference_id": "e2edev_bench_02-R-3-TC-1",
+        "similarity": 0.9444449407567653
+      },
+      {
+        "generated_id": "G-040",
+        "reference_id": "e2edev_bench_02-R-5-TC-2",
+        "similarity": 0.9508209684799025
       }
     ],
     "unmatched_generated_ids": [
-      "G-008",
-      "G-009",
+      "G-001",
+      "G-007",
       "G-011",
       "G-012",
+      "G-013",
+      "G-014",
       "G-015",
       "G-016",
       "G-017",
+      "G-018",
       "G-019",
+      "G-020",
       "G-022",
       "G-023",
       "G-024",
-      "G-025"
+      "G-025",
+      "G-026",
+      "G-027",
+      "G-028",
+      "G-029",
+      "G-031",
+      "G-033",
+      "G-035",
+      "G-036",
+      "G-037",
+      "G-038",
+      "G-039",
+      "G-041",
+      "G-042",
+      "G-043",
+      "G-044",
+      "G-045",
+      "G-046",
+      "G-047",
+      "G-048",
+      "G-049",
+      "G-050",
+      "G-051",
+      "G-052"
     ],
     "unmatched_reference_ids": [],
-    "precision": 0.52,
+    "precision": 0.25,
     "recall": 1.0,
-    "f1": 0.6842105263157895,
+    "f1": 0.4,
     "embedding_usage": {
-      "input_tokens": 1079,
+      "input_tokens": 2509,
       "output_tokens": null,
       "details": {
-        "text_prompt_tokens": 1079
+        "text_prompt_tokens": 2509
       },
       "status": "partial"
     },
-    "embedding_requests": 2
+    "embedding_requests": 3
   },
   "generation": {
     "selected_techniques": [
@@ -510,31 +748,34 @@
       "error_guessing"
     ],
     "technique_rationales": {
-      "equivalence_partitioning": "Used to partition input data for Markdown content, distinguishing between valid markdown formatting, complex syntax, empty inputs, and invalid markdown syntax.",
-      "state_transition": "Used to test the states of individual notes (edit mode vs. view mode) and their transitions triggered by clicking the edit or add buttons.",
-      "use_case": "Used to cover the complete end-to-end user workflows of creating notes, editing markdown content, switching modes, refreshing or reloading from local storage, and deleting notes.",
-      "error_guessing": "Used to target plausible failures and edge cases such as handling malformed/invalid Markdown syntax without crashing, and handling empty local storage."
+      "equivalence_partitioning": "Used to partition valid inputs like correct markdown syntax and invalid/malformed markdown inputs.",
+      "state_transition": "Used to cover the note states between view mode and edit mode, and their transitions triggered by the edit button.",
+      "use_case": "Used to cover complete user flows such as creating a note, typing markdown, switching modes, and deleting a note.",
+      "error_guessing": "Used to handle plausible failures like invalid markdown inputs and interactions with empty local storage."
     },
     "prompt_version": null
   },
   "usage": {
     "generation": {
-      "input_tokens": null,
-      "output_tokens": null,
-      "details": null,
-      "status": "unavailable"
+      "input_tokens": 27958,
+      "output_tokens": 5731,
+      "details": {
+        "text_prompt_tokens": 27958,
+        "total_tokens": 33689
+      },
+      "status": "available"
     },
     "generation_attempts": [],
     "generation_calls": [],
     "embedding": {
-      "input_tokens": 1079,
+      "input_tokens": 2509,
       "output_tokens": null,
       "details": {
-        "text_prompt_tokens": 1079
+        "text_prompt_tokens": 2509
       },
       "status": "partial"
     },
-    "embedding_requests": 2
+    "embedding_requests": 3
   },
   "links": {
     "requirements": {
@@ -545,85 +786,161 @@
       "e2edev_bench_02-R-5": "e2edev_bench_02-R-5/requirement.md"
     },
     "cases": {
-      "G-013": {
-        "e2edev_bench_02-R-1": "e2edev_bench_02-R-1/test cases/13_State_Transition_Create_Note_Event.md",
-        "e2edev_bench_02-R-3": "e2edev_bench_02-R-3/test cases/13_State_Transition_Create_Note_Event.md"
+      "G-014": {
+        "e2edev_bench_02-R-1": "e2edev_bench_02-R-1/test cases/14_Transition_from_Initial_State_to_Note_Created_St.md"
       },
-      "G-017": {
-        "e2edev_bench_02-R-1": "e2edev_bench_02-R-1/test cases/17_Add_Multiple_Notes_and_Verify_Initial_State.md",
-        "e2edev_bench_02-R-3": "e2edev_bench_02-R-3/test cases/17_Add_Multiple_Notes_and_Verify_Initial_State.md"
+      "G-015": {
+        "e2edev_bench_02-R-1": "e2edev_bench_02-R-1/test cases/15_Transition_for_Multiple_Rapid_Clicks_on_Add_Note.md"
+      },
+      "G-016": {
+        "e2edev_bench_02-R-1": "e2edev_bench_02-R-1/test cases/16_Forbidden_Transition_Invalid_Interaction_Without.md"
       },
       "G-001": {
-        "e2edev_bench_02-R-1": "e2edev_bench_02-R-1/test cases/1_Add_single_note_with_valid_click.md"
-      },
-      "G-022": {
-        "e2edev_bench_02-R-1": "e2edev_bench_02-R-1/test cases/22_Rapid_Consecutive_Clicks_on_Add_Note_Button.md"
+        "e2edev_bench_02-R-1": "e2edev_bench_02-R-1/test cases/1_Single_Click_on_Add_Note_Button.md"
       },
       "G-002": {
-        "e2edev_bench_02-R-1": "e2edev_bench_02-R-1/test cases/2_Add_multiple_notes_with_rapid_clicks.md"
+        "e2edev_bench_02-R-1": "e2edev_bench_02-R-1/test cases/2_Multiple_Rapid_Clicks_on_Add_Note_Button.md"
       },
-      "G-014": {
-        "e2edev_bench_02-R-2": "e2edev_bench_02-R-2/test cases/14_State_Transition_Switch_Between_Edit_and_View_Mo.md",
-        "e2edev_bench_02-R-3": "e2edev_bench_02-R-3/test cases/14_State_Transition_Switch_Between_Edit_and_View_Mo.md"
+      "G-030": {
+        "e2edev_bench_02-R-1": "e2edev_bench_02-R-1/test cases/30_Add_a_single_note_successfully.md"
+      },
+      "G-031": {
+        "e2edev_bench_02-R-1": "e2edev_bench_02-R-1/test cases/31_Add_multiple_notes_via_rapid_clicks.md"
+      },
+      "G-041": {
+        "e2edev_bench_02-R-1": "e2edev_bench_02-R-1/test cases/41_Rapid_Multiple_Clicks_Stress_Test_on_Add_Note_Bu.md"
+      },
+      "G-042": {
+        "e2edev_bench_02-R-1": "e2edev_bench_02-R-1/test cases/42_Add_Note_with_Malformed_Selector_Environment.md"
+      },
+      "G-017": {
+        "e2edev_bench_02-R-2": "e2edev_bench_02-R-2/test cases/17_State_Transition_-_Edit_Mode_to_View_Mode_with_V.md"
       },
       "G-018": {
-        "e2edev_bench_02-R-2": "e2edev_bench_02-R-2/test cases/18_Markdown_Editing_Real-time_Rendering_and_Mode_Sw.md",
-        "e2edev_bench_02-R-3": "e2edev_bench_02-R-3/test cases/18_Markdown_Editing_Real-time_Rendering_and_Mode_Sw.md"
+        "e2edev_bench_02-R-2": "e2edev_bench_02-R-2/test cases/18_State_Transition_-_Edit_Mode_with_Invalid_Markdo.md"
       },
       "G-019": {
-        "e2edev_bench_02-R-2": "e2edev_bench_02-R-2/test cases/19_Invalid_Markdown_Handling_and_Persistence.md",
-        "e2edev_bench_02-R-3": "e2edev_bench_02-R-3/test cases/19_Invalid_Markdown_Handling_and_Persistence.md"
+        "e2edev_bench_02-R-2": "e2edev_bench_02-R-2/test cases/19_State_Transition_-_Forbidden_Abnormal_Transition.md"
       },
-      "G-023": {
-        "e2edev_bench_02-R-2": "e2edev_bench_02-R-2/test cases/23_Invalid_Markdown_Handling_and_Exit_Edit_Mode.md"
+      "G-032": {
+        "e2edev_bench_02-R-2": "e2edev_bench_02-R-2/test cases/32_Dynamic_Markdown_Rendering_and_Persistence.md"
+      },
+      "G-033": {
+        "e2edev_bench_02-R-2": "e2edev_bench_02-R-2/test cases/33_Invalid_Markdown_Handling_and_Mode_Exit.md"
       },
       "G-003": {
-        "e2edev_bench_02-R-2": "e2edev_bench_02-R-2/test cases/3_Edit_note_with_valid_Markdown_input.md"
+        "e2edev_bench_02-R-2": "e2edev_bench_02-R-2/test cases/3_Valid_Markdown_rendering_for_standard_syntax.md"
+      },
+      "G-043": {
+        "e2edev_bench_02-R-2": "e2edev_bench_02-R-2/test cases/43_Handle_Invalid_Markdown_Syntax_Without_Crashing.md"
+      },
+      "G-044": {
+        "e2edev_bench_02-R-2": "e2edev_bench_02-R-2/test cases/44_Immediate_Local_Storage_Persistence_on_Malformed.md"
       },
       "G-004": {
-        "e2edev_bench_02-R-2": "e2edev_bench_02-R-2/test cases/4_Edit_note_with_invalid_Markdown_input.md"
+        "e2edev_bench_02-R-2": "e2edev_bench_02-R-2/test cases/4_Invalid_Markdown_handling_without_application_cr.md"
+      },
+      "G-020": {
+        "e2edev_bench_02-R-3": "e2edev_bench_02-R-3/test cases/20_Initial_note_creation_state_transition.md"
+      },
+      "G-021": {
+        "e2edev_bench_02-R-3": "e2edev_bench_02-R-3/test cases/21_Transition_from_edit_mode_to_view_mode.md"
+      },
+      "G-022": {
+        "e2edev_bench_02-R-3": "e2edev_bench_02-R-3/test cases/22_Transition_from_view_mode_to_edit_mode.md"
+      },
+      "G-023": {
+        "e2edev_bench_02-R-3": "e2edev_bench_02-R-3/test cases/23_Automatic_saving_during_state_transitions_and_ed.md"
+      },
+      "G-034": {
+        "e2edev_bench_02-R-3": "e2edev_bench_02-R-3/test cases/34_Create_note_and_verify_default_edit_mode_state.md"
+      },
+      "G-035": {
+        "e2edev_bench_02-R-3": "e2edev_bench_02-R-3/test cases/35_Toggle_between_edit_and_view_modes.md"
+      },
+      "G-036": {
+        "e2edev_bench_02-R-3": "e2edev_bench_02-R-3/test cases/36_Automatic_saving_of_textarea_changes_to_local_st.md"
+      },
+      "G-045": {
+        "e2edev_bench_02-R-3": "e2edev_bench_02-R-3/test cases/45_State_Persistence_Failure_on_Rapid_Mode_Switchin.md"
+      },
+      "G-046": {
+        "e2edev_bench_02-R-3": "e2edev_bench_02-R-3/test cases/46_Corrupted_Local_Storage_Handling_on_Initial_Load.md"
       },
       "G-005": {
-        "e2edev_bench_02-R-3": "e2edev_bench_02-R-3/test cases/5_Default_edit_mode_upon_creating_new_note.md"
+        "e2edev_bench_02-R-3": "e2edev_bench_02-R-3/test cases/5_Create_note_and_verify_initial_edit_mode_state.md"
       },
       "G-006": {
         "e2edev_bench_02-R-3": "e2edev_bench_02-R-3/test cases/6_Toggle_between_edit_and_view_modes.md"
       },
-      "G-015": {
-        "e2edev_bench_02-R-4": "e2edev_bench_02-R-4/test cases/15_State_Transition_Delete_Note_Event.md"
-      },
-      "G-016": {
-        "e2edev_bench_02-R-4": "e2edev_bench_02-R-4/test cases/16_Forbidden_Transition_Invalid_Mode_Switch_or_Acti.md"
-      },
-      "G-020": {
-        "e2edev_bench_02-R-4": "e2edev_bench_02-R-4/test cases/20_Delete_Note_from_DOM_and_Local_Storage.md"
-      },
-      "G-025": {
-        "e2edev_bench_02-R-4": "e2edev_bench_02-R-4/test cases/25_Delete_Non-Existent_or_Simultaneously_Deleted_No.md"
-      },
       "G-007": {
-        "e2edev_bench_02-R-4": "e2edev_bench_02-R-4/test cases/7_Delete_note_successfully.md"
-      },
-      "G-010": {
-        "e2edev_bench_02-R-5": "e2edev_bench_02-R-5/test cases/10_Load_notes_when_localStorage_is_empty.md"
-      },
-      "G-011": {
-        "e2edev_bench_02-R-5": "e2edev_bench_02-R-5/test cases/11_State_Transition_App_Load_with_Empty_Storage.md"
-      },
-      "G-012": {
-        "e2edev_bench_02-R-5": "e2edev_bench_02-R-5/test cases/12_State_Transition_App_Load_with_Stored_Notes.md"
-      },
-      "G-021": {
-        "e2edev_bench_02-R-5": "e2edev_bench_02-R-5/test cases/21_Load_and_Retrieve_Saved_Notes_from_Local_Storage.md"
+        "e2edev_bench_02-R-3": "e2edev_bench_02-R-3/test cases/7_Automatic_saving_to_local_storage.md"
       },
       "G-024": {
-        "e2edev_bench_02-R-5": "e2edev_bench_02-R-5/test cases/24_Corrupted_or_Invalid_JSON_in_LocalStorage_on_Pag.md"
+        "e2edev_bench_02-R-4": "e2edev_bench_02-R-4/test cases/24_Transition_from_Existing_Note_State_to_Deleted_S.md"
+      },
+      "G-025": {
+        "e2edev_bench_02-R-4": "e2edev_bench_02-R-4/test cases/25_Forbidden_Transition_Interaction_with_Deleted_No.md"
+      },
+      "G-037": {
+        "e2edev_bench_02-R-4": "e2edev_bench_02-R-4/test cases/37_Delete_note_removes_it_from_DOM_and_localStorage.md"
+      },
+      "G-047": {
+        "e2edev_bench_02-R-4": "e2edev_bench_02-R-4/test cases/47_Delete_Non-Existent_Note_ID_from_LocalStorage.md"
+      },
+      "G-048": {
+        "e2edev_bench_02-R-4": "e2edev_bench_02-R-4/test cases/48_Rapid_Repeated_Clicks_on_Delete_Button.md"
       },
       "G-008": {
-        "e2edev_bench_02-R-5": "e2edev_bench_02-R-5/test cases/8_Load_notes_from_localStorage_with_content.md"
+        "e2edev_bench_02-R-4": "e2edev_bench_02-R-4/test cases/8_Delete_existing_note_successfully.md"
       },
       "G-009": {
-        "e2edev_bench_02-R-5": "e2edev_bench_02-R-5/test cases/9_Load_notes_from_localStorage_without_content.md"
+        "e2edev_bench_02-R-4": "e2edev_bench_02-R-4/test cases/9_Delete_a_specific_note_among_multiple_notes.md"
+      },
+      "G-010": {
+        "e2edev_bench_02-R-5": "e2edev_bench_02-R-5/test cases/10_Load_notes_when_localStorage_contains_saved_note.md"
+      },
+      "G-011": {
+        "e2edev_bench_02-R-5": "e2edev_bench_02-R-5/test cases/11_Load_notes_when_localStorage_contains_saved_note.md"
+      },
+      "G-012": {
+        "e2edev_bench_02-R-5": "e2edev_bench_02-R-5/test cases/12_Load_notes_when_localStorage_is_empty.md"
+      },
+      "G-013": {
+        "e2edev_bench_02-R-5": "e2edev_bench_02-R-5/test cases/13_Verify_structure_of_dynamically_created_notes_fr.md"
+      },
+      "G-026": {
+        "e2edev_bench_02-R-5": "e2edev_bench_02-R-5/test cases/26_Load_Page_with_Empty_LocalStorage.md"
+      },
+      "G-027": {
+        "e2edev_bench_02-R-5": "e2edev_bench_02-R-5/test cases/27_Load_Page_with_Stored_Notes_Containing_Content.md"
+      },
+      "G-028": {
+        "e2edev_bench_02-R-5": "e2edev_bench_02-R-5/test cases/28_Load_Page_with_Stored_Notes_Having_No_Content.md"
+      },
+      "G-029": {
+        "e2edev_bench_02-R-5": "e2edev_bench_02-R-5/test cases/29_Forbidden_Transition_Invalid_LocalStorage_Data_P.md"
+      },
+      "G-038": {
+        "e2edev_bench_02-R-5": "e2edev_bench_02-R-5/test cases/38_Load_stored_notes_with_content_from_localStorage.md"
+      },
+      "G-039": {
+        "e2edev_bench_02-R-5": "e2edev_bench_02-R-5/test cases/39_Load_stored_notes_with_no_content_from_localStor.md"
+      },
+      "G-040": {
+        "e2edev_bench_02-R-5": "e2edev_bench_02-R-5/test cases/40_Handle_empty_localStorage_on_page_load.md"
+      },
+      "G-049": {
+        "e2edev_bench_02-R-5": "e2edev_bench_02-R-5/test cases/49_Handle_Corrupted_JSON_in_LocalStorage.md"
+      },
+      "G-050": {
+        "e2edev_bench_02-R-5": "e2edev_bench_02-R-5/test cases/50_Handle_Non-Array_Data_in_LocalStorage.md"
+      },
+      "G-051": {
+        "e2edev_bench_02-R-5": "e2edev_bench_02-R-5/test cases/51_Handle_Null_or_Undefined_Note_Content_on_Load.md"
+      },
+      "G-052": {
+        "e2edev_bench_02-R-5": "e2edev_bench_02-R-5/test cases/52_Handle_Extremely_Large_Stored_Notes.md"
       }
     }
   },

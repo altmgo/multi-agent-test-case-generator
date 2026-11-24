@@ -41,64 +41,96 @@
   "generated_cases": [
     {
       "id": "G-001",
-      "title": "Add a single note and verify DOM elements",
-      "description": "Clicking the Add note button creates a new div element with class 'note' appended to the body, containing a visible, empty textarea with data-testid='note-textarea'.",
+      "title": "Add single note via button click",
+      "description": "Verify that clicking the \"Add note\" button (data-testid=\"add-note-button\") creates a new note <div> with class=\"note\" appended to the document body, containing a visible, empty <textarea> (data-testid=\"note-textarea\").",
       "requirement_ids": [
         "e2edev_bench_02-R-1"
       ]
     },
     {
       "id": "G-002",
-      "title": "Rapid multiple clicks on Add note button",
-      "description": "Clicking the Add note button multiple times rapidly successfully creates a separate note with its own textarea for each click.",
+      "title": "Add multiple notes via rapid clicks",
+      "description": "Verify that multiple rapid clicks on the \"Add note\" button successfully create multiple separate note elements, each containing its own unique textarea.",
       "requirement_ids": [
         "e2edev_bench_02-R-1"
       ]
     },
     {
       "id": "G-003",
-      "title": "Real-time Markdown rendering",
-      "description": "Typing valid Markdown into the note textarea dynamically renders formatted HTML in the note-main display area and updates local storage in real time.",
+      "title": "Real-time Markdown Rendering and Editing",
+      "description": "Verify that typing Markdown content (such as headings, bold, italic, and links) in the note textarea dynamically and correctly renders HTML in the main display area (data-testid=\"note-main\") in real-time, and that changes are instantly persisted to local storage.",
       "requirement_ids": [
         "e2edev_bench_02-R-2"
       ]
     },
     {
       "id": "G-004",
-      "title": "Invalid Markdown handling without crashing",
-      "description": "Entering invalid Markdown like unmatched asterisks does not crash the application, and exiting edit mode via the Edit button safely displays the raw input.",
+      "title": "Handling Invalid Markdown Syntax",
+      "description": "Verify that entering invalid Markdown syntax (e.g., unmatched asterisks) does not crash or throw errors in the application, and that exiting the edit mode by clicking the \"Edit\" button appropriately handles the raw input without application failure.",
       "requirement_ids": [
         "e2edev_bench_02-R-2"
       ]
     },
     {
       "id": "G-005",
-      "title": "Initial creation state and mode switching",
-      "description": "A newly created note starts in edit mode with the textarea visible and note-main hidden. Clicking the Edit button toggles between view and edit modes correctly.",
+      "title": "Create note and verify initial edit mode state",
+      "description": "Verify that when the app page loads and the user clicks the \"Add note\" button (data-testid=\"add-note-button\"), a new note is created and immediately enters edit mode where the textarea (data-testid=\"note-textarea\") is visible and the main content area (data-testid=\"note-main\") remains hidden.",
       "requirement_ids": [
         "e2edev_bench_02-R-3"
       ]
     },
     {
       "id": "G-006",
-      "title": "Delete note from DOM and localStorage",
-      "description": "Clicking the Delete button on a note immediately removes the note element from the DOM and removes the corresponding entry from localStorage.",
+      "title": "Toggle between edit and view modes",
+      "description": "Verify that users can switch between edit and view modes by clicking the \"Edit\" button (data-testid=\"edit-note-button\"). In view mode, the main content area becomes visible and the textarea is hidden, and in edit mode, this behavior is reversed.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-3"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Automatic saving to local storage across sessions",
+      "description": "Verify that all changes typed into the textarea are automatically saved to local storage, preserving the note’s state across sessions.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-3"
+      ]
+    },
+    {
+      "id": "G-008",
+      "title": "Delete note removes it from DOM and localStorage",
+      "description": "Verify that clicking the delete button (data-testid=\"delete-note-button\") for a specific note immediately removes the note element from the DOM and deletes the corresponding entry from localStorage.",
       "requirement_ids": [
         "e2edev_bench_02-R-4"
       ]
     },
     {
-      "id": "G-007",
-      "title": "Load saved notes from localStorage on page load",
-      "description": "When the page loads, notes stored in localStorage are retrieved using the 'notes' key. Populated notes show the main div with the textarea hidden, while empty notes show the textarea with the main div hidden.",
+      "id": "G-009",
+      "title": "Delete specific note among multiple notes",
+      "description": "Verify that when multiple notes are present, clicking the delete button on a specific note removes only that note from the DOM and localStorage while leaving other notes intact.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-4"
+      ]
+    },
+    {
+      "id": "G-010",
+      "title": "Restore notes from localStorage on page load",
+      "description": "Verify that when the webpage loads with stored notes in localStorage, the application retrieves them using JSON.parse(localStorage.getItem('notes')) and dynamically creates a div with class 'note' for each, containing the edit button, delete button, main div (data-testid='note-main'), and textarea (data-testid='note-textarea'). For populated notes, the main div is visible and the textarea is hidden.",
       "requirement_ids": [
         "e2edev_bench_02-R-5"
       ]
     },
     {
-      "id": "G-008",
-      "title": "Empty localStorage initialization",
-      "description": "When the page loads and localStorage is empty, no notes are displayed on the page.",
+      "id": "G-011",
+      "title": "Handle empty content notes on page load",
+      "description": "Verify that notes retrieved from localStorage that have no content are rendered with the textarea visible and the main content div hidden by default to allow immediate editing.",
+      "requirement_ids": [
+        "e2edev_bench_02-R-5"
+      ]
+    },
+    {
+      "id": "G-012",
+      "title": "Handle empty localStorage on page load",
+      "description": "Verify that when the application loads and localStorage is empty or has no notes, no note elements are displayed on the page.",
       "requirement_ids": [
         "e2edev_bench_02-R-5"
       ]
@@ -264,70 +296,86 @@
   ],
   "evaluation": {
     "status": "evaluated",
-    "generated_count": 8,
+    "generated_count": 12,
     "reference_count": 13,
     "matches": [
       {
         "generated_id": "G-001",
         "reference_id": "e2edev_bench_02-R-1-TC-1",
-        "similarity": 0.9107906009434574
+        "similarity": 0.927078520819955
       },
       {
         "generated_id": "G-002",
         "reference_id": "e2edev_bench_02-R-1-TC-2",
-        "similarity": 0.9404180853901849
+        "similarity": 0.9454169185160824
       },
       {
         "generated_id": "G-003",
         "reference_id": "e2edev_bench_02-R-2-TC-1",
-        "similarity": 0.8949001089337792
+        "similarity": 0.9114773127939442
       },
       {
         "generated_id": "G-004",
         "reference_id": "e2edev_bench_02-R-2-TC-3",
-        "similarity": 0.8933278855784027
+        "similarity": 0.9122437669532588
       },
       {
         "generated_id": "G-005",
-        "reference_id": "e2edev_bench_02-R-3-TC-3",
-        "similarity": 0.9137463270295609
+        "reference_id": "e2edev_bench_02-R-3-TC-1",
+        "similarity": 0.9567047894075276
       },
       {
         "generated_id": "G-006",
-        "reference_id": "e2edev_bench_02-R-4-TC-1",
-        "similarity": 0.8987748530642017
+        "reference_id": "e2edev_bench_02-R-3-TC-2",
+        "similarity": 0.9480862207717843
       },
       {
         "generated_id": "G-007",
-        "reference_id": "e2edev_bench_02-R-5-TC-1",
-        "similarity": 0.8999325643812486
+        "reference_id": "e2edev_bench_02-R-3-TC-3",
+        "similarity": 0.811702787162406
       },
       {
         "generated_id": "G-008",
+        "reference_id": "e2edev_bench_02-R-4-TC-1",
+        "similarity": 0.922038894165514
+      },
+      {
+        "generated_id": "G-009",
+        "reference_id": "e2edev_bench_02-R-4-TC-2",
+        "similarity": 0.9199208078546967
+      },
+      {
+        "generated_id": "G-010",
+        "reference_id": "e2edev_bench_02-R-5-TC-1",
+        "similarity": 0.9217306506108333
+      },
+      {
+        "generated_id": "G-011",
+        "reference_id": "e2edev_bench_02-R-3-TC-4",
+        "similarity": 0.8928154168569084
+      },
+      {
+        "generated_id": "G-012",
         "reference_id": "e2edev_bench_02-R-5-TC-2",
-        "similarity": 0.9401944108563436
+        "similarity": 0.9501401577886459
       }
     ],
     "unmatched_generated_ids": [],
     "unmatched_reference_ids": [
-      "e2edev_bench_02-R-2-TC-2",
-      "e2edev_bench_02-R-3-TC-1",
-      "e2edev_bench_02-R-3-TC-2",
-      "e2edev_bench_02-R-3-TC-4",
-      "e2edev_bench_02-R-4-TC-2"
+      "e2edev_bench_02-R-2-TC-2"
     ],
     "precision": 1.0,
-    "recall": 0.6153846153846154,
-    "f1": 0.7619047619047619,
+    "recall": 0.9230769230769231,
+    "f1": 0.96,
     "embedding_usage": {
-      "input_tokens": 2154,
+      "input_tokens": 698,
       "output_tokens": null,
       "details": {
-        "text_prompt_tokens": 2154
+        "text_prompt_tokens": 698
       },
       "status": "partial"
     },
-    "embedding_requests": 2
+    "embedding_requests": 1
   },
   "generation": {
     "selected_techniques": [],
@@ -336,25 +384,25 @@
   },
   "usage": {
     "generation": {
-      "input_tokens": 8823,
-      "output_tokens": 1503,
+      "input_tokens": 17427,
+      "output_tokens": 2124,
       "details": {
-        "text_prompt_tokens": 8823,
-        "total_tokens": 10326
+        "text_prompt_tokens": 17427,
+        "total_tokens": 19551
       },
       "status": "available"
     },
     "generation_attempts": [],
     "generation_calls": [],
     "embedding": {
-      "input_tokens": 2154,
+      "input_tokens": 698,
       "output_tokens": null,
       "details": {
-        "text_prompt_tokens": 2154
+        "text_prompt_tokens": 698
       },
       "status": "partial"
     },
-    "embedding_requests": 2
+    "embedding_requests": 1
   },
   "links": {
     "requirements": {
@@ -366,28 +414,40 @@
     },
     "cases": {
       "G-001": {
-        "e2edev_bench_02-R-1": "e2edev_bench_02-R-1/test cases/1_Add_a_single_note_and_verify_DOM_elements.md"
+        "e2edev_bench_02-R-1": "e2edev_bench_02-R-1/test cases/1_Add_single_note_via_button_click.md"
       },
       "G-002": {
-        "e2edev_bench_02-R-1": "e2edev_bench_02-R-1/test cases/2_Rapid_multiple_clicks_on_Add_note_button.md"
+        "e2edev_bench_02-R-1": "e2edev_bench_02-R-1/test cases/2_Add_multiple_notes_via_rapid_clicks.md"
       },
       "G-003": {
-        "e2edev_bench_02-R-2": "e2edev_bench_02-R-2/test cases/3_Real-time_Markdown_rendering.md"
+        "e2edev_bench_02-R-2": "e2edev_bench_02-R-2/test cases/3_Real-time_Markdown_Rendering_and_Editing.md"
       },
       "G-004": {
-        "e2edev_bench_02-R-2": "e2edev_bench_02-R-2/test cases/4_Invalid_Markdown_handling_without_crashing.md"
+        "e2edev_bench_02-R-2": "e2edev_bench_02-R-2/test cases/4_Handling_Invalid_Markdown_Syntax.md"
       },
       "G-005": {
-        "e2edev_bench_02-R-3": "e2edev_bench_02-R-3/test cases/5_Initial_creation_state_and_mode_switching.md"
+        "e2edev_bench_02-R-3": "e2edev_bench_02-R-3/test cases/5_Create_note_and_verify_initial_edit_mode_state.md"
       },
       "G-006": {
-        "e2edev_bench_02-R-4": "e2edev_bench_02-R-4/test cases/6_Delete_note_from_DOM_and_localStorage.md"
+        "e2edev_bench_02-R-3": "e2edev_bench_02-R-3/test cases/6_Toggle_between_edit_and_view_modes.md"
       },
       "G-007": {
-        "e2edev_bench_02-R-5": "e2edev_bench_02-R-5/test cases/7_Load_saved_notes_from_localStorage_on_page_load.md"
+        "e2edev_bench_02-R-3": "e2edev_bench_02-R-3/test cases/7_Automatic_saving_to_local_storage_across_session.md"
       },
       "G-008": {
-        "e2edev_bench_02-R-5": "e2edev_bench_02-R-5/test cases/8_Empty_localStorage_initialization.md"
+        "e2edev_bench_02-R-4": "e2edev_bench_02-R-4/test cases/8_Delete_note_removes_it_from_DOM_and_localStorage.md"
+      },
+      "G-009": {
+        "e2edev_bench_02-R-4": "e2edev_bench_02-R-4/test cases/9_Delete_specific_note_among_multiple_notes.md"
+      },
+      "G-010": {
+        "e2edev_bench_02-R-5": "e2edev_bench_02-R-5/test cases/10_Restore_notes_from_localStorage_on_page_load.md"
+      },
+      "G-011": {
+        "e2edev_bench_02-R-5": "e2edev_bench_02-R-5/test cases/11_Handle_empty_content_notes_on_page_load.md"
+      },
+      "G-012": {
+        "e2edev_bench_02-R-5": "e2edev_bench_02-R-5/test cases/12_Handle_empty_localStorage_on_page_load.md"
       }
     }
   },

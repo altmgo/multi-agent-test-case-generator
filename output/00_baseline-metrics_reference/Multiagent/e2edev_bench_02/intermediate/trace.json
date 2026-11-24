@@ -5,64 +5,96 @@
       "cases": [
         {
           "id": "G-001",
-          "title": "Add a single note and verify DOM elements",
-          "description": "Clicking the Add note button creates a new div element with class 'note' appended to the body, containing a visible, empty textarea with data-testid='note-textarea'.",
+          "title": "Add single note via button click",
+          "description": "Verify that clicking the \"Add note\" button (data-testid=\"add-note-button\") creates a new note <div> with class=\"note\" appended to the document body, containing a visible, empty <textarea> (data-testid=\"note-textarea\").",
           "requirement_ids": [
             "e2edev_bench_02-R-1"
           ]
         },
         {
           "id": "G-002",
-          "title": "Rapid multiple clicks on Add note button",
-          "description": "Clicking the Add note button multiple times rapidly successfully creates a separate note with its own textarea for each click.",
+          "title": "Add multiple notes via rapid clicks",
+          "description": "Verify that multiple rapid clicks on the \"Add note\" button successfully create multiple separate note elements, each containing its own unique textarea.",
           "requirement_ids": [
             "e2edev_bench_02-R-1"
           ]
         },
         {
           "id": "G-003",
-          "title": "Real-time Markdown rendering",
-          "description": "Typing valid Markdown into the note textarea dynamically renders formatted HTML in the note-main display area and updates local storage in real time.",
+          "title": "Real-time Markdown Rendering and Editing",
+          "description": "Verify that typing Markdown content (such as headings, bold, italic, and links) in the note textarea dynamically and correctly renders HTML in the main display area (data-testid=\"note-main\") in real-time, and that changes are instantly persisted to local storage.",
           "requirement_ids": [
             "e2edev_bench_02-R-2"
           ]
         },
         {
           "id": "G-004",
-          "title": "Invalid Markdown handling without crashing",
-          "description": "Entering invalid Markdown like unmatched asterisks does not crash the application, and exiting edit mode via the Edit button safely displays the raw input.",
+          "title": "Handling Invalid Markdown Syntax",
+          "description": "Verify that entering invalid Markdown syntax (e.g., unmatched asterisks) does not crash or throw errors in the application, and that exiting the edit mode by clicking the \"Edit\" button appropriately handles the raw input without application failure.",
           "requirement_ids": [
             "e2edev_bench_02-R-2"
           ]
         },
         {
           "id": "G-005",
-          "title": "Initial creation state and mode switching",
-          "description": "A newly created note starts in edit mode with the textarea visible and note-main hidden. Clicking the Edit button toggles between view and edit modes correctly.",
+          "title": "Create note and verify initial edit mode state",
+          "description": "Verify that when the app page loads and the user clicks the \"Add note\" button (data-testid=\"add-note-button\"), a new note is created and immediately enters edit mode where the textarea (data-testid=\"note-textarea\") is visible and the main content area (data-testid=\"note-main\") remains hidden.",
           "requirement_ids": [
             "e2edev_bench_02-R-3"
           ]
         },
         {
           "id": "G-006",
-          "title": "Delete note from DOM and localStorage",
-          "description": "Clicking the Delete button on a note immediately removes the note element from the DOM and removes the corresponding entry from localStorage.",
+          "title": "Toggle between edit and view modes",
+          "description": "Verify that users can switch between edit and view modes by clicking the \"Edit\" button (data-testid=\"edit-note-button\"). In view mode, the main content area becomes visible and the textarea is hidden, and in edit mode, this behavior is reversed.",
+          "requirement_ids": [
+            "e2edev_bench_02-R-3"
+          ]
+        },
+        {
+          "id": "G-007",
+          "title": "Automatic saving to local storage across sessions",
+          "description": "Verify that all changes typed into the textarea are automatically saved to local storage, preserving the note’s state across sessions.",
+          "requirement_ids": [
+            "e2edev_bench_02-R-3"
+          ]
+        },
+        {
+          "id": "G-008",
+          "title": "Delete note removes it from DOM and localStorage",
+          "description": "Verify that clicking the delete button (data-testid=\"delete-note-button\") for a specific note immediately removes the note element from the DOM and deletes the corresponding entry from localStorage.",
           "requirement_ids": [
             "e2edev_bench_02-R-4"
           ]
         },
         {
-          "id": "G-007",
-          "title": "Load saved notes from localStorage on page load",
-          "description": "When the page loads, notes stored in localStorage are retrieved using the 'notes' key. Populated notes show the main div with the textarea hidden, while empty notes show the textarea with the main div hidden.",
+          "id": "G-009",
+          "title": "Delete specific note among multiple notes",
+          "description": "Verify that when multiple notes are present, clicking the delete button on a specific note removes only that note from the DOM and localStorage while leaving other notes intact.",
+          "requirement_ids": [
+            "e2edev_bench_02-R-4"
+          ]
+        },
+        {
+          "id": "G-010",
+          "title": "Restore notes from localStorage on page load",
+          "description": "Verify that when the webpage loads with stored notes in localStorage, the application retrieves them using JSON.parse(localStorage.getItem('notes')) and dynamically creates a div with class 'note' for each, containing the edit button, delete button, main div (data-testid='note-main'), and textarea (data-testid='note-textarea'). For populated notes, the main div is visible and the textarea is hidden.",
           "requirement_ids": [
             "e2edev_bench_02-R-5"
           ]
         },
         {
-          "id": "G-008",
-          "title": "Empty localStorage initialization",
-          "description": "When the page loads and localStorage is empty, no notes are displayed on the page.",
+          "id": "G-011",
+          "title": "Handle empty content notes on page load",
+          "description": "Verify that notes retrieved from localStorage that have no content are rendered with the textarea visible and the main content div hidden by default to allow immediate editing.",
+          "requirement_ids": [
+            "e2edev_bench_02-R-5"
+          ]
+        },
+        {
+          "id": "G-012",
+          "title": "Handle empty localStorage on page load",
+          "description": "Verify that when the application loads and localStorage is empty or has no notes, no note elements are displayed on the page.",
           "requirement_ids": [
             "e2edev_bench_02-R-5"
           ]
@@ -71,14 +103,14 @@
       "opinions": [
         {
           "agent": "critic",
-          "feedback": "All test cases are well-structured, distinct, and directly testable against the provided requirements.",
+          "feedback": "The proposed high-level test cases are well-structured, distinct, cover all requirements effectively, and are fully testable without any blockers.",
           "request_revision": false,
           "confirmed_blockers": [],
           "blocker_assessment_complete": true
         },
         {
           "agent": "validator",
-          "feedback": "All requirements and test cases are well-defined, consistent, and fully testable without any blockers.",
+          "feedback": "",
           "request_revision": false,
           "confirmed_blockers": [],
           "blocker_assessment_complete": true
@@ -91,7 +123,7 @@
       "comparable": true
     },
     "analysis": {
-      "analysis": "R-1: Testable behavior includes clicking the 'Add note' button (id=\"add\", class=\"add\", data-testid=\"add-note-button\") to create a new <div> element appended to document body with class \"note\" containing an empty visible <textarea> (data-testid=\"note-textarea\"). Boundaries include rapid multiple clicks creating multiple distinct notes. Normal path: single click creates one note. Abnormal/edge path: rapid successive clicks. Ambiguities: exact structure of tool buttons created simultaneously is clarified in R-5. R-2: Testable behavior involves editing notes with Markdown rendering. Inputs: standard Markdown (#, **, _, [link]). Outputs: dynamic real-time rendering in (data-testid=\"note-main\"), raw input fallback on invalid Markdown (unmatched **) when exiting edit mode via 'Edit' button (data-testid=\"edit-note-button\"), and state saved to localStorage. Normal path: valid Markdown renders to HTML. Abnormal path: invalid Markdown does not crash and falls back to raw text. Ambiguities: none. R-3: Testable behavior covers creation, view, and edit mode toggles. Normal path: clicking 'Add note' loads note in edit mode (textarea visible, note-main hidden). Clicking 'Edit' toggles view mode (note-main visible, textarea hidden). Changes auto-save to localStorage. Boundaries: session persistence across page reloads. Abnormal path: toggling repeatedly without input. Ambiguities: interaction between initial creation state and edit/view mode toggles. R-4: Testable behavior involves deleting a note via (data-testid=\"delete-note-button\"). Normal path: clicking delete removes note element from DOM and entry from localStorage. Boundaries: deleting the last remaining note. Abnormal path: clicking delete on a non-existent or already removed note. Ambiguities: none. R-5: Testable behavior covers loading saved notes from localStorage upon page load. Normal path: renders <div> class=\"note\", tools div with 'Edit' (data-testid=\"edit-note-button\") and 'Delete' (data-testid=\"delete-note-button\"), main div (data-testid=\"note-main\"), and textarea (data-testid=\"note-textarea\"). Notes with content show main div with textarea hidden; empty notes show textarea with main div hidden. Empty localStorage shows no notes. Boundaries: corrupted JSON in localStorage (implied handling via JSON.parse). Ambiguities: exact key name ('notes') is specified."
+      "analysis": "R-1: Testable behavior includes clicking the \"Add note\" button (id=\"add\", class=\"add\", data-testid=\"add-note-button\") and verifying a new <div> with class=\"note\" and an empty <textarea> (data-testid=\"note-textarea\") is appended to the body. Boundaries: Multiple rapid clicks creating multiple distinct notes. Normal path: Single click creates one note. Abnormal path: Rapid successive clicks. Ambiguities: None. R-2: Testable behavior includes typing Markdown in the textarea, dynamic real-time rendering in data-testid=\"note-main\", and clicking the \"Edit\" button (data-testid=\"edit-note-button\") to exit edit mode. Normal path: Standard Markdown elements (#, **, _, [link]). Abnormal path: Invalid Markdown like unmatched asterisks (should not crash, falls back to raw input on exit). Persistence: LocalStorage updates immediately. Ambiguities: Exact behavior of invalid Markdown during live typing vs. exit mode. R-3: Testable behavior includes application load, creating notes, immediate entry into edit mode (textarea visible, data-testid=\"note-main\" hidden), and toggling between view and edit modes via the \"Edit\" button. Normal path: Click add note -> edit mode -> type -> click edit -> view mode. Abnormal path: Toggling repeatedly. Ambiguities: None. R-4: Testable behavior includes clicking data-testid=\"delete-note-button\" to remove the note from the DOM and localStorage. Normal path: Deleting an existing note. Abnormal path: Deleting already removed or non-existent notes. Ambiguities: None. R-5: Testable behavior includes page load retrieval from localStorage via JSON.parse(localStorage.getItem('notes')), DOM construction with class=\"note\", tools div, edit/delete buttons, main div (data-testid=\"note-main\"), and textarea (data-testid=\"note-textarea\"). Normal path: Populated localStorage restores notes with main div visible and textarea hidden. Abnormal path: Empty localStorage (no notes shown) or notes with no content (textarea visible, main div hidden). Ambiguities: Structure of the stored array elements."
     },
     "failure": null
   },
@@ -104,64 +136,96 @@
     "cases": [
       {
         "id": "G-001",
-        "title": "Add a single note and verify DOM elements",
-        "description": "Clicking the Add note button creates a new div element with class 'note' appended to the body, containing a visible, empty textarea with data-testid='note-textarea'.",
+        "title": "Add single note via button click",
+        "description": "Verify that clicking the \"Add note\" button (data-testid=\"add-note-button\") creates a new note <div> with class=\"note\" appended to the document body, containing a visible, empty <textarea> (data-testid=\"note-textarea\").",
         "requirement_ids": [
           "e2edev_bench_02-R-1"
         ]
       },
       {
         "id": "G-002",
-        "title": "Rapid multiple clicks on Add note button",
-        "description": "Clicking the Add note button multiple times rapidly successfully creates a separate note with its own textarea for each click.",
+        "title": "Add multiple notes via rapid clicks",
+        "description": "Verify that multiple rapid clicks on the \"Add note\" button successfully create multiple separate note elements, each containing its own unique textarea.",
         "requirement_ids": [
           "e2edev_bench_02-R-1"
         ]
       },
       {
         "id": "G-003",
-        "title": "Real-time Markdown rendering",
-        "description": "Typing valid Markdown into the note textarea dynamically renders formatted HTML in the note-main display area and updates local storage in real time.",
+        "title": "Real-time Markdown Rendering and Editing",
+        "description": "Verify that typing Markdown content (such as headings, bold, italic, and links) in the note textarea dynamically and correctly renders HTML in the main display area (data-testid=\"note-main\") in real-time, and that changes are instantly persisted to local storage.",
         "requirement_ids": [
           "e2edev_bench_02-R-2"
         ]
       },
       {
         "id": "G-004",
-        "title": "Invalid Markdown handling without crashing",
-        "description": "Entering invalid Markdown like unmatched asterisks does not crash the application, and exiting edit mode via the Edit button safely displays the raw input.",
+        "title": "Handling Invalid Markdown Syntax",
+        "description": "Verify that entering invalid Markdown syntax (e.g., unmatched asterisks) does not crash or throw errors in the application, and that exiting the edit mode by clicking the \"Edit\" button appropriately handles the raw input without application failure.",
         "requirement_ids": [
           "e2edev_bench_02-R-2"
         ]
       },
       {
         "id": "G-005",
-        "title": "Initial creation state and mode switching",
-        "description": "A newly created note starts in edit mode with the textarea visible and note-main hidden. Clicking the Edit button toggles between view and edit modes correctly.",
+        "title": "Create note and verify initial edit mode state",
+        "description": "Verify that when the app page loads and the user clicks the \"Add note\" button (data-testid=\"add-note-button\"), a new note is created and immediately enters edit mode where the textarea (data-testid=\"note-textarea\") is visible and the main content area (data-testid=\"note-main\") remains hidden.",
         "requirement_ids": [
           "e2edev_bench_02-R-3"
         ]
       },
       {
         "id": "G-006",
-        "title": "Delete note from DOM and localStorage",
-        "description": "Clicking the Delete button on a note immediately removes the note element from the DOM and removes the corresponding entry from localStorage.",
+        "title": "Toggle between edit and view modes",
+        "description": "Verify that users can switch between edit and view modes by clicking the \"Edit\" button (data-testid=\"edit-note-button\"). In view mode, the main content area becomes visible and the textarea is hidden, and in edit mode, this behavior is reversed.",
+        "requirement_ids": [
+          "e2edev_bench_02-R-3"
+        ]
+      },
+      {
+        "id": "G-007",
+        "title": "Automatic saving to local storage across sessions",
+        "description": "Verify that all changes typed into the textarea are automatically saved to local storage, preserving the note’s state across sessions.",
+        "requirement_ids": [
+          "e2edev_bench_02-R-3"
+        ]
+      },
+      {
+        "id": "G-008",
+        "title": "Delete note removes it from DOM and localStorage",
+        "description": "Verify that clicking the delete button (data-testid=\"delete-note-button\") for a specific note immediately removes the note element from the DOM and deletes the corresponding entry from localStorage.",
         "requirement_ids": [
           "e2edev_bench_02-R-4"
         ]
       },
       {
-        "id": "G-007",
-        "title": "Load saved notes from localStorage on page load",
-        "description": "When the page loads, notes stored in localStorage are retrieved using the 'notes' key. Populated notes show the main div with the textarea hidden, while empty notes show the textarea with the main div hidden.",
+        "id": "G-009",
+        "title": "Delete specific note among multiple notes",
+        "description": "Verify that when multiple notes are present, clicking the delete button on a specific note removes only that note from the DOM and localStorage while leaving other notes intact.",
+        "requirement_ids": [
+          "e2edev_bench_02-R-4"
+        ]
+      },
+      {
+        "id": "G-010",
+        "title": "Restore notes from localStorage on page load",
+        "description": "Verify that when the webpage loads with stored notes in localStorage, the application retrieves them using JSON.parse(localStorage.getItem('notes')) and dynamically creates a div with class 'note' for each, containing the edit button, delete button, main div (data-testid='note-main'), and textarea (data-testid='note-textarea'). For populated notes, the main div is visible and the textarea is hidden.",
         "requirement_ids": [
           "e2edev_bench_02-R-5"
         ]
       },
       {
-        "id": "G-008",
-        "title": "Empty localStorage initialization",
-        "description": "When the page loads and localStorage is empty, no notes are displayed on the page.",
+        "id": "G-011",
+        "title": "Handle empty content notes on page load",
+        "description": "Verify that notes retrieved from localStorage that have no content are rendered with the textarea visible and the main content div hidden by default to allow immediate editing.",
+        "requirement_ids": [
+          "e2edev_bench_02-R-5"
+        ]
+      },
+      {
+        "id": "G-012",
+        "title": "Handle empty localStorage on page load",
+        "description": "Verify that when the application loads and localStorage is empty or has no notes, no note elements are displayed on the page.",
         "requirement_ids": [
           "e2edev_bench_02-R-5"
         ]
@@ -170,14 +234,14 @@
     "opinions": [
       {
         "agent": "critic",
-        "feedback": "All test cases are well-structured, distinct, and directly testable against the provided requirements.",
+        "feedback": "The proposed high-level test cases are well-structured, distinct, cover all requirements effectively, and are fully testable without any blockers.",
         "request_revision": false,
         "confirmed_blockers": [],
         "blocker_assessment_complete": true
       },
       {
         "agent": "validator",
-        "feedback": "All requirements and test cases are well-defined, consistent, and fully testable without any blockers.",
+        "feedback": "",
         "request_revision": false,
         "confirmed_blockers": [],
         "blocker_assessment_complete": true
@@ -192,7 +256,7 @@
   "pending": [],
   "pending_controls": [],
   "coverage": {
-    "feedback": "The accepted test cases provide comprehensive coverage of all specified requirements (R-1 through R-5), including rapid click handling, Markdown rendering, invalid Markdown resilience, view/edit mode toggling, deletion from DOM and localStorage, and state restoration from localStorage for both populated and empty states. There are no notable coverage gaps, excesses, or repetitions."
+    "feedback": "The accepted test cases provide comprehensive coverage across all five requirements (e-R-1 through e-R-5). There are no noticeable coverage gaps, excess tests, or unnecessary repetitions. Each requirement is mapped to precise functional checks, including edge cases like invalid Markdown handling, rapid button clicking, empty localStorage states, and correct view/edit mode initializations."
   },
   "coverage_failure": null,
   "calls": [
@@ -200,15 +264,15 @@
       "stage": "analyst",
       "subject_id": "initial",
       "output": {
-        "analysis": "R-1: Testable behavior includes clicking the 'Add note' button (id=\"add\", class=\"add\", data-testid=\"add-note-button\") to create a new <div> element appended to document body with class \"note\" containing an empty visible <textarea> (data-testid=\"note-textarea\"). Boundaries include rapid multiple clicks creating multiple distinct notes. Normal path: single click creates one note. Abnormal/edge path: rapid successive clicks. Ambiguities: exact structure of tool buttons created simultaneously is clarified in R-5. R-2: Testable behavior involves editing notes with Markdown rendering. Inputs: standard Markdown (#, **, _, [link]). Outputs: dynamic real-time rendering in (data-testid=\"note-main\"), raw input fallback on invalid Markdown (unmatched **) when exiting edit mode via 'Edit' button (data-testid=\"edit-note-button\"), and state saved to localStorage. Normal path: valid Markdown renders to HTML. Abnormal path: invalid Markdown does not crash and falls back to raw text. Ambiguities: none. R-3: Testable behavior covers creation, view, and edit mode toggles. Normal path: clicking 'Add note' loads note in edit mode (textarea visible, note-main hidden). Clicking 'Edit' toggles view mode (note-main visible, textarea hidden). Changes auto-save to localStorage. Boundaries: session persistence across page reloads. Abnormal path: toggling repeatedly without input. Ambiguities: interaction between initial creation state and edit/view mode toggles. R-4: Testable behavior involves deleting a note via (data-testid=\"delete-note-button\"). Normal path: clicking delete removes note element from DOM and entry from localStorage. Boundaries: deleting the last remaining note. Abnormal path: clicking delete on a non-existent or already removed note. Ambiguities: none. R-5: Testable behavior covers loading saved notes from localStorage upon page load. Normal path: renders <div> class=\"note\", tools div with 'Edit' (data-testid=\"edit-note-button\") and 'Delete' (data-testid=\"delete-note-button\"), main div (data-testid=\"note-main\"), and textarea (data-testid=\"note-textarea\"). Notes with content show main div with textarea hidden; empty notes show textarea with main div hidden. Empty localStorage shows no notes. Boundaries: corrupted JSON in localStorage (implied handling via JSON.parse). Ambiguities: exact key name ('notes') is specified."
+        "analysis": "R-1: Testable behavior includes clicking the \"Add note\" button (id=\"add\", class=\"add\", data-testid=\"add-note-button\") and verifying a new <div> with class=\"note\" and an empty <textarea> (data-testid=\"note-textarea\") is appended to the body. Boundaries: Multiple rapid clicks creating multiple distinct notes. Normal path: Single click creates one note. Abnormal path: Rapid successive clicks. Ambiguities: None. R-2: Testable behavior includes typing Markdown in the textarea, dynamic real-time rendering in data-testid=\"note-main\", and clicking the \"Edit\" button (data-testid=\"edit-note-button\") to exit edit mode. Normal path: Standard Markdown elements (#, **, _, [link]). Abnormal path: Invalid Markdown like unmatched asterisks (should not crash, falls back to raw input on exit). Persistence: LocalStorage updates immediately. Ambiguities: Exact behavior of invalid Markdown during live typing vs. exit mode. R-3: Testable behavior includes application load, creating notes, immediate entry into edit mode (textarea visible, data-testid=\"note-main\" hidden), and toggling between view and edit modes via the \"Edit\" button. Normal path: Click add note -> edit mode -> type -> click edit -> view mode. Abnormal path: Toggling repeatedly. Ambiguities: None. R-4: Testable behavior includes clicking data-testid=\"delete-note-button\" to remove the note from the DOM and localStorage. Normal path: Deleting an existing note. Abnormal path: Deleting already removed or non-existent notes. Ambiguities: None. R-5: Testable behavior includes page load retrieval from localStorage via JSON.parse(localStorage.getItem('notes')), DOM construction with class=\"note\", tools div, edit/delete buttons, main div (data-testid=\"note-main\"), and textarea (data-testid=\"note-textarea\"). Normal path: Populated localStorage restores notes with main div visible and textarea hidden. Abnormal path: Empty localStorage (no notes shown) or notes with no content (textarea visible, main div hidden). Ambiguities: Structure of the stored array elements."
       },
       "error_type": null,
       "usage": [
         {
           "input_tokens": 1275,
-          "output_tokens": 532,
+          "output_tokens": 462,
           "details": {
-            "total_tokens": 1807,
+            "total_tokens": 1737,
             "text_prompt_tokens": 1275
           },
           "status": "available"
@@ -221,65 +285,177 @@
       "output": {
         "cases": [
           {
-            "id": "TC-ADD-NOTE-1",
-            "title": "Add a single note and verify DOM elements",
-            "description": "Clicking the Add note button creates a new div element with class 'note' appended to the body, containing a visible, empty textarea with data-testid='note-textarea'.",
+            "id": "TC-E2EDEV-BENCH-02-R1-01",
+            "title": "Add single note via button click",
+            "description": "Verify that clicking the \"Add note\" button (data-testid=\"add-note-button\") creates a new note <div> with class=\"note\" appended to the document body, containing a visible, empty <textarea> (data-testid=\"note-textarea\").",
             "requirement_ids": [
               "e2edev_bench_02-R-1"
             ]
           },
           {
-            "id": "TC-ADD-NOTE-2",
-            "title": "Rapid multiple clicks on Add note button",
-            "description": "Clicking the Add note button multiple times rapidly successfully creates a separate note with its own textarea for each click.",
+            "id": "TC-E2EDEV-BENCH-02-R1-02",
+            "title": "Add multiple notes via rapid clicks",
+            "description": "Verify that multiple rapid clicks on the \"Add note\" button successfully create multiple separate note elements, each containing its own unique textarea.",
             "requirement_ids": [
               "e2edev_bench_02-R-1"
             ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1783,
+          "output_tokens": 250,
+          "details": {
+            "total_tokens": 2033,
+            "text_prompt_tokens": 1783
           },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
           {
-            "id": "TC-MARKDOWN-EDIT-1",
-            "title": "Real-time Markdown rendering",
-            "description": "Typing valid Markdown into the note textarea dynamically renders formatted HTML in the note-main display area and updates local storage in real time.",
+            "id": "e2edev_bench_02_tc_201",
+            "title": "Real-time Markdown Rendering and Editing",
+            "description": "Verify that typing Markdown content (such as headings, bold, italic, and links) in the note textarea dynamically and correctly renders HTML in the main display area (data-testid=\"note-main\") in real-time, and that changes are instantly persisted to local storage.",
             "requirement_ids": [
               "e2edev_bench_02-R-2"
             ]
           },
           {
-            "id": "TC-MARKDOWN-EDIT-2",
-            "title": "Invalid Markdown handling without crashing",
-            "description": "Entering invalid Markdown like unmatched asterisks does not crash the application, and exiting edit mode via the Edit button safely displays the raw input.",
+            "id": "e2edev_bench_02_tc_202",
+            "title": "Handling Invalid Markdown Syntax",
+            "description": "Verify that entering invalid Markdown syntax (e.g., unmatched asterisks) does not crash or throw errors in the application, and that exiting the edit mode by clicking the \"Edit\" button appropriately handles the raw input without application failure.",
             "requirement_ids": [
               "e2edev_bench_02-R-2"
             ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1783,
+          "output_tokens": 263,
+          "details": {
+            "total_tokens": 2046,
+            "text_prompt_tokens": 1783
           },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
           {
-            "id": "TC-MODE-TOGGLE-1",
-            "title": "Initial creation state and mode switching",
-            "description": "A newly created note starts in edit mode with the textarea visible and note-main hidden. Clicking the Edit button toggles between view and edit modes correctly.",
+            "id": "TC-E2EDEV-R3-01",
+            "title": "Create note and verify initial edit mode state",
+            "description": "Verify that when the app page loads and the user clicks the \"Add note\" button (data-testid=\"add-note-button\"), a new note is created and immediately enters edit mode where the textarea (data-testid=\"note-textarea\") is visible and the main content area (data-testid=\"note-main\") remains hidden.",
             "requirement_ids": [
               "e2edev_bench_02-R-3"
             ]
           },
           {
-            "id": "TC-DELETE-NOTE-1",
-            "title": "Delete note from DOM and localStorage",
-            "description": "Clicking the Delete button on a note immediately removes the note element from the DOM and removes the corresponding entry from localStorage.",
+            "id": "TC-E2EDEV-R3-02",
+            "title": "Toggle between edit and view modes",
+            "description": "Verify that users can switch between edit and view modes by clicking the \"Edit\" button (data-testid=\"edit-note-button\"). In view mode, the main content area becomes visible and the textarea is hidden, and in edit mode, this behavior is reversed.",
+            "requirement_ids": [
+              "e2edev_bench_02-R-3"
+            ]
+          },
+          {
+            "id": "TC-E2EDEV-R3-03",
+            "title": "Automatic saving to local storage across sessions",
+            "description": "Verify that all changes typed into the textarea are automatically saved to local storage, preserving the note’s state across sessions.",
+            "requirement_ids": [
+              "e2edev_bench_02-R-3"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1783,
+          "output_tokens": 380,
+          "details": {
+            "total_tokens": 2163,
+            "text_prompt_tokens": 1783
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R4-01",
+            "title": "Delete note removes it from DOM and localStorage",
+            "description": "Verify that clicking the delete button (data-testid=\"delete-note-button\") for a specific note immediately removes the note element from the DOM and deletes the corresponding entry from localStorage.",
             "requirement_ids": [
               "e2edev_bench_02-R-4"
             ]
           },
           {
-            "id": "TC-STORAGE-LOAD-1",
-            "title": "Load saved notes from localStorage on page load",
-            "description": "When the page loads, notes stored in localStorage are retrieved using the 'notes' key. Populated notes show the main div with the textarea hidden, while empty notes show the textarea with the main div hidden.",
+            "id": "TC-R4-02",
+            "title": "Delete specific note among multiple notes",
+            "description": "Verify that when multiple notes are present, clicking the delete button on a specific note removes only that note from the DOM and localStorage while leaving other notes intact.",
+            "requirement_ids": [
+              "e2edev_bench_02-R-4"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1783,
+          "output_tokens": 216,
+          "details": {
+            "total_tokens": 1999,
+            "text_prompt_tokens": 1783
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-E2EDEV-R5-01",
+            "title": "Restore notes from localStorage on page load",
+            "description": "Verify that when the webpage loads with stored notes in localStorage, the application retrieves them using JSON.parse(localStorage.getItem('notes')) and dynamically creates a div with class 'note' for each, containing the edit button, delete button, main div (data-testid='note-main'), and textarea (data-testid='note-textarea'). For populated notes, the main div is visible and the textarea is hidden.",
             "requirement_ids": [
               "e2edev_bench_02-R-5"
             ]
           },
           {
-            "id": "TC-STORAGE-LOAD-2",
-            "title": "Empty localStorage initialization",
-            "description": "When the page loads and localStorage is empty, no notes are displayed on the page.",
+            "id": "TC-E2EDEV-R5-02",
+            "title": "Handle empty content notes on page load",
+            "description": "Verify that notes retrieved from localStorage that have no content are rendered with the textarea visible and the main content div hidden by default to allow immediate editing.",
+            "requirement_ids": [
+              "e2edev_bench_02-R-5"
+            ]
+          },
+          {
+            "id": "TC-E2EDEV-R5-03",
+            "title": "Handle empty localStorage on page load",
+            "description": "Verify that when the application loads and localStorage is empty or has no notes, no note elements are displayed on the page.",
             "requirement_ids": [
               "e2edev_bench_02-R-5"
             ]
@@ -289,11 +465,11 @@
       "error_type": null,
       "usage": [
         {
-          "input_tokens": 1837,
-          "output_tokens": 778,
+          "input_tokens": 1783,
+          "output_tokens": 368,
           "details": {
-            "total_tokens": 2615,
-            "text_prompt_tokens": 1837
+            "total_tokens": 2151,
+            "text_prompt_tokens": 1783
           },
           "status": "available"
         }
@@ -303,7 +479,7 @@
       "stage": "critic",
       "subject_id": "initial",
       "output": {
-        "feedback": "All test cases are well-structured, distinct, and directly testable against the provided requirements.",
+        "feedback": "The proposed high-level test cases are well-structured, distinct, cover all requirements effectively, and are fully testable without any blockers.",
         "request_revision": false,
         "confirmed_blockers": [],
         "blocker_assessment_complete": true
@@ -311,11 +487,11 @@
       "error_type": null,
       "usage": [
         {
-          "input_tokens": 1895,
-          "output_tokens": 57,
+          "input_tokens": 2393,
+          "output_tokens": 66,
           "details": {
-            "total_tokens": 1952,
-            "text_prompt_tokens": 1895
+            "total_tokens": 2459,
+            "text_prompt_tokens": 2393
           },
           "status": "available"
         }
@@ -325,7 +501,7 @@
       "stage": "validator",
       "subject_id": "initial",
       "output": {
-        "feedback": "All requirements and test cases are well-defined, consistent, and fully testable without any blockers.",
+        "feedback": "",
         "request_revision": false,
         "confirmed_blockers": [],
         "blocker_assessment_complete": true
@@ -333,11 +509,11 @@
       "error_type": null,
       "usage": [
         {
-          "input_tokens": 1892,
-          "output_tokens": 58,
+          "input_tokens": 2390,
+          "output_tokens": 38,
           "details": {
-            "total_tokens": 1950,
-            "text_prompt_tokens": 1892
+            "total_tokens": 2428,
+            "text_prompt_tokens": 2390
           },
           "status": "available"
         }
@@ -347,16 +523,16 @@
       "stage": "coverage",
       "subject_id": "initial",
       "output": {
-        "feedback": "The accepted test cases provide comprehensive coverage of all specified requirements (R-1 through R-5), including rapid click handling, Markdown rendering, invalid Markdown resilience, view/edit mode toggling, deletion from DOM and localStorage, and state restoration from localStorage for both populated and empty states. There are no notable coverage gaps, excesses, or repetitions."
+        "feedback": "The accepted test cases provide comprehensive coverage across all five requirements (e-R-1 through e-R-5). There are no noticeable coverage gaps, excess tests, or unnecessary repetitions. Each requirement is mapped to precise functional checks, including edge cases like invalid Markdown handling, rapid button clicking, empty localStorage states, and correct view/edit mode initializations."
       },
       "error_type": null,
       "usage": [
         {
-          "input_tokens": 1924,
-          "output_tokens": 78,
+          "input_tokens": 2454,
+          "output_tokens": 81,
           "details": {
-            "total_tokens": 2002,
-            "text_prompt_tokens": 1924
+            "total_tokens": 2535,
+            "text_prompt_tokens": 2454
           },
           "status": "available"
         }

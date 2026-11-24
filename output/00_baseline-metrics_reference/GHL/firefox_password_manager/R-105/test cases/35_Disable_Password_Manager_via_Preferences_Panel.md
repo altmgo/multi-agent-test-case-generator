@@ -1,0 +1,7 @@
+# Disable Password Manager via Preferences Panel - Normal Flow
+
+Case ID · G-035
+
+Requirements · R-105
+
+Verify that when the password manager is disabled from the preferences panel, the browser no longer asks to save passwords and no longer prefills info on sites.

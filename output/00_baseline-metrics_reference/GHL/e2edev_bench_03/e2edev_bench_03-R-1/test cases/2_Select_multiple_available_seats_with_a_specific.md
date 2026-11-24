@@ -2,6 +2,6 @@
 
 Case ID · G-002
 
-Requirements · e2edev\_bench\_03-R-1, e2edev\_bench\_03-R-2, e2edev\_bench\_03-R-4
+Requirements · e2edev\_bench\_03-R-1
 
-Verify that clicking multiple available seats and choosing a non-default movie updates the selected count and correctly calculates the total price as seats multiplied by movie price.
+Verify that clicking multiple available seats accumulates the selected count and updates the total price using the selected movie's price.
