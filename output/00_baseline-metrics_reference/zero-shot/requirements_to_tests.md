@@ -1,4 +1,4 @@
-# one-shot · Requirements to tests
+# zero-shot · Requirements to tests
 
 ## firefox\_themes
 

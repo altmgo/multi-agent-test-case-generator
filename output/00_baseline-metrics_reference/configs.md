@@ -4,7 +4,7 @@
 {
   "model": "gemini-3.5-flash-lite",
   "solutions": [
-    "one-shot",
+    "zero-shot",
     "GHL",
     "Multiagent"
   ],
@@ -25,7 +25,7 @@
     "validator"
   ],
   "output_modes": {
-    "one-shot": "batch",
+    "zero-shot": "batch",
     "GHL": "per_requirement",
     "Multiagent": "per_requirement"
   },
@@ -38,7 +38,7 @@
   "credential": ".env:GOOGLE_API_KEY",
   "status": "completed",
   "outcomes": {
-    "one-shot": {
+    "zero-shot": {
       "firefox_themes": {
         "status": "generated",
         "case_count": 7,

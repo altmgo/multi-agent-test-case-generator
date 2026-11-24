@@ -8,7 +8,7 @@
 - Units: `e2edev_bench_01`, `e2edev_bench_02`, `e2edev_bench_03`, `e2edev_bench_04`, `firefox_bookmarks`, `firefox_browser_history`, `firefox_password_manager`, `firefox_themes`
 
 ## Goal
-Aumentar o recall do Multiagent que estava estagnado em ~0.64. A meta principal era superar o gargalo do limite rígido de no máximo 2 casos por requisito ("at most two focused cases"), incentivando a geração de múltiplos tipos de cenários (Normal, Edge, Boundary, Error/Abnormal) suportados pelos requisitos, além de passar a utilizar o modo `per_requirement` e substituir o baseline `one-shot` por `zero-shot`.
+Aumentar o recall do Multiagent que estava estagnado em ~0.64. A meta principal era superar o gargalo do limite rígido de no máximo 2 casos por requisito ("at most two focused cases"), incentivando a geração de múltiplos tipos de cenários (Normal, Edge, Boundary, Error/Abnormal) suportados pelos requisitos, além de passar a utilizar o modo `per_requirement` e substituir o baseline `zero-shot` por `zero-shot`.
 
 ## Alterações feitas no commit
 As alterações que originaram este run focaram na expansão de cobertura e enriquecimento de cenários:
@@ -16,7 +16,7 @@ As alterações que originaram este run focaram na expansão de cobertura e enri
 2. **Analyst (`src/multiagent/analyst.py`)**: Enumeração dos tipos de cenários esperados por requisito (*Normal, Edge, Boundary, Abnormal/Error*) para orientar o gerador.
 3. **Critic (`src/multiagent/selection.py`)**: Atualização do `REVIEW_RUBRIC` para sinalizar falta de variantes quando o requisito explicita múltiplos cenários e solicitar revisão.
 4. **Coverage (`src/multiagent/coverage.py`)**: Auditoria de cobertura verificando presença de tipos de cenários explicitados e apontando lacunas como *gaps*.
-5. **Baseline Zero-Shot (`src/zero_shot/`, `src/tcg/cli.py`, `src/evaluate/reader.py`)**: Renomeação e transição do baseline `one-shot` para `zero-shot`.
+5. **Baseline Zero-Shot (`src/zero_shot/`, `src/tcg/cli.py`, `src/evaluate/reader.py`)**: Renomeação e transição do baseline `zero-shot` para `zero-shot`.
 6. **Modo de Saída**: Execução com `--output-mode per_requirement` nos benchmarks avaliados.
 
 ## Results

@@ -20,7 +20,7 @@
     "firefox_themes"
   ],
   "evaluable_unit_ids": {
-    "one-shot": [
+    "zero-shot": [
       "e2edev_bench_01",
       "e2edev_bench_02",
       "e2edev_bench_03",
@@ -53,7 +53,7 @@
   },
   "coverage": 1.0,
   "metrics": {
-    "one-shot": {
+    "zero-shot": {
       "generated_count": 71,
       "reference_count": 104,
       "match_count": 71,
