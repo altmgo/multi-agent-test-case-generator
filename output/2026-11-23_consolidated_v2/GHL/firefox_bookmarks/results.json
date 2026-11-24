@@ -1,0 +1,3230 @@
+{
+  "schema_version": 1,
+  "solution": "GHL",
+  "unit_id": "firefox_bookmarks",
+  "parent_id": null,
+  "status": "evaluated",
+  "failure": null,
+  "embedding_model": "gemini-embedding-2",
+  "requirements": [
+    {
+      "id": "R-001",
+      "text": "A new bookmark shall be added into a specific location within the bookmarks hierarchy.",
+      "language": "en",
+      "source": "R-set.csv#R-001"
+    },
+    {
+      "id": "R-002",
+      "text": "Bookmarks shall be properly deleted from bookmarks file and no longer be displayed  from all access points.",
+      "language": "en",
+      "source": "R-set.csv#R-002"
+    },
+    {
+      "id": "R-003",
+      "text": "Bookmarks shall be added and deleted from the personal toolbar.",
+      "language": "en",
+      "source": "R-set.csv#R-003"
+    },
+    {
+      "id": "R-004",
+      "text": "New bookmark folder shall be inserted into the bookmarks hierarchy.",
+      "language": "en",
+      "source": "R-set.csv#R-004"
+    },
+    {
+      "id": "R-005",
+      "text": "Double-clicking on a bookmark shall cause it to be launched in a browser window.",
+      "language": "en",
+      "source": "R-set.csv#R-005"
+    },
+    {
+      "id": "R-006",
+      "text": "Bookmarks within the default bookmarks file that is packaged with the browser shall be valid links.",
+      "language": "en",
+      "source": "R-set.csv#R-006"
+    },
+    {
+      "id": "R-007",
+      "text": "Changes to a bookmark item shall be saved without loss of item integrity.",
+      "language": "en",
+      "source": "R-set.csv#R-007"
+    },
+    {
+      "id": "R-008",
+      "text": "Bookmarks folder shall be deleted.",
+      "language": "en",
+      "source": "R-set.csv#R-008"
+    },
+    {
+      "id": "R-009",
+      "text": "Bookmarks separators shall be added and deleted.",
+      "language": "en",
+      "source": "R-set.csv#R-009"
+    },
+    {
+      "id": "R-010",
+      "text": "Bookmarks changes shall be saved over restart/crash.",
+      "language": "en",
+      "source": "R-set.csv#R-010"
+    },
+    {
+      "id": "R-011",
+      "text": "View properties shall execute for bookmarks, folders, and separators(negative).",
+      "language": "en",
+      "source": "R-set.csv#R-011"
+    },
+    {
+      "id": "R-012",
+      "text": "Bookmarks shall be renamed \"inline\", i.e. without having to use the bookmarks properties dialog.",
+      "language": "en",
+      "source": "R-set.csv#R-012"
+    },
+    {
+      "id": "R-013",
+      "text": "Bookmarks shall be found using user-defined custom keyword.",
+      "language": "en",
+      "source": "R-set.csv#R-013"
+    },
+    {
+      "id": "R-014",
+      "text": "Bookmarks shall be sorted and reverse-sorted per column.",
+      "language": "en",
+      "source": "R-set.csv#R-014"
+    },
+    {
+      "id": "R-015",
+      "text": "Bookmark columns shall be resizable to show/hide more of entries.",
+      "language": "en",
+      "source": "R-set.csv#R-015"
+    },
+    {
+      "id": "R-016",
+      "text": "Bookmark columns shall be showed and hidden.",
+      "language": "en",
+      "source": "R-set.csv#R-016"
+    },
+    {
+      "id": "R-017",
+      "text": "Several bookmarks shall be deleted at one time.",
+      "language": "en",
+      "source": "R-set.csv#R-017"
+    },
+    {
+      "id": "R-018",
+      "text": "It shall be not possible to drop a bookmark item onto itself or its immediate parent or child.",
+      "language": "en",
+      "source": "R-set.csv#R-018"
+    }
+  ],
+  "generated_cases": [
+    {
+      "id": "G-001",
+      "title": "Add bookmark to valid specific location",
+      "description": "Partition valid input where a new bookmark is successfully added to a specified valid location within the bookmarks hierarchy.",
+      "requirement_ids": [
+        "R-001"
+      ]
+    },
+    {
+      "id": "G-002",
+      "title": "Add bookmark to invalid non-existent location",
+      "description": "Partition invalid input where an attempt is made to add a new bookmark into a non-existent or invalid location within the bookmarks hierarchy.",
+      "requirement_ids": [
+        "R-001"
+      ]
+    },
+    {
+      "id": "G-003",
+      "title": "Successful deletion of a single bookmark",
+      "description": "Partition valid case where an existing bookmark is deleted, verifying it is removed from the bookmarks file and no longer displayed in any access points.",
+      "requirement_ids": [
+        "R-002"
+      ]
+    },
+    {
+      "id": "G-004",
+      "title": "Deletion of a non-existent bookmark",
+      "description": "Partition invalid case where deletion is attempted for a bookmark identifier that does not exist or has already been deleted.",
+      "requirement_ids": [
+        "R-002"
+      ]
+    },
+    {
+      "id": "G-005",
+      "title": "Add bookmark to personal toolbar",
+      "description": "Partition for adding a valid bookmark directly into the personal toolbar location.",
+      "requirement_ids": [
+        "R-003"
+      ]
+    },
+    {
+      "id": "G-006",
+      "title": "Delete bookmark from personal toolbar",
+      "description": "Partition for deleting an existing valid bookmark from the personal toolbar location.",
+      "requirement_ids": [
+        "R-003"
+      ]
+    },
+    {
+      "id": "G-007",
+      "title": "Attempt to add invalid bookmark to personal toolbar",
+      "description": "Abnormal partition where attempting to add an invalid or malformed bookmark item to the personal toolbar fails.",
+      "requirement_ids": [
+        "R-003"
+      ]
+    },
+    {
+      "id": "G-008",
+      "title": "Attempt to delete non-existent bookmark from personal toolbar",
+      "description": "Abnormal partition where attempting to delete a non-existent bookmark reference from the personal toolbar is handled gracefully.",
+      "requirement_ids": [
+        "R-003"
+      ]
+    },
+    {
+      "id": "G-009",
+      "title": "Insert new bookmark folder into valid hierarchy location",
+      "description": "Verify that a new bookmark folder is successfully inserted into a valid location within the bookmarks hierarchy using equivalence partitioning for valid input.",
+      "requirement_ids": [
+        "R-004"
+      ]
+    },
+    {
+      "id": "G-010",
+      "title": "Attempt to insert new bookmark folder into invalid hierarchy location",
+      "description": "Verify that inserting a new bookmark folder into an invalid or non-existent location within the bookmarks hierarchy is correctly handled or rejected.",
+      "requirement_ids": [
+        "R-004"
+      ]
+    },
+    {
+      "id": "G-011",
+      "title": "Launch valid bookmark in browser window via double-click",
+      "description": "Double-clicking on a valid bookmark launches the corresponding URL in a browser window.",
+      "requirement_ids": [
+        "R-005"
+      ]
+    },
+    {
+      "id": "G-012",
+      "title": "Attempt to launch invalid bookmark via double-click",
+      "description": "Double-clicking on a bookmark with an invalid or malformed URL results in abnormal behavior or failure to load in the browser window.",
+      "requirement_ids": [
+        "R-005"
+      ]
+    },
+    {
+      "id": "G-013",
+      "title": "Default Bookmarks File Valid Links",
+      "description": "Verify that all bookmarks within the default bookmarks file packaged with the browser contain valid and reachable links (Valid Partition).",
+      "requirement_ids": [
+        "R-006"
+      ]
+    },
+    {
+      "id": "G-014",
+      "title": "Default Bookmarks File Invalid Links",
+      "description": "Verify the system behavior when the default bookmarks file packaged with the browser contains malformed, broken, or unreachable links (Abnormal/Invalid Partition).",
+      "requirement_ids": [
+        "R-006"
+      ]
+    },
+    {
+      "id": "G-015",
+      "title": "Valid Bookmark Item Property Modification and Save",
+      "description": "Modify valid properties (such as name, URL, or tags) of a bookmark item and verify that the changes are successfully saved without loss of item integrity.",
+      "requirement_ids": [
+        "R-007"
+      ]
+    },
+    {
+      "id": "G-016",
+      "title": "Invalid Bookmark Item Property Modification",
+      "description": "Attempt to save a bookmark item with invalid or corrupted attribute values (e.g., malformed URL or empty mandatory fields) and verify that integrity checks prevent corrupt saves.",
+      "requirement_ids": [
+        "R-007"
+      ]
+    },
+    {
+      "id": "G-017",
+      "title": "Delete existing bookmarks folder successfully",
+      "description": "Partition for valid input: verify that a valid existing bookmarks folder is successfully deleted from the bookmarks hierarchy.",
+      "requirement_ids": [
+        "R-008"
+      ]
+    },
+    {
+      "id": "G-018",
+      "title": "Attempt to delete non-existent bookmarks folder",
+      "description": "Partition for invalid input: verify the system behavior when attempting to delete a bookmarks folder identifier that does not exist.",
+      "requirement_ids": [
+        "R-008"
+      ]
+    },
+    {
+      "id": "G-019",
+      "title": "Add Bookmarks Separator Valid Class",
+      "description": "Verify that a bookmarks separator can be successfully added to the bookmarks hierarchy.",
+      "requirement_ids": [
+        "R-009"
+      ]
+    },
+    {
+      "id": "G-020",
+      "title": "Delete Bookmarks Separator Valid Class",
+      "description": "Verify that an existing bookmarks separator can be successfully deleted from the bookmarks hierarchy.",
+      "requirement_ids": [
+        "R-009"
+      ]
+    },
+    {
+      "id": "G-021",
+      "title": "Delete Non-Existent Bookmarks Separator Invalid Class",
+      "description": "Verify that attempting to delete a bookmarks separator that does not exist results in an appropriate failure or no-op behavior.",
+      "requirement_ids": [
+        "R-009"
+      ]
+    },
+    {
+      "id": "G-022",
+      "title": "Save changes over normal browser restart",
+      "description": "Verify that all bookmark additions, deletions, and modifications are successfully saved and persisted after a normal browser restart (Valid class).",
+      "requirement_ids": [
+        "R-010"
+      ]
+    },
+    {
+      "id": "G-023",
+      "title": "Save changes over browser crash",
+      "description": "Verify that all bookmark additions, deletions, and modifications are successfully saved and persist without corruption or data loss following an unexpected browser crash (Valid class).",
+      "requirement_ids": [
+        "R-010"
+      ]
+    },
+    {
+      "id": "G-024",
+      "title": "View properties execution for valid bookmark item",
+      "description": "Test the execution of view properties for a valid bookmark item, which is a negative case as per requirements.",
+      "requirement_ids": [
+        "R-011"
+      ]
+    },
+    {
+      "id": "G-025",
+      "title": "View properties execution for valid folder item",
+      "description": "Test the execution of view properties for a valid folder item, which is a negative case as per requirements.",
+      "requirement_ids": [
+        "R-011"
+      ]
+    },
+    {
+      "id": "G-026",
+      "title": "View properties execution for valid separator item",
+      "description": "Test the execution of view properties for a valid separator item, which is a negative case as per requirements.",
+      "requirement_ids": [
+        "R-011"
+      ]
+    },
+    {
+      "id": "G-027",
+      "title": "View properties execution for invalid or non-existent items",
+      "description": "Test the execution of view properties for invalid or non-existent items to ensure robust negative handling.",
+      "requirement_ids": [
+        "R-011"
+      ]
+    },
+    {
+      "id": "G-028",
+      "title": "Inline rename of a bookmark",
+      "description": "Verify that a bookmark can be successfully renamed inline without opening the bookmarks properties dialog.",
+      "requirement_ids": [
+        "R-012"
+      ]
+    },
+    {
+      "id": "G-029",
+      "title": "Inline rename of a bookmark folder",
+      "description": "Verify that a bookmark folder can be successfully renamed inline without opening the bookmarks properties dialog.",
+      "requirement_ids": [
+        "R-012"
+      ]
+    },
+    {
+      "id": "G-030",
+      "title": "Invalid inline rename via properties dialog",
+      "description": "Verify that attempting to rename a bookmark exclusively through the bookmarks properties dialog rather than inline is an abnormal behavior class for inline-specific requirement.",
+      "requirement_ids": [
+        "R-012"
+      ]
+    },
+    {
+      "id": "G-031",
+      "title": "Find bookmark using valid custom keyword",
+      "description": "Verify that a bookmark can be successfully found and accessed when searching using a valid user-defined custom keyword.",
+      "requirement_ids": [
+        "R-013"
+      ]
+    },
+    {
+      "id": "G-032",
+      "title": "Attempt to find bookmark using non-existent custom keyword",
+      "description": "Verify that searching with a custom keyword that has not been defined does not return any matching bookmarks.",
+      "requirement_ids": [
+        "R-013"
+      ]
+    },
+    {
+      "id": "G-033",
+      "title": "Sort Bookmarks in Ascending Order per Column",
+      "description": "Verify that bookmarks are correctly sorted in ascending order when a column header is selected.",
+      "requirement_ids": [
+        "R-014"
+      ]
+    },
+    {
+      "id": "G-034",
+      "title": "Sort Bookmarks in Descending (Reverse) Order per Column",
+      "description": "Verify that bookmarks are correctly reverse-sorted in descending order when a column header is selected a second time.",
+      "requirement_ids": [
+        "R-014"
+      ]
+    },
+    {
+      "id": "G-035",
+      "title": "Sort Invalid or Empty Column Data",
+      "description": "Verify application behavior when attempting to sort a column containing null, missing, or malformed data values.",
+      "requirement_ids": [
+        "R-014"
+      ]
+    },
+    {
+      "id": "G-036",
+      "title": "Resize Bookmark Column to Show More Entries",
+      "description": "Partition for valid column resizing action to expand width and display more of the bookmark entries.",
+      "requirement_ids": [
+        "R-015"
+      ]
+    },
+    {
+      "id": "G-037",
+      "title": "Resize Bookmark Column to Hide Entries",
+      "description": "Partition for valid column resizing action to decrease width and hide more of the bookmark entries.",
+      "requirement_ids": [
+        "R-015"
+      ]
+    },
+    {
+      "id": "G-038",
+      "title": "Resize Bookmark Column Beyond Minimum Limit",
+      "description": "Partition for abnormal input/action where column width is dragged below the minimum allowed boundary.",
+      "requirement_ids": [
+        "R-015"
+      ]
+    },
+    {
+      "id": "G-039",
+      "title": "Show Hidden Bookmark Columns",
+      "description": "Verify that hidden bookmark columns can be successfully shown using the column configuration interface.",
+      "requirement_ids": [
+        "R-016"
+      ]
+    },
+    {
+      "id": "G-040",
+      "title": "Hide Visible Bookmark Columns",
+      "description": "Verify that visible bookmark columns can be successfully hidden using the column configuration interface.",
+      "requirement_ids": [
+        "R-016"
+      ]
+    },
+    {
+      "id": "G-041",
+      "title": "Invalid Column Visibility Toggle",
+      "description": "Verify system behavior when attempting to show or hide a non-existent or restricted bookmark column identifier (abnormal input class).",
+      "requirement_ids": [
+        "R-016"
+      ]
+    },
+    {
+      "id": "G-042",
+      "title": "Delete multiple selected bookmarks simultaneously",
+      "description": "Verify that several selected bookmarks can be deleted successfully at one time from the bookmarks list.",
+      "requirement_ids": [
+        "R-017"
+      ]
+    },
+    {
+      "id": "G-043",
+      "title": "Attempt to delete zero bookmarks at one time",
+      "description": "Verify the abnormal case where no bookmarks are selected and a batch delete operation is triggered.",
+      "requirement_ids": [
+        "R-017"
+      ]
+    },
+    {
+      "id": "G-044",
+      "title": "Drop bookmark onto itself",
+      "description": "Verify that dropping a bookmark item directly onto itself is blocked and not permitted.",
+      "requirement_ids": [
+        "R-018"
+      ]
+    },
+    {
+      "id": "G-045",
+      "title": "Drop bookmark onto its immediate parent",
+      "description": "Verify that dropping a bookmark item onto its immediate parent folder is blocked and not permitted.",
+      "requirement_ids": [
+        "R-018"
+      ]
+    },
+    {
+      "id": "G-046",
+      "title": "Drop bookmark onto its immediate child",
+      "description": "Verify that dropping a bookmark item onto its immediate child (folder or sub-item) is blocked and not permitted.",
+      "requirement_ids": [
+        "R-018"
+      ]
+    },
+    {
+      "id": "G-047",
+      "title": "Drop bookmark to a valid non-parent non-child location",
+      "description": "Verify that dropping a bookmark item onto a valid target location (other than itself, immediate parent, or immediate child) is successfully processed.",
+      "requirement_ids": [
+        "R-018"
+      ]
+    },
+    {
+      "id": "G-048",
+      "title": "Add new bookmark to specific hierarchy location - Normal transition",
+      "description": "Test the state transition from an existing bookmark hierarchy state to the new state where a bookmark is successfully added into a specific location.",
+      "requirement_ids": [
+        "R-001"
+      ]
+    },
+    {
+      "id": "G-049",
+      "title": "Add new bookmark with invalid target location - Forbidden transition",
+      "description": "Test the invalid state transition attempt where a new bookmark is directed to a non-existent or inaccessible location within the hierarchy, ensuring it is rejected.",
+      "requirement_ids": [
+        "R-001"
+      ]
+    },
+    {
+      "id": "G-050",
+      "title": "Delete Bookmark from File and Access Points",
+      "description": "Verify that a bookmark in the 'Active' state transitions to the 'Deleted' state upon a delete event, resulting in removal from the bookmarks file and all access points.",
+      "requirement_ids": [
+        "R-002"
+      ]
+    },
+    {
+      "id": "G-051",
+      "title": "Attempt Delete on Already Deleted Bookmark",
+      "description": "Verify the forbidden transition where a delete event is applied to a bookmark already in the 'Deleted' state, ensuring no error or invalid state change occurs.",
+      "requirement_ids": [
+        "R-002"
+      ]
+    },
+    {
+      "id": "G-052",
+      "title": "Add bookmark to personal toolbar",
+      "description": "Verify the transition from empty or existing personal toolbar state to containing a newly added bookmark upon the add bookmark event targeted at the personal toolbar.",
+      "requirement_ids": [
+        "R-003"
+      ]
+    },
+    {
+      "id": "G-053",
+      "title": "Delete bookmark from personal toolbar",
+      "description": "Verify the transition from containing a bookmark on the personal toolbar to removing it upon the delete bookmark event.",
+      "requirement_ids": [
+        "R-003"
+      ]
+    },
+    {
+      "id": "G-054",
+      "title": "Forbidden deletion from invalid toolbar state",
+      "description": "Verify the forbidden transition and error handling when attempting to delete a non-existent bookmark from the personal toolbar state.",
+      "requirement_ids": [
+        "R-003"
+      ]
+    },
+    {
+      "id": "G-055",
+      "title": "Insert new bookmark folder into hierarchy successfully",
+      "description": "Verify that a new bookmark folder can be successfully inserted into a specific location within the bookmarks hierarchy from the normal state.",
+      "requirement_ids": [
+        "R-004"
+      ]
+    },
+    {
+      "id": "G-056",
+      "title": "Forbidden state transition dropping folder onto itself",
+      "description": "Verify that it is not possible to transition by dropping a bookmark folder onto itself during hierarchical movement.",
+      "requirement_ids": [
+        "R-004",
+        "R-018"
+      ]
+    },
+    {
+      "id": "G-057",
+      "title": "Launch bookmark via double-click in browser window",
+      "description": "Verify that double-clicking on an existing bookmark transitions the bookmark state to launched and opens the URL in a new browser window.",
+      "requirement_ids": [
+        "R-005"
+      ]
+    },
+    {
+      "id": "G-058",
+      "title": "Single click on bookmark does not launch",
+      "description": "Verify the abnormal state transition where a single click on a bookmark does not trigger the launch event in the browser window.",
+      "requirement_ids": [
+        "R-005"
+      ]
+    },
+    {
+      "id": "G-059",
+      "title": "Default Bookmarks Validation - Normal Transition",
+      "description": "Verify that all bookmarks within the default bookmarks file packaged with the browser transition into a valid links state and open successfully.",
+      "requirement_ids": [
+        "R-006"
+      ]
+    },
+    {
+      "id": "G-060",
+      "title": "Default Bookmarks Validation - Abnormal Transition",
+      "description": "Verify that invalid or broken links detected within the default bookmarks file are flagged or handled appropriately during the link validation state transition.",
+      "requirement_ids": [
+        "R-006"
+      ]
+    },
+    {
+      "id": "G-061",
+      "title": "State Transition - Save Modified Bookmark Valid",
+      "description": "Verify that making changes to an existing bookmark item and triggering the save state successfully persists the changes without loss of item integrity.",
+      "requirement_ids": [
+        "R-007"
+      ]
+    },
+    {
+      "id": "G-062",
+      "title": "State Transition - Save Modified Bookmark Invalid Integrity",
+      "description": "Verify the negative state transition where an interruption or corruption occurs during the save operation of a modified bookmark item, ensuring item integrity is either preserved or handled safely without silent data loss.",
+      "requirement_ids": [
+        "R-007"
+      ]
+    },
+    {
+      "id": "G-063",
+      "title": "Delete existing bookmarks folder successfully",
+      "description": "Transition from existing folder state to deleted state upon executing folder delete action, ensuring the folder is successfully removed.",
+      "requirement_ids": [
+        "R-008"
+      ]
+    },
+    {
+      "id": "G-064",
+      "title": "Attempt to delete a non-existent bookmarks folder",
+      "description": "Attempt a forbidden transition by triggering folder deletion when no folder is selected or the folder does not exist.",
+      "requirement_ids": [
+        "R-008"
+      ]
+    },
+    {
+      "id": "G-065",
+      "title": "Add Bookmarks Separator",
+      "description": "Verify the state transition when a new bookmarks separator is added to the hierarchy.",
+      "requirement_ids": [
+        "R-009"
+      ]
+    },
+    {
+      "id": "G-066",
+      "title": "Delete Bookmarks Separator",
+      "description": "Verify the state transition when an existing bookmarks separator is deleted from the hierarchy.",
+      "requirement_ids": [
+        "R-009"
+      ]
+    },
+    {
+      "id": "G-067",
+      "title": "Forbidden Deletion on Non-Existent Separator",
+      "description": "Verify the forbidden transition when attempting to delete a bookmarks separator that does not exist or is already removed.",
+      "requirement_ids": [
+        "R-009"
+      ]
+    },
+    {
+      "id": "G-068",
+      "title": "Save changes and verify across normal restart",
+      "description": "Perform bookmark additions, deletions, and edits, gracefully restart the browser, and verify that all changes are successfully saved and persisted.",
+      "requirement_ids": [
+        "R-010"
+      ]
+    },
+    {
+      "id": "G-069",
+      "title": "Save changes and verify across simulated crash",
+      "description": "Perform bookmark additions, deletions, and edits, simulate an abrupt browser crash, restart the browser, and verify that bookmark state changes are successfully recovered and saved.",
+      "requirement_ids": [
+        "R-010"
+      ]
+    },
+    {
+      "id": "G-070",
+      "title": "Forbidden transition: Unsaved changes discard on unexpected termination",
+      "description": "Modify bookmark properties without committing the save action, trigger a crash, and verify that uncommitted invalid states do not corrupt the persistent storage.",
+      "requirement_ids": [
+        "R-010"
+      ]
+    },
+    {
+      "id": "G-071",
+      "title": "Execute View Properties for Bookmark",
+      "description": "Verify the state transition when attempting to execute view properties on a bookmark item.",
+      "requirement_ids": [
+        "R-011"
+      ]
+    },
+    {
+      "id": "G-072",
+      "title": "Execute View Properties for Folder",
+      "description": "Verify the state transition when attempting to execute view properties on a folder item.",
+      "requirement_ids": [
+        "R-011"
+      ]
+    },
+    {
+      "id": "G-073",
+      "title": "Execute View Properties for Separator",
+      "description": "Verify the state transition when attempting to execute view properties on a separator item.",
+      "requirement_ids": [
+        "R-011"
+      ]
+    },
+    {
+      "id": "G-074",
+      "title": "Forbidden View Properties Execution",
+      "description": "Verify that the negative transition for viewing properties on bookmarks, folders, and separators is properly blocked or handled according to negative requirements.",
+      "requirement_ids": [
+        "R-011"
+      ]
+    },
+    {
+      "id": "G-075",
+      "title": "Inline Rename Normal Flow",
+      "description": "Verify that a bookmark can be successfully renamed inline without opening the bookmarks properties dialog, transitioning from normal state to renamed state upon committing the new name.",
+      "requirement_ids": [
+        "R-012"
+      ]
+    },
+    {
+      "id": "G-076",
+      "title": "Inline Rename Cancellation",
+      "description": "Verify that pressing Escape during inline renaming cancels the operation and retains the original bookmark name, transitioning back to the normal state.",
+      "requirement_ids": [
+        "R-012"
+      ]
+    },
+    {
+      "id": "G-077",
+      "title": "Forbidden Transition Empty Name",
+      "description": "Verify the forbidden transition where entering an empty string during inline rename is rejected or reverts to the original name, ensuring item integrity is maintained.",
+      "requirement_ids": [
+        "R-012"
+      ]
+    },
+    {
+      "id": "G-078",
+      "title": "Search Bookmark Using Valid Custom Keyword",
+      "description": "Verify that a bookmark is successfully found and loaded when entering a user-defined custom keyword in the address bar.",
+      "requirement_ids": [
+        "R-013"
+      ]
+    },
+    {
+      "id": "G-079",
+      "title": "Search Bookmark Using Non-Existent Custom Keyword",
+      "description": "Verify the system behavior (transition to search failure/no results state) when entering a custom keyword that is not associated with any bookmark.",
+      "requirement_ids": [
+        "R-013"
+      ]
+    },
+    {
+      "id": "G-080",
+      "title": "Forbidden Transition: Empty Keyword Search",
+      "description": "Verify that triggering a keyword search with an empty string does not invoke bookmark lookup or transition to a bookmark search result state.",
+      "requirement_ids": [
+        "R-013"
+      ]
+    },
+    {
+      "id": "G-081",
+      "title": "Sort Bookmarks per Column Normal Transition",
+      "description": "Verify that bookmarks are correctly sorted in ascending order per the selected column when the sort event is triggered from an unsorted state.",
+      "requirement_ids": [
+        "R-014"
+      ]
+    },
+    {
+      "id": "G-082",
+      "title": "Reverse-Sort Bookmarks per Column Normal Transition",
+      "description": "Verify that bookmarks are correctly reverse-sorted in descending order when the reverse-sort event is triggered on a sorted column state.",
+      "requirement_ids": [
+        "R-014"
+      ]
+    },
+    {
+      "id": "G-083",
+      "title": "Forbidden Transition on Already Sorted Column",
+      "description": "Verify that triggering the same sort direction event on an already sorted column state results in a forbidden or redundant transition without corrupting the sort state.",
+      "requirement_ids": [
+        "R-014"
+      ]
+    },
+    {
+      "id": "G-084",
+      "title": "Resize column to show more entries",
+      "description": "Perform state transition by dragging the column border outwards from the default state to increase the width, successfully transitioning to the expanded column state showing more entries.",
+      "requirement_ids": [
+        "R-015"
+      ]
+    },
+    {
+      "id": "G-085",
+      "title": "Resize column to hide entries",
+      "description": "Perform state transition by dragging the column border inwards from the default state to decrease the width, successfully transitioning to the contracted column state hiding entries.",
+      "requirement_ids": [
+        "R-015"
+      ]
+    },
+    {
+      "id": "G-086",
+      "title": "Forbidden resize beyond minimum boundary",
+      "description": "Attempt a state transition to shrink the bookmark column beyond the system-defined minimum width limit, verifying that the forbidden transition is blocked and the column remains at minimum size.",
+      "requirement_ids": [
+        "R-015"
+      ]
+    },
+    {
+      "id": "G-087",
+      "title": "Transition from Hidden to Shown column",
+      "description": "Verify the state transition of a bookmark column from Hidden to Shown when the show column event is triggered.",
+      "requirement_ids": [
+        "R-016"
+      ]
+    },
+    {
+      "id": "G-088",
+      "title": "Transition from Shown to Hidden column",
+      "description": "Verify the state transition of a bookmark column from Shown to Hidden when the hide column event is triggered.",
+      "requirement_ids": [
+        "R-016"
+      ]
+    },
+    {
+      "id": "G-089",
+      "title": "Forbidden transition: Show an already shown column",
+      "description": "Verify that attempting to show an already shown bookmark column does not cause an invalid state change.",
+      "requirement_ids": [
+        "R-016"
+      ]
+    },
+    {
+      "id": "G-090",
+      "title": "Forbidden transition: Hide an already hidden column",
+      "description": "Verify that attempting to hide an already hidden bookmark column does not cause an invalid state change.",
+      "requirement_ids": [
+        "R-016"
+      ]
+    },
+    {
+      "id": "G-091",
+      "title": "Delete Multiple Selected Bookmarks Successfully",
+      "description": "Verify that selecting several bookmarks and triggering the delete action successfully removes all selected items from the bookmarks storage and interface.",
+      "requirement_ids": [
+        "R-017"
+      ]
+    },
+    {
+      "id": "G-092",
+      "title": "Delete Empty Selection State",
+      "description": "Verify the system state and transition behavior when attempting to delete multiple bookmarks with no bookmarks selected.",
+      "requirement_ids": [
+        "R-017"
+      ]
+    },
+    {
+      "id": "G-093",
+      "title": "Forbidden Transition on Invalid Multi-Deletion State",
+      "description": "Verify that forbidden transitions (such as deleting already deleted or locked items within a multi-selection) are appropriately blocked by the system.",
+      "requirement_ids": [
+        "R-017"
+      ]
+    },
+    {
+      "id": "G-094",
+      "title": "Drop bookmark onto itself transition check",
+      "description": "Verify that dropping a bookmark item onto itself is forbidden and the item remains in its original state.",
+      "requirement_ids": [
+        "R-018"
+      ]
+    },
+    {
+      "id": "G-095",
+      "title": "Drop bookmark onto its immediate parent transition check",
+      "description": "Verify that dropping a bookmark item onto its immediate parent folder is forbidden and the item remains in its original state.",
+      "requirement_ids": [
+        "R-018"
+      ]
+    },
+    {
+      "id": "G-096",
+      "title": "Drop bookmark onto its immediate child transition check",
+      "description": "Verify that dropping a bookmark folder onto its immediate child item is forbidden and the items remain in their original state.",
+      "requirement_ids": [
+        "R-018"
+      ]
+    },
+    {
+      "id": "G-097",
+      "title": "Drop bookmark onto valid target transition check",
+      "description": "Verify that dropping a bookmark item onto a valid non-parent/non-child/non-self target location succeeds and updates the hierarchy state.",
+      "requirement_ids": [
+        "R-018"
+      ]
+    },
+    {
+      "id": "G-098",
+      "title": "Add new bookmark to valid specific location",
+      "description": "Test decision combination where the target location exists and is valid, resulting in the new bookmark being successfully added to the specified location within the hierarchy.",
+      "requirement_ids": [
+        "R-001"
+      ]
+    },
+    {
+      "id": "G-099",
+      "title": "Attempt to add new bookmark to invalid location",
+      "description": "Test decision combination where the target location does not exist or is invalid, resulting in the addition action failing according to R-001.",
+      "requirement_ids": [
+        "R-001"
+      ]
+    },
+    {
+      "id": "G-100",
+      "title": "Successful deletion of a single bookmark",
+      "description": "Verify that when a valid bookmark is deleted, it is properly removed from the bookmarks file and no longer displayed from any access points.",
+      "requirement_ids": [
+        "R-002"
+      ]
+    },
+    {
+      "id": "G-101",
+      "title": "Deletion of a non-existent bookmark",
+      "description": "Verify the system behavior when attempting to delete a bookmark that does not exist in the bookmarks file or access points, ensuring no errors occur and state remains consistent.",
+      "requirement_ids": [
+        "R-002"
+      ]
+    },
+    {
+      "id": "G-102",
+      "title": "Deletion of a bookmark with access point synchronization failure",
+      "description": "Verify the system behavior when a bookmark is deleted from the file but fails to update across all access points, ensuring abnormal conditions are handled correctly.",
+      "requirement_ids": [
+        "R-002"
+      ]
+    },
+    {
+      "id": "G-103",
+      "title": "Add and Delete Bookmark from Personal Toolbar",
+      "description": "Verify that a bookmark can be successfully added to the personal toolbar and subsequently deleted from the personal toolbar using decision table valid conditions.",
+      "requirement_ids": [
+        "R-003"
+      ]
+    },
+    {
+      "id": "G-104",
+      "title": "Abnormal Case - Attempt to Delete Non-Existent Bookmark from Personal Toolbar",
+      "description": "Verify the system behavior when attempting to delete a bookmark that does not exist on the personal toolbar.",
+      "requirement_ids": [
+        "R-003"
+      ]
+    },
+    {
+      "id": "G-105",
+      "title": "Insert New Bookmark Folder - Valid Location",
+      "description": "Test case using Decision Table testing where a new bookmark folder is inserted into a valid location within the bookmarks hierarchy.",
+      "requirement_ids": [
+        "R-004"
+      ]
+    },
+    {
+      "id": "G-106",
+      "title": "Insert New Bookmark Folder - Invalid Location",
+      "description": "Test case using Decision Table testing where an attempt is made to insert a new bookmark folder into an invalid or non-existent location within the bookmarks hierarchy.",
+      "requirement_ids": [
+        "R-004"
+      ]
+    },
+    {
+      "id": "G-107",
+      "title": "Launch bookmark in browser window via double-click",
+      "description": "Verify that double-clicking on a valid bookmark successfully launches it in a browser window using decision table testing for normal condition.",
+      "requirement_ids": [
+        "R-005"
+      ]
+    },
+    {
+      "id": "G-108",
+      "title": "Abnormal double-click action on invalid bookmark",
+      "description": "Verify that double-clicking on an invalid or corrupted bookmark does not launch it successfully, covering abnormal cases.",
+      "requirement_ids": [
+        "R-005"
+      ]
+    },
+    {
+      "id": "G-109",
+      "title": "Default Bookmarks File Link Validation - Normal Case",
+      "description": "Verify that all bookmarks within the default bookmarks file packaged with the browser are valid and accessible links.",
+      "requirement_ids": [
+        "R-006"
+      ]
+    },
+    {
+      "id": "G-110",
+      "title": "Default Bookmarks File Link Validation - Abnormal Case",
+      "description": "Verify the system behavior when the default bookmarks file contains broken or invalid links.",
+      "requirement_ids": [
+        "R-006"
+      ]
+    },
+    {
+      "id": "G-111",
+      "title": "Save changes to bookmark item with valid integrity",
+      "description": "Verify that changes made to a bookmark item are successfully saved without loss of item integrity.",
+      "requirement_ids": [
+        "R-007"
+      ]
+    },
+    {
+      "id": "G-112",
+      "title": "Attempt to save changes to bookmark item resulting in corruption",
+      "description": "Verify that the system handles abnormal attempts where bookmark item changes result in loss of item integrity.",
+      "requirement_ids": [
+        "R-007"
+      ]
+    },
+    {
+      "id": "G-113",
+      "title": "Delete existing bookmarks folder successfully",
+      "description": "Decision table test case where folder exists and delete action is executed, resulting in successful deletion of the bookmarks folder.",
+      "requirement_ids": [
+        "R-008"
+      ]
+    },
+    {
+      "id": "G-114",
+      "title": "Attempt to delete non-existent bookmarks folder",
+      "description": "Decision table test case where the folder does not exist and delete action is executed, resulting in an error or no-op response.",
+      "requirement_ids": [
+        "R-008"
+      ]
+    },
+    {
+      "id": "G-115",
+      "title": "Add and Delete Bookmark Separators Successfully",
+      "description": "Test case to verify that bookmarks separators can be successfully added to and deleted from the bookmarks hierarchy using decision table combinations for valid operations.",
+      "requirement_ids": [
+        "R-009"
+      ]
+    },
+    {
+      "id": "G-116",
+      "title": "Add Separator and Attempt Invalid Deletion",
+      "description": "Test case to verify the system behavior when attempting to delete a non-existent separator after a successful addition.",
+      "requirement_ids": [
+        "R-009"
+      ]
+    },
+    {
+      "id": "G-117",
+      "title": "Attempt Deletion of Separator Without Adding",
+      "description": "Test case covering the abnormal condition where a deletion action for a bookmark separator is triggered without a prior addition or existence in the hierarchy.",
+      "requirement_ids": [
+        "R-009"
+      ]
+    },
+    {
+      "id": "G-118",
+      "title": "Save changes and verify persistence after normal restart",
+      "description": "Decision table test case for R-010 where changes are made, application undergoes a normal restart, and bookmark changes are verified to be saved correctly.",
+      "requirement_ids": [
+        "R-010"
+      ]
+    },
+    {
+      "id": "G-119",
+      "title": "Save changes and verify persistence after application crash",
+      "description": "Decision table test case for R-010 where changes are made, application experiences a crash, and bookmark changes are verified to be saved correctly upon recovery.",
+      "requirement_ids": [
+        "R-010"
+      ]
+    },
+    {
+      "id": "G-120",
+      "title": "View properties execution for bookmark item (negative)",
+      "description": "Verify that view properties execution fails for a bookmark item as per negative requirement R-011.",
+      "requirement_ids": [
+        "R-011"
+      ]
+    },
+    {
+      "id": "G-121",
+      "title": "View properties execution for folder item (negative)",
+      "description": "Verify that view properties execution fails for a folder item as per negative requirement R-011.",
+      "requirement_ids": [
+        "R-011"
+      ]
+    },
+    {
+      "id": "G-122",
+      "title": "View properties execution for separator item (negative)",
+      "description": "Verify that view properties execution fails for a separator item as per negative requirement R-011.",
+      "requirement_ids": [
+        "R-011"
+      ]
+    },
+    {
+      "id": "G-123",
+      "title": "Inline Rename Success",
+      "description": "Verify that a bookmark can be successfully renamed inline without opening the bookmarks properties dialog.",
+      "requirement_ids": [
+        "R-012"
+      ]
+    },
+    {
+      "id": "G-124",
+      "title": "Inline Rename Cancellation",
+      "description": "Verify that initiating an inline rename and pressing escape or clicking outside without committing keeps the original bookmark name.",
+      "requirement_ids": [
+        "R-012"
+      ]
+    },
+    {
+      "id": "G-125",
+      "title": "Find bookmark using valid user-defined custom keyword",
+      "description": "Verify that a bookmark is successfully found when searching using a valid user-defined custom keyword.",
+      "requirement_ids": [
+        "R-013"
+      ]
+    },
+    {
+      "id": "G-126",
+      "title": "Fail to find bookmark using non-existent custom keyword",
+      "description": "Verify that no bookmark is found when searching using a custom keyword that has not been defined.",
+      "requirement_ids": [
+        "R-013"
+      ]
+    },
+    {
+      "id": "G-127",
+      "title": "Sort Bookmarks in Forward Order per Column",
+      "description": "Test case using Decision table testing to verify that bookmarks are successfully sorted in forward order per column.",
+      "requirement_ids": [
+        "R-014"
+      ]
+    },
+    {
+      "id": "G-128",
+      "title": "Reverse-Sort Bookmarks per Column",
+      "description": "Test case using Decision table testing to verify that bookmarks are successfully reverse-sorted per column.",
+      "requirement_ids": [
+        "R-014"
+      ]
+    },
+    {
+      "id": "G-129",
+      "title": "Sort Bookmarks with Invalid Column Selection (Abnormal)",
+      "description": "Test case using Decision table testing to verify system behavior when attempting to sort bookmarks using an invalid or non-sortable column.",
+      "requirement_ids": [
+        "R-014"
+      ]
+    },
+    {
+      "id": "G-130",
+      "title": "Resize column to show more entries",
+      "description": "Verify that expanding the bookmark column width successfully shows more of the entries.",
+      "requirement_ids": [
+        "R-015"
+      ]
+    },
+    {
+      "id": "G-131",
+      "title": "Resize column to hide more entries",
+      "description": "Verify that narrowing the bookmark column width successfully hides more of the entries.",
+      "requirement_ids": [
+        "R-015"
+      ]
+    },
+    {
+      "id": "G-132",
+      "title": "Attempt to resize column beyond minimum limit",
+      "description": "Verify abnormal behavior when trying to shrink the bookmark column past its minimum allowed boundary.",
+      "requirement_ids": [
+        "R-015"
+      ]
+    },
+    {
+      "id": "G-133",
+      "title": "Attempt to resize column beyond maximum limit",
+      "description": "Verify abnormal behavior when trying to expand the bookmark column past its maximum allowed boundary.",
+      "requirement_ids": [
+        "R-015"
+      ]
+    },
+    {
+      "id": "G-134",
+      "title": "Show and Hide Bookmark Columns Successfully",
+      "description": "Decision table test case covering valid combinations where columns are explicitly toggled to show or hide, verifying the display state matches the requested action.",
+      "requirement_ids": [
+        "R-016"
+      ]
+    },
+    {
+      "id": "G-135",
+      "title": "Invalid Column Toggle Operation",
+      "description": "Decision table test case covering abnormal combinations where an invalid column identifier or state is requested for showing and hiding, verifying that the column view remains unchanged or handles the error gracefully.",
+      "requirement_ids": [
+        "R-016"
+      ]
+    },
+    {
+      "id": "G-136",
+      "title": "Delete multiple selected bookmarks at one time",
+      "description": "Decision table test case covering the condition where multiple bookmarks are selected and the delete action is executed, resulting in all selected bookmarks being successfully deleted.",
+      "requirement_ids": [
+        "R-017"
+      ]
+    },
+    {
+      "id": "G-137",
+      "title": "Attempt deletion with no bookmarks selected",
+      "description": "Decision table test case covering the abnormal condition where zero bookmarks are selected and the delete action is invoked, resulting in no deletion action performed.",
+      "requirement_ids": [
+        "R-017"
+      ]
+    },
+    {
+      "id": "G-138",
+      "title": "Drop bookmark onto itself",
+      "description": "Verify that dropping a bookmark item onto itself is prevented.",
+      "requirement_ids": [
+        "R-018"
+      ]
+    },
+    {
+      "id": "G-139",
+      "title": "Drop bookmark onto its immediate parent",
+      "description": "Verify that dropping a bookmark item onto its immediate parent is prevented.",
+      "requirement_ids": [
+        "R-018"
+      ]
+    },
+    {
+      "id": "G-140",
+      "title": "Drop bookmark onto its immediate child",
+      "description": "Verify that dropping a bookmark item onto its immediate child is prevented.",
+      "requirement_ids": [
+        "R-018"
+      ]
+    },
+    {
+      "id": "G-141",
+      "title": "Drop bookmark onto a valid unrelated location",
+      "description": "Verify that dropping a bookmark item onto a valid unrelated location in the hierarchy is allowed.",
+      "requirement_ids": [
+        "R-018"
+      ]
+    },
+    {
+      "id": "G-142",
+      "title": "Add new bookmark to specific location in hierarchy (Normal)",
+      "description": "User navigates the bookmarks hierarchy, selects a specific target folder, and successfully adds a new bookmark into that exact location.",
+      "requirement_ids": [
+        "R-001"
+      ]
+    },
+    {
+      "id": "G-143",
+      "title": "Add new bookmark with invalid or restricted target location (Abnormal)",
+      "description": "User attempts to add a new bookmark into a non-existent or restricted location within the bookmarks hierarchy, verifying that the system handles the failure gracefully.",
+      "requirement_ids": [
+        "R-001"
+      ]
+    },
+    {
+      "id": "G-144",
+      "title": "Successful Single Bookmark Deletion",
+      "description": "Perform an end-to-end user flow where a user deletes a single bookmark from the bookmark manager, verifying that it is removed from the bookmarks file and no longer displayed from any access points.",
+      "requirement_ids": [
+        "R-002"
+      ]
+    },
+    {
+      "id": "G-145",
+      "title": "Abnormal Bookmark Deletion Non-Existent Access",
+      "description": "Attempt to delete a bookmark that has already been removed or corrupted, ensuring the system handles the abnormal state gracefully and confirms it is absent from all access points.",
+      "requirement_ids": [
+        "R-002"
+      ]
+    },
+    {
+      "id": "G-146",
+      "title": "Add bookmark to personal toolbar",
+      "description": "Verify that a user can successfully add a new bookmark directly from the browser to the personal toolbar and access it from there.",
+      "requirement_ids": [
+        "R-003"
+      ]
+    },
+    {
+      "id": "G-147",
+      "title": "Delete bookmark from personal toolbar",
+      "description": "Verify that a user can successfully delete an existing bookmark from the personal toolbar, ensuring it is removed and no longer accessible.",
+      "requirement_ids": [
+        "R-003"
+      ]
+    },
+    {
+      "id": "G-148",
+      "title": "Insert New Bookmark Folder Normal Flow",
+      "description": "User successfully inserts a new bookmark folder into a specific location within the bookmarks hierarchy.",
+      "requirement_ids": [
+        "R-004"
+      ]
+    },
+    {
+      "id": "G-149",
+      "title": "Insert New Bookmark Folder Abnormal Flow",
+      "description": "User attempts to insert a new bookmark folder into an invalid or restricted location within the bookmarks hierarchy, resulting in an error or rejection.",
+      "requirement_ids": [
+        "R-004"
+      ]
+    },
+    {
+      "id": "G-150",
+      "title": "Launch bookmark in browser window via double-click",
+      "description": "Verify that double-clicking on a bookmark entry successfully launches the associated URL in a browser window.",
+      "requirement_ids": [
+        "R-005"
+      ]
+    },
+    {
+      "id": "G-151",
+      "title": "Single-click interaction verification for bookmark launch",
+      "description": "Verify that single-clicking on a bookmark does not prematurely launch the bookmark in a browser window, ensuring only double-clicking triggers the launch action.",
+      "requirement_ids": [
+        "R-005"
+      ]
+    },
+    {
+      "id": "G-152",
+      "title": "Validate Default Bookmarks Links",
+      "description": "Perform an end-to-end verification of all bookmarks included in the default bookmarks file packaged with the browser to ensure that every default link is valid and reachable.",
+      "requirement_ids": [
+        "R-006"
+      ]
+    },
+    {
+      "id": "G-153",
+      "title": "Successful Save of Bookmark Item Changes",
+      "description": "Verify that modifications made to an existing bookmark item are successfully saved and that item integrity is fully preserved.",
+      "requirement_ids": [
+        "R-007"
+      ]
+    },
+    {
+      "id": "G-154",
+      "title": "Bookmark Integrity Check After Multiple Edits",
+      "description": "Verify that multiple consecutive changes to a bookmark item maintain data integrity and save correctly without corruption.",
+      "requirement_ids": [
+        "R-007"
+      ]
+    },
+    {
+      "id": "G-155",
+      "title": "Delete a Bookmarks Folder Successfully",
+      "description": "Perform an end-to-end workflow to delete an existing bookmarks folder from the hierarchy, verifying that it is successfully removed from the bookmarks storage and interface.",
+      "requirement_ids": [
+        "R-008"
+      ]
+    },
+    {
+      "id": "G-156",
+      "title": "Attempt to Delete Non-Existent or Invalid Bookmarks Folder",
+      "description": "Perform an abnormal workflow attempting to delete a bookmarks folder that does not exist or is already removed, verifying the system handles the exception gracefully.",
+      "requirement_ids": [
+        "R-008"
+      ]
+    },
+    {
+      "id": "G-157",
+      "title": "Add and Delete Bookmark Separator",
+      "description": "Verify that a bookmark separator can be successfully added to the bookmarks hierarchy and subsequently deleted without affecting other items.",
+      "requirement_ids": [
+        "R-009"
+      ]
+    },
+    {
+      "id": "G-158",
+      "title": "Add and Delete Bookmark Separator from Toolbar",
+      "description": "Verify that a bookmark separator can be added to and deleted from the personal toolbar successfully.",
+      "requirement_ids": [
+        "R-009"
+      ]
+    },
+    {
+      "id": "G-159",
+      "title": "Verify bookmark changes persist over browser restart",
+      "description": "Perform additions, deletions, and edits to bookmarks, restart the browser application, and verify that all bookmark changes are correctly retained.",
+      "requirement_ids": [
+        "R-010"
+      ]
+    },
+    {
+      "id": "G-160",
+      "title": "Verify bookmark changes persist after browser crash",
+      "description": "Modify the bookmarks hierarchy, simulate a browser crash event, restore the browser, and verify that bookmark modifications are saved without data loss.",
+      "requirement_ids": [
+        "R-010"
+      ]
+    },
+    {
+      "id": "G-161",
+      "title": "Negative Test for View Properties on Bookmarks Folders and Separators",
+      "description": "Verify that view properties execution behaves according to negative test constraints for bookmarks, folders, and separators.",
+      "requirement_ids": [
+        "R-011"
+      ]
+    },
+    {
+      "id": "G-162",
+      "title": "Successful inline renaming of a bookmark",
+      "description": "Verify that a user can rename a bookmark inline without opening the bookmarks properties dialog, and that the new name is saved correctly.",
+      "requirement_ids": [
+        "R-012"
+      ]
+    },
+    {
+      "id": "G-163",
+      "title": "Cancel inline renaming of a bookmark",
+      "description": "Verify that inline renaming mode can be exited without saving changes by pressing escape, retaining the original bookmark name.",
+      "requirement_ids": [
+        "R-012"
+      ]
+    },
+    {
+      "id": "G-164",
+      "title": "Find Bookmark Using Custom Keyword (Normal Flow)",
+      "description": "Verify that a user can successfully find and navigate to a bookmark by typing a user-defined custom keyword into the browser location bar or search mechanism.",
+      "requirement_ids": [
+        "R-013"
+      ]
+    },
+    {
+      "id": "G-165",
+      "title": "Attempt to Find Bookmark Using Non-Existent Custom Keyword (Abnormal Flow)",
+      "description": "Verify that searching with a user-defined custom keyword that does not exist or has not been assigned to any bookmark results in no matching bookmark being found.",
+      "requirement_ids": [
+        "R-013"
+      ]
+    },
+    {
+      "id": "G-166",
+      "title": "Sort Bookmarks Ascending Per Column",
+      "description": "User interacts with a bookmark column header to sort all bookmarks in ascending order.",
+      "requirement_ids": [
+        "R-014"
+      ]
+    },
+    {
+      "id": "G-167",
+      "title": "Reverse-Sort Bookmarks Descending Per Column",
+      "description": "User interacts with a bookmark column header to reverse-sort all bookmarks in descending order.",
+      "requirement_ids": [
+        "R-014"
+      ]
+    },
+    {
+      "id": "G-168",
+      "title": "Resize Bookmark Columns to Show More Entries",
+      "description": "Verify that a user can resize bookmark columns to show more of the entry details by dragging the column border outwards.",
+      "requirement_ids": [
+        "R-015"
+      ]
+    },
+    {
+      "id": "G-169",
+      "title": "Resize Bookmark Columns to Hide Entries",
+      "description": "Verify that a user can resize bookmark columns to hide parts of the entries by dragging the column border inwards.",
+      "requirement_ids": [
+        "R-015"
+      ]
+    },
+    {
+      "id": "G-170",
+      "title": "Show and Hide Bookmark Columns Successfully",
+      "description": "Execute a workflow to toggle the visibility of bookmark columns in the bookmarks manager, ensuring columns can be successfully shown and hidden according to user actions.",
+      "requirement_ids": [
+        "R-016"
+      ]
+    },
+    {
+      "id": "G-171",
+      "title": "Attempt to Hide All Essential Bookmark Columns",
+      "description": "Execute a workflow to hide all available bookmark columns to verify system behavior and ensure proper handling when no columns are displayed.",
+      "requirement_ids": [
+        "R-016"
+      ]
+    },
+    {
+      "id": "G-172",
+      "title": "Batch Deletion of Multiple Bookmarks Successfully",
+      "description": "Execute a user workflow to select several individual bookmarks within the bookmarks manager, trigger the delete action, and verify that all selected bookmarks are successfully removed simultaneously.",
+      "requirement_ids": [
+        "R-017"
+      ]
+    },
+    {
+      "id": "G-173",
+      "title": "Abnormal Batch Deletion with Mixed Valid and Non-existent Selection",
+      "description": "Execute a user workflow attempting to delete a batch of bookmarks where some items are already removed or invalid, verifying the system handles the multi-selection deletion gracefully without crashing.",
+      "requirement_ids": [
+        "R-017"
+      ]
+    },
+    {
+      "id": "G-174",
+      "title": "Prevent dropping a bookmark item onto itself",
+      "description": "Verify that a user cannot drag and drop a bookmark item onto itself within the bookmarks hierarchy, ensuring the drop action is rejected.",
+      "requirement_ids": [
+        "R-018"
+      ]
+    },
+    {
+      "id": "G-175",
+      "title": "Prevent dropping a bookmark item onto its immediate parent",
+      "description": "Verify that a user cannot drag and drop a bookmark item onto its immediate parent folder, ensuring the drop action is rejected.",
+      "requirement_ids": [
+        "R-018"
+      ]
+    },
+    {
+      "id": "G-176",
+      "title": "Prevent dropping a bookmark item onto its immediate child",
+      "description": "Verify that a user cannot drag and drop a bookmark item onto its immediate child item or folder, ensuring the drop action is rejected.",
+      "requirement_ids": [
+        "R-018"
+      ]
+    },
+    {
+      "id": "G-177",
+      "title": "Add bookmark to non-existent hierarchy location",
+      "description": "Attempt to add a new bookmark into a specific location path within the bookmarks hierarchy that does not exist or has been deleted.",
+      "requirement_ids": [
+        "R-001"
+      ]
+    },
+    {
+      "id": "G-178",
+      "title": "Add bookmark with malformed URL structure",
+      "description": "Add a new bookmark into a specific hierarchy location using an invalid or malformed URL string to test parser error handling.",
+      "requirement_ids": [
+        "R-001"
+      ]
+    },
+    {
+      "id": "G-179",
+      "title": "Add bookmark with excessively long title and path",
+      "description": "Attempt to add a new bookmark into a deep hierarchy location using extreme length strings for both the bookmark title and folder path.",
+      "requirement_ids": [
+        "R-001"
+      ]
+    },
+    {
+      "id": "G-180",
+      "title": "Verify deletion of bookmark when file is locked",
+      "description": "Attempt to delete a bookmark when the underlying bookmarks file is locked or set to read-only, checking for proper error handling and ensuring the bookmark is not removed from access points if the underlying deletion fails.",
+      "requirement_ids": [
+        "R-002"
+      ]
+    },
+    {
+      "id": "G-181",
+      "title": "Verify deletion persistence and complete removal from all access points",
+      "description": "Delete a bookmark and verify that it is completely removed from the bookmarks file and no longer displayed in any access points such as the sidebar, library, and drop-down menus.",
+      "requirement_ids": [
+        "R-002"
+      ]
+    },
+    {
+      "id": "G-182",
+      "title": "Add Bookmark with Malformed URL to Personal Toolbar",
+      "description": "Attempt to add a bookmark with an invalid or malformed URL string to the personal toolbar to guess error handling and validation failures.",
+      "requirement_ids": [
+        "R-003"
+      ]
+    },
+    {
+      "id": "G-183",
+      "title": "Delete Non-Existent Bookmark from Personal Toolbar",
+      "description": "Attempt to delete a bookmark that has already been removed or does not exist on the personal toolbar to check robustness against missing reference errors.",
+      "requirement_ids": [
+        "R-003"
+      ]
+    },
+    {
+      "id": "G-184",
+      "title": "Add Duplicate Bookmark to Personal Toolbar",
+      "description": "Attempt to add multiple bookmarks with identical URIs and names to the personal toolbar concurrently to check for duplicate entry handling and potential storage corruption.",
+      "requirement_ids": [
+        "R-003"
+      ]
+    },
+    {
+      "id": "G-185",
+      "title": "Simulated Crash During Personal Toolbar Deletion",
+      "description": "Simulate an abrupt application termination immediately after triggering a bookmark deletion from the personal toolbar to check file persistence and integrity.",
+      "requirement_ids": [
+        "R-003"
+      ]
+    },
+    {
+      "id": "G-186",
+      "title": "Insert New Bookmark Folder Into Non-Existent Parent",
+      "description": "Attempt to insert a new bookmark folder specifying a parent ID or location that does not exist in the bookmarks hierarchy to test system handling of invalid hierarchy references.",
+      "requirement_ids": [
+        "R-004"
+      ]
+    },
+    {
+      "id": "G-187",
+      "title": "Insert New Bookmark Folder With Duplicate Name in Same Level",
+      "description": "Attempt to insert a new bookmark folder with an identical name to an existing folder in the same target location to verify if the system permits duplicates or handles naming conflicts.",
+      "requirement_ids": [
+        "R-004"
+      ]
+    },
+    {
+      "id": "G-188",
+      "title": "Insert New Bookmark Folder With Malformed or Empty Name",
+      "description": "Attempt to insert a new bookmark folder using an empty string, whitespace-only string, or excessively long names to test boundary conditions and error handling.",
+      "requirement_ids": [
+        "R-004"
+      ]
+    },
+    {
+      "id": "G-189",
+      "title": "Double-clicking a bookmark with malformed URL",
+      "description": "Attempt to launch a bookmark whose stored URL is malformed or invalid by double-clicking it to verify system handling and prevent browser crashes or incorrect navigation.",
+      "requirement_ids": [
+        "R-005"
+      ]
+    },
+    {
+      "id": "G-190",
+      "title": "Rapid double-clicking on a bookmark",
+      "description": "Perform rapid consecutive double-clicks on a bookmark to test for race conditions, multiple browser window spawns, or UI thread locking.",
+      "requirement_ids": [
+        "R-005"
+      ]
+    },
+    {
+      "id": "G-191",
+      "title": "Validate Default Bookmarks File Links for Broken URLs",
+      "description": "Test all URLs present in the default bookmarks file packaged with the browser to ensure they are valid, reachable, and not returning broken link errors (e.g., 404).",
+      "requirement_ids": [
+        "R-006"
+      ]
+    },
+    {
+      "id": "G-192",
+      "title": "Default Bookmarks File Malformed URL Handling",
+      "description": "Verify that malformed or improperly formatted URLs within the packaged default bookmarks file are either corrected or handled gracefully without causing browser crashes or parser errors.",
+      "requirement_ids": [
+        "R-006"
+      ]
+    },
+    {
+      "id": "G-193",
+      "title": "Save Bookmark Changes with Corrupted or Special Characters",
+      "description": "Verify that editing bookmark attributes with malformed input, extremely long strings, or special characters still results in changes being saved without loss of item integrity.",
+      "requirement_ids": [
+        "R-007"
+      ]
+    },
+    {
+      "id": "G-194",
+      "title": "Interrupted Save Operation during Bookmark Modification",
+      "description": "Simulate an abrupt interruption (such as a simulated crash or forced write failure) while saving modifications to a bookmark item to test item integrity preservation.",
+      "requirement_ids": [
+        "R-007"
+      ]
+    },
+    {
+      "id": "G-195",
+      "title": "Delete Non-Existent Bookmark Folder",
+      "description": "Attempt to delete a bookmark folder ID that does not exist in the bookmarks hierarchy to observe system handling of invalid targets.",
+      "requirement_ids": [
+        "R-008"
+      ]
+    },
+    {
+      "id": "G-196",
+      "title": "Delete Non-Empty Bookmarks Folder",
+      "description": "Attempt to delete a bookmarks folder that still contains nested bookmarks and folders without explicitly emptying it first, verifying cascade deletion or restriction errors.",
+      "requirement_ids": [
+        "R-008"
+      ]
+    },
+    {
+      "id": "G-197",
+      "title": "Concurrent Deletion of Same Folder",
+      "description": "Trigger simultaneous deletion requests for the same bookmarks folder from multiple UI access points to test race condition handling.",
+      "requirement_ids": [
+        "R-008"
+      ]
+    },
+    {
+      "id": "G-198",
+      "title": "Delete Protected Default System Folder",
+      "description": "Attempt to delete a default system-mandated root folder (such as 'Bookmarks Toolbar' or 'Bookmarks Menu') to test restriction checks.",
+      "requirement_ids": [
+        "R-008"
+      ]
+    },
+    {
+      "id": "G-199",
+      "title": "Add and Delete Bookmark Separators Successfully",
+      "description": "Verify that a bookmark separator can be successfully added to the hierarchy and subsequently deleted without affecting other items.",
+      "requirement_ids": [
+        "R-009"
+      ]
+    },
+    {
+      "id": "G-200",
+      "title": "Error Guessing: Add Multiple Consecutive Separators",
+      "description": "Attempt to add multiple consecutive separator lines within the same folder to test system handling of redundant structural dividers.",
+      "requirement_ids": [
+        "R-009"
+      ]
+    },
+    {
+      "id": "G-201",
+      "title": "Error Guessing: Delete Non-Existent or Already Deleted Separator",
+      "description": "Attempt to delete a separator that has already been removed or does not exist in the bookmarks file to check for error handling resilience.",
+      "requirement_ids": [
+        "R-009"
+      ]
+    },
+    {
+      "id": "G-202",
+      "title": "Bookmark persistence after normal browser restart",
+      "description": "Verify that all added, modified, and deleted bookmarks persist correctly after a normal shutdown and restart of the browser.",
+      "requirement_ids": [
+        "R-010"
+      ]
+    },
+    {
+      "id": "G-203",
+      "title": "Bookmark persistence after simulated application crash",
+      "description": "Verify that recent bookmark additions and deletions are successfully recovered and saved without corruption after an abrupt browser crash (e.g., killed process).",
+      "requirement_ids": [
+        "R-010"
+      ]
+    },
+    {
+      "id": "G-204",
+      "title": "Bookmark integrity during rapid successive changes before restart",
+      "description": "Error guessing condition where multiple rapid create, update, and delete actions are performed immediately before triggering an abrupt crash or restart to check state synchronization.",
+      "requirement_ids": [
+        "R-010"
+      ]
+    },
+    {
+      "id": "G-205",
+      "title": "Verify negative execution of view properties on bookmarks",
+      "description": "Attempt to execute view properties on a standard bookmark item, verifying that the action correctly fails or is prevented as negative requirements dictate.",
+      "requirement_ids": [
+        "R-011"
+      ]
+    },
+    {
+      "id": "G-206",
+      "title": "Verify negative execution of view properties on bookmark folders",
+      "description": "Attempt to execute view properties on a bookmark folder, verifying that the action correctly fails or is prevented as negative requirements dictate.",
+      "requirement_ids": [
+        "R-011"
+      ]
+    },
+    {
+      "id": "G-207",
+      "title": "Verify negative execution of view properties on bookmark separators",
+      "description": "Attempt to execute view properties on a bookmark separator, verifying that the action correctly fails or is prevented as negative requirements dictate.",
+      "requirement_ids": [
+        "R-011"
+      ]
+    },
+    {
+      "id": "G-208",
+      "title": "Inline Rename with Special Characters",
+      "description": "Attempt to rename a bookmark inline using special characters and extremely long strings to test handling of edge-case inputs during direct UI editing.",
+      "requirement_ids": [
+        "R-012"
+      ]
+    },
+    {
+      "id": "G-209",
+      "title": "Interrupted Inline Rename Operation",
+      "description": "Initiate an inline rename of a bookmark and simulate an abrupt interruption (such as clicking outside or pressing Escape) to ensure proper state restoration.",
+      "requirement_ids": [
+        "R-012"
+      ]
+    },
+    {
+      "id": "G-210",
+      "title": "Find Bookmark with Valid Custom Keyword",
+      "description": "Verify that a bookmark can be successfully found and launched when entering its assigned unique user-defined custom keyword in the address bar.",
+      "requirement_ids": [
+        "R-013"
+      ]
+    },
+    {
+      "id": "G-211",
+      "title": "Find Bookmark with Non-Existent Custom Keyword",
+      "description": "Verify the system behavior when a user-defined custom keyword that does not map to any existing bookmark is entered, ensuring graceful handling (e.g., fallback to search engine or error message).",
+      "requirement_ids": [
+        "R-013"
+      ]
+    },
+    {
+      "id": "G-212",
+      "title": "Conflict Handling for Duplicate Custom Keywords",
+      "description": "Explore failure conditions where multiple bookmarks are inadvertently assigned the exact same user-defined custom keyword to check how the system resolves the conflict.",
+      "requirement_ids": [
+        "R-013"
+      ]
+    },
+    {
+      "id": "G-213",
+      "title": "Case Sensitivity and Special Characters in Custom Keywords",
+      "description": "Test misuse conditions by assigning custom keywords with mixed cases, spaces, leading/trailing whitespace, or special characters, and attempt to find the bookmark using variations.",
+      "requirement_ids": [
+        "R-013"
+      ]
+    },
+    {
+      "id": "G-214",
+      "title": "Sort by Column with Null or Missing Data",
+      "description": "Attempt to sort a column where some bookmark items contain null or missing values to verify graceful handling without crashes or misordering.",
+      "requirement_ids": [
+        "R-014"
+      ]
+    },
+    {
+      "id": "G-215",
+      "title": "Rapid Toggling Between Sort and Reverse-Sort",
+      "description": "Rapidly click the same column header multiple times to trigger sort and reverse-sort consecutively, checking for race conditions or UI freezing.",
+      "requirement_ids": [
+        "R-014"
+      ]
+    },
+    {
+      "id": "G-216",
+      "title": "Resize Column Beyond Minimum Width Boundary",
+      "description": "Attempt to drag a bookmark column header border past the allowed minimum width to verify the UI handles boundary constraints gracefully without crashing or causing visual overlap.",
+      "requirement_ids": [
+        "R-015"
+      ]
+    },
+    {
+      "id": "G-217",
+      "title": "Resize Column Beyond Maximum Screen Width Boundary",
+      "description": "Attempt to drag a bookmark column header border beyond the maximum available display boundary to ensure it truncates or constrains properly.",
+      "requirement_ids": [
+        "R-015"
+      ]
+    },
+    {
+      "id": "G-218",
+      "title": "Rapid Successive Double-Clicks on Column Divider",
+      "description": "Perform rapid successive double-clicks on the column resizer divider to test for event handling race conditions or unexpected layout scaling bugs.",
+      "requirement_ids": [
+        "R-015"
+      ]
+    },
+    {
+      "id": "G-219",
+      "title": "Toggle Visibility of All Bookmark Columns",
+      "description": "Verify that individual bookmark columns can be explicitly shown and hidden through the interface menu to ensure users can customize their view.",
+      "requirement_ids": [
+        "R-016"
+      ]
+    },
+    {
+      "id": "G-220",
+      "title": "Hide the Last Remaining Visible Column",
+      "description": "Error guessing condition where a user attempts to hide the very last visible column in the bookmark view to verify system handling of minimum display requirements.",
+      "requirement_ids": [
+        "R-016"
+      ]
+    },
+    {
+      "id": "G-221",
+      "title": "Rapidly Toggle Column Visibility States",
+      "description": "Error guessing condition involving rapid successive show and hide commands on multiple bookmark columns to test for UI state synchronization errors.",
+      "requirement_ids": [
+        "R-016"
+      ]
+    },
+    {
+      "id": "G-222",
+      "title": "Delete Multiple Bookmarks Simultaneously",
+      "description": "Attempt to delete a selected group of multiple bookmarks at one time to verify they are all successfully removed together.",
+      "requirement_ids": [
+        "R-017"
+      ]
+    },
+    {
+      "id": "G-223",
+      "title": "Bulk Deletion with Mixed Item Types",
+      "description": "Attempt to delete a multi-selection containing a combination of individual bookmarks, folders, and separators simultaneously to test error handling and batch deletion integrity.",
+      "requirement_ids": [
+        "R-017"
+      ]
+    },
+    {
+      "id": "G-224",
+      "title": "Bulk Deletion Including Protected or Read-Only Bookmarks",
+      "description": "Attempt to delete multiple bookmarks at once where one or more items are locked, read-only, or system-protected to observe failure modes and partial deletion behavior.",
+      "requirement_ids": [
+        "R-017"
+      ]
+    },
+    {
+      "id": "G-225",
+      "title": "Drop bookmark onto itself",
+      "description": "Attempt to drag and drop a bookmark item directly onto itself to verify that the drop action is prevented according to the requirement.",
+      "requirement_ids": [
+        "R-018"
+      ]
+    },
+    {
+      "id": "G-226",
+      "title": "Drop bookmark onto its immediate parent",
+      "description": "Attempt to drag and drop a bookmark item onto its immediate parent folder to verify that the drop action is rejected.",
+      "requirement_ids": [
+        "R-018"
+      ]
+    },
+    {
+      "id": "G-227",
+      "title": "Drop bookmark onto its immediate child",
+      "description": "Attempt to drag and drop a bookmark folder onto its immediate child item to verify that the drop action is rejected.",
+      "requirement_ids": [
+        "R-018"
+      ]
+    }
+  ],
+  "reference_cases": [
+    {
+      "id": "TC-001",
+      "title": "TC-001",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Open this link in a new window.\n2. With the new window in front select from the toplevel menu Bookmarks|File Bookmark.\n3. In the folder tree select a folder and click 'OK'.\n\nEXPECTED RESULTS\n1. After Step(2) a dialog should appear with the Name and Location of the current page pre-filled.\n2. After Step(3) the bookmark should immediately appear in the toplevel bookmarks menu, the bookmarks popup on the personal toolbar, the bookmarks sidepanel, and the manage bookmarks window at the specified position within the hierarchy.\n\nLINKS\n1. netscape-bookmarks.html\n2. mozilla-bookmarks.html\n3. large-bookmarks.html\n4. The Bookmarks Testcase Matrix",
+      "requirement_ids": [
+        "R-001"
+      ],
+      "source": "T-set.csv#TC-001",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-002",
+      "title": "TC-002",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\nSelect the toplevel 'Bookmarks' menu then select the 'Manage Bookmarks' menuitem.\n1. Select (highlight) a bookmark, press the delete key, OR\n2. Select (highlight) a bookmark, Select Edit|Delete. Click OK in the dialog that appears.\n\nEXPECTED RESULTS\nThe title of and link to the bookmark should now be removed from:\n1. the toplevel 'Bookmarks' menu\n2. the 'Bookmarks' popup menu on the personal toolbar\n3. the 'Bookmarks' panel in MySidebar\n4. in the Manage Bookmarks view (select Bookmarks| Manage Bookmarks)\n\nLINKS\n1. default-bookmarks.html\n2. large-bookmarks.html",
+      "requirement_ids": [
+        "R-002"
+      ],
+      "source": "T-set.csv#TC-002",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-003",
+      "title": "TC-003",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Open the Manage Bookmarks Window.\n2. Edit|Cut or Edit|Copy any bookmark.\n3. Select the 'Personal Toolbar Folder'. Double-click it or single-click the triangle to open the folder.\n4. Select Edit|Paste.\n5. Go to a browser window and click once on the new link in the personal toolbar.\n\nEXPECTED RESULTS\n1. The bookmark you added should appear immediately on the personal toolbar in a browser window and be activated by a single click.\n2. It should also be present as a subitem under \"Personal Toolbar Folder\" in the toplevel Bookmarks menu, in the bookmarks popup within the personal toolbar itself, and in the bookmarks sidepanel.\n\nLINKS\n1. default-bookmarks.html\n2. large-bookmarks.html",
+      "requirement_ids": [
+        "R-003"
+      ],
+      "source": "T-set.csv#TC-003",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": [
+        "firefox_toolbar"
+      ]
+    },
+    {
+      "id": "TC-004",
+      "title": "TC-004",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Select Bookmarks|Manage Bookmarks.\n2. Select any item in your list. Select File|New Folder. Click \"OK\" in the dialog that appears.\n3. Select the folder you just created. Select File|New Folder. Click \"OK\" in the dialog that appears.\n4. Double-click the folder you just created. Select File|New Folder. Click \"OK\" in the dialog that appears.\n\nEXPECTED RESULTS\n1. For step (2) a folder named \"New Folder\" should have been created and added just below the item you had selected. That item could be a bookmark, a folder, or a separator.\n2. For step (3) the folder should have again been created below the item (New Folder). In step (4) however, the folder should be created inside the previous folder.\n3. All of the newly created folders should appear with the correct hierarchical structure in the toplevel bookmarks menu, the bookmarks popup on the personal toolbar, the bookmarks panel in the sidebar, and of course the manage bookmarks window.\n\nLINKS\n1. netscape-bookmarks.html\n2. mozilla-bookmarks.html\n3. large-bookmarks.html",
+      "requirement_ids": [
+        "R-004"
+      ],
+      "source": "T-set.csv#TC-004",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-005",
+      "title": "TC-005",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Select the toplevel \"Bookmarks\" menu. Select any bookmark on the list.\n2. Click \"Bookmarks\" on the Bookmarks/personal toolbar. Select any bookmark on the list.\n3. Open the sidebar; click on the \"Bookmarks\" panel. Double-click any bookmark on the list.\n4. From the toplevel \"Bookmarks\" menu select \"Manage Bookmarks\". Double-click any bookmark in the window.\n\nEXPECTED RESULTS\nIn all cases, the url corresponding to the bookmark you selected should be loaded in the browser window.\n\nLINKS\n1. default-bookmarks.html\n2. large-bookmarks.html",
+      "requirement_ids": [
+        "R-005"
+      ],
+      "source": "T-set.csv#TC-005",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-006",
+      "title": "TC-006",
+      "description": "INITIAL CONDITIONS\nYou must have the default bookmarks file installed. Here is the Netscape bookmarks file, here is the Mozilla bookmarks file.\n\nSTEPS/DESCRIPTION\nUsing the Bookmarks menu or the Manage Bookmarks window, select and surf each and every bookmark in turn.\n\nEXPECTED RESULTS\nEach bookmark should load completely in the browser window. There should be no \"dead\" links.\n\nLINKS\n1. netscape-bookmarks.html\n2. large-bookmarks.html",
+      "requirement_ids": [
+        "R-006"
+      ],
+      "source": "T-set.csv#TC-006",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-007",
+      "title": "TC-007",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Select Bookmarks|Manage Bookmarks.\n2. Select a bookmark. Select File|Bookmark Properties. \nChange the Name OR the Location.\nEdit the Description field. Click \"OK\"\nSurf the link.\n6. Select a folder. Select File|Bookmark Properties. \nChange the Name.\nChange the description. Click \"OK\".\n\nEXPECTED RESULTS\n1. For step(2) the changes should take effect upon pressing \"OK\". The changes should be seen in the four standard locations.If the name changed clicking the new bookmark name should go to the same url. If the url changed, clicking the same name should go to the new url.\n2. For step(3) the changes should take effect upon pressing \"OK\". The changes should be seen in the four standard locations.\n\nLINKS\n1. netscape-bookmarks.html\n2. mozilla-bookmarks.html\n3. large-bookmarks.html",
+      "requirement_ids": [
+        "R-007"
+      ],
+      "source": "T-set.csv#TC-007",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-008",
+      "title": "TC-008",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Select Bookmarks|Manage Bookmarks.\n2. Select any folder.\n3. Select from the following choices: \nSelect Edit|Delete. Click OK.\nHit the Backspace key.\nHit the Delete key\n7. Select 2 or many folders, repeat step (3).\n\nEXPECTED RESULTS\n1. In step (3a) a confirmation dialog should appear, allowing you to cancel the delete operation.\n2. In steps (3b) and (3c), or after clicking \"OK\" in (3a), the folder should be immediately deleted.\n3. In step (4) you should only be presented with one confirmation dialog, clicking \"OK\" should result in all selected folders being deleted.\n4. Folders should immediately disappear (be deleted) from the toplevel bookmarks menu, the bookmarks popup on the personal toolbar, the bookmarks sidepanel, and the manage bookmarks window.\n\nLINKS\n1. netscape-bookmarks.html\n2. mozilla-bookmarks.html\n3. large-bookmarks.html",
+      "requirement_ids": [
+        "R-008"
+      ],
+      "source": "T-set.csv#TC-008",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-009",
+      "title": "TC-009",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Select Bookmarks|Manage Bookmarks.\n2. Select a bookmark.\n3. Select File|New Separator.\n4. Select the separator. Select Edit|Delete, click \"OK\".\n\nEXPECTED RESULTS\n1. After step (3) separator should immediately appear below the selected item in the toplevel bookmarks menu, the bookmarks popup on the personal toolbar, the bookmarks sidepanel, and the manage bookmarks window.\n2. After step (4) the separator should immediately disappear (be deleted) from the toplevel bookmarks menu, the bookmarks popup on the personal toolbar, the bookmarks sidepanel, and the manage bookmarks window.\n\nLINKS\n1. netscape-bookmarks.html\n2. mozilla-bookmarks.html\n3. large-bookmarks.html",
+      "requirement_ids": [
+        "R-009"
+      ],
+      "source": "T-set.csv#TC-009",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-010",
+      "title": "TC-010",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Select Bookmarks|Manage Bookmarks.\n2. Click on disclosure triangles to open/close several folders.\n3. Remember which were open/closed.\n4. Do the same for bookmarks folders in the bookmarks sidepanel. (Do not close Manage Bookmarks)\n5. Quit the browser (alternately, induce a crash)\n6. Launch the browser and open the sidebar and Manage Bookmarks.\n\nEXPECTED RESULTS\n1. The bookmarks tree should have the same shape, ie folders that were closed should still be closed and those that were open should still be open.\n2. This should be true for the bookmarks in the sidepanel as well.\n\nLINKS\n1. netscape-bookmarks.html\n2. mozilla-bookmarks.html\n3. large-bookmarks.html",
+      "requirement_ids": [
+        "R-010"
+      ],
+      "source": "T-set.csv#TC-010",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-011",
+      "title": "TC-011",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Select Bookmarks|Manage Bookmarks.\n2. Select a bookmark. Select File|Bookmark Properties. Verify, click \"OK\".\n3. Select a folder. Select File|Bookmark Properties. Verify, click \"OK\".\n4. Select a separator. Select File|Bookmark Properties.\n\nEXPECTED RESULTS\n1. For step(2) the Bookmark Properties dialog should appear. It should have fields for name, location(url), custom keyword, and description. There should also be a section for setting update and notification options.\n2. For step(3) the Bookmark Properties dialog should appear. It should have fields for name and description. No other fileds should appear in this dialog.\n3. For step(4) no dialog should appear.\n\nLINKS\n1. netscape-bookmarks.html\n2. mozilla-bookmarks.html\n3. large-bookmarks.html",
+      "requirement_ids": [
+        "R-011"
+      ],
+      "source": "T-set.csv#TC-011",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-012",
+      "title": "TC-012",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Select Bookmarks|Manage Bookmarks.\n2. Click a bookmark by single clicking on the name of the bookmark.\n3. Type a new name. Press enter.\n4. Select Edit|Bookmark Properties, look at the name field.\n\nEXPECTED RESULTS\n1. In step(2) the bookmark name should hilite and become editable.\n2. In step(3) and step(4) the new name you typed should replace the old name.\n\nLINKS\n1. netscape-bookmarks.html\n2. mozilla-bookmarks.html\n3. large-bookmarks.html",
+      "requirement_ids": [
+        "R-012"
+      ],
+      "source": "T-set.csv#TC-012",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-013",
+      "title": "TC-013",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Select Bookmarks|Manage Bookmarks.\n2. Select a bookmark. Select File|Bookmark Properties.\n3. Enter the word \"blah\" in the custom keyword field. Click \"OK\".\n4. In a browser window. Type \"blah\" into the url field and press enter.\n\nEXPECTED RESULTS\n1. You should be taken to the url associated with the same bookmark the custom keyword \"blah\" was associated with.\n2. The browser should NOT perform an \"internet keyword search\", \"netsape smart browsing search\", or any other search.\n\nLINKS\n1. netscape-bookmarks.html\n2. mozilla-bookmarks.html\n3. large-bookmarks.html",
+      "requirement_ids": [
+        "R-013"
+      ],
+      "source": "T-set.csv#TC-013",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-014",
+      "title": "TC-014",
+      "description": "INITIAL CONDITIONS\n1. Install this bookmarks file.(abcdbookmarks.html)\n2. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Select Bookmarks|Manage Bookmarks.\n2. Click on the \"Name\" column once.\n3. Click on the \"Name\" column a second time.\n4. Click on the \"Name\" column a third time.\n5. Click on the \"URL\" column once, and a second time.\n6. Click on the \"Custom Keyword\" column once, and a second time.\n7. Click on the \"Description\" column once, and a second time.\n8. Click on the \"Last Visit\" column once, and a second time.\n9. Click on the \"Added On\" column once, and a second time.\n10. Click on the \"Last Modified\" column once, and a second time.\n\nEXPECTED RESULTSBy step\n1. The bookmarks should sort into alphabetical order. (a-b-c-d-e)\n2. The bookmarks should sort into reverse-alphabetical order. (e-d-c-b-a)\n3. The bookmarks should sort into \"natural\" order (the way they were originally sorted). (a-d-e-b-c)\n4. The bookmarks should sort into order by URL and then the reverse of that order. (d-a-b-c-e)\n5. The bookmarks should sort into order by Custom Keyword and then the reverse of that order. (c-d-a-b-e)\n6. The bookmarks should sort into order by Description and then the reverse of that order. (b-c-d-a-e)\n7. The bookmarks should sort into order by Last Visited time and then the reverse of that order.\n8. The bookmarks should sort into order by Added On date and then the reverse of that order.\n9. The bookmarks should sort into order by Last Modified date and then the reverse of that order.\n10. Separators should separate the sort as well, ie step one should result in a-b-c-d-e|aa-bb-cc-dd-ee, not a-aa-b-bb-c-cc-d-dd-e|.\n\nLINKS\n1. netscape-bookmarks.html\n2. mozilla-bookmarks.html\n3. large-bookmarks.html",
+      "requirement_ids": [
+        "R-014"
+      ],
+      "source": "T-set.csv#TC-014",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-015",
+      "title": "TC-015",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Select Bookmarks|Manage Bookmarks.\n2. Mouseover the separator between the \"Name\" and \"URL\" columns.\n3. Click and drag that separator to the left and right.\n4. Repeat this with each of the other column separators.\n\nEXPECTED RESULTS\n1. In step(2) the mouse pointer should change to a double-arrowed icon (platform specific or XP?).\n2. In step(3) the column sizes on either side of the separator should shrink and grow as you drag. The content of the column should move with the column header. Column content that is obscured should be replaced by the ellipsis(?).\n\nLINKS\n1. netscape-bookmarks.html\n2. mozilla-bookmarks.html\n3. large-bookmarks.html",
+      "requirement_ids": [
+        "R-015"
+      ],
+      "source": "T-set.csv#TC-015",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-016",
+      "title": "TC-016",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Select Bookmarks|Manage Bookmarks.\n2. Click the icon on the far right of the column headers.\n3. Uncheck two of the items (columns).\n4. Recheck an item.\n5. Quit and restart the application.\n\nEXPECTED RESULTS\n1. Step(2) a popup menu should appear listing all of the column headers as menuitems.\n2. Step(3), they should all be checked by default and unchecking should cause that column to disappear from the manage bookmarks window.\n3. Step(4), the columns should reappear upon rechecking its name on the list.\n4. Step(5) the columns should appear just as the did after step(4).\n\nLINKS\n1. netscape-bookmarks.html\n2. mozilla-bookmarks.html\n3. large-bookmarks.html",
+      "requirement_ids": [
+        "R-016"
+      ],
+      "source": "T-set.csv#TC-016",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-017",
+      "title": "TC-017",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n\nSTEPS/DESCRIPTION\n1. Select the toplevel \"Bookmarks\" menu. Select Bookmarks|Manage Bookmarks.\n2. Select any bookmark. Shift+click or drag to select more (at least 3).\n3. Select Edit|Delete.\n\nEXPECTED RESULTS\n1. The bookmarks should no longer appear in the Manage Bookmarks window, the bookmarks sidebar panel, the top-level \"Bookmarks\" menu and the bookmarks popup on the personal toolbar.\n\nLINKS\n1. default-bookmarks.html\n2. large-bookmarks.html",
+      "requirement_ids": [
+        "R-017"
+      ],
+      "source": "T-set.csv#TC-017",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": []
+    },
+    {
+      "id": "TC-018",
+      "title": "TC-018",
+      "description": "INITIAL CONDITIONS\n1. You must have a bookmarks file.\n2. To promote consistency, you may choose to use the default set of Netscape Seamonkey Bookmarks, which I use. I have also provided the default Mozilla bookmarks file.\n3. You also have the option to use this very large bookmarks file.\n4. You must also customize your sidebar to include a bookmarks panel.\n5. As part of your bookmarks file you need a folder (lets' call it folder \"A\") that contains bookmarks and another folder (let's call this folder \"A1\" (read Asub1)) that contains bookmarks as well.\n\nSTEPS/DESCRIPTION\n1. Select Bookmarks|Manage Bookmarks.\n2. Select folder A1 then drag&drop it onto or within itself\n3. Select folder A1 then drag&drop it onto or within folder A.\n4. Select folder A then drag&drop it onto or within folder A1.\n5. Select a bookmark within folder A1 and drop it onto folder A1.\n\nEXPECTED RESULTS\n1. Nothing should happen! No bookmark or folder should be moved in any of these cases. Ideally, one should see the International symbol for \"No\" cursor.\n\nLINKS\n1. netscape-bookmarks.html\n2. mozilla-bookmarks.html\n3. large-bookmarks.html\n4. The Bookmarks Testcase Matrix",
+      "requirement_ids": [
+        "R-018"
+      ],
+      "source": "T-set.csv#TC-018",
+      "link_method": "inferred_row_alignment",
+      "link_status": "pending_provenance_review",
+      "secondary_domains": [
+        "firefox_clipboard_and_drag_drop"
+      ]
+    }
+  ],
+  "evaluation": {
+    "status": "evaluated",
+    "generated_count": 227,
+    "reference_count": 18,
+    "matches": [
+      {
+        "generated_id": "G-015",
+        "reference_id": "TC-007",
+        "similarity": 0.8700537426570282
+      },
+      {
+        "generated_id": "G-034",
+        "reference_id": "TC-014",
+        "similarity": 0.8782557487240118
+      },
+      {
+        "generated_id": "G-039",
+        "reference_id": "TC-016",
+        "similarity": 0.8795384295467923
+      },
+      {
+        "generated_id": "G-052",
+        "reference_id": "TC-003",
+        "similarity": 0.8877766700806028
+      },
+      {
+        "generated_id": "G-055",
+        "reference_id": "TC-004",
+        "similarity": 0.8867674485627293
+      },
+      {
+        "generated_id": "G-059",
+        "reference_id": "TC-005",
+        "similarity": 0.8692311673875945
+      },
+      {
+        "generated_id": "G-071",
+        "reference_id": "TC-011",
+        "similarity": 0.8642193960348954
+      },
+      {
+        "generated_id": "G-078",
+        "reference_id": "TC-013",
+        "similarity": 0.881841903972267
+      },
+      {
+        "generated_id": "G-091",
+        "reference_id": "TC-017",
+        "similarity": 0.8922351683884812
+      },
+      {
+        "generated_id": "G-109",
+        "reference_id": "TC-006",
+        "similarity": 0.9070314074088025
+      },
+      {
+        "generated_id": "G-142",
+        "reference_id": "TC-001",
+        "similarity": 0.8722492395166943
+      },
+      {
+        "generated_id": "G-155",
+        "reference_id": "TC-008",
+        "similarity": 0.8885293636927808
+      },
+      {
+        "generated_id": "G-157",
+        "reference_id": "TC-009",
+        "similarity": 0.907747113191188
+      },
+      {
+        "generated_id": "G-160",
+        "reference_id": "TC-010",
+        "similarity": 0.8795554786453754
+      },
+      {
+        "generated_id": "G-162",
+        "reference_id": "TC-012",
+        "similarity": 0.8840171725782486
+      },
+      {
+        "generated_id": "G-168",
+        "reference_id": "TC-015",
+        "similarity": 0.898718443648578
+      },
+      {
+        "generated_id": "G-181",
+        "reference_id": "TC-002",
+        "similarity": 0.8888580777307216
+      },
+      {
+        "generated_id": "G-227",
+        "reference_id": "TC-018",
+        "similarity": 0.8817735950373897
+      }
+    ],
+    "unmatched_generated_ids": [
+      "G-001",
+      "G-002",
+      "G-003",
+      "G-004",
+      "G-005",
+      "G-006",
+      "G-007",
+      "G-008",
+      "G-009",
+      "G-010",
+      "G-011",
+      "G-012",
+      "G-013",
+      "G-014",
+      "G-016",
+      "G-017",
+      "G-018",
+      "G-019",
+      "G-020",
+      "G-021",
+      "G-022",
+      "G-023",
+      "G-024",
+      "G-025",
+      "G-026",
+      "G-027",
+      "G-028",
+      "G-029",
+      "G-030",
+      "G-031",
+      "G-032",
+      "G-033",
+      "G-035",
+      "G-036",
+      "G-037",
+      "G-038",
+      "G-040",
+      "G-041",
+      "G-042",
+      "G-043",
+      "G-044",
+      "G-045",
+      "G-046",
+      "G-047",
+      "G-048",
+      "G-049",
+      "G-050",
+      "G-051",
+      "G-053",
+      "G-054",
+      "G-056",
+      "G-057",
+      "G-058",
+      "G-060",
+      "G-061",
+      "G-062",
+      "G-063",
+      "G-064",
+      "G-065",
+      "G-066",
+      "G-067",
+      "G-068",
+      "G-069",
+      "G-070",
+      "G-072",
+      "G-073",
+      "G-074",
+      "G-075",
+      "G-076",
+      "G-077",
+      "G-079",
+      "G-080",
+      "G-081",
+      "G-082",
+      "G-083",
+      "G-084",
+      "G-085",
+      "G-086",
+      "G-087",
+      "G-088",
+      "G-089",
+      "G-090",
+      "G-092",
+      "G-093",
+      "G-094",
+      "G-095",
+      "G-096",
+      "G-097",
+      "G-098",
+      "G-099",
+      "G-100",
+      "G-101",
+      "G-102",
+      "G-103",
+      "G-104",
+      "G-105",
+      "G-106",
+      "G-107",
+      "G-108",
+      "G-110",
+      "G-111",
+      "G-112",
+      "G-113",
+      "G-114",
+      "G-115",
+      "G-116",
+      "G-117",
+      "G-118",
+      "G-119",
+      "G-120",
+      "G-121",
+      "G-122",
+      "G-123",
+      "G-124",
+      "G-125",
+      "G-126",
+      "G-127",
+      "G-128",
+      "G-129",
+      "G-130",
+      "G-131",
+      "G-132",
+      "G-133",
+      "G-134",
+      "G-135",
+      "G-136",
+      "G-137",
+      "G-138",
+      "G-139",
+      "G-140",
+      "G-141",
+      "G-143",
+      "G-144",
+      "G-145",
+      "G-146",
+      "G-147",
+      "G-148",
+      "G-149",
+      "G-150",
+      "G-151",
+      "G-152",
+      "G-153",
+      "G-154",
+      "G-156",
+      "G-158",
+      "G-159",
+      "G-161",
+      "G-163",
+      "G-164",
+      "G-165",
+      "G-166",
+      "G-167",
+      "G-169",
+      "G-170",
+      "G-171",
+      "G-172",
+      "G-173",
+      "G-174",
+      "G-175",
+      "G-176",
+      "G-177",
+      "G-178",
+      "G-179",
+      "G-180",
+      "G-182",
+      "G-183",
+      "G-184",
+      "G-185",
+      "G-186",
+      "G-187",
+      "G-188",
+      "G-189",
+      "G-190",
+      "G-191",
+      "G-192",
+      "G-193",
+      "G-194",
+      "G-195",
+      "G-196",
+      "G-197",
+      "G-198",
+      "G-199",
+      "G-200",
+      "G-201",
+      "G-202",
+      "G-203",
+      "G-204",
+      "G-205",
+      "G-206",
+      "G-207",
+      "G-208",
+      "G-209",
+      "G-210",
+      "G-211",
+      "G-212",
+      "G-213",
+      "G-214",
+      "G-215",
+      "G-216",
+      "G-217",
+      "G-218",
+      "G-219",
+      "G-220",
+      "G-221",
+      "G-222",
+      "G-223",
+      "G-224",
+      "G-225",
+      "G-226"
+    ],
+    "unmatched_reference_ids": [],
+    "precision": 0.07929515418502203,
+    "recall": 1.0,
+    "f1": 0.1469387755102041,
+    "embedding_usage": {
+      "input_tokens": 8510,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 8510
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 12
+  },
+  "generation": {
+    "selected_techniques": [
+      "equivalence_partitioning",
+      "state_transition",
+      "decision_table",
+      "use_case",
+      "error_guessing"
+    ],
+    "technique_rationales": {
+      "equivalence_partitioning": "Partitioning valid and invalid operations such as dropping a bookmark onto itself versus valid locations, and viewing properties for valid versus invalid items.",
+      "state_transition": "Covering the lifecycle states and transitions of bookmarks, folders, and separators being added, modified, renamed, and deleted across restarts and crashes.",
+      "decision_table": "Covering combinations of conditions for column sorting, visibility, resizing, and property actions.",
+      "use_case": "Covering user flows such as launching bookmarks via double-clicking, inline renaming, searching by keywords, and managing items in the personal toolbar.",
+      "error_guessing": "Exploring plausible failure conditions and misuse such as browser crashes during save operations and prohibited drop actions onto immediate parents or children."
+    },
+    "prompt_version": null
+  },
+  "usage": {
+    "generation": {
+      "input_tokens": 97128,
+      "output_tokens": 21006,
+      "details": {
+        "text_prompt_tokens": 97128,
+        "total_tokens": 118134
+      },
+      "status": "available"
+    },
+    "generation_attempts": [],
+    "generation_calls": [],
+    "embedding": {
+      "input_tokens": 8510,
+      "output_tokens": null,
+      "details": {
+        "text_prompt_tokens": 8510
+      },
+      "status": "partial"
+    },
+    "embedding_requests": 12
+  },
+  "links": {
+    "requirements": {
+      "R-001": "R-001/requirement.md",
+      "R-002": "R-002/requirement.md",
+      "R-003": "R-003/requirement.md",
+      "R-004": "R-004/requirement.md",
+      "R-005": "R-005/requirement.md",
+      "R-006": "R-006/requirement.md",
+      "R-007": "R-007/requirement.md",
+      "R-008": "R-008/requirement.md",
+      "R-009": "R-009/requirement.md",
+      "R-010": "R-010/requirement.md",
+      "R-011": "R-011/requirement.md",
+      "R-012": "R-012/requirement.md",
+      "R-013": "R-013/requirement.md",
+      "R-014": "R-014/requirement.md",
+      "R-015": "R-015/requirement.md",
+      "R-016": "R-016/requirement.md",
+      "R-017": "R-017/requirement.md",
+      "R-018": "R-018/requirement.md"
+    },
+    "cases": {
+      "G-142": {
+        "R-001": "R-001/test cases/142_Add_new_bookmark_to_specific_location_in_hierarc.md"
+      },
+      "G-143": {
+        "R-001": "R-001/test cases/143_Add_new_bookmark_with_invalid_or_restricted_targ.md"
+      },
+      "G-177": {
+        "R-001": "R-001/test cases/177_Add_bookmark_to_non-existent_hierarchy_location.md"
+      },
+      "G-178": {
+        "R-001": "R-001/test cases/178_Add_bookmark_with_malformed_URL_structure.md"
+      },
+      "G-179": {
+        "R-001": "R-001/test cases/179_Add_bookmark_with_excessively_long_title_and_pat.md"
+      },
+      "G-001": {
+        "R-001": "R-001/test cases/1_Add_bookmark_to_valid_specific_location.md"
+      },
+      "G-002": {
+        "R-001": "R-001/test cases/2_Add_bookmark_to_invalid_non-existent_location.md"
+      },
+      "G-048": {
+        "R-001": "R-001/test cases/48_Add_new_bookmark_to_specific_hierarchy_location.md"
+      },
+      "G-049": {
+        "R-001": "R-001/test cases/49_Add_new_bookmark_with_invalid_target_location.md"
+      },
+      "G-098": {
+        "R-001": "R-001/test cases/98_Add_new_bookmark_to_valid_specific_location.md"
+      },
+      "G-099": {
+        "R-001": "R-001/test cases/99_Attempt_to_add_new_bookmark_to_invalid_location.md"
+      },
+      "G-100": {
+        "R-002": "R-002/test cases/100_Successful_deletion_of_a_single_bookmark.md"
+      },
+      "G-101": {
+        "R-002": "R-002/test cases/101_Deletion_of_a_non-existent_bookmark.md"
+      },
+      "G-102": {
+        "R-002": "R-002/test cases/102_Deletion_of_a_bookmark_with_access_point_synchro.md"
+      },
+      "G-144": {
+        "R-002": "R-002/test cases/144_Successful_Single_Bookmark_Deletion.md"
+      },
+      "G-145": {
+        "R-002": "R-002/test cases/145_Abnormal_Bookmark_Deletion_Non-Existent_Access.md"
+      },
+      "G-180": {
+        "R-002": "R-002/test cases/180_Verify_deletion_of_bookmark_when_file_is_locked.md"
+      },
+      "G-181": {
+        "R-002": "R-002/test cases/181_Verify_deletion_persistence_and_complete_removal.md"
+      },
+      "G-003": {
+        "R-002": "R-002/test cases/3_Successful_deletion_of_a_single_bookmark.md"
+      },
+      "G-004": {
+        "R-002": "R-002/test cases/4_Deletion_of_a_non-existent_bookmark.md"
+      },
+      "G-050": {
+        "R-002": "R-002/test cases/50_Delete_Bookmark_from_File_and_Access_Points.md"
+      },
+      "G-051": {
+        "R-002": "R-002/test cases/51_Attempt_Delete_on_Already_Deleted_Bookmark.md"
+      },
+      "G-103": {
+        "R-003": "R-003/test cases/103_Add_and_Delete_Bookmark_from_Personal_Toolbar.md"
+      },
+      "G-104": {
+        "R-003": "R-003/test cases/104_Abnormal_Case_-_Attempt_to_Delete_Non-Existent_B.md"
+      },
+      "G-146": {
+        "R-003": "R-003/test cases/146_Add_bookmark_to_personal_toolbar.md"
+      },
+      "G-147": {
+        "R-003": "R-003/test cases/147_Delete_bookmark_from_personal_toolbar.md"
+      },
+      "G-182": {
+        "R-003": "R-003/test cases/182_Add_Bookmark_with_Malformed_URL_to_Personal_Tool.md"
+      },
+      "G-183": {
+        "R-003": "R-003/test cases/183_Delete_Non-Existent_Bookmark_from_Personal_Toolb.md"
+      },
+      "G-184": {
+        "R-003": "R-003/test cases/184_Add_Duplicate_Bookmark_to_Personal_Toolbar.md"
+      },
+      "G-185": {
+        "R-003": "R-003/test cases/185_Simulated_Crash_During_Personal_Toolbar_Deletion.md"
+      },
+      "G-052": {
+        "R-003": "R-003/test cases/52_Add_bookmark_to_personal_toolbar.md"
+      },
+      "G-053": {
+        "R-003": "R-003/test cases/53_Delete_bookmark_from_personal_toolbar.md"
+      },
+      "G-054": {
+        "R-003": "R-003/test cases/54_Forbidden_deletion_from_invalid_toolbar_state.md"
+      },
+      "G-005": {
+        "R-003": "R-003/test cases/5_Add_bookmark_to_personal_toolbar.md"
+      },
+      "G-006": {
+        "R-003": "R-003/test cases/6_Delete_bookmark_from_personal_toolbar.md"
+      },
+      "G-007": {
+        "R-003": "R-003/test cases/7_Attempt_to_add_invalid_bookmark_to_personal_tool.md"
+      },
+      "G-008": {
+        "R-003": "R-003/test cases/8_Attempt_to_delete_non-existent_bookmark_from_per.md"
+      },
+      "G-105": {
+        "R-004": "R-004/test cases/105_Insert_New_Bookmark_Folder_-_Valid_Location.md"
+      },
+      "G-106": {
+        "R-004": "R-004/test cases/106_Insert_New_Bookmark_Folder_-_Invalid_Location.md"
+      },
+      "G-010": {
+        "R-004": "R-004/test cases/10_Attempt_to_insert_new_bookmark_folder_into_inval.md"
+      },
+      "G-148": {
+        "R-004": "R-004/test cases/148_Insert_New_Bookmark_Folder_Normal_Flow.md"
+      },
+      "G-149": {
+        "R-004": "R-004/test cases/149_Insert_New_Bookmark_Folder_Abnormal_Flow.md"
+      },
+      "G-186": {
+        "R-004": "R-004/test cases/186_Insert_New_Bookmark_Folder_Into_Non-Existent_Par.md"
+      },
+      "G-187": {
+        "R-004": "R-004/test cases/187_Insert_New_Bookmark_Folder_With_Duplicate_Name_i.md"
+      },
+      "G-188": {
+        "R-004": "R-004/test cases/188_Insert_New_Bookmark_Folder_With_Malformed_or_Emp.md"
+      },
+      "G-055": {
+        "R-004": "R-004/test cases/55_Insert_new_bookmark_folder_into_hierarchy_succes.md"
+      },
+      "G-056": {
+        "R-004": "R-004/test cases/56_Forbidden_state_transition_dropping_folder_onto.md",
+        "R-018": "R-018/test cases/56_Forbidden_state_transition_dropping_folder_onto.md"
+      },
+      "G-009": {
+        "R-004": "R-004/test cases/9_Insert_new_bookmark_folder_into_valid_hierarchy.md"
+      },
+      "G-107": {
+        "R-005": "R-005/test cases/107_Launch_bookmark_in_browser_window_via_double-cli.md"
+      },
+      "G-108": {
+        "R-005": "R-005/test cases/108_Abnormal_double-click_action_on_invalid_bookmark.md"
+      },
+      "G-011": {
+        "R-005": "R-005/test cases/11_Launch_valid_bookmark_in_browser_window_via_doub.md"
+      },
+      "G-012": {
+        "R-005": "R-005/test cases/12_Attempt_to_launch_invalid_bookmark_via_double-cl.md"
+      },
+      "G-150": {
+        "R-005": "R-005/test cases/150_Launch_bookmark_in_browser_window_via_double-cli.md"
+      },
+      "G-151": {
+        "R-005": "R-005/test cases/151_Single-click_interaction_verification_for_bookma.md"
+      },
+      "G-189": {
+        "R-005": "R-005/test cases/189_Double-clicking_a_bookmark_with_malformed_URL.md"
+      },
+      "G-190": {
+        "R-005": "R-005/test cases/190_Rapid_double-clicking_on_a_bookmark.md"
+      },
+      "G-057": {
+        "R-005": "R-005/test cases/57_Launch_bookmark_via_double-click_in_browser_wind.md"
+      },
+      "G-058": {
+        "R-005": "R-005/test cases/58_Single_click_on_bookmark_does_not_launch.md"
+      },
+      "G-109": {
+        "R-006": "R-006/test cases/109_Default_Bookmarks_File_Link_Validation_-_Normal.md"
+      },
+      "G-110": {
+        "R-006": "R-006/test cases/110_Default_Bookmarks_File_Link_Validation_-_Abnorma.md"
+      },
+      "G-013": {
+        "R-006": "R-006/test cases/13_Default_Bookmarks_File_Valid_Links.md"
+      },
+      "G-014": {
+        "R-006": "R-006/test cases/14_Default_Bookmarks_File_Invalid_Links.md"
+      },
+      "G-152": {
+        "R-006": "R-006/test cases/152_Validate_Default_Bookmarks_Links.md"
+      },
+      "G-191": {
+        "R-006": "R-006/test cases/191_Validate_Default_Bookmarks_File_Links_for_Broken.md"
+      },
+      "G-192": {
+        "R-006": "R-006/test cases/192_Default_Bookmarks_File_Malformed_URL_Handling.md"
+      },
+      "G-059": {
+        "R-006": "R-006/test cases/59_Default_Bookmarks_Validation_-_Normal_Transition.md"
+      },
+      "G-060": {
+        "R-006": "R-006/test cases/60_Default_Bookmarks_Validation_-_Abnormal_Transiti.md"
+      },
+      "G-111": {
+        "R-007": "R-007/test cases/111_Save_changes_to_bookmark_item_with_valid_integri.md"
+      },
+      "G-112": {
+        "R-007": "R-007/test cases/112_Attempt_to_save_changes_to_bookmark_item_resulti.md"
+      },
+      "G-153": {
+        "R-007": "R-007/test cases/153_Successful_Save_of_Bookmark_Item_Changes.md"
+      },
+      "G-154": {
+        "R-007": "R-007/test cases/154_Bookmark_Integrity_Check_After_Multiple_Edits.md"
+      },
+      "G-015": {
+        "R-007": "R-007/test cases/15_Valid_Bookmark_Item_Property_Modification_and_Sa.md"
+      },
+      "G-016": {
+        "R-007": "R-007/test cases/16_Invalid_Bookmark_Item_Property_Modification.md"
+      },
+      "G-193": {
+        "R-007": "R-007/test cases/193_Save_Bookmark_Changes_with_Corrupted_or_Special.md"
+      },
+      "G-194": {
+        "R-007": "R-007/test cases/194_Interrupted_Save_Operation_during_Bookmark_Modif.md"
+      },
+      "G-061": {
+        "R-007": "R-007/test cases/61_State_Transition_-_Save_Modified_Bookmark_Valid.md"
+      },
+      "G-062": {
+        "R-007": "R-007/test cases/62_State_Transition_-_Save_Modified_Bookmark_Invali.md"
+      },
+      "G-113": {
+        "R-008": "R-008/test cases/113_Delete_existing_bookmarks_folder_successfully.md"
+      },
+      "G-114": {
+        "R-008": "R-008/test cases/114_Attempt_to_delete_non-existent_bookmarks_folder.md"
+      },
+      "G-155": {
+        "R-008": "R-008/test cases/155_Delete_a_Bookmarks_Folder_Successfully.md"
+      },
+      "G-156": {
+        "R-008": "R-008/test cases/156_Attempt_to_Delete_Non-Existent_or_Invalid_Bookma.md"
+      },
+      "G-017": {
+        "R-008": "R-008/test cases/17_Delete_existing_bookmarks_folder_successfully.md"
+      },
+      "G-018": {
+        "R-008": "R-008/test cases/18_Attempt_to_delete_non-existent_bookmarks_folder.md"
+      },
+      "G-195": {
+        "R-008": "R-008/test cases/195_Delete_Non-Existent_Bookmark_Folder.md"
+      },
+      "G-196": {
+        "R-008": "R-008/test cases/196_Delete_Non-Empty_Bookmarks_Folder.md"
+      },
+      "G-197": {
+        "R-008": "R-008/test cases/197_Concurrent_Deletion_of_Same_Folder.md"
+      },
+      "G-198": {
+        "R-008": "R-008/test cases/198_Delete_Protected_Default_System_Folder.md"
+      },
+      "G-063": {
+        "R-008": "R-008/test cases/63_Delete_existing_bookmarks_folder_successfully.md"
+      },
+      "G-064": {
+        "R-008": "R-008/test cases/64_Attempt_to_delete_a_non-existent_bookmarks_folde.md"
+      },
+      "G-115": {
+        "R-009": "R-009/test cases/115_Add_and_Delete_Bookmark_Separators_Successfully.md"
+      },
+      "G-116": {
+        "R-009": "R-009/test cases/116_Add_Separator_and_Attempt_Invalid_Deletion.md"
+      },
+      "G-117": {
+        "R-009": "R-009/test cases/117_Attempt_Deletion_of_Separator_Without_Adding.md"
+      },
+      "G-157": {
+        "R-009": "R-009/test cases/157_Add_and_Delete_Bookmark_Separator.md"
+      },
+      "G-158": {
+        "R-009": "R-009/test cases/158_Add_and_Delete_Bookmark_Separator_from_Toolbar.md"
+      },
+      "G-199": {
+        "R-009": "R-009/test cases/199_Add_and_Delete_Bookmark_Separators_Successfully.md"
+      },
+      "G-019": {
+        "R-009": "R-009/test cases/19_Add_Bookmarks_Separator_Valid_Class.md"
+      },
+      "G-200": {
+        "R-009": "R-009/test cases/200_Error_Guessing_Add_Multiple_Consecutive_Separato.md"
+      },
+      "G-201": {
+        "R-009": "R-009/test cases/201_Error_Guessing_Delete_Non-Existent_or_Already_De.md"
+      },
+      "G-020": {
+        "R-009": "R-009/test cases/20_Delete_Bookmarks_Separator_Valid_Class.md"
+      },
+      "G-021": {
+        "R-009": "R-009/test cases/21_Delete_Non-Existent_Bookmarks_Separator_Invalid.md"
+      },
+      "G-065": {
+        "R-009": "R-009/test cases/65_Add_Bookmarks_Separator.md"
+      },
+      "G-066": {
+        "R-009": "R-009/test cases/66_Delete_Bookmarks_Separator.md"
+      },
+      "G-067": {
+        "R-009": "R-009/test cases/67_Forbidden_Deletion_on_Non-Existent_Separator.md"
+      },
+      "G-118": {
+        "R-010": "R-010/test cases/118_Save_changes_and_verify_persistence_after_normal.md"
+      },
+      "G-119": {
+        "R-010": "R-010/test cases/119_Save_changes_and_verify_persistence_after_applic.md"
+      },
+      "G-159": {
+        "R-010": "R-010/test cases/159_Verify_bookmark_changes_persist_over_browser_res.md"
+      },
+      "G-160": {
+        "R-010": "R-010/test cases/160_Verify_bookmark_changes_persist_after_browser_cr.md"
+      },
+      "G-202": {
+        "R-010": "R-010/test cases/202_Bookmark_persistence_after_normal_browser_restar.md"
+      },
+      "G-203": {
+        "R-010": "R-010/test cases/203_Bookmark_persistence_after_simulated_application.md"
+      },
+      "G-204": {
+        "R-010": "R-010/test cases/204_Bookmark_integrity_during_rapid_successive_chang.md"
+      },
+      "G-022": {
+        "R-010": "R-010/test cases/22_Save_changes_over_normal_browser_restart.md"
+      },
+      "G-023": {
+        "R-010": "R-010/test cases/23_Save_changes_over_browser_crash.md"
+      },
+      "G-068": {
+        "R-010": "R-010/test cases/68_Save_changes_and_verify_across_normal_restart.md"
+      },
+      "G-069": {
+        "R-010": "R-010/test cases/69_Save_changes_and_verify_across_simulated_crash.md"
+      },
+      "G-070": {
+        "R-010": "R-010/test cases/70_Forbidden_transition_Unsaved_changes_discard_on.md"
+      },
+      "G-120": {
+        "R-011": "R-011/test cases/120_View_properties_execution_for_bookmark_item_nega.md"
+      },
+      "G-121": {
+        "R-011": "R-011/test cases/121_View_properties_execution_for_folder_item_negati.md"
+      },
+      "G-122": {
+        "R-011": "R-011/test cases/122_View_properties_execution_for_separator_item_neg.md"
+      },
+      "G-161": {
+        "R-011": "R-011/test cases/161_Negative_Test_for_View_Properties_on_Bookmarks_F.md"
+      },
+      "G-205": {
+        "R-011": "R-011/test cases/205_Verify_negative_execution_of_view_properties_on.md"
+      },
+      "G-206": {
+        "R-011": "R-011/test cases/206_Verify_negative_execution_of_view_properties_on.md"
+      },
+      "G-207": {
+        "R-011": "R-011/test cases/207_Verify_negative_execution_of_view_properties_on.md"
+      },
+      "G-024": {
+        "R-011": "R-011/test cases/24_View_properties_execution_for_valid_bookmark_ite.md"
+      },
+      "G-025": {
+        "R-011": "R-011/test cases/25_View_properties_execution_for_valid_folder_item.md"
+      },
+      "G-026": {
+        "R-011": "R-011/test cases/26_View_properties_execution_for_valid_separator_it.md"
+      },
+      "G-027": {
+        "R-011": "R-011/test cases/27_View_properties_execution_for_invalid_or_non-exi.md"
+      },
+      "G-071": {
+        "R-011": "R-011/test cases/71_Execute_View_Properties_for_Bookmark.md"
+      },
+      "G-072": {
+        "R-011": "R-011/test cases/72_Execute_View_Properties_for_Folder.md"
+      },
+      "G-073": {
+        "R-011": "R-011/test cases/73_Execute_View_Properties_for_Separator.md"
+      },
+      "G-074": {
+        "R-011": "R-011/test cases/74_Forbidden_View_Properties_Execution.md"
+      },
+      "G-123": {
+        "R-012": "R-012/test cases/123_Inline_Rename_Success.md"
+      },
+      "G-124": {
+        "R-012": "R-012/test cases/124_Inline_Rename_Cancellation.md"
+      },
+      "G-162": {
+        "R-012": "R-012/test cases/162_Successful_inline_renaming_of_a_bookmark.md"
+      },
+      "G-163": {
+        "R-012": "R-012/test cases/163_Cancel_inline_renaming_of_a_bookmark.md"
+      },
+      "G-208": {
+        "R-012": "R-012/test cases/208_Inline_Rename_with_Special_Characters.md"
+      },
+      "G-209": {
+        "R-012": "R-012/test cases/209_Interrupted_Inline_Rename_Operation.md"
+      },
+      "G-028": {
+        "R-012": "R-012/test cases/28_Inline_rename_of_a_bookmark.md"
+      },
+      "G-029": {
+        "R-012": "R-012/test cases/29_Inline_rename_of_a_bookmark_folder.md"
+      },
+      "G-030": {
+        "R-012": "R-012/test cases/30_Invalid_inline_rename_via_properties_dialog.md"
+      },
+      "G-075": {
+        "R-012": "R-012/test cases/75_Inline_Rename_Normal_Flow.md"
+      },
+      "G-076": {
+        "R-012": "R-012/test cases/76_Inline_Rename_Cancellation.md"
+      },
+      "G-077": {
+        "R-012": "R-012/test cases/77_Forbidden_Transition_Empty_Name.md"
+      },
+      "G-125": {
+        "R-013": "R-013/test cases/125_Find_bookmark_using_valid_user-defined_custom_ke.md"
+      },
+      "G-126": {
+        "R-013": "R-013/test cases/126_Fail_to_find_bookmark_using_non-existent_custom.md"
+      },
+      "G-164": {
+        "R-013": "R-013/test cases/164_Find_Bookmark_Using_Custom_Keyword_Normal_Flow.md"
+      },
+      "G-165": {
+        "R-013": "R-013/test cases/165_Attempt_to_Find_Bookmark_Using_Non-Existent_Cust.md"
+      },
+      "G-210": {
+        "R-013": "R-013/test cases/210_Find_Bookmark_with_Valid_Custom_Keyword.md"
+      },
+      "G-211": {
+        "R-013": "R-013/test cases/211_Find_Bookmark_with_Non-Existent_Custom_Keyword.md"
+      },
+      "G-212": {
+        "R-013": "R-013/test cases/212_Conflict_Handling_for_Duplicate_Custom_Keywords.md"
+      },
+      "G-213": {
+        "R-013": "R-013/test cases/213_Case_Sensitivity_and_Special_Characters_in_Custo.md"
+      },
+      "G-031": {
+        "R-013": "R-013/test cases/31_Find_bookmark_using_valid_custom_keyword.md"
+      },
+      "G-032": {
+        "R-013": "R-013/test cases/32_Attempt_to_find_bookmark_using_non-existent_cust.md"
+      },
+      "G-078": {
+        "R-013": "R-013/test cases/78_Search_Bookmark_Using_Valid_Custom_Keyword.md"
+      },
+      "G-079": {
+        "R-013": "R-013/test cases/79_Search_Bookmark_Using_Non-Existent_Custom_Keywor.md"
+      },
+      "G-080": {
+        "R-013": "R-013/test cases/80_Forbidden_Transition_Empty_Keyword_Search.md"
+      },
+      "G-127": {
+        "R-014": "R-014/test cases/127_Sort_Bookmarks_in_Forward_Order_per_Column.md"
+      },
+      "G-128": {
+        "R-014": "R-014/test cases/128_Reverse-Sort_Bookmarks_per_Column.md"
+      },
+      "G-129": {
+        "R-014": "R-014/test cases/129_Sort_Bookmarks_with_Invalid_Column_Selection_Abn.md"
+      },
+      "G-166": {
+        "R-014": "R-014/test cases/166_Sort_Bookmarks_Ascending_Per_Column.md"
+      },
+      "G-167": {
+        "R-014": "R-014/test cases/167_Reverse-Sort_Bookmarks_Descending_Per_Column.md"
+      },
+      "G-214": {
+        "R-014": "R-014/test cases/214_Sort_by_Column_with_Null_or_Missing_Data.md"
+      },
+      "G-215": {
+        "R-014": "R-014/test cases/215_Rapid_Toggling_Between_Sort_and_Reverse-Sort.md"
+      },
+      "G-033": {
+        "R-014": "R-014/test cases/33_Sort_Bookmarks_in_Ascending_Order_per_Column.md"
+      },
+      "G-034": {
+        "R-014": "R-014/test cases/34_Sort_Bookmarks_in_Descending_Reverse_Order_per_C.md"
+      },
+      "G-035": {
+        "R-014": "R-014/test cases/35_Sort_Invalid_or_Empty_Column_Data.md"
+      },
+      "G-081": {
+        "R-014": "R-014/test cases/81_Sort_Bookmarks_per_Column_Normal_Transition.md"
+      },
+      "G-082": {
+        "R-014": "R-014/test cases/82_Reverse-Sort_Bookmarks_per_Column_Normal_Transit.md"
+      },
+      "G-083": {
+        "R-014": "R-014/test cases/83_Forbidden_Transition_on_Already_Sorted_Column.md"
+      },
+      "G-130": {
+        "R-015": "R-015/test cases/130_Resize_column_to_show_more_entries.md"
+      },
+      "G-131": {
+        "R-015": "R-015/test cases/131_Resize_column_to_hide_more_entries.md"
+      },
+      "G-132": {
+        "R-015": "R-015/test cases/132_Attempt_to_resize_column_beyond_minimum_limit.md"
+      },
+      "G-133": {
+        "R-015": "R-015/test cases/133_Attempt_to_resize_column_beyond_maximum_limit.md"
+      },
+      "G-168": {
+        "R-015": "R-015/test cases/168_Resize_Bookmark_Columns_to_Show_More_Entries.md"
+      },
+      "G-169": {
+        "R-015": "R-015/test cases/169_Resize_Bookmark_Columns_to_Hide_Entries.md"
+      },
+      "G-216": {
+        "R-015": "R-015/test cases/216_Resize_Column_Beyond_Minimum_Width_Boundary.md"
+      },
+      "G-217": {
+        "R-015": "R-015/test cases/217_Resize_Column_Beyond_Maximum_Screen_Width_Bounda.md"
+      },
+      "G-218": {
+        "R-015": "R-015/test cases/218_Rapid_Successive_Double-Clicks_on_Column_Divider.md"
+      },
+      "G-036": {
+        "R-015": "R-015/test cases/36_Resize_Bookmark_Column_to_Show_More_Entries.md"
+      },
+      "G-037": {
+        "R-015": "R-015/test cases/37_Resize_Bookmark_Column_to_Hide_Entries.md"
+      },
+      "G-038": {
+        "R-015": "R-015/test cases/38_Resize_Bookmark_Column_Beyond_Minimum_Limit.md"
+      },
+      "G-084": {
+        "R-015": "R-015/test cases/84_Resize_column_to_show_more_entries.md"
+      },
+      "G-085": {
+        "R-015": "R-015/test cases/85_Resize_column_to_hide_entries.md"
+      },
+      "G-086": {
+        "R-015": "R-015/test cases/86_Forbidden_resize_beyond_minimum_boundary.md"
+      },
+      "G-134": {
+        "R-016": "R-016/test cases/134_Show_and_Hide_Bookmark_Columns_Successfully.md"
+      },
+      "G-135": {
+        "R-016": "R-016/test cases/135_Invalid_Column_Toggle_Operation.md"
+      },
+      "G-170": {
+        "R-016": "R-016/test cases/170_Show_and_Hide_Bookmark_Columns_Successfully.md"
+      },
+      "G-171": {
+        "R-016": "R-016/test cases/171_Attempt_to_Hide_All_Essential_Bookmark_Columns.md"
+      },
+      "G-219": {
+        "R-016": "R-016/test cases/219_Toggle_Visibility_of_All_Bookmark_Columns.md"
+      },
+      "G-220": {
+        "R-016": "R-016/test cases/220_Hide_the_Last_Remaining_Visible_Column.md"
+      },
+      "G-221": {
+        "R-016": "R-016/test cases/221_Rapidly_Toggle_Column_Visibility_States.md"
+      },
+      "G-039": {
+        "R-016": "R-016/test cases/39_Show_Hidden_Bookmark_Columns.md"
+      },
+      "G-040": {
+        "R-016": "R-016/test cases/40_Hide_Visible_Bookmark_Columns.md"
+      },
+      "G-041": {
+        "R-016": "R-016/test cases/41_Invalid_Column_Visibility_Toggle.md"
+      },
+      "G-087": {
+        "R-016": "R-016/test cases/87_Transition_from_Hidden_to_Shown_column.md"
+      },
+      "G-088": {
+        "R-016": "R-016/test cases/88_Transition_from_Shown_to_Hidden_column.md"
+      },
+      "G-089": {
+        "R-016": "R-016/test cases/89_Forbidden_transition_Show_an_already_shown_colum.md"
+      },
+      "G-090": {
+        "R-016": "R-016/test cases/90_Forbidden_transition_Hide_an_already_hidden_colu.md"
+      },
+      "G-136": {
+        "R-017": "R-017/test cases/136_Delete_multiple_selected_bookmarks_at_one_time.md"
+      },
+      "G-137": {
+        "R-017": "R-017/test cases/137_Attempt_deletion_with_no_bookmarks_selected.md"
+      },
+      "G-172": {
+        "R-017": "R-017/test cases/172_Batch_Deletion_of_Multiple_Bookmarks_Successfull.md"
+      },
+      "G-173": {
+        "R-017": "R-017/test cases/173_Abnormal_Batch_Deletion_with_Mixed_Valid_and_Non.md"
+      },
+      "G-222": {
+        "R-017": "R-017/test cases/222_Delete_Multiple_Bookmarks_Simultaneously.md"
+      },
+      "G-223": {
+        "R-017": "R-017/test cases/223_Bulk_Deletion_with_Mixed_Item_Types.md"
+      },
+      "G-224": {
+        "R-017": "R-017/test cases/224_Bulk_Deletion_Including_Protected_or_Read-Only_B.md"
+      },
+      "G-042": {
+        "R-017": "R-017/test cases/42_Delete_multiple_selected_bookmarks_simultaneousl.md"
+      },
+      "G-043": {
+        "R-017": "R-017/test cases/43_Attempt_to_delete_zero_bookmarks_at_one_time.md"
+      },
+      "G-091": {
+        "R-017": "R-017/test cases/91_Delete_Multiple_Selected_Bookmarks_Successfully.md"
+      },
+      "G-092": {
+        "R-017": "R-017/test cases/92_Delete_Empty_Selection_State.md"
+      },
+      "G-093": {
+        "R-017": "R-017/test cases/93_Forbidden_Transition_on_Invalid_Multi-Deletion_S.md"
+      },
+      "G-138": {
+        "R-018": "R-018/test cases/138_Drop_bookmark_onto_itself.md"
+      },
+      "G-139": {
+        "R-018": "R-018/test cases/139_Drop_bookmark_onto_its_immediate_parent.md"
+      },
+      "G-140": {
+        "R-018": "R-018/test cases/140_Drop_bookmark_onto_its_immediate_child.md"
+      },
+      "G-141": {
+        "R-018": "R-018/test cases/141_Drop_bookmark_onto_a_valid_unrelated_location.md"
+      },
+      "G-174": {
+        "R-018": "R-018/test cases/174_Prevent_dropping_a_bookmark_item_onto_itself.md"
+      },
+      "G-175": {
+        "R-018": "R-018/test cases/175_Prevent_dropping_a_bookmark_item_onto_its_immedi.md"
+      },
+      "G-176": {
+        "R-018": "R-018/test cases/176_Prevent_dropping_a_bookmark_item_onto_its_immedi.md"
+      },
+      "G-225": {
+        "R-018": "R-018/test cases/225_Drop_bookmark_onto_itself.md"
+      },
+      "G-226": {
+        "R-018": "R-018/test cases/226_Drop_bookmark_onto_its_immediate_parent.md"
+      },
+      "G-227": {
+        "R-018": "R-018/test cases/227_Drop_bookmark_onto_its_immediate_child.md"
+      },
+      "G-044": {
+        "R-018": "R-018/test cases/44_Drop_bookmark_onto_itself.md"
+      },
+      "G-045": {
+        "R-018": "R-018/test cases/45_Drop_bookmark_onto_its_immediate_parent.md"
+      },
+      "G-046": {
+        "R-018": "R-018/test cases/46_Drop_bookmark_onto_its_immediate_child.md"
+      },
+      "G-047": {
+        "R-018": "R-018/test cases/47_Drop_bookmark_to_a_valid_non-parent_non-child_lo.md"
+      },
+      "G-094": {
+        "R-018": "R-018/test cases/94_Drop_bookmark_onto_itself_transition_check.md"
+      },
+      "G-095": {
+        "R-018": "R-018/test cases/95_Drop_bookmark_onto_its_immediate_parent_transiti.md"
+      },
+      "G-096": {
+        "R-018": "R-018/test cases/96_Drop_bookmark_onto_its_immediate_child_transitio.md"
+      },
+      "G-097": {
+        "R-018": "R-018/test cases/97_Drop_bookmark_onto_valid_target_transition_check.md"
+      }
+    }
+  },
+  "artifacts": {
+    "semantic_matches": "semantic_matches.json",
+    "csv": "results.csv"
+  }
+}

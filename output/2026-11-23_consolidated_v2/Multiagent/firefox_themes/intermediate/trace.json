@@ -1,0 +1,1659 @@
+{
+  "initial": {
+    "assessment": {
+      "candidate_id": "initial",
+      "cases": [
+        {
+          "id": "G-001",
+          "title": "Verify presence of both Classic and Modern themes under theme preferences",
+          "description": "Navigate to the theme preferences section and verify that both Classic and Modern themes are listed as available options.",
+          "requirement_ids": [
+            "R-175"
+          ]
+        },
+        {
+          "id": "G-002",
+          "title": "Verify Classic Theme Visual Display",
+          "description": "Apply the Classic theme under preferences and verify that its visual appearance matches the reference image.",
+          "requirement_ids": [
+            "R-176"
+          ]
+        },
+        {
+          "id": "G-003",
+          "title": "Verify Modern Theme Visual Display",
+          "description": "Apply the Modern theme within preferences and verify that the user interface is displayed correctly matching the specified reference image.",
+          "requirement_ids": [
+            "R-177"
+          ]
+        },
+        {
+          "id": "G-004",
+          "title": "Verify Theme Preferences item exists under View menu",
+          "description": "Navigate to the View menu and verify that the 'Theme Preferences' item is available and correctly displayed.",
+          "requirement_ids": [
+            "R-178"
+          ]
+        },
+        {
+          "id": "G-005",
+          "title": "Verify Theme Preferences item missing or disabled abnormal path",
+          "description": "Navigate to the View menu and verify that appropriate error handling or state is observed if the 'Theme Preferences' item is missing or disabled.",
+          "requirement_ids": [
+            "R-178"
+          ]
+        },
+        {
+          "id": "G-006",
+          "title": "Verify Get New Themes under View menu",
+          "description": "Navigate to the View menu and verify that the 'Get New Themes' item is present and available.",
+          "requirement_ids": [
+            "R-179"
+          ]
+        },
+        {
+          "id": "G-007",
+          "title": "Verify Get New Themes absence or disabled state",
+          "description": "Check the View menu under abnormal conditions to ensure the 'Get New Themes' item is handled properly if missing or disabled.",
+          "requirement_ids": [
+            "R-179"
+          ]
+        },
+        {
+          "id": "G-008",
+          "title": "Verify Classic item under View menu",
+          "description": "Navigate to the View menu and verify that the 'Classic' item is present and available for selection.",
+          "requirement_ids": [
+            "R-180"
+          ]
+        },
+        {
+          "id": "G-009",
+          "title": "Verify absence or disabled state of Classic item under View menu",
+          "description": "Navigate to the View menu and verify the handling when the 'Classic' item is missing or disabled unexpectedly.",
+          "requirement_ids": [
+            "R-180"
+          ]
+        },
+        {
+          "id": "G-010",
+          "title": "Verify Modern item is available under View menu",
+          "description": "Navigate to the View menu and verify that the 'Modern' item is present and selectable.",
+          "requirement_ids": [
+            "R-181"
+          ]
+        },
+        {
+          "id": "G-011",
+          "title": "Verify Modern item absence or disabled state under View menu",
+          "description": "Verify abnormal behavior when the 'Modern' item is missing or disabled under the View menu.",
+          "requirement_ids": [
+            "R-181"
+          ]
+        }
+      ],
+      "opinions": [
+        {
+          "agent": "critic",
+          "feedback": "The proposed cases introduce speculative negative test scenarios for items being missing or disabled under the View menu (G-005, G-007, G-009, G-011) which are not supported or required by the baseline requirements. Please remove these speculative negative cases and ensure cases focus directly on verifying the specified menu items and theme preferences.",
+          "request_revision": true,
+          "confirmed_blockers": [
+            "Speculative negative scenarios testing missing or disabled menu items (G-005, G-007, G-009, G-011) are not grounded in requirements R-178 through R-181."
+          ],
+          "blocker_assessment_complete": true
+        }
+      ],
+      "valid": true,
+      "confirmed_blockers": 1,
+      "covered_requirements": 7,
+      "duplicates": 0,
+      "comparable": true
+    },
+    "analysis": {
+      "analysis": "R-175: Normal path - verify both Classic and Modern themes are listed under theme preferences. Boundary - exactly two themes. Abnormal path - missing theme option.\nR-176: Normal path - apply Classic theme and verify visual match with reference image. Ambiguity - specific visual reference image not provided.\nR-177: Normal path - apply Modern theme and verify visual match with reference image. Ambiguity - specific visual reference image not provided.\nR-178: Normal path - navigate to View menu and verify presence of 'Theme Preferences'. Abnormal path - item missing or disabled.\nR-179: Normal path - navigate to View menu and verify presence of 'Get New Themes'. Abnormal path - item missing or disabled.\nR-180: Normal path - navigate to View menu and verify presence of 'Classic' item. Abnormal path - item missing or disabled.\nR-181: Normal path - navigate to View menu and verify presence of 'Modern' item. Abnormal path - item missing or disabled."
+    },
+    "failure": null
+  },
+  "rounds": [
+    {
+      "number": 1,
+      "requester": "critic",
+      "accepted_before": {
+        "candidate_id": "initial",
+        "cases": [
+          {
+            "id": "G-001",
+            "title": "Verify presence of both Classic and Modern themes under theme preferences",
+            "description": "Navigate to the theme preferences section and verify that both Classic and Modern themes are listed as available options.",
+            "requirement_ids": [
+              "R-175"
+            ]
+          },
+          {
+            "id": "G-002",
+            "title": "Verify Classic Theme Visual Display",
+            "description": "Apply the Classic theme under preferences and verify that its visual appearance matches the reference image.",
+            "requirement_ids": [
+              "R-176"
+            ]
+          },
+          {
+            "id": "G-003",
+            "title": "Verify Modern Theme Visual Display",
+            "description": "Apply the Modern theme within preferences and verify that the user interface is displayed correctly matching the specified reference image.",
+            "requirement_ids": [
+              "R-177"
+            ]
+          },
+          {
+            "id": "G-004",
+            "title": "Verify Theme Preferences item exists under View menu",
+            "description": "Navigate to the View menu and verify that the 'Theme Preferences' item is available and correctly displayed.",
+            "requirement_ids": [
+              "R-178"
+            ]
+          },
+          {
+            "id": "G-005",
+            "title": "Verify Theme Preferences item missing or disabled abnormal path",
+            "description": "Navigate to the View menu and verify that appropriate error handling or state is observed if the 'Theme Preferences' item is missing or disabled.",
+            "requirement_ids": [
+              "R-178"
+            ]
+          },
+          {
+            "id": "G-006",
+            "title": "Verify Get New Themes under View menu",
+            "description": "Navigate to the View menu and verify that the 'Get New Themes' item is present and available.",
+            "requirement_ids": [
+              "R-179"
+            ]
+          },
+          {
+            "id": "G-007",
+            "title": "Verify Get New Themes absence or disabled state",
+            "description": "Check the View menu under abnormal conditions to ensure the 'Get New Themes' item is handled properly if missing or disabled.",
+            "requirement_ids": [
+              "R-179"
+            ]
+          },
+          {
+            "id": "G-008",
+            "title": "Verify Classic item under View menu",
+            "description": "Navigate to the View menu and verify that the 'Classic' item is present and available for selection.",
+            "requirement_ids": [
+              "R-180"
+            ]
+          },
+          {
+            "id": "G-009",
+            "title": "Verify absence or disabled state of Classic item under View menu",
+            "description": "Navigate to the View menu and verify the handling when the 'Classic' item is missing or disabled unexpectedly.",
+            "requirement_ids": [
+              "R-180"
+            ]
+          },
+          {
+            "id": "G-010",
+            "title": "Verify Modern item is available under View menu",
+            "description": "Navigate to the View menu and verify that the 'Modern' item is present and selectable.",
+            "requirement_ids": [
+              "R-181"
+            ]
+          },
+          {
+            "id": "G-011",
+            "title": "Verify Modern item absence or disabled state under View menu",
+            "description": "Verify abnormal behavior when the 'Modern' item is missing or disabled under the View menu.",
+            "requirement_ids": [
+              "R-181"
+            ]
+          }
+        ],
+        "opinions": [
+          {
+            "agent": "critic",
+            "feedback": "The proposed cases introduce speculative negative test scenarios for items being missing or disabled under the View menu (G-005, G-007, G-009, G-011) which are not supported or required by the baseline requirements. Please remove these speculative negative cases and ensure cases focus directly on verifying the specified menu items and theme preferences.",
+            "request_revision": true,
+            "confirmed_blockers": [
+              "Speculative negative scenarios testing missing or disabled menu items (G-005, G-007, G-009, G-011) are not grounded in requirements R-178 through R-181."
+            ],
+            "blocker_assessment_complete": true
+          }
+        ],
+        "valid": true,
+        "confirmed_blockers": 1,
+        "covered_requirements": 7,
+        "duplicates": 0,
+        "comparable": true
+      },
+      "candidates": [
+        {
+          "attempt": {
+            "assessment": {
+              "candidate_id": "round-1-candidate-1",
+              "cases": [
+                {
+                  "id": "G-001",
+                  "title": "Verify presence of both Classic and Modern themes under theme preferences",
+                  "description": "Navigate to the theme preferences section and verify that both Classic and Modern themes are listed as available options.",
+                  "requirement_ids": [
+                    "R-175"
+                  ]
+                },
+                {
+                  "id": "G-002",
+                  "title": "Verify Classic Theme Visual Display",
+                  "description": "Apply the Classic theme under preferences and verify that its visual appearance matches the reference image.",
+                  "requirement_ids": [
+                    "R-176"
+                  ]
+                },
+                {
+                  "id": "G-003",
+                  "title": "Verify Modern Theme Visual Display",
+                  "description": "Apply the Modern theme within preferences and verify that the user interface is displayed correctly matching the specified reference image.",
+                  "requirement_ids": [
+                    "R-177"
+                  ]
+                },
+                {
+                  "id": "G-004",
+                  "title": "Verify Theme Preferences item exists under View menu",
+                  "description": "Navigate to the View menu and verify that the 'Theme Preferences' item is available and correctly displayed.",
+                  "requirement_ids": [
+                    "R-178"
+                  ]
+                },
+                {
+                  "id": "G-005",
+                  "title": "Verify Get New Themes under View menu",
+                  "description": "Navigate to the View menu and verify that the 'Get New Themes' item is present and available.",
+                  "requirement_ids": [
+                    "R-179"
+                  ]
+                },
+                {
+                  "id": "G-006",
+                  "title": "Verify Classic item under View menu",
+                  "description": "Navigate to the View menu and verify that the 'Classic' item is present and available for selection.",
+                  "requirement_ids": [
+                    "R-180"
+                  ]
+                },
+                {
+                  "id": "G-007",
+                  "title": "Verify Modern item is available under View menu",
+                  "description": "Navigate to the View menu and verify that the 'Modern' item is present and selectable.",
+                  "requirement_ids": [
+                    "R-181"
+                  ]
+                }
+              ],
+              "opinions": [
+                {
+                  "agent": "critic",
+                  "feedback": "The proposed test cases adequately cover all the requirements and are testable, distinct, and pose low risk.",
+                  "request_revision": false,
+                  "confirmed_blockers": [],
+                  "blocker_assessment_complete": true
+                }
+              ],
+              "valid": true,
+              "confirmed_blockers": 0,
+              "covered_requirements": 7,
+              "duplicates": 0,
+              "comparable": true
+            },
+            "analysis": {
+              "analysis": "R-175: Normal path - verify both Classic and Modern themes are present under theme preferences. Boundary - exactly two themes available.\nR-176: Normal path - apply Classic theme and verify visual layout matches the reference image. Ambiguity - specific reference image file not provided.\nR-177: Normal path - apply Modern theme and verify visual layout matches the reference image. Ambiguity - specific reference image file not provided.\nR-178: Normal path - navigate to View menu and verify 'Theme Preferences' item is available.\nR-179: Normal path - navigate to View menu and verify 'Get New Themes' item is available.\nR-180: Normal path - navigate to View menu and verify 'Classic' item is available.\nR-181: Normal path - navigate to View menu and verify 'Modern' item is available."
+            },
+            "failure": null
+          },
+          "comparison": "improves"
+        },
+        {
+          "attempt": {
+            "assessment": {
+              "candidate_id": "round-1-candidate-2",
+              "cases": [
+                {
+                  "id": "G-001",
+                  "title": "Verify presence of both Classic and Modern themes under theme preferences",
+                  "description": "Navigate to the theme preferences section and verify that both Classic and Modern themes are listed as available options.",
+                  "requirement_ids": [
+                    "R-175"
+                  ]
+                },
+                {
+                  "id": "G-002",
+                  "title": "Verify Classic Theme Visual Display",
+                  "description": "Apply the Classic theme under preferences and verify that its visual appearance matches the reference image.",
+                  "requirement_ids": [
+                    "R-176"
+                  ]
+                },
+                {
+                  "id": "G-003",
+                  "title": "Verify Modern Theme Visual Display",
+                  "description": "Apply the Modern theme within preferences and verify that the user interface is displayed correctly matching the specified reference image.",
+                  "requirement_ids": [
+                    "R-177"
+                  ]
+                },
+                {
+                  "id": "G-004",
+                  "title": "Verify Theme Preferences item exists under View menu",
+                  "description": "Navigate to the View menu and verify that the 'Theme Preferences' item is available and correctly displayed.",
+                  "requirement_ids": [
+                    "R-178"
+                  ]
+                },
+                {
+                  "id": "G-005",
+                  "title": "Verify Get New Themes under View menu",
+                  "description": "Navigate to the View menu and verify that the 'Get New Themes' item is present and available.",
+                  "requirement_ids": [
+                    "R-179"
+                  ]
+                },
+                {
+                  "id": "G-006",
+                  "title": "Verify Classic item under View menu",
+                  "description": "Navigate to the View menu and verify that the 'Classic' item is present and available for selection.",
+                  "requirement_ids": [
+                    "R-180"
+                  ]
+                },
+                {
+                  "id": "G-007",
+                  "title": "Verify Modern item is available under View menu",
+                  "description": "Navigate to the View menu and verify that the 'Modern' item is present and selectable.",
+                  "requirement_ids": [
+                    "R-181"
+                  ]
+                }
+              ],
+              "opinions": [
+                {
+                  "agent": "critic",
+                  "feedback": "The proposed test cases adequately cover all provided requirements and are distinct, testable, and low risk.",
+                  "request_revision": false,
+                  "confirmed_blockers": [],
+                  "blocker_assessment_complete": true
+                }
+              ],
+              "valid": true,
+              "confirmed_blockers": 0,
+              "covered_requirements": 7,
+              "duplicates": 0,
+              "comparable": true
+            },
+            "analysis": {
+              "analysis": "R-175: Normal path - verify both Classic and Modern themes are present under theme preferences. Boundary - exactly two default themes exist. Abnormal path - one or both themes fail to load. R-176: Normal path - apply Classic theme and verify UI rendering against the reference image. Ambiguity - missing explicit reference image asset. R-177: Normal path - apply Modern theme and verify UI rendering against the reference image. Ambiguity - missing explicit reference image asset. R-178: Normal path - open View menu and verify 'Theme Preferences' menu item is present and selectable. R-179: Normal path - open View menu and verify 'Get New Themes' menu item is present and selectable. R-180: Normal path - open View menu and verify 'Classic' menu item is present and selectable. R-181: Normal path - open View menu and verify 'Modern' menu item is present and selectable."
+            },
+            "failure": null
+          },
+          "comparison": "improves"
+        },
+        {
+          "attempt": {
+            "assessment": {
+              "candidate_id": "round-1-candidate-3",
+              "cases": [
+                {
+                  "id": "G-001",
+                  "title": "Verify presence of both Classic and Modern themes under theme preferences",
+                  "description": "Navigate to the theme preferences section and verify that both Classic and Modern themes are listed as available options.",
+                  "requirement_ids": [
+                    "R-175"
+                  ]
+                },
+                {
+                  "id": "G-002",
+                  "title": "Verify Classic Theme Visual Display",
+                  "description": "Apply the Classic theme under preferences and verify that its visual appearance matches the reference image.",
+                  "requirement_ids": [
+                    "R-176"
+                  ]
+                },
+                {
+                  "id": "G-003",
+                  "title": "Verify Modern Theme Visual Display",
+                  "description": "Apply the Modern theme within preferences and verify that the user interface is displayed correctly matching the specified reference image.",
+                  "requirement_ids": [
+                    "R-177"
+                  ]
+                },
+                {
+                  "id": "G-004",
+                  "title": "Verify Theme Preferences item exists under View menu",
+                  "description": "Navigate to the View menu and verify that the 'Theme Preferences' item is available and correctly displayed.",
+                  "requirement_ids": [
+                    "R-178"
+                  ]
+                },
+                {
+                  "id": "G-005",
+                  "title": "Verify Get New Themes under View menu",
+                  "description": "Navigate to the View menu and verify that the 'Get New Themes' item is present and available.",
+                  "requirement_ids": [
+                    "R-179"
+                  ]
+                },
+                {
+                  "id": "G-006",
+                  "title": "Verify Classic item under View menu",
+                  "description": "Navigate to the View menu and verify that the 'Classic' item is present and available for selection.",
+                  "requirement_ids": [
+                    "R-180"
+                  ]
+                },
+                {
+                  "id": "G-007",
+                  "title": "Verify Modern item is available under View menu",
+                  "description": "Navigate to the View menu and verify that the 'Modern' item is present and selectable.",
+                  "requirement_ids": [
+                    "R-181"
+                  ]
+                }
+              ],
+              "opinions": [
+                {
+                  "agent": "critic",
+                  "feedback": "All proposed test cases successfully map to the requirements and provide clear, testable scenarios without any blockers.",
+                  "request_revision": false,
+                  "confirmed_blockers": [],
+                  "blocker_assessment_complete": true
+                }
+              ],
+              "valid": true,
+              "confirmed_blockers": 0,
+              "covered_requirements": 7,
+              "duplicates": 0,
+              "comparable": true
+            },
+            "analysis": {
+              "analysis": "R-175: Normal path - verify both Classic and Modern themes are present under theme preferences. Boundary - exactly two themes are listed. R-176: Normal path - apply Classic theme and verify visual display matches the reference image. Ambiguity - specific reference image data is not defined in the requirement. R-177: Normal path - apply Modern theme and verify visual display matches the reference image. Ambiguity - specific reference image data is not defined in the requirement. R-178: Normal path - open the View menu and verify the availability of the 'Theme Preferences' menu item. R-179: Normal path - open the View menu and verify the availability of the 'Get New Themes' menu item. R-180: Normal path - open the View menu and verify the availability of the 'Classic' menu item. R-181: Normal path - open the View menu and verify the availability of the 'Modern' menu item."
+            },
+            "failure": null
+          },
+          "comparison": "improves"
+        }
+      ],
+      "selected_id": "round-1-candidate-1",
+      "decision": "qualitative",
+      "qualitative": {
+        "preferred_id": "round-1-candidate-1",
+        "rationale": "Candidate round-1-candidate-1 successfully removes the speculative and ungrounded negative test scenarios present in the accepted state, resulting in zero confirmed blockers while maintaining complete requirement coverage.",
+        "judgments": [
+          {
+            "candidate_id": "round-1-candidate-1",
+            "comparison": "improves"
+          },
+          {
+            "candidate_id": "round-1-candidate-2",
+            "comparison": "improves"
+          },
+          {
+            "candidate_id": "round-1-candidate-3",
+            "comparison": "improves"
+          }
+        ]
+      },
+      "failure": null,
+      "monotonicity": "confirmed"
+    }
+  ],
+  "status": "completed",
+  "failure": null,
+  "accepted_id": "round-1-candidate-1",
+  "accepted_assessment": {
+    "candidate_id": "round-1-candidate-1",
+    "cases": [
+      {
+        "id": "G-001",
+        "title": "Verify presence of both Classic and Modern themes under theme preferences",
+        "description": "Navigate to the theme preferences section and verify that both Classic and Modern themes are listed as available options.",
+        "requirement_ids": [
+          "R-175"
+        ]
+      },
+      {
+        "id": "G-002",
+        "title": "Verify Classic Theme Visual Display",
+        "description": "Apply the Classic theme under preferences and verify that its visual appearance matches the reference image.",
+        "requirement_ids": [
+          "R-176"
+        ]
+      },
+      {
+        "id": "G-003",
+        "title": "Verify Modern Theme Visual Display",
+        "description": "Apply the Modern theme within preferences and verify that the user interface is displayed correctly matching the specified reference image.",
+        "requirement_ids": [
+          "R-177"
+        ]
+      },
+      {
+        "id": "G-004",
+        "title": "Verify Theme Preferences item exists under View menu",
+        "description": "Navigate to the View menu and verify that the 'Theme Preferences' item is available and correctly displayed.",
+        "requirement_ids": [
+          "R-178"
+        ]
+      },
+      {
+        "id": "G-005",
+        "title": "Verify Get New Themes under View menu",
+        "description": "Navigate to the View menu and verify that the 'Get New Themes' item is present and available.",
+        "requirement_ids": [
+          "R-179"
+        ]
+      },
+      {
+        "id": "G-006",
+        "title": "Verify Classic item under View menu",
+        "description": "Navigate to the View menu and verify that the 'Classic' item is present and available for selection.",
+        "requirement_ids": [
+          "R-180"
+        ]
+      },
+      {
+        "id": "G-007",
+        "title": "Verify Modern item is available under View menu",
+        "description": "Navigate to the View menu and verify that the 'Modern' item is present and selectable.",
+        "requirement_ids": [
+          "R-181"
+        ]
+      }
+    ],
+    "opinions": [
+      {
+        "agent": "critic",
+        "feedback": "The proposed test cases adequately cover all the requirements and are testable, distinct, and pose low risk.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      {
+        "agent": "validator",
+        "feedback": "All test cases are well-defined, correctly mapped to their respective requirements (R-175 through R-181), and fully actionable without any blockers.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      }
+    ],
+    "valid": true,
+    "confirmed_blockers": 0,
+    "covered_requirements": 7,
+    "duplicates": 0,
+    "comparable": true
+  },
+  "pending": [],
+  "pending_controls": [],
+  "coverage": {
+    "feedback": "The accepted cases cover all requirements R-175 through R-181 adequately with a one-to-one mapping. There are no coverage gaps, excess test cases, or repetition. The suite is concise, complete, and properly matches the requirements."
+  },
+  "coverage_failure": null,
+  "calls": [
+    {
+      "stage": "analyst",
+      "subject_id": "initial",
+      "output": {
+        "analysis": "R-175: Normal path - verify both Classic and Modern themes are listed under theme preferences. Boundary - exactly two themes. Abnormal path - missing theme option.\nR-176: Normal path - apply Classic theme and verify visual match with reference image. Ambiguity - specific visual reference image not provided.\nR-177: Normal path - apply Modern theme and verify visual match with reference image. Ambiguity - specific visual reference image not provided.\nR-178: Normal path - navigate to View menu and verify presence of 'Theme Preferences'. Abnormal path - item missing or disabled.\nR-179: Normal path - navigate to View menu and verify presence of 'Get New Themes'. Abnormal path - item missing or disabled.\nR-180: Normal path - navigate to View menu and verify presence of 'Classic' item. Abnormal path - item missing or disabled.\nR-181: Normal path - navigate to View menu and verify presence of 'Modern' item. Abnormal path - item missing or disabled."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 474,
+          "output_tokens": 218,
+          "details": {
+            "total_tokens": 692,
+            "text_prompt_tokens": 474
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-175-01",
+            "title": "Verify presence of both Classic and Modern themes under theme preferences",
+            "description": "Navigate to the theme preferences section and verify that both Classic and Modern themes are listed as available options.",
+            "requirement_ids": [
+              "R-175"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 730,
+          "output_tokens": 99,
+          "details": {
+            "total_tokens": 829,
+            "text_prompt_tokens": 730
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-176-1",
+            "title": "Verify Classic Theme Visual Display",
+            "description": "Apply the Classic theme under preferences and verify that its visual appearance matches the reference image.",
+            "requirement_ids": [
+              "R-176"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 730,
+          "output_tokens": 89,
+          "details": {
+            "total_tokens": 819,
+            "text_prompt_tokens": 730
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-177-01",
+            "title": "Verify Modern Theme Visual Display",
+            "description": "Apply the Modern theme within preferences and verify that the user interface is displayed correctly matching the specified reference image.",
+            "requirement_ids": [
+              "R-177"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 730,
+          "output_tokens": 94,
+          "details": {
+            "total_tokens": 824,
+            "text_prompt_tokens": 730
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-178-01",
+            "title": "Verify Theme Preferences item exists under View menu",
+            "description": "Navigate to the View menu and verify that the 'Theme Preferences' item is available and correctly displayed.",
+            "requirement_ids": [
+              "R-178"
+            ]
+          },
+          {
+            "id": "TC-R-178-02",
+            "title": "Verify Theme Preferences item missing or disabled abnormal path",
+            "description": "Navigate to the View menu and verify that appropriate error handling or state is observed if the 'Theme Preferences' item is missing or disabled.",
+            "requirement_ids": [
+              "R-178"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 730,
+          "output_tokens": 176,
+          "details": {
+            "total_tokens": 906,
+            "text_prompt_tokens": 730
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-179-01",
+            "title": "Verify Get New Themes under View menu",
+            "description": "Navigate to the View menu and verify that the 'Get New Themes' item is present and available.",
+            "requirement_ids": [
+              "R-179"
+            ]
+          },
+          {
+            "id": "TC-R-179-02",
+            "title": "Verify Get New Themes absence or disabled state",
+            "description": "Check the View menu under abnormal conditions to ensure the 'Get New Themes' item is handled properly if missing or disabled.",
+            "requirement_ids": [
+              "R-179"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 730,
+          "output_tokens": 183,
+          "details": {
+            "total_tokens": 913,
+            "text_prompt_tokens": 730
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-180-01",
+            "title": "Verify Classic item under View menu",
+            "description": "Navigate to the View menu and verify that the 'Classic' item is present and available for selection.",
+            "requirement_ids": [
+              "R-180"
+            ]
+          },
+          {
+            "id": "TC-R-180-02",
+            "title": "Verify absence or disabled state of Classic item under View menu",
+            "description": "Navigate to the View menu and verify the handling when the 'Classic' item is missing or disabled unexpectedly.",
+            "requirement_ids": [
+              "R-180"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 730,
+          "output_tokens": 182,
+          "details": {
+            "total_tokens": 912,
+            "text_prompt_tokens": 730
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "initial",
+      "output": {
+        "cases": [
+          {
+            "id": "TC-R-181-01",
+            "title": "Verify Modern item is available under View menu",
+            "description": "Navigate to the View menu and verify that the 'Modern' item is present and selectable.",
+            "requirement_ids": [
+              "R-181"
+            ]
+          },
+          {
+            "id": "TC-R-181-02",
+            "title": "Verify Modern item absence or disabled state under View menu",
+            "description": "Verify abnormal behavior when the 'Modern' item is missing or disabled under the View menu.",
+            "requirement_ids": [
+              "R-181"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 730,
+          "output_tokens": 178,
+          "details": {
+            "total_tokens": 908,
+            "text_prompt_tokens": 730
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "critic",
+      "subject_id": "initial",
+      "output": {
+        "feedback": "The proposed cases introduce speculative negative test scenarios for items being missing or disabled under the View menu (G-005, G-007, G-009, G-011) which are not supported or required by the baseline requirements. Please remove these speculative negative cases and ensure cases focus directly on verifying the specified menu items and theme preferences.",
+        "request_revision": true,
+        "confirmed_blockers": [
+          "Speculative negative scenarios testing missing or disabled menu items (G-005, G-007, G-009, G-011) are not grounded in requirements R-178 through R-181."
+        ],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1162,
+          "output_tokens": 155,
+          "details": {
+            "total_tokens": 1317,
+            "text_prompt_tokens": 1162
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "analyst",
+      "subject_id": "round-1-candidate-1",
+      "output": {
+        "analysis": "R-175: Normal path - verify both Classic and Modern themes are present under theme preferences. Boundary - exactly two themes available.\nR-176: Normal path - apply Classic theme and verify visual layout matches the reference image. Ambiguity - specific reference image file not provided.\nR-177: Normal path - apply Modern theme and verify visual layout matches the reference image. Ambiguity - specific reference image file not provided.\nR-178: Normal path - navigate to View menu and verify 'Theme Preferences' item is available.\nR-179: Normal path - navigate to View menu and verify 'Get New Themes' item is available.\nR-180: Normal path - navigate to View menu and verify 'Classic' item is available.\nR-181: Normal path - navigate to View menu and verify 'Modern' item is available."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 872,
+          "output_tokens": 190,
+          "details": {
+            "total_tokens": 1062,
+            "text_prompt_tokens": 872
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "round-1-candidate-1",
+      "output": {
+        "cases": [
+          {
+            "id": "G-001",
+            "title": "Verify presence of both Classic and Modern themes under theme preferences",
+            "description": "Navigate to the theme preferences section and verify that both Classic and Modern themes are listed as available options.",
+            "requirement_ids": [
+              "R-175"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1534,
+          "output_tokens": 94,
+          "details": {
+            "total_tokens": 1628,
+            "text_prompt_tokens": 1534
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "round-1-candidate-1",
+      "output": {
+        "cases": [
+          {
+            "id": "G-002",
+            "title": "Verify Classic Theme Visual Display",
+            "description": "Apply the Classic theme under preferences and verify that its visual appearance matches the reference image.",
+            "requirement_ids": [
+              "R-176"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1534,
+          "output_tokens": 85,
+          "details": {
+            "total_tokens": 1619,
+            "text_prompt_tokens": 1534
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "round-1-candidate-1",
+      "output": {
+        "cases": [
+          {
+            "id": "G-003",
+            "title": "Verify Modern Theme Visual Display",
+            "description": "Apply the Modern theme within preferences and verify that the user interface is displayed correctly matching the specified reference image.",
+            "requirement_ids": [
+              "R-177"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1534,
+          "output_tokens": 89,
+          "details": {
+            "total_tokens": 1623,
+            "text_prompt_tokens": 1534
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "round-1-candidate-1",
+      "output": {
+        "cases": [
+          {
+            "id": "G-004",
+            "title": "Verify Theme Preferences item exists under View menu",
+            "description": "Navigate to the View menu and verify that the 'Theme Preferences' item is available and correctly displayed.",
+            "requirement_ids": [
+              "R-178"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1534,
+          "output_tokens": 91,
+          "details": {
+            "total_tokens": 1625,
+            "text_prompt_tokens": 1534
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "round-1-candidate-1",
+      "output": {
+        "cases": [
+          {
+            "id": "G-006",
+            "title": "Verify Get New Themes under View menu",
+            "description": "Navigate to the View menu and verify that the 'Get New Themes' item is present and available.",
+            "requirement_ids": [
+              "R-179"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1534,
+          "output_tokens": 90,
+          "details": {
+            "total_tokens": 1624,
+            "text_prompt_tokens": 1534
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "round-1-candidate-1",
+      "output": {
+        "cases": [
+          {
+            "id": "G-008",
+            "title": "Verify Classic item under View menu",
+            "description": "Navigate to the View menu and verify that the 'Classic' item is present and available for selection.",
+            "requirement_ids": [
+              "R-180"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1534,
+          "output_tokens": 89,
+          "details": {
+            "total_tokens": 1623,
+            "text_prompt_tokens": 1534
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "round-1-candidate-1",
+      "output": {
+        "cases": [
+          {
+            "id": "G-010",
+            "title": "Verify Modern item is available under View menu",
+            "description": "Navigate to the View menu and verify that the 'Modern' item is present and selectable.",
+            "requirement_ids": [
+              "R-181"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1534,
+          "output_tokens": 89,
+          "details": {
+            "total_tokens": 1623,
+            "text_prompt_tokens": 1534
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "critic",
+      "subject_id": "round-1-candidate-1",
+      "output": {
+        "feedback": "The proposed test cases adequately cover all the requirements and are testable, distinct, and pose low risk.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 910,
+          "output_tokens": 59,
+          "details": {
+            "total_tokens": 969,
+            "text_prompt_tokens": 910
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "analyst",
+      "subject_id": "round-1-candidate-2",
+      "output": {
+        "analysis": "R-175: Normal path - verify both Classic and Modern themes are present under theme preferences. Boundary - exactly two default themes exist. Abnormal path - one or both themes fail to load. R-176: Normal path - apply Classic theme and verify UI rendering against the reference image. Ambiguity - missing explicit reference image asset. R-177: Normal path - apply Modern theme and verify UI rendering against the reference image. Ambiguity - missing explicit reference image asset. R-178: Normal path - open View menu and verify 'Theme Preferences' menu item is present and selectable. R-179: Normal path - open View menu and verify 'Get New Themes' menu item is present and selectable. R-180: Normal path - open View menu and verify 'Classic' menu item is present and selectable. R-181: Normal path - open View menu and verify 'Modern' menu item is present and selectable."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 872,
+          "output_tokens": 205,
+          "details": {
+            "total_tokens": 1077,
+            "text_prompt_tokens": 872
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "round-1-candidate-2",
+      "output": {
+        "cases": [
+          {
+            "id": "G-001",
+            "title": "Verify presence of both Classic and Modern themes under theme preferences",
+            "description": "Navigate to the theme preferences section and verify that both Classic and Modern themes are listed as available options.",
+            "requirement_ids": [
+              "R-175"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1552,
+          "output_tokens": 94,
+          "details": {
+            "total_tokens": 1646,
+            "text_prompt_tokens": 1552
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "round-1-candidate-2",
+      "output": {
+        "cases": [
+          {
+            "id": "G-002",
+            "title": "Verify Classic Theme Visual Display",
+            "description": "Apply the Classic theme under preferences and verify that its visual appearance matches the reference image.",
+            "requirement_ids": [
+              "R-176"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1552,
+          "output_tokens": 85,
+          "details": {
+            "total_tokens": 1637,
+            "text_prompt_tokens": 1552
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "round-1-candidate-2",
+      "output": {
+        "cases": [
+          {
+            "id": "G-003",
+            "title": "Verify Modern Theme Visual Display",
+            "description": "Apply the Modern theme within preferences and verify that the user interface is displayed correctly matching the specified reference image.",
+            "requirement_ids": [
+              "R-177"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1552,
+          "output_tokens": 89,
+          "details": {
+            "total_tokens": 1641,
+            "text_prompt_tokens": 1552
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "round-1-candidate-2",
+      "output": {
+        "cases": [
+          {
+            "id": "G-004",
+            "title": "Verify Theme Preferences item exists under View menu",
+            "description": "Navigate to the View menu and verify that the 'Theme Preferences' item is available and correctly displayed.",
+            "requirement_ids": [
+              "R-178"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1552,
+          "output_tokens": 91,
+          "details": {
+            "total_tokens": 1643,
+            "text_prompt_tokens": 1552
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "round-1-candidate-2",
+      "output": {
+        "cases": [
+          {
+            "id": "G-006",
+            "title": "Verify Get New Themes under View menu",
+            "description": "Navigate to the View menu and verify that the 'Get New Themes' item is present and available.",
+            "requirement_ids": [
+              "R-179"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1552,
+          "output_tokens": 90,
+          "details": {
+            "total_tokens": 1642,
+            "text_prompt_tokens": 1552
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "round-1-candidate-2",
+      "output": {
+        "cases": [
+          {
+            "id": "G-008",
+            "title": "Verify Classic item under View menu",
+            "description": "Navigate to the View menu and verify that the 'Classic' item is present and available for selection.",
+            "requirement_ids": [
+              "R-180"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1552,
+          "output_tokens": 89,
+          "details": {
+            "total_tokens": 1641,
+            "text_prompt_tokens": 1552
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "round-1-candidate-2",
+      "output": {
+        "cases": [
+          {
+            "id": "G-010",
+            "title": "Verify Modern item is available under View menu",
+            "description": "Navigate to the View menu and verify that the 'Modern' item is present and selectable.",
+            "requirement_ids": [
+              "R-181"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1552,
+          "output_tokens": 89,
+          "details": {
+            "total_tokens": 1641,
+            "text_prompt_tokens": 1552
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "critic",
+      "subject_id": "round-1-candidate-2",
+      "output": {
+        "feedback": "The proposed test cases adequately cover all provided requirements and are distinct, testable, and low risk.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 910,
+          "output_tokens": 48,
+          "details": {
+            "total_tokens": 958,
+            "text_prompt_tokens": 910
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "analyst",
+      "subject_id": "round-1-candidate-3",
+      "output": {
+        "analysis": "R-175: Normal path - verify both Classic and Modern themes are present under theme preferences. Boundary - exactly two themes are listed. R-176: Normal path - apply Classic theme and verify visual display matches the reference image. Ambiguity - specific reference image data is not defined in the requirement. R-177: Normal path - apply Modern theme and verify visual display matches the reference image. Ambiguity - specific reference image data is not defined in the requirement. R-178: Normal path - open the View menu and verify the availability of the 'Theme Preferences' menu item. R-179: Normal path - open the View menu and verify the availability of the 'Get New Themes' menu item. R-180: Normal path - open the View menu and verify the availability of the 'Classic' menu item. R-181: Normal path - open the View menu and verify the availability of the 'Modern' menu item."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 872,
+          "output_tokens": 207,
+          "details": {
+            "total_tokens": 1079,
+            "text_prompt_tokens": 872
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "round-1-candidate-3",
+      "output": {
+        "cases": [
+          {
+            "id": "G-001",
+            "title": "Verify presence of both Classic and Modern themes under theme preferences",
+            "description": "Navigate to the theme preferences section and verify that both Classic and Modern themes are listed as available options.",
+            "requirement_ids": [
+              "R-175"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1555,
+          "output_tokens": 94,
+          "details": {
+            "total_tokens": 1649,
+            "text_prompt_tokens": 1555
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "round-1-candidate-3",
+      "output": {
+        "cases": [
+          {
+            "id": "G-002",
+            "title": "Verify Classic Theme Visual Display",
+            "description": "Apply the Classic theme under preferences and verify that its visual appearance matches the reference image.",
+            "requirement_ids": [
+              "R-176"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1555,
+          "output_tokens": 85,
+          "details": {
+            "total_tokens": 1640,
+            "text_prompt_tokens": 1555
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "round-1-candidate-3",
+      "output": {
+        "cases": [
+          {
+            "id": "G-003",
+            "title": "Verify Modern Theme Visual Display",
+            "description": "Apply the Modern theme within preferences and verify that the user interface is displayed correctly matching the specified reference image.",
+            "requirement_ids": [
+              "R-177"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1555,
+          "output_tokens": 89,
+          "details": {
+            "total_tokens": 1644,
+            "text_prompt_tokens": 1555
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "round-1-candidate-3",
+      "output": {
+        "cases": [
+          {
+            "id": "G-004",
+            "title": "Verify Theme Preferences item exists under View menu",
+            "description": "Navigate to the View menu and verify that the 'Theme Preferences' item is available and correctly displayed.",
+            "requirement_ids": [
+              "R-178"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1555,
+          "output_tokens": 91,
+          "details": {
+            "total_tokens": 1646,
+            "text_prompt_tokens": 1555
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "round-1-candidate-3",
+      "output": {
+        "cases": [
+          {
+            "id": "G-006",
+            "title": "Verify Get New Themes under View menu",
+            "description": "Navigate to the View menu and verify that the 'Get New Themes' item is present and available.",
+            "requirement_ids": [
+              "R-179"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1555,
+          "output_tokens": 90,
+          "details": {
+            "total_tokens": 1645,
+            "text_prompt_tokens": 1555
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "round-1-candidate-3",
+      "output": {
+        "cases": [
+          {
+            "id": "G-008",
+            "title": "Verify Classic item under View menu",
+            "description": "Navigate to the View menu and verify that the 'Classic' item is present and available for selection.",
+            "requirement_ids": [
+              "R-180"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1555,
+          "output_tokens": 89,
+          "details": {
+            "total_tokens": 1644,
+            "text_prompt_tokens": 1555
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "generator",
+      "subject_id": "round-1-candidate-3",
+      "output": {
+        "cases": [
+          {
+            "id": "G-010",
+            "title": "Verify Modern item is available under View menu",
+            "description": "Navigate to the View menu and verify that the 'Modern' item is present and selectable.",
+            "requirement_ids": [
+              "R-181"
+            ]
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 1555,
+          "output_tokens": 89,
+          "details": {
+            "total_tokens": 1644,
+            "text_prompt_tokens": 1555
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "critic",
+      "subject_id": "round-1-candidate-3",
+      "output": {
+        "feedback": "All proposed test cases successfully map to the requirements and provide clear, testable scenarios without any blockers.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 910,
+          "output_tokens": 48,
+          "details": {
+            "total_tokens": 958,
+            "text_prompt_tokens": 910
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "selection",
+      "subject_id": "round-1",
+      "output": {
+        "preferred_id": "round-1-candidate-1",
+        "rationale": "Candidate round-1-candidate-1 successfully removes the speculative and ungrounded negative test scenarios present in the accepted state, resulting in zero confirmed blockers while maintaining complete requirement coverage.",
+        "judgments": [
+          {
+            "candidate_id": "round-1-candidate-1",
+            "comparison": "improves"
+          },
+          {
+            "candidate_id": "round-1-candidate-2",
+            "comparison": "improves"
+          },
+          {
+            "candidate_id": "round-1-candidate-3",
+            "comparison": "improves"
+          }
+        ]
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 2923,
+          "output_tokens": 168,
+          "details": {
+            "total_tokens": 3091,
+            "text_prompt_tokens": 2923
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "validator",
+      "subject_id": "round-1-candidate-1",
+      "output": {
+        "feedback": "All test cases are well-defined, correctly mapped to their respective requirements (R-175 through R-181), and fully actionable without any blockers.",
+        "request_revision": false,
+        "confirmed_blockers": [],
+        "blocker_assessment_complete": true
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 907,
+          "output_tokens": 72,
+          "details": {
+            "total_tokens": 979,
+            "text_prompt_tokens": 907
+          },
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "stage": "coverage",
+      "subject_id": "round-1-candidate-1",
+      "output": {
+        "feedback": "The accepted cases cover all requirements R-175 through R-181 adequately with a one-to-one mapping. There are no coverage gaps, excess test cases, or repetition. The suite is concise, complete, and properly matches the requirements."
+      },
+      "error_type": null,
+      "usage": [
+        {
+          "input_tokens": 2120,
+          "output_tokens": 62,
+          "details": {
+            "total_tokens": 2182,
+            "text_prompt_tokens": 2120
+          },
+          "status": "available"
+        }
+      ]
+    }
+  ],
+  "monotonicity": "confirmed"
+}

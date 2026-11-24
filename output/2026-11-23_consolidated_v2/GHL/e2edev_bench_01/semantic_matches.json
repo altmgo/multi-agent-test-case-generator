@@ -1,0 +1,106 @@
+{
+  "status": "evaluated",
+  "embedding_model": "gemini-embedding-2",
+  "similarity_threshold": 0.7,
+  "matches": [
+    {
+      "generated_id": "G-003",
+      "reference_id": "e2edev_bench_01-R-3-TC-4",
+      "similarity": 0.8924518028093394
+    },
+    {
+      "generated_id": "G-014",
+      "reference_id": "e2edev_bench_01-R-3-TC-2",
+      "similarity": 0.9185114421358281
+    },
+    {
+      "generated_id": "G-019",
+      "reference_id": "e2edev_bench_01-R-1-TC-1",
+      "similarity": 0.9382462984243619
+    },
+    {
+      "generated_id": "G-025",
+      "reference_id": "e2edev_bench_01-R-5-TC-2",
+      "similarity": 0.9155656680398366
+    },
+    {
+      "generated_id": "G-027",
+      "reference_id": "e2edev_bench_01-R-1-TC-2",
+      "similarity": 0.9112857876497529
+    },
+    {
+      "generated_id": "G-028",
+      "reference_id": "e2edev_bench_01-R-1-TC-4",
+      "similarity": 0.9373708379474036
+    },
+    {
+      "generated_id": "G-035",
+      "reference_id": "e2edev_bench_01-R-5-TC-3",
+      "similarity": 0.9102952266646791
+    },
+    {
+      "generated_id": "G-037",
+      "reference_id": "e2edev_bench_01-R-1-TC-3",
+      "similarity": 0.9082732424378284
+    },
+    {
+      "generated_id": "G-038",
+      "reference_id": "e2edev_bench_01-R-3-TC-1",
+      "similarity": 0.9241082652444156
+    },
+    {
+      "generated_id": "G-040",
+      "reference_id": "e2edev_bench_01-R-3-TC-3",
+      "similarity": 0.923452391987431
+    },
+    {
+      "generated_id": "G-041",
+      "reference_id": "e2edev_bench_01-R-5-TC-1",
+      "similarity": 0.9172521444630228
+    },
+    {
+      "generated_id": "G-042",
+      "reference_id": "e2edev_bench_01-R-5-TC-4",
+      "similarity": 0.9077292689672599
+    }
+  ],
+  "unmatched_generated_ids": [
+    "G-001",
+    "G-002",
+    "G-004",
+    "G-005",
+    "G-006",
+    "G-007",
+    "G-008",
+    "G-009",
+    "G-010",
+    "G-011",
+    "G-012",
+    "G-013",
+    "G-015",
+    "G-016",
+    "G-017",
+    "G-018",
+    "G-020",
+    "G-021",
+    "G-022",
+    "G-023",
+    "G-024",
+    "G-026",
+    "G-029",
+    "G-030",
+    "G-031",
+    "G-032",
+    "G-033",
+    "G-034",
+    "G-036",
+    "G-039",
+    "G-043",
+    "G-044",
+    "G-045",
+    "G-046",
+    "G-047",
+    "G-048"
+  ],
+  "unmatched_reference_ids": []
+}

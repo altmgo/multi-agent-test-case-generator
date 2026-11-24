@@ -1,0 +1,173 @@
+# Multiagent · Requirements to tests
+
+## firefox\_themes
+
+Status · generated
+- G-001 · Verify presence of both Classic and Modern themes under theme preferences · [R-175](firefox_themes/R-175/test%20cases/1_Verify_presence_of_both_Classic_and_Modern_theme.md)
+- G-002 · Verify Classic Theme Visual Display · [R-176](firefox_themes/R-176/test%20cases/2_Verify_Classic_Theme_Visual_Display.md)
+- G-003 · Verify Modern Theme Visual Display · [R-177](firefox_themes/R-177/test%20cases/3_Verify_Modern_Theme_Visual_Display.md)
+- G-004 · Verify Theme Preferences item exists under View menu · [R-178](firefox_themes/R-178/test%20cases/4_Verify_Theme_Preferences_item_exists_under_View.md)
+- G-005 · Verify Get New Themes under View menu · [R-179](firefox_themes/R-179/test%20cases/5_Verify_Get_New_Themes_under_View_menu.md)
+- G-006 · Verify Classic item under View menu · [R-180](firefox_themes/R-180/test%20cases/6_Verify_Classic_item_under_View_menu.md)
+- G-007 · Verify Modern item is available under View menu · [R-181](firefox_themes/R-181/test%20cases/7_Verify_Modern_item_is_available_under_View_menu.md)
+
+## firefox\_browser\_history
+
+Status · generated
+- G-001 · Record standard visited link to Global History · [R-073](firefox_browser_history/R-073/test%20cases/1_Record_standard_visited_link_to_Global_History.md)
+- G-002 · Exclude failed navigations from Global History · [R-073](firefox_browser_history/R-073/test%20cases/2_Exclude_failed_navigations_from_Global_History.md)
+- G-003 · Record Final Destination URL After Single Redirect · [R-074](firefox_browser_history/R-074/test%20cases/3_Record_Final_Destination_URL_After_Single_Redire.md)
+- G-004 · Record Final Destination URL Across Redirect Chains · [R-074](firefox_browser_history/R-074/test%20cases/4_Record_Final_Destination_URL_Across_Redirect_Cha.md)
+- G-005 · Handle Redirect Loops Without Corrupting History · [R-074](firefox_browser_history/R-074/test%20cases/5_Handle_Redirect_Loops_Without_Corrupting_History.md)
+- G-006 · Launch History Link in Current Window · [R-075](firefox_browser_history/R-075/test%20cases/6_Launch_History_Link_in_Current_Window.md)
+- G-007 · Launch History Link with Modified Opening Action · [R-075](firefox_browser_history/R-075/test%20cases/7_Launch_History_Link_with_Modified_Opening_Action.md)
+- G-008 · Launch Invalid or Corrupted History Link · [R-075](firefox_browser_history/R-075/test%20cases/8_Launch_Invalid_or_Corrupted_History_Link.md)
+- G-009 · Delete Single History Entry Successfully · [R-076](firefox_browser_history/R-076/test%20cases/9_Delete_Single_History_Entry_Successfully.md)
+- G-010 · Attempt Deletion of Non-Existent History Entry · [R-076](firefox_browser_history/R-076/test%20cases/10_Attempt_Deletion_of_Non-Existent_History_Entry.md)
+- G-011 · Delete contiguous range of history entries · [R-077](firefox_browser_history/R-077/test%20cases/11_Delete_contiguous_range_of_history_entries.md)
+- G-012 · Delete discontiguous set of history entries · [R-077](firefox_browser_history/R-077/test%20cases/12_Delete_discontiguous_set_of_history_entries.md)
+- G-013 · Attempt deletion with empty selection · [R-077](firefox_browser_history/R-077/test%20cases/13_Attempt_deletion_with_empty_selection.md)
+- G-014 · Clear Entire Global History · [R-078](firefox_browser_history/R-078/test%20cases/14_Clear_Entire_Global_History.md)
+- G-015 · Clear Empty Global History · [R-078](firefox_browser_history/R-078/test%20cases/15_Clear_Empty_Global_History.md)
+- G-016 · Group History by Day · [R-079](firefox_browser_history/R-079/test%20cases/16_Group_History_by_Day.md)
+- G-017 · Group History by Site · [R-079](firefox_browser_history/R-079/test%20cases/17_Group_History_by_Site.md)
+- G-018 · Group History by None · [R-079](firefox_browser_history/R-079/test%20cases/18_Group_History_by_None.md)
+- G-019 · Dynamic Grouping View Switching · [R-079](firefox_browser_history/R-079/test%20cases/19_Dynamic_Grouping_View_Switching.md)
+- G-020 · Sort and Reverse-Sort History Columns · [R-080](firefox_browser_history/R-080/test%20cases/20_Sort_and_Reverse-Sort_History_Columns.md)
+- G-021 · Sorting Empty History List · [R-080](firefox_browser_history/R-080/test%20cases/21_Sorting_Empty_History_List.md)
+- G-022 · Resize history columns to show and hide more entry details · [R-081](firefox_browser_history/R-081/test%20cases/22_Resize_history_columns_to_show_and_hide_more_ent.md)
+- G-023 · History column resizing boundary limits · [R-081](firefox_browser_history/R-081/test%20cases/23_History_column_resizing_boundary_limits.md)
+- G-024 · Show and Hide History Columns via Header Menu · [R-082](firefox_browser_history/R-082/test%20cases/24_Show_and_Hide_History_Columns_via_Header_Menu.md)
+- G-025 · Prevent Hiding All History Columns · [R-082](firefox_browser_history/R-082/test%20cases/25_Prevent_Hiding_All_History_Columns.md)
+- G-026 · Re-visit site via Back button dropdown menu · [R-083](firefox_browser_history/R-083/test%20cases/26_Re-visit_site_via_Back_button_dropdown_menu.md)
+- G-027 · Re-visit site via Forward button dropdown menu · [R-083](firefox_browser_history/R-083/test%20cases/27_Re-visit_site_via_Forward_button_dropdown_menu.md)
+- G-028 · Back and Forward dropdown state at session start · [R-083](firefox_browser_history/R-083/test%20cases/28_Back_and_Forward_dropdown_state_at_session_start.md)
+- G-029 · Create Empty Session History File for New Browser Window · [R-084](firefox_browser_history/R-084/test%20cases/29_Create_Empty_Session_History_File_for_New_Browse.md)
+- G-030 · Create Empty Session History File on Browser Restart · [R-084](firefox_browser_history/R-084/test%20cases/30_Create_Empty_Session_History_File_on_Browser_Res.md)
+
+## firefox\_password\_manager
+
+Status · generated
+- G-001 · Discard password when Never For This Site is selected · [R-102](firefox_password_manager/R-102/test%20cases/1_Discard_password_when_Never_For_This_Site_is_sel.md)
+- G-002 · Never For This Site selection prevents future prompts and retains site accessibility · [R-102](firefox_password_manager/R-102/test%20cases/2_Never_For_This_Site_selection_prevents_future_pr.md)
+- G-003 · Present multiple saved usernames and passwords for a website · [R-103](firefox_password_manager/R-103/test%20cases/3_Present_multiple_saved_usernames_and_passwords_f.md)
+- G-004 · Present choices correctly when a single set versus multiple sets of credentials exist · [R-103](firefox_password_manager/R-103/test%20cases/4_Present_choices_correctly_when_a_single_set_vers.md)
+- G-005 · Update saved password upon change · [R-104](firefox_password_manager/R-104/test%20cases/5_Update_saved_password_upon_change.md)
+- G-006 · Prompt to update changed password · [R-104](firefox_password_manager/R-104/test%20cases/6_Prompt_to_update_changed_password.md)
+- G-007 · Verify disabling password manager suppresses save prompts and autofill · [R-105](firefox_password_manager/R-105/test%20cases/7_Verify_disabling_password_manager_suppresses_sav.md)
+- G-008 · View saved credentials in preferences · [R-106](firefox_password_manager/R-106/test%20cases/8_View_saved_credentials_in_preferences.md)
+- G-009 · View empty list in preferences when no credentials are saved · [R-106](firefox_password_manager/R-106/test%20cases/9_View_empty_list_in_preferences_when_no_credentia.md)
+- G-010 · Remove single specific credential entry for a site · [R-107](firefox_password_manager/R-107/test%20cases/10_Remove_single_specific_credential_entry_for_a_si.md)
+- G-011 · Remove one of multiple credentials for the same site · [R-107](firefox_password_manager/R-107/test%20cases/11_Remove_one_of_multiple_credentials_for_the_same.md)
+- G-012 · Remove all saved credentials successfully · [R-108](firefox_password_manager/R-108/test%20cases/12_Remove_all_saved_credentials_successfully.md)
+- G-013 · Remove all credentials when the password store is already empty · [R-108](firefox_password_manager/R-108/test%20cases/13_Remove_all_credentials_when_the_password_store_i.md)
+
+## firefox\_bookmarks
+
+Status · generated
+- G-001 · Add bookmark to a specific nested location · [R-001](firefox_bookmarks/R-001/test%20cases/1_Add_bookmark_to_a_specific_nested_location.md)
+- G-002 · Add bookmark to root location · [R-001](firefox_bookmarks/R-001/test%20cases/2_Add_bookmark_to_root_location.md)
+- G-003 · Attempt to add bookmark to a non-existent location · [R-001](firefox_bookmarks/R-001/test%20cases/3_Attempt_to_add_bookmark_to_a_non-existent_locati.md)
+- G-004 · Delete single bookmark from storage and UI · [R-002](firefox_bookmarks/R-002/test%20cases/4_Delete_single_bookmark_from_storage_and_UI.md)
+- G-005 · Verify no orphaned references after bookmark deletion · [R-002](firefox_bookmarks/R-002/test%20cases/5_Verify_no_orphaned_references_after_bookmark_del.md)
+- G-006 · Add and Delete Bookmark via Personal Toolbar · [R-003](firefox_bookmarks/R-003/test%20cases/6_Add_and_Delete_Bookmark_via_Personal_Toolbar.md)
+- G-007 · Negative Test for Personal Toolbar Item Addition · [R-003](firefox_bookmarks/R-003/test%20cases/7_Negative_Test_for_Personal_Toolbar_Item_Addition.md)
+- G-008 · Insert new bookmark folder into hierarchy · [R-004](firefox_bookmarks/R-004/test%20cases/8_Insert_new_bookmark_folder_into_hierarchy.md)
+- G-009 · Insert bookmark folder with duplicate name · [R-004](firefox_bookmarks/R-004/test%20cases/9_Insert_bookmark_folder_with_duplicate_name.md)
+- G-010 · Launch valid bookmark in browser window via double-click · [R-005](firefox_bookmarks/R-005/test%20cases/10_Launch_valid_bookmark_in_browser_window_via_doub.md)
+- G-011 · Double-clicking on a bookmark with a malformed or empty URL · [R-005](firefox_bookmarks/R-005/test%20cases/11_Double-clicking_on_a_bookmark_with_a_malformed_o.md)
+- G-012 · Default packaged bookmarks link validity check · [R-006](firefox_bookmarks/R-006/test%20cases/12_Default_packaged_bookmarks_link_validity_check.md)
+- G-013 · Default bookmarks broken link handling · [R-006](firefox_bookmarks/R-006/test%20cases/13_Default_bookmarks_broken_link_handling.md)
+- G-014 · Save changes to bookmark item successfully · [R-007](firefox_bookmarks/R-007/test%20cases/14_Save_changes_to_bookmark_item_successfully.md)
+- G-015 · Save bookmark changes with extreme character lengths · [R-007](firefox_bookmarks/R-007/test%20cases/15_Save_bookmark_changes_with_extreme_character_len.md)
+- G-016 · Handle abrupt interruption during bookmark save operation · [R-007](firefox_bookmarks/R-007/test%20cases/16_Handle_abrupt_interruption_during_bookmark_save.md)
+- G-017 · Delete Empty Bookmarks Folder · [R-008](firefox_bookmarks/R-008/test%20cases/17_Delete_Empty_Bookmarks_Folder.md)
+- G-018 · Delete Non-Empty Bookmarks Folder with Contents · [R-008](firefox_bookmarks/R-008/test%20cases/18_Delete_Non-Empty_Bookmarks_Folder_with_Contents.md)
+- G-019 · Negative Test: Delete Locked or Read-Only Bookmarks Folder · [R-008](firefox_bookmarks/R-008/test%20cases/19_Negative_Test_Delete_Locked_or_Read-Only_Bookmar.md)
+- G-020 · Add and Delete Bookmark Separators · [R-009](firefox_bookmarks/R-009/test%20cases/20_Add_and_Delete_Bookmark_Separators.md)
+- G-021 · Delete Non-Existent Separator Negative Test · [R-009](firefox_bookmarks/R-009/test%20cases/21_Delete_Non-Existent_Separator_Negative_Test.md)
+- G-022 · Persistence after graceful browser restart · [R-010](firefox_bookmarks/R-010/test%20cases/22_Persistence_after_graceful_browser_restart.md)
+- G-023 · Persistence after sudden browser crash · [R-010](firefox_bookmarks/R-010/test%20cases/23_Persistence_after_sudden_browser_crash.md)
+- G-024 · Verify view properties negative behavior for bookmarks, folders, and separators · [R-011](firefox_bookmarks/R-011/test%20cases/24_Verify_view_properties_negative_behavior_for_boo.md)
+- G-025 · Inline rename bookmark normal path · [R-012](firefox_bookmarks/R-012/test%20cases/25_Inline_rename_bookmark_normal_path.md)
+- G-026 · Inline rename bookmark boundary and abort path · [R-012](firefox_bookmarks/R-012/test%20cases/26_Inline_rename_bookmark_boundary_and_abort_path.md)
+- G-027 · Resolve bookmark via custom keyword · [R-013](firefox_bookmarks/R-013/test%20cases/27_Resolve_bookmark_via_custom_keyword.md)
+- G-028 · Keyword search with special characters and case sensitivity · [R-013](firefox_bookmarks/R-013/test%20cases/28_Keyword_search_with_special_characters_and_case.md)
+- G-029 · Handle non-existent or duplicate keywords \(Negative\) · [R-013](firefox_bookmarks/R-013/test%20cases/29_Handle_non-existent_or_duplicate_keywords_Negati.md)
+- G-030 · Sort and reverse-sort bookmark columns · [R-014](firefox_bookmarks/R-014/test%20cases/30_Sort_and_reverse-sort_bookmark_columns.md)
+- G-031 · Sort columns with special characters and empty values · [R-014](firefox_bookmarks/R-014/test%20cases/31_Sort_columns_with_special_characters_and_empty_v.md)
+- G-032 · Resize bookmark columns to show and hide more entries · [R-015](firefox_bookmarks/R-015/test%20cases/32_Resize_bookmark_columns_to_show_and_hide_more_en.md)
+- G-033 · Boundary test for bookmark column width limits · [R-015](firefox_bookmarks/R-015/test%20cases/33_Boundary_test_for_bookmark_column_width_limits.md)
+- G-034 · Show and Hide Bookmark Columns · [R-016](firefox_bookmarks/R-016/test%20cases/34_Show_and_Hide_Bookmark_Columns.md)
+- G-035 · Prevent Hiding All Columns Simultaneously · [R-016](firefox_bookmarks/R-016/test%20cases/35_Prevent_Hiding_All_Columns_Simultaneously.md)
+- G-036 · Batch Deletion of Multiple Bookmarks · [R-017](firefox_bookmarks/R-017/test%20cases/36_Batch_Deletion_of_Multiple_Bookmarks.md)
+- G-037 · Batch Deletion Boundary and Concurrent Modification · [R-017](firefox_bookmarks/R-017/test%20cases/37_Batch_Deletion_Boundary_and_Concurrent_Modificat.md)
+- G-038 · Prevent dropping a bookmark onto itself · [R-018](firefox_bookmarks/R-018/test%20cases/38_Prevent_dropping_a_bookmark_onto_itself.md)
+- G-039 · Prevent dropping a bookmark onto its immediate parent · [R-018](firefox_bookmarks/R-018/test%20cases/39_Prevent_dropping_a_bookmark_onto_its_immediate_p.md)
+- G-040 · Prevent dropping a bookmark onto its immediate child · [R-018](firefox_bookmarks/R-018/test%20cases/40_Prevent_dropping_a_bookmark_onto_its_immediate_c.md)
+
+## e2edev\_bench\_01
+
+Status · generated
+- G-001 · Initiate drag event on valid product item and capture title and price · [e2edev\_bench\_01-R-1](e2edev_bench_01/e2edev_bench_01-R-1/test%20cases/1_Initiate_drag_event_on_valid_product_item_and_ca.md)
+- G-002 · Drop single product into drop area · [e2edev\_bench\_01-R-3](e2edev_bench_01/e2edev_bench_01-R-3/test%20cases/2_Drop_single_product_into_drop_area.md)
+- G-003 · Drop multiple different products into drop area · [e2edev\_bench\_01-R-3](e2edev_bench_01/e2edev_bench_01-R-3/test%20cases/3_Drop_multiple_different_products_into_drop_area.md)
+- G-004 · Drop repeated products into drop area · [e2edev\_bench\_01-R-3](e2edev_bench_01/e2edev_bench_01-R-3/test%20cases/4_Drop_repeated_products_into_drop_area.md)
+- G-005 · Drop invalid element into drop area · [e2edev\_bench\_01-R-3](e2edev_bench_01/e2edev_bench_01-R-3/test%20cases/5_Drop_invalid_element_into_drop_area.md)
+- G-006 · Calculate and display total price for single item in cart · [e2edev\_bench\_01-R-5](e2edev_bench_01/e2edev_bench_01-R-5/test%20cases/6_Calculate_and_display_total_price_for_single_ite.md)
+- G-007 · Calculate and display total price for multiple and repeated items in cart · [e2edev\_bench\_01-R-5](e2edev_bench_01/e2edev_bench_01-R-5/test%20cases/7_Calculate_and_display_total_price_for_multiple_a.md)
+
+## e2edev\_bench\_02
+
+Status · generated
+- G-001 · Add single note via button click · [e2edev\_bench\_02-R-1](e2edev_bench_02/e2edev_bench_02-R-1/test%20cases/1_Add_single_note_via_button_click.md)
+- G-002 · Add multiple notes via rapid clicks · [e2edev\_bench\_02-R-1](e2edev_bench_02/e2edev_bench_02-R-1/test%20cases/2_Add_multiple_notes_via_rapid_clicks.md)
+- G-003 · Real-time Markdown Rendering and Editing · [e2edev\_bench\_02-R-2](e2edev_bench_02/e2edev_bench_02-R-2/test%20cases/3_Real-time_Markdown_Rendering_and_Editing.md)
+- G-004 · Handling Invalid Markdown Syntax · [e2edev\_bench\_02-R-2](e2edev_bench_02/e2edev_bench_02-R-2/test%20cases/4_Handling_Invalid_Markdown_Syntax.md)
+- G-005 · Create note and verify initial edit mode state · [e2edev\_bench\_02-R-3](e2edev_bench_02/e2edev_bench_02-R-3/test%20cases/5_Create_note_and_verify_initial_edit_mode_state.md)
+- G-006 · Toggle between edit and view modes · [e2edev\_bench\_02-R-3](e2edev_bench_02/e2edev_bench_02-R-3/test%20cases/6_Toggle_between_edit_and_view_modes.md)
+- G-007 · Automatic saving to local storage across sessions · [e2edev\_bench\_02-R-3](e2edev_bench_02/e2edev_bench_02-R-3/test%20cases/7_Automatic_saving_to_local_storage_across_session.md)
+- G-008 · Delete note removes it from DOM and localStorage · [e2edev\_bench\_02-R-4](e2edev_bench_02/e2edev_bench_02-R-4/test%20cases/8_Delete_note_removes_it_from_DOM_and_localStorage.md)
+- G-009 · Delete specific note among multiple notes · [e2edev\_bench\_02-R-4](e2edev_bench_02/e2edev_bench_02-R-4/test%20cases/9_Delete_specific_note_among_multiple_notes.md)
+- G-010 · Restore notes from localStorage on page load · [e2edev\_bench\_02-R-5](e2edev_bench_02/e2edev_bench_02-R-5/test%20cases/10_Restore_notes_from_localStorage_on_page_load.md)
+- G-011 · Handle empty content notes on page load · [e2edev\_bench\_02-R-5](e2edev_bench_02/e2edev_bench_02-R-5/test%20cases/11_Handle_empty_content_notes_on_page_load.md)
+- G-012 · Handle empty localStorage on page load · [e2edev\_bench\_02-R-5](e2edev_bench_02/e2edev_bench_02-R-5/test%20cases/12_Handle_empty_localStorage_on_page_load.md)
+
+## e2edev\_bench\_03
+
+Status · generated
+- G-001 · Select available seats and verify dynamic count and total price update · [e2edev\_bench\_03-R-1](e2edev_bench_03/e2edev_bench_03-R-1/test%20cases/1_Select_available_seats_and_verify_dynamic_count.md)
+- G-002 · Attempt to select occupied seats · [e2edev\_bench\_03-R-1](e2edev_bench_03/e2edev_bench_03-R-1/test%20cases/2_Attempt_to_select_occupied_seats.md)
+- G-003 · Change selected movie and verify total price recalculation · [e2edev\_bench\_03-R-1](e2edev_bench_03/e2edev_bench_03-R-1/test%20cases/3_Change_selected_movie_and_verify_total_price_rec.md)
+- G-004 · Select and Deselect Available Seats with LocalStorage Update · [e2edev\_bench\_03-R-2](e2edev_bench_03/e2edev_bench_03-R-2/test%20cases/4_Select_and_Deselect_Available_Seats_with_LocalSt.md)
+- G-005 · Movie Selection and Price Calculation with Specific Options · [e2edev\_bench\_03-R-2](e2edev_bench_03/e2edev_bench_03-R-2/test%20cases/5_Movie_Selection_and_Price_Calculation_with_Speci.md)
+- G-006 · Prevention of Selecting Occupied Seats · [e2edev\_bench\_03-R-2](e2edev_bench_03/e2edev_bench_03-R-2/test%20cases/6_Prevention_of_Selecting_Occupied_Seats.md)
+- G-007 · Restore state from localStorage · [e2edev\_bench\_03-R-3](e2edev_bench_03/e2edev_bench_03-R-3/test%20cases/7_Restore_state_from_localStorage.md)
+- G-008 · Default initialization when localStorage is empty · [e2edev\_bench\_03-R-3](e2edev_bench_03/e2edev_bench_03-R-3/test%20cases/8_Default_initialization_when_localStorage_is_empt.md)
+- G-009 · Dynamic update of seat count and total price on seat selection and deselection · [e2edev\_bench\_03-R-4](e2edev_bench_03/e2edev_bench_03-R-4/test%20cases/9_Dynamic_update_of_seat_count_and_total_price_on.md)
+- G-010 · Total price recalculation upon changing movie selection with active seats · [e2edev\_bench\_03-R-4](e2edev_bench_03/e2edev_bench_03-R-4/test%20cases/10_Total_price_recalculation_upon_changing_movie_se.md)
+- G-011 · Prevention of selecting occupied seats · [e2edev\_bench\_03-R-4](e2edev_bench_03/e2edev_bench_03-R-4/test%20cases/11_Prevention_of_selecting_occupied_seats.md)
+- G-012 · Verify seat status legends are displayed and correspond to correct states · [e2edev\_bench\_03-R-5](e2edev_bench_03/e2edev_bench_03-R-5/test%20cases/12_Verify_seat_status_legends_are_displayed_and_cor.md)
+- G-013 · Verify occupied seats are non-interactive and prevent selection · [e2edev\_bench\_03-R-5](e2edev_bench_03/e2edev_bench_03-R-5/test%20cases/13_Verify_occupied_seats_are_non-interactive_and_pr.md)
+- G-014 · Verify available seats can be clicked to toggle selection and update metrics · [e2edev\_bench\_03-R-5](e2edev_bench_03/e2edev_bench_03-R-5/test%20cases/14_Verify_available_seats_can_be_clicked_to_toggle.md)
+
+## e2edev\_bench\_04
+
+Status · generated
+- G-001 · Initial hidden state of the text box · [e2edev\_bench\_04-R-1](e2edev_bench_04/e2edev_bench_04-R-1/test%20cases/1_Initial_hidden_state_of_the_text_box.md)
+- G-002 · Toggle text box visibility using the toggle button · [e2edev\_bench\_04-R-1](e2edev_bench_04/e2edev_bench_04-R-1/test%20cases/2_Toggle_text_box_visibility_using_the_toggle_butt.md)
+- G-003 · Rapid repeated clicks on the toggle button · [e2edev\_bench\_04-R-1](e2edev_bench_04/e2edev_bench_04-R-1/test%20cases/3_Rapid_repeated_clicks_on_the_toggle_button.md)
+- G-004 · Close text box using close button · [e2edev\_bench\_04-R-2](e2edev_bench_04/e2edev_bench_04-R-2/test%20cases/4_Close_text_box_using_close_button.md)
+- G-005 · Populate Voice Dropdown on Text Box Opening · [e2edev\_bench\_04-R-3](e2edev_bench_04/e2edev_bench_04-R-3/test%20cases/5_Populate_Voice_Dropdown_on_Text_Box_Opening.md)
+- G-006 · Handle Dynamic Voice Updates via voiceschanged Event · [e2edev\_bench\_04-R-3](e2edev_bench_04/e2edev_bench_04-R-3/test%20cases/6_Handle_Dynamic_Voice_Updates_via_voiceschanged_E.md)
+- G-007 · Assign Selected Voice to Speech Message · [e2edev\_bench\_04-R-3](e2edev_bench_04/e2edev_bench_04-R-3/test%20cases/7_Assign_Selected_Voice_to_Speech_Message.md)
+- G-008 · Initial Population of Voice Dropdown on Page Load · [e2edev\_bench\_04-R-4](e2edev_bench_04/e2edev_bench_04-R-4/test%20cases/8_Initial_Population_of_Voice_Dropdown_on_Page_Loa.md)
+- G-009 · Single Voice Selection Sets Active Voice · [e2edev\_bench\_04-R-4](e2edev_bench_04/e2edev_bench_04-R-4/test%20cases/9_Single_Voice_Selection_Sets_Active_Voice.md)
+- G-010 · Multiple Voice Selections and Last Selected Voice Precedence · [e2edev\_bench\_04-R-4](e2edev_bench_04/e2edev_bench_04-R-4/test%20cases/10_Multiple_Voice_Selections_and_Last_Selected_Voic.md)
+- G-011 · Support for Specific Language Codes in Voice Selection · [e2edev\_bench\_04-R-4](e2edev_bench_04/e2edev_bench_04-R-4/test%20cases/11_Support_for_Specific_Language_Codes_in_Voice_Sel.md)
+- G-012 · Read entered text aloud using selected voice · [e2edev\_bench\_04-R-5](e2edev_bench_04/e2edev_bench_04-R-5/test%20cases/12_Read_entered_text_aloud_using_selected_voice.md)
+- G-013 · Handling empty textarea when clicking read text · [e2edev\_bench\_04-R-5](e2edev_bench_04/e2edev_bench_04-R-5/test%20cases/13_Handling_empty_textarea_when_clicking_read_text.md)
+- G-014 · Dynamic Generation of Phrase Boxes · [e2edev\_bench\_04-R-6](e2edev_bench_04/e2edev_bench_04-R-6/test%20cases/14_Dynamic_Generation_of_Phrase_Boxes.md)
+- G-015 · Normal Click on Phrase Box for Speech and Visual Feedback · [e2edev\_bench\_04-R-6](e2edev_bench_04/e2edev_bench_04-R-6/test%20cases/15_Normal_Click_on_Phrase_Box_for_Speech_and_Visual.md)
+- G-016 · Sequential Clicks Across Different Phrase Boxes · [e2edev\_bench\_04-R-6](e2edev_bench_04/e2edev_bench_04-R-6/test%20cases/16_Sequential_Clicks_Across_Different_Phrase_Boxes.md)
+- G-017 · Rapid Repeated Clicks on the Same Phrase Box · [e2edev\_bench\_04-R-6](e2edev_bench_04/e2edev_bench_04-R-6/test%20cases/17_Rapid_Repeated_Clicks_on_the_Same_Phrase_Box.md)
